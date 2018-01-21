@@ -396,6 +396,7 @@
             this.lowerTeam = new System.Windows.Forms.RadioButton();
             this.upperTeam = new System.Windows.Forms.RadioButton();
             this.globalFunctionTeam = new System.Windows.Forms.Button();
+            this.FmStats = new System.Windows.Forms.TabPage();
             this.Database = new System.Windows.Forms.TabPage();
             this.accept = new System.Windows.Forms.Button();
             this.label80 = new System.Windows.Forms.Label();
@@ -448,7 +449,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.FmStats = new System.Windows.Forms.TabPage();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Transfers.SuspendLayout();
@@ -537,6 +537,7 @@
             this.open.Name = "open";
             this.open.Size = new System.Drawing.Size(189, 30);
             this.open.Text = "Open";
+            this.open.Click += new System.EventHandler(this.open_Click);
             // 
             // reload
             // 
@@ -4409,6 +4410,15 @@
             this.globalFunctionTeam.Text = "Apply";
             this.globalFunctionTeam.UseVisualStyleBackColor = true;
             // 
+            // FmStats
+            // 
+            this.FmStats.Location = new System.Drawing.Point(4, 22);
+            this.FmStats.Name = "FmStats";
+            this.FmStats.Size = new System.Drawing.Size(907, 632);
+            this.FmStats.TabIndex = 9;
+            this.FmStats.Text = "FmStats";
+            this.FmStats.UseVisualStyleBackColor = true;
+            // 
             // Database
             // 
             this.Database.Controls.Add(this.accept);
@@ -4877,15 +4887,6 @@
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // FmStats
-            // 
-            this.FmStats.Location = new System.Drawing.Point(4, 22);
-            this.FmStats.Name = "FmStats";
-            this.FmStats.Size = new System.Drawing.Size(907, 632);
-            this.FmStats.TabIndex = 9;
-            this.FmStats.Text = "FmStats";
-            this.FmStats.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -4894,11 +4895,11 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DinoTem Editor 2018";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
