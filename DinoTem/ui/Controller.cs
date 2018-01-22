@@ -395,11 +395,11 @@ namespace DinoTem.ui
             this.bitRecognized = bitRecognized;
 
             if (bitRecognized == 0)
-                Form.Text = "Team Editor Manager 2018 - Pc Mode";
+                Form.Text = "DinoTem Editor 2018 - Pc Mode";
             else if (bitRecognized == 1)
-                Form.Text = "Team Editor Manager 2018 - Xbox Mode";
+                Form.Text = "DinoTem Editor 2018 - Xbox Mode";
             else if (bitRecognized == 2)
-                Form.Text += "Team Editor Manager 2018 - Ps3 Mode";
+                Form.Text += "DinoTem Editor 2018 - Ps3 Mode";
 
             UtilGUI.resetField();
 

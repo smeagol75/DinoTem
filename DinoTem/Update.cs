@@ -27,7 +27,7 @@ namespace DinoTem
 
         private void button2_Click(object sender, EventArgs e)
         {
-            WebRequest request1 = WebRequest.Create("http://lagun2.altervista.org/PES%2018%20Team%20Editor%20Manager/link.txt");
+            WebRequest request1 = WebRequest.Create("http://lagun2.altervista.org/DinoTem/link.txt");
             request1.Credentials = CredentialCache.DefaultCredentials;
             WebResponse response1 = request1.GetResponse();
             Console.WriteLine(((HttpWebResponse)response1).StatusDescription);

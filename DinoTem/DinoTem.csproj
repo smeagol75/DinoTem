@@ -86,6 +86,8 @@
     <Compile Include="persistence\MyTacticsFormationPersister.cs" />
     <Compile Include="persistence\MyTacticsPersister.cs" />
     <Compile Include="persistence\MyTeamPersister.cs" />
+    <Compile Include="psd\ini.cs" />
+    <Compile Include="psd\Psd.cs" />
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>

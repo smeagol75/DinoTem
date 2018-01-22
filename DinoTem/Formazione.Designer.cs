@@ -156,6 +156,11 @@
             this.teamView1.TabStop = false;
             this.teamView1.UseCompatibleStateImageBehavior = false;
             this.teamView1.View = System.Windows.Forms.View.Details;
+            this.teamView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.teamView1_ItemDrag);
+            this.teamView1.SelectedIndexChanged += new System.EventHandler(this.teamView1_SelectedIndexChanged);
+            this.teamView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.teamView1_DragDrop);
+            this.teamView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.teamView1_DragEnter);
+            this.teamView1.DragOver += new System.Windows.Forms.DragEventHandler(this.teamView1_DragOver);
             // 
             // columnHeader11
             // 
@@ -197,6 +202,7 @@
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(363, 487);
             this.tabControl1.TabIndex = 2;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // Custom
             // 
@@ -233,6 +239,9 @@
             this.player11.TabIndex = 32;
             this.player11.Text = "99";
             this.player11.UseVisualStyleBackColor = false;
+            this.player11.Click += new System.EventHandler(this.player11_Click);
+            this.player11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player11_MouseDown);
+            this.player11.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player11_MouseMove);
             // 
             // player10
             // 
@@ -247,6 +256,9 @@
             this.player10.TabIndex = 31;
             this.player10.Text = "99";
             this.player10.UseVisualStyleBackColor = false;
+            this.player10.Click += new System.EventHandler(this.player10_Click);
+            this.player10.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player10_MouseDown);
+            this.player10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player10_MouseMove);
             // 
             // player4
             // 
@@ -261,6 +273,9 @@
             this.player4.TabIndex = 30;
             this.player4.Text = "99";
             this.player4.UseVisualStyleBackColor = false;
+            this.player4.Click += new System.EventHandler(this.player4_Click);
+            this.player4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player4_MouseDown);
+            this.player4.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player4_MouseMove);
             // 
             // player5
             // 
@@ -275,6 +290,9 @@
             this.player5.TabIndex = 29;
             this.player5.Text = "99";
             this.player5.UseVisualStyleBackColor = false;
+            this.player5.Click += new System.EventHandler(this.player5_Click);
+            this.player5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player5_MouseDown);
+            this.player5.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player5_MouseMove);
             // 
             // player6
             // 
@@ -289,6 +307,9 @@
             this.player6.TabIndex = 28;
             this.player6.Text = "99";
             this.player6.UseVisualStyleBackColor = false;
+            this.player6.Click += new System.EventHandler(this.player6_Click);
+            this.player6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player6_MouseDown);
+            this.player6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player6_MouseMove);
             // 
             // player7
             // 
@@ -303,6 +324,9 @@
             this.player7.TabIndex = 27;
             this.player7.Text = "99";
             this.player7.UseVisualStyleBackColor = false;
+            this.player7.Click += new System.EventHandler(this.player7_Click);
+            this.player7.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player7_MouseDown);
+            this.player7.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player7_MouseMove);
             // 
             // player8
             // 
@@ -317,6 +341,9 @@
             this.player8.TabIndex = 21;
             this.player8.Text = "99";
             this.player8.UseVisualStyleBackColor = false;
+            this.player8.Click += new System.EventHandler(this.player8_Click);
+            this.player8.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player8_MouseDown);
+            this.player8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player8_MouseMove);
             // 
             // player9
             // 
@@ -331,6 +358,9 @@
             this.player9.TabIndex = 26;
             this.player9.Text = "99";
             this.player9.UseVisualStyleBackColor = false;
+            this.player9.Click += new System.EventHandler(this.player9_Click);
+            this.player9.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player9_MouseDown);
+            this.player9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player9_MouseMove);
             // 
             // player3
             // 
@@ -345,6 +375,9 @@
             this.player3.TabIndex = 25;
             this.player3.Text = "99";
             this.player3.UseVisualStyleBackColor = false;
+            this.player3.Click += new System.EventHandler(this.player3_Click);
+            this.player3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player3_MouseDown);
+            this.player3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player3_MouseMove);
             // 
             // player2
             // 
@@ -359,6 +392,9 @@
             this.player2.TabIndex = 24;
             this.player2.Text = "99";
             this.player2.UseVisualStyleBackColor = false;
+            this.player2.Click += new System.EventHandler(this.player2_Click);
+            this.player2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player2_MouseDown);
+            this.player2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player2_MouseMove);
             // 
             // player1
             // 
@@ -373,6 +409,9 @@
             this.player1.TabIndex = 23;
             this.player1.Text = "99";
             this.player1.UseVisualStyleBackColor = false;
+            this.player1.Click += new System.EventHandler(this.player1_Click);
+            this.player1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player1_MouseDown);
+            this.player1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player1_MouseMove);
             // 
             // pictureBox2
             // 
@@ -418,6 +457,9 @@
             this.player22.TabIndex = 43;
             this.player22.Text = "99";
             this.player22.UseVisualStyleBackColor = false;
+            this.player22.Click += new System.EventHandler(this.player22_Click);
+            this.player22.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player22_MouseDown);
+            this.player22.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player22_MouseMove);
             // 
             // player21
             // 
@@ -432,6 +474,9 @@
             this.player21.TabIndex = 42;
             this.player21.Text = "99";
             this.player21.UseVisualStyleBackColor = false;
+            this.player21.Click += new System.EventHandler(this.player21_Click);
+            this.player21.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player21_MouseDown);
+            this.player21.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player21_MouseMove);
             // 
             // player20
             // 
@@ -446,6 +491,9 @@
             this.player20.TabIndex = 41;
             this.player20.Text = "99";
             this.player20.UseVisualStyleBackColor = false;
+            this.player20.Click += new System.EventHandler(this.player20_Click);
+            this.player20.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player20_MouseDown);
+            this.player20.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player20_MouseMove);
             // 
             // player19
             // 
@@ -460,6 +508,9 @@
             this.player19.TabIndex = 40;
             this.player19.Text = "99";
             this.player19.UseVisualStyleBackColor = false;
+            this.player19.Click += new System.EventHandler(this.player19_Click);
+            this.player19.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player19_MouseDown);
+            this.player19.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player19_MouseMove);
             // 
             // player18
             // 
@@ -474,6 +525,9 @@
             this.player18.TabIndex = 39;
             this.player18.Text = "99";
             this.player18.UseVisualStyleBackColor = false;
+            this.player18.Click += new System.EventHandler(this.player18_Click);
+            this.player18.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player18_MouseDown);
+            this.player18.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player18_MouseMove);
             // 
             // player17
             // 
@@ -488,6 +542,9 @@
             this.player17.TabIndex = 38;
             this.player17.Text = "99";
             this.player17.UseVisualStyleBackColor = false;
+            this.player17.Click += new System.EventHandler(this.player17_Click);
+            this.player17.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player17_MouseDown);
+            this.player17.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player17_MouseMove);
             // 
             // player16
             // 
@@ -502,6 +559,9 @@
             this.player16.TabIndex = 37;
             this.player16.Text = "99";
             this.player16.UseVisualStyleBackColor = false;
+            this.player16.Click += new System.EventHandler(this.player16_Click);
+            this.player16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player16_MouseDown);
+            this.player16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player16_MouseMove);
             // 
             // player15
             // 
@@ -516,6 +576,9 @@
             this.player15.TabIndex = 36;
             this.player15.Text = "99";
             this.player15.UseVisualStyleBackColor = false;
+            this.player15.Click += new System.EventHandler(this.player15_Click);
+            this.player15.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player15_MouseDown);
+            this.player15.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player15_MouseMove);
             // 
             // player14
             // 
@@ -530,6 +593,9 @@
             this.player14.TabIndex = 35;
             this.player14.Text = "99";
             this.player14.UseVisualStyleBackColor = false;
+            this.player14.Click += new System.EventHandler(this.player14_Click);
+            this.player14.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player14_MouseDown);
+            this.player14.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player14_MouseMove);
             // 
             // player13
             // 
@@ -544,6 +610,9 @@
             this.player13.TabIndex = 34;
             this.player13.Text = "99";
             this.player13.UseVisualStyleBackColor = false;
+            this.player13.Click += new System.EventHandler(this.player13_Click);
+            this.player13.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player13_MouseDown);
+            this.player13.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player13_MouseMove);
             // 
             // player12
             // 
@@ -558,6 +627,9 @@
             this.player12.TabIndex = 33;
             this.player12.Text = "99";
             this.player12.UseVisualStyleBackColor = false;
+            this.player12.Click += new System.EventHandler(this.player12_Click);
+            this.player12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player12_MouseDown);
+            this.player12.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player12_MouseMove);
             // 
             // pictureBox1
             // 
@@ -603,6 +675,9 @@
             this.player33.TabIndex = 43;
             this.player33.Text = "99";
             this.player33.UseVisualStyleBackColor = false;
+            this.player33.Click += new System.EventHandler(this.player33_Click);
+            this.player33.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player33_MouseDown);
+            this.player33.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player33_MouseMove);
             // 
             // player32
             // 
@@ -617,6 +692,9 @@
             this.player32.TabIndex = 42;
             this.player32.Text = "99";
             this.player32.UseVisualStyleBackColor = false;
+            this.player32.Click += new System.EventHandler(this.player32_Click);
+            this.player32.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player32_MouseDown);
+            this.player32.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player32_MouseMove);
             // 
             // player31
             // 
@@ -631,6 +709,9 @@
             this.player31.TabIndex = 41;
             this.player31.Text = "99";
             this.player31.UseVisualStyleBackColor = false;
+            this.player31.Click += new System.EventHandler(this.player31_Click);
+            this.player31.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player31_MouseDown);
+            this.player31.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player31_MouseMove);
             // 
             // player30
             // 
@@ -645,6 +726,9 @@
             this.player30.TabIndex = 40;
             this.player30.Text = "99";
             this.player30.UseVisualStyleBackColor = false;
+            this.player30.Click += new System.EventHandler(this.player30_Click);
+            this.player30.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player30_MouseDown);
+            this.player30.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player30_MouseMove);
             // 
             // player29
             // 
@@ -659,6 +743,9 @@
             this.player29.TabIndex = 39;
             this.player29.Text = "99";
             this.player29.UseVisualStyleBackColor = false;
+            this.player29.Click += new System.EventHandler(this.player29_Click);
+            this.player29.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player29_MouseDown);
+            this.player29.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player29_MouseMove);
             // 
             // player28
             // 
@@ -673,6 +760,9 @@
             this.player28.TabIndex = 38;
             this.player28.Text = "99";
             this.player28.UseVisualStyleBackColor = false;
+            this.player28.Click += new System.EventHandler(this.player28_Click);
+            this.player28.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player28_MouseDown);
+            this.player28.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player28_MouseMove);
             // 
             // player27
             // 
@@ -687,6 +777,9 @@
             this.player27.TabIndex = 37;
             this.player27.Text = "99";
             this.player27.UseVisualStyleBackColor = false;
+            this.player27.Click += new System.EventHandler(this.player27_Click);
+            this.player27.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player27_MouseDown);
+            this.player27.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player27_MouseMove);
             // 
             // player26
             // 
@@ -701,6 +794,9 @@
             this.player26.TabIndex = 36;
             this.player26.Text = "99";
             this.player26.UseVisualStyleBackColor = false;
+            this.player26.Click += new System.EventHandler(this.player26_Click);
+            this.player26.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player26_MouseDown);
+            this.player26.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player26_MouseMove);
             // 
             // player25
             // 
@@ -715,6 +811,9 @@
             this.player25.TabIndex = 35;
             this.player25.Text = "99";
             this.player25.UseVisualStyleBackColor = false;
+            this.player25.Click += new System.EventHandler(this.player25_Click);
+            this.player25.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player25_MouseDown);
+            this.player25.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player25_MouseMove);
             // 
             // player24
             // 
@@ -729,6 +828,9 @@
             this.player24.TabIndex = 34;
             this.player24.Text = "99";
             this.player24.UseVisualStyleBackColor = false;
+            this.player24.Click += new System.EventHandler(this.player24_Click);
+            this.player24.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player24_MouseDown);
+            this.player24.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player24_MouseMove);
             // 
             // player23
             // 
@@ -743,6 +845,9 @@
             this.player23.TabIndex = 33;
             this.player23.Text = "99";
             this.player23.UseVisualStyleBackColor = false;
+            this.player23.Click += new System.EventHandler(this.player23_Click);
+            this.player23.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player23_MouseDown);
+            this.player23.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player23_MouseMove);
             // 
             // pictureBox3
             // 
@@ -762,6 +867,7 @@
             this.schemes.Size = new System.Drawing.Size(137, 21);
             this.schemes.TabIndex = 35;
             this.schemes.TabStop = false;
+            this.schemes.SelectedIndexChanged += new System.EventHandler(this.schemi_SelectedIndexChanged);
             // 
             // label13
             // 
@@ -781,6 +887,7 @@
             this.position.Size = new System.Drawing.Size(52, 21);
             this.position.TabIndex = 37;
             this.position.TabStop = false;
+            this.position.SelectedIndexChanged += new System.EventHandler(this.Position_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -955,6 +1062,7 @@
             this.positioning.TabIndex = 17;
             this.positioning.Text = "Positioning - Flexible";
             this.positioning.UseVisualStyleBackColor = true;
+            this.positioning.CheckedChanged += new System.EventHandler(this.positioning_CheckedChanged);
             // 
             // fuildFormation
             // 
@@ -968,6 +1076,7 @@
             this.fuildFormation.TabIndex = 16;
             this.fuildFormation.Text = "Fluid Formation - ON";
             this.fuildFormation.UseVisualStyleBackColor = true;
+            this.fuildFormation.CheckedChanged += new System.EventHandler(this.fuildFormation_CheckedChanged);
             // 
             // attackingStyle
             // 
@@ -981,6 +1090,7 @@
             this.attackingStyle.TabIndex = 15;
             this.attackingStyle.Text = "Attacking Style - Possesion game";
             this.attackingStyle.UseVisualStyleBackColor = true;
+            this.attackingStyle.CheckedChanged += new System.EventHandler(this.attackingStyle_CheckedChanged);
             // 
             // pressuring
             // 
@@ -994,6 +1104,7 @@
             this.pressuring.TabIndex = 14;
             this.pressuring.Text = "Pressuring - Conservative";
             this.pressuring.UseVisualStyleBackColor = true;
+            this.pressuring.CheckedChanged += new System.EventHandler(this.pressuring_CheckedChanged);
             // 
             // containmentArea
             // 
@@ -1007,6 +1118,7 @@
             this.containmentArea.TabIndex = 13;
             this.containmentArea.Text = "Containment Area - Wide";
             this.containmentArea.UseVisualStyleBackColor = true;
+            this.containmentArea.CheckedChanged += new System.EventHandler(this.containmentArea_CheckedChanged);
             // 
             // attackingArea
             // 
@@ -1020,6 +1132,7 @@
             this.attackingArea.TabIndex = 12;
             this.attackingArea.Text = "Attacking Area - Centre";
             this.attackingArea.UseVisualStyleBackColor = true;
+            this.attackingArea.CheckedChanged += new System.EventHandler(this.attackingArea_CheckedChanged);
             // 
             // defensiveStyle
             // 
@@ -1033,6 +1146,7 @@
             this.defensiveStyle.TabIndex = 11;
             this.defensiveStyle.Text = "Defensive Style - All Out Deffence";
             this.defensiveStyle.UseVisualStyleBackColor = true;
+            this.defensiveStyle.CheckedChanged += new System.EventHandler(this.defensiveStyle_CheckedChanged);
             // 
             // buildUp
             // 
@@ -1046,6 +1160,7 @@
             this.buildUp.TabIndex = 10;
             this.buildUp.Text = "Build up - Short Pass";
             this.buildUp.UseVisualStyleBackColor = true;
+            this.buildUp.CheckedChanged += new System.EventHandler(this.buildUp_CheckedChanged);
             // 
             // numberFormation
             // 
@@ -1056,6 +1171,7 @@
             this.numberFormation.Size = new System.Drawing.Size(61, 21);
             this.numberFormation.TabIndex = 41;
             this.numberFormation.TabStop = false;
+            this.numberFormation.SelectedIndexChanged += new System.EventHandler(this.numberFormation_SelectedIndexChanged);
             // 
             // label7
             // 
@@ -1203,6 +1319,7 @@
             this.cancel.TabIndex = 126;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = true;
+            this.cancel.Click += new System.EventHandler(this.button5_Click);
             // 
             // accept
             // 
@@ -1217,6 +1334,7 @@
             this.accept.TabIndex = 125;
             this.accept.Text = "Accept";
             this.accept.UseVisualStyleBackColor = true;
+            this.accept.Click += new System.EventHandler(this.button4_Click);
             // 
             // applyFormation
             // 
@@ -1231,6 +1349,7 @@
             this.applyFormation.TabIndex = 127;
             this.applyFormation.Text = "Apply Formation";
             this.applyFormation.UseVisualStyleBackColor = true;
+            this.applyFormation.Click += new System.EventHandler(this.button1_Click);
             // 
             // Formazione
             // 
@@ -1256,6 +1375,8 @@
             this.Name = "Formazione";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Formation";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Formazione_FormClosed);
+            this.Load += new System.EventHandler(this.Formazione_Load);
             this.tabControl1.ResumeLayout(false);
             this.Custom.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
