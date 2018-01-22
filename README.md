@@ -7,3 +7,5 @@ Add Updated Class
 Add Model
 Add Persistence
 Add Controller
+
+Add Giocatore.cs, Formatione.cs
