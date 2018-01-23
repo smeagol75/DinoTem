@@ -354,6 +354,7 @@
             this.characterS1.Size = new System.Drawing.Size(17, 17);
             this.characterS1.TabIndex = 126;
             this.characterS1.UseVisualStyleBackColor = true;
+            this.characterS1.Click += new System.EventHandler(this.characterS1_Click);
             // 
             // fakeButton
             // 
@@ -370,6 +371,7 @@
             this.fakeButton.Size = new System.Drawing.Size(17, 17);
             this.fakeButton.TabIndex = 125;
             this.fakeButton.UseVisualStyleBackColor = true;
+            this.fakeButton.Click += new System.EventHandler(this.fakeButton_Click);
             // 
             // playerType
             // 
@@ -543,6 +545,7 @@
             this.weight.Name = "weight";
             this.weight.Size = new System.Drawing.Size(65, 20);
             this.weight.TabIndex = 23;
+            this.weight.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label9
             // 
@@ -560,6 +563,7 @@
             this.height.Name = "height";
             this.height.Size = new System.Drawing.Size(65, 20);
             this.height.TabIndex = 21;
+            this.height.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label8
             // 
@@ -577,6 +581,7 @@
             this.age.Name = "age";
             this.age.Size = new System.Drawing.Size(65, 20);
             this.age.TabIndex = 19;
+            this.age.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label7
             // 
@@ -646,6 +651,7 @@
             this.playerId.Name = "playerId";
             this.playerId.Size = new System.Drawing.Size(65, 20);
             this.playerId.TabIndex = 7;
+            this.playerId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label1
             // 
@@ -718,6 +724,7 @@
             this.physical.Name = "physical";
             this.physical.Size = new System.Drawing.Size(35, 20);
             this.physical.TabIndex = 105;
+            this.physical.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label44
             // 
@@ -762,6 +769,7 @@
             this.reflexes.Name = "reflexes";
             this.reflexes.Size = new System.Drawing.Size(35, 20);
             this.reflexes.TabIndex = 100;
+            this.reflexes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // clearing
             // 
@@ -770,6 +778,7 @@
             this.clearing.Name = "clearing";
             this.clearing.Size = new System.Drawing.Size(35, 20);
             this.clearing.TabIndex = 99;
+            this.clearing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // cathing
             // 
@@ -778,6 +787,7 @@
             this.cathing.Name = "cathing";
             this.cathing.Size = new System.Drawing.Size(35, 20);
             this.cathing.TabIndex = 98;
+            this.cathing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // coverage
             // 
@@ -786,6 +796,7 @@
             this.coverage.Name = "coverage";
             this.coverage.Size = new System.Drawing.Size(35, 20);
             this.coverage.TabIndex = 97;
+            this.coverage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label26
             // 
@@ -803,6 +814,7 @@
             this.goalkeeping.Name = "goalkeeping";
             this.goalkeeping.Size = new System.Drawing.Size(35, 20);
             this.goalkeeping.TabIndex = 95;
+            this.goalkeeping.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // stamina
             // 
@@ -811,6 +823,7 @@
             this.stamina.Name = "stamina";
             this.stamina.Size = new System.Drawing.Size(35, 20);
             this.stamina.TabIndex = 94;
+            this.stamina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // jump
             // 
@@ -819,6 +832,7 @@
             this.jump.Name = "jump";
             this.jump.Size = new System.Drawing.Size(35, 20);
             this.jump.TabIndex = 93;
+            this.jump.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // BodyControl
             // 
@@ -827,6 +841,7 @@
             this.BodyControl.Name = "BodyControl";
             this.BodyControl.Size = new System.Drawing.Size(35, 20);
             this.BodyControl.TabIndex = 92;
+            this.BodyControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // explosivePower
             // 
@@ -835,6 +850,7 @@
             this.explosivePower.Name = "explosivePower";
             this.explosivePower.Size = new System.Drawing.Size(35, 20);
             this.explosivePower.TabIndex = 91;
+            this.explosivePower.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // speed
             // 
@@ -843,6 +859,7 @@
             this.speed.Name = "speed";
             this.speed.Size = new System.Drawing.Size(35, 20);
             this.speed.TabIndex = 90;
+            this.speed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // kickingPower
             // 
@@ -851,6 +868,7 @@
             this.kickingPower.Name = "kickingPower";
             this.kickingPower.Size = new System.Drawing.Size(35, 20);
             this.kickingPower.TabIndex = 89;
+            this.kickingPower.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // ballWinning
             // 
@@ -859,6 +877,7 @@
             this.ballWinning.Name = "ballWinning";
             this.ballWinning.Size = new System.Drawing.Size(35, 20);
             this.ballWinning.TabIndex = 88;
+            this.ballWinning.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // defense
             // 
@@ -867,6 +886,7 @@
             this.defense.Name = "defense";
             this.defense.Size = new System.Drawing.Size(35, 20);
             this.defense.TabIndex = 87;
+            this.defense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // header
             // 
@@ -875,6 +895,7 @@
             this.header.Name = "header";
             this.header.Size = new System.Drawing.Size(35, 20);
             this.header.TabIndex = 86;
+            this.header.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // swerve
             // 
@@ -883,6 +904,7 @@
             this.swerve.Name = "swerve";
             this.swerve.Size = new System.Drawing.Size(35, 20);
             this.swerve.TabIndex = 85;
+            this.swerve.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // placeKick
             // 
@@ -891,6 +913,7 @@
             this.placeKick.Name = "placeKick";
             this.placeKick.Size = new System.Drawing.Size(35, 20);
             this.placeKick.TabIndex = 84;
+            this.placeKick.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // finishing
             // 
@@ -899,6 +922,7 @@
             this.finishing.Name = "finishing";
             this.finishing.Size = new System.Drawing.Size(35, 20);
             this.finishing.TabIndex = 83;
+            this.finishing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // loftedPass
             // 
@@ -907,6 +931,7 @@
             this.loftedPass.Name = "loftedPass";
             this.loftedPass.Size = new System.Drawing.Size(35, 20);
             this.loftedPass.TabIndex = 82;
+            this.loftedPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // lowPass
             // 
@@ -915,6 +940,7 @@
             this.lowPass.Name = "lowPass";
             this.lowPass.Size = new System.Drawing.Size(35, 20);
             this.lowPass.TabIndex = 81;
+            this.lowPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // dribbling
             // 
@@ -923,6 +949,7 @@
             this.dribbling.Name = "dribbling";
             this.dribbling.Size = new System.Drawing.Size(35, 20);
             this.dribbling.TabIndex = 80;
+            this.dribbling.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // ballControll
             // 
@@ -931,6 +958,7 @@
             this.ballControll.Name = "ballControll";
             this.ballControll.Size = new System.Drawing.Size(35, 20);
             this.ballControll.TabIndex = 79;
+            this.ballControll.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // attack
             // 
@@ -939,6 +967,7 @@
             this.attack.Name = "attack";
             this.attack.Size = new System.Drawing.Size(35, 20);
             this.attack.TabIndex = 78;
+            this.attack.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label25
             // 
@@ -2216,6 +2245,7 @@
             this.button7.TabIndex = 113;
             this.button7.Text = "-";
             this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
@@ -2230,6 +2260,7 @@
             this.button8.TabIndex = 114;
             this.button8.Text = "=";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button12
             // 
@@ -2244,6 +2275,7 @@
             this.button12.TabIndex = 115;
             this.button12.Text = "+%";
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // adjust
             // 
@@ -2254,6 +2286,9 @@
             this.adjust.Size = new System.Drawing.Size(98, 21);
             this.adjust.TabIndex = 105;
             this.adjust.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.adjust.Click += new System.EventHandler(this.adjust_TextChanged);
+            this.adjust.TextChanged += new System.EventHandler(this.adjust_TextChanged);
+            this.adjust.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // button6
             // 
@@ -2268,6 +2303,7 @@
             this.button6.TabIndex = 112;
             this.button6.Text = "+";
             this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button13
             // 
@@ -2282,6 +2318,7 @@
             this.button13.TabIndex = 116;
             this.button13.Text = "-%";
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // searchPsd
             // 
@@ -2296,6 +2333,7 @@
             this.searchPsd.TabIndex = 119;
             this.searchPsd.Text = "Search on PSD";
             this.searchPsd.UseVisualStyleBackColor = true;
+            this.searchPsd.Click += new System.EventHandler(this.button1_Click);
             // 
             // psdPaste
             // 
@@ -2310,6 +2348,7 @@
             this.psdPaste.TabIndex = 120;
             this.psdPaste.Text = "Paste PSD Stats";
             this.psdPaste.UseVisualStyleBackColor = true;
+            this.psdPaste.Click += new System.EventHandler(this.psdPaste_Click);
             // 
             // accept
             // 
@@ -2324,6 +2363,7 @@
             this.accept.TabIndex = 123;
             this.accept.Text = "Accept";
             this.accept.UseVisualStyleBackColor = true;
+            this.accept.Click += new System.EventHandler(this.button4_Click);
             // 
             // cancel
             // 
@@ -2338,6 +2378,7 @@
             this.cancel.TabIndex = 124;
             this.cancel.Text = "Cancel";
             this.cancel.UseVisualStyleBackColor = true;
+            this.cancel.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox5
             // 
@@ -2440,6 +2481,7 @@
             0,
             0,
             0});
+            this.skinColour.ValueChanged += new System.EventHandler(this.skin_c_ValueChanged);
             // 
             // label39
             // 
@@ -2543,6 +2585,7 @@
             0,
             0,
             0});
+            this.starIndicator.ValueChanged += new System.EventHandler(this.starIndicator_ValueChanged);
             // 
             // label43
             // 
@@ -2580,6 +2623,7 @@
             this.Name = "Giocatore";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Player -";
+            this.Load += new System.EventHandler(this.Giocatore_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
