@@ -558,6 +558,10 @@ namespace DinoTem
             giocatoreWeight.Text = temp.getWeight().ToString();
             giocatoreHeight.Text = temp.getHeight().ToString();
             giocatoreNazionalità.Text = temp.getNational().ToString();
+            giocatoreForm.Text = temp.getForm().ToString();
+            giocatoreAcc.Text = temp.getWeakFootAcc().ToString();
+            giocatoreUse.Text = temp.getWcUsage().ToString();
+            giocatoreInjury.Text = temp.getInjuryRes().ToString();
 
             attack.Text = temp.getAttack().ToString();
             ballControll.Text = temp.getBallControll().ToString();
