@@ -10,7 +10,6 @@ namespace DinoTem.model
     {
         private long id;
         private long youthPlayerId = 0;
-        private long padding = 0;
         private string playerName = null;
         private string shirtName = null;
         private string japanese = null;
@@ -132,11 +131,6 @@ namespace DinoTem.model
         public long getYouthPlayerId()
         {
             return this.youthPlayerId;
-        }
-
-        public long getPadding()
-        {
-            return this.padding;
         }
 
         public int getFinishing()
@@ -1099,14 +1093,6 @@ namespace DinoTem.model
                 throw new ArgumentException("Youth player Id isn't valid: " + youthPlayerId + " - " + getPlayerName());
 
             this.youthPlayerId = youthPlayerId;
-        }
-
-        public void setPadding(long padding)
-        {
-            if (padding < 0)
-                throw new ArgumentException("Player's padding isn't valid: " + padding + " - " + getPlayerName());
-
-            this.padding = padding;
         }
 
         public void setForm(int form)

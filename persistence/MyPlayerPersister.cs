@@ -55,7 +55,6 @@ namespace DinoTem.persistence
                 // Use the memory stream in a binary reader.
                 BinaryReader reader = new BinaryReader(memory1);
                 long START5 = -192; //youth club id
-                long START7 = -188; //padding
                 long START4 = -184; //id
                 long START3 = -180; //Blocco
                 long START6 = -140; //japanese name
@@ -79,15 +78,9 @@ namespace DinoTem.persistence
                     youthClubId = reader.ReadUInt32();
                     temp.setYouthPlayerId(youthClubId);
 
-                    //padding
-                    START7 += 192;
-                    memory1.Seek(START7, SeekOrigin.Begin);
-                    padding = reader.ReadUInt32();
-                    temp.setPadding(padding);
-
+                    //Player Name
                     START += 192;
                     memory1.Seek(START, SeekOrigin.Begin);
-                    //Player Name
                     temp.setPlayerName(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(46)).TrimEnd('\0'));
 
                     START2 += 192;
@@ -474,7 +467,7 @@ namespace DinoTem.persistence
                 foreach (Player temp in controller.getListPlayer())
                 {
                     saveHex00(temp.getYouthPlayerId(), b);
-                    saveHex00(temp.getPadding(), b);
+                    saveHex00(0, b);
                     saveHex00(temp.getId(), b);
 
                     //blocco 12/15
