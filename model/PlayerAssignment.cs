@@ -156,7 +156,7 @@ namespace DinoTem.model
             this.order = order;
         }
 
-        public override bool Equals(Object obj)
+        /*public override bool Equals(Object obj)
         {
             if (obj is PlayerAssignment)
     	    {
@@ -164,6 +164,6 @@ namespace DinoTem.model
     		    return getPlayerId() == c.getPlayerId() && getTeamId() == c.getTeamId();
     	    }
     	    return false;
-        }
+        }*/
     }
 }

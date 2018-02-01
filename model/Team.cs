@@ -13,7 +13,7 @@ namespace DinoTem.model
         private long parentTeamId;
         private int stadiumId;
         private int teamSortNumber;
-        private string ShortSquadra = null;
+        private string ShortSquadra;
         private bool hasLicensedPlayers;
         private bool licensedTeam;
         private bool national;
@@ -26,9 +26,9 @@ namespace DinoTem.model
         private bool unknown6;
         private int notPlayableLeague;
         private int country;
-        private string english = null;
-        private string japanese = null;
-        private string konami = null;
+        private string english;
+        private string japanese;
+        private string konami;
 
         public Team(int idSquadra)
         {
@@ -321,7 +321,7 @@ namespace DinoTem.model
             return;
         }
 
-        public override bool Equals(Object obj)
+        /*public override bool Equals(Object obj)
         {
             if (obj is Team)
     	    {
@@ -329,7 +329,7 @@ namespace DinoTem.model
     		    return getId() == c.getId();
     	    }
     	    return false;
-        }
+        }*/
 
         public override string ToString()
         {

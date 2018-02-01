@@ -317,7 +317,7 @@ namespace Team_Editor_Manager_New_Generation.ui
                 throw new FormatException("Error parsing int - " + s, e);
 		    }
         }
-
+        /*
         public void importBall(Controller controller, string file, ListBox ballBox)
         {
             int lineCount = File.ReadLines(file).Count();
@@ -345,7 +345,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             }
             controller.UpdateBallList(ballBox);
         }
-
+        */
         public void importPlayerAppareance(Controller controller, string file)
         {
             int lineCount = File.ReadLines(file).Count();

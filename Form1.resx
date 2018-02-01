@@ -927,6 +927,48 @@
   <metadata name="ImportDb2.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="groupBox16.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="button14.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="button14.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAjRJREFUSEutU01LW1EQzf80uqgrf4QLf4DWhYhVUehG1BBRumgsUt1JTFCoLrVQ
+        ikkw8Zk8/Fam8/ne3PeCscELhzk59945M/NuCsWlBowgJDYxNjkKFy3kPg7mheIiEkRxEU04enjNuI+D
+        OXYgTla5bAwPyYUdKA8MGJkL/wvKJTADEpOW7FAYA06XVfOVprrPZR2QSAkU4k7cKvFcoiVJNdV5T02Q
+        YwfO0V1sdZ8hu6oXd7z3p/2oiiw6m+bQYpXLM+UOpAraoErKtW5gct56gOWDCPcbsFntwmX0xDqd2ar3
+        WLe71g2hYIJtJlVgLONFW593O1KZntmo3rBeOsLkdF51zkUGynMjom6sglItNZj+3mHN9tbVYOOoG+je
+        jHh+RHxYzEq1mJPQmqlcy0U+7wxwXHJPdG9GeHNEvoOZSv8R0ffg86qHZtgBEzem946IKqeVHRHfZwiX
+        EeFGUh0flriJH9DW3F44onJdDNYOwxH5PIT0j6abvoIv+xEnofXjNGbN9s7+3rM+u3utmhmImRj0GZE5
+        Eya+tuD24YUTvby+QuVXjP+FG6j/vmOtEz/D+Gp4x5tRzI9ITaSaJkxttyG6FRO/2r0nmNy60nu+6hBv
+        jsgwvtKEhZ8RfDuJYee4B/N7EXxaCSs1Hpq5ERGyIxoG3oxiMqLEQE3o9xjujWIkGB9bumQuUXgR48AR
+        ZZ/q8CAjM+vzitiMQbwf0vbfw/Ov6IORe0XpN0ij5779wbwB/wDqUrvNB2EQWQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="textBox3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label114.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="textBox4.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label115.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="textBox5.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label116.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="coachBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Competition.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -995,16 +1037,10 @@
   <metadata name="label97.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="stadiumKonami.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="stadiumCapacity.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="label95.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="label91.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="button3.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -1141,7 +1177,103 @@
   <metadata name="label88.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <metadata name="groupBox15.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="scarpaMaterial.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label112.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="scarpaColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label111.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="button13.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="button13.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAjRJREFUSEutU01LW1EQzf80uqgrf4QLf4DWhYhVUehG1BBRumgsUt1JTFCoLrVQ
+        ikkw8Zk8/Fam8/ne3PeCscELhzk59945M/NuCsWlBowgJDYxNjkKFy3kPg7mheIiEkRxEU04enjNuI+D
+        OXYgTla5bAwPyYUdKA8MGJkL/wvKJTADEpOW7FAYA06XVfOVprrPZR2QSAkU4k7cKvFcoiVJNdV5T02Q
+        YwfO0V1sdZ8hu6oXd7z3p/2oiiw6m+bQYpXLM+UOpAraoErKtW5gct56gOWDCPcbsFntwmX0xDqd2ar3
+        WLe71g2hYIJtJlVgLONFW593O1KZntmo3rBeOsLkdF51zkUGynMjom6sglItNZj+3mHN9tbVYOOoG+je
+        jHh+RHxYzEq1mJPQmqlcy0U+7wxwXHJPdG9GeHNEvoOZSv8R0ffg86qHZtgBEzem946IKqeVHRHfZwiX
+        EeFGUh0flriJH9DW3F44onJdDNYOwxH5PIT0j6abvoIv+xEnofXjNGbN9s7+3rM+u3utmhmImRj0GZE5
+        Eya+tuD24YUTvby+QuVXjP+FG6j/vmOtEz/D+Gp4x5tRzI9ITaSaJkxttyG6FRO/2r0nmNy60nu+6hBv
+        jsgwvtKEhZ8RfDuJYee4B/N7EXxaCSs1Hpq5ERGyIxoG3oxiMqLEQE3o9xjujWIkGB9bumQuUXgR48AR
+        ZZ/q8CAjM+vzitiMQbwf0vbfw/Ov6IORe0XpN0ij5779wbwB/wDqUrvNB2EQWQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="scarpaName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label100.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="scarpaOrder.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label105.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="scarpaID.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label110.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="bootsBox.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
   <metadata name="Gloves.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="guantoColor.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label99.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="button12.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="button12.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
+        xAAADsQBlSsOGwAAAjRJREFUSEutU01LW1EQzf80uqgrf4QLf4DWhYhVUehG1BBRumgsUt1JTFCoLrVQ
+        ikkw8Zk8/Fam8/ne3PeCscELhzk59945M/NuCsWlBowgJDYxNjkKFy3kPg7mheIiEkRxEU04enjNuI+D
+        OXYgTla5bAwPyYUdKA8MGJkL/wvKJTADEpOW7FAYA06XVfOVprrPZR2QSAkU4k7cKvFcoiVJNdV5T02Q
+        YwfO0V1sdZ8hu6oXd7z3p/2oiiw6m+bQYpXLM+UOpAraoErKtW5gct56gOWDCPcbsFntwmX0xDqd2ar3
+        WLe71g2hYIJtJlVgLONFW593O1KZntmo3rBeOsLkdF51zkUGynMjom6sglItNZj+3mHN9tbVYOOoG+je
+        jHh+RHxYzEq1mJPQmqlcy0U+7wxwXHJPdG9GeHNEvoOZSv8R0ffg86qHZtgBEzem946IKqeVHRHfZwiX
+        EeFGUh0flriJH9DW3F44onJdDNYOwxH5PIT0j6abvoIv+xEnofXjNGbN9s7+3rM+u3utmhmImRj0GZE5
+        Eya+tuD24YUTvby+QuVXjP+FG6j/vmOtEz/D+Gp4x5tRzI9ITaSaJkxttyG6FRO/2r0nmNy60nu+6hBv
+        jsgwvtKEhZ8RfDuJYee4B/N7EXxaCSs1Hpq5ERGyIxoG3oxiMqLEQE3o9xjujWIkGB9bumQuUXgR48AR
+        ZZ/q8CAjM+vzitiMQbwf0vbfw/Ov6IORe0XpN0ij5779wbwB/wDqUrvNB2EQWQAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <metadata name="guantoName.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label43.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="guantoOrder.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label51.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="guantoID.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="label98.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="Global.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

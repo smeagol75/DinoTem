@@ -86,7 +86,11 @@ namespace DinoTem.persistence
 
                     // Instantiate a new object, set it's number and
                     // some other properties
-                    TacticsFormation form = new TacticsFormation(position, TeamTacticIdFormation, Y, X, byte_frag);
+                    TacticsFormation form = new TacticsFormation(TeamTacticIdFormation);
+                    form.setPosition(position);
+                    form.setY(Y);
+                    form.setX(X);
+                    form.setbyteFrag(byte_frag);
                     tacticsList.Add(form);
                 }
                 reader.Close();

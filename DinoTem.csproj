@@ -62,9 +62,14 @@
     </Compile>
     <Compile Include="model\Ball.cs" />
     <Compile Include="model\BallCondition.cs" />
+    <Compile Include="model\Boot.cs" />
     <Compile Include="model\Club.cs" />
+    <Compile Include="model\Coach.cs" />
+    <Compile Include="model\Competition.cs" />
     <Compile Include="model\Country.cs" />
+    <Compile Include="model\Derby.cs" />
     <Compile Include="model\Fm.cs" />
+    <Compile Include="model\Glove.cs" />
     <Compile Include="model\National.cs" />
     <Compile Include="model\Player.cs" />
     <Compile Include="model\PlayerAppearance.cs" />
@@ -79,6 +84,7 @@
     <Compile Include="persistence\MyBinary.cs" />
     <Compile Include="persistence\MyCountryPersister.cs" />
     <Compile Include="persistence\MyFmPersister.cs" />
+    <Compile Include="persistence\MyGlovePersister.cs" />
     <Compile Include="persistence\MyPlayerAppearancePersister.cs" />
     <Compile Include="persistence\MyPlayerAssignmentPersister.cs" />
     <Compile Include="persistence\MyPlayerPersister.cs" />
@@ -110,6 +116,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ui\Controller.cs" />
     <Compile Include="ui\ControllerCSV.cs" />
+    <Compile Include="persistence\MyBootPersister.cs" />
+    <Compile Include="persistence\MyCoachPersister.cs" />
     <Compile Include="ui\UniDecode.cs" />
     <Compile Include="ui\UtilGUI.cs" />
     <Compile Include="Update.cs">

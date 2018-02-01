@@ -109,6 +109,15 @@
             this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.giocatorePanel2 = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.giocatoreInjury = new System.Windows.Forms.Label();
+            this.giocatoreUse = new System.Windows.Forms.Label();
+            this.giocatoreAcc = new System.Windows.Forms.Label();
+            this.giocatoreForm = new System.Windows.Forms.Label();
+            this.label106 = new System.Windows.Forms.Label();
+            this.label107 = new System.Windows.Forms.Label();
+            this.label108 = new System.Windows.Forms.Label();
+            this.label109 = new System.Windows.Forms.Label();
             this.coverage = new System.Windows.Forms.Label();
             this.reflexes = new System.Windows.Forms.Label();
             this.clearing = new System.Windows.Forms.Label();
@@ -235,12 +244,13 @@
             this.label60 = new System.Windows.Forms.Label();
             this.teamSpanish = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
+            this.squadraPanel3 = new System.Windows.Forms.GroupBox();
             this.teamCoachLicense = new System.Windows.Forms.ComboBox();
             this.label57 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
-            this.squadraPanel3 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.teamStadium = new System.Windows.Forms.ComboBox();
             this.label55 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
             this.squadraPanel2 = new System.Windows.Forms.GroupBox();
             this.teamFake = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
@@ -324,9 +334,11 @@
             this.tot = new System.Windows.Forms.Label();
             this.path = new System.Windows.Forms.Label();
             this.typeDB = new System.Windows.Forms.Label();
+            this.Coach = new System.Windows.Forms.TabPage();
             this.Competition = new System.Windows.Forms.TabPage();
             this.label42 = new System.Windows.Forms.Label();
             this.Stadiums = new System.Windows.Forms.TabPage();
+            this.applyStadium = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.stadiumsBox = new System.Windows.Forms.ListBox();
             this.button5 = new System.Windows.Forms.Button();
@@ -344,10 +356,8 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.stadiumJapanese = new System.Windows.Forms.TextBox();
             this.label97 = new System.Windows.Forms.Label();
-            this.stadiumKonami = new System.Windows.Forms.TextBox();
             this.stadiumCapacity = new System.Windows.Forms.TextBox();
             this.label95 = new System.Windows.Forms.Label();
-            this.label91 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.stadiumName = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
@@ -356,6 +366,7 @@
             this.stadiumId = new System.Windows.Forms.TextBox();
             this.label90 = new System.Windows.Forms.Label();
             this.Balls = new System.Windows.Forms.TabPage();
+            this.applyBall = new System.Windows.Forms.Button();
             this.ballsBox = new System.Windows.Forms.ListBox();
             this.button4 = new System.Windows.Forms.Button();
             this.searchBall = new System.Windows.Forms.TextBox();
@@ -377,8 +388,34 @@
             this.label87 = new System.Windows.Forms.Label();
             this.palloneID = new System.Windows.Forms.TextBox();
             this.label88 = new System.Windows.Forms.Label();
+            this.Boots = new System.Windows.Forms.TabPage();
+            this.bootApply = new System.Windows.Forms.Button();
+            this.groupBox15 = new System.Windows.Forms.GroupBox();
+            this.scarpaMaterial = new System.Windows.Forms.TextBox();
+            this.label112 = new System.Windows.Forms.Label();
+            this.scarpaColor = new System.Windows.Forms.TextBox();
+            this.label111 = new System.Windows.Forms.Label();
+            this.button13 = new System.Windows.Forms.Button();
+            this.scarpaName = new System.Windows.Forms.TextBox();
+            this.label100 = new System.Windows.Forms.Label();
+            this.scarpaOrder = new System.Windows.Forms.TextBox();
+            this.label105 = new System.Windows.Forms.Label();
+            this.scarpaID = new System.Windows.Forms.TextBox();
+            this.label110 = new System.Windows.Forms.Label();
+            this.bootsBox = new System.Windows.Forms.ListBox();
             this.Gloves = new System.Windows.Forms.TabPage();
+            this.applyGlove = new System.Windows.Forms.Button();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.guantoColor = new System.Windows.Forms.TextBox();
+            this.label99 = new System.Windows.Forms.Label();
+            this.button12 = new System.Windows.Forms.Button();
+            this.guantoName = new System.Windows.Forms.TextBox();
             this.label43 = new System.Windows.Forms.Label();
+            this.guantoOrder = new System.Windows.Forms.TextBox();
+            this.label51 = new System.Windows.Forms.Label();
+            this.guantoID = new System.Windows.Forms.TextBox();
+            this.label98 = new System.Windows.Forms.Label();
+            this.glovesBox = new System.Windows.Forms.ListBox();
             this.Global = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.firstUpPlayer = new System.Windows.Forms.RadioButton();
@@ -443,21 +480,26 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.Coach = new System.Windows.Forms.TabPage();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.giocatoreInjury = new System.Windows.Forms.Label();
-            this.giocatoreUse = new System.Windows.Forms.Label();
-            this.giocatoreAcc = new System.Windows.Forms.Label();
-            this.giocatoreForm = new System.Windows.Forms.Label();
-            this.label106 = new System.Windows.Forms.Label();
-            this.label107 = new System.Windows.Forms.Label();
-            this.label108 = new System.Windows.Forms.Label();
-            this.label109 = new System.Windows.Forms.Label();
+            this.coachBox = new System.Windows.Forms.ListBox();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.label113 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label114 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label115 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label116 = new System.Windows.Forms.Label();
+            this.comboBox5 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.label117 = new System.Windows.Forms.Label();
+            this.stadiumKonami = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Transfers.SuspendLayout();
             this.giocatorePanel2.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.giocatorePanel4.SuspendLayout();
             this.giocatorePanel3.SuspendLayout();
             this.giocatorePanel1.SuspendLayout();
@@ -483,6 +525,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.db2ToPlayers)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.db2FromPlayers)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.Coach.SuspendLayout();
             this.Competition.SuspendLayout();
             this.Stadiums.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
@@ -492,7 +535,10 @@
             this.pallonePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pallonePanel1.SuspendLayout();
+            this.Boots.SuspendLayout();
+            this.groupBox15.SuspendLayout();
             this.Gloves.SuspendLayout();
+            this.groupBox14.SuspendLayout();
             this.Global.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -502,7 +548,7 @@
             this.Team_BMenuStrip3.SuspendLayout();
             this.Team_AMenuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.groupBox16.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -552,7 +598,6 @@
             this.reload.Name = "reload";
             this.reload.Size = new System.Drawing.Size(189, 30);
             this.reload.Text = "Reload";
-            this.reload.Click += new System.EventHandler(this.reload_Click);
             // 
             // openDB2
             // 
@@ -568,7 +613,6 @@
             this.pes18ToolStripMenuItem.Name = "pes18ToolStripMenuItem";
             this.pes18ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
             this.pes18ToolStripMenuItem.Text = "Pes 18";
-            this.pes18ToolStripMenuItem.Click += new System.EventHandler(this.pes18ToolStripMenuItem_Click);
             // 
             // toolStripSeparator8
             // 
@@ -618,7 +662,6 @@
             this.close.Name = "close";
             this.close.Size = new System.Drawing.Size(189, 30);
             this.close.Text = "Close";
-            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -669,7 +712,6 @@
             this.csvToolStripMenuItem6.Name = "csvToolStripMenuItem6";
             this.csvToolStripMenuItem6.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem6.Text = ".csv";
-            this.csvToolStripMenuItem6.Click += new System.EventHandler(this.csvToolStripMenuItem6_Click);
             // 
             // playerApparenceToolStripMenuItem
             // 
@@ -684,7 +726,6 @@
             this.csvToolStripMenuItem12.Name = "csvToolStripMenuItem12";
             this.csvToolStripMenuItem12.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem12.Text = ".csv";
-            this.csvToolStripMenuItem12.Click += new System.EventHandler(this.csvToolStripMenuItem12_Click);
             // 
             // teamToolStripMenuItem
             // 
@@ -699,7 +740,6 @@
             this.csvToolStripMenuItem7.Name = "csvToolStripMenuItem7";
             this.csvToolStripMenuItem7.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem7.Text = ".csv";
-            this.csvToolStripMenuItem7.Click += new System.EventHandler(this.csvToolStripMenuItem7_Click);
             // 
             // playersTeamsToolStripMenuItem
             // 
@@ -714,7 +754,6 @@
             this.csvToolStripMenuItem8.Name = "csvToolStripMenuItem8";
             this.csvToolStripMenuItem8.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem8.Text = ".csv";
-            this.csvToolStripMenuItem8.Click += new System.EventHandler(this.csvToolStripMenuItem8_Click);
             // 
             // ballsToolStripMenuItem
             // 
@@ -729,7 +768,6 @@
             this.csvToolStripMenuItem9.Name = "csvToolStripMenuItem9";
             this.csvToolStripMenuItem9.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem9.Text = ".csv";
-            this.csvToolStripMenuItem9.Click += new System.EventHandler(this.csvToolStripMenuItem9_Click);
             // 
             // ballConditionToolStripMenuItem
             // 
@@ -744,7 +782,6 @@
             this.csvToolStripMenuItem13.Name = "csvToolStripMenuItem13";
             this.csvToolStripMenuItem13.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem13.Text = ".csv";
-            this.csvToolStripMenuItem13.Click += new System.EventHandler(this.csvToolStripMenuItem13_Click);
             // 
             // glovesToolStripMenuItem
             // 
@@ -806,7 +843,6 @@
             this.csvToolStripMenuItem.Name = "csvToolStripMenuItem";
             this.csvToolStripMenuItem.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem.Text = ".csv";
-            this.csvToolStripMenuItem.Click += new System.EventHandler(this.csvToolStripMenuItem_Click);
             // 
             // playerAppareanceToolStripMenuItem
             // 
@@ -821,7 +857,6 @@
             this.csvToolStripMenuItem14.Name = "csvToolStripMenuItem14";
             this.csvToolStripMenuItem14.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem14.Text = ".csv";
-            this.csvToolStripMenuItem14.Click += new System.EventHandler(this.csvToolStripMenuItem14_Click);
             // 
             // toolStripMenuItem12
             // 
@@ -836,7 +871,6 @@
             this.csvToolStripMenuItem1.Name = "csvToolStripMenuItem1";
             this.csvToolStripMenuItem1.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem1.Text = ".csv";
-            this.csvToolStripMenuItem1.Click += new System.EventHandler(this.csvToolStripMenuItem1_Click);
             // 
             // toolStripMenuItem11
             // 
@@ -851,7 +885,6 @@
             this.csvToolStripMenuItem3.Name = "csvToolStripMenuItem3";
             this.csvToolStripMenuItem3.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem3.Text = ".csv";
-            this.csvToolStripMenuItem3.Click += new System.EventHandler(this.csvToolStripMenuItem3_Click);
             // 
             // ballConditionToolStripMenuItem1
             // 
@@ -866,7 +899,6 @@
             this.csvToolStripMenuItem15.Name = "csvToolStripMenuItem15";
             this.csvToolStripMenuItem15.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem15.Text = ".csv";
-            this.csvToolStripMenuItem15.Click += new System.EventHandler(this.csvToolStripMenuItem15_Click);
             // 
             // toolStripMenuItem9
             // 
@@ -903,7 +935,6 @@
             this.loadFootballManager.Name = "loadFootballManager";
             this.loadFootballManager.Size = new System.Drawing.Size(265, 30);
             this.loadFootballManager.Text = "Load Football Manager stats";
-            this.loadFootballManager.Click += new System.EventHandler(this.loadFootballManager_Click);
             // 
             // loadFifa
             // 
@@ -949,7 +980,6 @@
             this.removeFakeTeam.Name = "removeFakeTeam";
             this.removeFakeTeam.Size = new System.Drawing.Size(265, 30);
             this.removeFakeTeam.Text = "Remove fake team names";
-            this.removeFakeTeam.Click += new System.EventHandler(this.removeFakeTeam_Click);
             // 
             // removeFakeClassicPlayer
             // 
@@ -959,7 +989,6 @@
             this.removeFakeClassicPlayer.Name = "removeFakeClassicPlayer";
             this.removeFakeClassicPlayer.Size = new System.Drawing.Size(265, 30);
             this.removeFakeClassicPlayer.Text = "Remove classic players fake names";
-            this.removeFakeClassicPlayer.Click += new System.EventHandler(this.removeFakeClassicPlayer_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -982,7 +1011,6 @@
             this.readme.Name = "readme";
             this.readme.Size = new System.Drawing.Size(173, 30);
             this.readme.Text = "Readme.txt";
-            this.readme.Click += new System.EventHandler(this.readme_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1028,7 +1056,6 @@
             this.checkForUpdate.Name = "checkForUpdate";
             this.checkForUpdate.Size = new System.Drawing.Size(173, 30);
             this.checkForUpdate.Text = "Check for update";
-            this.checkForUpdate.Click += new System.EventHandler(this.checkForUpdate_Click);
             // 
             // csvToolStripMenuItem4
             // 
@@ -1045,6 +1072,7 @@
             this.tabControl1.Controls.Add(this.Competition);
             this.tabControl1.Controls.Add(this.Stadiums);
             this.tabControl1.Controls.Add(this.Balls);
+            this.tabControl1.Controls.Add(this.Boots);
             this.tabControl1.Controls.Add(this.Gloves);
             this.tabControl1.Controls.Add(this.Global);
             this.tabControl1.Controls.Add(this.FmStats);
@@ -1093,7 +1121,6 @@
             this.searchT.Size = new System.Drawing.Size(20, 20);
             this.searchT.TabIndex = 126;
             this.searchT.UseVisualStyleBackColor = true;
-            this.searchT.Click += new System.EventHandler(this.searchT_Click);
             // 
             // searchTeamAB
             // 
@@ -1103,8 +1130,6 @@
             this.searchTeamAB.Size = new System.Drawing.Size(170, 20);
             this.searchTeamAB.TabIndex = 125;
             this.searchTeamAB.Text = "search team...A-TeamA/B-TeamB";
-            this.searchTeamAB.Click += new System.EventHandler(this.searchTeamAB_Click);
-            this.searchTeamAB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchTeamAB_KeyPress);
             // 
             // giocatoreView
             // 
@@ -1126,12 +1151,6 @@
             this.giocatoreView.TabStop = false;
             this.giocatoreView.UseCompatibleStateImageBehavior = false;
             this.giocatoreView.View = System.Windows.Forms.View.Details;
-            this.giocatoreView.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.giocatoreView_ItemDrag);
-            this.giocatoreView.SelectedIndexChanged += new System.EventHandler(this.giocatoreView_SelectedIndexChanged);
-            this.giocatoreView.DragDrop += new System.Windows.Forms.DragEventHandler(this.giocatoreView_DragDrop);
-            this.giocatoreView.DragEnter += new System.Windows.Forms.DragEventHandler(this.giocatoreView_DragEnter);
-            this.giocatoreView.DragOver += new System.Windows.Forms.DragEventHandler(this.giocatoreView_DragOver);
-            this.giocatoreView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.giocatoreView_MouseDown);
             // 
             // columnHeader26
             // 
@@ -1147,7 +1166,6 @@
             this.teamBox2.Size = new System.Drawing.Size(201, 21);
             this.teamBox2.TabIndex = 123;
             this.teamBox2.TabStop = false;
-            this.teamBox2.SelectedIndexChanged += new System.EventHandler(this.teamBox2_SelectedIndexChanged);
             // 
             // teamBox1
             // 
@@ -1158,7 +1176,6 @@
             this.teamBox1.Size = new System.Drawing.Size(201, 21);
             this.teamBox1.TabIndex = 122;
             this.teamBox1.TabStop = false;
-            this.teamBox1.SelectedIndexChanged += new System.EventHandler(this.teamBox1_SelectedIndexChanged);
             // 
             // searchP
             // 
@@ -1175,7 +1192,6 @@
             this.searchP.Size = new System.Drawing.Size(20, 20);
             this.searchP.TabIndex = 121;
             this.searchP.UseVisualStyleBackColor = true;
-            this.searchP.Click += new System.EventHandler(this.search_Click);
             // 
             // teamView2
             // 
@@ -1199,12 +1215,6 @@
             this.teamView2.TabStop = false;
             this.teamView2.UseCompatibleStateImageBehavior = false;
             this.teamView2.View = System.Windows.Forms.View.Details;
-            this.teamView2.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.teamView2_ItemDrag);
-            this.teamView2.SelectedIndexChanged += new System.EventHandler(this.teamView2_SelectedIndexChanged);
-            this.teamView2.DragDrop += new System.Windows.Forms.DragEventHandler(this.teamView2_DragDrop);
-            this.teamView2.DragEnter += new System.Windows.Forms.DragEventHandler(this.teamView2_DragEnter);
-            this.teamView2.DragOver += new System.Windows.Forms.DragEventHandler(this.teamView2_DragOver);
-            this.teamView2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.teamView2_MouseDown);
             // 
             // columnHeader3
             // 
@@ -1294,6 +1304,95 @@
             this.giocatorePanel2.Size = new System.Drawing.Size(278, 468);
             this.giocatorePanel2.TabIndex = 32;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.giocatoreInjury);
+            this.panel1.Controls.Add(this.giocatoreUse);
+            this.panel1.Controls.Add(this.giocatoreAcc);
+            this.panel1.Controls.Add(this.giocatoreForm);
+            this.panel1.Controls.Add(this.label106);
+            this.panel1.Controls.Add(this.label107);
+            this.panel1.Controls.Add(this.label108);
+            this.panel1.Controls.Add(this.label109);
+            this.panel1.Location = new System.Drawing.Point(169, 141);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(101, 80);
+            this.panel1.TabIndex = 83;
+            // 
+            // giocatoreInjury
+            // 
+            this.giocatoreInjury.AutoSize = true;
+            this.giocatoreInjury.Location = new System.Drawing.Point(49, 59);
+            this.giocatoreInjury.Name = "giocatoreInjury";
+            this.giocatoreInjury.Size = new System.Drawing.Size(10, 13);
+            this.giocatoreInjury.TabIndex = 67;
+            this.giocatoreInjury.Text = "-";
+            // 
+            // giocatoreUse
+            // 
+            this.giocatoreUse.AutoSize = true;
+            this.giocatoreUse.Location = new System.Drawing.Point(49, 40);
+            this.giocatoreUse.Name = "giocatoreUse";
+            this.giocatoreUse.Size = new System.Drawing.Size(10, 13);
+            this.giocatoreUse.TabIndex = 66;
+            this.giocatoreUse.Text = "-";
+            // 
+            // giocatoreAcc
+            // 
+            this.giocatoreAcc.AutoSize = true;
+            this.giocatoreAcc.Location = new System.Drawing.Point(49, 21);
+            this.giocatoreAcc.Name = "giocatoreAcc";
+            this.giocatoreAcc.Size = new System.Drawing.Size(10, 13);
+            this.giocatoreAcc.TabIndex = 65;
+            this.giocatoreAcc.Text = "-";
+            // 
+            // giocatoreForm
+            // 
+            this.giocatoreForm.AutoSize = true;
+            this.giocatoreForm.Location = new System.Drawing.Point(49, 5);
+            this.giocatoreForm.Name = "giocatoreForm";
+            this.giocatoreForm.Size = new System.Drawing.Size(10, 13);
+            this.giocatoreForm.TabIndex = 64;
+            this.giocatoreForm.Text = "-";
+            // 
+            // label106
+            // 
+            this.label106.AutoSize = true;
+            this.label106.Location = new System.Drawing.Point(3, 59);
+            this.label106.Name = "label106";
+            this.label106.Size = new System.Drawing.Size(35, 13);
+            this.label106.TabIndex = 63;
+            this.label106.Text = "Injury:";
+            // 
+            // label107
+            // 
+            this.label107.AutoSize = true;
+            this.label107.Location = new System.Drawing.Point(3, 40);
+            this.label107.Name = "label107";
+            this.label107.Size = new System.Drawing.Size(46, 13);
+            this.label107.TabIndex = 62;
+            this.label107.Text = "We Use";
+            // 
+            // label108
+            // 
+            this.label108.AutoSize = true;
+            this.label108.Location = new System.Drawing.Point(3, 22);
+            this.label108.Name = "label108";
+            this.label108.Size = new System.Drawing.Size(49, 13);
+            this.label108.TabIndex = 61;
+            this.label108.Text = "We Acc:";
+            // 
+            // label109
+            // 
+            this.label109.AutoSize = true;
+            this.label109.Location = new System.Drawing.Point(3, 5);
+            this.label109.Name = "label109";
+            this.label109.Size = new System.Drawing.Size(33, 13);
+            this.label109.TabIndex = 60;
+            this.label109.Text = "Form:";
+            // 
             // coverage
             // 
             this.coverage.AutoSize = true;
@@ -1304,7 +1403,6 @@
             this.coverage.Size = new System.Drawing.Size(21, 13);
             this.coverage.TabIndex = 82;
             this.coverage.Text = "40";
-            this.coverage.TextChanged += new System.EventHandler(this.coverage_TextChanged);
             // 
             // reflexes
             // 
@@ -1316,7 +1414,6 @@
             this.reflexes.Size = new System.Drawing.Size(21, 13);
             this.reflexes.TabIndex = 81;
             this.reflexes.Text = "40";
-            this.reflexes.TextChanged += new System.EventHandler(this.reflexes_TextChanged);
             // 
             // clearing
             // 
@@ -1328,7 +1425,6 @@
             this.clearing.Size = new System.Drawing.Size(21, 13);
             this.clearing.TabIndex = 80;
             this.clearing.Text = "40";
-            this.clearing.TextChanged += new System.EventHandler(this.clearing_TextChanged);
             // 
             // cathing
             // 
@@ -1340,7 +1436,6 @@
             this.cathing.Size = new System.Drawing.Size(21, 13);
             this.cathing.TabIndex = 79;
             this.cathing.Text = "40";
-            this.cathing.TextChanged += new System.EventHandler(this.cathing_TextChanged);
             // 
             // goalkeeping
             // 
@@ -1352,7 +1447,6 @@
             this.goalkeeping.Size = new System.Drawing.Size(21, 13);
             this.goalkeeping.TabIndex = 78;
             this.goalkeeping.Text = "40";
-            this.goalkeeping.TextChanged += new System.EventHandler(this.goalkeeping_TextChanged);
             // 
             // stamina
             // 
@@ -1364,7 +1458,6 @@
             this.stamina.Size = new System.Drawing.Size(21, 13);
             this.stamina.TabIndex = 77;
             this.stamina.Text = "40";
-            this.stamina.TextChanged += new System.EventHandler(this.stamina_TextChanged);
             // 
             // jump
             // 
@@ -1376,7 +1469,6 @@
             this.jump.Size = new System.Drawing.Size(21, 13);
             this.jump.TabIndex = 76;
             this.jump.Text = "40";
-            this.jump.TextChanged += new System.EventHandler(this.jump_TextChanged);
             // 
             // physical
             // 
@@ -1388,7 +1480,6 @@
             this.physical.Size = new System.Drawing.Size(21, 13);
             this.physical.TabIndex = 75;
             this.physical.Text = "40";
-            this.physical.TextChanged += new System.EventHandler(this.physical_TextChanged);
             // 
             // bodyControll
             // 
@@ -1400,7 +1491,6 @@
             this.bodyControll.Size = new System.Drawing.Size(21, 13);
             this.bodyControll.TabIndex = 74;
             this.bodyControll.Text = "40";
-            this.bodyControll.TextChanged += new System.EventHandler(this.bodyControll_TextChanged);
             // 
             // explosivePower
             // 
@@ -1412,7 +1502,6 @@
             this.explosivePower.Size = new System.Drawing.Size(21, 13);
             this.explosivePower.TabIndex = 73;
             this.explosivePower.Text = "40";
-            this.explosivePower.TextChanged += new System.EventHandler(this.explosivePower_TextChanged);
             // 
             // speed
             // 
@@ -1424,7 +1513,6 @@
             this.speed.Size = new System.Drawing.Size(21, 13);
             this.speed.TabIndex = 72;
             this.speed.Text = "40";
-            this.speed.TextChanged += new System.EventHandler(this.speed_TextChanged);
             // 
             // kickingPower
             // 
@@ -1436,7 +1524,6 @@
             this.kickingPower.Size = new System.Drawing.Size(21, 13);
             this.kickingPower.TabIndex = 71;
             this.kickingPower.Text = "40";
-            this.kickingPower.TextChanged += new System.EventHandler(this.kickingPower_TextChanged);
             // 
             // ballWinning
             // 
@@ -1448,7 +1535,6 @@
             this.ballWinning.Size = new System.Drawing.Size(21, 13);
             this.ballWinning.TabIndex = 70;
             this.ballWinning.Text = "40";
-            this.ballWinning.TextChanged += new System.EventHandler(this.ballWinning_TextChanged);
             // 
             // defense
             // 
@@ -1460,7 +1546,6 @@
             this.defense.Size = new System.Drawing.Size(21, 13);
             this.defense.TabIndex = 69;
             this.defense.Text = "40";
-            this.defense.TextChanged += new System.EventHandler(this.defense_TextChanged);
             // 
             // header
             // 
@@ -1472,7 +1557,6 @@
             this.header.Size = new System.Drawing.Size(21, 13);
             this.header.TabIndex = 68;
             this.header.Text = "40";
-            this.header.TextChanged += new System.EventHandler(this.header_TextChanged);
             // 
             // swerve
             // 
@@ -1484,7 +1568,6 @@
             this.swerve.Size = new System.Drawing.Size(21, 13);
             this.swerve.TabIndex = 67;
             this.swerve.Text = "40";
-            this.swerve.TextChanged += new System.EventHandler(this.swerve_TextChanged);
             // 
             // placeKick
             // 
@@ -1496,7 +1579,6 @@
             this.placeKick.Size = new System.Drawing.Size(21, 13);
             this.placeKick.TabIndex = 66;
             this.placeKick.Text = "40";
-            this.placeKick.TextChanged += new System.EventHandler(this.placeKick_TextChanged);
             // 
             // finishing
             // 
@@ -1508,7 +1590,6 @@
             this.finishing.Size = new System.Drawing.Size(21, 13);
             this.finishing.TabIndex = 65;
             this.finishing.Text = "40";
-            this.finishing.TextChanged += new System.EventHandler(this.finishing_TextChanged);
             // 
             // loftedPass
             // 
@@ -1520,7 +1601,6 @@
             this.loftedPass.Size = new System.Drawing.Size(21, 13);
             this.loftedPass.TabIndex = 64;
             this.loftedPass.Text = "40";
-            this.loftedPass.TextChanged += new System.EventHandler(this.loftedPass_TextChanged);
             // 
             // lowPass
             // 
@@ -1532,7 +1612,6 @@
             this.lowPass.Size = new System.Drawing.Size(21, 13);
             this.lowPass.TabIndex = 63;
             this.lowPass.Text = "40";
-            this.lowPass.TextChanged += new System.EventHandler(this.lowPass_TextChanged);
             // 
             // dribbling
             // 
@@ -1544,7 +1623,6 @@
             this.dribbling.Size = new System.Drawing.Size(21, 13);
             this.dribbling.TabIndex = 62;
             this.dribbling.Text = "40";
-            this.dribbling.TextChanged += new System.EventHandler(this.dribbling_TextChanged);
             // 
             // ballControll
             // 
@@ -1556,7 +1634,6 @@
             this.ballControll.Size = new System.Drawing.Size(21, 13);
             this.ballControll.TabIndex = 61;
             this.ballControll.Text = "40";
-            this.ballControll.TextChanged += new System.EventHandler(this.ballControll_TextChanged);
             // 
             // attack
             // 
@@ -1568,7 +1645,6 @@
             this.attack.Size = new System.Drawing.Size(21, 13);
             this.attack.TabIndex = 60;
             this.attack.Text = "40";
-            this.attack.TextChanged += new System.EventHandler(this.attack_TextChanged);
             // 
             // label44
             // 
@@ -2012,8 +2088,6 @@
             this.giocatoreNumber.Name = "giocatoreNumber";
             this.giocatoreNumber.Size = new System.Drawing.Size(35, 20);
             this.giocatoreNumber.TabIndex = 28;
-            this.giocatoreNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.giocatoreNumber_KeyDown);
-            this.giocatoreNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label5
             // 
@@ -2042,7 +2116,6 @@
             this.giocatoreShirt.Size = new System.Drawing.Size(199, 20);
             this.giocatoreShirt.TabIndex = 6;
             this.giocatoreShirt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.giocatoreShirt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.giocatoreShirt_KeyDown);
             // 
             // giocatoreName
             // 
@@ -2052,7 +2125,6 @@
             this.giocatoreName.Size = new System.Drawing.Size(199, 20);
             this.giocatoreName.TabIndex = 5;
             this.giocatoreName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.giocatoreName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.giocatoreName_KeyDown);
             // 
             // label4
             // 
@@ -2098,8 +2170,6 @@
             this.searchPlayer.Size = new System.Drawing.Size(170, 20);
             this.searchPlayer.TabIndex = 0;
             this.searchPlayer.Text = "search player...";
-            this.searchPlayer.Click += new System.EventHandler(this.giocatoreSearch_Click);
-            this.searchPlayer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreSearch_KeyPress);
             // 
             // teamView1
             // 
@@ -2124,12 +2194,6 @@
             this.teamView1.TabStop = false;
             this.teamView1.UseCompatibleStateImageBehavior = false;
             this.teamView1.View = System.Windows.Forms.View.Details;
-            this.teamView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.teamView1_ItemDrag);
-            this.teamView1.SelectedIndexChanged += new System.EventHandler(this.teamView1_SelectedIndexChanged);
-            this.teamView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.teamView1_DragDrop);
-            this.teamView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.teamView1_DragEnter);
-            this.teamView1.DragOver += new System.Windows.Forms.DragEventHandler(this.teamView1_DragOver);
-            this.teamView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.teamView1_MouseDown);
             // 
             // columnHeader11
             // 
@@ -2199,7 +2263,6 @@
             this.anthemPlayersSinging.Name = "anthemPlayersSinging";
             this.anthemPlayersSinging.Size = new System.Drawing.Size(35, 20);
             this.anthemPlayersSinging.TabIndex = 132;
-            this.anthemPlayersSinging.ValueChanged += new System.EventHandler(this.anthemPlayersSinging_ValueChanged);
             // 
             // anthemStandingAngle
             // 
@@ -2212,7 +2275,6 @@
             this.anthemStandingAngle.Name = "anthemStandingAngle";
             this.anthemStandingAngle.Size = new System.Drawing.Size(35, 20);
             this.anthemStandingAngle.TabIndex = 131;
-            this.anthemStandingAngle.ValueChanged += new System.EventHandler(this.anthemStandingAngle_ValueChanged);
             // 
             // label61
             // 
@@ -2252,7 +2314,6 @@
             this.anthemStandingStyle.Name = "anthemStandingStyle";
             this.anthemStandingStyle.Size = new System.Drawing.Size(35, 20);
             this.anthemStandingStyle.TabIndex = 130;
-            this.anthemStandingStyle.ValueChanged += new System.EventHandler(this.anthemStandingStyle_ValueChanged);
             // 
             // unknown
             // 
@@ -2266,7 +2327,6 @@
             this.unknown.TabIndex = 41;
             this.unknown.Text = "Unknown";
             this.unknown.UseVisualStyleBackColor = true;
-            this.unknown.CheckedChanged += new System.EventHandler(this.unknown_CheckedChanged);
             // 
             // hasAnthem
             // 
@@ -2280,7 +2340,6 @@
             this.hasAnthem.TabIndex = 36;
             this.hasAnthem.Text = "Has Anthem";
             this.hasAnthem.UseVisualStyleBackColor = true;
-            this.hasAnthem.CheckedChanged += new System.EventHandler(this.hasAnthem_CheckedChanged);
             // 
             // hasLicensedPlayers
             // 
@@ -2294,7 +2353,6 @@
             this.hasLicensedPlayers.TabIndex = 35;
             this.hasLicensedPlayers.Text = "Has Licensed Players";
             this.hasLicensedPlayers.UseVisualStyleBackColor = true;
-            this.hasLicensedPlayers.CheckedChanged += new System.EventHandler(this.hasLicensedPlayers_CheckedChanged);
             // 
             // teamsBox
             // 
@@ -2304,8 +2362,6 @@
             this.teamsBox.Name = "teamsBox";
             this.teamsBox.Size = new System.Drawing.Size(233, 589);
             this.teamsBox.TabIndex = 130;
-            this.teamsBox.SelectedIndexChanged += new System.EventHandler(this.teamBox_SelectedIndexChanged);
-            this.teamsBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.teamsBox_MouseDown);
             // 
             // button1
             // 
@@ -2322,7 +2378,6 @@
             this.button1.Size = new System.Drawing.Size(20, 20);
             this.button1.TabIndex = 122;
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // searchTeam
             // 
@@ -2332,8 +2387,6 @@
             this.searchTeam.Size = new System.Drawing.Size(210, 20);
             this.searchTeam.TabIndex = 42;
             this.searchTeam.Text = "search team...";
-            this.searchTeam.Click += new System.EventHandler(this.SearchSquadre_Click);
-            this.searchTeam.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.SearchSquadre_KeyPress);
             // 
             // squadraPanel5
             // 
@@ -2379,7 +2432,6 @@
             this.teamEnglish2.Name = "teamEnglish2";
             this.teamEnglish2.Size = new System.Drawing.Size(188, 20);
             this.teamEnglish2.TabIndex = 42;
-            this.teamEnglish2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamEnglish2_KeyDown);
             // 
             // label71
             // 
@@ -2397,7 +2449,6 @@
             this.teamRussian.Name = "teamRussian";
             this.teamRussian.Size = new System.Drawing.Size(188, 20);
             this.teamRussian.TabIndex = 40;
-            this.teamRussian.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamRussian_KeyDown);
             // 
             // label72
             // 
@@ -2415,7 +2466,6 @@
             this.teamItalian.Name = "teamItalian";
             this.teamItalian.Size = new System.Drawing.Size(188, 20);
             this.teamItalian.TabIndex = 38;
-            this.teamItalian.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamItalian_KeyDown);
             // 
             // label73
             // 
@@ -2433,7 +2483,6 @@
             this.teamSwedish.Name = "teamSwedish";
             this.teamSwedish.Size = new System.Drawing.Size(188, 20);
             this.teamSwedish.TabIndex = 36;
-            this.teamSwedish.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamSwedish_KeyDown);
             // 
             // label74
             // 
@@ -2451,7 +2500,6 @@
             this.teamDutch.Name = "teamDutch";
             this.teamDutch.Size = new System.Drawing.Size(188, 20);
             this.teamDutch.TabIndex = 34;
-            this.teamDutch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamDutch_KeyDown);
             // 
             // label75
             // 
@@ -2469,7 +2517,6 @@
             this.teamPortuguese2.Name = "teamPortuguese2";
             this.teamPortuguese2.Size = new System.Drawing.Size(188, 20);
             this.teamPortuguese2.TabIndex = 32;
-            this.teamPortuguese2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamPortuguese2_KeyDown);
             // 
             // label66
             // 
@@ -2487,7 +2534,6 @@
             this.teamGerman.Name = "teamGerman";
             this.teamGerman.Size = new System.Drawing.Size(188, 20);
             this.teamGerman.TabIndex = 30;
-            this.teamGerman.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamGerman_KeyDown);
             // 
             // label67
             // 
@@ -2505,7 +2551,6 @@
             this.teamPortuguese.Name = "teamPortuguese";
             this.teamPortuguese.Size = new System.Drawing.Size(188, 20);
             this.teamPortuguese.TabIndex = 28;
-            this.teamPortuguese.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamPortuguese_KeyDown);
             // 
             // label68
             // 
@@ -2523,7 +2568,6 @@
             this.teamTurkish.Name = "teamTurkish";
             this.teamTurkish.Size = new System.Drawing.Size(188, 20);
             this.teamTurkish.TabIndex = 26;
-            this.teamTurkish.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamTurkish_KeyDown);
             // 
             // label69
             // 
@@ -2541,7 +2585,6 @@
             this.teamFrench.Name = "teamFrench";
             this.teamFrench.Size = new System.Drawing.Size(188, 20);
             this.teamFrench.TabIndex = 24;
-            this.teamFrench.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamFrench_KeyDown);
             // 
             // label70
             // 
@@ -2559,7 +2602,6 @@
             this.teamSpanish2.Name = "teamSpanish2";
             this.teamSpanish2.Size = new System.Drawing.Size(188, 20);
             this.teamSpanish2.TabIndex = 22;
-            this.teamSpanish2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamSpanish2_KeyDown);
             // 
             // label65
             // 
@@ -2577,7 +2619,6 @@
             this.teamEnglish.Name = "teamEnglish";
             this.teamEnglish.Size = new System.Drawing.Size(188, 20);
             this.teamEnglish.TabIndex = 20;
-            this.teamEnglish.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamEnglish_KeyDown);
             // 
             // label64
             // 
@@ -2595,7 +2636,6 @@
             this.teamGreek.Name = "teamGreek";
             this.teamGreek.Size = new System.Drawing.Size(188, 20);
             this.teamGreek.TabIndex = 18;
-            this.teamGreek.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamGreek_KeyDown);
             // 
             // label60
             // 
@@ -2613,7 +2653,6 @@
             this.teamSpanish.Name = "teamSpanish";
             this.teamSpanish.Size = new System.Drawing.Size(188, 20);
             this.teamSpanish.TabIndex = 16;
-            this.teamSpanish.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamSpanish_KeyDown);
             // 
             // label58
             // 
@@ -2623,35 +2662,6 @@
             this.label58.Size = new System.Drawing.Size(48, 13);
             this.label58.TabIndex = 15;
             this.label58.Text = "Spanish:";
-            // 
-            // teamCoachLicense
-            // 
-            this.teamCoachLicense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.teamCoachLicense.FormattingEnabled = true;
-            this.teamCoachLicense.Location = new System.Drawing.Point(173, 90);
-            this.teamCoachLicense.Name = "teamCoachLicense";
-            this.teamCoachLicense.Size = new System.Drawing.Size(142, 21);
-            this.teamCoachLicense.TabIndex = 38;
-            this.teamCoachLicense.TabStop = false;
-            this.teamCoachLicense.SelectedIndexChanged += new System.EventHandler(this.squadraCoachLicense_SelectedIndexChanged);
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(170, 70);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(47, 13);
-            this.label57.TabIndex = 32;
-            this.label57.Text = "License:";
-            // 
-            // label62
-            // 
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(6, 70);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(55, 13);
-            this.label62.TabIndex = 6;
-            this.label62.Text = "Coach ID:";
             // 
             // squadraPanel3
             // 
@@ -2668,6 +2678,35 @@
             this.squadraPanel3.TabStop = false;
             this.squadraPanel3.Text = "Stadium";
             // 
+            // teamCoachLicense
+            // 
+            this.teamCoachLicense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.teamCoachLicense.FormattingEnabled = true;
+            this.teamCoachLicense.Location = new System.Drawing.Point(173, 90);
+            this.teamCoachLicense.Name = "teamCoachLicense";
+            this.teamCoachLicense.Size = new System.Drawing.Size(142, 21);
+            this.teamCoachLicense.TabIndex = 38;
+            this.teamCoachLicense.TabStop = false;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(170, 70);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(47, 13);
+            this.label57.TabIndex = 32;
+            this.label57.Text = "License:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(9, 90);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(142, 21);
+            this.comboBox1.TabIndex = 42;
+            this.comboBox1.TabStop = false;
+            // 
             // teamStadium
             // 
             this.teamStadium.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2677,7 +2716,6 @@
             this.teamStadium.Size = new System.Drawing.Size(306, 21);
             this.teamStadium.TabIndex = 37;
             this.teamStadium.TabStop = false;
-            this.teamStadium.SelectedIndexChanged += new System.EventHandler(this.teamStadium_SelectedIndexChanged);
             // 
             // label55
             // 
@@ -2687,6 +2725,15 @@
             this.label55.Size = new System.Drawing.Size(48, 13);
             this.label55.TabIndex = 36;
             this.label55.Text = "Stadium:";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(6, 70);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(55, 13);
+            this.label62.TabIndex = 6;
+            this.label62.Text = "Coach ID:";
             // 
             // squadraPanel2
             // 
@@ -2714,7 +2761,6 @@
             this.teamFake.Size = new System.Drawing.Size(142, 21);
             this.teamFake.TabIndex = 39;
             this.teamFake.TabStop = false;
-            this.teamFake.SelectedIndexChanged += new System.EventHandler(this.squadraFake_SelectedIndexChanged);
             // 
             // label45
             // 
@@ -2734,7 +2780,6 @@
             this.teamLicense.Size = new System.Drawing.Size(142, 21);
             this.teamLicense.TabIndex = 37;
             this.teamLicense.TabStop = false;
-            this.teamLicense.SelectedIndexChanged += new System.EventHandler(this.squadraLicense_SelectedIndexChanged);
             // 
             // label54
             // 
@@ -2754,7 +2799,6 @@
             this.teamNotPlayableLeague.Size = new System.Drawing.Size(142, 21);
             this.teamNotPlayableLeague.TabIndex = 35;
             this.teamNotPlayableLeague.TabStop = false;
-            this.teamNotPlayableLeague.SelectedIndexChanged += new System.EventHandler(this.squadraNotPlayableLeague_SelectedIndexChanged);
             // 
             // label52
             // 
@@ -2774,7 +2818,6 @@
             this.teamCountry.Size = new System.Drawing.Size(142, 21);
             this.teamCountry.TabIndex = 33;
             this.teamCountry.TabStop = false;
-            this.teamCountry.SelectedIndexChanged += new System.EventHandler(this.squadraCountry_SelectedIndexChanged);
             // 
             // label53
             // 
@@ -2831,7 +2874,6 @@
             this.characterS1.Size = new System.Drawing.Size(24, 24);
             this.characterS1.TabIndex = 120;
             this.characterS1.UseVisualStyleBackColor = true;
-            this.characterS1.Click += new System.EventHandler(this.characterS1_Click);
             // 
             // comboBox2
             // 
@@ -2880,7 +2922,6 @@
             this.teamName.Name = "teamName";
             this.teamName.Size = new System.Drawing.Size(215, 20);
             this.teamName.TabIndex = 14;
-            this.teamName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.squadraName_KeyDown);
             // 
             // label48
             // 
@@ -2898,7 +2939,6 @@
             this.teamShort.Name = "teamShort";
             this.teamShort.Size = new System.Drawing.Size(63, 20);
             this.teamShort.TabIndex = 11;
-            this.teamShort.KeyDown += new System.Windows.Forms.KeyEventHandler(this.squadraShort_KeyDown);
             // 
             // label47
             // 
@@ -2916,7 +2956,6 @@
             this.teamID.Name = "teamID";
             this.teamID.Size = new System.Drawing.Size(63, 20);
             this.teamID.TabIndex = 9;
-            this.teamID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label46
             // 
@@ -2943,7 +2982,6 @@
             this.teamJapanese.Name = "teamJapanese";
             this.teamJapanese.Size = new System.Drawing.Size(197, 20);
             this.teamJapanese.TabIndex = 14;
-            this.teamJapanese.KeyDown += new System.Windows.Forms.KeyEventHandler(this.teamJapanese_KeyDown);
             // 
             // ImportDb2
             // 
@@ -2986,7 +3024,6 @@
             this.db2AllBalls.TabIndex = 140;
             this.db2AllBalls.Text = "All";
             this.db2AllBalls.UseVisualStyleBackColor = true;
-            this.db2AllBalls.Click += new System.EventHandler(this.db2AllBalls_Click);
             // 
             // db2BallConditionBalls
             // 
@@ -3016,7 +3053,6 @@
             this.db2OrderBalls.TabIndex = 133;
             this.db2OrderBalls.Text = "Order";
             this.db2OrderBalls.UseVisualStyleBackColor = true;
-            this.db2OrderBalls.Click += new System.EventHandler(this.db2OrderBalls_Click);
             // 
             // db2NamesBalls
             // 
@@ -3031,7 +3067,6 @@
             this.db2NamesBalls.TabIndex = 132;
             this.db2NamesBalls.Text = "Names";
             this.db2NamesBalls.UseVisualStyleBackColor = true;
-            this.db2NamesBalls.Click += new System.EventHandler(this.db2NamesBalls_Click);
             // 
             // groupBox11
             // 
@@ -3224,7 +3259,6 @@
             this.button11.TabIndex = 145;
             this.button11.Text = "License Coach";
             this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.button11_Click);
             // 
             // button37
             // 
@@ -3269,7 +3303,6 @@
             this.db2LicenseTeams.TabIndex = 141;
             this.db2LicenseTeams.Text = "License Team";
             this.db2LicenseTeams.UseVisualStyleBackColor = true;
-            this.db2LicenseTeams.Click += new System.EventHandler(this.db2LicenseTeams_Click);
             // 
             // db2NonPlayaLeagueTeams
             // 
@@ -3284,7 +3317,6 @@
             this.db2NonPlayaLeagueTeams.TabIndex = 140;
             this.db2NonPlayaLeagueTeams.Text = "Non Playa League";
             this.db2NonPlayaLeagueTeams.UseVisualStyleBackColor = true;
-            this.db2NonPlayaLeagueTeams.Click += new System.EventHandler(this.db2NonPlayaLeagueTeams_Click);
             // 
             // button30
             // 
@@ -3314,7 +3346,6 @@
             this.db2FakeTeamTeams.TabIndex = 139;
             this.db2FakeTeamTeams.Text = "Fake Team";
             this.db2FakeTeamTeams.UseVisualStyleBackColor = true;
-            this.db2FakeTeamTeams.Click += new System.EventHandler(this.db2FakeTeamTeams_Click);
             // 
             // db2CountryTeams
             // 
@@ -3329,7 +3360,6 @@
             this.db2CountryTeams.TabIndex = 138;
             this.db2CountryTeams.Text = "Country";
             this.db2CountryTeams.UseVisualStyleBackColor = true;
-            this.db2CountryTeams.Click += new System.EventHandler(this.db2CountryTeams_Click);
             // 
             // db2OtherDetailsTeams
             // 
@@ -3344,7 +3374,6 @@
             this.db2OtherDetailsTeams.TabIndex = 137;
             this.db2OtherDetailsTeams.Text = "Other Details";
             this.db2OtherDetailsTeams.UseVisualStyleBackColor = true;
-            this.db2OtherDetailsTeams.Click += new System.EventHandler(this.db2OtherDetailsTeams_Click);
             // 
             // db2HomeStadiumsTeams
             // 
@@ -3359,7 +3388,6 @@
             this.db2HomeStadiumsTeams.TabIndex = 136;
             this.db2HomeStadiumsTeams.Text = "Home Stadiums";
             this.db2HomeStadiumsTeams.UseVisualStyleBackColor = true;
-            this.db2HomeStadiumsTeams.Click += new System.EventHandler(this.db2HomeStadiumsTeams_Click);
             // 
             // groupBox10
             // 
@@ -3397,7 +3425,6 @@
             0,
             0,
             0});
-            this.db2ToTeams.ValueChanged += new System.EventHandler(this.db2ToTeams_ValueChanged);
             // 
             // db2ToTextBoxTeams
             // 
@@ -3438,7 +3465,6 @@
             0,
             0,
             0});
-            this.db2FromTeams.ValueChanged += new System.EventHandler(this.db2FromTeams_ValueChanged);
             // 
             // label101
             // 
@@ -3471,7 +3497,6 @@
             this.db2ShortNamesTeams.TabIndex = 134;
             this.db2ShortNamesTeams.Text = "Short Names";
             this.db2ShortNamesTeams.UseVisualStyleBackColor = true;
-            this.db2ShortNamesTeams.Click += new System.EventHandler(this.db2ShortNamesTeams_Click);
             // 
             // db2NamesTeams
             // 
@@ -3486,7 +3511,6 @@
             this.db2NamesTeams.TabIndex = 133;
             this.db2NamesTeams.Text = "Names";
             this.db2NamesTeams.UseVisualStyleBackColor = true;
-            this.db2NamesTeams.Click += new System.EventHandler(this.db2NamesTeams_Click);
             // 
             // db2AllTeams
             // 
@@ -3501,7 +3525,6 @@
             this.db2AllTeams.TabIndex = 132;
             this.db2AllTeams.Text = "All";
             this.db2AllTeams.UseVisualStyleBackColor = true;
-            this.db2AllTeams.Click += new System.EventHandler(this.db2AllTeams_Click);
             // 
             // groupBox4
             // 
@@ -3799,6 +3822,17 @@
             this.typeDB.TabIndex = 9;
             this.typeDB.Text = "Type DB:";
             // 
+            // Coach
+            // 
+            this.Coach.Controls.Add(this.groupBox16);
+            this.Coach.Controls.Add(this.coachBox);
+            this.Coach.Location = new System.Drawing.Point(4, 22);
+            this.Coach.Name = "Coach";
+            this.Coach.Size = new System.Drawing.Size(907, 632);
+            this.Coach.TabIndex = 10;
+            this.Coach.Text = "Coaches";
+            this.Coach.UseVisualStyleBackColor = true;
+            // 
             // Competition
             // 
             this.Competition.Controls.Add(this.label42);
@@ -3820,6 +3854,7 @@
             // 
             // Stadiums
             // 
+            this.Stadiums.Controls.Add(this.applyStadium);
             this.Stadiums.Controls.Add(this.button2);
             this.Stadiums.Controls.Add(this.stadiumsBox);
             this.Stadiums.Controls.Add(this.button5);
@@ -3833,6 +3868,26 @@
             this.Stadiums.TabIndex = 3;
             this.Stadiums.Text = "Stadiums";
             this.Stadiums.UseVisualStyleBackColor = true;
+            // 
+            // applyStadium
+            // 
+            this.applyStadium.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyStadium.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.applyStadium.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.applyStadium.FlatAppearance.BorderSize = 0;
+            this.applyStadium.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.applyStadium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyStadium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyStadium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.applyStadium.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.applyStadium.Location = new System.Drawing.Point(806, 598);
+            this.applyStadium.Margin = new System.Windows.Forms.Padding(0);
+            this.applyStadium.Name = "applyStadium";
+            this.applyStadium.Size = new System.Drawing.Size(86, 29);
+            this.applyStadium.TabIndex = 132;
+            this.applyStadium.Text = "Apply";
+            this.applyStadium.UseVisualStyleBackColor = false;
+            this.applyStadium.Click += new System.EventHandler(this.applyStadium_Click);
             // 
             // button2
             // 
@@ -3874,7 +3929,6 @@
             this.button5.Size = new System.Drawing.Size(20, 20);
             this.button5.TabIndex = 127;
             this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // searchStadium
             // 
@@ -3884,8 +3938,6 @@
             this.searchStadium.Size = new System.Drawing.Size(210, 20);
             this.searchStadium.TabIndex = 125;
             this.searchStadium.Text = "search stadium...";
-            this.searchStadium.Click += new System.EventHandler(this.searchStadium_Click);
-            this.searchStadium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchStadium_KeyPress);
             // 
             // pictureBox4
             // 
@@ -3921,8 +3973,6 @@
             this.stadiumNa.Name = "stadiumNa";
             this.stadiumNa.Size = new System.Drawing.Size(63, 20);
             this.stadiumNa.TabIndex = 39;
-            this.stadiumNa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.StadiumNa_KeyDown);
-            this.stadiumNa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label96
             // 
@@ -3942,7 +3992,6 @@
             this.stadiumLicense.Size = new System.Drawing.Size(142, 21);
             this.stadiumLicense.TabIndex = 37;
             this.stadiumLicense.TabStop = false;
-            this.stadiumLicense.SelectedIndexChanged += new System.EventHandler(this.stadiumLicense_SelectedIndexChanged);
             // 
             // label92
             // 
@@ -3962,7 +4011,6 @@
             this.stadiumZone.Size = new System.Drawing.Size(142, 21);
             this.stadiumZone.TabIndex = 35;
             this.stadiumZone.TabStop = false;
-            this.stadiumZone.SelectedIndexChanged += new System.EventHandler(this.stadiumZone_SelectedIndexChanged);
             // 
             // label93
             // 
@@ -3982,7 +4030,6 @@
             this.stadiumCountry.Size = new System.Drawing.Size(142, 21);
             this.stadiumCountry.TabIndex = 33;
             this.stadiumCountry.TabStop = false;
-            this.stadiumCountry.SelectedIndexChanged += new System.EventHandler(this.stadiumCountry_SelectedIndexChanged);
             // 
             // label94
             // 
@@ -3995,12 +4042,12 @@
             // 
             // groupBox8
             // 
+            this.groupBox8.Controls.Add(this.stadiumKonami);
+            this.groupBox8.Controls.Add(this.label117);
             this.groupBox8.Controls.Add(this.stadiumJapanese);
             this.groupBox8.Controls.Add(this.label97);
-            this.groupBox8.Controls.Add(this.stadiumKonami);
             this.groupBox8.Controls.Add(this.stadiumCapacity);
             this.groupBox8.Controls.Add(this.label95);
-            this.groupBox8.Controls.Add(this.label91);
             this.groupBox8.Controls.Add(this.button3);
             this.groupBox8.Controls.Add(this.stadiumName);
             this.groupBox8.Controls.Add(this.label85);
@@ -4022,7 +4069,6 @@
             this.stadiumJapanese.Name = "stadiumJapanese";
             this.stadiumJapanese.Size = new System.Drawing.Size(215, 20);
             this.stadiumJapanese.TabIndex = 129;
-            this.stadiumJapanese.KeyDown += new System.Windows.Forms.KeyEventHandler(this.stadiumJapanese_KeyDown);
             // 
             // label97
             // 
@@ -4033,15 +4079,6 @@
             this.label97.TabIndex = 128;
             this.label97.Text = "Japanese Name:";
             // 
-            // stadiumKonami
-            // 
-            this.stadiumKonami.Location = new System.Drawing.Point(369, 43);
-            this.stadiumKonami.MaxLength = 20;
-            this.stadiumKonami.Name = "stadiumKonami";
-            this.stadiumKonami.Size = new System.Drawing.Size(215, 20);
-            this.stadiumKonami.TabIndex = 127;
-            this.stadiumKonami.KeyDown += new System.Windows.Forms.KeyEventHandler(this.stadiumKonami_KeyDown);
-            // 
             // stadiumCapacity
             // 
             this.stadiumCapacity.Location = new System.Drawing.Point(369, 86);
@@ -4049,8 +4086,6 @@
             this.stadiumCapacity.Name = "stadiumCapacity";
             this.stadiumCapacity.Size = new System.Drawing.Size(137, 20);
             this.stadiumCapacity.TabIndex = 126;
-            this.stadiumCapacity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.stadiumCapacity_KeyDown);
-            this.stadiumCapacity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label95
             // 
@@ -4060,15 +4095,6 @@
             this.label95.Size = new System.Drawing.Size(51, 13);
             this.label95.TabIndex = 125;
             this.label95.Text = "Capacity:";
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(366, 23);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(80, 13);
-            this.label91.TabIndex = 123;
-            this.label91.Text = "KONAMI Name";
             // 
             // button3
             // 
@@ -4085,7 +4111,6 @@
             this.button3.Size = new System.Drawing.Size(24, 24);
             this.button3.TabIndex = 120;
             this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.characterS1_Click);
             // 
             // stadiumName
             // 
@@ -4094,7 +4119,6 @@
             this.stadiumName.Name = "stadiumName";
             this.stadiumName.Size = new System.Drawing.Size(215, 20);
             this.stadiumName.TabIndex = 14;
-            this.stadiumName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.stadiumName_KeyDown);
             // 
             // label85
             // 
@@ -4113,7 +4137,6 @@
             this.stadiumOrder.Name = "stadiumOrder";
             this.stadiumOrder.Size = new System.Drawing.Size(63, 20);
             this.stadiumOrder.TabIndex = 11;
-            this.stadiumOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label89
             // 
@@ -4129,9 +4152,9 @@
             this.stadiumId.Location = new System.Drawing.Point(13, 43);
             this.stadiumId.MaxLength = 4;
             this.stadiumId.Name = "stadiumId";
+            this.stadiumId.ReadOnly = true;
             this.stadiumId.Size = new System.Drawing.Size(63, 20);
             this.stadiumId.TabIndex = 9;
-            this.stadiumId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label90
             // 
@@ -4144,6 +4167,7 @@
             // 
             // Balls
             // 
+            this.Balls.Controls.Add(this.applyBall);
             this.Balls.Controls.Add(this.ballsBox);
             this.Balls.Controls.Add(this.button4);
             this.Balls.Controls.Add(this.searchBall);
@@ -4157,6 +4181,26 @@
             this.Balls.Text = "Balls";
             this.Balls.UseVisualStyleBackColor = true;
             // 
+            // applyBall
+            // 
+            this.applyBall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyBall.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.applyBall.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.applyBall.FlatAppearance.BorderSize = 0;
+            this.applyBall.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.applyBall.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyBall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.applyBall.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.applyBall.Location = new System.Drawing.Point(806, 598);
+            this.applyBall.Margin = new System.Windows.Forms.Padding(0);
+            this.applyBall.Name = "applyBall";
+            this.applyBall.Size = new System.Drawing.Size(86, 29);
+            this.applyBall.TabIndex = 130;
+            this.applyBall.Text = "Apply";
+            this.applyBall.UseVisualStyleBackColor = false;
+            this.applyBall.Click += new System.EventHandler(this.applyBall_Click);
+            // 
             // ballsBox
             // 
             this.ballsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
@@ -4165,7 +4209,7 @@
             this.ballsBox.Name = "ballsBox";
             this.ballsBox.Size = new System.Drawing.Size(233, 589);
             this.ballsBox.TabIndex = 129;
-            this.ballsBox.SelectedIndexChanged += new System.EventHandler(this.ballBox_SelectedIndexChanged);
+            this.ballsBox.SelectedIndexChanged += new System.EventHandler(this.ballsBox_SelectedIndexChanged);
             // 
             // button4
             // 
@@ -4182,7 +4226,6 @@
             this.button4.Size = new System.Drawing.Size(20, 20);
             this.button4.TabIndex = 128;
             this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button2_Click);
             // 
             // searchBall
             // 
@@ -4192,8 +4235,6 @@
             this.searchBall.Size = new System.Drawing.Size(210, 20);
             this.searchBall.TabIndex = 123;
             this.searchBall.Text = "search ball...";
-            this.searchBall.Click += new System.EventHandler(this.textBox3_Click);
-            this.searchBall.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox3_KeyPress);
             // 
             // pallonePanel2
             // 
@@ -4219,8 +4260,6 @@
             this.palloneUnknowB4.Name = "palloneUnknowB4";
             this.palloneUnknowB4.Size = new System.Drawing.Size(63, 20);
             this.palloneUnknowB4.TabIndex = 128;
-            this.palloneUnknowB4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.palloneUnknowB4_KeyDown);
-            this.palloneUnknowB4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // palloneUnknowB3
             // 
@@ -4229,8 +4268,6 @@
             this.palloneUnknowB3.Name = "palloneUnknowB3";
             this.palloneUnknowB3.Size = new System.Drawing.Size(63, 20);
             this.palloneUnknowB3.TabIndex = 126;
-            this.palloneUnknowB3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.palloneUnknowB3_KeyDown);
-            this.palloneUnknowB3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label41
             // 
@@ -4257,8 +4294,6 @@
             this.palloneUnknowB2.Name = "palloneUnknowB2";
             this.palloneUnknowB2.Size = new System.Drawing.Size(63, 20);
             this.palloneUnknowB2.TabIndex = 124;
-            this.palloneUnknowB2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.palloneUnknowB2_KeyDown);
-            this.palloneUnknowB2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label39
             // 
@@ -4276,8 +4311,6 @@
             this.palloneUnknowB1.Name = "palloneUnknowB1";
             this.palloneUnknowB1.Size = new System.Drawing.Size(63, 20);
             this.palloneUnknowB1.TabIndex = 122;
-            this.palloneUnknowB1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.palloneUnknowB1_KeyDown);
-            this.palloneUnknowB1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label37
             // 
@@ -4328,16 +4361,14 @@
             this.characterS2.Size = new System.Drawing.Size(24, 24);
             this.characterS2.TabIndex = 120;
             this.characterS2.UseVisualStyleBackColor = true;
-            this.characterS2.Click += new System.EventHandler(this.characterS1_Click);
             // 
             // palloneName
             // 
             this.palloneName.Location = new System.Drawing.Point(108, 43);
-            this.palloneName.MaxLength = 57;
+            this.palloneName.MaxLength = 98;
             this.palloneName.Name = "palloneName";
             this.palloneName.Size = new System.Drawing.Size(215, 20);
             this.palloneName.TabIndex = 14;
-            this.palloneName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.palloneName_KeyDown);
             // 
             // label86
             // 
@@ -4351,12 +4382,10 @@
             // palloneOrder
             // 
             this.palloneOrder.Location = new System.Drawing.Point(13, 90);
-            this.palloneOrder.MaxLength = 2;
+            this.palloneOrder.MaxLength = 3;
             this.palloneOrder.Name = "palloneOrder";
             this.palloneOrder.Size = new System.Drawing.Size(63, 20);
             this.palloneOrder.TabIndex = 11;
-            this.palloneOrder.KeyDown += new System.Windows.Forms.KeyEventHandler(this.palloneOrder_KeyDown);
-            this.palloneOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label87
             // 
@@ -4372,9 +4401,9 @@
             this.palloneID.Location = new System.Drawing.Point(13, 43);
             this.palloneID.MaxLength = 4;
             this.palloneID.Name = "palloneID";
+            this.palloneID.ReadOnly = true;
             this.palloneID.Size = new System.Drawing.Size(63, 20);
             this.palloneID.TabIndex = 9;
-            this.palloneID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label88
             // 
@@ -4385,9 +4414,175 @@
             this.label88.TabIndex = 8;
             this.label88.Text = "Ball ID:";
             // 
+            // Boots
+            // 
+            this.Boots.Controls.Add(this.bootApply);
+            this.Boots.Controls.Add(this.groupBox15);
+            this.Boots.Controls.Add(this.bootsBox);
+            this.Boots.Location = new System.Drawing.Point(4, 22);
+            this.Boots.Name = "Boots";
+            this.Boots.Size = new System.Drawing.Size(907, 632);
+            this.Boots.TabIndex = 11;
+            this.Boots.Text = "Boots";
+            this.Boots.UseVisualStyleBackColor = true;
+            // 
+            // bootApply
+            // 
+            this.bootApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.bootApply.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.bootApply.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.bootApply.FlatAppearance.BorderSize = 0;
+            this.bootApply.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.bootApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.bootApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bootApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.bootApply.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bootApply.Location = new System.Drawing.Point(806, 598);
+            this.bootApply.Margin = new System.Windows.Forms.Padding(0);
+            this.bootApply.Name = "bootApply";
+            this.bootApply.Size = new System.Drawing.Size(86, 29);
+            this.bootApply.TabIndex = 132;
+            this.bootApply.Text = "Apply";
+            this.bootApply.UseVisualStyleBackColor = false;
+            this.bootApply.Click += new System.EventHandler(this.bootApply_Click);
+            // 
+            // groupBox15
+            // 
+            this.groupBox15.Controls.Add(this.scarpaMaterial);
+            this.groupBox15.Controls.Add(this.label112);
+            this.groupBox15.Controls.Add(this.scarpaColor);
+            this.groupBox15.Controls.Add(this.label111);
+            this.groupBox15.Controls.Add(this.button13);
+            this.groupBox15.Controls.Add(this.scarpaName);
+            this.groupBox15.Controls.Add(this.label100);
+            this.groupBox15.Controls.Add(this.scarpaOrder);
+            this.groupBox15.Controls.Add(this.label105);
+            this.groupBox15.Controls.Add(this.scarpaID);
+            this.groupBox15.Controls.Add(this.label110);
+            this.groupBox15.Location = new System.Drawing.Point(242, 6);
+            this.groupBox15.Name = "groupBox15";
+            this.groupBox15.Size = new System.Drawing.Size(657, 133);
+            this.groupBox15.TabIndex = 131;
+            this.groupBox15.TabStop = false;
+            this.groupBox15.Text = "Boot Info";
+            // 
+            // scarpaMaterial
+            // 
+            this.scarpaMaterial.Location = new System.Drawing.Point(368, 90);
+            this.scarpaMaterial.MaxLength = 98;
+            this.scarpaMaterial.Name = "scarpaMaterial";
+            this.scarpaMaterial.Size = new System.Drawing.Size(215, 20);
+            this.scarpaMaterial.TabIndex = 124;
+            // 
+            // label112
+            // 
+            this.label112.AutoSize = true;
+            this.label112.Location = new System.Drawing.Point(365, 70);
+            this.label112.Name = "label112";
+            this.label112.Size = new System.Drawing.Size(72, 13);
+            this.label112.TabIndex = 123;
+            this.label112.Text = "Boot Material:";
+            // 
+            // scarpaColor
+            // 
+            this.scarpaColor.Location = new System.Drawing.Point(108, 90);
+            this.scarpaColor.MaxLength = 98;
+            this.scarpaColor.Name = "scarpaColor";
+            this.scarpaColor.Size = new System.Drawing.Size(215, 20);
+            this.scarpaColor.TabIndex = 122;
+            // 
+            // label111
+            // 
+            this.label111.AutoSize = true;
+            this.label111.Location = new System.Drawing.Point(105, 70);
+            this.label111.Name = "label111";
+            this.label111.Size = new System.Drawing.Size(59, 13);
+            this.label111.TabIndex = 121;
+            this.label111.Text = "Boot Color:";
+            // 
+            // button13
+            // 
+            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
+            this.button13.Location = new System.Drawing.Point(329, 39);
+            this.button13.Margin = new System.Windows.Forms.Padding(0);
+            this.button13.Name = "button13";
+            this.button13.Size = new System.Drawing.Size(24, 24);
+            this.button13.TabIndex = 120;
+            this.button13.UseVisualStyleBackColor = true;
+            // 
+            // scarpaName
+            // 
+            this.scarpaName.Location = new System.Drawing.Point(108, 43);
+            this.scarpaName.MaxLength = 98;
+            this.scarpaName.Name = "scarpaName";
+            this.scarpaName.Size = new System.Drawing.Size(215, 20);
+            this.scarpaName.TabIndex = 14;
+            // 
+            // label100
+            // 
+            this.label100.AutoSize = true;
+            this.label100.Location = new System.Drawing.Point(105, 23);
+            this.label100.Name = "label100";
+            this.label100.Size = new System.Drawing.Size(63, 13);
+            this.label100.TabIndex = 12;
+            this.label100.Text = "Boot Name:";
+            // 
+            // scarpaOrder
+            // 
+            this.scarpaOrder.Location = new System.Drawing.Point(13, 90);
+            this.scarpaOrder.MaxLength = 3;
+            this.scarpaOrder.Name = "scarpaOrder";
+            this.scarpaOrder.Size = new System.Drawing.Size(63, 20);
+            this.scarpaOrder.TabIndex = 11;
+            // 
+            // label105
+            // 
+            this.label105.AutoSize = true;
+            this.label105.Location = new System.Drawing.Point(10, 70);
+            this.label105.Name = "label105";
+            this.label105.Size = new System.Drawing.Size(36, 13);
+            this.label105.TabIndex = 10;
+            this.label105.Text = "Order:";
+            // 
+            // scarpaID
+            // 
+            this.scarpaID.Location = new System.Drawing.Point(13, 43);
+            this.scarpaID.MaxLength = 4;
+            this.scarpaID.Name = "scarpaID";
+            this.scarpaID.ReadOnly = true;
+            this.scarpaID.Size = new System.Drawing.Size(63, 20);
+            this.scarpaID.TabIndex = 9;
+            // 
+            // label110
+            // 
+            this.label110.AutoSize = true;
+            this.label110.Location = new System.Drawing.Point(10, 23);
+            this.label110.Name = "label110";
+            this.label110.Size = new System.Drawing.Size(46, 13);
+            this.label110.TabIndex = 8;
+            this.label110.Text = "Boot ID:";
+            // 
+            // bootsBox
+            // 
+            this.bootsBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.bootsBox.FormattingEnabled = true;
+            this.bootsBox.Location = new System.Drawing.Point(3, 6);
+            this.bootsBox.Name = "bootsBox";
+            this.bootsBox.Size = new System.Drawing.Size(233, 589);
+            this.bootsBox.TabIndex = 130;
+            this.bootsBox.SelectedIndexChanged += new System.EventHandler(this.bootsBox_SelectedIndexChanged);
+            // 
             // Gloves
             // 
-            this.Gloves.Controls.Add(this.label43);
+            this.Gloves.Controls.Add(this.applyGlove);
+            this.Gloves.Controls.Add(this.groupBox14);
+            this.Gloves.Controls.Add(this.glovesBox);
             this.Gloves.Location = new System.Drawing.Point(4, 22);
             this.Gloves.Name = "Gloves";
             this.Gloves.Size = new System.Drawing.Size(907, 632);
@@ -4395,14 +4590,138 @@
             this.Gloves.Text = "Gloves";
             this.Gloves.UseVisualStyleBackColor = true;
             // 
+            // applyGlove
+            // 
+            this.applyGlove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyGlove.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.applyGlove.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.applyGlove.FlatAppearance.BorderSize = 0;
+            this.applyGlove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.applyGlove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyGlove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyGlove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.applyGlove.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.applyGlove.Location = new System.Drawing.Point(806, 598);
+            this.applyGlove.Margin = new System.Windows.Forms.Padding(0);
+            this.applyGlove.Name = "applyGlove";
+            this.applyGlove.Size = new System.Drawing.Size(86, 29);
+            this.applyGlove.TabIndex = 132;
+            this.applyGlove.Text = "Apply";
+            this.applyGlove.UseVisualStyleBackColor = false;
+            this.applyGlove.Click += new System.EventHandler(this.applyGlove_Click);
+            // 
+            // groupBox14
+            // 
+            this.groupBox14.Controls.Add(this.guantoColor);
+            this.groupBox14.Controls.Add(this.label99);
+            this.groupBox14.Controls.Add(this.button12);
+            this.groupBox14.Controls.Add(this.guantoName);
+            this.groupBox14.Controls.Add(this.label43);
+            this.groupBox14.Controls.Add(this.guantoOrder);
+            this.groupBox14.Controls.Add(this.label51);
+            this.groupBox14.Controls.Add(this.guantoID);
+            this.groupBox14.Controls.Add(this.label98);
+            this.groupBox14.Location = new System.Drawing.Point(242, 6);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(380, 133);
+            this.groupBox14.TabIndex = 131;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Glove Info";
+            // 
+            // guantoColor
+            // 
+            this.guantoColor.Location = new System.Drawing.Point(108, 90);
+            this.guantoColor.MaxLength = 98;
+            this.guantoColor.Name = "guantoColor";
+            this.guantoColor.Size = new System.Drawing.Size(215, 20);
+            this.guantoColor.TabIndex = 122;
+            // 
+            // label99
+            // 
+            this.label99.AutoSize = true;
+            this.label99.Location = new System.Drawing.Point(105, 70);
+            this.label99.Name = "label99";
+            this.label99.Size = new System.Drawing.Size(34, 13);
+            this.label99.TabIndex = 121;
+            this.label99.Text = "Color:";
+            // 
+            // button12
+            // 
+            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
+            this.button12.Location = new System.Drawing.Point(329, 39);
+            this.button12.Margin = new System.Windows.Forms.Padding(0);
+            this.button12.Name = "button12";
+            this.button12.Size = new System.Drawing.Size(24, 24);
+            this.button12.TabIndex = 120;
+            this.button12.UseVisualStyleBackColor = true;
+            // 
+            // guantoName
+            // 
+            this.guantoName.Location = new System.Drawing.Point(108, 43);
+            this.guantoName.MaxLength = 98;
+            this.guantoName.Name = "guantoName";
+            this.guantoName.Size = new System.Drawing.Size(215, 20);
+            this.guantoName.TabIndex = 14;
+            // 
             // label43
             // 
             this.label43.AutoSize = true;
-            this.label43.Location = new System.Drawing.Point(364, 235);
+            this.label43.Location = new System.Drawing.Point(105, 23);
             this.label43.Name = "label43";
-            this.label43.Size = new System.Drawing.Size(70, 13);
-            this.label43.TabIndex = 1;
-            this.label43.Text = "Coming Soon";
+            this.label43.Size = new System.Drawing.Size(69, 13);
+            this.label43.TabIndex = 12;
+            this.label43.Text = "Glove Name:";
+            // 
+            // guantoOrder
+            // 
+            this.guantoOrder.Location = new System.Drawing.Point(13, 90);
+            this.guantoOrder.MaxLength = 3;
+            this.guantoOrder.Name = "guantoOrder";
+            this.guantoOrder.Size = new System.Drawing.Size(63, 20);
+            this.guantoOrder.TabIndex = 11;
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(10, 70);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(36, 13);
+            this.label51.TabIndex = 10;
+            this.label51.Text = "Order:";
+            // 
+            // guantoID
+            // 
+            this.guantoID.Location = new System.Drawing.Point(13, 43);
+            this.guantoID.MaxLength = 4;
+            this.guantoID.Name = "guantoID";
+            this.guantoID.ReadOnly = true;
+            this.guantoID.Size = new System.Drawing.Size(63, 20);
+            this.guantoID.TabIndex = 9;
+            // 
+            // label98
+            // 
+            this.label98.AutoSize = true;
+            this.label98.Location = new System.Drawing.Point(10, 23);
+            this.label98.Name = "label98";
+            this.label98.Size = new System.Drawing.Size(52, 13);
+            this.label98.TabIndex = 8;
+            this.label98.Text = "Glove ID:";
+            // 
+            // glovesBox
+            // 
+            this.glovesBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.glovesBox.FormattingEnabled = true;
+            this.glovesBox.Location = new System.Drawing.Point(3, 6);
+            this.glovesBox.Name = "glovesBox";
+            this.glovesBox.Size = new System.Drawing.Size(233, 589);
+            this.glovesBox.TabIndex = 130;
+            this.glovesBox.SelectedIndexChanged += new System.EventHandler(this.glovesBox_SelectedIndexChanged);
             // 
             // Global
             // 
@@ -4473,7 +4792,6 @@
             this.globalFunctionPlayer.TabIndex = 115;
             this.globalFunctionPlayer.Text = "Apply";
             this.globalFunctionPlayer.UseVisualStyleBackColor = true;
-            this.globalFunctionPlayer.Click += new System.EventHandler(this.globalFunctionPlayer_Click);
             // 
             // groupBox1
             // 
@@ -4533,7 +4851,6 @@
             this.globalFunctionTeam.TabIndex = 115;
             this.globalFunctionTeam.Text = "Apply";
             this.globalFunctionTeam.UseVisualStyleBackColor = true;
-            this.globalFunctionTeam.Click += new System.EventHandler(this.globalFunctionTeam_Click);
             // 
             // FmStats
             // 
@@ -4572,7 +4889,6 @@
             this.accept.TabIndex = 124;
             this.accept.Text = "Copy From DB";
             this.accept.UseVisualStyleBackColor = true;
-            this.accept.Click += new System.EventHandler(this.accept_Click);
             // 
             // label80
             // 
@@ -4819,7 +5135,6 @@
             this.databaseBox.Size = new System.Drawing.Size(233, 21);
             this.databaseBox.TabIndex = 38;
             this.databaseBox.TabStop = false;
-            this.databaseBox.SelectedIndexChanged += new System.EventHandler(this.databaseBox_SelectedIndexChanged);
             // 
             // databaseView
             // 
@@ -4839,7 +5154,6 @@
             this.databaseView.TabStop = false;
             this.databaseView.UseCompatibleStateImageBehavior = false;
             this.databaseView.View = System.Windows.Forms.View.Details;
-            this.databaseView.SelectedIndexChanged += new System.EventHandler(this.databaseView_SelectedIndexChanged);
             // 
             // PlayerMenuStrip1
             // 
@@ -4856,7 +5170,6 @@
             this.editPlayerToolStripMenuItem.Name = "editPlayerToolStripMenuItem";
             this.editPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.editPlayerToolStripMenuItem.Text = "Edit Player";
-            this.editPlayerToolStripMenuItem.Click += new System.EventHandler(this.editPlayerToolStripMenuItem_Click);
             // 
             // toolStripSeparator12
             // 
@@ -4895,14 +5208,12 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(224, 22);
             this.toolStripMenuItem1.Text = "Edit Player";
-            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(224, 22);
             this.toolStripMenuItem2.Text = "Edit Team";
-            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripSeparator15
             // 
@@ -4955,14 +5266,12 @@
             this.editPlayerToolStripMenuItem1.Name = "editPlayerToolStripMenuItem1";
             this.editPlayerToolStripMenuItem1.Size = new System.Drawing.Size(224, 22);
             this.editPlayerToolStripMenuItem1.Text = "Edit Player";
-            this.editPlayerToolStripMenuItem1.Click += new System.EventHandler(this.editPlayerToolStripMenuItem1_Click);
             // 
             // editTeamToolStripMenuItem
             // 
             this.editTeamToolStripMenuItem.Name = "editTeamToolStripMenuItem";
             this.editTeamToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.editTeamToolStripMenuItem.Text = "Edit Team";
-            this.editTeamToolStripMenuItem.Click += new System.EventHandler(this.editTeamToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
@@ -5020,113 +5329,155 @@
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // Coach
+            // coachBox
             // 
-            this.Coach.Location = new System.Drawing.Point(4, 22);
-            this.Coach.Name = "Coach";
-            this.Coach.Size = new System.Drawing.Size(907, 632);
-            this.Coach.TabIndex = 10;
-            this.Coach.Text = "Coach";
-            this.Coach.UseVisualStyleBackColor = true;
+            this.coachBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.coachBox.FormattingEnabled = true;
+            this.coachBox.Location = new System.Drawing.Point(3, 6);
+            this.coachBox.Name = "coachBox";
+            this.coachBox.Size = new System.Drawing.Size(233, 589);
+            this.coachBox.TabIndex = 131;
             // 
-            // comboBox1
+            // groupBox16
             // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 90);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(142, 21);
-            this.comboBox1.TabIndex = 42;
-            this.comboBox1.TabStop = false;
+            this.groupBox16.Controls.Add(this.textBox1);
+            this.groupBox16.Controls.Add(this.label91);
+            this.groupBox16.Controls.Add(this.comboBox5);
+            this.groupBox16.Controls.Add(this.label113);
+            this.groupBox16.Controls.Add(this.button14);
+            this.groupBox16.Controls.Add(this.textBox3);
+            this.groupBox16.Controls.Add(this.label114);
+            this.groupBox16.Controls.Add(this.textBox4);
+            this.groupBox16.Controls.Add(this.label115);
+            this.groupBox16.Controls.Add(this.textBox5);
+            this.groupBox16.Controls.Add(this.label116);
+            this.groupBox16.Location = new System.Drawing.Point(242, 6);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(657, 133);
+            this.groupBox16.TabIndex = 132;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Coach Info";
             // 
-            // panel1
+            // label113
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Window;
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.giocatoreInjury);
-            this.panel1.Controls.Add(this.giocatoreUse);
-            this.panel1.Controls.Add(this.giocatoreAcc);
-            this.panel1.Controls.Add(this.giocatoreForm);
-            this.panel1.Controls.Add(this.label106);
-            this.panel1.Controls.Add(this.label107);
-            this.panel1.Controls.Add(this.label108);
-            this.panel1.Controls.Add(this.label109);
-            this.panel1.Location = new System.Drawing.Point(169, 141);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(101, 80);
-            this.panel1.TabIndex = 83;
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(371, 23);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(59, 13);
+            this.label113.TabIndex = 121;
+            this.label113.Text = "Nationality:";
             // 
-            // giocatoreInjury
+            // button14
             // 
-            this.giocatoreInjury.AutoSize = true;
-            this.giocatoreInjury.Location = new System.Drawing.Point(49, 59);
-            this.giocatoreInjury.Name = "giocatoreInjury";
-            this.giocatoreInjury.Size = new System.Drawing.Size(10, 13);
-            this.giocatoreInjury.TabIndex = 67;
-            this.giocatoreInjury.Text = "-";
+            this.button14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
+            this.button14.Location = new System.Drawing.Point(329, 39);
+            this.button14.Margin = new System.Windows.Forms.Padding(0);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(24, 24);
+            this.button14.TabIndex = 120;
+            this.button14.UseVisualStyleBackColor = true;
             // 
-            // giocatoreUse
+            // textBox3
             // 
-            this.giocatoreUse.AutoSize = true;
-            this.giocatoreUse.Location = new System.Drawing.Point(49, 40);
-            this.giocatoreUse.Name = "giocatoreUse";
-            this.giocatoreUse.Size = new System.Drawing.Size(10, 13);
-            this.giocatoreUse.TabIndex = 66;
-            this.giocatoreUse.Text = "-";
+            this.textBox3.Location = new System.Drawing.Point(108, 43);
+            this.textBox3.MaxLength = 98;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(215, 20);
+            this.textBox3.TabIndex = 14;
             // 
-            // giocatoreAcc
+            // label114
             // 
-            this.giocatoreAcc.AutoSize = true;
-            this.giocatoreAcc.Location = new System.Drawing.Point(49, 21);
-            this.giocatoreAcc.Name = "giocatoreAcc";
-            this.giocatoreAcc.Size = new System.Drawing.Size(10, 13);
-            this.giocatoreAcc.TabIndex = 65;
-            this.giocatoreAcc.Text = "-";
+            this.label114.AutoSize = true;
+            this.label114.Location = new System.Drawing.Point(105, 23);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(72, 13);
+            this.label114.TabIndex = 12;
+            this.label114.Text = "Coach Name:";
             // 
-            // giocatoreForm
+            // textBox4
             // 
-            this.giocatoreForm.AutoSize = true;
-            this.giocatoreForm.Location = new System.Drawing.Point(49, 5);
-            this.giocatoreForm.Name = "giocatoreForm";
-            this.giocatoreForm.Size = new System.Drawing.Size(10, 13);
-            this.giocatoreForm.TabIndex = 64;
-            this.giocatoreForm.Text = "-";
+            this.textBox4.Location = new System.Drawing.Point(13, 90);
+            this.textBox4.MaxLength = 3;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(63, 20);
+            this.textBox4.TabIndex = 11;
             // 
-            // label106
+            // label115
             // 
-            this.label106.AutoSize = true;
-            this.label106.Location = new System.Drawing.Point(3, 59);
-            this.label106.Name = "label106";
-            this.label106.Size = new System.Drawing.Size(35, 13);
-            this.label106.TabIndex = 63;
-            this.label106.Text = "Injury:";
+            this.label115.AutoSize = true;
+            this.label115.Location = new System.Drawing.Point(10, 70);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(90, 13);
+            this.label115.TabIndex = 10;
+            this.label115.Text = "Id without Lic bye";
             // 
-            // label107
+            // textBox5
             // 
-            this.label107.AutoSize = true;
-            this.label107.Location = new System.Drawing.Point(3, 40);
-            this.label107.Name = "label107";
-            this.label107.Size = new System.Drawing.Size(46, 13);
-            this.label107.TabIndex = 62;
-            this.label107.Text = "We Use";
+            this.textBox5.Location = new System.Drawing.Point(13, 43);
+            this.textBox5.MaxLength = 4;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(63, 20);
+            this.textBox5.TabIndex = 9;
             // 
-            // label108
+            // label116
             // 
-            this.label108.AutoSize = true;
-            this.label108.Location = new System.Drawing.Point(3, 22);
-            this.label108.Name = "label108";
-            this.label108.Size = new System.Drawing.Size(49, 13);
-            this.label108.TabIndex = 61;
-            this.label108.Text = "We Acc:";
+            this.label116.AutoSize = true;
+            this.label116.Location = new System.Drawing.Point(10, 23);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(55, 13);
+            this.label116.TabIndex = 8;
+            this.label116.Text = "Coach ID:";
             // 
-            // label109
+            // comboBox5
             // 
-            this.label109.AutoSize = true;
-            this.label109.Location = new System.Drawing.Point(3, 5);
-            this.label109.Name = "label109";
-            this.label109.Size = new System.Drawing.Size(33, 13);
-            this.label109.TabIndex = 60;
-            this.label109.Text = "Form:";
+            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox5.FormattingEnabled = true;
+            this.comboBox5.Location = new System.Drawing.Point(374, 43);
+            this.comboBox5.Name = "comboBox5";
+            this.comboBox5.Size = new System.Drawing.Size(215, 21);
+            this.comboBox5.TabIndex = 123;
+            this.comboBox5.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(108, 90);
+            this.textBox1.MaxLength = 98;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(215, 20);
+            this.textBox1.TabIndex = 125;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(105, 70);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(87, 13);
+            this.label91.TabIndex = 124;
+            this.label91.Text = "Japanese Name:";
+            // 
+            // label117
+            // 
+            this.label117.AutoSize = true;
+            this.label117.Location = new System.Drawing.Point(366, 23);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(76, 13);
+            this.label117.TabIndex = 130;
+            this.label117.Text = "Konami Name:";
+            // 
+            // stadiumKonami
+            // 
+            this.stadiumKonami.AutoSize = true;
+            this.stadiumKonami.Location = new System.Drawing.Point(366, 43);
+            this.stadiumKonami.Name = "stadiumKonami";
+            this.stadiumKonami.Size = new System.Drawing.Size(10, 13);
+            this.stadiumKonami.TabIndex = 131;
+            this.stadiumKonami.Text = "-";
             // 
             // Form1
             // 
@@ -5149,6 +5500,8 @@
             this.Transfers.PerformLayout();
             this.giocatorePanel2.ResumeLayout(false);
             this.giocatorePanel2.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.giocatorePanel4.ResumeLayout(false);
             this.giocatorePanel4.PerformLayout();
             this.giocatorePanel3.ResumeLayout(false);
@@ -5186,6 +5539,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.db2FromPlayers)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.Coach.ResumeLayout(false);
             this.Competition.ResumeLayout(false);
             this.Competition.PerformLayout();
             this.Stadiums.ResumeLayout(false);
@@ -5202,8 +5556,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pallonePanel1.ResumeLayout(false);
             this.pallonePanel1.PerformLayout();
+            this.Boots.ResumeLayout(false);
+            this.groupBox15.ResumeLayout(false);
+            this.groupBox15.PerformLayout();
             this.Gloves.ResumeLayout(false);
-            this.Gloves.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
             this.Global.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -5218,8 +5576,8 @@
             this.Team_AMenuStrip2.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5469,12 +5827,9 @@
         private System.Windows.Forms.Label label92;
         private System.Windows.Forms.ComboBox stadiumZone;
         private System.Windows.Forms.Label label93;
-        private System.Windows.Forms.ComboBox stadiumCountry;
         private System.Windows.Forms.Label label94;
-        private System.Windows.Forms.TextBox stadiumKonami;
         private System.Windows.Forms.TextBox stadiumCapacity;
         private System.Windows.Forms.Label label95;
-        private System.Windows.Forms.Label label91;
         private System.Windows.Forms.Label label96;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.GroupBox pallonePanel2;
@@ -5527,7 +5882,6 @@
         private System.Windows.Forms.TextBox giocatoreNazionalità;
         private System.Windows.Forms.Label giocatoreType;
         private System.Windows.Forms.Label label42;
-        private System.Windows.Forms.Label label43;
         private System.Windows.Forms.TextBox stadiumJapanese;
         private System.Windows.Forms.Label label97;
         private System.Windows.Forms.TextBox stadiumNa;
@@ -5552,13 +5906,11 @@
         private System.Windows.Forms.Button button4;
         public System.Windows.Forms.ComboBox teamBox1;
         public System.Windows.Forms.ComboBox teamBox2;
-        private System.Windows.Forms.ListBox ballsBox;
         private System.Windows.Forms.ListBox teamsBox;
         public System.Windows.Forms.ListView giocatoreView;
         private System.Windows.Forms.ColumnHeader columnHeader26;
         private System.Windows.Forms.Button searchT;
         private System.Windows.Forms.TextBox searchTeamAB;
-        private System.Windows.Forms.ListBox stadiumsBox;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button accept;
         private System.Windows.Forms.TextBox dbStadiumJapanese;
@@ -5651,6 +6003,53 @@
         private System.Windows.Forms.Label label107;
         private System.Windows.Forms.Label label108;
         private System.Windows.Forms.Label label109;
+        public System.Windows.Forms.ListBox ballsBox;
+        private System.Windows.Forms.Button applyBall;
+        public System.Windows.Forms.ListBox glovesBox;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.TextBox guantoName;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.TextBox guantoOrder;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.TextBox guantoID;
+        private System.Windows.Forms.Label label98;
+        private System.Windows.Forms.TextBox guantoColor;
+        private System.Windows.Forms.Label label99;
+        private System.Windows.Forms.Button applyGlove;
+        private System.Windows.Forms.TabPage Boots;
+        private System.Windows.Forms.GroupBox groupBox15;
+        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.TextBox scarpaName;
+        private System.Windows.Forms.Label label100;
+        private System.Windows.Forms.TextBox scarpaOrder;
+        private System.Windows.Forms.Label label105;
+        private System.Windows.Forms.TextBox scarpaID;
+        private System.Windows.Forms.Label label110;
+        public System.Windows.Forms.ListBox bootsBox;
+        private System.Windows.Forms.TextBox scarpaMaterial;
+        private System.Windows.Forms.Label label112;
+        private System.Windows.Forms.TextBox scarpaColor;
+        private System.Windows.Forms.Label label111;
+        private System.Windows.Forms.Button bootApply;
+        private System.Windows.Forms.Button applyStadium;
+        public System.Windows.Forms.ListBox stadiumsBox;
+        public System.Windows.Forms.ListBox coachBox;
+        private System.Windows.Forms.GroupBox groupBox16;
+        private System.Windows.Forms.Label label113;
+        private System.Windows.Forms.Button button14;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label114;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label116;
+        private System.Windows.Forms.ComboBox comboBox5;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label91;
+        public System.Windows.Forms.ComboBox stadiumCountry;
+        private System.Windows.Forms.Label stadiumKonami;
+        private System.Windows.Forms.Label label117;
     }
 }
 

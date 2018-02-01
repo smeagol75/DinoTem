@@ -14,7 +14,558 @@ namespace DinoTem.ui
 {
     public class Controller
     {
-        private List<Country> countryList = new List<Country>();
+        public Controller()
+        {
+        }
+        
+        private int bitRecognized = -1;
+        public MemoryStream unzlibPalloni;
+        public BinaryReader leggiPalloni;
+        public BinaryWriter scriviPalloni;
+        public MemoryStream unzlibGuanti;
+        public BinaryReader leggiGuanti;
+        public BinaryWriter scriviGuanti;
+        public MemoryStream unzlibScarpe;
+        public BinaryReader leggiScarpe;
+        public BinaryWriter scriviScarpe;
+        public MemoryStream unzlibStadi;
+        public BinaryReader leggiStadi;
+        public BinaryWriter scriviStadi;
+        public MemoryStream unzlibPaesi;
+        public BinaryReader leggiPaesi;
+        public BinaryWriter scriviPaesi;
+        public MemoryStream unzlibAllenatori;
+        public BinaryReader leggiAllenatori;
+        public BinaryWriter scriviAllenatori;
+
+        public void readBallPersister(string patch, int bitRecognized)
+        {
+            MyBallPersister ballReader = new MyBallPersister();
+            
+            try
+            {
+                ballReader.load(patch, bitRecognized, ref unzlibPalloni, ref leggiPalloni, ref scriviPalloni);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readGlovePersister(string patch, int bitRecognized)
+        {
+            MyGlovePersister gloveReader = new MyGlovePersister();
+
+            try
+            {
+                gloveReader.load(patch, bitRecognized, ref unzlibGuanti, ref leggiGuanti, ref scriviGuanti);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readBootPersister(string patch, int bitRecognized)
+        {
+            MyBootPersister bootReader = new MyBootPersister();
+
+            try
+            {
+                bootReader.load(patch, bitRecognized, ref unzlibScarpe, ref leggiScarpe, ref scriviScarpe);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readStadiumPersister(string patch, int bitRecognized)
+        {
+            MyStadiumPersister stadiumReader = new MyStadiumPersister();
+
+            try
+            {
+                stadiumReader.load(patch, bitRecognized, ref unzlibStadi, ref leggiStadi, ref scriviStadi);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readCountryPersister(string patch, int bitRecognized)
+        {
+            MyCountryPersister countryReader = new MyCountryPersister();
+
+            try
+            {
+                countryReader.load(patch, bitRecognized, ref unzlibPaesi, ref leggiPaesi, ref scriviPaesi);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readCoachPersister(string patch, int bitRecognized)
+        {
+            MyCoachPersister coachReader = new MyCoachPersister();
+
+            try
+            {
+                coachReader.load(patch, bitRecognized, ref unzlibAllenatori, ref leggiAllenatori, ref scriviAllenatori);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveBallPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyBallPersister ballSave = new MyBallPersister();
+
+            try
+            {
+                ballSave.save(patch, ref unzlibPalloni, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Ball.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveGlovePersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyGlovePersister gloveSave = new MyGlovePersister();
+
+            try
+            {
+                gloveSave.save(patch, ref unzlibGuanti, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Glove.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveBootPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyBootPersister bootSave = new MyBootPersister();
+
+            try
+            {
+                bootSave.save(patch, ref unzlibScarpe, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Boots.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveStadiumPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyStadiumPersister stadiumSave = new MyStadiumPersister();
+
+            try
+            {
+                stadiumSave.save(patch, ref unzlibStadi, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Stadium.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveCoachPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCoachPersister coachSave = new MyCoachPersister();
+
+            try
+            {
+                coachSave.save(patch, ref unzlibAllenatori, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Coach.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyBallPersister(int index, Ball pallone)
+        {
+            MyBallPersister ball = new MyBallPersister();
+
+            try
+            {
+                ball.applyBall(index, ref unzlibPalloni, pallone, ref scriviPalloni);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + pallone.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyGlovePersister(int index, Glove guanto)
+        {
+            MyGlovePersister glove = new MyGlovePersister();
+
+            try
+            {
+                glove.applyGlove(index, ref unzlibGuanti, guanto, ref scriviGuanti);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + guanto.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyBootPersister(int index, Boot scarpa)
+        {
+            MyBootPersister boot = new MyBootPersister();
+
+            try
+            {
+                boot.applyBoot(index, ref unzlibScarpe, scarpa, ref scriviScarpe);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + scarpa.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyStadiumPersister(int index, Stadium stadio)
+        {
+            MyStadiumPersister stadium = new MyStadiumPersister();
+
+            //try
+            //{
+                stadium.applyStadium(index, ref unzlibStadi, stadio, ref scriviStadi);
+            //}
+            //catch
+            //{
+                //MessageBox.Show("Error apply " + stadio.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
+
+        public void applyCoachPersister(int index, Coach allenatore)
+        {
+            MyCoachPersister coach = new MyCoachPersister();
+
+            try
+            {
+                coach.applyCoach(index, ref unzlibAllenatori, allenatore, ref scriviAllenatori);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + allenatore.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void closeMemory()
+        {
+            if (getBitRecognized() != -1)
+            {
+                unzlibPalloni.Close();
+                leggiPalloni.Close();
+                scriviPalloni.Close();
+                unzlibGuanti.Close();
+                leggiGuanti.Close();
+                scriviGuanti.Close();
+                unzlibScarpe.Close();
+                leggiScarpe.Close();
+                scriviScarpe.Close();
+                unzlibStadi.Close();
+                leggiStadi.Close();
+                scriviStadi.Close();
+                unzlibAllenatori.Close();
+                leggiAllenatori.Close();
+                scriviAllenatori.Close();
+                unzlibPaesi.Close();
+                leggiPaesi.Close();
+                scriviPaesi.Close();
+            }
+        }
+
+        private int checkAllFile(string folder)
+        {
+            //PRIMO BYTE (PC/CONSOLE)
+            //pc: pes17 00 pes18 04
+            //xbox: pes17/pes18 01
+            //ps3: pes17/18 02
+            byte[] file = File.ReadAllBytes(folder + @"\Player.bin");
+            MemoryStream memory = new MemoryStream(file);
+            BinaryReader reader = new BinaryReader(memory);
+            byte byteFirst = reader.ReadByte();
+            reader.Close();
+
+            byte[] file1 = File.ReadAllBytes(folder + @"\PlayerAssignment.bin");
+            MemoryStream memory1 = new MemoryStream(file1);
+            BinaryReader reader1 = new BinaryReader(memory1);
+            byteFirst += reader1.ReadByte();
+            reader1.Close();
+
+            byte[] file2 = File.ReadAllBytes(folder + @"\Team.bin");
+            MemoryStream memory2 = new MemoryStream(file2);
+            BinaryReader reader2 = new BinaryReader(memory2);
+            byteFirst += reader2.ReadByte();
+            reader2.Close();
+
+            byte[] file3 = File.ReadAllBytes(folder + @"\Country.bin");
+            MemoryStream memory3 = new MemoryStream(file3);
+            BinaryReader reader3 = new BinaryReader(memory3);
+            byteFirst += reader3.ReadByte();
+            reader3.Close();
+
+            byte[] file4 = File.ReadAllBytes(folder + @"\Tactics.bin");
+            MemoryStream memory4 = new MemoryStream(file4);
+            BinaryReader reader4 = new BinaryReader(memory4);
+            byteFirst += reader4.ReadByte();
+            reader4.Close();
+
+            byte[] file5 = File.ReadAllBytes(folder + @"\TacticsFormation.bin");
+            MemoryStream memory5 = new MemoryStream(file5);
+            BinaryReader reader5 = new BinaryReader(memory5);
+            byteFirst += reader5.ReadByte();
+            reader5.Close();
+
+            byte[] file6 = File.ReadAllBytes(folder + @"\Ball.bin");
+            MemoryStream memory6 = new MemoryStream(file6);
+            BinaryReader reader6 = new BinaryReader(memory6);
+            byteFirst += reader6.ReadByte();
+            reader6.Close();
+
+            byte[] file7 = File.ReadAllBytes(folder + @"\BallCondition.bin");
+            MemoryStream memory7 = new MemoryStream(file7);
+            BinaryReader reader7 = new BinaryReader(memory7);
+            byteFirst += reader7.ReadByte();
+            reader7.Close();
+
+            byte[] file8 = File.ReadAllBytes(folder + @"\Stadium.bin");
+            MemoryStream memory8 = new MemoryStream(file8);
+            BinaryReader reader8 = new BinaryReader(memory8);
+            byteFirst += reader8.ReadByte();
+            reader8.Close();
+
+            byte[] file9 = File.ReadAllBytes(folder + @"\Glove.bin");
+            MemoryStream memory9 = new MemoryStream(file9);
+            BinaryReader reader9 = new BinaryReader(memory9);
+            byteFirst += reader9.ReadByte();
+            reader9.Close();
+
+            byte[] file10 = File.ReadAllBytes(folder + @"\Boots.bin");
+            MemoryStream memory10 = new MemoryStream(file10);
+            BinaryReader reader10 = new BinaryReader(memory10);
+            byteFirst += reader10.ReadByte();
+            reader10.Close();
+
+            byte[] file11 = File.ReadAllBytes(folder + @"\Coach.bin");
+            MemoryStream memory11 = new MemoryStream(file11);
+            BinaryReader reader11 = new BinaryReader(memory11);
+            byteFirst += reader11.ReadByte();
+            reader11.Close();
+
+            if (byteFirst == 0 || byteFirst == 48)
+                return 0;
+            else if (byteFirst == 12)
+                return 1;
+            else if (byteFirst == 24)
+                return 2;
+            else
+            {
+                MessageBox.Show("Check files! They may be corrupted!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
+            return -1;
+        }
+
+        public void openDatabase(string folder, Form1 Form)
+        {
+            int bitRecognized = checkAllFile(folder);
+            this.bitRecognized = bitRecognized;
+
+            if (bitRecognized == 0)
+                Form.Text = "DinoTem Editor 2018 - Pc Mode";
+            else if (bitRecognized == 1)
+                Form.Text = "DinoTem Editor 2018 - Xbox Mode";
+            else if (bitRecognized == 2)
+                Form.Text += "DinoTem Editor 2018 - Ps3 Mode";
+
+            UtilGUI.resetField();
+
+            //teamBox1.Items.Clear();
+            //teamBox2.Items.Clear();
+            //giocatoreView.Items.Clear();
+            //teamsBox.Items.Clear();
+            Form1._Form1.ballsBox.Items.Clear();
+            Form1._Form1.glovesBox.Items.Clear();
+            Form1._Form1.bootsBox.Items.Clear();
+            Form1._Form1.stadiumsBox.Items.Clear();
+            Form1._Form1.coachBox.Items.Clear();
+            Form1._Form1.stadiumCountry.Items.Clear();
+
+            readBallPersister(folder, bitRecognized);
+            readGlovePersister(folder, bitRecognized);
+            readBootPersister(folder, bitRecognized);
+            readCountryPersister(folder, bitRecognized);
+            readStadiumPersister(folder, bitRecognized);
+            //readCoachPersister(folder, bitRecognized);
+
+            //readCountryPersister(folder, bitRecognized);
+            //if (countryList.Count == 0)
+            //{
+                //MessageBox.Show("No countries found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //SplashScreen._SplashScreen.Close();
+            //}
+
+            /*readTeamPersister(folder, bitRecognized);
+            if (getListTeam().Count == 0)
+            {
+                MessageBox.Show("No teams found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
+            foreach (Team x in getListTeam())
+            {
+                teamBox1.Items.Add(x);
+                teamBox2.Items.Add(x);
+                teamsBox.Items.Add(x);
+            }
+
+            readBallConditionPersister(folder, bitRecognized);
+            if (getBallConditionList().Count == 0)
+            {
+                MessageBox.Show("No balls conditions found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+            
+            foreach (Country x in getListCountry())
+            {
+                squadraCountry.Items.Add(x.getName());
+                stadiumCountry.Items.Add(x.getName());
+            }
+
+            readPlayerAppearancePersister(folder, bitRecognized);
+            if (getPlayerAppearanceList().Count == 0)
+            {
+                MessageBox.Show("No players appeareance found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+            readPlayerAssignmentPersister(folder, bitRecognized);
+            if (getPlayerAssignmentList().Count == 0)
+            {
+                MessageBox.Show("No countries found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+            readPlayerPersister(folder, bitRecognized);
+            if (getListPlayer().Count == 0)
+            {
+                MessageBox.Show("No players found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+            foreach (Player x in getListPlayer())
+            {
+                giocatoreView.Items.Add(x.ToString());
+            }
+            readTacticsFormationPersister(folder, bitRecognized);
+            if (getTacticsFormationList().Count == 0)
+            {
+                MessageBox.Show("No tactics formation found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+            readTacticsPersister(folder, bitRecognized);
+            if (getTacticsList().Count == 0)
+            {
+                MessageBox.Show("No tactics found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+            readStadiumsPersister(folder, bitRecognized);
+            if (getListStadium().Count == 0)
+            {
+                MessageBox.Show("No stadiums found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+            foreach (Stadium x in getListStadium())
+            {
+                stadiumsBox.Items.Add(x);
+                teamStadium.Items.Add(x);
+            }*/
+
+            //teamBox1.SelectedIndex = 0;
+            //teamBox2.SelectedIndex = 0;
+            Form1._Form1.ballsBox.SelectedIndex = 0;
+            Form1._Form1.glovesBox.SelectedIndex = 0;
+            Form1._Form1.bootsBox.SelectedIndex = 0;
+            Form1._Form1.stadiumsBox.SelectedIndex = 0;
+            //Form1._Form1.coachBox.SelectedIndex = 0;
+            //teamsBox.SelectedIndex = 0;
+        }
+
+        public int getBitRecognized()
+        {
+            return bitRecognized;
+        }
+
+        public Ball leggiPallone(int index)
+        {
+            MyBallPersister ballReader = new MyBallPersister();
+            Ball pallone = ballReader.loadBall(index, leggiPalloni);
+
+            return pallone;
+        }
+
+        public Glove leggiGuanto(int index)
+        {
+            MyGlovePersister gloveReader = new MyGlovePersister();
+            Glove guanto = gloveReader.loadGlove(index, leggiGuanti);
+
+            return guanto;
+        }
+
+        public Boot leggiScarpa(int index)
+        {
+            MyBootPersister bootReader = new MyBootPersister();
+            Boot scarpa = bootReader.loadBoot(index, leggiScarpe);
+
+            return scarpa;
+        }
+
+        public Stadium leggiStadium(int index)
+        {
+            MyStadiumPersister stadiumReader = new MyStadiumPersister();
+            Stadium stadio = stadiumReader.loadStadium(index, leggiStadi);
+
+            return stadio;
+        }
+
+        public Country leggiPaese(int index)
+        {
+            MyCountryPersister countryReader = new MyCountryPersister();
+            Country paese = countryReader.loadCountry(index, leggiPaesi);
+
+            return paese;
+        }
+
+        public Coach leggiCoach(int index)
+        {
+            MyCoachPersister coachReader = new MyCoachPersister();
+            Coach coach = coachReader.loadCoach(index, leggiAllenatori);
+
+            return coach;
+        }
+
+        public int findCountry(UInt32 idCountry)
+        {
+            for (int i = 0; i < Form1._Form1.stadiumCountry.Items.Count; i++)
+            {
+                Country c = leggiPaese(i);
+                if (c.getId() == idCountry)
+                    return i;
+            }
+            return 0;
+        }
+
         private List<BallCondition> ballConditionList = new List<BallCondition>();
         private List<Ball> ballList = new List<Ball>();
         private List<PlayerAppearance> playerAppearanceList = new List<PlayerAppearance>();
@@ -23,16 +574,9 @@ namespace DinoTem.ui
         private List<TacticsFormation> tacticsFormationList = new List<TacticsFormation>();
         private List<Tactics> tacticsList = new List<Tactics>();
         private List<Team> teamList = new List<Team>();
-        private List<Stadium> stadiumList = new List<Stadium>();
-        private int bitRecognized = 0;
-
-        public Controller()
-        {
-        }
 
         //form1
         //player
-        //ball
         //team
         //stadium
         //DB2
@@ -80,36 +624,6 @@ namespace DinoTem.ui
             try
             {
                 ballConditionList = ballConditionReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void readBallPersister(string patch, int bitRecognized)
-        {
-            MyBallPersister ballReader = new MyBallPersister();
-
-            try
-            {
-                ballList = ballReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void readCountryPersister(string patch, int bitRecognized)
-        {
-            MyCountryPersister countryReader = new MyCountryPersister();
-
-            try
-            {
-                countryList = countryReader.load(patch, bitRecognized);
             }
             catch (FileNotFoundException e)
             {
@@ -178,21 +692,6 @@ namespace DinoTem.ui
 
         }
 
-        public void readStadiumsPersister(string patch, int bitRecognized)
-        {
-            MyStadiumPersister stadiumsReader = new MyStadiumPersister();
-
-            try
-            {
-                stadiumList = stadiumsReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         public void saveBallConditionPersister(string patch, Controller controller, int bitRecognized)
         {
             MyBallConditionPersister ballConditionSave = new MyBallConditionPersister();
@@ -253,21 +752,6 @@ namespace DinoTem.ui
 
         }
 
-        public void saveBallPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyBallPersister ballSave = new MyBallPersister();
-
-            try
-            {
-                ballSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved Ball.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         public void savePlayerPersister(string patch, Controller controller, int bitRecognized)
         {
             MyPlayerPersister playerSave = new MyPlayerPersister();
@@ -298,219 +782,6 @@ namespace DinoTem.ui
 
         }
 
-        public void saveStadiumPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyStadiumPersister stadiumSave = new MyStadiumPersister();
-
-            try
-            {
-                stadiumSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved Stadium.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        private int checkAllFile(string folder)
-        {
-            //PRIMO BYTE (PC/CONSOLE)
-            //pc: pes17 00 pes18 04
-            //xbox: pes17/pes18 01
-            //ps3: pes17/18 02
-            byte[] file = File.ReadAllBytes(folder + @"\Player.bin");
-            MemoryStream memory = new MemoryStream(file);
-            BinaryReader reader = new BinaryReader(memory);
-            byte byteFirst = reader.ReadByte();
-            reader.Close();
-            
-            byte[] file1 = File.ReadAllBytes(folder + @"\PlayerAssignment.bin");
-            MemoryStream memory1 = new MemoryStream(file1);
-            BinaryReader reader1 = new BinaryReader(memory1);
-            byteFirst += reader1.ReadByte();
-            reader1.Close();
-
-            byte[] file2 = File.ReadAllBytes(folder + @"\Team.bin");
-            MemoryStream memory2 = new MemoryStream(file2);
-            BinaryReader reader2 = new BinaryReader(memory2);
-            byteFirst += reader2.ReadByte();
-            reader2.Close();
-
-            byte[] file3 = File.ReadAllBytes(folder + @"\Country.bin");
-            MemoryStream memory3 = new MemoryStream(file3);
-            BinaryReader reader3 = new BinaryReader(memory3);
-            byteFirst += reader3.ReadByte();
-            reader3.Close();
-
-            byte[] file4 = File.ReadAllBytes(folder + @"\Tactics.bin");
-            MemoryStream memory4 = new MemoryStream(file4);
-            BinaryReader reader4 = new BinaryReader(memory4);
-            byteFirst += reader4.ReadByte();
-            reader4.Close();
-
-            byte[] file5 = File.ReadAllBytes(folder + @"\TacticsFormation.bin");
-            MemoryStream memory5 = new MemoryStream(file5);
-            BinaryReader reader5 = new BinaryReader(memory5);
-            byteFirst += reader5.ReadByte();
-            reader5.Close();
-
-            byte[] file6 = File.ReadAllBytes(folder + @"\Ball.bin");
-            MemoryStream memory6 = new MemoryStream(file6);
-            BinaryReader reader6 = new BinaryReader(memory6);
-            byteFirst += reader6.ReadByte();
-            reader6.Close();
-
-            byte[] file7 = File.ReadAllBytes(folder + @"\BallCondition.bin");
-            MemoryStream memory7 = new MemoryStream(file7);
-            BinaryReader reader7 = new BinaryReader(memory7);
-            byteFirst += reader7.ReadByte();
-            reader7.Close();
-
-            byte[] file8 = File.ReadAllBytes(folder + @"\Stadium.bin");
-            MemoryStream memory8 = new MemoryStream(file8);
-            BinaryReader reader8 = new BinaryReader(memory8);
-            byteFirst += reader8.ReadByte();
-            reader8.Close();
-
-            if (byteFirst == 0 || byteFirst == 36)
-                return 0;
-            else if (byteFirst == 9)
-                return 1;
-            else if (byteFirst == 18)
-                return 2;
-            else
-            {
-                MessageBox.Show("Check files! They may be corrupted!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-
-            return -1;
-        }
-
-        public void openDatabase(string folder, ComboBox teamBox1, ComboBox teamBox2, ListBox teamsBox, ListBox stadiumsBox, ListBox ballsBox,
-            ComboBox squadraCountry, ComboBox stadiumCountry, ComboBox teamStadium, ListView giocatoreView, Form1 Form)
-        {
-            int bitRecognized = checkAllFile(folder);
-            this.bitRecognized = bitRecognized;
-
-            if (bitRecognized == 0)
-                Form.Text = "DinoTem Editor 2018 - Pc Mode";
-            else if (bitRecognized == 1)
-                Form.Text = "DinoTem Editor 2018 - Xbox Mode";
-            else if (bitRecognized == 2)
-                Form.Text += "DinoTem Editor 2018 - Ps3 Mode";
-
-            UtilGUI.resetField();
-
-            teamBox1.Items.Clear();
-            teamBox2.Items.Clear();
-            giocatoreView.Items.Clear();
-            teamsBox.Items.Clear();
-            ballsBox.Items.Clear();
-            stadiumsBox.Items.Clear();
-
-            readTeamPersister(folder, bitRecognized);
-            if (getListTeam().Count == 0)
-            {
-                MessageBox.Show("No teams found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-
-            foreach (Team x in getListTeam())
-            {
-                teamBox1.Items.Add(x);
-                teamBox2.Items.Add(x);
-                teamsBox.Items.Add(x);
-            }
-
-            readBallConditionPersister(folder, bitRecognized);
-            if (getBallConditionList().Count == 0)
-            {
-                MessageBox.Show("No balls conditions found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            readBallPersister(folder, bitRecognized);
-            if (getListBall().Count == 0)
-            {
-                MessageBox.Show("No balls found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            foreach (Ball x in getListBall())
-            {
-                ballsBox.Items.Add(x);
-            }
-
-            readCountryPersister(folder, bitRecognized);
-            if (countryList.Count == 0)
-            {
-                MessageBox.Show("No countries found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            foreach (Country x in getListCountry())
-            {
-                squadraCountry.Items.Add(x.getName());
-                stadiumCountry.Items.Add(x.getName());
-            }
-
-            readPlayerAppearancePersister(folder, bitRecognized);
-            if (getPlayerAppearanceList().Count == 0)
-            {
-                MessageBox.Show("No players appeareance found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            readPlayerAssignmentPersister(folder, bitRecognized);
-            if (getPlayerAssignmentList().Count == 0)
-            {
-                MessageBox.Show("No countries found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            readPlayerPersister(folder, bitRecognized);
-            if (getListPlayer().Count == 0)
-            {
-                MessageBox.Show("No players found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            foreach (Player x in getListPlayer())
-            {
-                giocatoreView.Items.Add(x.ToString());
-            }
-            readTacticsFormationPersister(folder, bitRecognized);
-            if (getTacticsFormationList().Count == 0)
-            {
-                MessageBox.Show("No tactics formation found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            readTacticsPersister(folder, bitRecognized);
-            if (getTacticsList().Count == 0)
-            {
-                MessageBox.Show("No tactics found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            readStadiumsPersister(folder, bitRecognized);
-            if (getListStadium().Count == 0)
-            {
-                MessageBox.Show("No stadiums found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            foreach (Stadium x in getListStadium())
-            {
-                stadiumsBox.Items.Add(x);
-                teamStadium.Items.Add(x);
-            }
-
-            teamBox1.SelectedIndex = 0;
-            teamBox2.SelectedIndex = 0;
-            ballsBox.SelectedIndex = 0;
-            teamsBox.SelectedIndex = 0;
-            stadiumsBox.SelectedIndex = 0;
-        }
-
-        public int getBitRecognized()
-        {
-            return bitRecognized;
-        }
-
         public List<Team> getListTeam()
         {
             return teamList;
@@ -521,31 +792,9 @@ namespace DinoTem.ui
             return ballList;
         }
 
-        public List<Stadium> getListStadium()
-        {
-            return stadiumList;
-        }
-
         public List<Player> getListPlayer()
         {
             return playerList;
-        }
-
-        public List<Country> getListCountry()
-        {
-            return countryList;
-        }
-
-        public Dictionary<long, Country> getCountryMap()
-        {
-            var result = new Dictionary<long, Country>();
-
-            foreach (Country country in countryList)
-            {
-                result.Add((long)country.getId(), country);
-            }
-
-            return result;
         }
 
         public List<BallCondition> getBallConditionList()
@@ -785,8 +1034,8 @@ namespace DinoTem.ui
 
             foreach (Tactics tactics in tacticsList)
             {
-                if (idTeam == tactics.getTeamID())
-                    result.Add(tactics.getTacticsID());  
+                if (idTeam == tactics.getTeamId())
+                    result.Add(tactics.getTacticsId());  
 		    }
 
 		    return result;
@@ -857,20 +1106,8 @@ namespace DinoTem.ui
                 }
         }
 
-        public Country getCountryById(int positionList)
-        {
-            int k = 0;
-            foreach (Country temp in countryList)
-            {
-                if (k == positionList)
-                    return temp;
-                k++;
-            }
-            return null;
-        }
-
         //Player
-        public void changeNationalPlayer(Player temp, Country country)
+        /*public void changeNationalPlayer(Player temp, Country country)
         {
             temp.setNational(country.getId());
         }
@@ -878,19 +1115,9 @@ namespace DinoTem.ui
         public void changeSecondNationalPlayer(Player temp, Country country)
         {
             temp.setNational2(country.getId());
-        }
+        }*/
 
         //Ball
-        public void changeBallName(Ball ball, string name)
-        {
-            ball.setName(name);
-        }
-
-        public void changeBallOrder(Ball ball, int order)
-        {
-            ball.setOrder(order);
-        }
-
         public void changeBallUnknown(Ball x, int bytePosition, int unk)
         {
             int k = 0;
@@ -1044,19 +1271,8 @@ namespace DinoTem.ui
 
         public void changeCountryTeam(Team team, int positionListCountry)
         {
-            Country temp2 = getCountryById(positionListCountry);
-            team.setCountry(temp2.getId());
-        }
-
-        public Stadium getTeamStadium(Team temp)
-        {
-            for (int i = 0; i < getListStadium().Count; i++)
-            {
-                if (temp.getStadiumId() == getListStadium()[i].getId())
-                    return getListStadium()[i];
-            }
-
-            return null;
+            //Country temp2 = getCountryById(positionListCountry);
+            //team.setCountry(temp2.getId());
         }
 
         public void changeStadiumTeam(Team team, Stadium stadium)
@@ -1092,48 +1308,6 @@ namespace DinoTem.ui
         public void changeUnknown(Team team, bool value)
         {
             team.setUnknown6(value);
-        }
-
-        //Stadium
-        public void changeStadiumName(Stadium stadium, string name)
-        {
-            stadium.setName(name);
-        }
-
-        public void changeStadiumJapaneseName(Stadium stadium, string name)
-        {
-            stadium.setJapaneseName(name);
-        }
-
-        public void changeStadiumKonamiName(Stadium stadium, string name)
-        {
-            stadium.setKonamiName(name);
-        }
-
-        public void changeStadiumCapacity(Stadium stadium, int capacity)
-        {
-            stadium.setCapacity(capacity);
-        }
-
-        public void changeStadiumNa(Stadium stadium, int na)
-        {
-            stadium.setNa(na);
-        }
-
-        public void changeCountryStadium(Stadium stadium, int positionListCountry)
-        {
-            Country temp2 = getCountryById(positionListCountry);
-            stadium.setCountry(temp2.getId());
-        }
-
-        public void changeZoneStadium(Stadium stadium, int value)
-        {
-            stadium.setZone(value + 2);
-        }
-
-        public void changeLicensedStadium(Stadium team, bool boolean)
-        {
-            team.setLicense(boolean);
         }
 
         //DB2
@@ -1217,16 +1391,6 @@ namespace DinoTem.ui
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            MyBallPersister ballReader = new MyBallPersister();
-            try
-            {
-                ballList2 = ballReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
             MyPlayerAppearancePersister playerAppearanceReader = new MyPlayerAppearancePersister();
             try
             {
@@ -1241,16 +1405,6 @@ namespace DinoTem.ui
             try
             {
                 tacticsFormationList2 = tacticsFormationReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            MyStadiumPersister stadiumsReader = new MyStadiumPersister();
-            try
-            {
-                stadiumList2 = stadiumsReader.load(folder, bitRecognized);
             }
             catch (FileNotFoundException e)
             {
@@ -3609,7 +3763,7 @@ namespace DinoTem.ui
         }
 
         //fm form
-        public Country getCountryFm(Fm temp2)
+        /*public Country getCountryFm(Fm temp2)
         {
             Country country = null;
             foreach (Country x in getListCountry())
@@ -3619,7 +3773,7 @@ namespace DinoTem.ui
             }
 
             return country;
-        }
+        }*/
 
     }
 }

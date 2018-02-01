@@ -42,7 +42,6 @@ namespace DinoTem.persistence
             MemoryStream memory1 = unzlib(patch, bitRecognized);
 
             UInt32 youthClubId;
-            UInt32 padding;
             UInt32 playerId;
             byte[] Blocco;
             try

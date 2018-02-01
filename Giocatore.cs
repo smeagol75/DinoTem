@@ -346,11 +346,11 @@ namespace DinoTem
 
             nationality.Items.Clear();
             sndNationality.Items.Clear();
-            foreach (Country x in controller.getListCountry())
-            {
-                nationality.Items.Add(x);
-                sndNationality.Items.Add(x);
-            }
+            //foreach (Country x in controller.getListCountry())
+            //{
+                //nationality.Items.Add(x);
+                //sndNationality.Items.Add(x);
+            //}
             //rimuovere ultimo item
             int a = nationality.Items.Count - 1;
             nationality.Items.RemoveAt(a);
@@ -639,14 +639,14 @@ namespace DinoTem
 
             starIndicator.Value = temp.getStarPlayerIndicator();
 
-            controller.getCountryMap().GetType();
+            /*controller.getCountryMap().GetType();
             Country value;
             if (!controller.getCountryMap().TryGetValue((long)temp.getNational(), out value))
                 throw new ArgumentException("id country not found");
-            nationality.Text = value.getNationality();
+            //nationality.Text = value.getNationality();
             if (!controller.getCountryMap().TryGetValue((long)temp.getNational2(), out value))
                 controller.getCountryMap().TryGetValue((long)0, out value);
-            sndNationality.Text = value.getNationality();
+            //sndNationality.Text = value.getNationality();*/
 
             youthClub.SelectedItem = controller.getYouthClub(temp);
         }
@@ -1254,8 +1254,8 @@ namespace DinoTem
             temp.setDefense(int.Parse(defense.Text));
             temp.setClearing(int.Parse(clearing.Text));
             temp.setLowPass(int.Parse(lowPass.Text));
-            controller.changeNationalPlayer(temp, (Country)nationality.SelectedItem);
-            controller.changeSecondNationalPlayer(temp, (Country)sndNationality.SelectedItem);
+            //controller.changeNationalPlayer(temp, (Country)nationality.SelectedItem);
+            //controller.changeSecondNationalPlayer(temp, (Country)sndNationality.SelectedItem);
             temp.setPlaceKick(int.Parse(placeKick.Text));
             temp.setGoalCelebrate(int.Parse(goalCeleb.Text));
             temp.setLb(LB.SelectedIndex);

@@ -8,47 +8,26 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class Country
     {
-        private int id;
-        private string continente;
-        private string nationality;
+        private UInt32 id;
         private string name;
-        private string nationFm;
+        private string shortName;
+        private UInt32 violet;
+        private UInt32 blue;
+        private UInt32 green;
+        private byte unk;
+        private byte zone;
 
-        public Country(int id, string continente, string nationality, string name)
+        public Country(UInt32 id)
         {
     	    if (id < 0)
                 throw new ArgumentException("Country's id isn't valid: " + id);
-    	    if (continente == null || continente == "")
-                throw new ArgumentException("Country's continent isn't valid - Id country: " + getId());
-            if (nationality == null || nationality == "")
-                throw new ArgumentException("Country's nationality isn't valid - Id country: " + getId());
-            if (name == null || name == "")
-                throw new ArgumentException("Country name isn't valid - Id country: " + getId());
     	
             this.id = id;
-            this.continente = continente;
-            this.nationality = nationality;
-            this.name = name;
         }
 
-        public int getId()
+        public UInt32 getId()
         {
             return this.id;
-        }
-
-        public string getContinente()
-        {
-            return this.continente;
-        }
-
-        public string getNationality()
-        {
-            return this.nationality;
-        }
-
-        public string getNationFm()
-        {
-            return this.nationFm;
         }
 
         public string getName()
@@ -56,7 +35,37 @@ namespace DinoTem.model
             return this.name;
         }
 
-        public void setId(int id)
+        public string getShortName()
+        {
+            return this.shortName;
+        }
+
+        public UInt32 getViolet()
+        {
+            return this.violet;
+        }
+
+        public UInt32 getBlue()
+        {
+            return this.blue;
+        }
+
+        public UInt32 getGreen()
+        {
+            return this.green;
+        }
+
+        public byte getUnk()
+        {
+            return this.unk;
+        }
+
+        public byte getZone()
+        {
+            return this.zone;
+        }
+
+        public void setId(UInt32 id)
         {
     	    if (id < 0)
                 throw new ArgumentException("Country's id isn't valid: " + id);
@@ -64,28 +73,44 @@ namespace DinoTem.model
             this.id = id;
         }
 
-        public void setContinente(string continente)
+        public void setViolet(UInt32 violet)
         {
-    	    if (continente == null || continente == "")
-                throw new ArgumentException("Country's continent isn't valid - Id country: " + getId());
-    	
-            this.continente = continente;
+            if (violet < 0)
+                throw new ArgumentException("Country's violet isn't valid: " + id);
+
+            this.violet = violet;
         }
 
-        public void setNationality(string nationality)
+        public void setBlue(UInt32 blue)
         {
-    	    if (nationality == null || nationality == "")
-                throw new ArgumentException("Country's nationality isn't valid - Id country: " + getId());
-    	
-            this.nationality = nationality;
+            if (blue < 0)
+                throw new ArgumentException("Country's blue isn't valid: " + id);
+
+            this.blue = blue;
         }
 
-        public void setNationFm(string nationFm)
+        public void setGreen(UInt32 green)
         {
-            if (nationFm == null || nationFm == "")
-                throw new ArgumentException("NationFm isn't valid - Id country: " + getId());
+            if (green < 0)
+                throw new ArgumentException("Country's green isn't valid: " + id);
 
-            this.nationFm = nationFm;
+            this.green = green;
+        }
+
+        public void setUnk(byte unk)
+        {
+            if (unk < 0)
+                throw new ArgumentException("Country's name isn't valid - Id country: " + getId());
+
+            this.unk = unk;
+        }
+
+        public void setZone(byte zone)
+        {
+            if (zone < 0)
+                throw new ArgumentException("Country's name isn't valid - Id country: " + getId());
+
+            this.zone = zone;
         }
 
         public void setName(string name)
@@ -96,7 +121,15 @@ namespace DinoTem.model
             this.name = name;
         }
 
-        public override bool Equals(Object obj)
+        public void setShortName(string shortName)
+        {
+            if (shortName == null || shortName == "")
+                throw new ArgumentException("Country's short name isn't valid - Id country: " + getId());
+
+            this.shortName = shortName;
+        }
+
+        /*public override bool Equals(Object obj)
         {
             if (obj is Country)
     	    {
@@ -104,11 +137,29 @@ namespace DinoTem.model
     		    return getId() == c.getId();
     	    }
     	    return false;
+        }*/
+
+        private string stringContinent(int i)
+        {
+            if (i == 2)
+                return "EUROPE";
+            else if (i == 3)
+                return "ASIA";
+            if (i == 4)
+                return "SOUTH AMERICA";
+            else if (i == 5)
+                return "AFRICA";
+            else if (i == 6)
+                return "NORTH AMERICA";
+            else if (i == 7)
+                return "OCEANIA";
+
+            return "NOTHING";
         }
 
         public override string ToString()
         {
-            return getNationality();
+            return getName();
         }
     }
 }

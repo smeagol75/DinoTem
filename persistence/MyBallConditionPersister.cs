@@ -73,7 +73,9 @@ namespace DinoTem.persistence
                     memory1.Seek(START2, SeekOrigin.Begin);
                     byteCondition = reader.ReadByte();
 
-                    BallCondition bc = new BallCondition(IdCondition, frag, byteCondition);
+                    BallCondition bc = new BallCondition(IdCondition);
+                    bc.setFrag(frag);
+                    bc.setUnknown(byteCondition);
                     ballConditionList.Add(bc);           
                 }
                 memory1.Close();

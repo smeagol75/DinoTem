@@ -8,41 +8,41 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class Tactics
     {
-        private int teamID, tacticsID;
+        private int teamId, tacticsId;
 	
-	    public Tactics(int teamID, int tacticsID) {
-		    if (teamID < 0)
-                throw new ArgumentException("Tactic's team id isn't valid: " + teamID);
-		    if (tacticsID < 0)
-                throw new ArgumentException("Tactic id isn't valid: " + tacticsID);
-		
-		    this.teamID = teamID;
-		    this.tacticsID = tacticsID;
+	    public Tactics(int teamId, int tacticsId) {
+            if (teamId < 0)
+                throw new ArgumentException("Tactic's team id isn't valid: " + teamId);
+            if (tacticsId < 0)
+                throw new ArgumentException("Tactic id isn't valid: " + tacticsId);
+
+            this.teamId = teamId;
+            this.tacticsId = tacticsId;
 	    }
 	
-	    public int getTacticsID() {
-		    return this.tacticsID;
+	    public int getTacticsId() {
+		    return this.tacticsId;
 	    }
 	
-	    public int getTeamID() {
-		    return this.teamID;
+	    public int getTeamId() {
+		    return this.teamId;
 	    }
 	
-	    public void setTeamID(int teamID) {
-		    if (teamID < 0)
-                throw new ArgumentException("Tactic's team id isn't valid: " + teamID);
-		
-		    this.teamID = teamID;
+	    public void setTeamId(int teamId) {
+            if (teamId < 0)
+                throw new ArgumentException("Tactic's team id isn't valid: " + teamId);
+
+            this.teamId = teamId;
 	    }
 	
-	    public void setTacticsID(int tacticsID) {
-		    if (tacticsID < 0)
-                throw new ArgumentException("Tactic id isn't valid: " + teamID);
-		
-		    this.tacticsID = tacticsID;
+	    public void setTacticsId(int tacticsId) {
+            if (tacticsId < 0)
+                throw new ArgumentException("Tactic id isn't valid: " + teamId);
+
+            this.tacticsId = tacticsId;
 	    }
 
-        public override bool Equals(Object obj)
+        /*public override bool Equals(Object obj)
         {
             if (obj is Tactics)
 		    {
@@ -50,6 +50,6 @@ namespace DinoTem.model
 			    return getTacticsID() == c.getTacticsID() && getTeamID() == c.getTeamID();
 		    }
 		    return false;
-	    }
+	    }*/
     }
 }

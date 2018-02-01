@@ -539,7 +539,7 @@ namespace DinoTem.model
             this.unknown56 = unknown56;
         }
 
-        public override bool Equals(Object obj)
+        /*public override bool Equals(Object obj)
         {
             if (obj is PlayerAppearance)
     	    {
@@ -547,6 +547,6 @@ namespace DinoTem.model
     		    return getId() == c.getId();
     	    }
     	    return false;
-        }
+        }*/
     }
 }

@@ -5,17 +5,17 @@ using System.Text;
 
 namespace DinoTem.model
 {
-    //pes 18, pes 17
-    public class Ball
+    public class Glove
     {
         private UInt16 id;
         private byte order;
         private string name;
+        private string color;
 
-        public Ball(UInt16 id)
+        public Glove(UInt16 id)
         {
             if (id < 0)
-                throw new ArgumentException("Ball's id isn't valid: " + id);
+                throw new ArgumentException("Glove's id isn't valid: " + id);
 
             this.id = id;
         }
@@ -35,10 +35,15 @@ namespace DinoTem.model
             return this.name;
         }
 
+        public string getColor()
+        {
+            return this.color;
+        }
+
         public void setId(UInt16 id)
         {
             if (id < 0)
-                throw new ArgumentException("Ball's id isn't valid: " + id);
+                throw new ArgumentException("Glove's id isn't valid: " + id);
 
             this.id = id;
         }
@@ -46,7 +51,7 @@ namespace DinoTem.model
         public void setOrder(byte order)
         {
             if (order < 0)
-                throw new ArgumentException("Ball's order isn't valid - Id ball: " + getId());
+                throw new ArgumentException("Glove's order isn't valid - Id glove: " + getId());
 
             this.order = order;
         }
@@ -54,20 +59,18 @@ namespace DinoTem.model
         public void setName(string name)
         {
             if (name == null || name == "")
-                throw new ArgumentException("Ball's name isn't valid - Id ball: " + getId());
+                throw new ArgumentException("Glove's name isn't valid - Id glove: " + getId());
 
             this.name = name;
         }
 
-        /*public override bool Equals(Object obj)
+        public void setColor(string color)
         {
-            if (obj is Ball)
-            {
-                Ball c = (Ball)obj;
-                return getId() == c.getId();
-            }
-            return false;
-        }*/
+            if (color == null || color == "")
+                throw new ArgumentException("Glove's color isn't valid - Id glove: " + getId());
+
+            this.color = color;
+        }
 
         public override string ToString()
         {

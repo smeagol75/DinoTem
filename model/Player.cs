@@ -1776,7 +1776,7 @@ namespace DinoTem.model
             return t;
         }
 
-        public override bool Equals(Object obj)
+        /*public override bool Equals(Object obj)
         {
             if (obj is Player)
     	    {
@@ -1784,7 +1784,7 @@ namespace DinoTem.model
                 return getId() == c.getId();
     	    }
     	    return false;
-        }
+        }*/
 
         public override string ToString()
         {

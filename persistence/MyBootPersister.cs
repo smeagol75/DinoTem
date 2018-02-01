@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using System.Windows.Forms;
 using Team_Editor_Manager_New_Generation.zlibUnzlib;
+using System.Windows.Forms;
 using DinoTem.model;
-using Team_Editor_Manager_New_Generation.persistence;
 
-namespace DinoTem.persistence
+namespace DinoTem.ui
 {
-    //pes 18
-    public class MyBallPersister
+    public class MyBootPersister
     {
-        private static string PATH = "/Ball.bin";
-        private static int block = 140;
+        //pes 18
+        private static string PATH = "/Boots.bin";
+        private static int block = 304;
 
         private MemoryStream unzlib(string patch, int bitRecognized)
         {
@@ -29,7 +28,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.Boots(ref memory1);
             }
 
             return memory1;
@@ -37,28 +36,28 @@ namespace DinoTem.persistence
 
         public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
-             memory1 = unzlib(patch, bitRecognized);
+            memory1 = unzlib(patch, bitRecognized);
 
             //Calcolo palloni
-            int bytes_ball = (int)memory1.Length;
-            int ball = bytes_ball / block;
+            int bytesBoots = (int)memory1.Length;
+            int boot = bytesBoots / block;
 
-            string ballName;
+            string bootName;
             try
             {
                 // Use the memory stream in a binary reader.
                 reader = new BinaryReader(memory1);
                 int i1 = 0;
-                long START2 = -136; //nome pallone
+                long START2 = -100;
 
-                int NumberOfRepetitions1 = Convert.ToInt32(ball);
+                int NumberOfRepetitions1 = Convert.ToInt32(boot);
                 for (i1 = 1; i1 <= NumberOfRepetitions1; i1++)
                 {
                     START2 += block;
                     memory1.Seek(START2, SeekOrigin.Begin);
-                    ballName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(135)).TrimEnd('\0');
+                    bootName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(98)).TrimEnd('\0');
 
-                    Form1._Form1.ballsBox.Items.Add(ballName);
+                    Form1._Form1.bootsBox.Items.Add(bootName);
                 }
                 writer = new BinaryWriter(memory1);
             }
@@ -69,27 +68,37 @@ namespace DinoTem.persistence
             }
         }
 
-        public Ball loadBall(int index, BinaryReader reader)
+        public Boot loadBoot(int index, BinaryReader reader)
         {
-            Ball pallone = null;
+            Boot boot = null;
 
-            UInt16 ballId;
+            UInt16 bootId;
             byte order;
-            string ballName;
+            string bootName;
+            string color;
+            string material;
             try
             {
-                reader.BaseStream.Position = index * block + 4;
-                ballName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(135)).TrimEnd('\0');
+                reader.BaseStream.Position = index * block + 204;
+                bootName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(98)).TrimEnd('\0');
 
                 reader.BaseStream.Position = index * block;
-                ballId = reader.ReadUInt16();
+                bootId = reader.ReadUInt16();
 
                 reader.BaseStream.Position = index * block + 2;
                 order = reader.ReadByte();
 
-                pallone = new Ball(ballId);
-                pallone.setName(ballName);
-                pallone.setOrder(order);
+                reader.BaseStream.Position = index * block + 4;
+                color = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(98)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index * block + 104;
+                material = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(98)).TrimEnd('\0');
+
+                boot = new Boot(bootId);
+                boot.setName(bootName);
+                boot.setOrder(order);
+                boot.setColor(color);
+                boot.setMaterial(material);
             }
             catch (IOException e)
             {
@@ -97,15 +106,15 @@ namespace DinoTem.persistence
                 SplashScreen._SplashScreen.Close();
             }
 
-            return pallone;
+            return boot;
         }
 
-        public void applyBall(int selectedIndex, ref MemoryStream unzlib, Ball pallone, ref BinaryWriter writer)
+        public void applyBoot(int selectedIndex, ref MemoryStream unzlib, Boot scarpa, ref BinaryWriter writer)
         {
             int Index = (block * selectedIndex);
             writer.BaseStream.Position = Index;
             byte zero = 0;
-            if (Index == unzlib.Length)
+            if ((Index == unzlib.Length))
             {
                 for (int i = 0; i <= (block - 1); i++)
                 {
@@ -115,40 +124,45 @@ namespace DinoTem.persistence
                 writer.BaseStream.Position = Index;
             }
 
-            UInt16 id = pallone.getId();
-            byte order = pallone.getOrder();
-            string ballName = pallone.getName();
+            UInt16 id = scarpa.getId();
+            byte order = scarpa.getOrder();
+            string color = scarpa.getColor();
+            string bootName = scarpa.getName();
+            string material = scarpa.getMaterial();
             writer.Write(id);
             writer.Write(order);
             writer.BaseStream.Position = (Index + 4);
-            for (int i = 0; i <= 134; i++)
+            for (int i = 0; i <= 299; i++)
             {
                 writer.Write(zero);
             }
 
             writer.BaseStream.Position = (Index + 4);
-            writer.Write(ballName.ToCharArray());
+            writer.Write(color.ToCharArray());
+            writer.BaseStream.Position = (Index + 104);
+            writer.Write(material.ToCharArray());
+            writer.BaseStream.Position = (Index + 204);
+            writer.Write(bootName.ToCharArray());
         }
 
-        public void save(string patch, ref MemoryStream memoryBall, int bitRecognized)
+        public void save(string patch, ref MemoryStream memoryBoot, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
                 //save zlib
-                byte[] ss13 = Zlib18.ZLIBFile(memoryBall.ToArray());
+                byte[] ss13 = Zlib18.ZLIBFile(memoryBoot.ToArray());
                 File.WriteAllBytes(patch + PATH, ss13);
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memoryBall);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryBall, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.Boots(ref memoryBoot);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryBoot, patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memoryBall);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryBall, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.Boots(ref memoryBoot);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryBoot, patch + PATH);
             }
         }
-
     }
 }
