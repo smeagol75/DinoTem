@@ -10,6 +10,7 @@ using Team_Editor_Manager_New_Generation.ui;
 using DinoTem.model;
 using DinoTem.ui;
 using Team_Editor_Manager_New_Generation.update;
+using Team_Editor_Manager_New_Generation.persistence;
 
 namespace DinoTem
 {
@@ -23,6 +24,8 @@ namespace DinoTem
         }
 
         private Controller controller;
+        private const char chACapo = (char)13;
+
         private void Form1_Load(object sender, EventArgs e)
         {
             controller = new Controller();
@@ -259,6 +262,64 @@ namespace DinoTem
             }
         }
 
+        //coach
+        private void coachBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (coachBox.SelectedIndices.Count <= 0)
+                return;
+
+            //pulire campi
+            allenatoreId.Text = "";
+            allenatoreName.Text = "";
+            allenatoreJap.Text = "";
+            allenatoreLic.Checked = false;
+
+            int intselectedindex = coachBox.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                Coach allenatore = controller.leggiCoach(intselectedindex);
+                allenatoreId.Text = allenatore.getId().ToString();
+                allenatoreName.Text = allenatore.getName();
+                allenatoreJap.Text = allenatore.getJapName();
+                allenatoreNationality.SelectedIndex = controller.findCountry(allenatore.getCountry());
+                if (allenatore.getByteLic() != 0)
+                    allenatoreLic.Visible = true;
+                else
+                    allenatoreLic.Visible = false;
+                    
+            }
+        }
+
+        private void applyCoach_Click(object sender, EventArgs e)
+        {
+            int intselectedindex = coachBox.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                Coach coach = new Coach(uint.Parse(allenatoreId.Text));
+                coach.setJapName(allenatoreJap.Text);
+                coach.setCountry((ushort) controller.leggiPaese(allenatoreNationality.SelectedIndex).getId());
+                coach.setName(allenatoreName.Text);
+                if (allenatoreLic.Checked == true)
+                    coach.setByteLic(0);
+                else
+                    coach.setByteLic(1);
+                controller.applyCoachPersister(intselectedindex, coach);
+
+                //Update listbox
+                coachBox.Items[intselectedindex] = allenatoreName.Text;
+            }
+        }
+
+        private void allenatoriLic_CheckedChanged(object sender, EventArgs e)
+        {
+            int intselectedindex = coachBox.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                Coach allenatore = controller.leggiCoach(intselectedindex);
+                allenatoreId.Text = allenatore.getCoachLicId().ToString();
+            }
+        }
+
         //save
         private void save_Click(object sender, EventArgs e)
         {
@@ -266,6 +327,7 @@ namespace DinoTem
             controller.saveGlovePersister(fbd.SelectedPath, controller, controller.getBitRecognized());
             controller.saveBootPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
             controller.saveStadiumPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCoachPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
 
             MessageBox.Show("Saved Data", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             MessageBox.Show("All Files Saved at:" + Environment.NewLine + fbd.SelectedPath, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);

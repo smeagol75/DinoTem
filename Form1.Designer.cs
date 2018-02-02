@@ -484,17 +484,17 @@
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.label113 = new System.Windows.Forms.Label();
             this.button14 = new System.Windows.Forms.Button();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.allenatoreName = new System.Windows.Forms.TextBox();
             this.label114 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label115 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.allenatoreId = new System.Windows.Forms.TextBox();
             this.label116 = new System.Windows.Forms.Label();
-            this.comboBox5 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.allenatoreNationality = new System.Windows.Forms.ComboBox();
+            this.allenatoreJap = new System.Windows.Forms.TextBox();
             this.label91 = new System.Windows.Forms.Label();
             this.label117 = new System.Windows.Forms.Label();
             this.stadiumKonami = new System.Windows.Forms.Label();
+            this.applyCoach = new System.Windows.Forms.Button();
+            this.allenatoreLic = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Transfers.SuspendLayout();
@@ -3824,6 +3824,7 @@
             // 
             // Coach
             // 
+            this.Coach.Controls.Add(this.applyCoach);
             this.Coach.Controls.Add(this.groupBox16);
             this.Coach.Controls.Add(this.coachBox);
             this.Coach.Location = new System.Drawing.Point(4, 22);
@@ -5337,19 +5338,19 @@
             this.coachBox.Name = "coachBox";
             this.coachBox.Size = new System.Drawing.Size(233, 589);
             this.coachBox.TabIndex = 131;
+            this.coachBox.SelectedIndexChanged += new System.EventHandler(this.coachBox_SelectedIndexChanged);
             // 
             // groupBox16
             // 
-            this.groupBox16.Controls.Add(this.textBox1);
+            this.groupBox16.Controls.Add(this.allenatoreLic);
+            this.groupBox16.Controls.Add(this.allenatoreJap);
             this.groupBox16.Controls.Add(this.label91);
-            this.groupBox16.Controls.Add(this.comboBox5);
+            this.groupBox16.Controls.Add(this.allenatoreNationality);
             this.groupBox16.Controls.Add(this.label113);
             this.groupBox16.Controls.Add(this.button14);
-            this.groupBox16.Controls.Add(this.textBox3);
+            this.groupBox16.Controls.Add(this.allenatoreName);
             this.groupBox16.Controls.Add(this.label114);
-            this.groupBox16.Controls.Add(this.textBox4);
-            this.groupBox16.Controls.Add(this.label115);
-            this.groupBox16.Controls.Add(this.textBox5);
+            this.groupBox16.Controls.Add(this.allenatoreId);
             this.groupBox16.Controls.Add(this.label116);
             this.groupBox16.Location = new System.Drawing.Point(242, 6);
             this.groupBox16.Name = "groupBox16";
@@ -5383,13 +5384,13 @@
             this.button14.TabIndex = 120;
             this.button14.UseVisualStyleBackColor = true;
             // 
-            // textBox3
+            // allenatoreName
             // 
-            this.textBox3.Location = new System.Drawing.Point(108, 43);
-            this.textBox3.MaxLength = 98;
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(215, 20);
-            this.textBox3.TabIndex = 14;
+            this.allenatoreName.Location = new System.Drawing.Point(108, 43);
+            this.allenatoreName.MaxLength = 98;
+            this.allenatoreName.Name = "allenatoreName";
+            this.allenatoreName.Size = new System.Drawing.Size(215, 20);
+            this.allenatoreName.TabIndex = 14;
             // 
             // label114
             // 
@@ -5400,30 +5401,13 @@
             this.label114.TabIndex = 12;
             this.label114.Text = "Coach Name:";
             // 
-            // textBox4
+            // allenatoreId
             // 
-            this.textBox4.Location = new System.Drawing.Point(13, 90);
-            this.textBox4.MaxLength = 3;
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(63, 20);
-            this.textBox4.TabIndex = 11;
-            // 
-            // label115
-            // 
-            this.label115.AutoSize = true;
-            this.label115.Location = new System.Drawing.Point(10, 70);
-            this.label115.Name = "label115";
-            this.label115.Size = new System.Drawing.Size(90, 13);
-            this.label115.TabIndex = 10;
-            this.label115.Text = "Id without Lic bye";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(13, 43);
-            this.textBox5.MaxLength = 4;
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(63, 20);
-            this.textBox5.TabIndex = 9;
+            this.allenatoreId.Location = new System.Drawing.Point(13, 43);
+            this.allenatoreId.MaxLength = 4;
+            this.allenatoreId.Name = "allenatoreId";
+            this.allenatoreId.Size = new System.Drawing.Size(63, 20);
+            this.allenatoreId.TabIndex = 9;
             // 
             // label116
             // 
@@ -5434,23 +5418,23 @@
             this.label116.TabIndex = 8;
             this.label116.Text = "Coach ID:";
             // 
-            // comboBox5
+            // allenatoreNationality
             // 
-            this.comboBox5.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(374, 43);
-            this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(215, 21);
-            this.comboBox5.TabIndex = 123;
-            this.comboBox5.TabStop = false;
+            this.allenatoreNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.allenatoreNationality.FormattingEnabled = true;
+            this.allenatoreNationality.Location = new System.Drawing.Point(374, 43);
+            this.allenatoreNationality.Name = "allenatoreNationality";
+            this.allenatoreNationality.Size = new System.Drawing.Size(215, 21);
+            this.allenatoreNationality.TabIndex = 123;
+            this.allenatoreNationality.TabStop = false;
             // 
-            // textBox1
+            // allenatoreJap
             // 
-            this.textBox1.Location = new System.Drawing.Point(108, 90);
-            this.textBox1.MaxLength = 98;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(215, 20);
-            this.textBox1.TabIndex = 125;
+            this.allenatoreJap.Location = new System.Drawing.Point(108, 90);
+            this.allenatoreJap.MaxLength = 98;
+            this.allenatoreJap.Name = "allenatoreJap";
+            this.allenatoreJap.Size = new System.Drawing.Size(215, 20);
+            this.allenatoreJap.TabIndex = 125;
             // 
             // label91
             // 
@@ -5478,6 +5462,37 @@
             this.stadiumKonami.Size = new System.Drawing.Size(10, 13);
             this.stadiumKonami.TabIndex = 131;
             this.stadiumKonami.Text = "-";
+            // 
+            // applyCoach
+            // 
+            this.applyCoach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCoach.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.applyCoach.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.applyCoach.FlatAppearance.BorderSize = 0;
+            this.applyCoach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.applyCoach.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCoach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.applyCoach.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.applyCoach.Location = new System.Drawing.Point(806, 598);
+            this.applyCoach.Margin = new System.Windows.Forms.Padding(0);
+            this.applyCoach.Name = "applyCoach";
+            this.applyCoach.Size = new System.Drawing.Size(86, 29);
+            this.applyCoach.TabIndex = 133;
+            this.applyCoach.Text = "Apply";
+            this.applyCoach.UseVisualStyleBackColor = false;
+            this.applyCoach.Click += new System.EventHandler(this.applyCoach_Click);
+            // 
+            // allenatoreLic
+            // 
+            this.allenatoreLic.AutoSize = true;
+            this.allenatoreLic.Location = new System.Drawing.Point(13, 90);
+            this.allenatoreLic.Name = "allenatoreLic";
+            this.allenatoreLic.Size = new System.Drawing.Size(60, 17);
+            this.allenatoreLic.TabIndex = 126;
+            this.allenatoreLic.Text = "Real Id";
+            this.allenatoreLic.UseVisualStyleBackColor = true;
+            this.allenatoreLic.CheckedChanged += new System.EventHandler(this.allenatoriLic_CheckedChanged);
             // 
             // Form1
             // 
@@ -6038,18 +6053,18 @@
         private System.Windows.Forms.GroupBox groupBox16;
         private System.Windows.Forms.Label label113;
         private System.Windows.Forms.Button button14;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox allenatoreName;
         private System.Windows.Forms.Label label114;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.Label label115;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox allenatoreId;
         private System.Windows.Forms.Label label116;
-        private System.Windows.Forms.ComboBox comboBox5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox allenatoreJap;
         private System.Windows.Forms.Label label91;
         public System.Windows.Forms.ComboBox stadiumCountry;
         private System.Windows.Forms.Label stadiumKonami;
         private System.Windows.Forms.Label label117;
+        private System.Windows.Forms.Button applyCoach;
+        public System.Windows.Forms.ComboBox allenatoreNationality;
+        private System.Windows.Forms.CheckBox allenatoreLic;
     }
 }
 

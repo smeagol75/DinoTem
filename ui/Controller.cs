@@ -238,14 +238,14 @@ namespace DinoTem.ui
         {
             MyStadiumPersister stadium = new MyStadiumPersister();
 
-            //try
-            //{
+            try
+            {
                 stadium.applyStadium(index, ref unzlibStadi, stadio, ref scriviStadi);
-            //}
-            //catch
-            //{
-                //MessageBox.Show("Error apply " + stadio.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + stadio.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void applyCoachPersister(int index, Coach allenatore)
@@ -410,7 +410,7 @@ namespace DinoTem.ui
             readBootPersister(folder, bitRecognized);
             readCountryPersister(folder, bitRecognized);
             readStadiumPersister(folder, bitRecognized);
-            //readCoachPersister(folder, bitRecognized);
+            readCoachPersister(folder, bitRecognized);
 
             //readCountryPersister(folder, bitRecognized);
             //if (countryList.Count == 0)
@@ -498,7 +498,7 @@ namespace DinoTem.ui
             Form1._Form1.glovesBox.SelectedIndex = 0;
             Form1._Form1.bootsBox.SelectedIndex = 0;
             Form1._Form1.stadiumsBox.SelectedIndex = 0;
-            //Form1._Form1.coachBox.SelectedIndex = 0;
+            Form1._Form1.coachBox.SelectedIndex = 0;
             //teamsBox.SelectedIndex = 0;
         }
 

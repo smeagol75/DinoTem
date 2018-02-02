@@ -12,6 +12,7 @@ namespace DinoTem.model
         private byte byteLic;
         private string name;
         private string japName;
+        UInt16 coachLicId;
 
         public Coach(UInt32 id)
         {
@@ -24,6 +25,11 @@ namespace DinoTem.model
         public UInt32 getId()
         {
             return this.id;
+        }
+
+        public UInt16 getCoachLicId()
+        {
+            return this.coachLicId;
         }
 
         public UInt16 getCountry()
@@ -60,6 +66,14 @@ namespace DinoTem.model
                 throw new ArgumentException("Coach's nationality isn't valid - Id coach: " + getId());
 
             this.country = country;
+        }
+
+        public void setCoachLicId(UInt16 coachLicId)
+        {
+            if (coachLicId < 0)
+                throw new ArgumentException("Coach's license id isn't valid - Id coach: " + getId());
+
+            this.coachLicId = coachLicId;
         }
 
         public void setByteLic(byte byteLic)

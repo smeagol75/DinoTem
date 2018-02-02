@@ -40,26 +40,41 @@ namespace DinoTem.persistence
         {
             memory1 = unzlib(patch, bitRecognized);
 
+            var result = readNationality();
+
             //Calcolo paesi
             int bytesCountries = (int)memory1.Length;
             int country = bytesCountries / block;
 
             string countryName;
+            UInt32 countryId;
             try
             {
                 // Use the memory stream in a binary reader.
                 reader = new BinaryReader(memory1);
                 int i1 = 0;
+                long START = -1348;
                 long START2 = -140;
 
                 int NumberOfRepetitions1 = Convert.ToInt32(country);
                 for (i1 = 1; i1 <= NumberOfRepetitions1; i1++)
                 {
+                    START += block;
+                    memory1.Seek(START, SeekOrigin.Begin);
+                    UInt32 Valor_imp_32 = reader.ReadUInt32();
+                    countryId = Valor_imp_32 << 13;
+                    countryId = countryId >> 23;
+
                     START2 += block;
                     memory1.Seek(START2, SeekOrigin.Begin);
                     countryName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0');
 
                     Form1._Form1.stadiumCountry.Items.Add(countryName);
+
+                    string mapValue;
+                    if (!result.TryGetValue(countryId, out mapValue))
+                        throw new ArgumentException("id not found in file Nationality.ini");
+                    Form1._Form1.allenatoreNationality.Items.Add(mapValue);
                 }
                 writer = new BinaryWriter(memory1);
             }
@@ -67,6 +82,56 @@ namespace DinoTem.persistence
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SplashScreen._SplashScreen.Close();
+            }
+        }
+
+        private Dictionary<uint, string> readNationality()
+        {
+            var result = new Dictionary<uint, string>();
+
+            foreach (string line in File.ReadLines(Application.StartupPath + @"\Data\Nationality.ini", Encoding.UTF8))
+            {
+                string[] tokenizer = line.Split(';');
+                uint id = parseUint(tokenizer[0].Trim());
+
+                if (id != 0)
+                {
+                    string nationality = tokenizer[1].Trim();
+                    result.Add(id, nationality);
+                }
+            }
+
+            return result;
+        }
+
+        private Dictionary<uint, string> readNation()
+        {
+            var result = new Dictionary<uint, string>();
+
+            foreach (string line in File.ReadLines(Application.StartupPath + @"\Data\Nation.ini", Encoding.UTF8))
+            {
+                string[] tokenizer = line.Split(';');
+                uint id = parseUint(tokenizer[0].Trim());
+
+                if (id != 0)
+                {
+                    string nationality = tokenizer[1].Replace(" ", "").Trim();
+                    //result.Add(id, nationality);
+                }
+            }
+
+            return result;
+        }
+
+        private uint parseUint(string s)
+        {
+            try
+            {
+                return uint.Parse(s);
+            }
+            catch
+            {
+                return 0;
             }
         }
 
