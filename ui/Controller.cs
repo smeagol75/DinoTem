@@ -37,6 +37,9 @@ namespace DinoTem.ui
         public MemoryStream unzlibAllenatori;
         public BinaryReader leggiAllenatori;
         public BinaryWriter scriviAllenatori;
+        public MemoryStream unzlibGiocatori;
+        public BinaryReader leggiGiocatori;
+        public BinaryWriter scriviGiocatori;
 
         public void readBallPersister(string patch, int bitRecognized)
         {
@@ -122,6 +125,20 @@ namespace DinoTem.ui
             }
         }
 
+        public void readPlayerPersister(string patch, int bitRecognized)
+        {
+            MyPlayerPersister playerReader = new MyPlayerPersister();
+
+            try
+            {
+                playerReader.load(patch, bitRecognized, ref unzlibGiocatori, ref leggiGiocatori, ref scriviGiocatori);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void saveBallPersister(string patch, Controller controller, int bitRecognized)
         {
             MyBallPersister ballSave = new MyBallPersister();
@@ -189,6 +206,20 @@ namespace DinoTem.ui
             catch
             {
                 MessageBox.Show("Error saved Coach.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void savePlayerPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyPlayerPersister playerSave = new MyPlayerPersister();
+
+            try
+            {
+                playerSave.save(patch, ref unzlibGiocatori, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Player.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -262,6 +293,20 @@ namespace DinoTem.ui
             }
         }
 
+        public void applyPlayerPersister(int index, Player giocatore)
+        {
+            MyPlayerPersister player = new MyPlayerPersister();
+
+            try
+            {
+                player.applyPlayer(index, ref unzlibGiocatori, giocatore, ref scriviGiocatori);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + giocatore.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void closeMemory()
         {
             if (getBitRecognized() != -1)
@@ -284,6 +329,9 @@ namespace DinoTem.ui
                 unzlibPaesi.Close();
                 leggiPaesi.Close();
                 scriviPaesi.Close();
+                unzlibGiocatori.Close();
+                leggiGiocatori.Close();
+                scriviGiocatori.Close();
             }
         }
 
@@ -396,7 +444,6 @@ namespace DinoTem.ui
 
             //teamBox1.Items.Clear();
             //teamBox2.Items.Clear();
-            //giocatoreView.Items.Clear();
             //teamsBox.Items.Clear();
             Form1._Form1.ballsBox.Items.Clear();
             Form1._Form1.glovesBox.Items.Clear();
@@ -404,6 +451,7 @@ namespace DinoTem.ui
             Form1._Form1.stadiumsBox.Items.Clear();
             Form1._Form1.coachBox.Items.Clear();
             Form1._Form1.stadiumCountry.Items.Clear();
+            Form1._Form1.playersBox.Items.Clear();
 
             readBallPersister(folder, bitRecognized);
             readGlovePersister(folder, bitRecognized);
@@ -411,6 +459,7 @@ namespace DinoTem.ui
             readCountryPersister(folder, bitRecognized);
             readStadiumPersister(folder, bitRecognized);
             readCoachPersister(folder, bitRecognized);
+            readPlayerPersister(folder, bitRecognized);
 
             //readCountryPersister(folder, bitRecognized);
             //if (countryList.Count == 0)
@@ -499,6 +548,7 @@ namespace DinoTem.ui
             Form1._Form1.bootsBox.SelectedIndex = 0;
             Form1._Form1.stadiumsBox.SelectedIndex = 0;
             Form1._Form1.coachBox.SelectedIndex = 0;
+            Form1._Form1.playersBox.SelectedIndex = 0;
             //teamsBox.SelectedIndex = 0;
         }
 
@@ -555,6 +605,14 @@ namespace DinoTem.ui
             return coach;
         }
 
+        public Player leggiGiocatore(int index)
+        {
+            MyPlayerPersister playerReader = new MyPlayerPersister();
+            Player player = playerReader.loadPlayer(index, leggiGiocatori);
+
+            return player;
+        }
+
         public int findCountry(UInt32 idCountry)
         {
             for (int i = 0; i < Form1._Form1.stadiumCountry.Items.Count; i++)
@@ -578,7 +636,6 @@ namespace DinoTem.ui
         //form1
         //player
         //team
-        //stadium
         //DB2
         //Formazione form
         //Giocatore form
@@ -594,21 +651,6 @@ namespace DinoTem.ui
             try
             {
                 teamList = teamReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void readPlayerPersister(string patch, int bitRecognized)
-        {
-            MyPlayerPersister playerReader = new MyPlayerPersister();
-
-            try
-            {
-                playerList = playerReader.load(patch, bitRecognized);
             }
             catch (FileNotFoundException e)
             {
@@ -752,21 +794,6 @@ namespace DinoTem.ui
 
         }
 
-        public void savePlayerPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyPlayerPersister playerSave = new MyPlayerPersister();
-
-            try
-            {
-                playerSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved Player.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         public void saveTeamPersister(string patch, Controller controller, int bitRecognized)
         {
             MyTeamPersister teamSave = new MyTeamPersister();
@@ -899,7 +926,7 @@ namespace DinoTem.ui
         {
             Player temp = getPlayerById(idPlayer);
             if (idPlayer == temp.getId())
-                temp.setPlayerName(name);
+                temp.setName(name);
         }
 
         public void changeShirtPlayer(long idPlayer, string name)
@@ -982,7 +1009,7 @@ namespace DinoTem.ui
 
         public void UpdateFormPlayer(ListView l1, Player temp)
         {
-            l1.Items[getPositionListPlayerById(temp.getId())].Text = temp.getPlayerName();
+            l1.Items[getPositionListPlayerById(temp.getId())].Text = temp.getName();
         }
 
         public string getStringClubTeamOfPlayer(long idPlayer, int type) {
@@ -1371,15 +1398,15 @@ namespace DinoTem.ui
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            MyPlayerPersister playerReader = new MyPlayerPersister();
-            try
-            {
-                playerList2 = playerReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //MyPlayerPersister playerReader = new MyPlayerPersister();
+            //try
+            //{
+                //playerList2 = playerReader.load(folder, bitRecognized);
+            //}
+            //catch (FileNotFoundException e)
+            //{
+                //MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
             MyBallConditionPersister ballConditionReader = new MyBallConditionPersister();
             try
@@ -2408,13 +2435,13 @@ namespace DinoTem.ui
             }
         }
 
-        public void changeYouthClub(Player temp, Team temp2)
+        /*public void changeYouthClub(Player temp, Team temp2)
         {
             if (temp2.getId() == 99999)
                 temp.setYouthPlayerId(0);
             else
                 temp.setYouthPlayerId(temp2.getId());
-        }
+        }*/
 
         //transferPlayer Drag&Drop
         public void transferPlayerAtoA(int intselectedindex, int dropIndex, int idTeam, ComboBox teamBox1, ComboBox teamBox2)
@@ -3201,329 +3228,329 @@ namespace DinoTem.ui
             {
                 if (temp.getId() == 263150)
                 {
-                    temp.setPlayerName("O. KAHN");
+                    temp.setName("O. KAHN");
                     temp.setShirtName("KAHN");
                 }
                 if (temp.getId() == 263063)
                 {
-                    temp.setPlayerName("J. STAM");
+                    temp.setName("J. STAM");
                     temp.setShirtName("STAM");
                 }
                 if (temp.getId() == 263109)
                 {
-                    temp.setPlayerName("F. CANNAVARO");
+                    temp.setName("F. CANNAVARO");
                     temp.setShirtName("CANNAVARO");
                 }
                 if (temp.getId() == 263022)
                 {
-                    temp.setPlayerName("L. THURAM");
+                    temp.setName("L. THURAM");
                     temp.setShirtName("THURAM");
                 }
                 if (temp.getId() == 263107)
                 {
-                    temp.setPlayerName("P. MALDINI");
+                    temp.setName("P. MALDINI");
                     temp.setShirtName("MALDINI");
                 }
                 if (temp.getId() == 263024)
                 {
-                    temp.setPlayerName("P. VIERA");
+                    temp.setName("P. VIERA");
                     temp.setShirtName("VIERA");
                 }
                 if (temp.getId() == 263001)
                 {
-                    temp.setPlayerName("P. GUARDIOLA");
+                    temp.setName("P. GUARDIOLA");
                     temp.setShirtName("GUARDIOLA");
                 }
                 if (temp.getId() == 262959)
                 {
-                    temp.setPlayerName("D. BECKHAM");
+                    temp.setName("D. BECKHAM");
                     temp.setShirtName("BECKHAM");
                 }
                 if (temp.getId() == 262984)
                 {
-                    temp.setPlayerName("L. FIGO");
+                    temp.setName("L. FIGO");
                     temp.setShirtName("FIGO");
                 }
                 if (temp.getId() == 263027)
                 {
-                    temp.setPlayerName("Z. ZIDANE");
+                    temp.setName("Z. ZIDANE");
                     temp.setShirtName("ZIDANE");
                 }
                 if (temp.getId() == 264272)
                 {
-                    temp.setPlayerName("VAN NISTELROOY");
+                    temp.setName("VAN NISTELROOY");
                     temp.setShirtName("VAN NISTELROOY");
                 }
                 if (temp.getId() == 263172)
                 {
-                    temp.setPlayerName("P. SCHMEICHEL");
+                    temp.setName("P. SCHMEICHEL");
                     temp.setShirtName("SCHMEICHEL");
                 }
                 if (temp.getId() == 262997)
                 {
-                    temp.setPlayerName("F. HIERRO");
+                    temp.setName("F. HIERRO");
                     temp.setShirtName("HIERRO");
                 }
                 if (temp.getId() == 263019)
                 {
-                    temp.setPlayerName("M. DESAILLY");
+                    temp.setName("M. DESAILLY");
                     temp.setShirtName("DESAILLY");
                 }
                 if (temp.getId() == 264275)
                 {
-                    temp.setPlayerName("L. BLANC");
+                    temp.setName("L. BLANC");
                     temp.setShirtName("BLANC");
                 }
                 if (temp.getId() == 263021)
                 {
-                    temp.setPlayerName("B. LIZARAZU");
+                    temp.setName("B. LIZARAZU");
                     temp.setShirtName("LIZARAZU");
                 }
                 if (temp.getId() == 262869)
                 {
-                    temp.setPlayerName("ROY KEANE");
+                    temp.setName("ROY KEANE");
                     temp.setShirtName("ROY KEANE");
                 }
                 if (temp.getId() == 262960)
                 {
-                    temp.setPlayerName("P. SCHOLES");
+                    temp.setName("P. SCHOLES");
                     temp.setShirtName("SCHOLES");
                 }
                 if (temp.getId() == 262981)
                 {
-                    temp.setPlayerName("RUI COSTA");
+                    temp.setName("RUI COSTA");
                     temp.setShirtName("RUI COSTA");
                 }
                 if (temp.getId() == 264303)
                 {
-                    temp.setPlayerName("Z. BOBAN");
+                    temp.setName("Z. BOBAN");
                     temp.setShirtName("BOBAN");
                 }
                 if (temp.getId() == 263072)
                 {
-                    temp.setPlayerName("M. OVERMARS");
+                    temp.setName("M. OVERMARS");
                     temp.setShirtName("OVERMARS");
                 }
                 if (temp.getId() == 264488)
                 {
-                    temp.setPlayerName("R. BAGGIO");
+                    temp.setName("R. BAGGIO");
                     temp.setShirtName("BAGGIO");
                 }
                 if (temp.getId() == 263509)
                 {
-                    temp.setPlayerName("A. SHEVCHENKO");
+                    temp.setName("A. SHEVCHENKO");
                     temp.setShirtName("SHEVCHENKO");
                 }
                 if (temp.getId() == 263392)
                 {
-                    temp.setPlayerName("S. MIHAJLOVIC");
+                    temp.setName("S. MIHAJLOVIC");
                     temp.setShirtName("MIHAJLOVIC");
                 }
                 if (temp.getId() == 263032)
                 {
-                    temp.setPlayerName("C. MAKELELE");
+                    temp.setName("C. MAKELELE");
                     temp.setShirtName("MAKELELE");
                 }
                 if (temp.getId() == 263154)
                 {
-                    temp.setPlayerName("M. BALLACK");
+                    temp.setName("M. BALLACK");
                     temp.setShirtName("BALLACK");
                 }
                 if (temp.getId() == 263134)
                 {
-                    temp.setPlayerName("P. NEDVED");
+                    temp.setName("P. NEDVED");
                     temp.setShirtName("NEDVED");
                 }
                 if (temp.getId() == 263246)
                 {
-                    temp.setPlayerName("J. LITMANEN");
+                    temp.setName("J. LITMANEN");
                     temp.setShirtName("LITMANEN");
                 }
                 if (temp.getId() == 264036)
                 {
-                    temp.setPlayerName("D. BERGKAMP");
+                    temp.setName("D. BERGKAMP");
                     temp.setShirtName("BERGKAMP");
                 }
                 if (temp.getId() == 262961)
                 {
-                    temp.setPlayerName("M. OWEN");
+                    temp.setName("M. OWEN");
                     temp.setShirtName("OWEN");
                 }
                 if (temp.getId() == 263116)
                 {
-                    temp.setPlayerName("F. INZAGHI");
+                    temp.setName("F. INZAGHI");
                     temp.setShirtName("INZAGHI");
                 }
                 if (temp.getId() == 264101)
                 {
-                    temp.setPlayerName("A. SHEARER");
+                    temp.setName("A. SHEARER");
                     temp.setShirtName("SHEARER");
                 }
 
                 if (temp.getId() == 263831)
                 {
-                    temp.setPlayerName("J. CHILAVERT");
+                    temp.setName("J. CHILAVERT");
                     temp.setShirtName("CHILAVERT");
                 }
                 if (temp.getId() == 263776)
                 {
-                    temp.setPlayerName("ALDAIR");
+                    temp.setName("ALDAIR");
                     temp.setShirtName("ALDAIR");
                 }
                 if (temp.getId() == 263877)
                 {
-                    temp.setPlayerName("R. AYALA");
+                    temp.setName("R. AYALA");
                     temp.setShirtName("AYALA");
                 }
                 if (temp.getId() == 263769)
                 {
-                    temp.setPlayerName("CAFU'");
+                    temp.setName("CAFU'");
                     temp.setShirtName("CAFU'");
                 }
                 if (temp.getId() == 263768)
                 {
-                    temp.setPlayerName("ROBERTO CARLOS");
+                    temp.setName("ROBERTO CARLOS");
                     temp.setShirtName("ROBERTO CARLOS");
                 }
                 if (temp.getId() == 264478)
                 {
-                    temp.setPlayerName("DUNGA");
+                    temp.setName("DUNGA");
                     temp.setShirtName("DUNGA");
                 }
                 if (temp.getId() == 263879)
                 {
-                    temp.setPlayerName("D. SIMEONE");
+                    temp.setName("D. SIMEONE");
                     temp.setShirtName("SIMEONE");
                 }
                 if (temp.getId() == 264483)
                 {
-                    temp.setPlayerName("C. VALDERRAMA");
+                    temp.setName("C. VALDERRAMA");
                     temp.setShirtName("VALDERRAMA");
                 }
                 if (temp.getId() == 263774)
                 {
-                    temp.setPlayerName("ROMARIO");
+                    temp.setName("ROMARIO");
                     temp.setShirtName("ROMARIO");
                 }
                 if (temp.getId() == 263885)
                 {
-                    temp.setPlayerName("G. BATISTUTA");
+                    temp.setName("G. BATISTUTA");
                     temp.setShirtName("BATISTUTA");
                 }
                 if (temp.getId() == 264281)
                 {
-                    temp.setPlayerName("RONALDO");
+                    temp.setName("RONALDO");
                     temp.setShirtName("RONALDO");
                 }
                 if (temp.getId() == 264470)
                 {
-                    temp.setPlayerName("C. TAFFAREL");
+                    temp.setName("C. TAFFAREL");
                     temp.setShirtName("TAFFAREL");
                 }
                 if (temp.getId() == 263744)
                 {
-                    temp.setPlayerName("I. CORDOBA");
+                    temp.setName("I. CORDOBA");
                     temp.setShirtName("CORDOBA");
                 }
                 if (temp.getId() == 263835)
                 {
-                    temp.setPlayerName("F. ARCE");
+                    temp.setName("F. ARCE");
                     temp.setShirtName("ARCE");
                 }
                 if (temp.getId() == 325168)
                 {
-                    temp.setPlayerName("C. BABAYARO");
+                    temp.setName("C. BABAYARO");
                     temp.setShirtName("BABAYARO");
                 }
                 if (temp.getId() == 264299)
                 {
-                    temp.setPlayerName("F. REDONDO");
+                    temp.setName("F. REDONDO");
                     temp.setShirtName("REDONDO");
                 }
                 if (temp.getId() == 263619)
                 {
-                    temp.setPlayerName("J. OKOCHA");
+                    temp.setName("J. OKOCHA");
                     temp.setShirtName("OKOCHA");
                 }
                 if (temp.getId() == 263898)
                 {
-                    temp.setPlayerName("H. NAKATA");
+                    temp.setName("H. NAKATA");
                     temp.setShirtName("NAKATA");
                 }
                 if (temp.getId() == 325171)
                 {
-                    temp.setPlayerName("C. LOPEZ");
+                    temp.setName("C. LOPEZ");
                     temp.setShirtName("LOPEZ");
                 }
                 if (temp.getId() == 325174)
                 {
-                    temp.setPlayerName("DENILSON");
+                    temp.setName("DENILSON");
                     temp.setShirtName("DENILSON");
                 }
                 if (temp.getId() == 325170)
                 {
-                    temp.setPlayerName("A. ORTEGA");
+                    temp.setName("A. ORTEGA");
                     temp.setShirtName("ORTEGA");
                 }
                 if (temp.getId() == 263620)
                 {
-                    temp.setPlayerName("N. KANU");
+                    temp.setName("N. KANU");
                     temp.setShirtName("KANU");
                 }
                 if (temp.getId() == 263818)
                 {
-                    temp.setPlayerName("M. SALAS");
+                    temp.setName("M. SALAS");
                     temp.setShirtName("SALAS");
                 }
                 if (temp.getId() == 263699)
                 {
-                    temp.setPlayerName("J. CAMPOS");
+                    temp.setName("J. CAMPOS");
                     temp.setShirtName("CAMPOS");
                 }
                 if (temp.getId() == 262235)
                 {
-                    temp.setPlayerName("MYUNG-BO HONG");
+                    temp.setName("MYUNG-BO HONG");
                     temp.setShirtName("MYUNG-BO HONG");
                 }
                 if (temp.getId() == 263854)
                 {
-                    temp.setPlayerName("P. MONTERO");
+                    temp.setName("P. MONTERO");
                     temp.setShirtName("MONTERO");
                 }
                 if (temp.getId() == 263770)
                 {
-                    temp.setPlayerName("EMERSON");
+                    temp.setName("EMERSON");
                     temp.setShirtName("EMERSON");
                 }
                 if (temp.getId() == 263889)
                 {
-                    temp.setPlayerName("M. ALMEYDA");
+                    temp.setName("M. ALMEYDA");
                     temp.setShirtName("ALMEYDA");
                 }
                 if (temp.getId() == 325169)
                 {
-                    temp.setPlayerName("N. SOLANO");
+                    temp.setName("N. SOLANO");
                     temp.setShirtName("SOLANO");
                 }
                 if (temp.getId() == 263643)
                 {
-                    temp.setPlayerName("P. M'BOMA");
+                    temp.setName("P. M'BOMA");
                     temp.setShirtName("M'BOMA");
                 }
                 if (temp.getId() == 263819)
                 {
-                    temp.setPlayerName("I. ZAMORANO");
+                    temp.setName("I. ZAMORANO");
                     temp.setShirtName("ZAMORANO");
                 }
                 if (temp.getId() == 264184)
                 {
-                    temp.setPlayerName("G. WEAH");
+                    temp.setName("G. WEAH");
                     temp.setShirtName("WEAH");
                 }
             }
 
             UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
-            updatePlayerList(Form1._Form1.giocatoreView);
+            //updatePlayerList(Form1._Form1.giocatoreView);
         }
 
         //globalFunction
@@ -3731,7 +3758,7 @@ namespace DinoTem.ui
         {
             foreach (Player temp in getListPlayer())
             {
-                temp.setPlayerName(temp.getPlayerName().ToUpper());
+                temp.setName(temp.getName().ToUpper());
             }
             updatePlayerList(l1);
             UpdateForm(t1, t2);
@@ -3741,7 +3768,7 @@ namespace DinoTem.ui
         {
             foreach (Player temp in getListPlayer())
             {
-                temp.setPlayerName(temp.getPlayerName().ToLower());
+                temp.setName(temp.getName().ToLower());
             }
             updatePlayerList(l1);
             UpdateForm(t1, t2);
@@ -3752,11 +3779,11 @@ namespace DinoTem.ui
             foreach (Player temp in getListPlayer())
             {
                 string stringa = "";
-                foreach (string x in temp.getPlayerName().Split())
+                foreach (string x in temp.getName().Split())
                 {
                     stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
                 }
-                temp.setPlayerName(stringa.Trim());
+                temp.setName(stringa.Trim());
             }
             updatePlayerList(l1);
             UpdateForm(t1, t2);

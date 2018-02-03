@@ -75,6 +75,7 @@ namespace DinoTem.persistence
                     if (!result.TryGetValue(countryId, out mapValue))
                         throw new ArgumentException("id not found in file Nationality.ini");
                     Form1._Form1.allenatoreNationality.Items.Add(mapValue);
+                    Form1._Form1.giocatoreNationality.Items.Add(mapValue);
                 }
                 writer = new BinaryWriter(memory1);
             }

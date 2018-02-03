@@ -132,36 +132,36 @@ namespace DinoTem
             item.SubItems.Add(temp2.getStringPosition());
             item.SubItems.Add(temp2.getStringPosition());
             item.SubItems.Add(temp2.getStringPosition());
-            item.SubItems.Add(temp2.getPlayerName());
+            item.SubItems.Add(temp2.getName());
             item.SubItems.Add(pAssignment.getShirtNumber().ToString());
 
             if (pAssignment.getOrder() <= 10)
             {
-                capitain.Items.Add(temp2.getPlayerName());
-                penaltyKT.Items.Add(temp2.getPlayerName());
-                longFT.Items.Add(temp2.getPlayerName());
-                leftCK.Items.Add(temp2.getPlayerName());
-                shortFT.Items.Add(temp2.getPlayerName());
-                rightCK.Items.Add(temp2.getPlayerName());
+                capitain.Items.Add(temp2.getName());
+                penaltyKT.Items.Add(temp2.getName());
+                longFT.Items.Add(temp2.getName());
+                leftCK.Items.Add(temp2.getName());
+                shortFT.Items.Add(temp2.getName());
+                rightCK.Items.Add(temp2.getName());
             }
 
             if (pAssignment.getRightCornerKick())
-                rightCK.Text = temp2.getPlayerName();
+                rightCK.Text = temp2.getName();
 
             if (pAssignment.getPenaltyKick())
-                penaltyKT.Text = temp2.getPlayerName();
+                penaltyKT.Text = temp2.getName();
 
             if (pAssignment.getLongShotLk())
-                longFT.Text = temp2.getPlayerName();
+                longFT.Text = temp2.getName();
 
             if (pAssignment.getLeftCkTk())
-                leftCK.Text = temp2.getPlayerName();
+                leftCK.Text = temp2.getName();
 
             if (pAssignment.getShortFoulFk())
-                shortFT.Text = temp2.getPlayerName();
+                shortFT.Text = temp2.getName();
 
             if (pAssignment.getCaptain())
-                capitain.Text = temp2.getPlayerName();
+                capitain.Text = temp2.getName();
 
             return item;
         }

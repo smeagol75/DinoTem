@@ -379,9 +379,9 @@ namespace DinoTem
             //caricare + pulire campi
             campi();
 
-            this.Text = "Player: " + temp.getPlayerName();
+            this.Text = "Player: " + temp.getName();
 
-            playerName.Text = temp.getPlayerName();
+            playerName.Text = temp.getName();
             japaneseName.Text = temp.getJapanese();
             shirtName.Text = temp.getShirtName();
             playerId.Text = temp.getId().ToString();
@@ -389,7 +389,7 @@ namespace DinoTem
             age.Text = temp.getAge().ToString();
             weight.Text = temp.getWeight().ToString();
             height.Text = temp.getHeight().ToString();
-            strongerFoot.Text = temp.getstringStrongerFoot();
+            strongerFoot.Text = temp.getStringStrongerFoot();
             playingStyle.Text = temp.getStringPlayingStyle();
 
             if (playerType.Text == "Fake")
@@ -411,7 +411,7 @@ namespace DinoTem
             kickingPower.Text = temp.getKickingPower().ToString();
             speed.Text = temp.getSpeed().ToString();
             explosivePower.Text = temp.getExplosiveP().ToString();
-            BodyControl.Text = temp.getBodyControll().ToString();
+            BodyControl.Text = temp.getBodyControl().ToString();
             physical.Text = temp.getPhysical().ToString();
             jump.Text = temp.getJump().ToString();
             stamina.Text = temp.getStamina().ToString();
@@ -426,14 +426,14 @@ namespace DinoTem
             weUsage.Text = temp.getWcUsage().ToString();
             InjuryRes.Text = temp.getInjuryRes().ToString();
 
-            if (temp.getHiddenPlayer())
+            /*if (temp.getHiddenPlayer())
                 hiddenPlayer.Checked = true;
             else
                 hiddenPlayer.Checked = false;
             if (temp.getLegendGoldenBall())
                 wonGoldenBall.Checked = true;
             else
-                wonGoldenBall.Checked = false;
+                wonGoldenBall.Checked = false;*/
             DribHunch.Text = temp.getDriblingH().ToString();
             DribArmMove.Text = temp.getDriblingArm().ToString();
             RunHunch.Text = temp.getRunningH().ToString();
@@ -459,7 +459,7 @@ namespace DinoTem
             CF.Text = temp.getStringCF();
 
             //skills
-            if (temp.getFightingSpirit())
+            /*if (temp.getFightingSpirit())
                 fightingSpirit.Checked = true;
             else
                 fightingSpirit.Checked = false;
@@ -635,7 +635,7 @@ namespace DinoTem
             {
                 skinColour.Visible = false;
                 skin1.Visible = false;
-            }
+            }*/
 
             starIndicator.Value = temp.getStarPlayerIndicator();
 
@@ -1245,7 +1245,7 @@ namespace DinoTem
 		//save
         private void button4_Click(object sender, EventArgs e)
         {
-            temp.setPlayerName(playerName.Text);
+            /*temp.setName(playerName.Text);
             temp.setJapanese(japaneseName.Text);
             temp.setShirtName(shirtName.Text);
             temp.setWeight(int.Parse(weight.Text));
@@ -1275,12 +1275,12 @@ namespace DinoTem
             temp.setDribbling(int.Parse(dribbling.Text));
             temp.setExplosiveP(int.Parse(explosivePower.Text));
             temp.setStamina(int.Parse(stamina.Text));
-            temp.setSwerve(int.Parse(swerve.Text));
+            temp.setSwerve(int.Parse(swerve.Text));*/
             /*unk*/
-            temp.setAge(int.Parse(age.Text));
+            /*temp.setAge(int.Parse(age.Text));
             temp.setLoftedPass(int.Parse(loftedPass.Text));
             temp.setPhysical(int.Parse(physical.Text));
-            temp.setBodyControll(int.Parse(BodyControl.Text));
+            temp.setBodyControl(int.Parse(BodyControl.Text));
             temp.setAttack(int.Parse(attack.Text));
             temp.setWcUsage(int.Parse(weUsage.Text));
             temp.setDmf(DMF.SelectedIndex);
@@ -1295,9 +1295,9 @@ namespace DinoTem
             temp.setPinCrossing(pinpointCrossing.Checked);
             temp.setSombrero(sombrero.Checked);
             temp.setRunningH(int.Parse(RunHunch.Text));
-            temp.setSs(SS.SelectedIndex);
+            temp.setSs(SS.SelectedIndex);*/
             /*unk2*/
-            temp.setRwf(RWF.SelectedIndex);
+            /*temp.setRwf(RWF.SelectedIndex);
             temp.setLmf(LMF.SelectedIndex);
             temp.setLwf(LWF.SelectedIndex);
             temp.setCf(CF.SelectedIndex);
@@ -1324,14 +1324,14 @@ namespace DinoTem
                 temp.setStrongerFoot(false);
             temp.setKnucleShot(knucleShot.Checked);
             temp.setFirstTimeShot(firstTimeShot.Checked);
-            temp.setComIncisiveRun(incisiveRun.Checked);
+            temp.setComIncisiveRun(incisiveRun.Checked);*/
             /*unk3*/
-            temp.setHiddenPlayer(hiddenPlayer.Checked);
+            /*temp.setHiddenPlayer(hiddenPlayer.Checked);
             temp.setLongRange(longRangeDrive.Checked);
             temp.setOneTouchPass(oneTouchPass.Checked);
-            temp.setHellTick(hellTrick.Checked);
+            temp.setHellTick(hellTrick.Checked);*/
             /*unk4*/
-            temp.setManMarking(manMarking.Checked);
+            /*temp.setManMarking(manMarking.Checked);
             temp.setLegendGoldenBall(wonGoldenBall.Checked);
             temp.setMarseilleTurn(marseilleTurn.Checked);
             temp.setHeading(heading.Checked);
@@ -1343,23 +1343,23 @@ namespace DinoTem
             temp.setLowLoftedPass(lowLoftedPass.Checked);
             temp.setFightingSpirit(fightingSpirit.Checked);
             temp.setFlipFlap(flipFlap.Checked);
-            temp.setWeightnessPass(weightedPass.Checked);
+            temp.setWeightnessPass(weightedPass.Checked);*/
             /*unk6*/
             /*unk7*/
             /*unk8*/
-            temp.setComMazingRun(mazingRun.Checked);
+            /*temp.setComMazingRun(mazingRun.Checked);
             temp.setAcrobatingClear(acrobaticClear.Checked);
             temp.setComBallExpert(longBallExpert.Checked);
             temp.setCutBehind(cutBehindTurn.Checked);
-            temp.setComLongRanger(longRanger.Checked);
+            temp.setComLongRanger(longRanger.Checked);*/
 
             if (skinColour.Value > 0)
                 controller.changeSkinColour(temp, int.Parse(skinColour.Value.ToString()));
 
-            controller.changeYouthClub(temp, (Team) youthClub.SelectedItem);
+            //controller.changeYouthClub(temp, (Team) youthClub.SelectedItem);
 
             controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
-			controller.UpdateFormPlayer(Form1._Form1.giocatoreView, temp);
+			//controller.UpdateFormPlayer(Form1._Form1.giocatoreView, temp);
             this.Close();
         }
 

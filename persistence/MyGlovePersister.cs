@@ -38,7 +38,7 @@ namespace DinoTem.persistence
         {
             memory1 = unzlib(patch, bitRecognized);
 
-            //Calcolo palloni
+            //Calcolo guanti
             int bytesGloves = (int)memory1.Length;
             int glove = bytesGloves / block;
 

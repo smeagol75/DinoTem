@@ -38,7 +38,7 @@ namespace DinoTem.ui
         {
             memory1 = unzlib(patch, bitRecognized);
 
-            //Calcolo paesi
+            //Calcolo allenatori
             int bytesCoach = (int)memory1.Length;
             int coach = bytesCoach / block;
 

@@ -320,6 +320,64 @@ namespace DinoTem
             }
         }
 
+        //player
+        private void leggereGiocatore(Player temp)
+        {
+            giocatoreNazionale.Text = "";
+            giocatoreSquadra.Text = "";
+            giocatoreNumber.Text = "";
+
+            giocatoreName.Text = temp.getName();
+            giocatoreShirt.Text = temp.getShirtName();
+            giocatoreID.Text = temp.getId().ToString();
+            giocatoreType.Text = temp.getStringFake();
+            giocatoreAge.Text = temp.getAge().ToString();
+            giocatoreWeight.Text = temp.getWeight().ToString();
+            giocatoreHeight.Text = temp.getHeight().ToString();
+            giocatoreForm.Text = temp.getForm().ToString();
+            giocatoreAcc.Text = temp.getWeakFootAcc().ToString();
+            giocatoreUse.Text = temp.getWcUsage().ToString();
+            giocatoreInjury.Text = temp.getInjuryRes().ToString();
+
+            attack.Text = temp.getAttack().ToString();
+            ballControll.Text = temp.getBallControll().ToString();
+            dribbling.Text = temp.getDribbling().ToString();
+            lowPass.Text = temp.getLowPass().ToString();
+            loftedPass.Text = temp.getLoftedPass().ToString();
+            finishing.Text = temp.getFinishing().ToString();
+            placeKick.Text = temp.getPlaceKick().ToString();
+            swerve.Text = temp.getSwerve().ToString();
+            header.Text = temp.getHeader().ToString();
+            defense.Text = temp.getDefense().ToString();
+            ballWinning.Text = temp.getBallWinning().ToString();
+            kickingPower.Text = temp.getKickingPower().ToString();
+            speed.Text = temp.getSpeed().ToString();
+            explosivePower.Text = temp.getExplosiveP().ToString();
+            bodyControll.Text = temp.getBodyControl().ToString();
+            physical.Text = temp.getPhysical().ToString();
+            jump.Text = temp.getJump().ToString();
+            stamina.Text = temp.getStamina().ToString();
+            goalkeeping.Text = temp.getGoalkeeping().ToString();
+            cathing.Text = temp.getCathing().ToString();
+            clearing.Text = temp.getClearing().ToString();
+            reflexes.Text = temp.getReflexes().ToString();
+            coverage.Text = temp.getCoverage().ToString();
+            giocatoreFoot.Text = temp.getStringStrongerFoot();
+            //giocatoreSquadra.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 0);
+            //giocatoreNazionale.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 1);
+            giocatoreNationality.SelectedIndex = controller.findCountry(temp.getNational());
+        }
+
+        private void playersBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (playersBox.SelectedIndices.Count <= 0)
+                return;
+
+            int intselectedindex = playersBox.SelectedIndices[0];
+            if (intselectedindex >= 0)
+                leggereGiocatore(controller.leggiGiocatore(intselectedindex));
+        }
+
         //save
         private void save_Click(object sender, EventArgs e)
         {

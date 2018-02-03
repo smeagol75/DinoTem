@@ -21,8 +21,8 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    sb.Append("\n");
             foreach (Player temp in controller.getListPlayer())
             {
-			    sb.Append(temp.getId() + ";");
-                string decode = Unidecoder.Unidecode(temp.getPlayerName());
+			    /*sb.Append(temp.getId() + ";");
+                string decode = Unidecoder.Unidecode(temp.getName());
                 sb.Append(decode + ";");
 			    sb.Append(temp.getShirtName() + ";");
 			    sb.Append(temp.getWeight() + ";");
@@ -126,7 +126,7 @@ namespace Team_Editor_Manager_New_Generation.ui
 			    sb.Append(booleanstring(temp.getComBallExpert()) + ";");
 			    sb.Append(booleanstring(temp.getCutBehind()) + ";");
 			    sb.Append(booleanstring(temp.getLongRange()));
-			    sb.Append("\n");
+			    sb.Append("\n");*/
 		    }
 		    return sb.ToString();
 	    }
@@ -264,7 +264,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             foreach (PlayerAssignment temp in controller.getPlayerAssignmentList())
             {
 			    sb.Append(temp.getPlayerId()+ ";");
-			    sb.Append(controller.getPlayerById(temp.getPlayerId()).getPlayerName()+ ";");
+                sb.Append(controller.getPlayerById(temp.getPlayerId()).getName() + ";");
 			    sb.Append(temp.getTeamId() + ";");
                 sb.Append(controller.getTeamById2(temp.getTeamId()).getEnglish());
 			    sb.Append("\n");
@@ -505,6 +505,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             throw new Exception("reading error!" + s);
         }
 
+        /*
         public void importPlayer(Controller controller, string file, ListView giocatoreView, ComboBox t1, ComboBox t2)
         {
             int lineCount = File.ReadLines(file).Count();
@@ -525,7 +526,7 @@ namespace Team_Editor_Manager_New_Generation.ui
                         throw new Exception("format line unrecognized");
                     Player player = (Player)controller.getListPlayer()[i];
                     player.setId(parseLong(temp[0]));
-                    player.setPlayerName(temp[1]);
+                    player.setName(temp[1]);
                     player.setShirtName(temp[2]);
                     player.setWeight(parseInt(temp[3]));
                     player.setHeight(parseInt(temp[4]));
@@ -634,6 +635,6 @@ namespace Team_Editor_Manager_New_Generation.ui
             controller.updatePlayerList(giocatoreView);
             controller.UpdateForm(t1, t2);
         }
-
+        */
     }
 }

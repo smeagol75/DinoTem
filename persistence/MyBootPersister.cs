@@ -38,7 +38,7 @@ namespace DinoTem.ui
         {
             memory1 = unzlib(patch, bitRecognized);
 
-            //Calcolo palloni
+            //Calcolo scarpe
             int bytesBoots = (int)memory1.Length;
             int boot = bytesBoots / block;
 
