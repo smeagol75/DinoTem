@@ -8,13 +8,13 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class TacticsFormation
     {
-        private int position;
-        private int TeamTacticId;
-        private int Y;
-        private int X;
-        private int byteFrag;
+        private byte position;
+        private UInt16 TeamTacticId;
+        private byte Y;
+        private byte X;
+        private byte byteFrag;
 
-        public TacticsFormation(int TeamTacticId)
+        public TacticsFormation(UInt16 TeamTacticId)
         {
             if (TeamTacticId < 0)
                 throw new ArgumentException("Tactic's id isn't valid: " + TeamTacticId);
@@ -22,32 +22,32 @@ namespace DinoTem.model
             this.TeamTacticId = TeamTacticId;
         }
 
-        public int getPosition()
+        public byte getPosition()
         {
             return this.position;
         }
 
-        public int getTeamTacticId()
+        public UInt16 getTeamTacticId()
         {
             return this.TeamTacticId;
         }
 
-        public int getY()
+        public byte getY()
         {
             return this.Y;
         }
 
-        public int getX()
+        public byte getX()
         {
             return this.X;
         }
 
-        public int getbyteFrag()
+        public byte getbyteFrag()
         {
             return this.byteFrag;
         }
 
-        public void setPosition(int position)
+        public void setPosition(byte position)
         {
     	    if (position < 0)
                 throw new ArgumentException("Position of player in the team isn't valid - id tactic: " + getTeamTacticId());
@@ -55,7 +55,7 @@ namespace DinoTem.model
             this.position = position;
         }
 
-        public void setTeamTacticId(int TeamTacticId)
+        public void setTeamTacticId(UInt16 TeamTacticId)
         {
     	    if (TeamTacticId < 0)
                 throw new ArgumentException("Tactic's id isn't valid: " + TeamTacticId);
@@ -63,7 +63,7 @@ namespace DinoTem.model
             this.TeamTacticId = TeamTacticId;
         }
 
-        public void setX(int X)
+        public void setX(byte X)
         {
     	    if (X < 0)
                 throw new ArgumentException("Y position  isn't valid - id tactic: " + getTeamTacticId());
@@ -71,7 +71,7 @@ namespace DinoTem.model
             this.X = X;
         }
 
-        public void setY(int Y)
+        public void setY(byte Y)
         {
     	    if (Y < 0)
                 throw new ArgumentException("X position isn't valid - id tactic: " + getTeamTacticId());
@@ -79,7 +79,7 @@ namespace DinoTem.model
             this.Y = Y;
         }
 
-        public void setbyteFrag(int byteFrag)
+        public void setbyteFrag(byte byteFrag)
         {
     	    if (byteFrag < 0)
                 throw new ArgumentException("Tactic's byteFrag isn't valid - id tactic: " + getTeamTacticId());

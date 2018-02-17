@@ -8,19 +8,19 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class PlayerAssignment
     {
-        private int entryId = 0;
-        private long playerId;
-        private int teamId;
-        private int shirtNumber = 0;
-        private bool captain = false;
-        private bool penaltyKick = false;
-        private bool longShotLk = false;
-        private bool leftCkTk = false;
-        private bool shortFoulFk = false;
-        private bool rightCornerKick = false;
-        private int order = 0;
+        private UInt32 entryId = 0;
+        private UInt32 playerId;
+        private UInt32 teamId;
+        private byte shirtNumber = 0;
+        private UInt32 captain = 0;
+        private UInt32 penaltyKick = 0;
+        private UInt32 longShotLk = 0;
+        private UInt32 leftCkTk = 0;
+        private UInt32 shortFoulFk = 0;
+        private UInt32 rightCornerKick = 0;
+        private UInt16 order = 0;
 
-        public PlayerAssignment(long playerId, int teamId)
+        public PlayerAssignment(UInt32 playerId, UInt32 teamId)
         {
     	    if (playerId < 0)
                 throw new ArgumentException("Player's player id isn't valid: " + playerId);
@@ -31,62 +31,62 @@ namespace DinoTem.model
             this.teamId = teamId;
         }
 
-        public int getEntryId()
+        public UInt32 getEntryId()
         {
             return this.entryId;
         }
 
-        public long getPlayerId()
+        public UInt32 getPlayerId()
         {
             return this.playerId;
         }
 
-        public int getTeamId()
+        public UInt32 getTeamId()
         {
             return this.teamId;
         }
-    
-        public bool getCaptain()
+
+        public UInt32 getCaptain()
         {
             return this.captain;
         }
 
-        public bool getPenaltyKick()
+        public UInt32 getPenaltyKick()
         {
             return this.penaltyKick;
         }
 
-        public bool getLongShotLk()
+        public UInt32 getLongShotLk()
         {
             return this.longShotLk;
         }
 
-        public bool getLeftCkTk()
+        public UInt32 getLeftCkTk()
         {
             return this.leftCkTk;
         }
 
-        public bool getShortFoulFk()
+        public UInt32 getShortFoulFk()
         {
             return this.shortFoulFk;
         }
 
-        public bool getRightCornerKick()
+        public UInt32 getRightCornerKick()
         {
             return this.rightCornerKick;
         }
 
-        public int getShirtNumber()
+        public byte getShirtNumber()
         {
             return this.shirtNumber;
         }
 
-        public int getOrder()
+        public UInt16 getOrder()
         {
             return this.order;
         }
 
-        public void setEntryId(int entryId)
+        public void setEntryId(UInt32 entryId)
         {
     	    if (entryId < 0)
                 throw new ArgumentException("Entry id isn't valid: " + entryId);
@@ -94,7 +94,7 @@ namespace DinoTem.model
             this.entryId = entryId;
         }
 
-        public void setPlayerId(long playerId)
+        public void setPlayerId(UInt32 playerId)
         {
     	    if (playerId < 0)
                 throw new ArgumentException("Player's id isn't valid: " + playerId);
@@ -102,7 +102,7 @@ namespace DinoTem.model
             this.playerId = playerId;
         }
 
-        public void setTeamId(int teamId)
+        public void setTeamId(UInt32 teamId)
         {
     	    if (teamId < 0)
                 throw new ArgumentException("Team's id isn't valid: " + teamId);
@@ -110,37 +110,37 @@ namespace DinoTem.model
             this.teamId = teamId;
         }
 
-        public void setCaptain(bool captain)
+        public void setCaptain(UInt32 captain)
         {
             this.captain = captain;
         }
 
-        public void setPenaltyKick(bool penaltyKick)
+        public void setPenaltyKick(UInt32 penaltyKick)
         {
             this.penaltyKick = penaltyKick;
         }
 
-        public void setLongShotLk(bool longShotLk)
+        public void setLongShotLk(UInt32 longShotLk)
         {
             this.longShotLk = longShotLk;
         }
 
-        public void setLeftCkTk(bool leftCkTk)
+        public void setLeftCkTk(UInt32 leftCkTk)
         {
             this.leftCkTk = leftCkTk;
         }
 
-        public void setShortFoulFk(bool shortFoulFk)
+        public void setShortFoulFk(UInt32 shortFoulFk)
         {
             this.shortFoulFk = shortFoulFk;
         }
 
-        public void setRightCornerKick(bool rightCornerKick)
+        public void setRightCornerKick(UInt32 rightCornerKick)
         {
             this.rightCornerKick = rightCornerKick;
         }
 
-        public void setShirtNumber(int shirtNumber)
+        public void setShirtNumber(byte shirtNumber)
         {
     	    if (shirtNumber < 0)
                 throw new ArgumentException("Player's shirt number isn't valid: " + shirtNumber);
@@ -148,7 +148,7 @@ namespace DinoTem.model
             this.shirtNumber = shirtNumber;
         }
 
-        public void setOrder(int order)
+        public void setOrder(UInt16 order)
         {
     	    if (order < 0)
                 throw new ArgumentException("Player's order in team isn't valid: " + order);

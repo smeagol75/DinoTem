@@ -34,8 +34,6 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.open = new System.Windows.Forms.ToolStripMenuItem();
             this.reload = new System.Windows.Forms.ToolStripMenuItem();
-            this.openDB2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.pes18ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.save = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
@@ -95,6 +93,7 @@
             this.csvToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Transfers = new System.Windows.Forms.TabPage();
+            this.playersBox = new System.Windows.Forms.ListBox();
             this.searchT = new System.Windows.Forms.Button();
             this.searchTeamAB = new System.Windows.Forms.TextBox();
             this.teamBox2 = new System.Windows.Forms.ComboBox();
@@ -105,7 +104,6 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader28 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.giocatorePanel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.giocatoreInjury = new System.Windows.Forms.Label();
@@ -179,6 +177,7 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.giocatorePanel1 = new System.Windows.Forms.Panel();
+            this.giocatoreNationality = new System.Windows.Forms.ComboBox();
             this.giocatoreSquadra = new System.Windows.Forms.TextBox();
             this.giocatoreNazionale = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -199,7 +198,16 @@
             this.columnHeader13 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader27 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Teams = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.teamCoachLicense = new System.Windows.Forms.ComboBox();
+            this.teamCoach = new System.Windows.Forms.ComboBox();
+            this.label57 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.teamHasLicensedPlayers = new System.Windows.Forms.ComboBox();
+            this.label102 = new System.Windows.Forms.Label();
+            this.teamAnthem = new System.Windows.Forms.ComboBox();
+            this.label101 = new System.Windows.Forms.Label();
             this.anthemPlayersSinging = new System.Windows.Forms.NumericUpDown();
             this.anthemStandingAngle = new System.Windows.Forms.NumericUpDown();
             this.label61 = new System.Windows.Forms.Label();
@@ -207,12 +215,11 @@
             this.label56 = new System.Windows.Forms.Label();
             this.anthemStandingStyle = new System.Windows.Forms.NumericUpDown();
             this.unknown = new System.Windows.Forms.CheckBox();
-            this.hasAnthem = new System.Windows.Forms.CheckBox();
-            this.hasLicensedPlayers = new System.Windows.Forms.CheckBox();
             this.teamsBox = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.searchTeam = new System.Windows.Forms.TextBox();
             this.squadraPanel5 = new System.Windows.Forms.GroupBox();
+            this.applyTeam = new System.Windows.Forms.Button();
             this.teamEnglish2 = new System.Windows.Forms.TextBox();
             this.label71 = new System.Windows.Forms.Label();
             this.teamRussian = new System.Windows.Forms.TextBox();
@@ -242,12 +249,10 @@
             this.teamSpanish = new System.Windows.Forms.TextBox();
             this.label58 = new System.Windows.Forms.Label();
             this.squadraPanel3 = new System.Windows.Forms.GroupBox();
-            this.teamCoachLicense = new System.Windows.Forms.ComboBox();
-            this.label57 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.teamStadium = new System.Windows.Forms.ComboBox();
             this.label55 = new System.Windows.Forms.Label();
-            this.label62 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label50 = new System.Windows.Forms.Label();
             this.squadraPanel2 = new System.Windows.Forms.GroupBox();
             this.teamFake = new System.Windows.Forms.ComboBox();
             this.label45 = new System.Windows.Forms.Label();
@@ -259,10 +264,10 @@
             this.label53 = new System.Windows.Forms.Label();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.squadraPanel1 = new System.Windows.Forms.GroupBox();
-            this.characterS1 = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label50 = new System.Windows.Forms.Label();
+            this.teamKonami = new System.Windows.Forms.Label();
+            this.label103 = new System.Windows.Forms.Label();
             this.teamType = new System.Windows.Forms.ComboBox();
+            this.characterS1 = new System.Windows.Forms.Button();
             this.label49 = new System.Windows.Forms.Label();
             this.teamName = new System.Windows.Forms.TextBox();
             this.label48 = new System.Windows.Forms.Label();
@@ -272,68 +277,25 @@
             this.label46 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
             this.teamJapanese = new System.Windows.Forms.TextBox();
-            this.ImportDb2 = new System.Windows.Forms.TabPage();
-            this.groupBox13 = new System.Windows.Forms.GroupBox();
-            this.db2AllBalls = new System.Windows.Forms.Button();
-            this.db2BallConditionBalls = new System.Windows.Forms.Button();
-            this.db2OrderBalls = new System.Windows.Forms.Button();
-            this.db2NamesBalls = new System.Windows.Forms.Button();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.db2LicensedStadiums = new System.Windows.Forms.Button();
-            this.db2ZoneStadiums = new System.Windows.Forms.Button();
-            this.db2NaStadiums = new System.Windows.Forms.Button();
-            this.db2CountryStadiums = new System.Windows.Forms.Button();
-            this.db2CapacityStadiums = new System.Windows.Forms.Button();
-            this.db2KonamiNamesStadiums = new System.Windows.Forms.Button();
-            this.db2JapNamesStadiums = new System.Windows.Forms.Button();
-            this.db2NamesStadiums = new System.Windows.Forms.Button();
-            this.db2AllStadiums = new System.Windows.Forms.Button();
-            this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button37 = new System.Windows.Forms.Button();
-            this.button35 = new System.Windows.Forms.Button();
-            this.db2LicenseTeams = new System.Windows.Forms.Button();
-            this.db2NonPlayaLeagueTeams = new System.Windows.Forms.Button();
-            this.button30 = new System.Windows.Forms.Button();
-            this.db2FakeTeamTeams = new System.Windows.Forms.Button();
-            this.db2CountryTeams = new System.Windows.Forms.Button();
-            this.db2OtherDetailsTeams = new System.Windows.Forms.Button();
-            this.db2HomeStadiumsTeams = new System.Windows.Forms.Button();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.db2ToTeams = new System.Windows.Forms.NumericUpDown();
-            this.db2ToTextBoxTeams = new System.Windows.Forms.TextBox();
-            this.db2FromTextBoxTeams = new System.Windows.Forms.TextBox();
-            this.db2FromTeams = new System.Windows.Forms.NumericUpDown();
-            this.label101 = new System.Windows.Forms.Label();
-            this.label104 = new System.Windows.Forms.Label();
-            this.db2ShortNamesTeams = new System.Windows.Forms.Button();
-            this.db2NamesTeams = new System.Windows.Forms.Button();
-            this.db2AllTeams = new System.Windows.Forms.Button();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.button21 = new System.Windows.Forms.Button();
-            this.button22 = new System.Windows.Forms.Button();
-            this.button23 = new System.Windows.Forms.Button();
-            this.button24 = new System.Windows.Forms.Button();
-            this.button25 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.db2ToPlayers = new System.Windows.Forms.NumericUpDown();
-            this.db2ToTextBoxPlayers = new System.Windows.Forms.TextBox();
-            this.db2FromTextBoxPlayers = new System.Windows.Forms.TextBox();
-            this.db2FromPlayers = new System.Windows.Forms.NumericUpDown();
-            this.label102 = new System.Windows.Forms.Label();
-            this.label103 = new System.Windows.Forms.Label();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.tot = new System.Windows.Forms.Label();
-            this.path = new System.Windows.Forms.Label();
-            this.typeDB = new System.Windows.Forms.Label();
             this.Coach = new System.Windows.Forms.TabPage();
-            this.Competition = new System.Windows.Forms.TabPage();
+            this.searchC = new System.Windows.Forms.Button();
+            this.searchCoach = new System.Windows.Forms.TextBox();
+            this.applyCoach = new System.Windows.Forms.Button();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.allenatoreLic = new System.Windows.Forms.CheckBox();
+            this.allenatoreJap = new System.Windows.Forms.TextBox();
+            this.label91 = new System.Windows.Forms.Label();
+            this.allenatoreNationality = new System.Windows.Forms.ComboBox();
+            this.label113 = new System.Windows.Forms.Label();
+            this.button14 = new System.Windows.Forms.Button();
+            this.allenatoreName = new System.Windows.Forms.TextBox();
+            this.label114 = new System.Windows.Forms.Label();
+            this.allenatoreId = new System.Windows.Forms.TextBox();
+            this.label116 = new System.Windows.Forms.Label();
+            this.coachBox = new System.Windows.Forms.ListBox();
+            this.Competitions = new System.Windows.Forms.TabPage();
             this.label42 = new System.Windows.Forms.Label();
+            this.Derby = new System.Windows.Forms.TabPage();
             this.Stadiums = new System.Windows.Forms.TabPage();
             this.applyStadium = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -351,6 +313,8 @@
             this.stadiumCountry = new System.Windows.Forms.ComboBox();
             this.label94 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.stadiumKonami = new System.Windows.Forms.Label();
+            this.label117 = new System.Windows.Forms.Label();
             this.stadiumJapanese = new System.Windows.Forms.TextBox();
             this.label97 = new System.Windows.Forms.Label();
             this.stadiumCapacity = new System.Windows.Forms.TextBox();
@@ -386,6 +350,8 @@
             this.palloneID = new System.Windows.Forms.TextBox();
             this.label88 = new System.Windows.Forms.Label();
             this.Boots = new System.Windows.Forms.TabPage();
+            this.searchB = new System.Windows.Forms.Button();
+            this.searchBoot = new System.Windows.Forms.TextBox();
             this.bootApply = new System.Windows.Forms.Button();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.scarpaMaterial = new System.Windows.Forms.TextBox();
@@ -401,6 +367,8 @@
             this.label110 = new System.Windows.Forms.Label();
             this.bootsBox = new System.Windows.Forms.ListBox();
             this.Gloves = new System.Windows.Forms.TabPage();
+            this.searchG = new System.Windows.Forms.Button();
+            this.searchGlove = new System.Windows.Forms.TextBox();
             this.applyGlove = new System.Windows.Forms.Button();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
             this.guantoColor = new System.Windows.Forms.TextBox();
@@ -477,23 +445,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.coachBox = new System.Windows.Forms.ListBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.label113 = new System.Windows.Forms.Label();
-            this.button14 = new System.Windows.Forms.Button();
-            this.allenatoreName = new System.Windows.Forms.TextBox();
-            this.label114 = new System.Windows.Forms.Label();
-            this.allenatoreId = new System.Windows.Forms.TextBox();
-            this.label116 = new System.Windows.Forms.Label();
-            this.allenatoreNationality = new System.Windows.Forms.ComboBox();
-            this.allenatoreJap = new System.Windows.Forms.TextBox();
-            this.label91 = new System.Windows.Forms.Label();
-            this.label117 = new System.Windows.Forms.Label();
-            this.stadiumKonami = new System.Windows.Forms.Label();
-            this.applyCoach = new System.Windows.Forms.Button();
-            this.allenatoreLic = new System.Windows.Forms.CheckBox();
-            this.playersBox = new System.Windows.Forms.ListBox();
-            this.giocatoreNationality = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Transfers.SuspendLayout();
@@ -503,6 +454,7 @@
             this.giocatorePanel3.SuspendLayout();
             this.giocatorePanel1.SuspendLayout();
             this.Teams.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.groupBox12.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anthemPlayersSinging)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.anthemStandingAngle)).BeginInit();
@@ -512,20 +464,9 @@
             this.squadraPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.squadraPanel1.SuspendLayout();
-            this.ImportDb2.SuspendLayout();
-            this.groupBox13.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.groupBox7.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.db2ToTeams)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db2FromTeams)).BeginInit();
-            this.groupBox4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.db2ToPlayers)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db2FromPlayers)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.Coach.SuspendLayout();
-            this.Competition.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.Competitions.SuspendLayout();
             this.Stadiums.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBox9.SuspendLayout();
@@ -547,7 +488,6 @@
             this.Team_BMenuStrip3.SuspendLayout();
             this.Team_AMenuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.groupBox16.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -568,7 +508,6 @@
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.open,
             this.reload,
-            this.openDB2,
             this.toolStripSeparator8,
             this.save,
             this.toolStripSeparator10,
@@ -597,21 +536,7 @@
             this.reload.Name = "reload";
             this.reload.Size = new System.Drawing.Size(189, 30);
             this.reload.Text = "Reload";
-            // 
-            // openDB2
-            // 
-            this.openDB2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.pes18ToolStripMenuItem});
-            this.openDB2.Enabled = false;
-            this.openDB2.Name = "openDB2";
-            this.openDB2.Size = new System.Drawing.Size(189, 30);
-            this.openDB2.Text = "Open DB2";
-            // 
-            // pes18ToolStripMenuItem
-            // 
-            this.pes18ToolStripMenuItem.Name = "pes18ToolStripMenuItem";
-            this.pes18ToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.pes18ToolStripMenuItem.Text = "Pes 18";
+            this.reload.Click += new System.EventHandler(this.reload_Click);
             // 
             // toolStripSeparator8
             // 
@@ -661,6 +586,7 @@
             this.close.Name = "close";
             this.close.Size = new System.Drawing.Size(189, 30);
             this.close.Text = "Close";
+            this.close.Click += new System.EventHandler(this.close_Click);
             // 
             // toolsToolStripMenuItem
             // 
@@ -1010,6 +936,7 @@
             this.readme.Name = "readme";
             this.readme.Size = new System.Drawing.Size(173, 30);
             this.readme.Text = "Readme.txt";
+            this.readme.Click += new System.EventHandler(this.readme_Click);
             // 
             // toolStripSeparator1
             // 
@@ -1055,6 +982,7 @@
             this.checkForUpdate.Name = "checkForUpdate";
             this.checkForUpdate.Size = new System.Drawing.Size(173, 30);
             this.checkForUpdate.Text = "Check for update";
+            this.checkForUpdate.Click += new System.EventHandler(this.checkForUpdate_Click);
             // 
             // csvToolStripMenuItem4
             // 
@@ -1066,9 +994,9 @@
             // 
             this.tabControl1.Controls.Add(this.Transfers);
             this.tabControl1.Controls.Add(this.Teams);
-            this.tabControl1.Controls.Add(this.ImportDb2);
             this.tabControl1.Controls.Add(this.Coach);
-            this.tabControl1.Controls.Add(this.Competition);
+            this.tabControl1.Controls.Add(this.Competitions);
+            this.tabControl1.Controls.Add(this.Derby);
             this.tabControl1.Controls.Add(this.Stadiums);
             this.tabControl1.Controls.Add(this.Balls);
             this.tabControl1.Controls.Add(this.Boots);
@@ -1092,7 +1020,6 @@
             this.Transfers.Controls.Add(this.teamBox1);
             this.Transfers.Controls.Add(this.searchP);
             this.Transfers.Controls.Add(this.teamView2);
-            this.Transfers.Controls.Add(this.comboBox4);
             this.Transfers.Controls.Add(this.giocatorePanel2);
             this.Transfers.Controls.Add(this.giocatorePanel1);
             this.Transfers.Controls.Add(this.searchPlayer);
@@ -1104,6 +1031,16 @@
             this.Transfers.TabIndex = 0;
             this.Transfers.Text = "Players & Transfers";
             this.Transfers.UseVisualStyleBackColor = true;
+            // 
+            // playersBox
+            // 
+            this.playersBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.playersBox.FormattingEnabled = true;
+            this.playersBox.Location = new System.Drawing.Point(3, 36);
+            this.playersBox.Name = "playersBox";
+            this.playersBox.Size = new System.Drawing.Size(193, 537);
+            this.playersBox.TabIndex = 131;
+            this.playersBox.SelectedIndexChanged += new System.EventHandler(this.playersBox_SelectedIndexChanged);
             // 
             // searchT
             // 
@@ -1120,6 +1057,7 @@
             this.searchT.Size = new System.Drawing.Size(20, 20);
             this.searchT.TabIndex = 126;
             this.searchT.UseVisualStyleBackColor = true;
+            this.searchT.Click += new System.EventHandler(this.searchT_Click);
             // 
             // searchTeamAB
             // 
@@ -1129,6 +1067,8 @@
             this.searchTeamAB.Size = new System.Drawing.Size(170, 20);
             this.searchTeamAB.TabIndex = 125;
             this.searchTeamAB.Text = "search team...A-TeamA/B-TeamB";
+            this.searchTeamAB.Click += new System.EventHandler(this.searchTeamAB_Click);
+            this.searchTeamAB.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchTeamAB_KeyPress);
             // 
             // teamBox2
             // 
@@ -1139,6 +1079,7 @@
             this.teamBox2.Size = new System.Drawing.Size(201, 21);
             this.teamBox2.TabIndex = 123;
             this.teamBox2.TabStop = false;
+            this.teamBox2.SelectedIndexChanged += new System.EventHandler(this.teamBox2_SelectedIndexChanged);
             // 
             // teamBox1
             // 
@@ -1149,6 +1090,7 @@
             this.teamBox1.Size = new System.Drawing.Size(201, 21);
             this.teamBox1.TabIndex = 122;
             this.teamBox1.TabStop = false;
+            this.teamBox1.SelectedIndexChanged += new System.EventHandler(this.teamBox1_SelectedIndexChanged);
             // 
             // searchP
             // 
@@ -1165,6 +1107,7 @@
             this.searchP.Size = new System.Drawing.Size(20, 20);
             this.searchP.TabIndex = 121;
             this.searchP.UseVisualStyleBackColor = true;
+            this.searchP.Click += new System.EventHandler(this.searchP_Click);
             // 
             // teamView2
             // 
@@ -1188,6 +1131,7 @@
             this.teamView2.TabStop = false;
             this.teamView2.UseCompatibleStateImageBehavior = false;
             this.teamView2.View = System.Windows.Forms.View.Details;
+            this.teamView2.SelectedIndexChanged += new System.EventHandler(this.teamView2_SelectedIndexChanged);
             // 
             // columnHeader3
             // 
@@ -1208,16 +1152,6 @@
             // 
             this.columnHeader28.Text = "Nr";
             this.columnHeader28.Width = 25;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox4.Enabled = false;
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(3, 4);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(193, 21);
-            this.comboBox4.TabIndex = 34;
             // 
             // giocatorePanel2
             // 
@@ -1376,6 +1310,7 @@
             this.coverage.Size = new System.Drawing.Size(21, 13);
             this.coverage.TabIndex = 82;
             this.coverage.Text = "40";
+            this.coverage.TextChanged += new System.EventHandler(this.coverage_TextChanged);
             // 
             // reflexes
             // 
@@ -1387,6 +1322,7 @@
             this.reflexes.Size = new System.Drawing.Size(21, 13);
             this.reflexes.TabIndex = 81;
             this.reflexes.Text = "40";
+            this.reflexes.TextChanged += new System.EventHandler(this.reflexes_TextChanged);
             // 
             // clearing
             // 
@@ -1398,6 +1334,7 @@
             this.clearing.Size = new System.Drawing.Size(21, 13);
             this.clearing.TabIndex = 80;
             this.clearing.Text = "40";
+            this.clearing.TextChanged += new System.EventHandler(this.clearing_TextChanged);
             // 
             // cathing
             // 
@@ -1409,6 +1346,7 @@
             this.cathing.Size = new System.Drawing.Size(21, 13);
             this.cathing.TabIndex = 79;
             this.cathing.Text = "40";
+            this.cathing.TextChanged += new System.EventHandler(this.cathing_TextChanged);
             // 
             // goalkeeping
             // 
@@ -1420,6 +1358,7 @@
             this.goalkeeping.Size = new System.Drawing.Size(21, 13);
             this.goalkeeping.TabIndex = 78;
             this.goalkeeping.Text = "40";
+            this.goalkeeping.TextChanged += new System.EventHandler(this.goalkeeping_TextChanged);
             // 
             // stamina
             // 
@@ -1431,6 +1370,7 @@
             this.stamina.Size = new System.Drawing.Size(21, 13);
             this.stamina.TabIndex = 77;
             this.stamina.Text = "40";
+            this.stamina.TextChanged += new System.EventHandler(this.stamina_TextChanged);
             // 
             // jump
             // 
@@ -1442,6 +1382,7 @@
             this.jump.Size = new System.Drawing.Size(21, 13);
             this.jump.TabIndex = 76;
             this.jump.Text = "40";
+            this.jump.TextChanged += new System.EventHandler(this.jump_TextChanged);
             // 
             // physical
             // 
@@ -1453,6 +1394,7 @@
             this.physical.Size = new System.Drawing.Size(21, 13);
             this.physical.TabIndex = 75;
             this.physical.Text = "40";
+            this.physical.TextChanged += new System.EventHandler(this.physical_TextChanged);
             // 
             // bodyControll
             // 
@@ -1464,6 +1406,7 @@
             this.bodyControll.Size = new System.Drawing.Size(21, 13);
             this.bodyControll.TabIndex = 74;
             this.bodyControll.Text = "40";
+            this.bodyControll.TextChanged += new System.EventHandler(this.bodyControll_TextChanged);
             // 
             // explosivePower
             // 
@@ -1475,6 +1418,7 @@
             this.explosivePower.Size = new System.Drawing.Size(21, 13);
             this.explosivePower.TabIndex = 73;
             this.explosivePower.Text = "40";
+            this.explosivePower.TextChanged += new System.EventHandler(this.explosivePower_TextChanged);
             // 
             // speed
             // 
@@ -1486,6 +1430,7 @@
             this.speed.Size = new System.Drawing.Size(21, 13);
             this.speed.TabIndex = 72;
             this.speed.Text = "40";
+            this.speed.TextChanged += new System.EventHandler(this.speed_TextChanged);
             // 
             // kickingPower
             // 
@@ -1497,6 +1442,7 @@
             this.kickingPower.Size = new System.Drawing.Size(21, 13);
             this.kickingPower.TabIndex = 71;
             this.kickingPower.Text = "40";
+            this.kickingPower.TextChanged += new System.EventHandler(this.kickingPower_TextChanged);
             // 
             // ballWinning
             // 
@@ -1508,6 +1454,7 @@
             this.ballWinning.Size = new System.Drawing.Size(21, 13);
             this.ballWinning.TabIndex = 70;
             this.ballWinning.Text = "40";
+            this.ballWinning.TextChanged += new System.EventHandler(this.ballWinning_TextChanged);
             // 
             // defense
             // 
@@ -1519,6 +1466,7 @@
             this.defense.Size = new System.Drawing.Size(21, 13);
             this.defense.TabIndex = 69;
             this.defense.Text = "40";
+            this.defense.TextChanged += new System.EventHandler(this.defense_TextChanged);
             // 
             // header
             // 
@@ -1530,6 +1478,7 @@
             this.header.Size = new System.Drawing.Size(21, 13);
             this.header.TabIndex = 68;
             this.header.Text = "40";
+            this.header.TextChanged += new System.EventHandler(this.header_TextChanged);
             // 
             // swerve
             // 
@@ -1541,6 +1490,7 @@
             this.swerve.Size = new System.Drawing.Size(21, 13);
             this.swerve.TabIndex = 67;
             this.swerve.Text = "40";
+            this.swerve.TextChanged += new System.EventHandler(this.swerve_TextChanged);
             // 
             // placeKick
             // 
@@ -1552,6 +1502,7 @@
             this.placeKick.Size = new System.Drawing.Size(21, 13);
             this.placeKick.TabIndex = 66;
             this.placeKick.Text = "40";
+            this.placeKick.TextChanged += new System.EventHandler(this.placeKick_TextChanged);
             // 
             // finishing
             // 
@@ -1563,6 +1514,7 @@
             this.finishing.Size = new System.Drawing.Size(21, 13);
             this.finishing.TabIndex = 65;
             this.finishing.Text = "40";
+            this.finishing.TextChanged += new System.EventHandler(this.finishing_TextChanged);
             // 
             // loftedPass
             // 
@@ -1574,6 +1526,7 @@
             this.loftedPass.Size = new System.Drawing.Size(21, 13);
             this.loftedPass.TabIndex = 64;
             this.loftedPass.Text = "40";
+            this.loftedPass.TextChanged += new System.EventHandler(this.loftedPass_TextChanged);
             // 
             // lowPass
             // 
@@ -1585,6 +1538,7 @@
             this.lowPass.Size = new System.Drawing.Size(21, 13);
             this.lowPass.TabIndex = 63;
             this.lowPass.Text = "40";
+            this.lowPass.TextChanged += new System.EventHandler(this.lowPass_TextChanged);
             // 
             // dribbling
             // 
@@ -1596,6 +1550,7 @@
             this.dribbling.Size = new System.Drawing.Size(21, 13);
             this.dribbling.TabIndex = 62;
             this.dribbling.Text = "40";
+            this.dribbling.TextChanged += new System.EventHandler(this.dribbling_TextChanged);
             // 
             // ballControll
             // 
@@ -1607,6 +1562,7 @@
             this.ballControll.Size = new System.Drawing.Size(21, 13);
             this.ballControll.TabIndex = 61;
             this.ballControll.Text = "40";
+            this.ballControll.TextChanged += new System.EventHandler(this.ballControll_TextChanged);
             // 
             // attack
             // 
@@ -1618,6 +1574,7 @@
             this.attack.Size = new System.Drawing.Size(21, 13);
             this.attack.TabIndex = 60;
             this.attack.Text = "40";
+            this.attack.TextChanged += new System.EventHandler(this.attack_TextChanged);
             // 
             // label44
             // 
@@ -2006,6 +1963,16 @@
             this.giocatorePanel1.Size = new System.Drawing.Size(278, 153);
             this.giocatorePanel1.TabIndex = 31;
             // 
+            // giocatoreNationality
+            // 
+            this.giocatoreNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.giocatoreNationality.FormattingEnabled = true;
+            this.giocatoreNationality.Location = new System.Drawing.Point(71, 124);
+            this.giocatoreNationality.Name = "giocatoreNationality";
+            this.giocatoreNationality.Size = new System.Drawing.Size(199, 21);
+            this.giocatoreNationality.TabIndex = 132;
+            this.giocatoreNationality.TabStop = false;
+            // 
             // giocatoreSquadra
             // 
             this.giocatoreSquadra.Enabled = false;
@@ -2051,6 +2018,7 @@
             this.giocatoreNumber.Name = "giocatoreNumber";
             this.giocatoreNumber.Size = new System.Drawing.Size(35, 20);
             this.giocatoreNumber.TabIndex = 28;
+            this.giocatoreNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label5
             // 
@@ -2079,6 +2047,7 @@
             this.giocatoreShirt.Size = new System.Drawing.Size(199, 20);
             this.giocatoreShirt.TabIndex = 6;
             this.giocatoreShirt.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.giocatoreShirt.KeyDown += new System.Windows.Forms.KeyEventHandler(this.giocatoreShirt_KeyDown);
             // 
             // giocatoreName
             // 
@@ -2088,6 +2057,7 @@
             this.giocatoreName.Size = new System.Drawing.Size(199, 20);
             this.giocatoreName.TabIndex = 5;
             this.giocatoreName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.giocatoreName.KeyDown += new System.Windows.Forms.KeyEventHandler(this.giocatoreName_KeyDown);
             // 
             // label4
             // 
@@ -2133,6 +2103,8 @@
             this.searchPlayer.Size = new System.Drawing.Size(170, 20);
             this.searchPlayer.TabIndex = 0;
             this.searchPlayer.Text = "search player...";
+            this.searchPlayer.Click += new System.EventHandler(this.searchPlayer_Click);
+            this.searchPlayer.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchPlayer_KeyPress);
             // 
             // teamView1
             // 
@@ -2157,6 +2129,7 @@
             this.teamView1.TabStop = false;
             this.teamView1.UseCompatibleStateImageBehavior = false;
             this.teamView1.View = System.Windows.Forms.View.Details;
+            this.teamView1.SelectedIndexChanged += new System.EventHandler(this.teamView1_SelectedIndexChanged);
             // 
             // columnHeader11
             // 
@@ -2180,6 +2153,7 @@
             // 
             // Teams
             // 
+            this.Teams.Controls.Add(this.groupBox3);
             this.Teams.Controls.Add(this.groupBox12);
             this.Teams.Controls.Add(this.teamsBox);
             this.Teams.Controls.Add(this.button1);
@@ -2197,8 +2171,63 @@
             this.Teams.Text = "Teams";
             this.Teams.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.teamCoachLicense);
+            this.groupBox3.Controls.Add(this.teamCoach);
+            this.groupBox3.Controls.Add(this.label57);
+            this.groupBox3.Controls.Add(this.label62);
+            this.groupBox3.Location = new System.Drawing.Point(580, 266);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(321, 124);
+            this.groupBox3.TabIndex = 132;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Coach";
+            // 
+            // teamCoachLicense
+            // 
+            this.teamCoachLicense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.teamCoachLicense.FormattingEnabled = true;
+            this.teamCoachLicense.Location = new System.Drawing.Point(9, 88);
+            this.teamCoachLicense.Name = "teamCoachLicense";
+            this.teamCoachLicense.Size = new System.Drawing.Size(142, 21);
+            this.teamCoachLicense.TabIndex = 38;
+            this.teamCoachLicense.TabStop = false;
+            // 
+            // teamCoach
+            // 
+            this.teamCoach.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.teamCoach.FormattingEnabled = true;
+            this.teamCoach.Location = new System.Drawing.Point(9, 41);
+            this.teamCoach.Name = "teamCoach";
+            this.teamCoach.Size = new System.Drawing.Size(306, 21);
+            this.teamCoach.TabIndex = 42;
+            this.teamCoach.TabStop = false;
+            // 
+            // label57
+            // 
+            this.label57.AutoSize = true;
+            this.label57.Location = new System.Drawing.Point(6, 68);
+            this.label57.Name = "label57";
+            this.label57.Size = new System.Drawing.Size(47, 13);
+            this.label57.TabIndex = 32;
+            this.label57.Text = "License:";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(6, 21);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(41, 13);
+            this.label62.TabIndex = 6;
+            this.label62.Text = "Coach:";
+            // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.teamHasLicensedPlayers);
+            this.groupBox12.Controls.Add(this.label102);
+            this.groupBox12.Controls.Add(this.teamAnthem);
+            this.groupBox12.Controls.Add(this.label101);
             this.groupBox12.Controls.Add(this.anthemPlayersSinging);
             this.groupBox12.Controls.Add(this.anthemStandingAngle);
             this.groupBox12.Controls.Add(this.label61);
@@ -2206,18 +2235,54 @@
             this.groupBox12.Controls.Add(this.label56);
             this.groupBox12.Controls.Add(this.anthemStandingStyle);
             this.groupBox12.Controls.Add(this.unknown);
-            this.groupBox12.Controls.Add(this.hasAnthem);
-            this.groupBox12.Controls.Add(this.hasLicensedPlayers);
             this.groupBox12.Location = new System.Drawing.Point(242, 266);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(659, 124);
+            this.groupBox12.Size = new System.Drawing.Size(321, 124);
             this.groupBox12.TabIndex = 131;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Other Details";
             // 
+            // teamHasLicensedPlayers
+            // 
+            this.teamHasLicensedPlayers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.teamHasLicensedPlayers.FormattingEnabled = true;
+            this.teamHasLicensedPlayers.Location = new System.Drawing.Point(13, 88);
+            this.teamHasLicensedPlayers.Name = "teamHasLicensedPlayers";
+            this.teamHasLicensedPlayers.Size = new System.Drawing.Size(142, 21);
+            this.teamHasLicensedPlayers.TabIndex = 136;
+            this.teamHasLicensedPlayers.TabStop = false;
+            // 
+            // label102
+            // 
+            this.label102.AutoSize = true;
+            this.label102.Location = new System.Drawing.Point(10, 68);
+            this.label102.Name = "label102";
+            this.label102.Size = new System.Drawing.Size(109, 13);
+            this.label102.TabIndex = 135;
+            this.label102.Text = "Has Licensed Players";
+            // 
+            // teamAnthem
+            // 
+            this.teamAnthem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.teamAnthem.FormattingEnabled = true;
+            this.teamAnthem.Location = new System.Drawing.Point(13, 41);
+            this.teamAnthem.Name = "teamAnthem";
+            this.teamAnthem.Size = new System.Drawing.Size(142, 21);
+            this.teamAnthem.TabIndex = 134;
+            this.teamAnthem.TabStop = false;
+            // 
+            // label101
+            // 
+            this.label101.AutoSize = true;
+            this.label101.Location = new System.Drawing.Point(10, 21);
+            this.label101.Name = "label101";
+            this.label101.Size = new System.Drawing.Size(65, 13);
+            this.label101.TabIndex = 133;
+            this.label101.Text = "Has Anthem";
+            // 
             // anthemPlayersSinging
             // 
-            this.anthemPlayersSinging.Location = new System.Drawing.Point(143, 77);
+            this.anthemPlayersSinging.Location = new System.Drawing.Point(281, 65);
             this.anthemPlayersSinging.Maximum = new decimal(new int[] {
             3,
             0,
@@ -2229,7 +2294,7 @@
             // 
             // anthemStandingAngle
             // 
-            this.anthemStandingAngle.Location = new System.Drawing.Point(143, 52);
+            this.anthemStandingAngle.Location = new System.Drawing.Point(281, 40);
             this.anthemStandingAngle.Maximum = new decimal(new int[] {
             3,
             0,
@@ -2242,7 +2307,7 @@
             // label61
             // 
             this.label61.AutoSize = true;
-            this.label61.Location = new System.Drawing.Point(6, 59);
+            this.label61.Location = new System.Drawing.Point(162, 47);
             this.label61.Name = "label61";
             this.label61.Size = new System.Drawing.Size(121, 13);
             this.label61.TabIndex = 44;
@@ -2251,7 +2316,7 @@
             // label59
             // 
             this.label59.AutoSize = true;
-            this.label59.Location = new System.Drawing.Point(6, 79);
+            this.label59.Location = new System.Drawing.Point(162, 67);
             this.label59.Name = "label59";
             this.label59.Size = new System.Drawing.Size(121, 13);
             this.label59.TabIndex = 43;
@@ -2260,7 +2325,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(6, 102);
+            this.label56.Location = new System.Drawing.Point(162, 90);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(117, 13);
             this.label56.TabIndex = 42;
@@ -2268,7 +2333,7 @@
             // 
             // anthemStandingStyle
             // 
-            this.anthemStandingStyle.Location = new System.Drawing.Point(143, 100);
+            this.anthemStandingStyle.Location = new System.Drawing.Point(281, 88);
             this.anthemStandingStyle.Maximum = new decimal(new int[] {
             7,
             0,
@@ -2284,38 +2349,12 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.unknown.AutoSize = true;
             this.unknown.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.unknown.Location = new System.Drawing.Point(211, 23);
+            this.unknown.Location = new System.Drawing.Point(165, 21);
             this.unknown.Name = "unknown";
             this.unknown.Size = new System.Drawing.Size(72, 17);
             this.unknown.TabIndex = 41;
             this.unknown.Text = "Unknown";
             this.unknown.UseVisualStyleBackColor = true;
-            // 
-            // hasAnthem
-            // 
-            this.hasAnthem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.hasAnthem.AutoSize = true;
-            this.hasAnthem.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.hasAnthem.Location = new System.Drawing.Point(9, 39);
-            this.hasAnthem.Name = "hasAnthem";
-            this.hasAnthem.Size = new System.Drawing.Size(84, 17);
-            this.hasAnthem.TabIndex = 36;
-            this.hasAnthem.Text = "Has Anthem";
-            this.hasAnthem.UseVisualStyleBackColor = true;
-            // 
-            // hasLicensedPlayers
-            // 
-            this.hasLicensedPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.hasLicensedPlayers.AutoSize = true;
-            this.hasLicensedPlayers.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.hasLicensedPlayers.Location = new System.Drawing.Point(9, 19);
-            this.hasLicensedPlayers.Name = "hasLicensedPlayers";
-            this.hasLicensedPlayers.Size = new System.Drawing.Size(128, 17);
-            this.hasLicensedPlayers.TabIndex = 35;
-            this.hasLicensedPlayers.Text = "Has Licensed Players";
-            this.hasLicensedPlayers.UseVisualStyleBackColor = true;
             // 
             // teamsBox
             // 
@@ -2325,6 +2364,7 @@
             this.teamsBox.Name = "teamsBox";
             this.teamsBox.Size = new System.Drawing.Size(233, 589);
             this.teamsBox.TabIndex = 130;
+            this.teamsBox.SelectedIndexChanged += new System.EventHandler(this.teamsBox_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -2341,6 +2381,7 @@
             this.button1.Size = new System.Drawing.Size(20, 20);
             this.button1.TabIndex = 122;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // searchTeam
             // 
@@ -2350,9 +2391,12 @@
             this.searchTeam.Size = new System.Drawing.Size(210, 20);
             this.searchTeam.TabIndex = 42;
             this.searchTeam.Text = "search team...";
+            this.searchTeam.Click += new System.EventHandler(this.searchTeam_Click);
+            this.searchTeam.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchTeam_KeyPress);
             // 
             // squadraPanel5
             // 
+            this.squadraPanel5.Controls.Add(this.applyTeam);
             this.squadraPanel5.Controls.Add(this.teamEnglish2);
             this.squadraPanel5.Controls.Add(this.label71);
             this.squadraPanel5.Controls.Add(this.teamRussian);
@@ -2387,6 +2431,26 @@
             this.squadraPanel5.TabIndex = 41;
             this.squadraPanel5.TabStop = false;
             this.squadraPanel5.Text = "Team Name DB:";
+            // 
+            // applyTeam
+            // 
+            this.applyTeam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyTeam.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.applyTeam.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.applyTeam.FlatAppearance.BorderSize = 0;
+            this.applyTeam.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.applyTeam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.applyTeam.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.applyTeam.Location = new System.Drawing.Point(567, 197);
+            this.applyTeam.Margin = new System.Windows.Forms.Padding(0);
+            this.applyTeam.Name = "applyTeam";
+            this.applyTeam.Size = new System.Drawing.Size(86, 29);
+            this.applyTeam.TabIndex = 134;
+            this.applyTeam.Text = "Apply";
+            this.applyTeam.UseVisualStyleBackColor = false;
+            this.applyTeam.Click += new System.EventHandler(this.applyTeam_Click);
             // 
             // teamEnglish2
             // 
@@ -2628,47 +2692,16 @@
             // 
             // squadraPanel3
             // 
-            this.squadraPanel3.Controls.Add(this.teamCoachLicense);
-            this.squadraPanel3.Controls.Add(this.label57);
-            this.squadraPanel3.Controls.Add(this.comboBox1);
             this.squadraPanel3.Controls.Add(this.teamStadium);
             this.squadraPanel3.Controls.Add(this.label55);
-            this.squadraPanel3.Controls.Add(this.label62);
+            this.squadraPanel3.Controls.Add(this.comboBox2);
+            this.squadraPanel3.Controls.Add(this.label50);
             this.squadraPanel3.Location = new System.Drawing.Point(580, 136);
             this.squadraPanel3.Name = "squadraPanel3";
             this.squadraPanel3.Size = new System.Drawing.Size(321, 124);
             this.squadraPanel3.TabIndex = 40;
             this.squadraPanel3.TabStop = false;
             this.squadraPanel3.Text = "Stadium";
-            // 
-            // teamCoachLicense
-            // 
-            this.teamCoachLicense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.teamCoachLicense.FormattingEnabled = true;
-            this.teamCoachLicense.Location = new System.Drawing.Point(173, 90);
-            this.teamCoachLicense.Name = "teamCoachLicense";
-            this.teamCoachLicense.Size = new System.Drawing.Size(142, 21);
-            this.teamCoachLicense.TabIndex = 38;
-            this.teamCoachLicense.TabStop = false;
-            // 
-            // label57
-            // 
-            this.label57.AutoSize = true;
-            this.label57.Location = new System.Drawing.Point(170, 70);
-            this.label57.Name = "label57";
-            this.label57.Size = new System.Drawing.Size(47, 13);
-            this.label57.TabIndex = 32;
-            this.label57.Text = "License:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(9, 90);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(142, 21);
-            this.comboBox1.TabIndex = 42;
-            this.comboBox1.TabStop = false;
             // 
             // teamStadium
             // 
@@ -2689,14 +2722,25 @@
             this.label55.TabIndex = 36;
             this.label55.Text = "Stadium:";
             // 
-            // label62
+            // comboBox2
             // 
-            this.label62.AutoSize = true;
-            this.label62.Location = new System.Drawing.Point(6, 70);
-            this.label62.Name = "label62";
-            this.label62.Size = new System.Drawing.Size(55, 13);
-            this.label62.TabIndex = 6;
-            this.label62.Text = "Coach ID:";
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.Enabled = false;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(9, 90);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(306, 21);
+            this.comboBox2.TabIndex = 33;
+            this.comboBox2.TabStop = false;
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(6, 70);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(98, 13);
+            this.label50.TabIndex = 32;
+            this.label50.Text = "Team Commentary:";
             // 
             // squadraPanel2
             // 
@@ -2802,10 +2846,10 @@
             // 
             // squadraPanel1
             // 
-            this.squadraPanel1.Controls.Add(this.characterS1);
-            this.squadraPanel1.Controls.Add(this.comboBox2);
-            this.squadraPanel1.Controls.Add(this.label50);
+            this.squadraPanel1.Controls.Add(this.teamKonami);
+            this.squadraPanel1.Controls.Add(this.label103);
             this.squadraPanel1.Controls.Add(this.teamType);
+            this.squadraPanel1.Controls.Add(this.characterS1);
             this.squadraPanel1.Controls.Add(this.label49);
             this.squadraPanel1.Controls.Add(this.teamName);
             this.squadraPanel1.Controls.Add(this.label48);
@@ -2822,6 +2866,34 @@
             this.squadraPanel1.TabStop = false;
             this.squadraPanel1.Text = "Team Info";
             // 
+            // teamKonami
+            // 
+            this.teamKonami.AutoSize = true;
+            this.teamKonami.Location = new System.Drawing.Point(316, 46);
+            this.teamKonami.Name = "teamKonami";
+            this.teamKonami.Size = new System.Drawing.Size(10, 13);
+            this.teamKonami.TabIndex = 124;
+            this.teamKonami.Text = "-";
+            // 
+            // label103
+            // 
+            this.label103.AutoSize = true;
+            this.label103.Location = new System.Drawing.Point(316, 21);
+            this.label103.Name = "label103";
+            this.label103.Size = new System.Drawing.Size(76, 13);
+            this.label103.TabIndex = 123;
+            this.label103.Text = "Konami Name:";
+            // 
+            // teamType
+            // 
+            this.teamType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.teamType.FormattingEnabled = true;
+            this.teamType.Location = new System.Drawing.Point(131, 43);
+            this.teamType.Name = "teamType";
+            this.teamType.Size = new System.Drawing.Size(176, 21);
+            this.teamType.TabIndex = 122;
+            this.teamType.TabStop = false;
+            // 
             // characterS1
             // 
             this.characterS1.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2837,37 +2909,7 @@
             this.characterS1.Size = new System.Drawing.Size(24, 24);
             this.characterS1.TabIndex = 120;
             this.characterS1.UseVisualStyleBackColor = true;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.Enabled = false;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(319, 43);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(197, 21);
-            this.comboBox2.TabIndex = 33;
-            this.comboBox2.TabStop = false;
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(316, 23);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(98, 13);
-            this.label50.TabIndex = 32;
-            this.label50.Text = "Team Commentary:";
-            // 
-            // teamType
-            // 
-            this.teamType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.teamType.Enabled = false;
-            this.teamType.FormattingEnabled = true;
-            this.teamType.Location = new System.Drawing.Point(131, 42);
-            this.teamType.Name = "teamType";
-            this.teamType.Size = new System.Drawing.Size(176, 21);
-            this.teamType.TabIndex = 31;
-            this.teamType.TabStop = false;
+            this.characterS1.Click += new System.EventHandler(this.characterS1_Click);
             // 
             // label49
             // 
@@ -2917,6 +2959,7 @@
             this.teamID.Location = new System.Drawing.Point(13, 43);
             this.teamID.MaxLength = 4;
             this.teamID.Name = "teamID";
+            this.teamID.ReadOnly = true;
             this.teamID.Size = new System.Drawing.Size(63, 20);
             this.teamID.TabIndex = 9;
             // 
@@ -2946,847 +2989,10 @@
             this.teamJapanese.Size = new System.Drawing.Size(197, 20);
             this.teamJapanese.TabIndex = 14;
             // 
-            // ImportDb2
-            // 
-            this.ImportDb2.Controls.Add(this.groupBox13);
-            this.ImportDb2.Controls.Add(this.groupBox11);
-            this.ImportDb2.Controls.Add(this.groupBox7);
-            this.ImportDb2.Controls.Add(this.groupBox4);
-            this.ImportDb2.Controls.Add(this.groupBox3);
-            this.ImportDb2.Location = new System.Drawing.Point(4, 22);
-            this.ImportDb2.Name = "ImportDb2";
-            this.ImportDb2.Size = new System.Drawing.Size(907, 632);
-            this.ImportDb2.TabIndex = 8;
-            this.ImportDb2.Text = "Import [DB2]";
-            this.ImportDb2.UseVisualStyleBackColor = true;
-            // 
-            // groupBox13
-            // 
-            this.groupBox13.Controls.Add(this.db2AllBalls);
-            this.groupBox13.Controls.Add(this.db2BallConditionBalls);
-            this.groupBox13.Controls.Add(this.db2OrderBalls);
-            this.groupBox13.Controls.Add(this.db2NamesBalls);
-            this.groupBox13.Location = new System.Drawing.Point(3, 526);
-            this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Size = new System.Drawing.Size(265, 103);
-            this.groupBox13.TabIndex = 45;
-            this.groupBox13.TabStop = false;
-            this.groupBox13.Text = "Balls";
-            this.groupBox13.Visible = false;
-            // 
-            // db2AllBalls
-            // 
-            this.db2AllBalls.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2AllBalls.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2AllBalls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2AllBalls.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2AllBalls.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2AllBalls.Location = new System.Drawing.Point(18, 28);
-            this.db2AllBalls.Name = "db2AllBalls";
-            this.db2AllBalls.Size = new System.Drawing.Size(111, 29);
-            this.db2AllBalls.TabIndex = 140;
-            this.db2AllBalls.Text = "All";
-            this.db2AllBalls.UseVisualStyleBackColor = true;
-            // 
-            // db2BallConditionBalls
-            // 
-            this.db2BallConditionBalls.Enabled = false;
-            this.db2BallConditionBalls.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2BallConditionBalls.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2BallConditionBalls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2BallConditionBalls.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2BallConditionBalls.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2BallConditionBalls.Location = new System.Drawing.Point(135, 63);
-            this.db2BallConditionBalls.Name = "db2BallConditionBalls";
-            this.db2BallConditionBalls.Size = new System.Drawing.Size(111, 29);
-            this.db2BallConditionBalls.TabIndex = 139;
-            this.db2BallConditionBalls.Text = "BallCondition";
-            this.db2BallConditionBalls.UseVisualStyleBackColor = true;
-            // 
-            // db2OrderBalls
-            // 
-            this.db2OrderBalls.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2OrderBalls.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2OrderBalls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2OrderBalls.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2OrderBalls.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2OrderBalls.Location = new System.Drawing.Point(135, 28);
-            this.db2OrderBalls.Name = "db2OrderBalls";
-            this.db2OrderBalls.Size = new System.Drawing.Size(111, 29);
-            this.db2OrderBalls.TabIndex = 133;
-            this.db2OrderBalls.Text = "Order";
-            this.db2OrderBalls.UseVisualStyleBackColor = true;
-            // 
-            // db2NamesBalls
-            // 
-            this.db2NamesBalls.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2NamesBalls.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2NamesBalls.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2NamesBalls.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2NamesBalls.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2NamesBalls.Location = new System.Drawing.Point(18, 63);
-            this.db2NamesBalls.Name = "db2NamesBalls";
-            this.db2NamesBalls.Size = new System.Drawing.Size(111, 29);
-            this.db2NamesBalls.TabIndex = 132;
-            this.db2NamesBalls.Text = "Names";
-            this.db2NamesBalls.UseVisualStyleBackColor = true;
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.db2LicensedStadiums);
-            this.groupBox11.Controls.Add(this.db2ZoneStadiums);
-            this.groupBox11.Controls.Add(this.db2NaStadiums);
-            this.groupBox11.Controls.Add(this.db2CountryStadiums);
-            this.groupBox11.Controls.Add(this.db2CapacityStadiums);
-            this.groupBox11.Controls.Add(this.db2KonamiNamesStadiums);
-            this.groupBox11.Controls.Add(this.db2JapNamesStadiums);
-            this.groupBox11.Controls.Add(this.db2NamesStadiums);
-            this.groupBox11.Controls.Add(this.db2AllStadiums);
-            this.groupBox11.Location = new System.Drawing.Point(537, 108);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(364, 203);
-            this.groupBox11.TabIndex = 44;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Stadiums";
-            this.groupBox11.Visible = false;
-            // 
-            // db2LicensedStadiums
-            // 
-            this.db2LicensedStadiums.Enabled = false;
-            this.db2LicensedStadiums.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2LicensedStadiums.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2LicensedStadiums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2LicensedStadiums.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2LicensedStadiums.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2LicensedStadiums.Location = new System.Drawing.Point(189, 159);
-            this.db2LicensedStadiums.Name = "db2LicensedStadiums";
-            this.db2LicensedStadiums.Size = new System.Drawing.Size(111, 29);
-            this.db2LicensedStadiums.TabIndex = 142;
-            this.db2LicensedStadiums.Text = "Licensed";
-            this.db2LicensedStadiums.UseVisualStyleBackColor = true;
-            // 
-            // db2ZoneStadiums
-            // 
-            this.db2ZoneStadiums.Enabled = false;
-            this.db2ZoneStadiums.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2ZoneStadiums.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2ZoneStadiums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2ZoneStadiums.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2ZoneStadiums.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2ZoneStadiums.Location = new System.Drawing.Point(189, 124);
-            this.db2ZoneStadiums.Name = "db2ZoneStadiums";
-            this.db2ZoneStadiums.Size = new System.Drawing.Size(111, 29);
-            this.db2ZoneStadiums.TabIndex = 141;
-            this.db2ZoneStadiums.Text = "Zone";
-            this.db2ZoneStadiums.UseVisualStyleBackColor = true;
-            // 
-            // db2NaStadiums
-            // 
-            this.db2NaStadiums.Enabled = false;
-            this.db2NaStadiums.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2NaStadiums.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2NaStadiums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2NaStadiums.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2NaStadiums.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2NaStadiums.Location = new System.Drawing.Point(189, 89);
-            this.db2NaStadiums.Name = "db2NaStadiums";
-            this.db2NaStadiums.Size = new System.Drawing.Size(111, 29);
-            this.db2NaStadiums.TabIndex = 140;
-            this.db2NaStadiums.Text = "N/A";
-            this.db2NaStadiums.UseVisualStyleBackColor = true;
-            // 
-            // db2CountryStadiums
-            // 
-            this.db2CountryStadiums.Enabled = false;
-            this.db2CountryStadiums.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2CountryStadiums.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2CountryStadiums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2CountryStadiums.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2CountryStadiums.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2CountryStadiums.Location = new System.Drawing.Point(189, 54);
-            this.db2CountryStadiums.Name = "db2CountryStadiums";
-            this.db2CountryStadiums.Size = new System.Drawing.Size(111, 29);
-            this.db2CountryStadiums.TabIndex = 139;
-            this.db2CountryStadiums.Text = "Country";
-            this.db2CountryStadiums.UseVisualStyleBackColor = true;
-            // 
-            // db2CapacityStadiums
-            // 
-            this.db2CapacityStadiums.Enabled = false;
-            this.db2CapacityStadiums.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2CapacityStadiums.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2CapacityStadiums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2CapacityStadiums.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2CapacityStadiums.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2CapacityStadiums.Location = new System.Drawing.Point(72, 159);
-            this.db2CapacityStadiums.Name = "db2CapacityStadiums";
-            this.db2CapacityStadiums.Size = new System.Drawing.Size(111, 29);
-            this.db2CapacityStadiums.TabIndex = 137;
-            this.db2CapacityStadiums.Text = "Capacity";
-            this.db2CapacityStadiums.UseVisualStyleBackColor = true;
-            // 
-            // db2KonamiNamesStadiums
-            // 
-            this.db2KonamiNamesStadiums.Enabled = false;
-            this.db2KonamiNamesStadiums.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2KonamiNamesStadiums.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2KonamiNamesStadiums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2KonamiNamesStadiums.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2KonamiNamesStadiums.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2KonamiNamesStadiums.Location = new System.Drawing.Point(72, 124);
-            this.db2KonamiNamesStadiums.Name = "db2KonamiNamesStadiums";
-            this.db2KonamiNamesStadiums.Size = new System.Drawing.Size(111, 29);
-            this.db2KonamiNamesStadiums.TabIndex = 136;
-            this.db2KonamiNamesStadiums.Text = "KONAMI Names";
-            this.db2KonamiNamesStadiums.UseVisualStyleBackColor = true;
-            // 
-            // db2JapNamesStadiums
-            // 
-            this.db2JapNamesStadiums.Enabled = false;
-            this.db2JapNamesStadiums.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2JapNamesStadiums.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2JapNamesStadiums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2JapNamesStadiums.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2JapNamesStadiums.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2JapNamesStadiums.Location = new System.Drawing.Point(72, 89);
-            this.db2JapNamesStadiums.Name = "db2JapNamesStadiums";
-            this.db2JapNamesStadiums.Size = new System.Drawing.Size(111, 29);
-            this.db2JapNamesStadiums.TabIndex = 134;
-            this.db2JapNamesStadiums.Text = "Jap Names";
-            this.db2JapNamesStadiums.UseVisualStyleBackColor = true;
-            // 
-            // db2NamesStadiums
-            // 
-            this.db2NamesStadiums.Enabled = false;
-            this.db2NamesStadiums.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2NamesStadiums.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2NamesStadiums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2NamesStadiums.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2NamesStadiums.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2NamesStadiums.Location = new System.Drawing.Point(72, 54);
-            this.db2NamesStadiums.Name = "db2NamesStadiums";
-            this.db2NamesStadiums.Size = new System.Drawing.Size(111, 29);
-            this.db2NamesStadiums.TabIndex = 133;
-            this.db2NamesStadiums.Text = "Names";
-            this.db2NamesStadiums.UseVisualStyleBackColor = true;
-            // 
-            // db2AllStadiums
-            // 
-            this.db2AllStadiums.Enabled = false;
-            this.db2AllStadiums.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2AllStadiums.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2AllStadiums.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2AllStadiums.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2AllStadiums.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2AllStadiums.Location = new System.Drawing.Point(129, 19);
-            this.db2AllStadiums.Name = "db2AllStadiums";
-            this.db2AllStadiums.Size = new System.Drawing.Size(111, 29);
-            this.db2AllStadiums.TabIndex = 132;
-            this.db2AllStadiums.Text = "All";
-            this.db2AllStadiums.UseVisualStyleBackColor = true;
-            // 
-            // groupBox7
-            // 
-            this.groupBox7.Controls.Add(this.button11);
-            this.groupBox7.Controls.Add(this.button37);
-            this.groupBox7.Controls.Add(this.button35);
-            this.groupBox7.Controls.Add(this.db2LicenseTeams);
-            this.groupBox7.Controls.Add(this.db2NonPlayaLeagueTeams);
-            this.groupBox7.Controls.Add(this.button30);
-            this.groupBox7.Controls.Add(this.db2FakeTeamTeams);
-            this.groupBox7.Controls.Add(this.db2CountryTeams);
-            this.groupBox7.Controls.Add(this.db2OtherDetailsTeams);
-            this.groupBox7.Controls.Add(this.db2HomeStadiumsTeams);
-            this.groupBox7.Controls.Add(this.groupBox10);
-            this.groupBox7.Controls.Add(this.db2ShortNamesTeams);
-            this.groupBox7.Controls.Add(this.db2NamesTeams);
-            this.groupBox7.Controls.Add(this.db2AllTeams);
-            this.groupBox7.Location = new System.Drawing.Point(3, 317);
-            this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(898, 203);
-            this.groupBox7.TabIndex = 43;
-            this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "Teams";
-            this.groupBox7.Visible = false;
-            // 
-            // button11
-            // 
-            this.button11.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button11.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button11.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button11.Location = new System.Drawing.Point(400, 159);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(111, 29);
-            this.button11.TabIndex = 145;
-            this.button11.Text = "License Coach";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button37
-            // 
-            this.button37.Enabled = false;
-            this.button37.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button37.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button37.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button37.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button37.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button37.Location = new System.Drawing.Point(606, 19);
-            this.button37.Name = "button37";
-            this.button37.Size = new System.Drawing.Size(111, 29);
-            this.button37.TabIndex = 144;
-            this.button37.Text = "All";
-            this.button37.UseVisualStyleBackColor = true;
-            // 
-            // button35
-            // 
-            this.button35.Enabled = false;
-            this.button35.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button35.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button35.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button35.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button35.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button35.Location = new System.Drawing.Point(606, 89);
-            this.button35.Name = "button35";
-            this.button35.Size = new System.Drawing.Size(111, 29);
-            this.button35.TabIndex = 143;
-            this.button35.Text = "Tactics";
-            this.button35.UseVisualStyleBackColor = true;
-            // 
-            // db2LicenseTeams
-            // 
-            this.db2LicenseTeams.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2LicenseTeams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2LicenseTeams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2LicenseTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2LicenseTeams.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2LicenseTeams.Location = new System.Drawing.Point(400, 124);
-            this.db2LicenseTeams.Name = "db2LicenseTeams";
-            this.db2LicenseTeams.Size = new System.Drawing.Size(111, 29);
-            this.db2LicenseTeams.TabIndex = 141;
-            this.db2LicenseTeams.Text = "License Team";
-            this.db2LicenseTeams.UseVisualStyleBackColor = true;
-            // 
-            // db2NonPlayaLeagueTeams
-            // 
-            this.db2NonPlayaLeagueTeams.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2NonPlayaLeagueTeams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2NonPlayaLeagueTeams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2NonPlayaLeagueTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2NonPlayaLeagueTeams.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2NonPlayaLeagueTeams.Location = new System.Drawing.Point(400, 89);
-            this.db2NonPlayaLeagueTeams.Name = "db2NonPlayaLeagueTeams";
-            this.db2NonPlayaLeagueTeams.Size = new System.Drawing.Size(111, 29);
-            this.db2NonPlayaLeagueTeams.TabIndex = 140;
-            this.db2NonPlayaLeagueTeams.Text = "Non Playa League";
-            this.db2NonPlayaLeagueTeams.UseVisualStyleBackColor = true;
-            // 
-            // button30
-            // 
-            this.button30.Enabled = false;
-            this.button30.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button30.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button30.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button30.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button30.Location = new System.Drawing.Point(606, 54);
-            this.button30.Name = "button30";
-            this.button30.Size = new System.Drawing.Size(111, 29);
-            this.button30.TabIndex = 142;
-            this.button30.Text = "TacticsFormation";
-            this.button30.UseVisualStyleBackColor = true;
-            // 
-            // db2FakeTeamTeams
-            // 
-            this.db2FakeTeamTeams.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2FakeTeamTeams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2FakeTeamTeams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2FakeTeamTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2FakeTeamTeams.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2FakeTeamTeams.Location = new System.Drawing.Point(400, 54);
-            this.db2FakeTeamTeams.Name = "db2FakeTeamTeams";
-            this.db2FakeTeamTeams.Size = new System.Drawing.Size(111, 29);
-            this.db2FakeTeamTeams.TabIndex = 139;
-            this.db2FakeTeamTeams.Text = "Fake Team";
-            this.db2FakeTeamTeams.UseVisualStyleBackColor = true;
-            // 
-            // db2CountryTeams
-            // 
-            this.db2CountryTeams.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2CountryTeams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2CountryTeams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2CountryTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2CountryTeams.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2CountryTeams.Location = new System.Drawing.Point(400, 19);
-            this.db2CountryTeams.Name = "db2CountryTeams";
-            this.db2CountryTeams.Size = new System.Drawing.Size(111, 29);
-            this.db2CountryTeams.TabIndex = 138;
-            this.db2CountryTeams.Text = "Country";
-            this.db2CountryTeams.UseVisualStyleBackColor = true;
-            // 
-            // db2OtherDetailsTeams
-            // 
-            this.db2OtherDetailsTeams.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2OtherDetailsTeams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2OtherDetailsTeams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2OtherDetailsTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2OtherDetailsTeams.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2OtherDetailsTeams.Location = new System.Drawing.Point(283, 159);
-            this.db2OtherDetailsTeams.Name = "db2OtherDetailsTeams";
-            this.db2OtherDetailsTeams.Size = new System.Drawing.Size(111, 29);
-            this.db2OtherDetailsTeams.TabIndex = 137;
-            this.db2OtherDetailsTeams.Text = "Other Details";
-            this.db2OtherDetailsTeams.UseVisualStyleBackColor = true;
-            // 
-            // db2HomeStadiumsTeams
-            // 
-            this.db2HomeStadiumsTeams.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2HomeStadiumsTeams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2HomeStadiumsTeams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2HomeStadiumsTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2HomeStadiumsTeams.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2HomeStadiumsTeams.Location = new System.Drawing.Point(283, 124);
-            this.db2HomeStadiumsTeams.Name = "db2HomeStadiumsTeams";
-            this.db2HomeStadiumsTeams.Size = new System.Drawing.Size(111, 29);
-            this.db2HomeStadiumsTeams.TabIndex = 136;
-            this.db2HomeStadiumsTeams.Text = "Home Stadiums";
-            this.db2HomeStadiumsTeams.UseVisualStyleBackColor = true;
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.db2ToTeams);
-            this.groupBox10.Controls.Add(this.db2ToTextBoxTeams);
-            this.groupBox10.Controls.Add(this.db2FromTextBoxTeams);
-            this.groupBox10.Controls.Add(this.db2FromTeams);
-            this.groupBox10.Controls.Add(this.label101);
-            this.groupBox10.Controls.Add(this.label104);
-            this.groupBox10.Location = new System.Drawing.Point(6, 19);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(242, 132);
-            this.groupBox10.TabIndex = 135;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "DB1 - Teams [ID]";
-            // 
-            // db2ToTeams
-            // 
-            this.db2ToTeams.Location = new System.Drawing.Point(81, 73);
-            this.db2ToTeams.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.db2ToTeams.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.db2ToTeams.Name = "db2ToTeams";
-            this.db2ToTeams.Size = new System.Drawing.Size(63, 20);
-            this.db2ToTeams.TabIndex = 137;
-            this.db2ToTeams.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // db2ToTextBoxTeams
-            // 
-            this.db2ToTextBoxTeams.Location = new System.Drawing.Point(12, 99);
-            this.db2ToTextBoxTeams.MaxLength = 46;
-            this.db2ToTextBoxTeams.Name = "db2ToTextBoxTeams";
-            this.db2ToTextBoxTeams.ReadOnly = true;
-            this.db2ToTextBoxTeams.Size = new System.Drawing.Size(215, 20);
-            this.db2ToTextBoxTeams.TabIndex = 136;
-            // 
-            // db2FromTextBoxTeams
-            // 
-            this.db2FromTextBoxTeams.Location = new System.Drawing.Point(12, 47);
-            this.db2FromTextBoxTeams.MaxLength = 46;
-            this.db2FromTextBoxTeams.Name = "db2FromTextBoxTeams";
-            this.db2FromTextBoxTeams.ReadOnly = true;
-            this.db2FromTextBoxTeams.Size = new System.Drawing.Size(215, 20);
-            this.db2FromTextBoxTeams.TabIndex = 135;
-            // 
-            // db2FromTeams
-            // 
-            this.db2FromTeams.Location = new System.Drawing.Point(81, 23);
-            this.db2FromTeams.Maximum = new decimal(new int[] {
-            65535,
-            0,
-            0,
-            0});
-            this.db2FromTeams.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.db2FromTeams.Name = "db2FromTeams";
-            this.db2FromTeams.Size = new System.Drawing.Size(63, 20);
-            this.db2FromTeams.TabIndex = 134;
-            this.db2FromTeams.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label101
-            // 
-            this.label101.AutoSize = true;
-            this.label101.Location = new System.Drawing.Point(9, 75);
-            this.label101.Name = "label101";
-            this.label101.Size = new System.Drawing.Size(23, 13);
-            this.label101.TabIndex = 10;
-            this.label101.Text = "To:";
-            // 
-            // label104
-            // 
-            this.label104.AutoSize = true;
-            this.label104.Location = new System.Drawing.Point(9, 25);
-            this.label104.Name = "label104";
-            this.label104.Size = new System.Drawing.Size(33, 13);
-            this.label104.TabIndex = 9;
-            this.label104.Text = "From:";
-            // 
-            // db2ShortNamesTeams
-            // 
-            this.db2ShortNamesTeams.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2ShortNamesTeams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2ShortNamesTeams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2ShortNamesTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2ShortNamesTeams.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2ShortNamesTeams.Location = new System.Drawing.Point(283, 89);
-            this.db2ShortNamesTeams.Name = "db2ShortNamesTeams";
-            this.db2ShortNamesTeams.Size = new System.Drawing.Size(111, 29);
-            this.db2ShortNamesTeams.TabIndex = 134;
-            this.db2ShortNamesTeams.Text = "Short Names";
-            this.db2ShortNamesTeams.UseVisualStyleBackColor = true;
-            // 
-            // db2NamesTeams
-            // 
-            this.db2NamesTeams.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2NamesTeams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2NamesTeams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2NamesTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2NamesTeams.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2NamesTeams.Location = new System.Drawing.Point(283, 54);
-            this.db2NamesTeams.Name = "db2NamesTeams";
-            this.db2NamesTeams.Size = new System.Drawing.Size(111, 29);
-            this.db2NamesTeams.TabIndex = 133;
-            this.db2NamesTeams.Text = "Names";
-            this.db2NamesTeams.UseVisualStyleBackColor = true;
-            // 
-            // db2AllTeams
-            // 
-            this.db2AllTeams.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.db2AllTeams.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.db2AllTeams.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.db2AllTeams.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.db2AllTeams.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.db2AllTeams.Location = new System.Drawing.Point(283, 19);
-            this.db2AllTeams.Name = "db2AllTeams";
-            this.db2AllTeams.Size = new System.Drawing.Size(111, 29);
-            this.db2AllTeams.TabIndex = 132;
-            this.db2AllTeams.Text = "All";
-            this.db2AllTeams.UseVisualStyleBackColor = true;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.button21);
-            this.groupBox4.Controls.Add(this.button22);
-            this.groupBox4.Controls.Add(this.button23);
-            this.groupBox4.Controls.Add(this.button24);
-            this.groupBox4.Controls.Add(this.button25);
-            this.groupBox4.Controls.Add(this.button10);
-            this.groupBox4.Controls.Add(this.button9);
-            this.groupBox4.Controls.Add(this.groupBox5);
-            this.groupBox4.Controls.Add(this.button8);
-            this.groupBox4.Controls.Add(this.button7);
-            this.groupBox4.Controls.Add(this.button6);
-            this.groupBox4.Location = new System.Drawing.Point(3, 108);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(528, 203);
-            this.groupBox4.TabIndex = 42;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Players";
-            this.groupBox4.Visible = false;
-            // 
-            // button21
-            // 
-            this.button21.Enabled = false;
-            this.button21.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button21.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button21.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button21.Location = new System.Drawing.Point(400, 159);
-            this.button21.Name = "button21";
-            this.button21.Size = new System.Drawing.Size(111, 29);
-            this.button21.TabIndex = 142;
-            this.button21.Text = "Abilities";
-            this.button21.UseVisualStyleBackColor = true;
-            // 
-            // button22
-            // 
-            this.button22.Enabled = false;
-            this.button22.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button22.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button22.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button22.Location = new System.Drawing.Point(400, 124);
-            this.button22.Name = "button22";
-            this.button22.Size = new System.Drawing.Size(111, 29);
-            this.button22.TabIndex = 141;
-            this.button22.Text = "Skin Colour";
-            this.button22.UseVisualStyleBackColor = true;
-            // 
-            // button23
-            // 
-            this.button23.Enabled = false;
-            this.button23.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button23.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button23.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button23.Location = new System.Drawing.Point(400, 89);
-            this.button23.Name = "button23";
-            this.button23.Size = new System.Drawing.Size(111, 29);
-            this.button23.TabIndex = 140;
-            this.button23.Text = "Abilities";
-            this.button23.UseVisualStyleBackColor = true;
-            // 
-            // button24
-            // 
-            this.button24.Enabled = false;
-            this.button24.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button24.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button24.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button24.Location = new System.Drawing.Point(400, 54);
-            this.button24.Name = "button24";
-            this.button24.Size = new System.Drawing.Size(111, 29);
-            this.button24.TabIndex = 139;
-            this.button24.Text = "Names";
-            this.button24.UseVisualStyleBackColor = true;
-            // 
-            // button25
-            // 
-            this.button25.Enabled = false;
-            this.button25.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button25.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button25.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button25.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button25.Location = new System.Drawing.Point(400, 19);
-            this.button25.Name = "button25";
-            this.button25.Size = new System.Drawing.Size(111, 29);
-            this.button25.TabIndex = 138;
-            this.button25.Text = "All";
-            this.button25.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Enabled = false;
-            this.button10.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button10.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button10.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button10.Location = new System.Drawing.Point(283, 159);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(111, 29);
-            this.button10.TabIndex = 137;
-            this.button10.Text = "Abilities";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.Enabled = false;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button9.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button9.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button9.Location = new System.Drawing.Point(283, 124);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(111, 29);
-            this.button9.TabIndex = 136;
-            this.button9.Text = "Skin Colour";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.db2ToPlayers);
-            this.groupBox5.Controls.Add(this.db2ToTextBoxPlayers);
-            this.groupBox5.Controls.Add(this.db2FromTextBoxPlayers);
-            this.groupBox5.Controls.Add(this.db2FromPlayers);
-            this.groupBox5.Controls.Add(this.label102);
-            this.groupBox5.Controls.Add(this.label103);
-            this.groupBox5.Enabled = false;
-            this.groupBox5.Location = new System.Drawing.Point(6, 19);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(242, 132);
-            this.groupBox5.TabIndex = 135;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Players [ID]";
-            // 
-            // db2ToPlayers
-            // 
-            this.db2ToPlayers.Location = new System.Drawing.Point(81, 73);
-            this.db2ToPlayers.Maximum = new decimal(new int[] {
-            -1,
-            0,
-            0,
-            0});
-            this.db2ToPlayers.Name = "db2ToPlayers";
-            this.db2ToPlayers.Size = new System.Drawing.Size(63, 20);
-            this.db2ToPlayers.TabIndex = 137;
-            this.db2ToPlayers.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // db2ToTextBoxPlayers
-            // 
-            this.db2ToTextBoxPlayers.Location = new System.Drawing.Point(12, 99);
-            this.db2ToTextBoxPlayers.MaxLength = 46;
-            this.db2ToTextBoxPlayers.Name = "db2ToTextBoxPlayers";
-            this.db2ToTextBoxPlayers.ReadOnly = true;
-            this.db2ToTextBoxPlayers.Size = new System.Drawing.Size(215, 20);
-            this.db2ToTextBoxPlayers.TabIndex = 136;
-            // 
-            // db2FromTextBoxPlayers
-            // 
-            this.db2FromTextBoxPlayers.Location = new System.Drawing.Point(12, 47);
-            this.db2FromTextBoxPlayers.MaxLength = 46;
-            this.db2FromTextBoxPlayers.Name = "db2FromTextBoxPlayers";
-            this.db2FromTextBoxPlayers.ReadOnly = true;
-            this.db2FromTextBoxPlayers.Size = new System.Drawing.Size(215, 20);
-            this.db2FromTextBoxPlayers.TabIndex = 135;
-            // 
-            // db2FromPlayers
-            // 
-            this.db2FromPlayers.Location = new System.Drawing.Point(81, 23);
-            this.db2FromPlayers.Maximum = new decimal(new int[] {
-            -1,
-            0,
-            0,
-            0});
-            this.db2FromPlayers.Name = "db2FromPlayers";
-            this.db2FromPlayers.Size = new System.Drawing.Size(63, 20);
-            this.db2FromPlayers.TabIndex = 134;
-            this.db2FromPlayers.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // label102
-            // 
-            this.label102.AutoSize = true;
-            this.label102.Location = new System.Drawing.Point(9, 75);
-            this.label102.Name = "label102";
-            this.label102.Size = new System.Drawing.Size(23, 13);
-            this.label102.TabIndex = 10;
-            this.label102.Text = "To:";
-            // 
-            // label103
-            // 
-            this.label103.AutoSize = true;
-            this.label103.Location = new System.Drawing.Point(9, 25);
-            this.label103.Name = "label103";
-            this.label103.Size = new System.Drawing.Size(33, 13);
-            this.label103.TabIndex = 9;
-            this.label103.Text = "From:";
-            // 
-            // button8
-            // 
-            this.button8.Enabled = false;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button8.Location = new System.Drawing.Point(283, 89);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(111, 29);
-            this.button8.TabIndex = 134;
-            this.button8.Text = "Abilities";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Enabled = false;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button7.Location = new System.Drawing.Point(283, 54);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(111, 29);
-            this.button7.TabIndex = 133;
-            this.button7.Text = "Names";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Enabled = false;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.Location = new System.Drawing.Point(283, 19);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(111, 29);
-            this.button6.TabIndex = 132;
-            this.button6.Text = "All";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.tot);
-            this.groupBox3.Controls.Add(this.path);
-            this.groupBox3.Controls.Add(this.typeDB);
-            this.groupBox3.Location = new System.Drawing.Point(3, 7);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(898, 96);
-            this.groupBox3.TabIndex = 41;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "DB2 Import";
-            // 
-            // tot
-            // 
-            this.tot.AutoSize = true;
-            this.tot.Location = new System.Drawing.Point(9, 71);
-            this.tot.Name = "tot";
-            this.tot.Size = new System.Drawing.Size(10, 13);
-            this.tot.TabIndex = 11;
-            this.tot.Text = "-";
-            // 
-            // path
-            // 
-            this.path.AutoSize = true;
-            this.path.Location = new System.Drawing.Point(9, 48);
-            this.path.Name = "path";
-            this.path.Size = new System.Drawing.Size(32, 13);
-            this.path.TabIndex = 10;
-            this.path.Text = "Path:";
-            // 
-            // typeDB
-            // 
-            this.typeDB.AutoSize = true;
-            this.typeDB.Location = new System.Drawing.Point(8, 26);
-            this.typeDB.Name = "typeDB";
-            this.typeDB.Size = new System.Drawing.Size(52, 13);
-            this.typeDB.TabIndex = 9;
-            this.typeDB.Text = "Type DB:";
-            // 
             // Coach
             // 
+            this.Coach.Controls.Add(this.searchC);
+            this.Coach.Controls.Add(this.searchCoach);
             this.Coach.Controls.Add(this.applyCoach);
             this.Coach.Controls.Add(this.groupBox16);
             this.Coach.Controls.Add(this.coachBox);
@@ -3797,15 +3003,191 @@
             this.Coach.Text = "Coaches";
             this.Coach.UseVisualStyleBackColor = true;
             // 
-            // Competition
+            // searchC
             // 
-            this.Competition.Controls.Add(this.label42);
-            this.Competition.Location = new System.Drawing.Point(4, 22);
-            this.Competition.Name = "Competition";
-            this.Competition.Size = new System.Drawing.Size(907, 632);
-            this.Competition.TabIndex = 2;
-            this.Competition.Text = "Competition";
-            this.Competition.UseVisualStyleBackColor = true;
+            this.searchC.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchC.FlatAppearance.BorderSize = 0;
+            this.searchC.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.searchC.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.searchC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.searchC.Image = ((System.Drawing.Image)(resources.GetObject("searchC.Image")));
+            this.searchC.Location = new System.Drawing.Point(216, 607);
+            this.searchC.Margin = new System.Windows.Forms.Padding(0);
+            this.searchC.Name = "searchC";
+            this.searchC.Size = new System.Drawing.Size(20, 20);
+            this.searchC.TabIndex = 135;
+            this.searchC.UseVisualStyleBackColor = true;
+            this.searchC.Click += new System.EventHandler(this.searchC_Click);
+            // 
+            // searchCoach
+            // 
+            this.searchCoach.Location = new System.Drawing.Point(3, 608);
+            this.searchCoach.MaxLength = 20;
+            this.searchCoach.Name = "searchCoach";
+            this.searchCoach.Size = new System.Drawing.Size(210, 20);
+            this.searchCoach.TabIndex = 134;
+            this.searchCoach.Text = "search coach...";
+            this.searchCoach.TextChanged += new System.EventHandler(this.searchCoach_TextChanged);
+            this.searchCoach.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchCoach_KeyPress);
+            // 
+            // applyCoach
+            // 
+            this.applyCoach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCoach.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.applyCoach.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.applyCoach.FlatAppearance.BorderSize = 0;
+            this.applyCoach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.applyCoach.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCoach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.applyCoach.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.applyCoach.Location = new System.Drawing.Point(809, 593);
+            this.applyCoach.Margin = new System.Windows.Forms.Padding(0);
+            this.applyCoach.Name = "applyCoach";
+            this.applyCoach.Size = new System.Drawing.Size(86, 29);
+            this.applyCoach.TabIndex = 133;
+            this.applyCoach.Text = "Apply";
+            this.applyCoach.UseVisualStyleBackColor = false;
+            this.applyCoach.Click += new System.EventHandler(this.applyCoach_Click);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.allenatoreLic);
+            this.groupBox16.Controls.Add(this.allenatoreJap);
+            this.groupBox16.Controls.Add(this.label91);
+            this.groupBox16.Controls.Add(this.allenatoreNationality);
+            this.groupBox16.Controls.Add(this.label113);
+            this.groupBox16.Controls.Add(this.button14);
+            this.groupBox16.Controls.Add(this.allenatoreName);
+            this.groupBox16.Controls.Add(this.label114);
+            this.groupBox16.Controls.Add(this.allenatoreId);
+            this.groupBox16.Controls.Add(this.label116);
+            this.groupBox16.Location = new System.Drawing.Point(242, 6);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(657, 133);
+            this.groupBox16.TabIndex = 132;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Coach Info";
+            // 
+            // allenatoreLic
+            // 
+            this.allenatoreLic.AutoSize = true;
+            this.allenatoreLic.Location = new System.Drawing.Point(13, 90);
+            this.allenatoreLic.Name = "allenatoreLic";
+            this.allenatoreLic.Size = new System.Drawing.Size(60, 17);
+            this.allenatoreLic.TabIndex = 126;
+            this.allenatoreLic.Text = "Real Id";
+            this.allenatoreLic.UseVisualStyleBackColor = true;
+            this.allenatoreLic.CheckedChanged += new System.EventHandler(this.allenatoriLic_CheckedChanged);
+            // 
+            // allenatoreJap
+            // 
+            this.allenatoreJap.Location = new System.Drawing.Point(108, 90);
+            this.allenatoreJap.MaxLength = 98;
+            this.allenatoreJap.Name = "allenatoreJap";
+            this.allenatoreJap.Size = new System.Drawing.Size(215, 20);
+            this.allenatoreJap.TabIndex = 125;
+            // 
+            // label91
+            // 
+            this.label91.AutoSize = true;
+            this.label91.Location = new System.Drawing.Point(105, 70);
+            this.label91.Name = "label91";
+            this.label91.Size = new System.Drawing.Size(87, 13);
+            this.label91.TabIndex = 124;
+            this.label91.Text = "Japanese Name:";
+            // 
+            // allenatoreNationality
+            // 
+            this.allenatoreNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.allenatoreNationality.FormattingEnabled = true;
+            this.allenatoreNationality.Location = new System.Drawing.Point(374, 43);
+            this.allenatoreNationality.Name = "allenatoreNationality";
+            this.allenatoreNationality.Size = new System.Drawing.Size(215, 21);
+            this.allenatoreNationality.TabIndex = 123;
+            this.allenatoreNationality.TabStop = false;
+            // 
+            // label113
+            // 
+            this.label113.AutoSize = true;
+            this.label113.Location = new System.Drawing.Point(371, 23);
+            this.label113.Name = "label113";
+            this.label113.Size = new System.Drawing.Size(59, 13);
+            this.label113.TabIndex = 121;
+            this.label113.Text = "Nationality:";
+            // 
+            // button14
+            // 
+            this.button14.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button14.FlatAppearance.BorderSize = 0;
+            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
+            this.button14.Location = new System.Drawing.Point(329, 39);
+            this.button14.Margin = new System.Windows.Forms.Padding(0);
+            this.button14.Name = "button14";
+            this.button14.Size = new System.Drawing.Size(24, 24);
+            this.button14.TabIndex = 120;
+            this.button14.UseVisualStyleBackColor = true;
+            this.button14.Click += new System.EventHandler(this.characterS1_Click);
+            // 
+            // allenatoreName
+            // 
+            this.allenatoreName.Location = new System.Drawing.Point(108, 43);
+            this.allenatoreName.MaxLength = 98;
+            this.allenatoreName.Name = "allenatoreName";
+            this.allenatoreName.Size = new System.Drawing.Size(215, 20);
+            this.allenatoreName.TabIndex = 14;
+            // 
+            // label114
+            // 
+            this.label114.AutoSize = true;
+            this.label114.Location = new System.Drawing.Point(105, 23);
+            this.label114.Name = "label114";
+            this.label114.Size = new System.Drawing.Size(72, 13);
+            this.label114.TabIndex = 12;
+            this.label114.Text = "Coach Name:";
+            // 
+            // allenatoreId
+            // 
+            this.allenatoreId.Location = new System.Drawing.Point(13, 43);
+            this.allenatoreId.MaxLength = 4;
+            this.allenatoreId.Name = "allenatoreId";
+            this.allenatoreId.ReadOnly = true;
+            this.allenatoreId.Size = new System.Drawing.Size(63, 20);
+            this.allenatoreId.TabIndex = 9;
+            // 
+            // label116
+            // 
+            this.label116.AutoSize = true;
+            this.label116.Location = new System.Drawing.Point(10, 23);
+            this.label116.Name = "label116";
+            this.label116.Size = new System.Drawing.Size(55, 13);
+            this.label116.TabIndex = 8;
+            this.label116.Text = "Coach ID:";
+            // 
+            // coachBox
+            // 
+            this.coachBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.coachBox.FormattingEnabled = true;
+            this.coachBox.Location = new System.Drawing.Point(3, 6);
+            this.coachBox.Name = "coachBox";
+            this.coachBox.Size = new System.Drawing.Size(233, 589);
+            this.coachBox.TabIndex = 131;
+            this.coachBox.SelectedIndexChanged += new System.EventHandler(this.coachBox_SelectedIndexChanged);
+            // 
+            // Competitions
+            // 
+            this.Competitions.Controls.Add(this.label42);
+            this.Competitions.Location = new System.Drawing.Point(4, 22);
+            this.Competitions.Name = "Competitions";
+            this.Competitions.Size = new System.Drawing.Size(907, 632);
+            this.Competitions.TabIndex = 2;
+            this.Competitions.Text = "Competitions";
+            this.Competitions.UseVisualStyleBackColor = true;
             // 
             // label42
             // 
@@ -3815,6 +3197,15 @@
             this.label42.Size = new System.Drawing.Size(70, 13);
             this.label42.TabIndex = 0;
             this.label42.Text = "Coming Soon";
+            // 
+            // Derby
+            // 
+            this.Derby.Location = new System.Drawing.Point(4, 22);
+            this.Derby.Name = "Derby";
+            this.Derby.Size = new System.Drawing.Size(907, 632);
+            this.Derby.TabIndex = 12;
+            this.Derby.Text = "Derby";
+            this.Derby.UseVisualStyleBackColor = true;
             // 
             // Stadiums
             // 
@@ -3844,7 +3235,7 @@
             this.applyStadium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyStadium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyStadium.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.applyStadium.Location = new System.Drawing.Point(806, 598);
+            this.applyStadium.Location = new System.Drawing.Point(809, 593);
             this.applyStadium.Margin = new System.Windows.Forms.Padding(0);
             this.applyStadium.Name = "applyStadium";
             this.applyStadium.Size = new System.Drawing.Size(86, 29);
@@ -3893,6 +3284,7 @@
             this.button5.Size = new System.Drawing.Size(20, 20);
             this.button5.TabIndex = 127;
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // searchStadium
             // 
@@ -3902,6 +3294,8 @@
             this.searchStadium.Size = new System.Drawing.Size(210, 20);
             this.searchStadium.TabIndex = 125;
             this.searchStadium.Text = "search stadium...";
+            this.searchStadium.TextChanged += new System.EventHandler(this.searchStadium_TextChanged);
+            this.searchStadium.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchStadium_KeyPress);
             // 
             // pictureBox4
             // 
@@ -3937,6 +3331,7 @@
             this.stadiumNa.Name = "stadiumNa";
             this.stadiumNa.Size = new System.Drawing.Size(63, 20);
             this.stadiumNa.TabIndex = 39;
+            this.stadiumNa.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label96
             // 
@@ -4026,6 +3421,24 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Stadium Info";
             // 
+            // stadiumKonami
+            // 
+            this.stadiumKonami.AutoSize = true;
+            this.stadiumKonami.Location = new System.Drawing.Point(366, 43);
+            this.stadiumKonami.Name = "stadiumKonami";
+            this.stadiumKonami.Size = new System.Drawing.Size(10, 13);
+            this.stadiumKonami.TabIndex = 131;
+            this.stadiumKonami.Text = "-";
+            // 
+            // label117
+            // 
+            this.label117.AutoSize = true;
+            this.label117.Location = new System.Drawing.Point(366, 23);
+            this.label117.Name = "label117";
+            this.label117.Size = new System.Drawing.Size(76, 13);
+            this.label117.TabIndex = 130;
+            this.label117.Text = "Konami Name:";
+            // 
             // stadiumJapanese
             // 
             this.stadiumJapanese.Location = new System.Drawing.Point(108, 90);
@@ -4050,6 +3463,7 @@
             this.stadiumCapacity.Name = "stadiumCapacity";
             this.stadiumCapacity.Size = new System.Drawing.Size(137, 20);
             this.stadiumCapacity.TabIndex = 126;
+            this.stadiumCapacity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label95
             // 
@@ -4075,6 +3489,7 @@
             this.button3.Size = new System.Drawing.Size(24, 24);
             this.button3.TabIndex = 120;
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.characterS1_Click);
             // 
             // stadiumName
             // 
@@ -4101,6 +3516,7 @@
             this.stadiumOrder.Name = "stadiumOrder";
             this.stadiumOrder.Size = new System.Drawing.Size(63, 20);
             this.stadiumOrder.TabIndex = 11;
+            this.stadiumOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label89
             // 
@@ -4156,7 +3572,7 @@
             this.applyBall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyBall.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.applyBall.Location = new System.Drawing.Point(806, 598);
+            this.applyBall.Location = new System.Drawing.Point(809, 593);
             this.applyBall.Margin = new System.Windows.Forms.Padding(0);
             this.applyBall.Name = "applyBall";
             this.applyBall.Size = new System.Drawing.Size(86, 29);
@@ -4190,6 +3606,7 @@
             this.button4.Size = new System.Drawing.Size(20, 20);
             this.button4.TabIndex = 128;
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // searchBall
             // 
@@ -4199,6 +3616,8 @@
             this.searchBall.Size = new System.Drawing.Size(210, 20);
             this.searchBall.TabIndex = 123;
             this.searchBall.Text = "search ball...";
+            this.searchBall.TextChanged += new System.EventHandler(this.searchBall_TextChanged);
+            this.searchBall.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBall_KeyPress);
             // 
             // pallonePanel2
             // 
@@ -4224,6 +3643,7 @@
             this.palloneUnknowB4.Name = "palloneUnknowB4";
             this.palloneUnknowB4.Size = new System.Drawing.Size(63, 20);
             this.palloneUnknowB4.TabIndex = 128;
+            this.palloneUnknowB4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // palloneUnknowB3
             // 
@@ -4232,6 +3652,7 @@
             this.palloneUnknowB3.Name = "palloneUnknowB3";
             this.palloneUnknowB3.Size = new System.Drawing.Size(63, 20);
             this.palloneUnknowB3.TabIndex = 126;
+            this.palloneUnknowB3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label41
             // 
@@ -4258,6 +3679,7 @@
             this.palloneUnknowB2.Name = "palloneUnknowB2";
             this.palloneUnknowB2.Size = new System.Drawing.Size(63, 20);
             this.palloneUnknowB2.TabIndex = 124;
+            this.palloneUnknowB2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label39
             // 
@@ -4275,6 +3697,7 @@
             this.palloneUnknowB1.Name = "palloneUnknowB1";
             this.palloneUnknowB1.Size = new System.Drawing.Size(63, 20);
             this.palloneUnknowB1.TabIndex = 122;
+            this.palloneUnknowB1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label37
             // 
@@ -4325,6 +3748,7 @@
             this.characterS2.Size = new System.Drawing.Size(24, 24);
             this.characterS2.TabIndex = 120;
             this.characterS2.UseVisualStyleBackColor = true;
+            this.characterS2.Click += new System.EventHandler(this.characterS1_Click);
             // 
             // palloneName
             // 
@@ -4350,6 +3774,7 @@
             this.palloneOrder.Name = "palloneOrder";
             this.palloneOrder.Size = new System.Drawing.Size(63, 20);
             this.palloneOrder.TabIndex = 11;
+            this.palloneOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label87
             // 
@@ -4380,6 +3805,8 @@
             // 
             // Boots
             // 
+            this.Boots.Controls.Add(this.searchB);
+            this.Boots.Controls.Add(this.searchBoot);
             this.Boots.Controls.Add(this.bootApply);
             this.Boots.Controls.Add(this.groupBox15);
             this.Boots.Controls.Add(this.bootsBox);
@@ -4389,6 +3816,34 @@
             this.Boots.TabIndex = 11;
             this.Boots.Text = "Boots";
             this.Boots.UseVisualStyleBackColor = true;
+            // 
+            // searchB
+            // 
+            this.searchB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchB.FlatAppearance.BorderSize = 0;
+            this.searchB.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.searchB.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.searchB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchB.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.searchB.Image = ((System.Drawing.Image)(resources.GetObject("searchB.Image")));
+            this.searchB.Location = new System.Drawing.Point(216, 607);
+            this.searchB.Margin = new System.Windows.Forms.Padding(0);
+            this.searchB.Name = "searchB";
+            this.searchB.Size = new System.Drawing.Size(20, 20);
+            this.searchB.TabIndex = 134;
+            this.searchB.UseVisualStyleBackColor = true;
+            this.searchB.Click += new System.EventHandler(this.searchB_Click);
+            // 
+            // searchBoot
+            // 
+            this.searchBoot.Location = new System.Drawing.Point(3, 608);
+            this.searchBoot.MaxLength = 20;
+            this.searchBoot.Name = "searchBoot";
+            this.searchBoot.Size = new System.Drawing.Size(210, 20);
+            this.searchBoot.TabIndex = 133;
+            this.searchBoot.Text = "search boot...";
+            this.searchBoot.TextChanged += new System.EventHandler(this.searchBoot_TextChanged);
+            this.searchBoot.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchBoot_KeyPress);
             // 
             // bootApply
             // 
@@ -4401,7 +3856,7 @@
             this.bootApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bootApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.bootApply.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bootApply.Location = new System.Drawing.Point(806, 598);
+            this.bootApply.Location = new System.Drawing.Point(809, 593);
             this.bootApply.Margin = new System.Windows.Forms.Padding(0);
             this.bootApply.Name = "bootApply";
             this.bootApply.Size = new System.Drawing.Size(86, 29);
@@ -4479,6 +3934,7 @@
             this.button13.Size = new System.Drawing.Size(24, 24);
             this.button13.TabIndex = 120;
             this.button13.UseVisualStyleBackColor = true;
+            this.button13.Click += new System.EventHandler(this.characterS1_Click);
             // 
             // scarpaName
             // 
@@ -4504,6 +3960,7 @@
             this.scarpaOrder.Name = "scarpaOrder";
             this.scarpaOrder.Size = new System.Drawing.Size(63, 20);
             this.scarpaOrder.TabIndex = 11;
+            this.scarpaOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label105
             // 
@@ -4544,6 +4001,8 @@
             // 
             // Gloves
             // 
+            this.Gloves.Controls.Add(this.searchG);
+            this.Gloves.Controls.Add(this.searchGlove);
             this.Gloves.Controls.Add(this.applyGlove);
             this.Gloves.Controls.Add(this.groupBox14);
             this.Gloves.Controls.Add(this.glovesBox);
@@ -4553,6 +4012,34 @@
             this.Gloves.TabIndex = 5;
             this.Gloves.Text = "Gloves";
             this.Gloves.UseVisualStyleBackColor = true;
+            // 
+            // searchG
+            // 
+            this.searchG.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchG.FlatAppearance.BorderSize = 0;
+            this.searchG.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.searchG.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
+            this.searchG.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchG.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.searchG.Image = ((System.Drawing.Image)(resources.GetObject("searchG.Image")));
+            this.searchG.Location = new System.Drawing.Point(216, 607);
+            this.searchG.Margin = new System.Windows.Forms.Padding(0);
+            this.searchG.Name = "searchG";
+            this.searchG.Size = new System.Drawing.Size(20, 20);
+            this.searchG.TabIndex = 136;
+            this.searchG.UseVisualStyleBackColor = true;
+            this.searchG.Click += new System.EventHandler(this.searchG_Click);
+            // 
+            // searchGlove
+            // 
+            this.searchGlove.Location = new System.Drawing.Point(3, 608);
+            this.searchGlove.MaxLength = 20;
+            this.searchGlove.Name = "searchGlove";
+            this.searchGlove.Size = new System.Drawing.Size(210, 20);
+            this.searchGlove.TabIndex = 135;
+            this.searchGlove.Text = "search glove...";
+            this.searchGlove.TextChanged += new System.EventHandler(this.searchGlove_TextChanged);
+            this.searchGlove.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.searchGlove_KeyPress);
             // 
             // applyGlove
             // 
@@ -4565,7 +4052,7 @@
             this.applyGlove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyGlove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyGlove.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.applyGlove.Location = new System.Drawing.Point(806, 598);
+            this.applyGlove.Location = new System.Drawing.Point(809, 593);
             this.applyGlove.Margin = new System.Windows.Forms.Padding(0);
             this.applyGlove.Name = "applyGlove";
             this.applyGlove.Size = new System.Drawing.Size(86, 29);
@@ -4624,6 +4111,7 @@
             this.button12.Size = new System.Drawing.Size(24, 24);
             this.button12.TabIndex = 120;
             this.button12.UseVisualStyleBackColor = true;
+            this.button12.Click += new System.EventHandler(this.characterS1_Click);
             // 
             // guantoName
             // 
@@ -4649,6 +4137,7 @@
             this.guantoOrder.Name = "guantoOrder";
             this.guantoOrder.Size = new System.Drawing.Size(63, 20);
             this.guantoOrder.TabIndex = 11;
+            this.guantoOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label51
             // 
@@ -5293,190 +4782,6 @@
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // coachBox
-            // 
-            this.coachBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
-            this.coachBox.FormattingEnabled = true;
-            this.coachBox.Location = new System.Drawing.Point(3, 6);
-            this.coachBox.Name = "coachBox";
-            this.coachBox.Size = new System.Drawing.Size(233, 589);
-            this.coachBox.TabIndex = 131;
-            this.coachBox.SelectedIndexChanged += new System.EventHandler(this.coachBox_SelectedIndexChanged);
-            // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.allenatoreLic);
-            this.groupBox16.Controls.Add(this.allenatoreJap);
-            this.groupBox16.Controls.Add(this.label91);
-            this.groupBox16.Controls.Add(this.allenatoreNationality);
-            this.groupBox16.Controls.Add(this.label113);
-            this.groupBox16.Controls.Add(this.button14);
-            this.groupBox16.Controls.Add(this.allenatoreName);
-            this.groupBox16.Controls.Add(this.label114);
-            this.groupBox16.Controls.Add(this.allenatoreId);
-            this.groupBox16.Controls.Add(this.label116);
-            this.groupBox16.Location = new System.Drawing.Point(242, 6);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(657, 133);
-            this.groupBox16.TabIndex = 132;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Coach Info";
-            // 
-            // label113
-            // 
-            this.label113.AutoSize = true;
-            this.label113.Location = new System.Drawing.Point(371, 23);
-            this.label113.Name = "label113";
-            this.label113.Size = new System.Drawing.Size(59, 13);
-            this.label113.TabIndex = 121;
-            this.label113.Text = "Nationality:";
-            // 
-            // button14
-            // 
-            this.button14.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button14.FlatAppearance.BorderSize = 0;
-            this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
-            this.button14.Location = new System.Drawing.Point(329, 39);
-            this.button14.Margin = new System.Windows.Forms.Padding(0);
-            this.button14.Name = "button14";
-            this.button14.Size = new System.Drawing.Size(24, 24);
-            this.button14.TabIndex = 120;
-            this.button14.UseVisualStyleBackColor = true;
-            // 
-            // allenatoreName
-            // 
-            this.allenatoreName.Location = new System.Drawing.Point(108, 43);
-            this.allenatoreName.MaxLength = 98;
-            this.allenatoreName.Name = "allenatoreName";
-            this.allenatoreName.Size = new System.Drawing.Size(215, 20);
-            this.allenatoreName.TabIndex = 14;
-            // 
-            // label114
-            // 
-            this.label114.AutoSize = true;
-            this.label114.Location = new System.Drawing.Point(105, 23);
-            this.label114.Name = "label114";
-            this.label114.Size = new System.Drawing.Size(72, 13);
-            this.label114.TabIndex = 12;
-            this.label114.Text = "Coach Name:";
-            // 
-            // allenatoreId
-            // 
-            this.allenatoreId.Location = new System.Drawing.Point(13, 43);
-            this.allenatoreId.MaxLength = 4;
-            this.allenatoreId.Name = "allenatoreId";
-            this.allenatoreId.Size = new System.Drawing.Size(63, 20);
-            this.allenatoreId.TabIndex = 9;
-            // 
-            // label116
-            // 
-            this.label116.AutoSize = true;
-            this.label116.Location = new System.Drawing.Point(10, 23);
-            this.label116.Name = "label116";
-            this.label116.Size = new System.Drawing.Size(55, 13);
-            this.label116.TabIndex = 8;
-            this.label116.Text = "Coach ID:";
-            // 
-            // allenatoreNationality
-            // 
-            this.allenatoreNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.allenatoreNationality.FormattingEnabled = true;
-            this.allenatoreNationality.Location = new System.Drawing.Point(374, 43);
-            this.allenatoreNationality.Name = "allenatoreNationality";
-            this.allenatoreNationality.Size = new System.Drawing.Size(215, 21);
-            this.allenatoreNationality.TabIndex = 123;
-            this.allenatoreNationality.TabStop = false;
-            // 
-            // allenatoreJap
-            // 
-            this.allenatoreJap.Location = new System.Drawing.Point(108, 90);
-            this.allenatoreJap.MaxLength = 98;
-            this.allenatoreJap.Name = "allenatoreJap";
-            this.allenatoreJap.Size = new System.Drawing.Size(215, 20);
-            this.allenatoreJap.TabIndex = 125;
-            // 
-            // label91
-            // 
-            this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(105, 70);
-            this.label91.Name = "label91";
-            this.label91.Size = new System.Drawing.Size(87, 13);
-            this.label91.TabIndex = 124;
-            this.label91.Text = "Japanese Name:";
-            // 
-            // label117
-            // 
-            this.label117.AutoSize = true;
-            this.label117.Location = new System.Drawing.Point(366, 23);
-            this.label117.Name = "label117";
-            this.label117.Size = new System.Drawing.Size(76, 13);
-            this.label117.TabIndex = 130;
-            this.label117.Text = "Konami Name:";
-            // 
-            // stadiumKonami
-            // 
-            this.stadiumKonami.AutoSize = true;
-            this.stadiumKonami.Location = new System.Drawing.Point(366, 43);
-            this.stadiumKonami.Name = "stadiumKonami";
-            this.stadiumKonami.Size = new System.Drawing.Size(10, 13);
-            this.stadiumKonami.TabIndex = 131;
-            this.stadiumKonami.Text = "-";
-            // 
-            // applyCoach
-            // 
-            this.applyCoach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.applyCoach.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.applyCoach.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.applyCoach.FlatAppearance.BorderSize = 0;
-            this.applyCoach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyCoach.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.applyCoach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.applyCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.applyCoach.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.applyCoach.Location = new System.Drawing.Point(806, 598);
-            this.applyCoach.Margin = new System.Windows.Forms.Padding(0);
-            this.applyCoach.Name = "applyCoach";
-            this.applyCoach.Size = new System.Drawing.Size(86, 29);
-            this.applyCoach.TabIndex = 133;
-            this.applyCoach.Text = "Apply";
-            this.applyCoach.UseVisualStyleBackColor = false;
-            this.applyCoach.Click += new System.EventHandler(this.applyCoach_Click);
-            // 
-            // allenatoreLic
-            // 
-            this.allenatoreLic.AutoSize = true;
-            this.allenatoreLic.Location = new System.Drawing.Point(13, 90);
-            this.allenatoreLic.Name = "allenatoreLic";
-            this.allenatoreLic.Size = new System.Drawing.Size(60, 17);
-            this.allenatoreLic.TabIndex = 126;
-            this.allenatoreLic.Text = "Real Id";
-            this.allenatoreLic.UseVisualStyleBackColor = true;
-            this.allenatoreLic.CheckedChanged += new System.EventHandler(this.allenatoriLic_CheckedChanged);
-            // 
-            // playersBox
-            // 
-            this.playersBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
-            this.playersBox.FormattingEnabled = true;
-            this.playersBox.Location = new System.Drawing.Point(3, 36);
-            this.playersBox.Name = "playersBox";
-            this.playersBox.Size = new System.Drawing.Size(193, 537);
-            this.playersBox.TabIndex = 131;
-            this.playersBox.SelectedIndexChanged += new System.EventHandler(this.playersBox_SelectedIndexChanged);
-            // 
-            // giocatoreNationality
-            // 
-            this.giocatoreNationality.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.giocatoreNationality.FormattingEnabled = true;
-            this.giocatoreNationality.Location = new System.Drawing.Point(71, 124);
-            this.giocatoreNationality.Name = "giocatoreNationality";
-            this.giocatoreNationality.Size = new System.Drawing.Size(199, 21);
-            this.giocatoreNationality.TabIndex = 132;
-            this.giocatoreNationality.TabStop = false;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5508,6 +4813,8 @@
             this.giocatorePanel1.PerformLayout();
             this.Teams.ResumeLayout(false);
             this.Teams.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.anthemPlayersSinging)).EndInit();
@@ -5522,24 +4829,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.squadraPanel1.ResumeLayout(false);
             this.squadraPanel1.PerformLayout();
-            this.ImportDb2.ResumeLayout(false);
-            this.groupBox13.ResumeLayout(false);
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox7.ResumeLayout(false);
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.db2ToTeams)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db2FromTeams)).EndInit();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.db2ToPlayers)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db2FromPlayers)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.Coach.ResumeLayout(false);
-            this.Competition.ResumeLayout(false);
-            this.Competition.PerformLayout();
+            this.Coach.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.Competitions.ResumeLayout(false);
+            this.Competitions.PerformLayout();
             this.Stadiums.ResumeLayout(false);
             this.Stadiums.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -5555,9 +4850,11 @@
             this.pallonePanel1.ResumeLayout(false);
             this.pallonePanel1.PerformLayout();
             this.Boots.ResumeLayout(false);
+            this.Boots.PerformLayout();
             this.groupBox15.ResumeLayout(false);
             this.groupBox15.PerformLayout();
             this.Gloves.ResumeLayout(false);
+            this.Gloves.PerformLayout();
             this.groupBox14.ResumeLayout(false);
             this.groupBox14.PerformLayout();
             this.Global.ResumeLayout(false);
@@ -5574,8 +4871,6 @@
             this.Team_AMenuStrip2.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5614,7 +4909,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem checkForUpdate;
         private System.Windows.Forms.TabPage Transfers;
-        private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.Panel giocatorePanel2;
         private System.Windows.Forms.Panel giocatorePanel4;
         private System.Windows.Forms.Label label36;
@@ -5666,7 +4960,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
         private System.Windows.Forms.TabPage Teams;
-        private System.Windows.Forms.TabPage Competition;
+        private System.Windows.Forms.TabPage Competitions;
         private System.Windows.Forms.TabPage Stadiums;
         private System.Windows.Forms.TabPage Balls;
         private System.Windows.Forms.TabPage Gloves;
@@ -5732,21 +5026,18 @@
         private System.Windows.Forms.Label label47;
         private System.Windows.Forms.TextBox teamID;
         private System.Windows.Forms.Label label46;
-        private System.Windows.Forms.ComboBox teamType;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.ComboBox teamCoachLicense;
         private System.Windows.Forms.Label label57;
         private System.Windows.Forms.Label label62;
         private System.Windows.Forms.GroupBox squadraPanel3;
-        private System.Windows.Forms.ComboBox teamStadium;
         private System.Windows.Forms.Label label55;
         private System.Windows.Forms.GroupBox squadraPanel2;
         private System.Windows.Forms.ComboBox teamLicense;
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.ComboBox teamNotPlayableLeague;
         private System.Windows.Forms.Label label52;
-        private System.Windows.Forms.ComboBox teamCountry;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label50;
@@ -5902,7 +5193,6 @@
         private System.Windows.Forms.Button button4;
         public System.Windows.Forms.ComboBox teamBox1;
         public System.Windows.Forms.ComboBox teamBox2;
-        private System.Windows.Forms.ListBox teamsBox;
         private System.Windows.Forms.Button searchT;
         private System.Windows.Forms.TextBox searchTeamAB;
         private System.Windows.Forms.Button button2;
@@ -5914,56 +5204,7 @@
         private System.Windows.Forms.CheckBox dbStadiumLicensed;
         private System.Windows.Forms.TextBox dbStadiumCapacity;
         private System.Windows.Forms.Label label84;
-        private System.Windows.Forms.TabPage ImportDb2;
-        private System.Windows.Forms.ToolStripMenuItem openDB2;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label path;
-        private System.Windows.Forms.Label typeDB;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label tot;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label102;
-        private System.Windows.Forms.Label label103;
-        private System.Windows.Forms.NumericUpDown db2FromPlayers;
-        private System.Windows.Forms.NumericUpDown db2ToPlayers;
-        private System.Windows.Forms.TextBox db2ToTextBoxPlayers;
-        private System.Windows.Forms.TextBox db2FromTextBoxPlayers;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.Button db2OtherDetailsTeams;
-        private System.Windows.Forms.Button db2HomeStadiumsTeams;
-        private System.Windows.Forms.GroupBox groupBox10;
-        private System.Windows.Forms.NumericUpDown db2ToTeams;
-        private System.Windows.Forms.TextBox db2ToTextBoxTeams;
-        private System.Windows.Forms.TextBox db2FromTextBoxTeams;
-        private System.Windows.Forms.NumericUpDown db2FromTeams;
-        private System.Windows.Forms.Label label101;
-        private System.Windows.Forms.Label label104;
-        private System.Windows.Forms.Button db2ShortNamesTeams;
-        private System.Windows.Forms.Button db2NamesTeams;
-        private System.Windows.Forms.Button db2AllTeams;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Button db2CapacityStadiums;
-        private System.Windows.Forms.Button db2KonamiNamesStadiums;
-        private System.Windows.Forms.Button db2JapNamesStadiums;
-        private System.Windows.Forms.Button db2NamesStadiums;
-        private System.Windows.Forms.Button db2AllStadiums;
-        private System.Windows.Forms.Button db2LicensedStadiums;
-        private System.Windows.Forms.Button db2ZoneStadiums;
-        private System.Windows.Forms.Button db2NaStadiums;
-        private System.Windows.Forms.Button db2CountryStadiums;
-        private System.Windows.Forms.Button button21;
-        private System.Windows.Forms.Button button22;
-        private System.Windows.Forms.Button button23;
-        private System.Windows.Forms.Button button24;
-        private System.Windows.Forms.Button button25;
         private System.Windows.Forms.GroupBox groupBox12;
-        private System.Windows.Forms.CheckBox hasAnthem;
-        private System.Windows.Forms.CheckBox hasLicensedPlayers;
         private System.Windows.Forms.CheckBox unknown;
         private System.Windows.Forms.Label label56;
         private System.Windows.Forms.NumericUpDown anthemStandingStyle;
@@ -5971,23 +5212,8 @@
         private System.Windows.Forms.NumericUpDown anthemStandingAngle;
         private System.Windows.Forms.Label label61;
         private System.Windows.Forms.Label label59;
-        private System.Windows.Forms.Button db2LicenseTeams;
-        private System.Windows.Forms.Button db2NonPlayaLeagueTeams;
-        private System.Windows.Forms.Button db2FakeTeamTeams;
-        private System.Windows.Forms.Button db2CountryTeams;
-        private System.Windows.Forms.Button button35;
-        private System.Windows.Forms.Button button30;
-        private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.Button db2AllBalls;
-        private System.Windows.Forms.Button db2BallConditionBalls;
-        private System.Windows.Forms.Button db2OrderBalls;
-        private System.Windows.Forms.Button db2NamesBalls;
-        private System.Windows.Forms.Button button37;
-        private System.Windows.Forms.ToolStripMenuItem pes18ToolStripMenuItem;
-        private System.Windows.Forms.Button button11;
         private System.Windows.Forms.TabPage FmStats;
         private System.Windows.Forms.TabPage Coach;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label giocatoreInjury;
         private System.Windows.Forms.Label giocatoreUse;
@@ -6047,6 +5273,26 @@
         private System.Windows.Forms.TabControl tabControl1;
         public System.Windows.Forms.ListBox playersBox;
         public System.Windows.Forms.ComboBox giocatoreNationality;
+        private System.Windows.Forms.Button searchC;
+        private System.Windows.Forms.TextBox searchCoach;
+        private System.Windows.Forms.Button searchB;
+        private System.Windows.Forms.TextBox searchBoot;
+        private System.Windows.Forms.Button searchG;
+        private System.Windows.Forms.TextBox searchGlove;
+        public System.Windows.Forms.ListBox teamsBox;
+        private System.Windows.Forms.ComboBox teamAnthem;
+        private System.Windows.Forms.Label label101;
+        private System.Windows.Forms.ComboBox teamHasLicensedPlayers;
+        private System.Windows.Forms.Label label102;
+        private System.Windows.Forms.GroupBox groupBox3;
+        public System.Windows.Forms.ComboBox teamStadium;
+        public System.Windows.Forms.ComboBox teamCountry;
+        private System.Windows.Forms.Button applyTeam;
+        public System.Windows.Forms.ComboBox teamCoach;
+        private System.Windows.Forms.ComboBox teamType;
+        private System.Windows.Forms.Label label103;
+        private System.Windows.Forms.Label teamKonami;
+        private System.Windows.Forms.TabPage Derby;
     }
 }
 

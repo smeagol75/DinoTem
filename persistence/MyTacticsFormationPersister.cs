@@ -15,6 +15,7 @@ namespace DinoTem.persistence
     public class MyTacticsFormationPersister
     {
         private static string PATH = "/TacticsFormation.bin";
+        private static int block = 12;
 
         private MemoryStream unzlib(string patch, int bitRecognized)
         {
@@ -35,142 +36,87 @@ namespace DinoTem.persistence
             return memory1;
         }
 
-        public List<TacticsFormation> load(string patch, int bitRecognized)
+        public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
-            List<TacticsFormation> tacticsList = new List<TacticsFormation>();
+            memory1 = unzlib(patch, bitRecognized);
 
-            MemoryStream memory1 = unzlib(patch, bitRecognized);
-
-            //Calcolo TacticsFormation
-            // Create new FileInfo object and get the Length.
-            int bytes_tattica = (int)memory1.Length;
-            int tattica = bytes_tattica / 12;
-
-            byte position;
-            UInt16 TeamTacticIdFormation;
-            byte Y;
-            byte X;
-            byte byte_frag;
             try
             {
                 // Use the memory stream in a binary reader.
-                BinaryReader reader = new BinaryReader(memory1);
-                int i2 = 0;
-                long START = -12;
-                long START2 = -8;
-                long START3 = -6;
-                long START4 = -5;
-                long START5 = -4;
-
-                int NumberOfRepetitions2 = Convert.ToInt32(tattica);
-                for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
-                {
-                    START += 12;
-                    memory1.Seek(START, SeekOrigin.Begin);
-                    position = reader.ReadByte();
-
-                    START2 += 12;
-                    memory1.Seek(START2, SeekOrigin.Begin);
-                    TeamTacticIdFormation = reader.ReadUInt16();
-                    START3 += 12;
-                    memory1.Seek(START3, SeekOrigin.Begin);
-                    Y = reader.ReadByte();
-
-                    START4 += 12;
-                    memory1.Seek(START4, SeekOrigin.Begin);
-                    X = reader.ReadByte();
-
-                    START5 += 12;
-                    memory1.Seek(START5, SeekOrigin.Begin);
-                    byte_frag = reader.ReadByte();
-
-                    // Instantiate a new object, set it's number and
-                    // some other properties
-                    TacticsFormation form = new TacticsFormation(TeamTacticIdFormation);
-                    form.setPosition(position);
-                    form.setY(Y);
-                    form.setX(X);
-                    form.setbyteFrag(byte_frag);
-                    tacticsList.Add(form);
-                }
-                reader.Close();
-                memory1.Close();
+                reader = new BinaryReader(memory1);
+                writer = new BinaryWriter(memory1);
             }
             catch (IOException e)
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SplashScreen._SplashScreen.Close();
             }
-            return tacticsList;
         }
 
-        private void saveHex(int value, BinaryWriter b)
+        public List<TacticsFormation> loadTacticsFormation(UInt16 idTactics, MemoryStream memory1, BinaryReader reader)
         {
-            string hex2klkoa6 = MyBinary.IntToHex(value);  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
+            List<TacticsFormation> list = new List<TacticsFormation>();
 
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
+            //Calcolo tattiche
+            int bytesTactics = (int)memory1.Length;
+            int tactics = bytesTactics / block;
+
+            byte position;
+            UInt16 TeamTacticIdFormation;
+            byte Y;
+            byte X;
+            byte byte_frag;
+
+            long START = -12;
+            long START2 = -8;
+            long START3 = -6;
+            long START4 = -5;
+            long START5 = -4;
+
+            int NumberOfRepetitions2 = Convert.ToInt32(tactics);
+            for (int i2 = 0; i2 <= NumberOfRepetitions2 - 1; i2++)
             {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
+                START2 += block;
+                START += block;
+                START3 += block;
+                START4 += block;
+                START5 += block;
 
-        private void saveHex2(int value, BinaryWriter b)
-        {
-            string hex2klkoa6 = value.ToString("X2");  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
-
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
-            {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
-
-        public void save(string patch, Controller controller, int bitRecognized)
-        {
-            using (BinaryWriter b = new BinaryWriter(File.Open(patch + PATH, FileMode.Create)))
-            {
-                // Use foreach and write all 12 integers.
-                foreach (TacticsFormation temp in controller.getTacticsFormationList())
+                memory1.Seek(START2, SeekOrigin.Begin);
+                TeamTacticIdFormation = reader.ReadUInt16();
+                if (TeamTacticIdFormation == idTactics)
                 {
-                    saveHex(temp.getPosition(), b);
-                    saveHex(0, b);
-                    saveHex(temp.getTeamTacticId(), b);
-                    saveHex2(temp.getY(), b);
-                    saveHex2(temp.getX(), b);
-                    saveHex2(temp.getbyteFrag(), b);
-                    saveHex(0, b);
-                    saveHex2(0, b);
+                    memory1.Seek(START, SeekOrigin.Begin);
+                    position = reader.ReadByte();
+ 
+                    memory1.Seek(START3, SeekOrigin.Begin);
+                    Y = reader.ReadByte();
+
+                    memory1.Seek(START4, SeekOrigin.Begin);
+                    X = reader.ReadByte();
+
+                    memory1.Seek(START5, SeekOrigin.Begin);
+                    byte_frag = reader.ReadByte();
+
+                    TacticsFormation form = new TacticsFormation(TeamTacticIdFormation);
+                    form.setPosition(position);
+                    form.setY(Y);
+                    form.setX(X);
+                    form.setbyteFrag(byte_frag);
+
+                    list.Add(form);
                 }
             }
 
-            if (bitRecognized == 0)
-            {
-                //save zlib
-                byte[] inputData7 = File.ReadAllBytes(patch + PATH);
-                byte[] ss8 = Zlib18.ZLIBFile(inputData7);
-                File.WriteAllBytes(patch + PATH, ss8);
-            }
-            else if (bitRecognized == 1)
-            {
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                MemoryStream memory1 = new MemoryStream(inputData13);
-                UnzlibZlibConsole.UnzlibZlibConsole.TacticsFormation_Console(ref memory1);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memory1, patch + PATH);
-                memory1.Close();
-            }
-            else if (bitRecognized == 2)
-            {
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                MemoryStream memory1 = new MemoryStream(inputData13);
-                UnzlibZlibConsole.UnzlibZlibConsole.TacticsFormation_Console(ref memory1);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memory1, patch + PATH);
-                memory1.Close();
-            }
+            return list;
+        }
+
+        public void applyTacticsFormation(int selectedIndex, ref MemoryStream unzlib, TacticsFormation tatticsF, ref BinaryWriter writer)
+        {
+        }
+
+        public void save(string patch, ref MemoryStream memoryTattiche, int bitRecognized)
+        {
         }
 
     }

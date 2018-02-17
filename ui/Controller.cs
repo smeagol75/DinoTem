@@ -19,27 +19,39 @@ namespace DinoTem.ui
         }
         
         private int bitRecognized = -1;
-        public MemoryStream unzlibPalloni;
-        public BinaryReader leggiPalloni;
-        public BinaryWriter scriviPalloni;
-        public MemoryStream unzlibGuanti;
-        public BinaryReader leggiGuanti;
-        public BinaryWriter scriviGuanti;
-        public MemoryStream unzlibScarpe;
-        public BinaryReader leggiScarpe;
-        public BinaryWriter scriviScarpe;
-        public MemoryStream unzlibStadi;
-        public BinaryReader leggiStadi;
-        public BinaryWriter scriviStadi;
-        public MemoryStream unzlibPaesi;
-        public BinaryReader leggiPaesi;
-        public BinaryWriter scriviPaesi;
-        public MemoryStream unzlibAllenatori;
-        public BinaryReader leggiAllenatori;
-        public BinaryWriter scriviAllenatori;
-        public MemoryStream unzlibGiocatori;
-        public BinaryReader leggiGiocatori;
-        public BinaryWriter scriviGiocatori;
+        private MemoryStream unzlibPalloni;
+        private BinaryReader leggiPalloni;
+        private BinaryWriter scriviPalloni;
+        private MemoryStream unzlibGuanti;
+        private BinaryReader leggiGuanti;
+        private BinaryWriter scriviGuanti;
+        private MemoryStream unzlibScarpe;
+        private BinaryReader leggiScarpe;
+        private BinaryWriter scriviScarpe;
+        private MemoryStream unzlibStadi;
+        private BinaryReader leggiStadi;
+        private BinaryWriter scriviStadi;
+        private MemoryStream unzlibPaesi;
+        private BinaryReader leggiPaesi;
+        private BinaryWriter scriviPaesi;
+        private MemoryStream unzlibAllenatori;
+        private BinaryReader leggiAllenatori;
+        private BinaryWriter scriviAllenatori;
+        private MemoryStream unzlibGiocatori;
+        private BinaryReader leggiGiocatori;
+        private BinaryWriter scriviGiocatori;
+        private MemoryStream unzlibSquadre;
+        private BinaryReader leggiSquadre;
+        private BinaryWriter scriviSquadre;
+        private MemoryStream unzlibPlayerAssign;
+        private BinaryReader leggiPlayerAssign;
+        private BinaryWriter scriviPlayerAssign;
+        private MemoryStream unzlibTattiche;
+        private BinaryReader leggiTattiche;
+        private BinaryWriter scriviTattiche;
+        private MemoryStream unzlibTacticsFormation;
+        private BinaryReader leggiTacticsFormation;
+        private BinaryWriter scriviTacticsFormation;
 
         public void readBallPersister(string patch, int bitRecognized)
         {
@@ -139,6 +151,62 @@ namespace DinoTem.ui
             }
         }
 
+        public void readTeamPersister(string patch, int bitRecognized)
+        {
+            MyTeamPersister teamReader = new MyTeamPersister();
+
+            try
+            {
+                teamReader.load(patch, bitRecognized, ref unzlibSquadre, ref leggiSquadre, ref scriviSquadre);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readPlayerAssignmentPersister(string patch, int bitRecognized)
+        {
+            MyPlayerAssignmentPersister paReader = new MyPlayerAssignmentPersister();
+
+            try
+            {
+                paReader.load(patch, bitRecognized, ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readTacticsPersister(string patch, int bitRecognized)
+        {
+            MyTacticsPersister taReader = new MyTacticsPersister();
+
+            try
+            {
+                taReader.load(patch, bitRecognized, ref unzlibTattiche, ref leggiTattiche, ref scriviTattiche);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readTacticsFormationPersister(string patch, int bitRecognized)
+        {
+            MyTacticsFormationPersister tfReader = new MyTacticsFormationPersister();
+
+            try
+            {
+                tfReader.load(patch, bitRecognized, ref unzlibTacticsFormation, ref leggiTacticsFormation, ref scriviTacticsFormation);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void saveBallPersister(string patch, Controller controller, int bitRecognized)
         {
             MyBallPersister ballSave = new MyBallPersister();
@@ -220,6 +288,62 @@ namespace DinoTem.ui
             catch
             {
                 MessageBox.Show("Error saved Player.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveTeamPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyTeamPersister teamSave = new MyTeamPersister();
+
+            try
+            {
+                teamSave.save(patch, ref unzlibSquadre, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Team.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void savePlayerAssignmentPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyPlayerAssignmentPersister paSave = new MyPlayerAssignmentPersister();
+
+            try
+            {
+                paSave.save(patch, ref unzlibPlayerAssign, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved PlayerAssignment.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveTacticsPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyTacticsPersister taSave = new MyTacticsPersister();
+
+            try
+            {
+                taSave.save(patch, ref unzlibTattiche, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Tactics.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveTacticsFormationPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyTacticsFormationPersister tfSave = new MyTacticsFormationPersister();
+
+            try
+            {
+                tfSave.save(patch, ref unzlibTacticsFormation, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved TacticsFormation.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -307,6 +431,62 @@ namespace DinoTem.ui
             }
         }
 
+        public void applyTeamPersister(int index, Team squadra)
+        {
+            MyTeamPersister team = new MyTeamPersister();
+
+            try
+            {
+                team.applyTeam(index, ref unzlibSquadre, squadra, ref scriviSquadre);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + squadra.getEnglish(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyPlayerAssignmentPersister(int index, PlayerAssignment pa)
+        {
+            MyPlayerAssignmentPersister playerA = new MyPlayerAssignmentPersister();
+
+            try
+            {
+                playerA.applyPlayerA(index, ref unzlibPlayerAssign, pa, ref scriviPlayerAssign);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply transfer - id player: " + pa.getPlayerId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyTacticsPersister(int index, Tactics ta)
+        {
+            MyTacticsPersister playerA = new MyTacticsPersister();
+
+            try
+            {
+                playerA.applyTactics(index, ref unzlibPlayerAssign, ta, ref scriviPlayerAssign);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply tactics - id team: " + ta.getTeamId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyTacticsFormationPersister(int index, TacticsFormation tf)
+        {
+            MyTacticsFormationPersister tacticF = new MyTacticsFormationPersister();
+
+            try
+            {
+                tacticF.applyTacticsFormation(index, ref unzlibTacticsFormation, tf, ref scriviTacticsFormation);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply tactics formation - id tactics: " + tf.getTeamTacticId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void closeMemory()
         {
             if (getBitRecognized() != -1)
@@ -332,6 +512,18 @@ namespace DinoTem.ui
                 unzlibGiocatori.Close();
                 leggiGiocatori.Close();
                 scriviGiocatori.Close();
+                unzlibSquadre.Close();
+                leggiSquadre.Close();
+                scriviSquadre.Close();
+                unzlibPlayerAssign.Close();
+                leggiPlayerAssign.Close();
+                scriviPlayerAssign.Close();
+                unzlibTattiche.Close();
+                leggiTattiche.Close();
+                scriviTattiche.Close();
+                unzlibTacticsFormation.Close();
+                leggiTacticsFormation.Close();
+                scriviTacticsFormation.Close();
             }
         }
 
@@ -442,9 +634,6 @@ namespace DinoTem.ui
 
             UtilGUI.resetField();
 
-            //teamBox1.Items.Clear();
-            //teamBox2.Items.Clear();
-            //teamsBox.Items.Clear();
             Form1._Form1.ballsBox.Items.Clear();
             Form1._Form1.glovesBox.Items.Clear();
             Form1._Form1.bootsBox.Items.Clear();
@@ -452,6 +641,9 @@ namespace DinoTem.ui
             Form1._Form1.coachBox.Items.Clear();
             Form1._Form1.stadiumCountry.Items.Clear();
             Form1._Form1.playersBox.Items.Clear();
+            Form1._Form1.teamsBox.Items.Clear();
+            Form1._Form1.teamBox1.Items.Clear();
+            Form1._Form1.teamBox2.Items.Clear();
 
             readBallPersister(folder, bitRecognized);
             readGlovePersister(folder, bitRecognized);
@@ -460,6 +652,10 @@ namespace DinoTem.ui
             readStadiumPersister(folder, bitRecognized);
             readCoachPersister(folder, bitRecognized);
             readPlayerPersister(folder, bitRecognized);
+            readTeamPersister(folder, bitRecognized);
+            readPlayerAssignmentPersister(folder, bitRecognized);
+            readTacticsPersister(folder, bitRecognized);
+            readTacticsFormationPersister(folder, bitRecognized);
 
             //readCountryPersister(folder, bitRecognized);
             //if (countryList.Count == 0)
@@ -541,15 +737,15 @@ namespace DinoTem.ui
                 teamStadium.Items.Add(x);
             }*/
 
-            //teamBox1.SelectedIndex = 0;
-            //teamBox2.SelectedIndex = 0;
             Form1._Form1.ballsBox.SelectedIndex = 0;
             Form1._Form1.glovesBox.SelectedIndex = 0;
             Form1._Form1.bootsBox.SelectedIndex = 0;
             Form1._Form1.stadiumsBox.SelectedIndex = 0;
             Form1._Form1.coachBox.SelectedIndex = 0;
             Form1._Form1.playersBox.SelectedIndex = 0;
-            //teamsBox.SelectedIndex = 0;
+            Form1._Form1.teamsBox.SelectedIndex = 0;
+            Form1._Form1.teamBox1.SelectedIndex = 0;
+            Form1._Form1.teamBox2.SelectedIndex = 0;
         }
 
         public int getBitRecognized()
@@ -613,6 +809,60 @@ namespace DinoTem.ui
             return player;
         }
 
+        public Player leggiGiocatoreById(UInt32 id)
+        {
+            MyPlayerPersister playerReader = new MyPlayerPersister();
+            Player player = playerReader.loadPlayerById(id, unzlibGiocatori, leggiGiocatori);
+
+            return player;
+        }
+
+        public int leggiIndexGiocatoreById(UInt32 id)
+        {
+            MyPlayerPersister playerReader = new MyPlayerPersister();
+            int player = playerReader.loadIndexPlayerById(id, unzlibGiocatori, leggiGiocatori);
+
+            return player;
+        }
+
+        public Team leggiSquadra(int index)
+        {
+            MyTeamPersister teamReader = new MyTeamPersister();
+            Team squadra = teamReader.loadTeam(index, leggiSquadre);
+
+            return squadra;
+        }
+
+        public List<PlayerAssignment> leggiGiocatoriSquadra(UInt32 id)
+        {
+            MyPlayerAssignmentPersister paReader = new MyPlayerAssignmentPersister();
+            List<PlayerAssignment> pa = paReader.loadPlayerTeam(id, unzlibPlayerAssign, leggiPlayerAssign);
+            //ordinare giocatori
+            pa.Sort((x, y) => x.getOrder().CompareTo(y.getOrder()));
+            for (int i = 0; i < pa.Count; i++)
+            {
+                pa[i].setOrder((ushort) i);
+            }
+
+            return pa;
+        }
+
+        public List<Tactics> leggiTattica(UInt32 idTeam)
+        {
+            MyTacticsPersister tacticsReader = new MyTacticsPersister();
+            List<Tactics> tattica = tacticsReader.loadTactics(idTeam, unzlibTattiche, leggiTattiche);
+
+            return tattica;
+        }
+
+        public List<TacticsFormation> leggiFormazione(UInt16 idTactics)
+        {
+            MyTacticsFormationPersister tacticsReader = new MyTacticsFormationPersister();
+            List<TacticsFormation> tatticaF = tacticsReader.loadTacticsFormation(idTactics, unzlibTacticsFormation, leggiTacticsFormation);
+
+            return tatticaF;
+        }
+
         public int findCountry(UInt32 idCountry)
         {
             for (int i = 0; i < Form1._Form1.stadiumCountry.Items.Count; i++)
@@ -624,11 +874,80 @@ namespace DinoTem.ui
             return 0;
         }
 
+        public int findStadium(UInt32 idStadium)
+        {
+            for (int i = 0; i < Form1._Form1.teamStadium.Items.Count; i++)
+            {
+                Stadium c = leggiStadium(i);
+                if (c.getId() == (UInt16)idStadium)
+                    return i;
+            }
+            return 0;
+        }
+
+        public int findCoach(UInt32 idCoach)
+        {
+            for (int i = 0; i < Form1._Form1.teamCoach.Items.Count; i++)
+            {
+                Coach c = leggiCoach(i);
+                if (c.getId() == idCoach)
+                    return i;
+            }
+            return 0;
+        }
+
+        public void UpdateForm(ComboBox t1, ComboBox t2)
+        {
+            try
+            {
+                t1.SelectedIndex = t1.SelectedIndex + 1;
+                t1.SelectedIndex = t1.SelectedIndex - 1;
+            }
+            catch
+            {
+                t1.SelectedIndex = t1.SelectedIndex - 1;
+                t1.SelectedIndex = t1.SelectedIndex + 1;
+            };
+
+            try
+            {
+                t2.SelectedIndex = t2.SelectedIndex + 1;
+                t2.SelectedIndex = t2.SelectedIndex - 1;
+            }
+            catch
+            {
+                t2.SelectedIndex = t2.SelectedIndex - 1;
+                t2.SelectedIndex = t2.SelectedIndex + 1;
+            };
+        }
+
+        public void UpdateFormPlayer(int index, string name)
+        {
+            Form1._Form1.playersBox.Items[index] = name;
+        }
+
+        public void changePlayerName(UInt32 id, string name) 
+        {
+            int index = leggiIndexGiocatoreById(id);
+            Player player = leggiGiocatore(index);
+            player.setName(name);
+            applyPlayerPersister(index, player);
+            UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
+            UpdateFormPlayer(index, name);
+        }
+
+        public void changeShirtPlayer(UInt32 id, string name)
+        {
+            int index = leggiIndexGiocatoreById(id);
+            Player player = leggiGiocatore(index);
+            player.setShirtName(name);
+            applyPlayerPersister(index, player);
+        }
+
         private List<BallCondition> ballConditionList = new List<BallCondition>();
         private List<Ball> ballList = new List<Ball>();
         private List<PlayerAppearance> playerAppearanceList = new List<PlayerAppearance>();
         private List<PlayerAssignment> playerAssignmentList = new List<PlayerAssignment>();
-        private List<Player> playerList = new List<Player>();
         private List<TacticsFormation> tacticsFormationList = new List<TacticsFormation>();
         private List<Tactics> tacticsList = new List<Tactics>();
         private List<Team> teamList = new List<Team>();
@@ -636,28 +955,12 @@ namespace DinoTem.ui
         //form1
         //player
         //team
-        //DB2
         //Formazione form
         //Giocatore form
         //transferPlayer Drag&Drop
         //remove fake team
         //globalFunction
         //fm form
-
-        public void readTeamPersister(string patch, int bitRecognized)
-        {
-            MyTeamPersister teamReader = new MyTeamPersister();
-
-            try
-            {
-                teamList = teamReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
 
         public void readBallConditionPersister(string patch, int bitRecognized)
         {
@@ -689,51 +992,6 @@ namespace DinoTem.ui
 
         }
 
-        public void readPlayerAssignmentPersister(string patch, int bitRecognized)
-        {
-            MyPlayerAssignmentPersister playerAssignmentReader = new MyPlayerAssignmentPersister();
-
-            try
-            {
-                playerAssignmentList = playerAssignmentReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void readTacticsFormationPersister(string patch, int bitRecognized)
-        {
-            MyTacticsFormationPersister tacticsFormationReader = new MyTacticsFormationPersister();
-
-            try
-            {
-                tacticsFormationList = tacticsFormationReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void readTacticsPersister(string patch, int bitRecognized)
-        {
-            MyTacticsPersister tacticsReader = new MyTacticsPersister();
-
-            try
-            {
-                tacticsList = tacticsReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         public void saveBallConditionPersister(string patch, Controller controller, int bitRecognized)
         {
             MyBallConditionPersister ballConditionSave = new MyBallConditionPersister();
@@ -745,21 +1003,6 @@ namespace DinoTem.ui
             catch
             {
                 MessageBox.Show("Error saved BallCondition.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void savePlayerAssignmentPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyPlayerAssignmentPersister playerAssignmentSave = new MyPlayerAssignmentPersister();
-
-            try
-            {
-                playerAssignmentSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved PlayerAssignment.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -779,36 +1022,6 @@ namespace DinoTem.ui
 
         }
 
-        public void saveTacticsFormationPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyTacticsFormationPersister tacticsFormationSave = new MyTacticsFormationPersister();
-
-            try
-            {
-                tacticsFormationSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved TacticsFormation.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void saveTeamPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyTeamPersister teamSave = new MyTeamPersister();
-
-            try
-            {
-                teamSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved Team.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         public List<Team> getListTeam()
         {
             return teamList;
@@ -817,11 +1030,6 @@ namespace DinoTem.ui
         public List<Ball> getListBall()
         {
             return ballList;
-        }
-
-        public List<Player> getListPlayer()
-        {
-            return playerList;
         }
 
         public List<BallCondition> getBallConditionList()
@@ -863,16 +1071,16 @@ namespace DinoTem.ui
         public Player getPlayerById(int positionList)
         {
             int k = 0;
-            foreach (Player player in playerList)
-            {
-                if (k == positionList)
-                    return player;
-                k++;
-            }
+            //foreach (Player player in playerList)
+            //{
+                //if (k == positionList)
+                    //return player;
+                //k++;
+            //}
             return null;
         }
 
-        public Player getPlayerById(int positionInTeam, int team)
+        /*public Player getPlayerById(int positionInTeam, int team)
         {
             foreach (PlayerAssignment playerA in playerAssignmentList)
             {
@@ -881,25 +1089,7 @@ namespace DinoTem.ui
                         return getPlayerById(playerA.getPlayerId());
             }
             return null;
-        }
-
-        public int getPositionListPlayerById(long idPlayer) {
-		    int i = 0;
-			foreach (Player temp in playerList) {
-			    if (idPlayer == temp.getId())
-				    return i;
-				i++;
-		    }
-		    return 0;
-        }
-		
-		public Player getPlayerById(long idPlayer) {
-		    foreach (Player temp in playerList) {
-			    if (idPlayer == temp.getId())
-				    return temp;
-		    }
-		    return null;
-        }
+        }*/
 
         public Team getTeamById(int positionList)
         {
@@ -922,55 +1112,16 @@ namespace DinoTem.ui
 		    return null;
 	    }
 
-        public void changePlayerName(long idPlayer, string name)
-        {
-            Player temp = getPlayerById(idPlayer);
-            if (idPlayer == temp.getId())
-                temp.setName(name);
-        }
-
-        public void changeShirtPlayer(long idPlayer, string name)
-        {
-            Player temp = getPlayerById(idPlayer);
-            string decode = Unidecoder.Unidecode(name);
-            if (idPlayer == temp.getId())
-                temp.setShirtName(decode);
-        }
-
         public void changePlayerNumber(long idPlayer, int idTeam, int shirtNumber)
         {
             foreach (PlayerAssignment temp in playerAssignmentList)
             {
-                if (idPlayer == temp.getPlayerId() && idTeam == temp.getTeamId())
-                    temp.setShirtNumber(shirtNumber);
+                //if (idPlayer == temp.getPlayerId() && idTeam == temp.getTeamId())
+                    //temp.setShirtNumber(shirtNumber);
             }
         }
 
-        public void UpdateForm(ComboBox t1, ComboBox t2)
-        {
-            try
-            {
-                t1.SelectedIndex = t1.SelectedIndex + 1;
-                t1.SelectedIndex = t1.SelectedIndex - 1;
-            }
-            catch { 
-			    t1.SelectedIndex = t1.SelectedIndex - 1;
-                t1.SelectedIndex = t1.SelectedIndex + 1;
-			};
-
-            try
-            {
-                t2.SelectedIndex = t2.SelectedIndex + 1;
-                t2.SelectedIndex = t2.SelectedIndex - 1;
-            }
-            catch
-            {
-                t2.SelectedIndex = t2.SelectedIndex - 1;
-                t2.SelectedIndex = t2.SelectedIndex + 1;
-            };
-        }
-
-        public void updatePlayerList(ListView l1)
+        /*public void updatePlayerList(ListView l1)
         {
             l1.Items.Clear();
             foreach (Player x in getListPlayer())
@@ -979,7 +1130,7 @@ namespace DinoTem.ui
             }
             l1.Items[0].Selected = true;
             l1.Select();
-        }
+        }*/
 
         public void UpdateBallList(ListBox l1)
         {
@@ -1007,12 +1158,7 @@ namespace DinoTem.ui
             t2.SelectedIndex = 0;
         }
 
-        public void UpdateFormPlayer(ListView l1, Player temp)
-        {
-            l1.Items[getPositionListPlayerById(temp.getId())].Text = temp.getName();
-        }
-
-        public string getStringClubTeamOfPlayer(long idPlayer, int type) {
+        /*public string getStringClubTeamOfPlayer(long idPlayer, int type) {
 
             //club = 0; national = 1;
 
@@ -1055,7 +1201,7 @@ namespace DinoTem.ui
 		
 		    return finale;
         }
-
+        */
         public List<int> getNumberFormation(int idTeam) {
 		    List<int> result = new List<int>();
 
@@ -1155,529 +1301,6 @@ namespace DinoTem.ui
 						temp.setUnknown(unk);
 					k++;
 				}
-            }
-        }
-
-        //Team
-        public void changeTeamName(Team team, string name)
-        {
-            if (team.getNational())
-            {
-                National temp2 = (National)team;
-
-                temp2.setDutch(name);
-                temp2.setEnglishUS(name);
-                temp2.setFrench(name);
-                temp2.setGerman(name);
-                temp2.setGreek(name);
-                temp2.setItalian(name);
-                temp2.setPortuguese(name);
-                temp2.setBrazilianPortuguese(name);
-                temp2.setRussian(name);
-                temp2.setSpanish(name);
-                temp2.setLatinAmericaSpanish(name);
-                temp2.setSwedish(name);
-                temp2.setTurkish(name);
-            }
-            team.setEnglish(name);
-            team.setJapanese(name);
-        }
-
-        public void changeTeamJapaneseName(Team team, string name)
-        {
-            team.setJapanese(name);
-        }
-
-        public void changeTeamSpanishName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setSpanish(name);
-        }
-
-        public void changeTeamTurkishName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setTurkish(name);
-        }
-
-        public void changeTeamSwedishName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setSwedish(name);
-        }
-
-        public void changeTeamGreekName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setGreek(name);
-        }
-
-        public void changeTeamPortugueseName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setPortuguese(name);
-        }
-
-        public void changeTeamItalianName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setItalian(name);
-        }
-
-        public void changeTeamEnglishName(Team team, string name)
-        {
-            team.setEnglish(name);
-        }
-
-        public void changeTeamGermanName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setGerman(name);
-        }
-
-        public void changeTeamRussianName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setRussian(name);
-        }
-
-        public void changeTeamLatinAmericaSpanishName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setLatinAmericaSpanish(name);
-        }
-
-        public void changeTeamBrazilianPortugueseName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setBrazilianPortuguese(name);
-        }
-
-        public void changeTeamEnglishUsName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setEnglishUS(name);
-        }
-
-        public void changeTeamFrenchName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setFrench(name);
-        }
-
-        public void changeTeamDutchName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setDutch(name);
-        }
-
-        public void changeTeamShortName(Team team, string name)
-        {
-            team.setShortSquadra(name);
-        }
-
-        public void changeFakeTeam(Team team, bool boolean)
-        {
-            team.setFakeTeam(boolean);
-        }
-
-        public void changeLicensedTeam(Team team, bool boolean)
-        {
-            team.setLicensedTeam(boolean);
-        }
-
-        public void changeLicensedCoach(Team team, bool boolean)
-        {
-            team.setLicensedCoach(boolean);
-        }
-
-        public void changeNotPlayableLeague(Team team, int value)
-        {
-            team.setNotPlayableLeague(value);
-        }
-
-        public void changeCountryTeam(Team team, int positionListCountry)
-        {
-            //Country temp2 = getCountryById(positionListCountry);
-            //team.setCountry(temp2.getId());
-        }
-
-        public void changeStadiumTeam(Team team, Stadium stadium)
-        {
-            team.setStadiumId(stadium.getId());
-        }
-
-        public void changeHasLicensedPlayers(Team team, bool value)
-        {
-            team.setHasLicensedPlayers(value);
-        }
-
-        public void changeHasAnthem(Team team, bool value)
-        {
-            team.setHasAnthem(value);
-        }
-
-        public void changeAnthemStandingAngle(Team team, int value)
-        {
-            team.setAnthemStandingAngle(value);
-        }
-
-        public void changeAnthemPlayersSinging(Team team, int value)
-        {
-            team.setAnthemPlayersSinging(value);
-        }
-
-        public void changeAnthemStandingStyle(Team team, int value)
-        {
-            team.setAnthemStandingStyle(value);
-        }
-
-        public void changeUnknown(Team team, bool value)
-        {
-            team.setUnknown6(value);
-        }
-
-        //DB2
-        //List<Country> countryList = new List<Country>();
-        List<Stadium> stadiumList2 = new List<Stadium>();
-        List<Team> teamList2 = new List<Team>();
-        List<TacticsFormation> tacticsFormationList2 = new List<TacticsFormation>();
-        //List<Tactics> tacticsList2 = new List<Tactics>();
-        List<Player> playerList2 = new List<Player>();
-        List<BallCondition> ballConditionList2 = new List<BallCondition>();
-        List<Ball> ballList2 = new List<Ball>();
-        List<PlayerAppearance> playerAppearanceList2 = new List<PlayerAppearance>();
-        //List<PlayerAssignment> playerAssignmentList2 = new List<PlayerAssignment>();
-
-        public List<Stadium> getListStadium2()
-        {
-            return stadiumList2;
-        }
-
-        public List<Team> getListTeam2()
-        {
-            return teamList2;
-        }
-
-        public List<TacticsFormation> getListTacticsFormationList2()
-        {
-            return tacticsFormationList2;
-        }
-
-        public List<Player> getListPlayer2()
-        {
-            return playerList2;
-        }
-
-        public List<BallCondition> getListBallCondition2()
-        {
-            return ballConditionList2;
-        }
-
-        public List<Ball> getListBall2()
-        {
-            return ballList2;
-        }
-
-        public List<PlayerAppearance> getListPlayerAppearance2()
-        {
-            return playerAppearanceList2;
-        }
-
-        public void openDb2(string folder)
-        {
-            int bitRecognized = checkAllFile(folder);
-
-            MyTeamPersister teamReader = new MyTeamPersister();
-            try
-            {
-                teamList2 = teamReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            //MyPlayerPersister playerReader = new MyPlayerPersister();
-            //try
-            //{
-                //playerList2 = playerReader.load(folder, bitRecognized);
-            //}
-            //catch (FileNotFoundException e)
-            //{
-                //MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
-
-            MyBallConditionPersister ballConditionReader = new MyBallConditionPersister();
-            try
-            {
-                ballConditionList2 = ballConditionReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            MyPlayerAppearancePersister playerAppearanceReader = new MyPlayerAppearancePersister();
-            try
-            {
-                playerAppearanceList2 = playerAppearanceReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            MyTacticsFormationPersister tacticsFormationReader = new MyTacticsFormationPersister();
-            try
-            {
-                tacticsFormationList2 = tacticsFormationReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void importDb2AllBalls()
-        {
-            for (int i = 0; i < getListBall().Count; i++)
-            {
-                if (i > getListBall2().Count())
-                    return;
-                getListBall()[i].setName(getListBall2()[i].getName());
-                getListBall()[i].setOrder(getListBall2()[i].getOrder());
-            }
-
-            /*for (int i = 0; i < getBallConditionList().Count; i++)
-            {
-                if (i > getListBallCondition2().Count())
-                    return;
-                getBallConditionList()[i].setFrag(getListBallCondition2()[i].getFrag());
-                getBallConditionList()[i].setUnknown(getListBallCondition2()[i].getUnknown());
-            }*/
-        }
-
-        public void importDb2OrderBalls()
-        {
-            for (int i = 0; i < getListBall().Count; i++)
-            {
-                if (i > getListBall2().Count())
-                    return;
-                getListBall()[i].setName(getListBall2()[i].getName());
-            }
-        }
-
-        public void importDb2NamesBalls()
-        {
-            for (int i = 0; i < getListBall().Count; i++)
-            {
-                if (i > getListBall2().Count())
-                    return;
-                getListBall()[i].setName(getListBall2()[i].getName());
-            }
-        }
-
-        public void importDb2AllTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-                getListTeam()[i].setAnthemPlayersSinging(getListTeam2()[k].getAnthemPlayersSinging());
-                getListTeam()[i].setAnthemStandingAngle(getListTeam2()[k].getAnthemStandingAngle());
-                getListTeam()[i].setAnthemStandingStyle(getListTeam2()[k].getAnthemStandingStyle());
-                getListTeam()[i].setCountry(getListTeam2()[k].getCountry());
-                getListTeam()[i].setEnglish(getListTeam2()[k].getEnglish());
-                getListTeam()[i].setFakeTeam(getListTeam2()[k].getFakeTeam());
-                getListTeam()[i].setFeederTeamId(getListTeam2()[k].getFeederTeamId());
-                getListTeam()[i].setHasAnthem(getListTeam2()[k].getHasAnthem());
-                getListTeam()[i].setHasLicensedPlayers(getListTeam2()[k].getHasLicensedPlayers());
-                getListTeam()[i].setJapanese(getListTeam2()[k].getJapanese());
-                getListTeam()[i].setKonami(getListTeam2()[k].getKonami());
-                getListTeam()[i].setLicensedCoach(getListTeam2()[k].getLicensedCoach());
-                getListTeam()[i].setLicensedTeam(getListTeam2()[k].getLicensedTeam());
-                getListTeam()[i].setManagerId(getListTeam2()[k].getManagerId());
-                getListTeam()[i].setNational(getListTeam2()[k].getNational());
-                getListTeam()[i].setNotPlayableLeague(getListTeam2()[k].getNotPlayableLeague());
-                getListTeam()[i].setParentTeamId(getListTeam2()[k].getParentTeamId());
-                getListTeam()[i].setShortSquadra(getListTeam2()[k].getShortSquadra());
-                getListTeam()[i].setStadiumId(getListTeam2()[k].getStadiumId());
-                getListTeam()[i].setTeamSortNumber(getListTeam2()[k].getTeamSortNumber());
-                getListTeam()[i].setUnknown6(getListTeam2()[k].getUnknown6());
-
-                if (getListTeam2()[k].getNational())
-                {
-                    National nat2 = (National) getListTeam2()[k];
-                    National nat = (National)getListTeam()[k];
-
-                    nat.setDutch(nat2.getDutch());
-                    nat.setEnglishUS(nat2.getEnglishUS());
-                    nat.setFrench(nat2.getFrench());
-                    nat.setGerman(nat2.getGerman());
-                    nat.setGreek(nat2.getGreek());
-                    nat.setItalian(nat2.getItalian());
-                    nat.setPortuguese(nat2.getPortuguese());
-                    nat.setBrazilianPortuguese(nat2.getBrazilianPortuguese());
-                    nat.setRussian(nat2.getRussian());
-                    nat.setSpanish(nat2.getSpanish());
-                    nat.setLatinAmericaSpanish(nat2.getLatinAmericaSpanish());
-                    nat.setSwedish(nat2.getSwedish());
-                    nat.setTurkish(nat2.getTurkish());
-                }
-                k++;
-            }
-        }
-
-        public void importDb2NamesTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setEnglish(getListTeam2()[k].getEnglish());
-                getListTeam()[i].setJapanese(getListTeam2()[k].getJapanese());
-                getListTeam()[i].setKonami(getListTeam2()[k].getKonami());
-                if (getListTeam2()[k].getNational())
-                {
-                    National nat2 = (National)getListTeam2()[k];
-                    National nat = (National)getListTeam()[i];
-
-                    nat.setDutch(nat2.getDutch());
-                    nat.setEnglishUS(nat2.getEnglishUS());
-                    nat.setFrench(nat2.getFrench());
-                    nat.setGerman(nat2.getGerman());
-                    nat.setGreek(nat2.getGreek());
-                    nat.setItalian(nat2.getItalian());
-                    nat.setPortuguese(nat2.getPortuguese());
-                    nat.setBrazilianPortuguese(nat2.getBrazilianPortuguese());
-                    nat.setRussian(nat2.getRussian());
-                    nat.setSpanish(nat2.getSpanish());
-                    nat.setLatinAmericaSpanish(nat2.getLatinAmericaSpanish());
-                    nat.setSwedish(nat2.getSwedish());
-                    nat.setTurkish(nat2.getTurkish());
-                }
-                k++;
-            }
-        }
-
-        public void importDb2ShortNamesTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setShortSquadra(getListTeam2()[k].getShortSquadra());
-
-                k++;
-            }
-        }
-
-        public void importDb2HomeStadiumsTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setStadiumId(getListTeam2()[k].getStadiumId());
-
-                k++;
-            }
-        }
-
-        public void importDb2OtherDetailsTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setAnthemPlayersSinging(getListTeam2()[k].getAnthemPlayersSinging());
-                getListTeam()[i].setAnthemStandingAngle(getListTeam2()[k].getAnthemStandingAngle());
-                getListTeam()[i].setAnthemStandingStyle(getListTeam2()[k].getAnthemStandingStyle());
-                getListTeam()[i].setHasAnthem(getListTeam2()[k].getHasAnthem());
-                getListTeam()[i].setHasLicensedPlayers(getListTeam2()[k].getHasLicensedPlayers());
-                getListTeam()[i].setUnknown6(getListTeam2()[k].getUnknown6());
-
-                k++;
-            }
-        }
-
-        public void importDb2CountryTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setCountry(getListTeam2()[k].getCountry());
-
-                k++;
-            }
-        }
-
-        public void importDb2FakeTeamTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setFakeTeam(getListTeam2()[k].getFakeTeam());
-
-                k++;
-            }
-        }
-
-        public void importDb2NotPlayableLeagueTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setNotPlayableLeague(getListTeam2()[k].getNotPlayableLeague());
-
-                k++;
-            }
-        }
-
-        public void importDb2LicenseTeamTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setLicensedTeam(getListTeam2()[k].getLicensedTeam());
-
-                k++;
-            }
-        }
-
-        public void importDb2LicenseCoachTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setLicensedCoach(getListTeam2()[k].getLicensedCoach());
-
-                k++;
             }
         }
 
@@ -2002,6 +1625,7 @@ namespace DinoTem.ui
                 player11.Location = new System.Drawing.Point(115, 26);
         }
 
+        /*
         public void changeFormation(int formation, int i, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11,
             Button player13, Button player14, Button player15, Button player16, Button player17, Button player18, Button player19, Button player20, Button player21, Button player22,
             Button player24, Button player25, Button player26, Button player27, Button player28, Button player29, Button player30, Button player31, Button player32, Button player33)
@@ -2260,6 +1884,7 @@ namespace DinoTem.ui
             }
             
         }
+        */
 
         private int getPosition(int k, int subItem, ListView teamView1)
         {
@@ -2300,6 +1925,7 @@ namespace DinoTem.ui
             return pos;
         }
 
+        /*
         public void applyTeam(int formation, int i, ListView teamView1)
         {
             //int i = 1 (CUSTOM), 2 (OFFENSIVE), 3 (DEFENSIVE)
@@ -2335,6 +1961,7 @@ namespace DinoTem.ui
                 }
             }
         }
+        */
 
         public void changeShooters(Team temp, int capitainSelectedIndex, int penaltySelectedIndex,
             int longSelectedIndex, int leftSelectedIndex, int shortSelectedIndex, int rightSelectedIndex)
@@ -2342,7 +1969,7 @@ namespace DinoTem.ui
             //save Captain, etc...
             foreach (PlayerAssignment x in playerAssignmentList)
             {
-                if (x.getTeamId() == temp.getId())
+                /*if (x.getTeamId() == temp.getId())
                 {
                     x.setCaptain(false);
                     x.setLeftCkTk(false);
@@ -2363,7 +1990,7 @@ namespace DinoTem.ui
                         x.setShortFoulFk(true);
                     if (x.getOrder() == rightSelectedIndex)
                         x.setRightCornerKick(true);
-                }
+                }*/
             }
         }
 
@@ -2457,10 +2084,10 @@ namespace DinoTem.ui
                     if (x.getOrder() == dropIndex)
                         playerID2 = x.getPlayerId();
 
-                    if (x.getPlayerId() == playerID)
-                        x.setOrder(dropIndex);
-                    if (x.getPlayerId() == playerID2)
-                        x.setOrder(intselectedindex);
+                    //if (x.getPlayerId() == playerID)
+                        //x.setOrder(dropIndex);
+                    //if (x.getPlayerId() == playerID2)
+                        //x.setOrder(intselectedindex);
                 }
             }
             //
@@ -2469,14 +2096,14 @@ namespace DinoTem.ui
 
         private void setPlayerTrasfer(PlayerAssignment temp, int idTeamA, int order)
         {
-            temp.setTeamId(idTeamA);
+            /*temp.setTeamId(idTeamA);
             temp.setShortFoulFk(false);
             temp.setRightCornerKick(false);
             temp.setPenaltyKick(false);
             temp.setOrder(order);
             temp.setLongShotLk(false);
             temp.setLeftCkTk(false);
-            temp.setCaptain(false);
+            temp.setCaptain(false);*/
         }
 
         private void findEntryID(PlayerAssignment temp)
@@ -2489,7 +2116,7 @@ namespace DinoTem.ui
             // Possibili valori di numeroCasuale: {1, 2, 3, 4, 5, 6...}
             Random random = new Random();
             int numeroCasuale = random.Next(da, a);
-            temp.setShirtNumber(numeroCasuale);
+            //temp.setShirtNumber(numeroCasuale);
             //SEARCH VALUE
             int n = -1;
             while (n == -1)
@@ -2507,7 +2134,7 @@ namespace DinoTem.ui
                     if (numeroCasuale1 != x.getEntryId())
                     {
                         n = numeroCasuale1;
-                        temp.setEntryId(n);
+                        //temp.setEntryId(n);
                         return;
                     }
                 }
@@ -2515,16 +2142,7 @@ namespace DinoTem.ui
             return;
         }
 
-        public void orderPlayerInTeam2(List<PlayerAssignment> getPlayersTeam)
-        {
-            //List<PlayerAssignment> temp = getPlayersTeam.OrderBy(o => o.getOrder()).ToList();
-            for (int i = 0; i < getPlayersTeam.Count; i++)
-            {
-                getPlayersTeam[i].setOrder(i);
-            }
-        }
-
-        public void transferPlayerBtoA(int intselectedindexPlayer, Team teamA, Team teamB, int orderTeamA, ComboBox teamBox1, ComboBox teamBox2)
+        /*public void transferPlayerBtoA(int intselectedindexPlayer, Team teamA, Team teamB, int orderTeamA, ComboBox teamBox1, ComboBox teamBox2)
         {
             bool ok = false;
             foreach (PlayerAssignment x in playerAssignmentList)
@@ -2587,8 +2205,9 @@ namespace DinoTem.ui
                 }
             }
         }
+        */
 
-        public void playerFromPlayerList(long player, int teamId, ComboBox teamBox1, ComboBox teamBox2)
+        /*public void playerFromPlayerList(long player, int teamId, ComboBox teamBox1, ComboBox teamBox2)
         {
             if (getTeamById2(teamId).getNational()) //se il team di destinazione è una nazionale
             {
@@ -2628,7 +2247,7 @@ namespace DinoTem.ui
             UpdateForm(teamBox1, teamBox2);
             return;
         }
-
+        */
         public void deletePlayerTeam(int intselectedindex, int teamId, ComboBox teamBox1, ComboBox teamBox2)
         {
             for (int i = 0; i < playerAssignmentList.Count; i++)
@@ -3222,7 +2841,7 @@ namespace DinoTem.ui
         }
 
         //remove fake team
-        public void removeFakePlayer()
+        /*public void removeFakePlayer()
         {
             foreach (Player temp in playerList)
             {
@@ -3551,7 +3170,7 @@ namespace DinoTem.ui
 
             UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
             //updatePlayerList(Form1._Form1.giocatoreView);
-        }
+        }*/
 
         //globalFunction
         public void upperTeams(ListBox l1, ComboBox t1, ComboBox t2)
@@ -3559,8 +3178,8 @@ namespace DinoTem.ui
             foreach (Team temp in getListTeam())
             {
                 temp.setEnglish(temp.getEnglish().ToUpper());
-                if (temp.getNational())
-                {
+                //if (temp.getNational())
+                //{
                     //japanese
                     National temp2 = (National)temp;
                     temp2.setJapanese(temp.getJapanese().ToUpper());
@@ -3590,7 +3209,7 @@ namespace DinoTem.ui
                     temp2.setRussian(temp2.getRussian().ToUpper());
                     //englih us
                     temp2.setEnglishUS(temp2.getEnglishUS().ToUpper());
-                }
+                //}
             }
             UpdateTeamList(l1, t1, t2);
         }
@@ -3600,8 +3219,8 @@ namespace DinoTem.ui
             foreach (Team temp in getListTeam())
             {
                 temp.setEnglish(temp.getEnglish().ToLower());
-                if (temp.getNational())
-                {
+                //if (temp.getNational())
+                //{
                     //japanese
                     National temp2 = (National)temp;
                     temp2.setJapanese(temp.getJapanese().ToLower());
@@ -3631,7 +3250,7 @@ namespace DinoTem.ui
                     temp2.setRussian(temp2.getRussian().ToLower());
                     //englih us
                     temp2.setEnglishUS(temp2.getEnglishUS().ToLower());
-                }
+                //}
             }
             UpdateTeamList(l1, t1, t2);
         }
@@ -3647,8 +3266,8 @@ namespace DinoTem.ui
                     stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
                 }
                 temp.setEnglish(stringa.Trim());
-                if (temp.getNational())
-                {
+                //if (temp.getNational())
+                //{
                     //japanese
                     stringa = "";
                     National temp2 = (National)temp;
@@ -3748,13 +3367,13 @@ namespace DinoTem.ui
                         stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
                     }
                     temp2.setEnglishUS(stringa.Trim());
-                }
+                //}
             }
 
             UpdateTeamList(l1, t1, t2);
         }
 
-        public void upperPlayers(ListView l1, ComboBox t1, ComboBox t2)
+        /*public void upperPlayers(ListView l1, ComboBox t1, ComboBox t2)
         {
             foreach (Player temp in getListPlayer())
             {
@@ -3762,9 +3381,9 @@ namespace DinoTem.ui
             }
             updatePlayerList(l1);
             UpdateForm(t1, t2);
-        }
+        }*/
 
-        public void lowerPlayers(ListView l1, ComboBox t1, ComboBox t2)
+        /*public void lowerPlayers(ListView l1, ComboBox t1, ComboBox t2)
         {
             foreach (Player temp in getListPlayer())
             {
@@ -3772,9 +3391,9 @@ namespace DinoTem.ui
             }
             updatePlayerList(l1);
             UpdateForm(t1, t2);
-        }
+        }*/
 
-        public void firstUpPlayers(ListView l1, ComboBox t1, ComboBox t2)
+        /*public void firstUpPlayers(ListView l1, ComboBox t1, ComboBox t2)
         {
             foreach (Player temp in getListPlayer())
             {
@@ -3787,7 +3406,7 @@ namespace DinoTem.ui
             }
             updatePlayerList(l1);
             UpdateForm(t1, t2);
-        }
+        }*/
 
         //fm form
         /*public Country getCountryFm(Fm temp2)

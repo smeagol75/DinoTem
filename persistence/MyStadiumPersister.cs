@@ -60,6 +60,7 @@ namespace DinoTem.persistence
                     stadiumName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(110)).TrimEnd('\0');
 
                     Form1._Form1.stadiumsBox.Items.Add(stadiumName);
+                    Form1._Form1.teamStadium.Items.Add(stadiumName);
                 }
                 writer = new BinaryWriter(memory1);
             }

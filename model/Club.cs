@@ -10,8 +10,9 @@ namespace DinoTem.model
     {
         private string internalShortName;
 	    private string latinScript;
-	
-	    public Club(int id) : base(id) {
+
+        public Club(UInt32 id) : base(id)
+        {
 	    }
 
 	    public string getInternalShortName() {

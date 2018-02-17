@@ -19,8 +19,8 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    sb.Append("starPlayerIndicator;Running_arm_mov;Dribling_arm_mov;Corner_kick;FORM;Position;Free_kick;Playing_Style;Pinpoint_Crossing;Sombrero;Runing_Hutching;SS;unk2;RWF;LMF;RB;LWF;CF;CB;Dribling_hutching;AMF;Weak_foot_acc;RMF;Injury_res;CMF;COM_Speeding Bullet;Scotch_Move;GK_long;Long_Throw;Scissors_Feint;Track Back;Super-sub;Rabona;Acrobatic_Finishing;Stronger_Foot;Knuckle_Shot;First-time_Shot;COM_Incisive_Run;Stronger_Hand;Hidden_Player;");
 		    sb.Append("COM_Long_Ranger;One-touch_Pass;Heel_Trick;UNK4;Man_Marking;legendGoldenBall;Marseille_Turn;Heading;Outside_Curler;Captaincy;Malicia;Low_Punt_Trajectory;COM_Trickster;Low_Lofted_Pass;Fighting_Spirit;Flip_Flap;Weightness_Pass;unk6;UNK7;UNK8;comMazingRun;acrobatingClear;comBallExpert;cutBehind;longRange");
 		    sb.Append("\n");
-            foreach (Player temp in controller.getListPlayer())
-            {
+            //foreach (Player temp in controller.getListPlayer())
+            //{
 			    /*sb.Append(temp.getId() + ";");
                 string decode = Unidecoder.Unidecode(temp.getName());
                 sb.Append(decode + ";");
@@ -127,7 +127,7 @@ namespace Team_Editor_Manager_New_Generation.ui
 			    sb.Append(booleanstring(temp.getCutBehind()) + ";");
 			    sb.Append(booleanstring(temp.getLongRange()));
 			    sb.Append("\n");*/
-		    }
+		    //}
 		    return sb.ToString();
 	    }
 
@@ -208,7 +208,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             {
 			    sb.Append(temp.getId() + ";");
                 string decode = Unidecoder.Unidecode(temp.getEnglish());
-                sb.Append(decode + ";");
+                /*sb.Append(decode + ";");
 			    sb.Append(temp.getShortSquadra() + ";");
                 sb.Append(booleanstring(temp.getHasLicensedPlayers()) + ";");
 			    sb.Append(booleanstring(temp.getLicensedTeam()) + ";");
@@ -222,7 +222,7 @@ namespace Team_Editor_Manager_New_Generation.ui
                 sb.Append(booleanstring(temp.getUnknown6()) + ";");
 			    sb.Append(temp.getNotPlayableLeague() + ";");
 			    sb.Append(temp.getCountry() + ";");
-			    sb.Append("\n");
+			    sb.Append("\n");*/
 		    }
             return sb.ToString();
 	    }
@@ -264,9 +264,9 @@ namespace Team_Editor_Manager_New_Generation.ui
             foreach (PlayerAssignment temp in controller.getPlayerAssignmentList())
             {
 			    sb.Append(temp.getPlayerId()+ ";");
-                sb.Append(controller.getPlayerById(temp.getPlayerId()).getName() + ";");
+                //sb.Append(controller.getPlayerById(temp.getPlayerId()).getName() + ";");
 			    sb.Append(temp.getTeamId() + ";");
-                sb.Append(controller.getTeamById2(temp.getTeamId()).getEnglish());
+                //sb.Append(controller.getTeamById2(temp.getTeamId()).getEnglish());
 			    sb.Append("\n");
 		    }
 		    return sb.ToString();
@@ -452,7 +452,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             }
         }
 
-        public void importTeam(Controller controller, string file, ListBox teamsBox, ComboBox t1, ComboBox t2)
+        /*public void importTeam(Controller controller, string file, ListBox teamsBox, ComboBox t1, ComboBox t2)
         {
             int lineCount = File.ReadLines(file).Count();
             if (lineCount - 1 != controller.getListTeam().Count)
@@ -491,7 +491,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             }
             controller.UpdateTeamList(teamsBox, t1, t2);
         }
-
+        */
         private bool parseBoolean(string s, string trueValue, string falseValue)
         {
             if (s.Trim().ToUpper().Equals(trueValue))

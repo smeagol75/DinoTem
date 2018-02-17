@@ -70,6 +70,7 @@ namespace DinoTem.persistence
                     countryName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0');
 
                     Form1._Form1.stadiumCountry.Items.Add(countryName);
+                    Form1._Form1.teamCountry.Items.Add(countryName);
 
                     string mapValue;
                     if (!result.TryGetValue(countryId, out mapValue))

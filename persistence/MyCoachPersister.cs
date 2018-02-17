@@ -58,6 +58,7 @@ namespace DinoTem.ui
                     coachName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(40)).TrimEnd('\0');
 
                     Form1._Form1.coachBox.Items.Add(coachName);
+                    Form1._Form1.teamCoach.Items.Add(coachName);
                 }
                 writer = new BinaryWriter(memory1);
             }

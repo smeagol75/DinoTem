@@ -126,7 +126,7 @@ namespace DinoTem
         private ListViewItem Leggere_GiocatoreSquadre(PlayerAssignment pAssignment)
         {
             ListViewItem item = new ListViewItem();
-            Player temp2 = (Player)controller.getPlayerById(pAssignment.getPlayerId());
+            /*Player temp2 = (Player)controller.getPlayerById(pAssignment.getPlayerId());
 
             item = new ListViewItem((pAssignment.getOrder() + 1).ToString());
             item.SubItems.Add(temp2.getStringPosition());
@@ -161,7 +161,7 @@ namespace DinoTem
                 shortFT.Text = temp2.getName();
 
             if (pAssignment.getCaptain())
-                capitain.Text = temp2.getName();
+                capitain.Text = temp2.getName();*/
 
             return item;
         }
@@ -281,7 +281,7 @@ namespace DinoTem
             Caricare_Campi();
 
             //caricare giocatori nella squadra
-            List<PlayerAssignment> SortedList = controller.getPlayersTeam(this.team.getId());
+            /*List<PlayerAssignment> SortedList = controller.getPlayersTeam(this.team.getId());
             SortedList.Sort((x, y) => x.getOrder().CompareTo(y.getOrder()));
             foreach (PlayerAssignment temp2 in SortedList)
             {
@@ -296,7 +296,7 @@ namespace DinoTem
             //selezionare numero tattica
             if (numberFormation.Items.Count > 0)
                 numberFormation.SelectedIndex = 0;
-            Leggere_Formazioni(position, teamView1);
+            Leggere_Formazioni(position, teamView1);*/
 
             sfondoTeamView();
         }
@@ -1489,7 +1489,7 @@ namespace DinoTem
         //apply formation
         private void button1_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabControl1.TabPages["Custom"])
+            /*if (tabControl1.SelectedTab == tabControl1.TabPages["Custom"])
                 controller.changeFormation(int.Parse(numberFormation.Text), 0, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
             player13, player14, player15, player16, player17, player18, player19, player20, player21, player22,
             player24, player25, player26, player27, player28, player29, player30, player31, player32, player33);
@@ -1500,18 +1500,18 @@ namespace DinoTem
             else if (tabControl1.SelectedTab == tabControl1.TabPages["Defensive"])
                 controller.changeFormation(int.Parse(numberFormation.Text), 2, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
             player13, player14, player15, player16, player17, player18, player19, player20, player21, player22,
-            player24, player25, player26, player27, player28, player29, player30, player31, player32, player33);
+            player24, player25, player26, player27, player28, player29, player30, player31, player32, player33);*/
         }
 
         //Accept (Save)
         private void button4_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabControl1.TabPages["Custom"])
-                controller.applyTeam(int.Parse(numberFormation.Text), 1, teamView1);
-            else if (tabControl1.SelectedTab == tabControl1.TabPages["Offensive"])
-                controller.applyTeam(int.Parse(numberFormation.Text), 2, teamView1);
-            else if (tabControl1.SelectedTab == tabControl1.TabPages["Defensive"])
-                controller.applyTeam(int.Parse(numberFormation.Text), 3, teamView1);
+            //if (tabControl1.SelectedTab == tabControl1.TabPages["Custom"])
+                //controller.applyTeam(int.Parse(numberFormation.Text), 1, teamView1);
+            //else if (tabControl1.SelectedTab == tabControl1.TabPages["Offensive"])
+                //controller.applyTeam(int.Parse(numberFormation.Text), 2, teamView1);
+            //else if (tabControl1.SelectedTab == tabControl1.TabPages["Defensive"])
+                //controller.applyTeam(int.Parse(numberFormation.Text), 3, teamView1);
 
             controller.changeShooters(team, capitain.SelectedIndex, penaltyKT.SelectedIndex,
             longFT.SelectedIndex, leftCK.SelectedIndex, shortFT.SelectedIndex, rightCK.SelectedIndex);
@@ -1651,7 +1651,7 @@ namespace DinoTem
                     teamView1.Items[intselectedindex].SubItems[5].Text = number2;
                     teamView1.Items[dropIndex].SubItems[5].Text = number1;
 
-                    controller.transferPlayerAtoA(intselectedindex, dropIndex, team.getId(), Form1._Form1.teamBox1, Form1._Form1.teamBox2);
+                    //controller.transferPlayerAtoA(intselectedindex, dropIndex, team.getId(), Form1._Form1.teamBox1, Form1._Form1.teamBox2);
                     updateKickers(intselectedindex, dropIndex);
                 }
             }

@@ -15,6 +15,7 @@ namespace DinoTem.persistence
     public class MyTeamPersister
     {
         private static string PATH = "/Team.bin";
+        private static int block = 1400;
 
         private MemoryStream unzlib(string patch, int bitRecognized)
         {
@@ -35,482 +36,677 @@ namespace DinoTem.persistence
             return memory1;
         }
 
-        public List<Team> load(string patch, int bitRecognized)
+        public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
-            List<Team> teamList = new List<Team>();
-
-            MemoryStream memory1 = unzlib(patch, bitRecognized);
+            memory1 = unzlib(patch, bitRecognized);
 
             //Calcolo squadre
-            int bytes_team = (int)memory1.Length;
-            int calcolo_squadre = bytes_team / 1400;
+            int bytesTeam = (int)memory1.Length;
+            int team = bytesTeam / block;
 
-            UInt16 IdTeam;
-            UInt32 idManager;
-            UInt32 feederTeamId;
-            UInt32 parentTeamId;
-            UInt16 stadiumId;
-            UInt16 teamSortNumber;
-            byte[] blocco1;
+            string teamName;
             try
             {
                 // Use the memory stream in a binary reader.
-                BinaryReader reader = new BinaryReader(memory1);
-                int i = 0;
-                long START21 = -1400; //managerid
-                long START22 = -1396; //feederTeamId
-                long START23 = -1388; //parentTeamId
-                long START24 = -1384; //stadiumId
-                long START25 = -1382; //teamSortNumber
-                long START = -1392; //id
-                long START1 = -1380; //blocco
-                long START5 = -1376; //japanese
-                long START6 = -1306; //spanish
-                long START7 = -1236; //greek
-                long START3 = -1166; //english
-                long START8 = -1026; //latin america
-                long START9 = -956; //French
-                long START10 = -886; //Turkish
-                long START11 = -816; //Portuguese
-                long START12 = -746; //KONAMI
-                long START14 = -722; //German
-                long START4 = -652; //Short Name
-                long START15 = -642; //brazilian Portuguese
-                long START16 = -502; //Dutch
-                long START17 = -362; //Swedish
-                long START18 = -292; //Italian
-                long START19 = -222; //Russian
-                long START20 = -72; //English US
-                long START26 = -152; //internalShortName
+                reader = new BinaryReader(memory1);
+                int i1 = 0;
+                long START2 = -1166;
 
-                int NumberOfRepetitions = Convert.ToInt32(calcolo_squadre);
-                for (i = 1; i <= NumberOfRepetitions; i++)
+                int NumberOfRepetitions1 = Convert.ToInt32(team);
+                for (i1 = 1; i1 <= NumberOfRepetitions1; i1++)
                 {
-                    START += 1400;
-                    memory1.Seek(START, SeekOrigin.Begin);
-                    IdTeam = reader.ReadUInt16();
+                    START2 += block;
+                    memory1.Seek(START2, SeekOrigin.Begin);
+                    teamName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
 
-                    //Blocco
-                    START1 += 1400;
-                    memory1.Seek(START1, SeekOrigin.Begin);
-                    blocco1 = reader.ReadBytes(4);
-                    string blocco = MyBinary.Reverse32(blocco1);
-
-                    Team temp; //inizializzo squadra (nazionale o club?)
-                    if (blocco.Substring(7, 1).Equals("1"))
-                    {
-                        temp = new National(IdTeam);
-                        temp.setNational(true);
-                    }
-                    else
-                    {
-                        temp = new Club(IdTeam);
-                        temp.setNational(false);
-                    }
-
-                    //enlish
-                    START3 += 1400;
-                    memory1.Seek(START3, SeekOrigin.Begin);
-                    temp.setEnglish(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-
-                    if (blocco.Substring(5, 1).Equals("1"))
-                        temp.setHasLicensedPlayers(true);
-                    else
-                        temp.setHasLicensedPlayers(false);
-
-                    if (blocco.Substring(6, 1).Equals("1"))
-                        temp.setLicensedTeam(true);
-                    else
-                        temp.setLicensedTeam(false);
-
-                    if (blocco.Substring(8, 1).Equals("1"))
-                        temp.setFakeTeam(true);
-                    else
-                        temp.setFakeTeam(false);
-
-                    if (blocco.Substring(9, 2).Equals("11"))
-                        temp.setLicensedCoach(true);
-                    else
-                        temp.setLicensedCoach(false);
-
-                    if (blocco.Substring(11, 1).Equals("1"))
-                        temp.setHasAnthem(true);
-                    else
-                        temp.setHasAnthem(false);
-                    temp.setAnthemStandingAngle(MyBinary.BinaryToInt(blocco.Substring(12, 2)));
-                    temp.setAnthemPlayersSinging(MyBinary.BinaryToInt(blocco.Substring(14, 2)));
-                    temp.setAnthemStandingStyle(MyBinary.BinaryToInt(blocco.Substring(16, 3)));
-                    if (blocco.Substring(19, 1).Equals("1"))
-                        temp.setUnknown6(true);
-                    else
-                        temp.setUnknown6(false);
-                    temp.setNotPlayableLeague(MyBinary.BinaryToInt(blocco.Substring(20, 3)));
-                    temp.setCountry(MyBinary.BinaryToInt(blocco.Substring(23, 9)));
-
-                    //manager id
-                    START21 += 1400;
-                    memory1.Seek(START21, SeekOrigin.Begin);
-                    idManager = reader.ReadUInt32();
-                    temp.setManagerId(idManager);
-
-                    //feederTeamId
-                    START22 += 1400;
-                    memory1.Seek(START22, SeekOrigin.Begin);
-                    feederTeamId = reader.ReadUInt32();
-                    temp.setFeederTeamId(feederTeamId);
-
-                    //parentTeamId
-                    START23 += 1400;
-                    memory1.Seek(START23, SeekOrigin.Begin);
-                    parentTeamId = reader.ReadUInt32();
-                    temp.setParentTeamId(parentTeamId);
-
-                    //stadiumId
-                    START24 += 1400;
-                    memory1.Seek(START24, SeekOrigin.Begin);
-                    stadiumId = reader.ReadUInt16();
-                    temp.setStadiumId(stadiumId);
-
-                    //setTeamSortNumber
-                    START25 += 1400;
-                    memory1.Seek(START25, SeekOrigin.Begin);
-                    teamSortNumber = reader.ReadUInt16();
-                    temp.setTeamSortNumber(teamSortNumber);
-
-                    //japanese
-                    START5 += 1400;
-                    memory1.Seek(START5, SeekOrigin.Begin);
-                    temp.setJapanese(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //spanish
-                    START6 += 1400;
-                    memory1.Seek(START6, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setSpanish(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //greek
-                    START7 += 1400;
-                    memory1.Seek(START7, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setGreek(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //english
-                    //latin america (spa2)
-                    START8 += 1400;
-                    memory1.Seek(START8, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setLatinAmericaSpanish(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //french
-                    START9 += 1400;
-                    memory1.Seek(START9, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setFrench(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //turkish
-                    START10 += 1400;
-                    memory1.Seek(START10, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setTurkish(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //portuguese
-                    START11 += 1400;
-                    memory1.Seek(START11, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setPortuguese(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //internal_name
-                    START12 += 1400;
-                    memory1.Seek(START12, SeekOrigin.Begin);
-                    temp.setKonami(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(24)).Trim());
-                    //.TrimEnd('\0')
-                    //german
-                    START14 += 1400;
-                    memory1.Seek(START14, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setGerman(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //short
-                    START4 += 1400;
-                    memory1.Seek(START4, SeekOrigin.Begin);
-                    temp.setShortSquadra(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(3)).TrimEnd('\0'));
-                    //portuguese brazil
-                    START15 += 1400;
-                    memory1.Seek(START15, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setBrazilianPortuguese(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //nederlans
-                    START16 += 1400;
-                    memory1.Seek(START16, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setDutch(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //swedish
-                    START17 += 1400;
-                    memory1.Seek(START17, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setSwedish(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //italian
-                    START18 += 1400;
-                    memory1.Seek(START18, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setItalian(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //russian
-                    START19 += 1400;
-                    memory1.Seek(START19, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setRussian(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    //english (US)
-                    START20 += 1400;
-                    memory1.Seek(START20, SeekOrigin.Begin);
-                    if (temp.getNational())
-                        ((National)temp).setEnglishUS(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0'));
-                    teamList.Add(temp);
-
-                    //internal short name
-                    START26 += 1400;
-                    memory1.Seek(START26, SeekOrigin.Begin);
-                    if (!temp.getNational())
-                        ((Club)temp).setInternalShortName(System.Text.Encoding.UTF8.GetString(reader.ReadBytes(4)));
-                    //.TrimEnd('\0')
+                    Form1._Form1.teamBox1.Items.Add(teamName);
+                    Form1._Form1.teamBox2.Items.Add(teamName);
+                    Form1._Form1.teamsBox.Items.Add(teamName);
                 }
-                memory1.Close();
-                reader.Close();
+                writer = new BinaryWriter(memory1);
             }
             catch (IOException e)
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SplashScreen._SplashScreen.Close();
             }
-		
-		    return teamList;
 	    }
 
-        private void saveHex0(long value, BinaryWriter b)
+        private UInt32 Coach_pos = 0;
+        private UInt32 feederTeamId = 4;
+        private UInt32 Id_32_pos = 8;
+        private UInt32 parentTeamId = 8;
+        private UInt32 Stadium_16_pos = 16;
+        private UInt32 Country_16_pos = 20;
+        public Team loadTeam(int index, BinaryReader reader)
         {
-            string hex2klkoa6 = value.ToString("X8").Substring(6, 2) + " " + value.ToString("X8").Substring(4, 2) + " " + value.ToString("X8").Substring(2, 2) + " " + value.ToString("X8").Substring(0, 2);  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
+            Team team = null;
 
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
+            UInt32 idTeam;
+            UInt32 stadium;
+            UInt32 country;
+            UInt32 coach;
+            UInt32 feeder;
+            UInt32 parent;
+            string teamJapanese;
+            string teamSpanish;
+            string teamGreek;
+            string teamEnglish;
+            string teamlatinAmerica;
+            string teamFrench;
+            string teamTurkish;
+            string teamPortuguese;
+            string teamKonami;
+            string teamGerman;
+            string shortName;
+            string teamBrazilianPortuguese;
+            string teamDutch;
+            string teamSwedish;
+            string teamItalian;
+            string teamRussian;
+            string teamEnglishUs;
+            try
             {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
+                index = index * block;
 
-        private void saveHex(int value, BinaryWriter b)
-        {
-            string hex2klkoa6 = MyBinary.IntToHex(value);  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
+                reader.BaseStream.Position = index + Coach_pos;
+                coach = reader.ReadUInt32();
+                reader.BaseStream.Position = index + feederTeamId;
+                feeder = reader.ReadUInt32();
+                reader.BaseStream.Position = (index + Id_32_pos);
+                idTeam = reader.ReadUInt32();
+                reader.BaseStream.Position = index + parentTeamId;
+                parent = reader.ReadUInt32();
+                reader.BaseStream.Position = (index + Stadium_16_pos);
+                stadium = reader.ReadUInt16();
+                reader.BaseStream.Position = (index + Country_16_pos);
+                UInt32 Valor_IMP_32 = reader.ReadUInt32();
 
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
-            {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
+                /*UInt32 CHECK90 = Valor_IMP_32 >> 31;
+                UInt32 CHECK91 = Valor_IMP_32 << 1;
+                CHECK91 = CHECK91 >> 31;
+                UInt32 CHECK92 = Valor_IMP_32 << 2;
+                CHECK92 = CHECK92 >> 31;
+                UInt32 CHECK93 = Valor_IMP_32 << 3;
+                CHECK93 = CHECK93 >> 31;
+                UInt32 CHECK94 = Valor_IMP_32 << 4;
+                CHECK94 = CHECK94 >> 31;*/
 
-        private void saveHex7(BinaryWriter b)
-        {
-            string hex2klkoa6 = "00 00 00 00 00 00 00";  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
+                UInt32 CHECK95 = Valor_IMP_32 << 5;
+                CHECK95 = CHECK95 >> 31;
+                UInt32 CHECK96 = Valor_IMP_32 << 6;
+                CHECK96 = CHECK96 >> 31;
+                UInt32 CHECK97 = Valor_IMP_32 << 7;
+                CHECK97 = CHECK97 >> 31;
+                UInt32 CHECK98 = Valor_IMP_32 << 8;
+                CHECK98 = CHECK98 >> 31;
+                UInt32 CHECK99 = Valor_IMP_32 << 9;
+                CHECK99 = CHECK99 >> 31;
+                UInt32 CHECK100 = Valor_IMP_32 << 10;
+                CHECK100 = CHECK100 >> 31;
+                UInt32 CHECK101 = Valor_IMP_32 << 11;
+                CHECK101 = CHECK101 >> 31;
+                UInt32 Gray = Valor_IMP_32 << 12;
+                Gray = Gray >> 30;
+                UInt32 Orange = Valor_IMP_32 << 14;
+                Orange = Orange >> 30;
+                UInt32 Pink = Valor_IMP_32 << 16;
+                Pink = Pink >> 29;
+                UInt32 Non_playable_team = Valor_IMP_32 << 19;
+                Non_playable_team = Non_playable_team >> 28;
+                country = Valor_IMP_32 << 23;
+                country = country >> 23;
 
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
-            {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
-
-        private void saveHexText70(BinaryWriter b)
-        {
-            string hex2klkoa6 = "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00";  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
-
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
-            {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
-
-        private void saveHexText(int valueStringa, int totaLenght, BinaryWriter b)
-        {
-            string hex2klkoa6 = "00";  // La tua stringa contenente i valori esadecimali
-            for (int i = valueStringa; i < totaLenght; i++)
-            {
-                hex2klkoa6 += " 00";
-            }
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
-
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
-            {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
-
-        public void save(string patch, Controller controller, int bitRecognized)
-        {
-            using (BinaryWriter b = new BinaryWriter(File.Open(patch + PATH, FileMode.Create)))
-            {
-                // Use foreach and write all 12 integers.
-                foreach (Team temp in controller.getListTeam())
+                if (CHECK97 == 1)
                 {
-                    saveHex0(temp.getManagerId(), b);
-                    saveHex0(temp.getFeederTeamId(), b);
-                    saveHex(temp.getId(), b);
-                    saveHex(0, b);
-                    saveHex0(temp.getParentTeamId(), b);
-                    saveHex(temp.getStadiumId(), b);
-                    saveHex(temp.getTeamSortNumber(), b);
+                    team = new National(idTeam);
+                    team.setNational(CHECK97);
+                }
+                else
+                {
+                    team = new Club(idTeam);
+                    team.setNational(CHECK97);
+                }
+                team.setManagerId(coach);
+                team.setFeederTeamId(feeder);
+                team.setParentTeamId(parent);
+                team.setStadiumId(stadium);
+                //teamSortNumber
+                team.setHasLicensedPlayers(CHECK95);
+                team.setLicensedTeam(CHECK96);
+                //
+                team.setFakeTeam(CHECK98);
+                team.setLicensedCoach(CHECK99);
+                team.setLicensedCoach2(CHECK100);
+                team.setHasAnthem(CHECK101);
+                team.setAnthemStandingAngle(Gray);
+                team.setAnthemPlayersSinging(Orange);
+                team.setAnthemStandingStyle(Pink);
+                team.setNotPlayableLeague(Non_playable_team);
+                team.setCountry(country);
 
-                    string hasLicensedPlayers = "0";
-                    if (temp.getHasLicensedPlayers())
-                        hasLicensedPlayers = "1";
+                reader.BaseStream.Position = index + 24;
+                teamJapanese = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
 
-                    string licensedTeam = "0";
-                    if (temp.getLicensedTeam())
-                        licensedTeam = "1";
+                reader.BaseStream.Position = index + 94;
+                teamSpanish = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
 
-                    string national = "0";
-                    if (temp.getNational())
-                        national = "1";
+                reader.BaseStream.Position = index + 164;
+                teamGreek = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
 
-                    string fakeTeam = "0";
-                    if (temp.getFakeTeam())
-                        fakeTeam = "1";
+                reader.BaseStream.Position = index + 234;
+                teamEnglish = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
 
-                    string licensedCoach = "00";
-                    if (temp.getLicensedCoach())
-                    {
-                        licensedCoach = "11";
-                    }
+                reader.BaseStream.Position = index + 374;
+                teamlatinAmerica = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
 
-                    string hasAnthem = "0";
-                    if (temp.getHasAnthem())
-                        hasAnthem = "1";
+                reader.BaseStream.Position = index + 444;
+                teamFrench = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
 
-                    string unk6 = "0";
-                    if (temp.getUnknown6())
-                        unk6 = "1";
-                    
-                    //blocco 20/23
-                    string unire1 = "00000" + hasLicensedPlayers + licensedTeam + national + fakeTeam + licensedCoach + hasAnthem + MyBinary.ToBinaryX(temp.getAnthemStandingAngle(), 2) + MyBinary.ToBinaryX(temp.getAnthemPlayersSinging(), 2) + MyBinary.ToBinaryX(temp.getAnthemStandingStyle(), 3) + unk6 + MyBinary.ToBinaryX(temp.getNotPlayableLeague(), 3) + MyBinary.ToBinaryX(temp.getCountry(), 9);
-                    saveHex0(MyBinary.BinaryToInt(unire1), b);
-                    b.Write(Encoding.UTF8.GetBytes(temp.getJapanese()));
-                    saveHexText(Encoding.UTF8.GetBytes(temp.getJapanese()).Count(), 69, b);
-                    if (temp.getNational())
-                    {
-                        National temp2 = (National)temp;
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getSpanish()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getSpanish()).Count(), 69, b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getGreek()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getGreek()).Count(), 69, b);
-                    }
-                    else
-                    {
-                        saveHexText70(b);
-                        saveHexText70(b);
-                    }
-                    b.Write(Encoding.UTF8.GetBytes(temp.getEnglish()));
-                    saveHexText(Encoding.UTF8.GetBytes(temp.getEnglish()).Count(), 69, b);
-                    saveHexText70(b);
-                    if (temp.getNational())
-                    {
-                        National temp2 = (National)temp;
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getLatinAmericaSpanish()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getLatinAmericaSpanish()).Count(), 69, b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getFrench()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getFrench()).Count(), 69, b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getTurkish()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getTurkish()).Count(), 69, b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getPortuguese()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getPortuguese()).Count(), 69, b);
-                    }
-                    else
-                    {
-                        saveHexText70(b);
-                        saveHexText70(b);
-                        saveHexText70(b);
-                        saveHexText70(b);
-                    }
-                    b.Write(Encoding.UTF8.GetBytes(temp.getKonami()));//
-                    if (temp.getNational())
-                    {
-                        National temp2 = (National)temp;
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getGerman()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getGerman()).Count(), 69, b);
-                    }
-                    else
-                        saveHexText70(b);
+                reader.BaseStream.Position = index + 514;
+                teamTurkish = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
 
-                    b.Write(Encoding.UTF8.GetBytes(temp.getShortSquadra()));
-                    if (temp.getShortSquadra().Count() != 3)
-                        saveHexText(Encoding.UTF8.GetBytes(temp.getShortSquadra()).Count(), 2, b);
-                    saveHex7(b);
-                    if (temp.getNational())
-                    {
-                        National temp2 = (National)temp;
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getBrazilianPortuguese()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getBrazilianPortuguese()).Count(), 69, b);
-                        saveHexText70(b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getDutch()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getDutch()).Count(), 69, b);
-                        saveHexText70(b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getSwedish()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getSwedish()).Count(), 69, b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getItalian()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getItalian()).Count(), 69, b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getRussian()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getRussian()).Count(), 69, b);
-                        saveHexText70(b);
-                        saveHex0(0, b);
-                        saveHex0(0, b);
-                        saveHex(0, b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getEnglishUS()));
-                        saveHexText(Encoding.UTF8.GetBytes(temp2.getEnglishUS()).Count(), 69, b);
-                    }
-                    else
-                    {
-                        Club temp2 = (Club)temp;
-                        saveHexText70(b);
-                        saveHexText70(b);
-                        saveHexText70(b);
-                        saveHexText70(b);
-                        saveHexText70(b);
-                        saveHexText70(b);
-                        saveHexText70(b);
-                        b.Write(Encoding.UTF8.GetBytes(temp2.getInternalShortName()));//
-                        saveHex0(0, b);
-                        saveHex(0, b);
-                        saveHexText70(b);
-                        saveHexText70(b);
-                    }
-                    saveHex(0, b);
+                reader.BaseStream.Position = index + 584;
+                teamPortuguese = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index + 654;
+                teamKonami = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(24)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index + 678;
+                teamGerman = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index + 748;
+                shortName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(3)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index + 758;
+                teamBrazilianPortuguese = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index + 898;
+                teamDutch = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index + 1038;
+                teamSwedish = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index + 1108;
+                teamItalian = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index + 1178;
+                teamRussian = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index + 1328;
+                teamEnglishUs = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(45)).TrimEnd('\0');
+
+                team.setShortSquadra(shortName);
+                team.setEnglish(teamEnglish);
+                team.setKonami(teamKonami);
+                team.setJapanese(teamJapanese);
+                if (CHECK97 == 1)
+                {
+                    ((National)team).setSpanish(teamSpanish);
+                    ((National)team).setGreek(teamGreek);
+                    ((National)team).setLatinAmericaSpanish(teamlatinAmerica);
+                    ((National)team).setFrench(teamFrench);
+                    ((National)team).setTurkish(teamTurkish);
+                    ((National)team).setPortuguese(teamPortuguese);
+                    ((National)team).setGerman(teamGerman);
+                    ((National)team).setBrazilianPortuguese(teamBrazilianPortuguese);
+                    ((National)team).setDutch(teamDutch);
+                    ((National)team).setSwedish(teamSwedish);
+                    ((National)team).setItalian(teamItalian);
+                    ((National)team).setRussian(teamRussian);
+                    ((National)team).setEnglishUS(teamEnglishUs);
                 }
             }
+            catch (IOException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
 
+            return team;
+        }
+
+        public void applyTeam(int selectedIndex, ref MemoryStream unzlib, Team squadra, ref BinaryWriter writer)
+        {
+            int pos_ini_team_block = selectedIndex * block;
+
+            UInt32 New_coach = squadra.getManagerId();
+            writer.BaseStream.Position = pos_ini_team_block + 0;
+            writer.Write(New_coach);
+            UInt32 NewId = squadra.getId();
+            writer.BaseStream.Position = pos_ini_team_block + 8;
+            writer.Write(NewId);
+            UInt16 NewStadium = (UInt16) squadra.getStadiumId();
+            writer.BaseStream.Position = pos_ini_team_block + 16;
+            writer.Write(NewStadium);
+
+            writer.BaseStream.Position = pos_ini_team_block + 20;
+            UInt32 Aux = 0;
+            UInt32 Nuevo_val_32 = 0;
+            UInt32 CHECK90 = 0;
+            /*if ((Form1.CheckBox90.Checked == true))
+            {
+                CHECK90 = 1;
+            }
+            else
+            {
+                CHECK90 = 0;
+            }*/
+
+            UInt32 CHECK91 = 0;
+            /*if ((Form1.CheckBox91.Checked == true))
+            {
+                CHECK91 = 1;
+            }
+            else
+            {
+                CHECK91 = 0;
+            }*/
+
+            UInt32 CHECK92 = 0;
+            /*if ((Form1.CheckBox92.Checked == true))
+            {
+                CHECK92 = 1;
+            }
+            else
+            {
+                CHECK92 = 0;
+            }*/
+
+            UInt32 CHECK93 = 0;
+            /*if ((Form1.CheckBox93.Checked == true))
+            {
+                CHECK93 = 1;
+            }
+            else
+            {
+                CHECK93 = 0;
+            }*/
+
+            UInt32 CHECK94 = 0;
+            /*if ((Form1.CheckBox94.Checked == true))
+            {
+                CHECK94 = 1;
+            }
+            else
+            {
+                CHECK94 = 0;
+            }*/
+
+            UInt32 CHECK95;
+            if (squadra.getHasLicensedPlayers() == 1)
+            {
+                CHECK95 = 1;
+            }
+            else
+            {
+                CHECK95 = 0;
+            }
+
+            UInt32 CHECK96;
+            if (squadra.getLicensedTeam() == 1)
+            {
+                CHECK96 = 1;
+            }
+            else
+            {
+                CHECK96 = 0;
+            }
+
+            UInt32 CHECK97;
+            if (squadra.getNational() == 1)
+            {
+                CHECK97 = 1;
+            }
+            else
+            {
+                CHECK97 = 0;
+            }
+
+            UInt32 CHECK98;
+            if (squadra.getFakeTeam() == 1)
+            {
+                CHECK98 = 1;
+            }
+            else
+            {
+                CHECK98 = 0;
+            }
+
+            UInt32 CHECK99;
+            if (squadra.getLicensedCoach() == 1)
+            {
+                CHECK99 = 1;
+            }
+            else
+            {
+                CHECK99 = 0;
+            }
+
+            UInt32 CHECK100;
+            if (squadra.getLicensedCoach2() == 1)
+            {
+                CHECK100 = 1;
+            }
+            else
+            {
+                CHECK100 = 0;
+            }
+
+            UInt32 CHECK101;
+            if (squadra.getHasAnthem() == 1)
+            {
+                CHECK101 = 1;
+            }
+            else
+            {
+                CHECK101 = 0;
+            }
+
+            UInt32 New_Gray = squadra.getAnthemStandingAngle();
+            UInt32 New_Orange = squadra.getAnthemPlayersSinging();
+            UInt32 New_Pink = squadra.getAnthemStandingStyle();
+            UInt32 New_Non_playable_team = squadra.getNotPlayableLeague();
+            UInt32 New_Country_16 = squadra.getCountry();
+            Aux = CHECK90;
+            Aux = Aux << 31;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK91;
+            Aux = Aux << 30;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK92;
+            Aux = Aux << 29;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK93;
+            Aux = Aux << 28;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK94;
+            Aux = Aux << 27;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK95;
+            Aux = Aux << 26;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK96;
+            Aux = Aux << 25;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK97;
+            Aux = Aux << 24;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK98;
+            Aux = Aux << 23;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK99;
+            Aux = Aux << 22;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK100;
+            Aux = Aux << 21;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = CHECK101;
+            Aux = Aux << 20;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = New_Gray;
+            Aux = Aux << 18;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = New_Orange;
+            Aux = Aux << 16;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = New_Pink;
+            Aux = Aux << 13;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = New_Non_playable_team;
+            Aux = Aux << 9;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            Aux = New_Country_16;
+            Nuevo_val_32 = Aux | Nuevo_val_32;
+            writer.Write(Nuevo_val_32);
+
+            int Position_sel = 24;
+            writer.BaseStream.Position = pos_ini_team_block + Position_sel;
+            for (int i = pos_ini_team_block + Position_sel; i <= (pos_ini_team_block + Position_sel) + 69; i++)
+            {
+                byte cero = 0;
+                writer.Write(cero);
+            }
+            writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+            writer.Write(squadra.getJapanese().ToCharArray());
+
+            Position_sel = 234;
+            writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+            for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+            {
+                byte cero = 0;
+                writer.Write(cero);
+            }
+
+            writer.BaseStream.Position = pos_ini_team_block + Position_sel;
+            writer.Write(squadra.getEnglish().ToCharArray());
+
+            if (squadra.getNational() == 1)
+            {
+                Position_sel = 94;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = pos_ini_team_block + Position_sel; i <= (pos_ini_team_block + Position_sel) + 69; i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = pos_ini_team_block + Position_sel;
+                writer.Write(((National)squadra).getSpanish().ToCharArray());
+
+                Position_sel = 164;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = pos_ini_team_block + Position_sel;
+                writer.Write(((National)squadra).getGreek().ToCharArray());
+
+                /*Position_sel = 304;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(Form1.TextBox_Team_Na.Text.ToCharArray());*/
+
+                Position_sel = 374;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getLatinAmericaSpanish().ToCharArray());
+
+                Position_sel = 444;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getFrench().ToCharArray());
+
+                Position_sel = 514;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getTurkish().ToCharArray());
+
+                Position_sel = 584;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getPortuguese().ToCharArray());
+
+                Position_sel = 678;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getGerman().ToCharArray());
+
+                Position_sel = 758;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getBrazilianPortuguese().ToCharArray());
+
+                Position_sel = 898;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getDutch().ToCharArray());
+
+                Position_sel = 1038;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getSwedish().ToCharArray());
+
+                Position_sel = 1108;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getItalian().ToCharArray());
+
+                Position_sel = 1178;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getRussian().ToCharArray());
+
+                Position_sel = 1328;
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                for (int i = (pos_ini_team_block + Position_sel); (i <= ((pos_ini_team_block + Position_sel) + 69)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + Position_sel);
+                writer.Write(((National)squadra).getEnglishUS().ToCharArray());
+            }
+
+            // Nombre Short
+            writer.BaseStream.Position = (pos_ini_team_block + 748);
+            for (int i = (pos_ini_team_block + 748); (i <= ((pos_ini_team_block + 748) + 3)); i++)
+            {
+                byte cero = 0;
+                writer.Write(cero);
+            }
+
+            writer.BaseStream.Position = (pos_ini_team_block + 748);
+            writer.Write(squadra.getShortSquadra().ToCharArray());
+
+            // bloque short si es o no licensed
+            if (CHECK96 == 1 || CHECK98 == 1)
+            {
+                writer.BaseStream.Position = (pos_ini_team_block + 748);
+                for (int i = pos_ini_team_block + 748; i <= ((pos_ini_team_block + 748) + 3); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + 748);
+                writer.Write(squadra.getShortSquadra().ToCharArray());
+                writer.BaseStream.Position = (pos_ini_team_block + 1248);
+                for (int i = (pos_ini_team_block + 1248); (i <= ((pos_ini_team_block + 1248) + 3)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                if ((CHECK96 == 1))
+                {
+                    writer.BaseStream.Position = (pos_ini_team_block + 1248);
+                    writer.Write("None".ToCharArray());
+                }
+
+            }
+            else
+            {
+                writer.BaseStream.Position = (pos_ini_team_block + 1248);
+                for (int i = (pos_ini_team_block + 1248); (i <= ((pos_ini_team_block + 1248) + 3)); i++)
+                {
+                    byte cero = 0;
+                    writer.Write(cero);
+                }
+
+                writer.BaseStream.Position = (pos_ini_team_block + 1248);
+                writer.Write(squadra.getShortSquadra().ToCharArray());
+            }
+        }
+
+        public void save(string patch, ref MemoryStream memorySquadre, int bitRecognized)
+        {
             if (bitRecognized == 0)
             {
                 //save zlib
-                byte[] inputData1 = File.ReadAllBytes(patch + PATH);
-                byte[] ss2 = Zlib18.ZLIBFile(inputData1);
-                File.WriteAllBytes(patch + PATH, ss2);
+                byte[] ss13 = Zlib18.ZLIBFile(memorySquadre.ToArray());
+                File.WriteAllBytes(patch + PATH, ss13);
             }
             else if (bitRecognized == 1)
             {
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                MemoryStream memory1 = new MemoryStream(inputData13);
-                UnzlibZlibConsole.UnzlibZlibConsole.Team_toConsole(ref memory1);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memory1, patch + PATH);
-                memory1.Close();
+                UnzlibZlibConsole.UnzlibZlibConsole.Team_toConsole(ref memorySquadre);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memorySquadre, patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                MemoryStream memory1 = new MemoryStream(inputData13);
-                UnzlibZlibConsole.UnzlibZlibConsole.Team_toConsole(ref memory1);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memory1, patch + PATH);
-                memory1.Close();
+                UnzlibZlibConsole.UnzlibZlibConsole.Team_toConsole(ref memorySquadre);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memorySquadre, patch + PATH);
             }
-		
-	    }
+        }
     }
 }

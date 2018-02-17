@@ -8,7 +8,7 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class National : Team
     {
-        public National(int id) : base(id)
+        public National(UInt32 id) : base(id)
         {
         }
 
