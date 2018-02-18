@@ -649,6 +649,7 @@
             this.playerId.Location = new System.Drawing.Point(94, 19);
             this.playerId.MaxLength = 8;
             this.playerId.Name = "playerId";
+            this.playerId.ReadOnly = true;
             this.playerId.Size = new System.Drawing.Size(65, 20);
             this.playerId.TabIndex = 7;
             this.playerId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
@@ -724,6 +725,7 @@
             this.physical.Name = "physical";
             this.physical.Size = new System.Drawing.Size(35, 20);
             this.physical.TabIndex = 105;
+            this.physical.TextChanged += new System.EventHandler(this.physical_TextChanged);
             this.physical.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label44
@@ -769,6 +771,7 @@
             this.reflexes.Name = "reflexes";
             this.reflexes.Size = new System.Drawing.Size(35, 20);
             this.reflexes.TabIndex = 100;
+            this.reflexes.TextChanged += new System.EventHandler(this.reflexes_TextChanged);
             this.reflexes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // clearing
@@ -778,6 +781,7 @@
             this.clearing.Name = "clearing";
             this.clearing.Size = new System.Drawing.Size(35, 20);
             this.clearing.TabIndex = 99;
+            this.clearing.TextChanged += new System.EventHandler(this.clearing_TextChanged);
             this.clearing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // cathing
@@ -787,6 +791,7 @@
             this.cathing.Name = "cathing";
             this.cathing.Size = new System.Drawing.Size(35, 20);
             this.cathing.TabIndex = 98;
+            this.cathing.TextChanged += new System.EventHandler(this.cathing_TextChanged);
             this.cathing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // coverage
@@ -796,6 +801,7 @@
             this.coverage.Name = "coverage";
             this.coverage.Size = new System.Drawing.Size(35, 20);
             this.coverage.TabIndex = 97;
+            this.coverage.TextChanged += new System.EventHandler(this.coverage_TextChanged);
             this.coverage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label26
@@ -814,6 +820,7 @@
             this.goalkeeping.Name = "goalkeeping";
             this.goalkeeping.Size = new System.Drawing.Size(35, 20);
             this.goalkeeping.TabIndex = 95;
+            this.goalkeeping.TextChanged += new System.EventHandler(this.goalkeeping_TextChanged);
             this.goalkeeping.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // stamina
@@ -823,6 +830,7 @@
             this.stamina.Name = "stamina";
             this.stamina.Size = new System.Drawing.Size(35, 20);
             this.stamina.TabIndex = 94;
+            this.stamina.TextChanged += new System.EventHandler(this.stamina_TextChanged);
             this.stamina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // jump
@@ -832,6 +840,7 @@
             this.jump.Name = "jump";
             this.jump.Size = new System.Drawing.Size(35, 20);
             this.jump.TabIndex = 93;
+            this.jump.TextChanged += new System.EventHandler(this.jump_TextChanged);
             this.jump.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // BodyControl
@@ -841,6 +850,7 @@
             this.BodyControl.Name = "BodyControl";
             this.BodyControl.Size = new System.Drawing.Size(35, 20);
             this.BodyControl.TabIndex = 92;
+            this.BodyControl.TextChanged += new System.EventHandler(this.BodyControll_TextChanged);
             this.BodyControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // explosivePower
@@ -850,6 +860,7 @@
             this.explosivePower.Name = "explosivePower";
             this.explosivePower.Size = new System.Drawing.Size(35, 20);
             this.explosivePower.TabIndex = 91;
+            this.explosivePower.TextChanged += new System.EventHandler(this.explosivePower_TextChanged);
             this.explosivePower.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // speed
@@ -859,6 +870,7 @@
             this.speed.Name = "speed";
             this.speed.Size = new System.Drawing.Size(35, 20);
             this.speed.TabIndex = 90;
+            this.speed.TextChanged += new System.EventHandler(this.speed_TextChanged);
             this.speed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // kickingPower
@@ -868,6 +880,7 @@
             this.kickingPower.Name = "kickingPower";
             this.kickingPower.Size = new System.Drawing.Size(35, 20);
             this.kickingPower.TabIndex = 89;
+            this.kickingPower.TextChanged += new System.EventHandler(this.kickingPower_TextChanged);
             this.kickingPower.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // ballWinning
@@ -877,6 +890,7 @@
             this.ballWinning.Name = "ballWinning";
             this.ballWinning.Size = new System.Drawing.Size(35, 20);
             this.ballWinning.TabIndex = 88;
+            this.ballWinning.TextChanged += new System.EventHandler(this.ballWinning_TextChanged);
             this.ballWinning.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // defense
@@ -886,6 +900,7 @@
             this.defense.Name = "defense";
             this.defense.Size = new System.Drawing.Size(35, 20);
             this.defense.TabIndex = 87;
+            this.defense.TextChanged += new System.EventHandler(this.defense_TextChanged);
             this.defense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // header
@@ -895,6 +910,7 @@
             this.header.Name = "header";
             this.header.Size = new System.Drawing.Size(35, 20);
             this.header.TabIndex = 86;
+            this.header.TextChanged += new System.EventHandler(this.header_TextChanged);
             this.header.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // swerve
@@ -904,6 +920,7 @@
             this.swerve.Name = "swerve";
             this.swerve.Size = new System.Drawing.Size(35, 20);
             this.swerve.TabIndex = 85;
+            this.swerve.TextChanged += new System.EventHandler(this.swerve_TextChanged);
             this.swerve.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // placeKick
@@ -913,6 +930,7 @@
             this.placeKick.Name = "placeKick";
             this.placeKick.Size = new System.Drawing.Size(35, 20);
             this.placeKick.TabIndex = 84;
+            this.placeKick.TextChanged += new System.EventHandler(this.placeKick_TextChanged);
             this.placeKick.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // finishing
@@ -922,6 +940,7 @@
             this.finishing.Name = "finishing";
             this.finishing.Size = new System.Drawing.Size(35, 20);
             this.finishing.TabIndex = 83;
+            this.finishing.TextChanged += new System.EventHandler(this.finishing_TextChanged);
             this.finishing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // loftedPass
@@ -931,6 +950,7 @@
             this.loftedPass.Name = "loftedPass";
             this.loftedPass.Size = new System.Drawing.Size(35, 20);
             this.loftedPass.TabIndex = 82;
+            this.loftedPass.TextChanged += new System.EventHandler(this.loftedPass_TextChanged);
             this.loftedPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // lowPass
@@ -940,6 +960,7 @@
             this.lowPass.Name = "lowPass";
             this.lowPass.Size = new System.Drawing.Size(35, 20);
             this.lowPass.TabIndex = 81;
+            this.lowPass.TextChanged += new System.EventHandler(this.lowPass_TextChanged);
             this.lowPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // dribbling
@@ -949,6 +970,7 @@
             this.dribbling.Name = "dribbling";
             this.dribbling.Size = new System.Drawing.Size(35, 20);
             this.dribbling.TabIndex = 80;
+            this.dribbling.TextChanged += new System.EventHandler(this.dribbling_TextChanged);
             this.dribbling.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // ballControll
@@ -958,6 +980,7 @@
             this.ballControll.Name = "ballControll";
             this.ballControll.Size = new System.Drawing.Size(35, 20);
             this.ballControll.TabIndex = 79;
+            this.ballControll.TextChanged += new System.EventHandler(this.ballControll_TextChanged);
             this.ballControll.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // attack
@@ -967,6 +990,7 @@
             this.attack.Name = "attack";
             this.attack.Size = new System.Drawing.Size(35, 20);
             this.attack.TabIndex = 78;
+            this.attack.TextChanged += new System.EventHandler(this.attack_TextChanged);
             this.attack.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label25

@@ -346,17 +346,18 @@ namespace DinoTem
 
             nationality.Items.Clear();
             sndNationality.Items.Clear();
-            //foreach (Country x in controller.getListCountry())
-            //{
-                //nationality.Items.Add(x);
-                //sndNationality.Items.Add(x);
-            //}
-            //rimuovere ultimo item
-            int a = nationality.Items.Count - 1;
-            nationality.Items.RemoveAt(a);
+            foreach (string x in Form1._Form1.teamCountry.Items)
+            {
+                nationality.Items.Add(x);
+                sndNationality.Items.Add(x);
+            }
+            Country nul = new Country(99999);
+            nul.setName("No National");
+            sndNationality.Items.Add(nul);
 
             //Youth Club ID
-            foreach (Team x in controller.getListTeam())
+            youthClub.Items.Clear();
+            foreach (string x in Form1._Form1.teamBox1.Items)
             {
                 youthClub.Items.Add(x);
             }
@@ -426,14 +427,14 @@ namespace DinoTem
             weUsage.Text = temp.getWcUsage().ToString();
             InjuryRes.Text = temp.getInjuryRes().ToString();
 
-            /*if (temp.getHiddenPlayer())
+            if (temp.getHiddenPlayer() == 1)
                 hiddenPlayer.Checked = true;
             else
                 hiddenPlayer.Checked = false;
-            if (temp.getLegendGoldenBall())
+            if (temp.getLegendGoldenBall() == 1)
                 wonGoldenBall.Checked = true;
             else
-                wonGoldenBall.Checked = false;*/
+                wonGoldenBall.Checked = false;
             DribHunch.Text = temp.getDriblingH().ToString();
             DribArmMove.Text = temp.getDriblingArm().ToString();
             RunHunch.Text = temp.getRunningH().ToString();
@@ -459,177 +460,177 @@ namespace DinoTem
             CF.Text = temp.getStringCF();
 
             //skills
-            /*if (temp.getFightingSpirit())
+            if (temp.getFightingSpirit() == 1)
                 fightingSpirit.Checked = true;
             else
                 fightingSpirit.Checked = false;
 
-            if (temp.getAcrobatingClear())
+            if (temp.getAcrobatingClear() == 1)
                 acrobaticClear.Checked = true;
             else
                 acrobaticClear.Checked = false;
 
-            if (temp.getKnucleShot())
+            if (temp.getKnucleShot() == 1)
                 knucleShot.Checked = true;
             else
                 knucleShot.Checked = false;
 
-            if (temp.getFirstTimeShot())
+            if (temp.getFirstTimeShot() == 1)
                 firstTimeShot.Checked = true;
             else
                 firstTimeShot.Checked = false;
 
-            if (temp.getLongThrow())
+            if (temp.getLongThrow() == 1)
                 longThrow.Checked = true;
             else
                 longThrow.Checked = false;
 
-            if (temp.getManMarking())
+            if (temp.getManMarking() == 1)
                 manMarking.Checked = true;
             else
                 manMarking.Checked = false;
 
-            if (temp.getOutsideCurler())
+            if (temp.getOutsideCurler() == 1)
                 outsideCurler.Checked = true;
             else
                 outsideCurler.Checked = false;
 
-            if (temp.getMarseilleTurn())
+            if (temp.getMarseilleTurn() == 1)
                 marseilleTurn.Checked = true;
             else
                 marseilleTurn.Checked = false;
 
-            if (temp.getSchotMove())
+            if (temp.getSchotMove() == 1)
                 scothMove.Checked = true;
             else
                 scothMove.Checked = false;
 
-            if (temp.getGkLong())
+            if (temp.getGkLong() == 1)
                 gkLongThrow.Checked = true;
             else
                 gkLongThrow.Checked = false;
 
-            if (temp.getCutBehind())
+            if (temp.getCutBehind() == 1)
                 cutBehindTurn.Checked = true;
             else
                 cutBehindTurn.Checked = false;
 
-            if (temp.getScissorFeint())
+            if (temp.getScissorFeint() == 1)
                 scissorsFeint.Checked = true;
             else
                 scissorsFeint.Checked = false;
 
-            if (temp.getLowLoftedPass())
+            if (temp.getLowLoftedPass() == 1)
                 lowLoftedPass.Checked = true;
             else
                 lowLoftedPass.Checked = false;
 
-            if (temp.getOneTouchPass())
+            if (temp.getOneTouchPass() == 1)
                 oneTouchPass.Checked = true;
             else
                 oneTouchPass.Checked = false;
 
-            if (temp.getWeightnessPass())
+            if (temp.getWeightnessPass() == 1)
                 weightedPass.Checked = true;
             else
                 weightedPass.Checked = false;
 
-            if (temp.getAcrobatingFinishing())
+            if (temp.getAcrobatingFinishing() == 1)
                 acrobaticFinishing.Checked = true;
             else
                 acrobaticFinishing.Checked = false;
 
-            if (temp.getPinCrossing())
+            if (temp.getPinCrossing() == 1)
                 pinpointCrossing.Checked = true;
             else
                 pinpointCrossing.Checked = false;
 
-            if (temp.getLowPuntTrajectory())
+            if (temp.getLowPuntTrajectory() == 1)
                 lowPuntTrajectory.Checked = true;
             else
                 lowPuntTrajectory.Checked = false;
 
-            if (temp.getLongRange())
+            if (temp.getLongRange() == 1)
                 longRangeDrive.Checked = true;
             else
                 longRangeDrive.Checked = false;
 
-            if (temp.getFlipFlap())
+            if (temp.getFlipFlap() == 1)
                 flipFlap.Checked = true;
             else
                 flipFlap.Checked = false;
 
-            if (temp.getRabona())
+            if (temp.getRabona() == 1)
                 rabona.Checked = true;
             else
                 rabona.Checked = false;
 
-            if (temp.getMalicia())
+            if (temp.getMalicia() == 1)
                 malicia.Checked = true;
             else
                 malicia.Checked = false;
 
-            if (temp.getSombrero())
+            if (temp.getSombrero() == 1)
                 sombrero.Checked = true;
             else
                 sombrero.Checked = false;
 
-            if (temp.getHeading())
+            if (temp.getHeading() == 1)
                 heading.Checked = true;
             else
                 heading.Checked = false;
 
-            if (temp.getHellTick())
+            if (temp.getHellTick() == 1)
                 hellTrick.Checked = true;
             else
                 hellTrick.Checked = false;
 
-            if (temp.getTrackBack())
+            if (temp.getTrackBack() == 1)
                 trackBack.Checked = true;
             else
                 trackBack.Checked = false;
 
-            if (temp.getSuperSub())
+            if (temp.getSuperSub() == 1)
                 superSub.Checked = true;
             else
                 superSub.Checked = false;
 
-            if (temp.getCaptaincy())
+            if (temp.getCaptaincy() == 1)
                 captaincy.Checked = true;
             else
                 captaincy.Checked = false;
 
-            if (temp.getComTrickster())
+            if (temp.getComTrickster() == 1)
                 trickster.Checked = true;
             else
                 trickster.Checked = false;
 
-            if (temp.getComMazingRun())
+            if (temp.getComMazingRun() == 1)
                 mazingRun.Checked = true;
             else
                 mazingRun.Checked = false;
 
-            if (temp.getComLongRanger())
+            if (temp.getComLongRanger() == 1)
                 longBallExpert.Checked = true;
             else
                 longBallExpert.Checked = false;
 
-            if (temp.getComIncisiveRun())
+            if (temp.getComIncisiveRun() == 1)
                 incisiveRun.Checked = true;
             else
                 incisiveRun.Checked = false;
 
-            if (temp.getSpeedingBullet())
+            if (temp.getSpeedingBullet() == 1)
                 speedingBullet.Checked = true;
             else
                 speedingBullet.Checked = false;
 
-            if (temp.getEarlyCross())
+            if (temp.getEarlyCross() == 1)
                 earlyCross.Checked = true;
             else
                 earlyCross.Checked = false;
 
-            if (controller.getSkinColour(temp) > 0)
+            /*if (controller.getSkinColour(temp) > 0)
                 skinColour.Value = controller.getSkinColour(temp);
             else
             {
@@ -639,16 +640,10 @@ namespace DinoTem
 
             starIndicator.Value = temp.getStarPlayerIndicator();
 
-            /*controller.getCountryMap().GetType();
-            Country value;
-            if (!controller.getCountryMap().TryGetValue((long)temp.getNational(), out value))
-                throw new ArgumentException("id country not found");
-            //nationality.Text = value.getNationality();
-            if (!controller.getCountryMap().TryGetValue((long)temp.getNational2(), out value))
-                controller.getCountryMap().TryGetValue((long)0, out value);
-            //sndNationality.Text = value.getNationality();*/
+            nationality.SelectedIndex = controller.findCountry(temp.getNational());
+            sndNationality.SelectedIndex = controller.findCountry(temp.getNational2());
 
-            youthClub.SelectedItem = controller.getYouthClub(temp);
+            youthClub.SelectedIndex = controller.findTeam(temp.getYouthPlayerId());
         }
 
         //ADJUST STATS
@@ -1245,121 +1240,236 @@ namespace DinoTem
 		//save
         private void button4_Click(object sender, EventArgs e)
         {
-            /*temp.setName(playerName.Text);
+            int index = controller.findPlayer(temp.getId());
+
+            temp.setName(playerName.Text);
             temp.setJapanese(japaneseName.Text);
             temp.setShirtName(shirtName.Text);
-            temp.setWeight(int.Parse(weight.Text));
-            temp.setHeight(int.Parse(height.Text));
-            temp.setEarlyCross(earlyCross.Checked);
-            temp.setDefense(int.Parse(defense.Text));
-            temp.setClearing(int.Parse(clearing.Text));
-            temp.setLowPass(int.Parse(lowPass.Text));
+            temp.setWeight(uint.Parse(weight.Text));
+            temp.setHeight(uint.Parse(height.Text));
+            if (earlyCross.Checked)
+                temp.setEarlyCross(1);
+            else
+                temp.setEarlyCross(0);
+            temp.setDefense(uint.Parse(defense.Text));
+            temp.setClearing(uint.Parse(clearing.Text));
+            temp.setLowPass(uint.Parse(lowPass.Text));
             //controller.changeNationalPlayer(temp, (Country)nationality.SelectedItem);
             //controller.changeSecondNationalPlayer(temp, (Country)sndNationality.SelectedItem);
-            temp.setPlaceKick(int.Parse(placeKick.Text));
-            temp.setGoalCelebrate(int.Parse(goalCeleb.Text));
-            temp.setLb(LB.SelectedIndex);
-            temp.setCoverage(int.Parse(coverage.Text));
-            temp.setCathing(int.Parse(cathing.Text));
-            temp.setJump(int.Parse(jump.Text));
-            temp.setHeader(int.Parse(header.Text));
-            temp.setBallControll(int.Parse(ballControll.Text));
-            temp.setGk(GK.SelectedIndex);
-            temp.setGoalkeeping(int.Parse(goalkeeping.Text));
-            temp.setReflexes(int.Parse(reflexes.Text));
-            temp.setFinishing(int.Parse(finishing.Text));
-            temp.setBallWinning(int.Parse(ballWinning.Text));
-            temp.setSpeed(int.Parse(speed.Text));
-            temp.setPenaltyKick(int.Parse(pkMotion.Text));
-            temp.setKickingPower(int.Parse(kickingPower.Text));
-            temp.setDribbling(int.Parse(dribbling.Text));
-            temp.setExplosiveP(int.Parse(explosivePower.Text));
-            temp.setStamina(int.Parse(stamina.Text));
-            temp.setSwerve(int.Parse(swerve.Text));*/
+            temp.setPlaceKick(uint.Parse(placeKick.Text));
+            temp.setGoalCelebrate(uint.Parse(goalCeleb.Text));
+            temp.setLb((uint)LB.SelectedIndex);
+            temp.setCoverage(uint.Parse(coverage.Text));
+            temp.setCathing(uint.Parse(cathing.Text));
+            temp.setJump(uint.Parse(jump.Text));
+            temp.setHeader(uint.Parse(header.Text));
+            temp.setBallControll(uint.Parse(ballControll.Text));
+            temp.setGk((uint)GK.SelectedIndex);
+            temp.setGoalkeeping(uint.Parse(goalkeeping.Text));
+            temp.setReflexes(uint.Parse(reflexes.Text));
+            temp.setFinishing(uint.Parse(finishing.Text));
+            temp.setBallWinning(uint.Parse(ballWinning.Text));
+            temp.setSpeed(uint.Parse(speed.Text));
+            temp.setPenaltyKick(uint.Parse(pkMotion.Text));
+            temp.setKickingPower(uint.Parse(kickingPower.Text));
+            temp.setDribbling(uint.Parse(dribbling.Text));
+            temp.setExplosiveP(uint.Parse(explosivePower.Text));
+            temp.setStamina(uint.Parse(stamina.Text));
+            temp.setSwerve(uint.Parse(swerve.Text));
             /*unk*/
-            /*temp.setAge(int.Parse(age.Text));
-            temp.setLoftedPass(int.Parse(loftedPass.Text));
-            temp.setPhysical(int.Parse(physical.Text));
-            temp.setBodyControl(int.Parse(BodyControl.Text));
-            temp.setAttack(int.Parse(attack.Text));
-            temp.setWcUsage(int.Parse(weUsage.Text));
-            temp.setDmf(DMF.SelectedIndex);
-            temp.setStarPlayerIndicator(int.Parse(starIndicator.Value.ToString()));
-            temp.setRunningArm(int.Parse(RunArmMove.Text));
-            temp.setDriblingArm(int.Parse(DribArmMove.Text));
-            temp.setCornerKick(int.Parse(ckMotion.Text));
-            temp.setForm(int.Parse(form.Text));
-            temp.setPosition(position.SelectedIndex);
-            temp.setFreeKick(int.Parse(fkMotion.Text));
-            temp.setPlayingStyle(playingStyle.SelectedIndex);
-            temp.setPinCrossing(pinpointCrossing.Checked);
-            temp.setSombrero(sombrero.Checked);
-            temp.setRunningH(int.Parse(RunHunch.Text));
-            temp.setSs(SS.SelectedIndex);*/
-            /*unk2*/
-            /*temp.setRwf(RWF.SelectedIndex);
-            temp.setLmf(LMF.SelectedIndex);
-            temp.setLwf(LWF.SelectedIndex);
-            temp.setCf(CF.SelectedIndex);
-            temp.setCb(CB.SelectedIndex);
-            temp.setRb(RB.SelectedIndex);
-            temp.setDriblingH(int.Parse(DribHunch.Text));
-            temp.setAmf(AMF.SelectedIndex);
-            temp.setInjuryRes(int.Parse(InjuryRes.Text));
-            temp.setRmf(RMF.SelectedIndex);
-            temp.setWeakFootAcc(int.Parse(weAcc.Text));
-            temp.setCmf(CMF.SelectedIndex);
-            temp.setSpeedingBullet(speedingBullet.Checked);
-            temp.setSchotMove(scothMove.Checked);
-            temp.setGkLong(gkLongThrow.Checked);
-            temp.setLongThrow(longThrow.Checked);
-            temp.setScissorFeint(scissorsFeint.Checked);
-            temp.setTrackBack(trackBack.Checked);
-            temp.setSuperSub(superSub.Checked);
-            temp.setRabona(rabona.Checked);
-            temp.setAcrobatingFinishing(acrobaticFinishing.Checked);
-            if (strongerFoot.SelectedIndex == 0)
-                temp.setStrongerFoot(true);
+            temp.setAge(uint.Parse(age.Text));
+            temp.setLoftedPass(uint.Parse(loftedPass.Text));
+            temp.setPhysical(uint.Parse(physical.Text));
+            temp.setBodyControl(uint.Parse(BodyControl.Text));
+            temp.setAttack(uint.Parse(attack.Text));
+            temp.setWcUsage(uint.Parse(weUsage.Text));
+            temp.setDmf((uint)DMF.SelectedIndex);
+            temp.setStarPlayerIndicator(uint.Parse(starIndicator.Value.ToString()));
+            temp.setRunningArm(uint.Parse(RunArmMove.Text));
+            temp.setDriblingArm(uint.Parse(DribArmMove.Text));
+            temp.setCornerKick(uint.Parse(ckMotion.Text));
+            temp.setForm(uint.Parse(form.Text));
+            temp.setPosition((uint)position.SelectedIndex);
+            temp.setFreeKick(uint.Parse(fkMotion.Text));
+            temp.setPlayingStyle((uint)playingStyle.SelectedIndex);
+            if (pinpointCrossing.Checked)
+                temp.setPinCrossing(1);
             else
-                temp.setStrongerFoot(false);
-            temp.setKnucleShot(knucleShot.Checked);
-            temp.setFirstTimeShot(firstTimeShot.Checked);
-            temp.setComIncisiveRun(incisiveRun.Checked);*/
+                temp.setPinCrossing(0);
+            if (sombrero.Checked)
+                temp.setSombrero(1);
+            else
+                temp.setSombrero(0);
+            temp.setRunningH(uint.Parse(RunHunch.Text));
+            temp.setSs((uint)SS.SelectedIndex);
+            /*unk2*/
+            temp.setRwf((uint)RWF.SelectedIndex);
+            temp.setLmf((uint)LMF.SelectedIndex);
+            temp.setLwf((uint)LWF.SelectedIndex);
+            temp.setCf((uint)CF.SelectedIndex);
+            temp.setCb((uint)CB.SelectedIndex);
+            temp.setRb((uint)RB.SelectedIndex);
+            temp.setDriblingH(uint.Parse(DribHunch.Text));
+            temp.setAmf((uint)AMF.SelectedIndex);
+            temp.setInjuryRes(uint.Parse(InjuryRes.Text));
+            temp.setRmf((uint)RMF.SelectedIndex);
+            temp.setWeakFootAcc(uint.Parse(weAcc.Text));
+            temp.setCmf((uint)CMF.SelectedIndex);
+            if (speedingBullet.Checked)
+                temp.setSpeedingBullet(1);
+            else
+                temp.setSpeedingBullet(0);
+            if (scothMove.Checked)
+                temp.setSchotMove(1);
+            else
+                temp.setSchotMove(0);
+            if (gkLongThrow.Checked)
+                temp.setGkLong(1);
+            else
+                temp.setGkLong(0);
+            if (longThrow.Checked)
+                temp.setLongThrow(1);
+            else
+                temp.setLongThrow(0);
+            if (scissorsFeint.Checked)
+                temp.setScissorFeint(1);
+            else
+                temp.setScissorFeint(0);
+            if (trackBack.Checked)
+                temp.setTrackBack(1);
+            else
+                temp.setTrackBack(0);
+            if (superSub.Checked)
+                temp.setSuperSub(1);
+            else
+                temp.setSuperSub(0);
+            if (rabona.Checked)
+                temp.setRabona(1);
+            else
+                temp.setRabona(0);
+            if (acrobaticFinishing.Checked)
+                temp.setAcrobatingFinishing(1);
+            else
+                temp.setAcrobatingFinishing(0);
+            if (strongerFoot.SelectedIndex == 0)
+                temp.setStrongerFoot(0);
+            else
+                temp.setStrongerFoot(1);
+            if (knucleShot.Checked)
+                temp.setKnucleShot(1);
+            else
+                temp.setKnucleShot(0);
+            if (firstTimeShot.Checked)
+                temp.setFirstTimeShot(1);
+            else
+                temp.setFirstTimeShot(0);
+            if (incisiveRun.Checked)
+                temp.setComIncisiveRun(1);
+            else
+                temp.setComIncisiveRun(0);
             /*unk3*/
-            /*temp.setHiddenPlayer(hiddenPlayer.Checked);
-            temp.setLongRange(longRangeDrive.Checked);
-            temp.setOneTouchPass(oneTouchPass.Checked);
-            temp.setHellTick(hellTrick.Checked);*/
+            if (hiddenPlayer.Checked)
+                temp.setHiddenPlayer(1);
+            else
+                temp.setHiddenPlayer(0);
+            if (longRangeDrive.Checked)
+                temp.setLongRange(1);
+            else
+                temp.setLongRange(0);
+            if (oneTouchPass.Checked)
+                temp.setOneTouchPass(1);
+            else
+                temp.setOneTouchPass(0);
+            if (hellTrick.Checked)
+                temp.setHellTick(1);
+            else
+                temp.setHellTick(0);
             /*unk4*/
-            /*temp.setManMarking(manMarking.Checked);
-            temp.setLegendGoldenBall(wonGoldenBall.Checked);
-            temp.setMarseilleTurn(marseilleTurn.Checked);
-            temp.setHeading(heading.Checked);
-            temp.setOutsideCurler(outsideCurler.Checked);
-            temp.setCaptaincy(captaincy.Checked);
-            temp.setMalicia(malicia.Checked);
-            temp.setLowPuntTrajectory(lowPuntTrajectory.Checked);
-            temp.setComTrickster(trickster.Checked);
-            temp.setLowLoftedPass(lowLoftedPass.Checked);
-            temp.setFightingSpirit(fightingSpirit.Checked);
-            temp.setFlipFlap(flipFlap.Checked);
-            temp.setWeightnessPass(weightedPass.Checked);*/
+            if (manMarking.Checked)
+                temp.setManMarking(1);
+            else
+                temp.setManMarking(0);
+            if (wonGoldenBall.Checked)
+                temp.setLegendGoldenBall(1);
+            else
+                temp.setLegendGoldenBall(0);
+            if (marseilleTurn.Checked)
+                temp.setMarseilleTurn(1);
+            else
+                temp.setMarseilleTurn(0);
+            if (heading.Checked)
+                temp.setHeading(1);
+            else
+                temp.setHeading(0);
+            if (outsideCurler.Checked)
+                temp.setOutsideCurler(1);
+            else
+                temp.setOutsideCurler(0);
+            if (captaincy.Checked)
+                temp.setCaptaincy(1);
+            else
+                temp.setCaptaincy(0);
+            if (malicia.Checked)
+                temp.setMalicia(1);
+            else
+                temp.setMalicia(0);
+            if (lowPuntTrajectory.Checked)
+                temp.setLowPuntTrajectory(1);
+            else
+                temp.setLowPuntTrajectory(0);
+            if (trickster.Checked)
+                temp.setComTrickster(1);
+            else
+                temp.setComTrickster(0);
+            if (lowLoftedPass.Checked)
+                temp.setLowLoftedPass(1);
+            else
+                temp.setLowLoftedPass(0);
+            if (fightingSpirit.Checked)
+                temp.setFightingSpirit(1);
+            else
+                temp.setFightingSpirit(0);
+            if (flipFlap.Checked)
+                temp.setFlipFlap(1);
+            else
+                temp.setFlipFlap(0);
+            if (weightedPass.Checked)
+                temp.setWeightnessPass(1);
+            else
+                temp.setWeightnessPass(0);
             /*unk6*/
             /*unk7*/
             /*unk8*/
-            /*temp.setComMazingRun(mazingRun.Checked);
-            temp.setAcrobatingClear(acrobaticClear.Checked);
-            temp.setComBallExpert(longBallExpert.Checked);
-            temp.setCutBehind(cutBehindTurn.Checked);
-            temp.setComLongRanger(longRanger.Checked);*/
+            if (mazingRun.Checked)
+                temp.setComMazingRun(1);
+            else
+                temp.setComMazingRun(0);
+            if (acrobaticClear.Checked)
+                temp.setAcrobatingClear(1);
+            else
+                temp.setAcrobatingClear(0);
+            if (longBallExpert.Checked)
+                temp.setComBallExpert(1);
+            else
+                temp.setComBallExpert(0);
+            if (cutBehindTurn.Checked)
+                temp.setCutBehind(1);
+            else
+                temp.setCutBehind(0);
+            if (longRanger.Checked)
+                temp.setComLongRanger(1);
+            else
+                temp.setComLongRanger(0);
 
-            if (skinColour.Value > 0)
-                controller.changeSkinColour(temp, int.Parse(skinColour.Value.ToString()));
+            temp.setYouthPlayerId(controller.leggiSquadra(youthClub.SelectedIndex).getId());
 
-            //controller.changeYouthClub(temp, (Team) youthClub.SelectedItem);
+            //if (skinColour.Value > 0)
+                //controller.changeSkinColour(temp, int.Parse(skinColour.Value.ToString()));
 
-            controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
-			//controller.UpdateFormPlayer(Form1._Form1.giocatoreView, temp);
+            controller.applyPlayerPersister(index, temp);
+
+            //controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
+            controller.UpdateFormPlayer(index, temp.getName());
             this.Close();
         }
 

@@ -104,7 +104,7 @@ namespace DinoTem.persistence
             return guanto;
         }
 
-        public void applyGlove(int selectedIndex, ref MemoryStream unzlib, Glove guanto, ref BinaryWriter writer)
+        public void applyGlove(int selectedIndex, MemoryStream unzlib, Glove guanto, ref BinaryWriter writer)
         {
             int Index = (block * selectedIndex);
             writer.BaseStream.Position = Index;

@@ -109,7 +109,7 @@ namespace DinoTem.ui
             return boot;
         }
 
-        public void applyBoot(int selectedIndex, ref MemoryStream unzlib, Boot scarpa, ref BinaryWriter writer)
+        public void applyBoot(int selectedIndex, MemoryStream unzlib, Boot scarpa, ref BinaryWriter writer)
         {
             int Index = (block * selectedIndex);
             writer.BaseStream.Position = Index;

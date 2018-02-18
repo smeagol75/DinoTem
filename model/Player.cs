@@ -128,7 +128,7 @@ namespace DinoTem.model
             return this.id;
         }
 
-        public long getYouthPlayerId()
+        public UInt32 getYouthPlayerId()
         {
             return this.youthPlayerId;
         }

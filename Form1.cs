@@ -244,10 +244,20 @@ namespace DinoTem
             controller.openDatabase(fbd.SelectedPath, Form1._Form1);
         }
 
+        //form che si sta chiudendo
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            controller.closeMemory();
-            SplashScreen._SplashScreen.Close();
+            if (MessageBox.Show("Do you really want to quit?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).Equals(DialogResult.No))
+                e.Cancel = true;
+            else
+            {
+                DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Temp");
+                foreach (FileInfo file in di.GetFiles())
+                    file.Delete();
+                e.Cancel = false;
+                controller.closeMemory();
+                SplashScreen._SplashScreen.Close();
+            }
         }
 
         //ball
@@ -276,6 +286,9 @@ namespace DinoTem
                 palloneID.Text = pallone.getId().ToString();
                 palloneName.Text = pallone.getName();
                 palloneOrder.Text = pallone.getOrder().ToString();
+
+                List<BallCondition> ballCondition = controller.leggiCondizioniPalloni(pallone.getId());
+                controller.getBallConditionById(ballCondition, palloneUnknowB1, palloneUnknowB2, palloneUnknowB3, palloneUnknowB4);
             }
         }
 
@@ -288,6 +301,15 @@ namespace DinoTem
                 pallone.setName(palloneName.Text);
                 pallone.setOrder(byte.Parse(palloneOrder.Text));
                 controller.applyBallPersister(intselectedindex, pallone);
+                List<BallCondition> ba = controller.leggiCondizioniPalloni(pallone.getId());
+                if (ba.Count == 1)
+                    controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), 0, 0, 0, ba);
+                else if (ba.Count == 2)
+                    controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), byte.Parse(palloneUnknowB2.Text), 0, 0, ba);
+                else if (ba.Count == 3)
+                    controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), byte.Parse(palloneUnknowB2.Text), byte.Parse(palloneUnknowB3.Text), 0, ba);
+                else if (ba.Count == 4)
+                    controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), byte.Parse(palloneUnknowB2.Text), byte.Parse(palloneUnknowB3.Text), byte.Parse(palloneUnknowB4.Text), ba);
 
                 //Update listbox
                 ballsBox.Items[intselectedindex] = palloneName.Text;
@@ -1211,6 +1233,186 @@ namespace DinoTem
         {
             if (e.KeyCode == Keys.Enter)
                 controller.changeShirtPlayer(ushort.Parse(giocatoreID.Text), giocatoreShirt.Text);
+        }
+
+        private void teamView1_MouseDown(object sender, MouseEventArgs e)
+        {
+            //abilitare il tasto destro
+            if (e.Button == MouseButtons.Right)
+            {
+                if (teamView1.SelectedIndices.Count <= 0)
+                    return;
+                if (teamView1.FocusedItem.Bounds.Contains(e.Location) == true)
+                    Team_AMenuStrip2.Show(Cursor.Position);
+            }
+
+            //Doppio clicco
+            if (e.Button == MouseButtons.Left)
+            {
+                if (e.Clicks >= 2)
+                {
+                    if (teamView1.SelectedIndices.Count <= 0)
+                        return;
+                    int intselectedindex = teamView1.SelectedIndices[0];
+                    if (intselectedindex >= 0)
+                    {
+                        Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                        P.ShowDialog();
+                    }
+                }
+            }
+
+        }
+
+        private void teamView2_MouseDown(object sender, MouseEventArgs e)
+        {
+            //abilitare il tasto destro
+            if (e.Button == MouseButtons.Right)
+            {
+                if (teamView2.SelectedIndices.Count <= 0)
+                    return;
+                if (teamView2.FocusedItem.Bounds.Contains(e.Location) == true)
+                    Team_BMenuStrip3.Show(Cursor.Position);
+            }
+
+            //Doppio clicco
+            if (e.Button == MouseButtons.Left)
+            {
+                if (e.Clicks >= 2)
+                {
+                    if (teamView2.SelectedIndices.Count <= 0)
+                        return;
+                    int intselectedindex = teamView2.SelectedIndices[0];
+                    if (intselectedindex >= 0)
+                    {
+                        Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                        P.ShowDialog();
+                    }
+                }
+            }
+
+        }
+
+        private void playersBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            //Doppio clicco
+            if (e.Button == MouseButtons.Left)
+            {
+                if (e.Clicks >= 2)
+                {
+                    if (playersBox.SelectedIndices.Count <= 0)
+                        return;
+                    Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                    P.ShowDialog();
+                }
+            }
+        }
+
+        private void teamsBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            //Doppio clicco
+            if (e.Button == MouseButtons.Left)
+            {
+                if (e.Clicks >= 2)
+                {
+                    List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamsBox.SelectedIndex).getId());
+                    if (tactics.Count > 0)
+                    {
+                        List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
+                        if (tacticsFormation.Count < 11)
+                            MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                        {
+                            Formazione F = new Formazione(controller, controller.leggiSquadra(teamsBox.SelectedIndex));
+                            F.ShowDialog();
+                        }
+                    }
+                    else
+                        MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+
+        }
+
+        //tasto destro TeamView1
+        private void editTeamToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+            if (tactics.Count > 0)
+            {
+                List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
+                if (tacticsFormation.Count < 11)
+                    MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    Formazione F = new Formazione(controller, controller.leggiSquadra(teamBox1.SelectedIndex));
+                    F.ShowDialog();
+                }
+            }
+            else
+                MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void editPlayerToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (teamView1.SelectedIndices.Count <= 0)
+                return;
+            int intselectedindex = teamView1.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                P.ShowDialog();
+            }
+        }
+
+        //tasto destro TeamView2
+        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+            if (tactics.Count > 0)
+            {
+                List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
+                if (tacticsFormation.Count < 11)
+                    MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    Formazione F = new Formazione(controller, controller.leggiSquadra(teamBox2.SelectedIndex));
+                    F.ShowDialog();
+                }
+            }
+            else
+                MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            if (teamView2.SelectedIndices.Count <= 0)
+                return;
+            int intselectedindex = teamView2.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                P.ShowDialog();
+            }
+        }
+
+        //tasto destro listBox
+        private void editPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (playersBox.SelectedIndices.Count <= 0)
+                return;
+            Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+            P.ShowDialog();
+        }
+
+        //derby
+        private void DataGridView_derby_SelectionChanged(object sender, EventArgs e)
+        {
+            derbyTeam1.Text = DataGridView_derby.CurrentRow.Cells[1].Value.ToString();
+            derbyTeam2.Text = DataGridView_derby.CurrentRow.Cells[3].Value.ToString();
+            derbyKind.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[4].Value.ToString());
+            derbySlot.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[5].Value.ToString());
+            derbyOrder.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[6].Value.ToString());
         }
     }
 }

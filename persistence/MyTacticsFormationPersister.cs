@@ -111,12 +111,28 @@ namespace DinoTem.persistence
             return list;
         }
 
-        public void applyTacticsFormation(int selectedIndex, ref MemoryStream unzlib, TacticsFormation tatticsF, ref BinaryWriter writer)
+        public void applyTacticsFormation(int selectedIndex, MemoryStream unzlib, TacticsFormation tatticsF, ref BinaryWriter writer)
         {
         }
 
         public void save(string patch, ref MemoryStream memoryTattiche, int bitRecognized)
         {
+            if (bitRecognized == 0)
+            {
+                //save zlib
+                byte[] ss13 = Zlib18.ZLIBFile(memoryTattiche.ToArray());
+                File.WriteAllBytes(patch + PATH, ss13);
+            }
+            else if (bitRecognized == 1)
+            {
+                UnzlibZlibConsole.UnzlibZlibConsole.TacticsFormation_Console(ref memoryTattiche);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryTattiche, patch + PATH);
+            }
+            else if (bitRecognized == 2)
+            {
+                UnzlibZlibConsole.UnzlibZlibConsole.TacticsFormation_Console(ref memoryTattiche);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryTattiche, patch + PATH);
+            }
         }
 
     }

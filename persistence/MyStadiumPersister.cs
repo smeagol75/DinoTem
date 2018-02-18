@@ -131,7 +131,7 @@ namespace DinoTem.persistence
             return stadium;
         }
 
-        public void applyStadium(int selectedIndex, ref MemoryStream unzlib, Stadium stadium, ref BinaryWriter writer)
+        public void applyStadium(int selectedIndex, MemoryStream unzlib, Stadium stadium, ref BinaryWriter writer)
         {
             int Index = (block * selectedIndex);
             writer.BaseStream.Position = Index;

@@ -83,6 +83,7 @@
     <Compile Include="persistence\MyBallPersister.cs" />
     <Compile Include="persistence\MyBinary.cs" />
     <Compile Include="persistence\MyCountryPersister.cs" />
+    <Compile Include="persistence\MyDerbyPersister.cs" />
     <Compile Include="persistence\MyFmPersister.cs" />
     <Compile Include="persistence\MyGlovePersister.cs" />
     <Compile Include="persistence\MyPlayerAppearancePersister.cs" />

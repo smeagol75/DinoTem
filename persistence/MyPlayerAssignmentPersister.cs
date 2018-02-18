@@ -74,26 +74,26 @@ namespace DinoTem.persistence
                     byte number = reader.ReadByte();
 
                     UInt16 Valor_partido = reader.ReadUInt16();
-                    UInt32 CHECK46 = (uint)Valor_partido << 4;
+                    UInt32 CHECK46 = (uint) (Valor_partido << 4);
                     CHECK46 = CHECK46 >> 15; //CAPTAIN
 
-                    UInt32 CHECK47 = (uint)Valor_partido << 5;
+                    UInt32 CHECK47 = (uint) (Valor_partido << 5);
                     CHECK47 = CHECK47 >> 15; //PENALTY_KICK
 
-                    UInt32 CHECK48 = (uint)Valor_partido << 6;
+                    UInt32 CHECK48 = (uint) (Valor_partido << 6);
                     CHECK48 = CHECK48 >> 15; //LONG_SHOT
 
-                    UInt32 CHECK49 = (uint)Valor_partido << 7;
+                    UInt32 CHECK49 = (uint) (Valor_partido << 7);
                     CHECK49 = CHECK49 >> 15; //LEFT_CK
 
-                    UInt32 CHECK50 = (uint)Valor_partido << 8;
+                    UInt32 CHECK50 = (uint) (Valor_partido << 8);
                     CHECK50 = CHECK50 >> 15; //SHORT_FOUL
 
-                    UInt32 CHECK51 = (uint)Valor_partido << 9;
+                    UInt32 CHECK51 = (uint)(Valor_partido << 9);
                     CHECK51 = CHECK51 >> 15; //RIGHT_CK
 
-                    UInt16 Order_in_Team = (ushort)(Valor_partido << 10);
-                    Order_in_Team = (ushort)(Order_in_Team >> 10);
+                    UInt16 Order_in_Team = (ushort) (Valor_partido << 10);
+                    Order_in_Team = (ushort) (Order_in_Team >> 10);
 
                     PlayerAssignment temp = new PlayerAssignment(Player_id, Team);
                     temp.setShirtNumber(number);
@@ -117,7 +117,7 @@ namespace DinoTem.persistence
             return list;
         }
 
-        public void applyPlayerA(int index, ref MemoryStream unzlibPlayerAssign, PlayerAssignment pa, ref BinaryWriter scriviPlayerAssign)
+        public void applyPlayerA(int index, MemoryStream unzlibPlayerAssign, PlayerAssignment pa, ref BinaryWriter scriviPlayerAssign)
         {
             throw new NotImplementedException();
         }

@@ -77,8 +77,14 @@
             this.loadFootballManager = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFifa = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.addNewTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewPlayer = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewTeam = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewCoachToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewDerbyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewStadiumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewBallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewBootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewGloveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.removeFakeTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.removeFakeClassicPlayer = new System.Windows.Forms.ToolStripMenuItem();
@@ -94,6 +100,11 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Transfers = new System.Windows.Forms.TabPage();
             this.playersBox = new System.Windows.Forms.ListBox();
+            this.PlayerMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.editPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.exportPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchT = new System.Windows.Forms.Button();
             this.searchTeamAB = new System.Windows.Forms.TextBox();
             this.teamBox2 = new System.Windows.Forms.ComboBox();
@@ -296,6 +307,26 @@
             this.Competitions = new System.Windows.Forms.TabPage();
             this.label42 = new System.Windows.Forms.Label();
             this.Derby = new System.Windows.Forms.TabPage();
+            this.button6 = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.derbyTeam1 = new System.Windows.Forms.ComboBox();
+            this.label115 = new System.Windows.Forms.Label();
+            this.derbyTeam2 = new System.Windows.Forms.ComboBox();
+            this.label118 = new System.Windows.Forms.Label();
+            this.Label169 = new System.Windows.Forms.Label();
+            this.Label168 = new System.Windows.Forms.Label();
+            this.Label165 = new System.Windows.Forms.Label();
+            this.derbyOrder = new System.Windows.Forms.NumericUpDown();
+            this.derbySlot = new System.Windows.Forms.NumericUpDown();
+            this.derbyKind = new System.Windows.Forms.NumericUpDown();
+            this.DataGridView_derby = new System.Windows.Forms.DataGridView();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stadiums = new System.Windows.Forms.TabPage();
             this.applyStadium = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -419,11 +450,6 @@
             this.label82 = new System.Windows.Forms.Label();
             this.databaseBox = new System.Windows.Forms.ComboBox();
             this.databaseView = new System.Windows.Forms.ListView();
-            this.PlayerMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.editPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
-            this.exportPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Team_BMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -448,6 +474,7 @@
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Transfers.SuspendLayout();
+            this.PlayerMenuStrip1.SuspendLayout();
             this.giocatorePanel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.giocatorePanel4.SuspendLayout();
@@ -467,6 +494,12 @@
             this.Coach.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.Competitions.SuspendLayout();
+            this.Derby.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.derbyOrder)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.derbySlot)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.derbyKind)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView_derby)).BeginInit();
             this.Stadiums.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.groupBox9.SuspendLayout();
@@ -484,7 +517,6 @@
             this.groupBox1.SuspendLayout();
             this.Database.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            this.PlayerMenuStrip1.SuspendLayout();
             this.Team_BMenuStrip3.SuspendLayout();
             this.Team_AMenuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -597,8 +629,14 @@
             this.loadFootballManager,
             this.loadFifa,
             this.toolStripSeparator4,
-            this.addNewTeam,
             this.addNewPlayer,
+            this.addNewTeam,
+            this.addNewCoachToolStripMenuItem,
+            this.addNewDerbyToolStripMenuItem,
+            this.addNewStadiumToolStripMenuItem,
+            this.addNewBallToolStripMenuItem,
+            this.addNewBootToolStripMenuItem,
+            this.addNewGloveToolStripMenuItem,
             this.toolStripSeparator7,
             this.removeFakeTeam,
             this.removeFakeClassicPlayer});
@@ -874,6 +912,15 @@
             this.toolStripSeparator4.Name = "toolStripSeparator4";
             this.toolStripSeparator4.Size = new System.Drawing.Size(262, 6);
             // 
+            // addNewPlayer
+            // 
+            this.addNewPlayer.Enabled = false;
+            this.addNewPlayer.Image = ((System.Drawing.Image)(resources.GetObject("addNewPlayer.Image")));
+            this.addNewPlayer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.addNewPlayer.Name = "addNewPlayer";
+            this.addNewPlayer.Size = new System.Drawing.Size(265, 30);
+            this.addNewPlayer.Text = "Add new player";
+            // 
             // addNewTeam
             // 
             this.addNewTeam.Enabled = false;
@@ -883,14 +930,41 @@
             this.addNewTeam.Size = new System.Drawing.Size(265, 30);
             this.addNewTeam.Text = "Add new team";
             // 
-            // addNewPlayer
+            // addNewCoachToolStripMenuItem
             // 
-            this.addNewPlayer.Enabled = false;
-            this.addNewPlayer.Image = ((System.Drawing.Image)(resources.GetObject("addNewPlayer.Image")));
-            this.addNewPlayer.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.addNewPlayer.Name = "addNewPlayer";
-            this.addNewPlayer.Size = new System.Drawing.Size(265, 30);
-            this.addNewPlayer.Text = "Add new player";
+            this.addNewCoachToolStripMenuItem.Name = "addNewCoachToolStripMenuItem";
+            this.addNewCoachToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.addNewCoachToolStripMenuItem.Text = "Add new coach";
+            // 
+            // addNewDerbyToolStripMenuItem
+            // 
+            this.addNewDerbyToolStripMenuItem.Name = "addNewDerbyToolStripMenuItem";
+            this.addNewDerbyToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.addNewDerbyToolStripMenuItem.Text = "Add new derby";
+            // 
+            // addNewStadiumToolStripMenuItem
+            // 
+            this.addNewStadiumToolStripMenuItem.Name = "addNewStadiumToolStripMenuItem";
+            this.addNewStadiumToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.addNewStadiumToolStripMenuItem.Text = "Add new stadium";
+            // 
+            // addNewBallToolStripMenuItem
+            // 
+            this.addNewBallToolStripMenuItem.Name = "addNewBallToolStripMenuItem";
+            this.addNewBallToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.addNewBallToolStripMenuItem.Text = "Add new ball";
+            // 
+            // addNewBootToolStripMenuItem
+            // 
+            this.addNewBootToolStripMenuItem.Name = "addNewBootToolStripMenuItem";
+            this.addNewBootToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.addNewBootToolStripMenuItem.Text = "Add new boot";
+            // 
+            // addNewGloveToolStripMenuItem
+            // 
+            this.addNewGloveToolStripMenuItem.Name = "addNewGloveToolStripMenuItem";
+            this.addNewGloveToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
+            this.addNewGloveToolStripMenuItem.Text = "Add new glove";
             // 
             // toolStripSeparator7
             // 
@@ -1034,6 +1108,7 @@
             // 
             // playersBox
             // 
+            this.playersBox.ContextMenuStrip = this.PlayerMenuStrip1;
             this.playersBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
             this.playersBox.FormattingEnabled = true;
             this.playersBox.Location = new System.Drawing.Point(3, 36);
@@ -1041,6 +1116,43 @@
             this.playersBox.Size = new System.Drawing.Size(193, 537);
             this.playersBox.TabIndex = 131;
             this.playersBox.SelectedIndexChanged += new System.EventHandler(this.playersBox_SelectedIndexChanged);
+            this.playersBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.playersBox_MouseDown);
+            // 
+            // PlayerMenuStrip1
+            // 
+            this.PlayerMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editPlayerToolStripMenuItem,
+            this.toolStripSeparator12,
+            this.exportPlayerToolStripMenuItem,
+            this.importPlayerToolStripMenuItem});
+            this.PlayerMenuStrip1.Name = "contextMenuStrip1";
+            this.PlayerMenuStrip1.Size = new System.Drawing.Size(146, 76);
+            // 
+            // editPlayerToolStripMenuItem
+            // 
+            this.editPlayerToolStripMenuItem.Name = "editPlayerToolStripMenuItem";
+            this.editPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.editPlayerToolStripMenuItem.Text = "Edit Player";
+            this.editPlayerToolStripMenuItem.Click += new System.EventHandler(this.editPlayerToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            this.toolStripSeparator12.Size = new System.Drawing.Size(142, 6);
+            // 
+            // exportPlayerToolStripMenuItem
+            // 
+            this.exportPlayerToolStripMenuItem.Enabled = false;
+            this.exportPlayerToolStripMenuItem.Name = "exportPlayerToolStripMenuItem";
+            this.exportPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.exportPlayerToolStripMenuItem.Text = "Export Player";
+            // 
+            // importPlayerToolStripMenuItem
+            // 
+            this.importPlayerToolStripMenuItem.Enabled = false;
+            this.importPlayerToolStripMenuItem.Name = "importPlayerToolStripMenuItem";
+            this.importPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.importPlayerToolStripMenuItem.Text = "Import Player";
             // 
             // searchT
             // 
@@ -1132,6 +1244,7 @@
             this.teamView2.UseCompatibleStateImageBehavior = false;
             this.teamView2.View = System.Windows.Forms.View.Details;
             this.teamView2.SelectedIndexChanged += new System.EventHandler(this.teamView2_SelectedIndexChanged);
+            this.teamView2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.teamView2_MouseDown);
             // 
             // columnHeader3
             // 
@@ -2130,6 +2243,7 @@
             this.teamView1.UseCompatibleStateImageBehavior = false;
             this.teamView1.View = System.Windows.Forms.View.Details;
             this.teamView1.SelectedIndexChanged += new System.EventHandler(this.teamView1_SelectedIndexChanged);
+            this.teamView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.teamView1_MouseDown);
             // 
             // columnHeader11
             // 
@@ -2365,6 +2479,7 @@
             this.teamsBox.Size = new System.Drawing.Size(233, 589);
             this.teamsBox.TabIndex = 130;
             this.teamsBox.SelectedIndexChanged += new System.EventHandler(this.teamsBox_SelectedIndexChanged);
+            this.teamsBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.teamsBox_MouseDown);
             // 
             // button1
             // 
@@ -3200,12 +3315,247 @@
             // 
             // Derby
             // 
+            this.Derby.Controls.Add(this.button6);
+            this.Derby.Controls.Add(this.groupBox4);
+            this.Derby.Controls.Add(this.DataGridView_derby);
             this.Derby.Location = new System.Drawing.Point(4, 22);
             this.Derby.Name = "Derby";
             this.Derby.Size = new System.Drawing.Size(907, 632);
             this.Derby.TabIndex = 12;
             this.Derby.Text = "Derby";
             this.Derby.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button6.Location = new System.Drawing.Point(809, 593);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(86, 29);
+            this.button6.TabIndex = 133;
+            this.button6.Text = "Apply";
+            this.button6.UseVisualStyleBackColor = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.derbyTeam1);
+            this.groupBox4.Controls.Add(this.label115);
+            this.groupBox4.Controls.Add(this.derbyTeam2);
+            this.groupBox4.Controls.Add(this.label118);
+            this.groupBox4.Controls.Add(this.Label169);
+            this.groupBox4.Controls.Add(this.Label168);
+            this.groupBox4.Controls.Add(this.Label165);
+            this.groupBox4.Controls.Add(this.derbyOrder);
+            this.groupBox4.Controls.Add(this.derbySlot);
+            this.groupBox4.Controls.Add(this.derbyKind);
+            this.groupBox4.Location = new System.Drawing.Point(645, 6);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(254, 417);
+            this.groupBox4.TabIndex = 42;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Settings";
+            // 
+            // derbyTeam1
+            // 
+            this.derbyTeam1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.derbyTeam1.FormattingEnabled = true;
+            this.derbyTeam1.Location = new System.Drawing.Point(15, 191);
+            this.derbyTeam1.Name = "derbyTeam1";
+            this.derbyTeam1.Size = new System.Drawing.Size(233, 21);
+            this.derbyTeam1.TabIndex = 43;
+            this.derbyTeam1.TabStop = false;
+            // 
+            // label115
+            // 
+            this.label115.AutoSize = true;
+            this.label115.Location = new System.Drawing.Point(12, 171);
+            this.label115.Name = "label115";
+            this.label115.Size = new System.Drawing.Size(46, 13);
+            this.label115.TabIndex = 42;
+            this.label115.Text = "Team 1:";
+            // 
+            // derbyTeam2
+            // 
+            this.derbyTeam2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.derbyTeam2.FormattingEnabled = true;
+            this.derbyTeam2.Location = new System.Drawing.Point(15, 246);
+            this.derbyTeam2.Name = "derbyTeam2";
+            this.derbyTeam2.Size = new System.Drawing.Size(233, 21);
+            this.derbyTeam2.TabIndex = 41;
+            this.derbyTeam2.TabStop = false;
+            // 
+            // label118
+            // 
+            this.label118.AutoSize = true;
+            this.label118.Location = new System.Drawing.Point(12, 226);
+            this.label118.Name = "label118";
+            this.label118.Size = new System.Drawing.Size(46, 13);
+            this.label118.TabIndex = 40;
+            this.label118.Text = "Team 2:";
+            // 
+            // Label169
+            // 
+            this.Label169.AutoSize = true;
+            this.Label169.Location = new System.Drawing.Point(12, 122);
+            this.Label169.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label169.Name = "Label169";
+            this.Label169.Size = new System.Drawing.Size(36, 13);
+            this.Label169.TabIndex = 16;
+            this.Label169.Text = "Order:";
+            // 
+            // Label168
+            // 
+            this.Label168.AutoSize = true;
+            this.Label168.Location = new System.Drawing.Point(12, 24);
+            this.Label168.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label168.Name = "Label168";
+            this.Label168.Size = new System.Drawing.Size(74, 13);
+            this.Label168.TabIndex = 15;
+            this.Label168.Text = "Kind of Derby ";
+            // 
+            // Label165
+            // 
+            this.Label165.AutoSize = true;
+            this.Label165.Location = new System.Drawing.Point(12, 73);
+            this.Label165.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label165.Name = "Label165";
+            this.Label165.Size = new System.Drawing.Size(25, 13);
+            this.Label165.TabIndex = 14;
+            this.Label165.Text = "Slot";
+            // 
+            // derbyOrder
+            // 
+            this.derbyOrder.Location = new System.Drawing.Point(14, 138);
+            this.derbyOrder.Margin = new System.Windows.Forms.Padding(2);
+            this.derbyOrder.Maximum = new decimal(new int[] {
+            127,
+            0,
+            0,
+            0});
+            this.derbyOrder.Name = "derbyOrder";
+            this.derbyOrder.Size = new System.Drawing.Size(44, 20);
+            this.derbyOrder.TabIndex = 12;
+            // 
+            // derbySlot
+            // 
+            this.derbySlot.Location = new System.Drawing.Point(14, 89);
+            this.derbySlot.Margin = new System.Windows.Forms.Padding(2);
+            this.derbySlot.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.derbySlot.Name = "derbySlot";
+            this.derbySlot.Size = new System.Drawing.Size(44, 20);
+            this.derbySlot.TabIndex = 11;
+            // 
+            // derbyKind
+            // 
+            this.derbyKind.Location = new System.Drawing.Point(14, 41);
+            this.derbyKind.Margin = new System.Windows.Forms.Padding(2);
+            this.derbyKind.Maximum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.derbyKind.Name = "derbyKind";
+            this.derbyKind.Size = new System.Drawing.Size(44, 20);
+            this.derbyKind.TabIndex = 10;
+            // 
+            // DataGridView_derby
+            // 
+            this.DataGridView_derby.AllowUserToAddRows = false;
+            this.DataGridView_derby.AllowUserToDeleteRows = false;
+            this.DataGridView_derby.AllowUserToResizeColumns = false;
+            this.DataGridView_derby.AllowUserToResizeRows = false;
+            this.DataGridView_derby.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column29,
+            this.Column23,
+            this.Column30,
+            this.Column24,
+            this.Column26,
+            this.Column27,
+            this.Column28});
+            this.DataGridView_derby.EnableHeadersVisualStyles = false;
+            this.DataGridView_derby.Location = new System.Drawing.Point(3, 6);
+            this.DataGridView_derby.Margin = new System.Windows.Forms.Padding(2);
+            this.DataGridView_derby.MultiSelect = false;
+            this.DataGridView_derby.Name = "DataGridView_derby";
+            this.DataGridView_derby.RowHeadersVisible = false;
+            this.DataGridView_derby.RowTemplate.Height = 24;
+            this.DataGridView_derby.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridView_derby.Size = new System.Drawing.Size(637, 417);
+            this.DataGridView_derby.TabIndex = 1;
+            this.DataGridView_derby.SelectionChanged += new System.EventHandler(this.DataGridView_derby_SelectionChanged);
+            // 
+            // Column29
+            // 
+            this.Column29.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column29.HeaderText = "Id 1";
+            this.Column29.Name = "Column29";
+            this.Column29.ReadOnly = true;
+            this.Column29.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column29.Width = 50;
+            // 
+            // Column23
+            // 
+            this.Column23.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column23.HeaderText = "Team 1";
+            this.Column23.Name = "Column23";
+            this.Column23.ReadOnly = true;
+            this.Column23.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column30
+            // 
+            this.Column30.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column30.HeaderText = "Id 2";
+            this.Column30.Name = "Column30";
+            this.Column30.ReadOnly = true;
+            this.Column30.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column30.Width = 50;
+            // 
+            // Column24
+            // 
+            this.Column24.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column24.HeaderText = "Team 2";
+            this.Column24.Name = "Column24";
+            this.Column24.ReadOnly = true;
+            this.Column24.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column26
+            // 
+            this.Column26.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column26.HeaderText = "Kind of Derby";
+            this.Column26.Name = "Column26";
+            this.Column26.ReadOnly = true;
+            this.Column26.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column26.Width = 50;
+            // 
+            // Column27
+            // 
+            this.Column27.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column27.HeaderText = "Slot";
+            this.Column27.Name = "Column27";
+            this.Column27.ReadOnly = true;
+            this.Column27.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column27.Width = 50;
+            // 
+            // Column28
+            // 
+            this.Column28.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Column28.HeaderText = "Order";
+            this.Column28.Name = "Column28";
+            this.Column28.ReadOnly = true;
+            this.Column28.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column28.Width = 50;
             // 
             // Stadiums
             // 
@@ -4608,41 +4958,6 @@
             this.databaseView.UseCompatibleStateImageBehavior = false;
             this.databaseView.View = System.Windows.Forms.View.Details;
             // 
-            // PlayerMenuStrip1
-            // 
-            this.PlayerMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.editPlayerToolStripMenuItem,
-            this.toolStripSeparator12,
-            this.exportPlayerToolStripMenuItem,
-            this.importPlayerToolStripMenuItem});
-            this.PlayerMenuStrip1.Name = "contextMenuStrip1";
-            this.PlayerMenuStrip1.Size = new System.Drawing.Size(146, 76);
-            // 
-            // editPlayerToolStripMenuItem
-            // 
-            this.editPlayerToolStripMenuItem.Name = "editPlayerToolStripMenuItem";
-            this.editPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.editPlayerToolStripMenuItem.Text = "Edit Player";
-            // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(142, 6);
-            // 
-            // exportPlayerToolStripMenuItem
-            // 
-            this.exportPlayerToolStripMenuItem.Enabled = false;
-            this.exportPlayerToolStripMenuItem.Name = "exportPlayerToolStripMenuItem";
-            this.exportPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.exportPlayerToolStripMenuItem.Text = "Export Player";
-            // 
-            // importPlayerToolStripMenuItem
-            // 
-            this.importPlayerToolStripMenuItem.Enabled = false;
-            this.importPlayerToolStripMenuItem.Name = "importPlayerToolStripMenuItem";
-            this.importPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
-            this.importPlayerToolStripMenuItem.Text = "Import Player";
-            // 
             // Team_BMenuStrip3
             // 
             this.Team_BMenuStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -4661,12 +4976,14 @@
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(224, 22);
             this.toolStripMenuItem1.Text = "Edit Player";
+            this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
             this.toolStripMenuItem2.Size = new System.Drawing.Size(224, 22);
             this.toolStripMenuItem2.Text = "Edit Team";
+            this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripSeparator15
             // 
@@ -4719,12 +5036,14 @@
             this.editPlayerToolStripMenuItem1.Name = "editPlayerToolStripMenuItem1";
             this.editPlayerToolStripMenuItem1.Size = new System.Drawing.Size(224, 22);
             this.editPlayerToolStripMenuItem1.Text = "Edit Player";
+            this.editPlayerToolStripMenuItem1.Click += new System.EventHandler(this.editPlayerToolStripMenuItem1_Click);
             // 
             // editTeamToolStripMenuItem
             // 
             this.editTeamToolStripMenuItem.Name = "editTeamToolStripMenuItem";
             this.editTeamToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
             this.editTeamToolStripMenuItem.Text = "Edit Team";
+            this.editTeamToolStripMenuItem.Click += new System.EventHandler(this.editTeamToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
@@ -4801,6 +5120,7 @@
             this.tabControl1.ResumeLayout(false);
             this.Transfers.ResumeLayout(false);
             this.Transfers.PerformLayout();
+            this.PlayerMenuStrip1.ResumeLayout(false);
             this.giocatorePanel2.ResumeLayout(false);
             this.giocatorePanel2.PerformLayout();
             this.panel1.ResumeLayout(false);
@@ -4835,6 +5155,13 @@
             this.groupBox16.PerformLayout();
             this.Competitions.ResumeLayout(false);
             this.Competitions.PerformLayout();
+            this.Derby.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.derbyOrder)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.derbySlot)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.derbyKind)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView_derby)).EndInit();
             this.Stadiums.ResumeLayout(false);
             this.Stadiums.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
@@ -4866,7 +5193,6 @@
             this.Database.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            this.PlayerMenuStrip1.ResumeLayout(false);
             this.Team_BMenuStrip3.ResumeLayout(false);
             this.Team_AMenuStrip2.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
@@ -4955,7 +5281,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox searchPlayer;
-        private System.Windows.Forms.ListView teamView1;
         private System.Windows.Forms.ColumnHeader columnHeader11;
         private System.Windows.Forms.ColumnHeader columnHeader12;
         private System.Windows.Forms.ColumnHeader columnHeader13;
@@ -4968,7 +5293,6 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ColumnHeader columnHeader27;
-        private System.Windows.Forms.ListView teamView2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
@@ -5293,6 +5617,34 @@
         private System.Windows.Forms.Label label103;
         private System.Windows.Forms.Label teamKonami;
         private System.Windows.Forms.TabPage Derby;
+        public System.Windows.Forms.ListView teamView1;
+        public System.Windows.Forms.ListView teamView2;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Label label115;
+        private System.Windows.Forms.Label label118;
+        private System.Windows.Forms.ToolStripMenuItem addNewDerbyToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewStadiumToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewBallToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewBootToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewGloveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewCoachToolStripMenuItem;
+        public System.Windows.Forms.DataGridView DataGridView_derby;
+        public System.Windows.Forms.ComboBox derbyTeam1;
+        public System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.NumericUpDown derbyOrder;
+        private System.Windows.Forms.NumericUpDown derbySlot;
+        private System.Windows.Forms.NumericUpDown derbyKind;
+        public System.Windows.Forms.ComboBox derbyTeam2;
+        private System.Windows.Forms.Label Label169;
+        private System.Windows.Forms.Label Label168;
+        private System.Windows.Forms.Label Label165;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column29;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column23;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column30;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column24;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
     }
 }
 

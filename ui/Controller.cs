@@ -52,6 +52,12 @@ namespace DinoTem.ui
         private MemoryStream unzlibTacticsFormation;
         private BinaryReader leggiTacticsFormation;
         private BinaryWriter scriviTacticsFormation;
+        private MemoryStream unzlibBallCondition;
+        private BinaryReader leggiBallCondition;
+        private BinaryWriter scriviBallCondition;
+        private MemoryStream unzlibDerby;
+        private BinaryReader leggiDerby;
+        private BinaryWriter scriviDerby;
 
         public void readBallPersister(string patch, int bitRecognized)
         {
@@ -207,6 +213,56 @@ namespace DinoTem.ui
             }
         }
 
+        public void readBallConditionPersister(string patch, int bitRecognized)
+        {
+            MyBallConditionPersister ballReader = new MyBallConditionPersister();
+
+            try
+            {
+                ballReader.load(patch, bitRecognized, ref unzlibBallCondition, ref leggiBallCondition, ref scriviBallCondition);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readDerbyPersister(string patch, int bitRecognized)
+        {
+            MyDerbyPersister derbyReader = new MyDerbyPersister();
+
+            Team nullo = new Club(99999);
+            nullo.setEnglish("No Team Found");
+            Form1._Form1.derbyTeam1.Items.Add(nullo);
+            Form1._Form1.derbyTeam2.Items.Add(nullo);
+            try
+            {
+                derbyReader.load(patch, bitRecognized, ref unzlibDerby, ref leggiDerby, ref scriviDerby);
+
+                for (int i = 0; i < Form1._Form1.DataGridView_derby.RowCount - 1; i++)
+                {
+                    UInt32 id = uint.Parse(Form1._Form1.DataGridView_derby.Rows[i].Cells[0].Value.ToString());
+                    int index = findTeam(id);
+                    if (index != Form1._Form1.teamsBox.Items.Count)
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[1].Value = leggiSquadra(index).getEnglish();
+                    else
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[1].Value = "No Team Found";
+
+                    UInt32 id2 = uint.Parse(Form1._Form1.DataGridView_derby.Rows[i].Cells[2].Value.ToString());
+                    int index2 = findTeam(id2);
+                    if (index2 != Form1._Form1.teamsBox.Items.Count)
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[3].Value = leggiSquadra(index2).getEnglish();
+                    else
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[3].Value = "No Team Found";
+                }
+
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void saveBallPersister(string patch, Controller controller, int bitRecognized)
         {
             MyBallPersister ballSave = new MyBallPersister();
@@ -347,13 +403,41 @@ namespace DinoTem.ui
             }
         }
 
+        public void saveBallConditionPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyBallConditionPersister baSave = new MyBallConditionPersister();
+
+            try
+            {
+                baSave.save(patch, ref unzlibBallCondition, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved BallCondition.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveDerbyPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyDerbyPersister dSave = new MyDerbyPersister();
+
+            try
+            {
+                dSave.save(patch, ref unzlibDerby, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Derby.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void applyBallPersister(int index, Ball pallone)
         {
             MyBallPersister ball = new MyBallPersister();
 
             try
             {
-                ball.applyBall(index, ref unzlibPalloni, pallone, ref scriviPalloni);
+                ball.applyBall(index, unzlibPalloni, pallone, ref scriviPalloni);
             }
             catch
             {
@@ -367,7 +451,7 @@ namespace DinoTem.ui
 
             try
             {
-                glove.applyGlove(index, ref unzlibGuanti, guanto, ref scriviGuanti);
+                glove.applyGlove(index, unzlibGuanti, guanto, ref scriviGuanti);
             }
             catch
             {
@@ -381,7 +465,7 @@ namespace DinoTem.ui
 
             try
             {
-                boot.applyBoot(index, ref unzlibScarpe, scarpa, ref scriviScarpe);
+                boot.applyBoot(index, unzlibScarpe, scarpa, ref scriviScarpe);
             }
             catch
             {
@@ -395,7 +479,7 @@ namespace DinoTem.ui
 
             try
             {
-                stadium.applyStadium(index, ref unzlibStadi, stadio, ref scriviStadi);
+                stadium.applyStadium(index, unzlibStadi, stadio, ref scriviStadi);
             }
             catch
             {
@@ -409,7 +493,7 @@ namespace DinoTem.ui
 
             try
             {
-                coach.applyCoach(index, ref unzlibAllenatori, allenatore, ref scriviAllenatori);
+                coach.applyCoach(index, unzlibAllenatori, allenatore, ref scriviAllenatori);
             }
             catch
             {
@@ -423,7 +507,7 @@ namespace DinoTem.ui
 
             try
             {
-                player.applyPlayer(index, ref unzlibGiocatori, giocatore, ref scriviGiocatori);
+                player.applyPlayer(index, unzlibGiocatori, giocatore, ref scriviGiocatori);
             }
             catch
             {
@@ -437,7 +521,7 @@ namespace DinoTem.ui
 
             try
             {
-                team.applyTeam(index, ref unzlibSquadre, squadra, ref scriviSquadre);
+                team.applyTeam(index, unzlibSquadre, squadra, ref scriviSquadre);
             }
             catch
             {
@@ -451,7 +535,7 @@ namespace DinoTem.ui
 
             try
             {
-                playerA.applyPlayerA(index, ref unzlibPlayerAssign, pa, ref scriviPlayerAssign);
+                playerA.applyPlayerA(index, unzlibPlayerAssign, pa, ref scriviPlayerAssign);
             }
             catch
             {
@@ -465,7 +549,7 @@ namespace DinoTem.ui
 
             try
             {
-                playerA.applyTactics(index, ref unzlibPlayerAssign, ta, ref scriviPlayerAssign);
+                playerA.applyTactics(index, unzlibPlayerAssign, ta, ref scriviPlayerAssign);
             }
             catch
             {
@@ -479,11 +563,51 @@ namespace DinoTem.ui
 
             try
             {
-                tacticF.applyTacticsFormation(index, ref unzlibTacticsFormation, tf, ref scriviTacticsFormation);
+                tacticF.applyTacticsFormation(index, unzlibTacticsFormation, tf, ref scriviTacticsFormation);
             }
             catch
             {
-                MessageBox.Show("Error apply tactics formation - id tactics: " + tf.getTeamTacticId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error apply tactics formation - id tactic: " + tf.getTeamTacticId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyBallConditionPersister(byte unk1, byte unk2, byte unk3, byte unk4, List<BallCondition> ba)
+        {
+            MyBallConditionPersister ball = new MyBallConditionPersister();
+
+            if (ba.Count == 0)
+                return;
+            
+            if (ba.Count >= 1)
+                ba[0].setUnknown(unk1);
+            if (ba.Count >= 2)
+                ba[1].setUnknown(unk2);
+            if (ba.Count >= 3)
+                ba[2].setUnknown(unk3);
+            if (ba.Count >= 4)
+                ba[3].setUnknown(unk4);
+
+            try
+            {
+                ball.applyBallCondition(unzlibBallCondition, leggiBallCondition, ba, ref scriviBallCondition);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply ball condition - id ball: " + ba[0].getId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyDerbyPersister(int index, Derby d)
+        {
+            MyDerbyPersister derby = new MyDerbyPersister();
+
+            try
+            {
+                derby.applyDerby(index, unzlibDerby, d, ref scriviDerby);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply derby: " + d.getTeam1DerbyId() + "-" + d.getTeam2DerbyId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -524,6 +648,12 @@ namespace DinoTem.ui
                 unzlibTacticsFormation.Close();
                 leggiTacticsFormation.Close();
                 scriviTacticsFormation.Close();
+                unzlibBallCondition.Close();
+                leggiBallCondition.Close();
+                scriviBallCondition.Close();
+                unzlibDerby.Close();
+                leggiDerby.Close();
+                scriviDerby.Close();
             }
         }
 
@@ -656,6 +786,8 @@ namespace DinoTem.ui
             readPlayerAssignmentPersister(folder, bitRecognized);
             readTacticsPersister(folder, bitRecognized);
             readTacticsFormationPersister(folder, bitRecognized);
+            readBallConditionPersister(folder, bitRecognized);
+            readDerbyPersister(folder, bitRecognized);
 
             //readCountryPersister(folder, bitRecognized);
             //if (countryList.Count == 0)
@@ -811,16 +943,7 @@ namespace DinoTem.ui
 
         public Player leggiGiocatoreById(UInt32 id)
         {
-            MyPlayerPersister playerReader = new MyPlayerPersister();
-            Player player = playerReader.loadPlayerById(id, unzlibGiocatori, leggiGiocatori);
-
-            return player;
-        }
-
-        public int leggiIndexGiocatoreById(UInt32 id)
-        {
-            MyPlayerPersister playerReader = new MyPlayerPersister();
-            int player = playerReader.loadIndexPlayerById(id, unzlibGiocatori, leggiGiocatori);
+            Player player = leggiGiocatore(findPlayer(id));
 
             return player;
         }
@@ -863,20 +986,63 @@ namespace DinoTem.ui
             return tatticaF;
         }
 
+        public List<BallCondition> leggiCondizioniPalloni(UInt16 idBall)
+        {
+            MyBallConditionPersister ballReader = new MyBallConditionPersister();
+            List<BallCondition> ball = ballReader.loadBallCondition(idBall, unzlibBallCondition, leggiBallCondition);
+
+            return ball;
+        }
+
+        public void getBallConditionById(List<BallCondition> list, TextBox t1, TextBox t2, TextBox t3, TextBox t4)
+        {
+            int k = 0;
+            foreach (BallCondition x in list)
+            {
+                if (t1.Enabled == false && k == 0)
+                {
+                    t1.Text = x.getUnknown().ToString();
+                    t1.Enabled = true;
+                }
+                if (t2.Enabled == false && k == 1)
+                {
+                    t2.Text = x.getUnknown().ToString();
+                    t2.Enabled = true;
+                }
+                if (t3.Enabled == false && k == 2)
+                {
+                    t3.Text = x.getUnknown().ToString();
+                    t3.Enabled = true;
+                }
+                if (t4.Enabled == false && k == 3)
+                {
+                    t4.Text = x.getUnknown().ToString();
+                    t4.Enabled = true;
+                }
+                k++;
+            }
+        }
+
         public int findCountry(UInt32 idCountry)
         {
-            for (int i = 0; i < Form1._Form1.stadiumCountry.Items.Count; i++)
+            int index = -1;
+            for (int i = 0; i < Form1._Form1.stadiumCountry.Items.Count - 1; i++)
             {
                 Country c = leggiPaese(i);
                 if (c.getId() == idCountry)
                     return i;
             }
-            return 0;
+
+            //for "no country" 
+            if (index == -1)
+                index = Form1._Form1.stadiumCountry.Items.Count;
+
+            return index;
         }
 
         public int findStadium(UInt32 idStadium)
         {
-            for (int i = 0; i < Form1._Form1.teamStadium.Items.Count; i++)
+            for (int i = 0; i < Form1._Form1.teamStadium.Items.Count - 1; i++)
             {
                 Stadium c = leggiStadium(i);
                 if (c.getId() == (UInt16)idStadium)
@@ -887,38 +1053,64 @@ namespace DinoTem.ui
 
         public int findCoach(UInt32 idCoach)
         {
-            for (int i = 0; i < Form1._Form1.teamCoach.Items.Count; i++)
+            for (int i = 0; i < Form1._Form1.teamCoach.Items.Count - 1; i++)
             {
                 Coach c = leggiCoach(i);
                 if (c.getId() == idCoach)
                     return i;
             }
+
             return 0;
         }
 
-        public void UpdateForm(ComboBox t1, ComboBox t2)
+        public int findTeam(UInt32 idTeam)
         {
-            try
+            int index = -1;
+            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count - 1; i++)
             {
-                t1.SelectedIndex = t1.SelectedIndex + 1;
-                t1.SelectedIndex = t1.SelectedIndex - 1;
+                Team c = leggiSquadra(i);
+                if (c.getId() == idTeam)
+                    return i;
             }
-            catch
-            {
-                t1.SelectedIndex = t1.SelectedIndex - 1;
-                t1.SelectedIndex = t1.SelectedIndex + 1;
-            };
 
-            try
+            //for "no team" 
+            if (index == -1)
+                index = Form1._Form1.teamsBox.Items.Count;
+
+            return index;
+        }
+
+        public int findPlayer(UInt32 idPlayer)
+        {
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count - 1; i++)
             {
-                t2.SelectedIndex = t2.SelectedIndex + 1;
-                t2.SelectedIndex = t2.SelectedIndex - 1;
+                Player c = leggiGiocatore(i);
+                if (c.getId() == idPlayer)
+                    return i;
             }
-            catch
+
+            return 0;
+        }
+
+        public void UpdateTeamView(UInt32 idPlayer, string name)
+        {
+            for (int i = 0; i < Form1._Form1.teamView1.Items.Count; i++)
             {
-                t2.SelectedIndex = t2.SelectedIndex - 1;
-                t2.SelectedIndex = t2.SelectedIndex + 1;
-            };
+                UInt32 id = uint.Parse(Form1._Form1.teamView1.Items[i].SubItems[11].Text);
+                if (idPlayer == id)
+                {
+                    Form1._Form1.teamView1.Items[i].SubItems[2].Text = name;
+                }
+            }
+
+            for (int i = 0; i < Form1._Form1.teamView2.Items.Count; i++)
+            {
+                UInt32 id = uint.Parse(Form1._Form1.teamView2.Items[i].SubItems[11].Text);
+                if (idPlayer == id)
+                {
+                    Form1._Form1.teamView2.Items[i].SubItems[2].Text = name;
+                }
+            }
         }
 
         public void UpdateFormPlayer(int index, string name)
@@ -928,17 +1120,17 @@ namespace DinoTem.ui
 
         public void changePlayerName(UInt32 id, string name) 
         {
-            int index = leggiIndexGiocatoreById(id);
+            int index = findPlayer(id);
             Player player = leggiGiocatore(index);
             player.setName(name);
             applyPlayerPersister(index, player);
-            UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
+            UpdateTeamView(player.getId(), name);
             UpdateFormPlayer(index, name);
         }
 
         public void changeShirtPlayer(UInt32 id, string name)
         {
-            int index = leggiIndexGiocatoreById(id);
+            int index = findPlayer(id);
             Player player = leggiGiocatore(index);
             player.setShirtName(name);
             applyPlayerPersister(index, player);
@@ -961,22 +1153,6 @@ namespace DinoTem.ui
         //remove fake team
         //globalFunction
         //fm form
-
-        public void readBallConditionPersister(string patch, int bitRecognized)
-        {
-            MyBallConditionPersister ballConditionReader = new MyBallConditionPersister();
-
-            try
-            {
-                ballConditionList = ballConditionReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
         public void readPlayerAppearancePersister(string patch, int bitRecognized)
         {
             MyPlayerAppearancePersister playerAppearanceReader = new MyPlayerAppearancePersister();
@@ -988,21 +1164,6 @@ namespace DinoTem.ui
             catch (FileNotFoundException e)
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void saveBallConditionPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyBallConditionPersister ballConditionSave = new MyBallConditionPersister();
-
-            try
-            {
-                ballConditionSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved BallCondition.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -1249,36 +1410,6 @@ namespace DinoTem.ui
             return null;
         }
 
-        public void getBallConditionById(int id, TextBox t1, TextBox t2, TextBox t3, TextBox t4)
-        {
-            int k = 0;
-            foreach (BallCondition x in ballConditionList)
-                if (x.getId() == id)
-                {
-                    if (t1.Enabled == false && k == 0)
-                    {
-                        t1.Text = x.getUnknown().ToString();
-                        t1.Enabled = true;
-                    }
-                    if (t2.Enabled == false && k == 1)
-                    {
-                        t2.Text = x.getUnknown().ToString();
-                        t2.Enabled = true;
-                    }
-                    if (t3.Enabled == false && k == 2)
-                    {
-                        t3.Text = x.getUnknown().ToString();
-                        t3.Enabled = true;
-                    }
-                    if (t4.Enabled == false && k == 3)
-                    {
-                        t4.Text = x.getUnknown().ToString();
-                        t4.Enabled = true;
-                    }
-                    k++;
-                }
-        }
-
         //Player
         /*public void changeNationalPlayer(Player temp, Country country)
         {
@@ -1289,20 +1420,6 @@ namespace DinoTem.ui
         {
             temp.setNational2(country.getId());
         }*/
-
-        //Ball
-        public void changeBallUnknown(Ball x, int bytePosition, int unk)
-        {
-            int k = 0;
-            foreach (BallCondition temp in ballConditionList)
-            {
-                if (x.getId() == temp.getId())  {
-					if (k == bytePosition)
-						temp.setUnknown(unk);
-					k++;
-				}
-            }
-        }
 
         //Formazione form
         public void numeriMagliaPitch(ListView list, Button player1, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11)
@@ -2024,18 +2141,6 @@ namespace DinoTem.ui
             return output1;
         }
 
-        public Team getYouthClub(Player temp)
-        {
-            Team nullo = new Club(99999);
-            nullo.setEnglish("No Team");
-
-            Team team = getTeamById2((int)temp.getYouthPlayerId());
-            if (team == null)
-                return nullo;
-
-            return team;
-        }
-
         public void changeSkinColour(Player temp, int value)
         {
             foreach (PlayerAppearance x in getPlayerAppearanceList())
@@ -2062,14 +2167,6 @@ namespace DinoTem.ui
             }
         }
 
-        /*public void changeYouthClub(Player temp, Team temp2)
-        {
-            if (temp2.getId() == 99999)
-                temp.setYouthPlayerId(0);
-            else
-                temp.setYouthPlayerId(temp2.getId());
-        }*/
-
         //transferPlayer Drag&Drop
         public void transferPlayerAtoA(int intselectedindex, int dropIndex, int idTeam, ComboBox teamBox1, ComboBox teamBox2)
         {
@@ -2091,7 +2188,7 @@ namespace DinoTem.ui
                 }
             }
             //
-            UpdateForm(teamBox1, teamBox2);
+            //UpdateForm(teamBox1, teamBox2);
         }
 
         private void setPlayerTrasfer(PlayerAssignment temp, int idTeamA, int order)
@@ -2263,7 +2360,7 @@ namespace DinoTem.ui
                 
             }
             //
-            UpdateForm(teamBox1, teamBox2);
+            //UpdateForm(teamBox1, teamBox2);
         }
 
         //remove fake team

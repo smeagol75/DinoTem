@@ -100,7 +100,7 @@ namespace DinoTem.persistence
             return pallone;
         }
 
-        public void applyBall(int selectedIndex, ref MemoryStream unzlib, Ball pallone, ref BinaryWriter writer)
+        public void applyBall(int selectedIndex, MemoryStream unzlib, Ball pallone, ref BinaryWriter writer)
         {
             int Index = (block * selectedIndex);
             writer.BaseStream.Position = Index;

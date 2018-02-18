@@ -299,8 +299,8 @@ namespace Team_Editor_Manager_New_Generation.ui
                     if (temp.Length!= 3)
                         throw new Exception("format line unrecognized");
                     BallCondition ballCondition = (BallCondition) controller.getBallConditionList()[i];
-                    ballCondition.setId(parseInt(temp[0]));
-                    ballCondition.setUnknown(parseInt(temp[1]));
+                    //ballCondition.setId(parseInt(temp[0]));
+                    //ballCondition.setUnknown(parseInt(temp[1]));
                     i++;
                 }
             }

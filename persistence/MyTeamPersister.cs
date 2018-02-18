@@ -62,6 +62,8 @@ namespace DinoTem.persistence
                     Form1._Form1.teamBox1.Items.Add(teamName);
                     Form1._Form1.teamBox2.Items.Add(teamName);
                     Form1._Form1.teamsBox.Items.Add(teamName);
+                    Form1._Form1.derbyTeam1.Items.Add(teamName);
+                    Form1._Form1.derbyTeam2.Items.Add(teamName);
                 }
                 writer = new BinaryWriter(memory1);
             }
@@ -266,7 +268,7 @@ namespace DinoTem.persistence
             return team;
         }
 
-        public void applyTeam(int selectedIndex, ref MemoryStream unzlib, Team squadra, ref BinaryWriter writer)
+        public void applyTeam(int selectedIndex, MemoryStream unzlib, Team squadra, ref BinaryWriter writer)
         {
             int pos_ini_team_block = selectedIndex * block;
 

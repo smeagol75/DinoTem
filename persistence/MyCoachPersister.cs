@@ -120,7 +120,7 @@ namespace DinoTem.ui
             return coach;
         }
 
-        public void applyCoach(int selectedIndex, ref MemoryStream unzlib, Coach allenatore, ref BinaryWriter writer)
+        public void applyCoach(int selectedIndex, MemoryStream unzlib, Coach allenatore, ref BinaryWriter writer)
         {
             int index = (block * selectedIndex);
             writer.BaseStream.Position = index;

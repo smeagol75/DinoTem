@@ -487,7 +487,7 @@ namespace DinoTem
 
         private void Formazione_FormClosed(object sender, FormClosedEventArgs e)
         {
-            controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
+            //controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
         }
 
         //spostare giocatori con un click
@@ -1515,7 +1515,7 @@ namespace DinoTem
 
             controller.changeShooters(team, capitain.SelectedIndex, penaltyKT.SelectedIndex,
             longFT.SelectedIndex, leftCK.SelectedIndex, shortFT.SelectedIndex, rightCK.SelectedIndex);
-            controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
+            //controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
             this.Close();
         }
 
