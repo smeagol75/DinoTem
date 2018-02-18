@@ -34,6 +34,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DatabaseStadium, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\DatabaseStadium.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
@@ -66,6 +70,7 @@
     <Compile Include="model\Club.cs" />
     <Compile Include="model\Coach.cs" />
     <Compile Include="model\Competition.cs" />
+    <Compile Include="model\CompetitionKind.cs" />
     <Compile Include="model\Country.cs" />
     <Compile Include="model\Derby.cs" />
     <Compile Include="model\Fm.cs" />
@@ -82,6 +87,8 @@
     <Compile Include="persistence\MyBallConditionPersister.cs" />
     <Compile Include="persistence\MyBallPersister.cs" />
     <Compile Include="persistence\MyBinary.cs" />
+    <Compile Include="persistence\MyCompetitionKindPersister.cs" />
+    <Compile Include="persistence\MyCompetitionPersister.cs" />
     <Compile Include="persistence\MyCountryPersister.cs" />
     <Compile Include="persistence\MyDerbyPersister.cs" />
     <Compile Include="persistence\MyFmPersister.cs" />
@@ -119,6 +126,7 @@
     <Compile Include="ui\ControllerCSV.cs" />
     <Compile Include="persistence\MyBootPersister.cs" />
     <Compile Include="persistence\MyCoachPersister.cs" />
+    <Compile Include="ui\ControllerDB.cs" />
     <Compile Include="ui\UniDecode.cs" />
     <Compile Include="ui\UtilGUI.cs" />
     <Compile Include="Update.cs">

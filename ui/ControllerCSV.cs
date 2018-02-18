@@ -247,12 +247,12 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    StringBuilder sb = new StringBuilder();
 		    sb.Append("Id;unknow");
 		    sb.Append("\n");
-            foreach (BallCondition temp in controller.getBallConditionList())
-            {
-			    sb.Append(temp.getId() + ";");
-			    sb.Append(temp.getUnknown() + ";");
-			    sb.Append("\n");
-		    }
+            //foreach (BallCondition temp in controller.getBallConditionList())
+            //{
+			    //sb.Append(temp.getId() + ";");
+			    //sb.Append(temp.getUnknown() + ";");
+			    //sb.Append("\n");
+		    //}
 		    return sb.ToString();
 	    }
 
@@ -283,8 +283,8 @@ namespace Team_Editor_Manager_New_Generation.ui
         public void importBallCondition(Controller controller, string file, ListBox ballBox)
         {
             int lineCount = File.ReadLines(file).Count();
-            if (lineCount - 1 != controller.getBallConditionList().Count)
-                throw new Exception("number of line is different " + lineCount + " " + controller.getBallConditionList().Count);
+            //if (lineCount - 1 != controller.getBallConditionList().Count)
+                //throw new Exception("number of line is different " + lineCount + " " + controller.getBallConditionList().Count);
 
             using (System.IO.StreamReader sr = new System.IO.StreamReader(file))
             {
@@ -298,7 +298,7 @@ namespace Team_Editor_Manager_New_Generation.ui
                     string[] temp = line.Split(';');
                     if (temp.Length!= 3)
                         throw new Exception("format line unrecognized");
-                    BallCondition ballCondition = (BallCondition) controller.getBallConditionList()[i];
+                    //BallCondition ballCondition = (BallCondition) controller.getBallConditionList()[i];
                     //ballCondition.setId(parseInt(temp[0]));
                     //ballCondition.setUnknown(parseInt(temp[1]));
                     i++;

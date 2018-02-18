@@ -58,6 +58,12 @@ namespace DinoTem.ui
         private MemoryStream unzlibDerby;
         private BinaryReader leggiDerby;
         private BinaryWriter scriviDerby;
+        private MemoryStream unzlibCompetition;
+        private BinaryReader leggiCompetition;
+        private BinaryWriter scriviCompetition;
+        private MemoryStream unzlibCompetitionKind;
+        private BinaryReader leggiCompetitionKind;
+        private BinaryWriter scriviCompetitionKind;
 
         public void readBallPersister(string patch, int bitRecognized)
         {
@@ -263,6 +269,34 @@ namespace DinoTem.ui
             }
         }
 
+        public void readCompetitionPersister(string patch, int bitRecognized)
+        {
+            MyCompetitionPersister cReader = new MyCompetitionPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibCompetition, ref leggiCompetition, ref scriviCompetition);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readCompetitionKindPersister(string patch, int bitRecognized)
+        {
+            MyCompetitionKindPersister cReader = new MyCompetitionKindPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibCompetitionKind, ref leggiCompetitionKind, ref scriviCompetitionKind);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void saveBallPersister(string patch, Controller controller, int bitRecognized)
         {
             MyBallPersister ballSave = new MyBallPersister();
@@ -428,6 +462,34 @@ namespace DinoTem.ui
             catch
             {
                 MessageBox.Show("Error saved Derby.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveCompetitionPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCompetitionPersister cSave = new MyCompetitionPersister();
+
+            try
+            {
+                cSave.save(patch, ref unzlibCompetition, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Competition.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveCompetitionKindPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCompetitionKindPersister cSave = new MyCompetitionKindPersister();
+
+            try
+            {
+                cSave.save(patch, ref unzlibCompetitionKind, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved CompetitionKind.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -611,6 +673,34 @@ namespace DinoTem.ui
             }
         }
 
+        public void applyCompetitionPersister(int index, Competition c)
+        {
+            MyCompetitionPersister com = new MyCompetitionPersister();
+
+            try
+            {
+                com.applyCompetition(index, unzlibCompetition, c, ref scriviCompetition);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply derby: " + c.getId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyCompetitionKindPersister(int index, CompetitionKind c)
+        {
+            MyCompetitionKindPersister com = new MyCompetitionKindPersister();
+
+            try
+            {
+                com.applyCompetitionKind(index, unzlibCompetitionKind, c, ref scriviCompetitionKind);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply competition kind", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void closeMemory()
         {
             if (getBitRecognized() != -1)
@@ -654,6 +744,12 @@ namespace DinoTem.ui
                 unzlibDerby.Close();
                 leggiDerby.Close();
                 scriviDerby.Close();
+                unzlibCompetition.Close();
+                leggiCompetition.Close();
+                scriviCompetition.Close();
+                unzlibCompetitionKind.Close();
+                leggiCompetitionKind.Close();
+                scriviCompetitionKind.Close();
             }
         }
 
@@ -735,11 +831,23 @@ namespace DinoTem.ui
             byteFirst += reader11.ReadByte();
             reader11.Close();
 
-            if (byteFirst == 0 || byteFirst == 48)
+            byte[] file12 = File.ReadAllBytes(folder + @"\Competition.bin");
+            MemoryStream memory12 = new MemoryStream(file12);
+            BinaryReader reader12 = new BinaryReader(memory12);
+            byteFirst += reader12.ReadByte();
+            reader12.Close();
+
+            byte[] file13 = File.ReadAllBytes(folder + @"\CompetitionKind.bin");
+            MemoryStream memory13 = new MemoryStream(file13);
+            BinaryReader reader13 = new BinaryReader(memory13);
+            byteFirst += reader13.ReadByte();
+            reader13.Close();
+
+            if (byteFirst == 0 || byteFirst == 56)
                 return 0;
-            else if (byteFirst == 12)
+            else if (byteFirst == 14)
                 return 1;
-            else if (byteFirst == 24)
+            else if (byteFirst == 28)
                 return 2;
             else
             {
@@ -774,6 +882,14 @@ namespace DinoTem.ui
             Form1._Form1.teamsBox.Items.Clear();
             Form1._Form1.teamBox1.Items.Clear();
             Form1._Form1.teamBox2.Items.Clear();
+            Form1._Form1.competitionsBox.Items.Clear();
+            Form1._Form1.giocatoreNationality.Items.Clear();
+            Form1._Form1.teamCountry.Items.Clear();
+            Form1._Form1.allenatoreNationality.Items.Clear();
+            Form1._Form1.DataGridView_derby.Rows.Clear();
+            Form1._Form1.derbyTeam1.Items.Clear();
+            Form1._Form1.derbyTeam2.Items.Clear();
+            Form1._Form1.competitionsKind.Items.Clear();
 
             readBallPersister(folder, bitRecognized);
             readGlovePersister(folder, bitRecognized);
@@ -788,6 +904,8 @@ namespace DinoTem.ui
             readTacticsFormationPersister(folder, bitRecognized);
             readBallConditionPersister(folder, bitRecognized);
             readDerbyPersister(folder, bitRecognized);
+            readCompetitionPersister(folder, bitRecognized);
+            readCompetitionKindPersister(folder, bitRecognized);
 
             //readCountryPersister(folder, bitRecognized);
             //if (countryList.Count == 0)
@@ -878,6 +996,8 @@ namespace DinoTem.ui
             Form1._Form1.teamsBox.SelectedIndex = 0;
             Form1._Form1.teamBox1.SelectedIndex = 0;
             Form1._Form1.teamBox2.SelectedIndex = 0;
+            Form1._Form1.competitionsKind.SelectedIndex = 0;
+            Form1._Form1.competitionsBox.SelectedIndex = 0;
         }
 
         public int getBitRecognized()
@@ -1023,6 +1143,22 @@ namespace DinoTem.ui
             }
         }
 
+        public Competition leggiCompetizione(int index)
+        {
+            MyCompetitionPersister reader = new MyCompetitionPersister();
+            Competition c = reader.loadCompetition(index, unzlibCompetition, leggiCompetition);
+
+            return c;
+        }
+
+        public CompetitionKind leggiCompetizioneKind(int index)
+        {
+            MyCompetitionKindPersister reader = new MyCompetitionKindPersister();
+            CompetitionKind c = reader.loadCompetitionKind(index, unzlibCompetitionKind, leggiCompetitionKind);
+
+            return c;
+        }
+
         public int findCountry(UInt32 idCountry)
         {
             int index = -1;
@@ -1136,7 +1272,262 @@ namespace DinoTem.ui
             applyPlayerPersister(index, player);
         }
 
-        private List<BallCondition> ballConditionList = new List<BallCondition>();
+        //globalFunction
+        public void upperTeams()
+        {
+            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count - 1; i++ )
+            {
+                Team temp = leggiSquadra(i);
+                temp.setEnglish(temp.getEnglish().ToUpper());
+                if (temp.getNational() == 1)
+                {
+                    //japanese
+                    National temp2 = (National)temp;
+                    temp2.setJapanese(temp.getJapanese().ToUpper());
+                    //spanish
+                    temp2.setSpanish(temp2.getSpanish().ToUpper());
+                    //greek
+                    temp2.setGreek(temp2.getGreek().ToUpper());
+                    //latin america
+                    temp2.setLatinAmericaSpanish(temp2.getLatinAmericaSpanish().ToUpper());
+                    //french
+                    temp2.setFrench(temp2.getFrench().ToUpper());
+                    //turkish
+                    temp2.setTurkish(temp2.getTurkish().ToUpper());
+                    //portuguese
+                    temp2.setPortuguese(temp2.getPortuguese().ToUpper());
+                    //german
+                    temp2.setGerman(temp2.getGerman().ToUpper());
+                    //BrazilianPortuguese
+                    temp2.setBrazilianPortuguese(temp2.getBrazilianPortuguese().ToUpper());
+                    //dutch
+                    temp2.setDutch(temp2.getDutch().ToUpper());
+                    //swedish
+                    temp2.setSwedish(temp2.getSwedish().ToUpper());
+                    //italian
+                    temp2.setItalian(temp2.getItalian().ToUpper());
+                    //russian
+                    temp2.setRussian(temp2.getRussian().ToUpper());
+                    //englih us
+                    temp2.setEnglishUS(temp2.getEnglishUS().ToUpper());
+                }
+                Form1._Form1.teamsBox.Items[i] = temp.getEnglish().ToUpper();
+                Form1._Form1.teamBox1.Items[i] = temp.getEnglish().ToUpper();
+                Form1._Form1.teamBox2.Items[i] = temp.getEnglish().ToUpper();
+                Form1._Form1.derbyTeam1.Items[i] = temp.getEnglish().ToUpper();
+                Form1._Form1.derbyTeam2.Items[i] = temp.getEnglish().ToUpper();
+            }
+        }
+
+        public void lowerTeams()
+        {
+            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count - 1; i++)
+            {
+                Team temp = leggiSquadra(i);
+                temp.setEnglish(temp.getEnglish().ToLower());
+                if (temp.getNational() == 1)
+                {
+                    //japanese
+                    National temp2 = (National)temp;
+                    temp2.setJapanese(temp.getJapanese().ToLower());
+                    //spanish
+                    temp2.setSpanish(temp2.getSpanish().ToLower());
+                    //greek
+                    temp2.setGreek(temp2.getGreek().ToLower());
+                    //latin america
+                    temp2.setLatinAmericaSpanish(temp2.getLatinAmericaSpanish().ToLower());
+                    //french
+                    temp2.setFrench(temp2.getFrench().ToLower());
+                    //turkish
+                    temp2.setTurkish(temp2.getTurkish().ToLower());
+                    //portuguese
+                    temp2.setPortuguese(temp2.getPortuguese().ToLower());
+                    //german
+                    temp2.setGerman(temp2.getGerman().ToLower());
+                    //BrazilianPortuguese
+                    temp2.setBrazilianPortuguese(temp2.getBrazilianPortuguese().ToLower());
+                    //dutch
+                    temp2.setDutch(temp2.getDutch().ToLower());
+                    //swedish
+                    temp2.setSwedish(temp2.getSwedish().ToLower());
+                    //italian
+                    temp2.setItalian(temp2.getItalian().ToLower());
+                    //russian
+                    temp2.setRussian(temp2.getRussian().ToLower());
+                    //englih us
+                    temp2.setEnglishUS(temp2.getEnglishUS().ToLower());
+                }
+                Form1._Form1.teamsBox.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.teamBox1.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.teamBox2.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.derbyTeam1.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.derbyTeam2.Items[i] = temp.getEnglish().ToLower();
+            }
+        }
+
+        public void firstUpTeams()
+        {
+            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count - 1; i++)
+            {
+                Team temp = leggiSquadra(i);
+                //english name
+                string stringa = "";
+                if (temp.getNational() == 1)
+                {
+                    //japanese
+                    stringa = "";
+                    National temp2 = (National)temp;
+                    foreach (string x in temp2.getJapanese().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setJapanese(stringa.Trim());
+                    //spanish
+                    stringa = "";
+                    foreach (string x in temp2.getSpanish().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setSpanish(stringa.Trim());
+                    //greek
+                    stringa = "";
+                    foreach (string x in temp2.getGreek().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setGreek(stringa.Trim());
+                    //latin america
+                    stringa = "";
+                    foreach (string x in temp2.getLatinAmericaSpanish().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setLatinAmericaSpanish(stringa.Trim());
+                    //french
+                    stringa = "";
+                    foreach (string x in temp2.getFrench().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setFrench(stringa.Trim());
+                    //turkish
+                    stringa = "";
+                    foreach (string x in temp2.getTurkish().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setTurkish(stringa.Trim());
+                    //portuguese
+                stringa = "";
+                foreach (string x in temp2.getPortuguese().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setPortuguese(stringa.Trim());
+                //german
+                stringa = "";
+                foreach (string x in temp2.getGerman().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setGerman(stringa.Trim());
+                //BrazilianPortuguese
+                stringa = "";
+                foreach (string x in temp2.getBrazilianPortuguese().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setBrazilianPortuguese(stringa.Trim());
+                //dutch
+                stringa = "";
+                foreach (string x in temp2.getDutch().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setDutch(stringa.Trim());
+                //swedish
+                stringa = "";
+                foreach (string x in temp2.getSwedish().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setSwedish(stringa.Trim());
+                //italian
+                stringa = "";
+                foreach (string x in temp2.getItalian().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setItalian(stringa.Trim());
+                //russian
+                stringa = "";
+                foreach (string x in temp2.getRussian().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setRussian(stringa.Trim());
+                //englih us
+                stringa = "";
+                foreach (string x in temp2.getEnglishUS().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setEnglishUS(stringa.Trim());
+                }
+                foreach (string x in temp.getEnglish().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp.setEnglish(stringa.Trim());
+                Form1._Form1.teamsBox.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.teamBox1.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.teamBox2.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.derbyTeam1.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.derbyTeam2.Items[i] = temp.getEnglish().ToLower();
+            }
+
+        }
+
+        public void upperPlayers()
+        {
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count - 1; i++)
+            {
+                Player temp = leggiGiocatore(i);
+                temp.setName(temp.getName().ToUpper());
+
+                UpdateTeamView(temp.getId(), temp.getName().ToUpper());
+                UpdateFormPlayer(i, temp.getName().ToUpper());
+            }
+        }
+
+        public void lowerPlayers()
+        {
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count - 1; i++)
+            {
+                Player temp = leggiGiocatore(i);
+                temp.setName(temp.getName().ToLower());
+
+                UpdateTeamView(temp.getId(), temp.getName().ToLower());
+                UpdateFormPlayer(i, temp.getName().ToLower());
+            }
+        }
+
+        public void firstUpPlayers()
+        {
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count - 1; i++)
+            {
+                Player temp = leggiGiocatore(i);
+                string stringa = "";
+                foreach (string x in temp.getName().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp.setName(stringa.Trim());
+                UpdateTeamView(temp.getId(), stringa.Trim());
+                UpdateFormPlayer(i, stringa.Trim());
+            }
+        }
+
         private List<Ball> ballList = new List<Ball>();
         private List<PlayerAppearance> playerAppearanceList = new List<PlayerAppearance>();
         private List<PlayerAssignment> playerAssignmentList = new List<PlayerAssignment>();
@@ -1151,7 +1542,6 @@ namespace DinoTem.ui
         //Giocatore form
         //transferPlayer Drag&Drop
         //remove fake team
-        //globalFunction
         //fm form
         public void readPlayerAppearancePersister(string patch, int bitRecognized)
         {
@@ -1191,11 +1581,6 @@ namespace DinoTem.ui
         public List<Ball> getListBall()
         {
             return ballList;
-        }
-
-        public List<BallCondition> getBallConditionList()
-        {
-            return ballConditionList;
         }
 
         public List<PlayerAssignment> getPlayerAssignmentList()
@@ -1301,22 +1686,6 @@ namespace DinoTem.ui
                 l1.Items.Add(x);
             }
             l1.SelectedIndex = 0;
-        }
-
-        public void UpdateTeamList(ListBox l1, ComboBox t1, ComboBox t2)
-        {
-            l1.Items.Clear();
-            t1.Items.Clear();
-            t2.Items.Clear();
-            foreach (Team x in getListTeam())
-            {
-                l1.Items.Add(x);
-                t1.Items.Add(x);
-                t2.Items.Add(x);
-            }
-            l1.SelectedIndex = 0;
-            t1.SelectedIndex = 0;
-            t2.SelectedIndex = 0;
         }
 
         /*public string getStringClubTeamOfPlayer(long idPlayer, int type) {
@@ -3267,242 +3636,6 @@ namespace DinoTem.ui
 
             UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
             //updatePlayerList(Form1._Form1.giocatoreView);
-        }*/
-
-        //globalFunction
-        public void upperTeams(ListBox l1, ComboBox t1, ComboBox t2)
-        {
-            foreach (Team temp in getListTeam())
-            {
-                temp.setEnglish(temp.getEnglish().ToUpper());
-                //if (temp.getNational())
-                //{
-                    //japanese
-                    National temp2 = (National)temp;
-                    temp2.setJapanese(temp.getJapanese().ToUpper());
-                    //spanish
-                    temp2.setSpanish(temp2.getSpanish().ToUpper());
-                    //greek
-                    temp2.setGreek(temp2.getGreek().ToUpper());
-                    //latin america
-                    temp2.setLatinAmericaSpanish(temp2.getLatinAmericaSpanish().ToUpper());
-                    //french
-                    temp2.setFrench(temp2.getFrench().ToUpper());
-                    //turkish
-                    temp2.setTurkish(temp2.getTurkish().ToUpper());
-                    //portuguese
-                    temp2.setPortuguese(temp2.getPortuguese().ToUpper());
-                    //german
-                    temp2.setGerman(temp2.getGerman().ToUpper());
-                    //BrazilianPortuguese
-                    temp2.setBrazilianPortuguese(temp2.getBrazilianPortuguese().ToUpper());
-                    //dutch
-                    temp2.setDutch(temp2.getDutch().ToUpper());
-                    //swedish
-                    temp2.setSwedish(temp2.getSwedish().ToUpper());
-                    //italian
-                    temp2.setItalian(temp2.getItalian().ToUpper());
-                    //russian
-                    temp2.setRussian(temp2.getRussian().ToUpper());
-                    //englih us
-                    temp2.setEnglishUS(temp2.getEnglishUS().ToUpper());
-                //}
-            }
-            UpdateTeamList(l1, t1, t2);
-        }
-
-        public void lowerTeams(ListBox l1, ComboBox t1, ComboBox t2)
-        {
-            foreach (Team temp in getListTeam())
-            {
-                temp.setEnglish(temp.getEnglish().ToLower());
-                //if (temp.getNational())
-                //{
-                    //japanese
-                    National temp2 = (National)temp;
-                    temp2.setJapanese(temp.getJapanese().ToLower());
-                    //spanish
-                    temp2.setSpanish(temp2.getSpanish().ToLower());
-                    //greek
-                    temp2.setGreek(temp2.getGreek().ToLower());
-                    //latin america
-                    temp2.setLatinAmericaSpanish(temp2.getLatinAmericaSpanish().ToLower());
-                    //french
-                    temp2.setFrench(temp2.getFrench().ToLower());
-                    //turkish
-                    temp2.setTurkish(temp2.getTurkish().ToLower());
-                    //portuguese
-                    temp2.setPortuguese(temp2.getPortuguese().ToLower());
-                    //german
-                    temp2.setGerman(temp2.getGerman().ToLower());
-                    //BrazilianPortuguese
-                    temp2.setBrazilianPortuguese(temp2.getBrazilianPortuguese().ToLower());
-                    //dutch
-                    temp2.setDutch(temp2.getDutch().ToLower());
-                    //swedish
-                    temp2.setSwedish(temp2.getSwedish().ToLower());
-                    //italian
-                    temp2.setItalian(temp2.getItalian().ToLower());
-                    //russian
-                    temp2.setRussian(temp2.getRussian().ToLower());
-                    //englih us
-                    temp2.setEnglishUS(temp2.getEnglishUS().ToLower());
-                //}
-            }
-            UpdateTeamList(l1, t1, t2);
-        }
-
-        public void firstUpTeams(ListBox l1, ComboBox t1, ComboBox t2)
-        {
-            foreach (Team temp in getListTeam())
-            {
-                //english name
-                string stringa = "";
-                foreach (string x in temp.getEnglish().Split())
-                {
-                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                }
-                temp.setEnglish(stringa.Trim());
-                //if (temp.getNational())
-                //{
-                    //japanese
-                    stringa = "";
-                    National temp2 = (National)temp;
-                    foreach (string x in temp2.getJapanese().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setJapanese(stringa.Trim());
-                    //spanish
-                    stringa = "";
-                    foreach (string x in temp2.getSpanish().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setSpanish(stringa.Trim());
-                    //greek
-                    stringa = "";
-                    foreach (string x in temp2.getGreek().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setGreek(stringa.Trim());
-                    //latin america
-                    stringa = "";
-                    foreach (string x in temp2.getLatinAmericaSpanish().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setLatinAmericaSpanish(stringa.Trim());
-                    //french
-                    stringa = "";
-                    foreach (string x in temp2.getFrench().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setFrench(stringa.Trim());
-                    //turkish
-                    stringa = "";
-                    foreach (string x in temp2.getTurkish().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setTurkish(stringa.Trim());
-                    //portuguese
-                    stringa = "";
-                    foreach (string x in temp2.getPortuguese().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setPortuguese(stringa.Trim());
-                    //german
-                    stringa = "";
-                    foreach (string x in temp2.getGerman().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setGerman(stringa.Trim());
-                    //BrazilianPortuguese
-                    stringa = "";
-                    foreach (string x in temp2.getBrazilianPortuguese().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setBrazilianPortuguese(stringa.Trim());
-                    //dutch
-                    stringa = "";
-                    foreach (string x in temp2.getDutch().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setDutch(stringa.Trim());
-                    //swedish
-                    stringa = "";
-                    foreach (string x in temp2.getSwedish().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setSwedish(stringa.Trim());
-                    //italian
-                    stringa = "";
-                    foreach (string x in temp2.getItalian().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setItalian(stringa.Trim());
-                    //russian
-                    stringa = "";
-                    foreach (string x in temp2.getRussian().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setRussian(stringa.Trim());
-                    //englih us
-                    stringa = "";
-                    foreach (string x in temp2.getEnglishUS().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setEnglishUS(stringa.Trim());
-                //}
-            }
-
-            UpdateTeamList(l1, t1, t2);
-        }
-
-        /*public void upperPlayers(ListView l1, ComboBox t1, ComboBox t2)
-        {
-            foreach (Player temp in getListPlayer())
-            {
-                temp.setName(temp.getName().ToUpper());
-            }
-            updatePlayerList(l1);
-            UpdateForm(t1, t2);
-        }*/
-
-        /*public void lowerPlayers(ListView l1, ComboBox t1, ComboBox t2)
-        {
-            foreach (Player temp in getListPlayer())
-            {
-                temp.setName(temp.getName().ToLower());
-            }
-            updatePlayerList(l1);
-            UpdateForm(t1, t2);
-        }*/
-
-        /*public void firstUpPlayers(ListView l1, ComboBox t1, ComboBox t2)
-        {
-            foreach (Player temp in getListPlayer())
-            {
-                string stringa = "";
-                foreach (string x in temp.getName().Split())
-                {
-                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                }
-                temp.setName(stringa.Trim());
-            }
-            updatePlayerList(l1);
-            UpdateForm(t1, t2);
         }*/
 
         //fm form

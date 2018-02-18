@@ -305,9 +305,21 @@
             this.label116 = new System.Windows.Forms.Label();
             this.coachBox = new System.Windows.Forms.ListBox();
             this.Competitions = new System.Windows.Forms.TabPage();
-            this.label42 = new System.Windows.Forms.Label();
+            this.competitionEntryBox = new System.Windows.Forms.ListBox();
+            this.competitionStudy = new System.Windows.Forms.TabPage();
+            this.GroupBox10 = new System.Windows.Forms.GroupBox();
+            this.applyCompetitionKind = new System.Windows.Forms.Button();
+            this.Label170 = new System.Windows.Forms.Label();
+            this.NumericUpDown19 = new System.Windows.Forms.NumericUpDown();
+            this.Label133 = new System.Windows.Forms.Label();
+            this.competitionsKind = new System.Windows.Forms.ListBox();
+            this.UNK3_KIND_BOX = new System.Windows.Forms.NumericUpDown();
+            this.UNK2_KIND_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label139 = new System.Windows.Forms.Label();
+            this.UNK1_KIND_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label140 = new System.Windows.Forms.Label();
             this.Derby = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
+            this.applyDerby = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.derbyTeam1 = new System.Windows.Forms.ComboBox();
             this.label115 = new System.Windows.Forms.Label();
@@ -329,7 +341,7 @@
             this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stadiums = new System.Windows.Forms.TabPage();
             this.applyStadium = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.pasteStadiumDb = new System.Windows.Forms.Button();
             this.stadiumsBox = new System.Windows.Forms.ListBox();
             this.button5 = new System.Windows.Forms.Button();
             this.searchStadium = new System.Windows.Forms.TextBox();
@@ -353,10 +365,9 @@
             this.button3 = new System.Windows.Forms.Button();
             this.stadiumName = new System.Windows.Forms.TextBox();
             this.label85 = new System.Windows.Forms.Label();
-            this.stadiumOrder = new System.Windows.Forms.TextBox();
-            this.label89 = new System.Windows.Forms.Label();
             this.stadiumId = new System.Windows.Forms.TextBox();
             this.label90 = new System.Windows.Forms.Label();
+            this.stadiumsOrder = new System.Windows.Forms.TabPage();
             this.Balls = new System.Windows.Forms.TabPage();
             this.applyBall = new System.Windows.Forms.Button();
             this.ballsBox = new System.Windows.Forms.ListBox();
@@ -425,7 +436,7 @@
             this.globalFunctionTeam = new System.Windows.Forms.Button();
             this.FmStats = new System.Windows.Forms.TabPage();
             this.Database = new System.Windows.Forms.TabPage();
-            this.accept = new System.Windows.Forms.Button();
+            this.copyFromDb = new System.Windows.Forms.Button();
             this.label80 = new System.Windows.Forms.Label();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dbStadiumCapacity = new System.Windows.Forms.TextBox();
@@ -438,8 +449,6 @@
             this.db15 = new System.Windows.Forms.CheckBox();
             this.db16 = new System.Windows.Forms.CheckBox();
             this.db14 = new System.Windows.Forms.CheckBox();
-            this.label78 = new System.Windows.Forms.Label();
-            this.dbStadiumDlc = new System.Windows.Forms.ComboBox();
             this.dbStadiumHome = new System.Windows.Forms.TextBox();
             this.label77 = new System.Windows.Forms.Label();
             this.dbStadiumRealName = new System.Windows.Forms.TextBox();
@@ -471,6 +480,85 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.DataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Order = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Team_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total_IndexIn_CEntry = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Team_Id = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.Column48 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.applyCompetition = new System.Windows.Forms.Button();
+            this.label42 = new System.Windows.Forms.Label();
+            this.UNK_4_BOX = new System.Windows.Forms.NumericUpDown();
+            this.label78 = new System.Windows.Forms.Label();
+            this.label89 = new System.Windows.Forms.Label();
+            this.label104 = new System.Windows.Forms.Label();
+            this.CheckBox62 = new System.Windows.Forms.CheckBox();
+            this.UNK3_box = new System.Windows.Forms.NumericUpDown();
+            this.UNK2_box = new System.Windows.Forms.NumericUpDown();
+            this.UNK1_box = new System.Windows.Forms.NumericUpDown();
+            this.CheckBox61 = new System.Windows.Forms.CheckBox();
+            this.CheckBox60 = new System.Windows.Forms.CheckBox();
+            this.CheckBox59 = new System.Windows.Forms.CheckBox();
+            this.CheckBox58 = new System.Windows.Forms.CheckBox();
+            this.CheckBox57 = new System.Windows.Forms.CheckBox();
+            this.CheckBox56 = new System.Windows.Forms.CheckBox();
+            this.CheckBox55 = new System.Windows.Forms.CheckBox();
+            this.CheckBox54 = new System.Windows.Forms.CheckBox();
+            this.competitionsBox = new System.Windows.Forms.ListBox();
+            this.GroupBox11 = new System.Windows.Forms.GroupBox();
+            this.CheckBox78 = new System.Windows.Forms.CheckBox();
+            this.CheckBox79 = new System.Windows.Forms.CheckBox();
+            this.CheckBox80 = new System.Windows.Forms.CheckBox();
+            this.CheckBox81 = new System.Windows.Forms.CheckBox();
+            this.CheckBox74 = new System.Windows.Forms.CheckBox();
+            this.CheckBox75 = new System.Windows.Forms.CheckBox();
+            this.CheckBox76 = new System.Windows.Forms.CheckBox();
+            this.CheckBox77 = new System.Windows.Forms.CheckBox();
+            this.CheckBox70 = new System.Windows.Forms.CheckBox();
+            this.CheckBox71 = new System.Windows.Forms.CheckBox();
+            this.CheckBox72 = new System.Windows.Forms.CheckBox();
+            this.CheckBox73 = new System.Windows.Forms.CheckBox();
+            this.CheckBox69 = new System.Windows.Forms.CheckBox();
+            this.CheckBox66 = new System.Windows.Forms.CheckBox();
+            this.CheckBox68 = new System.Windows.Forms.CheckBox();
+            this.CheckBox67 = new System.Windows.Forms.CheckBox();
+            this.Label155 = new System.Windows.Forms.Label();
+            this.UNK15_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label154 = new System.Windows.Forms.Label();
+            this.UNK14_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label153 = new System.Windows.Forms.Label();
+            this.UNK13_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.CheckBox63 = new System.Windows.Forms.CheckBox();
+            this.Label147 = new System.Windows.Forms.Label();
+            this.CheckBox64 = new System.Windows.Forms.CheckBox();
+            this.CheckBox65 = new System.Windows.Forms.CheckBox();
+            this.UNK12_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.UNK11_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label148 = new System.Windows.Forms.Label();
+            this.UNK10_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label149 = new System.Windows.Forms.Label();
+            this.Label150 = new System.Windows.Forms.Label();
+            this.UNK9_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.UNK8_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label151 = new System.Windows.Forms.Label();
+            this.UNK7_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label152 = new System.Windows.Forms.Label();
+            this.Label144 = new System.Windows.Forms.Label();
+            this.UNK6_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.UNK5_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label145 = new System.Windows.Forms.Label();
+            this.UNK4_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label146 = new System.Windows.Forms.Label();
+            this.Label141 = new System.Windows.Forms.Label();
+            this.UNK3_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.UNK2_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label142 = new System.Windows.Forms.Label();
+            this.UNK1_COMP_REG_BOX = new System.Windows.Forms.NumericUpDown();
+            this.Label143 = new System.Windows.Forms.Label();
+            this.ListBox_comp_reg = new System.Windows.Forms.ListBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label119 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Transfers.SuspendLayout();
@@ -494,6 +582,12 @@
             this.Coach.SuspendLayout();
             this.groupBox16.SuspendLayout();
             this.Competitions.SuspendLayout();
+            this.competitionStudy.SuspendLayout();
+            this.GroupBox10.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown19)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK3_KIND_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK2_KIND_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK1_KIND_BOX)).BeginInit();
             this.Derby.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.derbyOrder)).BeginInit();
@@ -515,11 +609,34 @@
             this.Global.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.FmStats.SuspendLayout();
             this.Database.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.Team_BMenuStrip3.SuspendLayout();
             this.Team_AMenuStrip2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK_4_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK3_box)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK2_box)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK1_box)).BeginInit();
+            this.GroupBox11.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK15_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK14_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK13_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK12_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK11_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK10_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK9_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK8_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK7_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK6_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK5_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK4_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK3_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK2_COMP_REG_BOX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK1_COMP_REG_BOX)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -932,36 +1049,42 @@
             // 
             // addNewCoachToolStripMenuItem
             // 
+            this.addNewCoachToolStripMenuItem.Enabled = false;
             this.addNewCoachToolStripMenuItem.Name = "addNewCoachToolStripMenuItem";
             this.addNewCoachToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
             this.addNewCoachToolStripMenuItem.Text = "Add new coach";
             // 
             // addNewDerbyToolStripMenuItem
             // 
+            this.addNewDerbyToolStripMenuItem.Enabled = false;
             this.addNewDerbyToolStripMenuItem.Name = "addNewDerbyToolStripMenuItem";
             this.addNewDerbyToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
             this.addNewDerbyToolStripMenuItem.Text = "Add new derby";
             // 
             // addNewStadiumToolStripMenuItem
             // 
+            this.addNewStadiumToolStripMenuItem.Enabled = false;
             this.addNewStadiumToolStripMenuItem.Name = "addNewStadiumToolStripMenuItem";
             this.addNewStadiumToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
             this.addNewStadiumToolStripMenuItem.Text = "Add new stadium";
             // 
             // addNewBallToolStripMenuItem
             // 
+            this.addNewBallToolStripMenuItem.Enabled = false;
             this.addNewBallToolStripMenuItem.Name = "addNewBallToolStripMenuItem";
             this.addNewBallToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
             this.addNewBallToolStripMenuItem.Text = "Add new ball";
             // 
             // addNewBootToolStripMenuItem
             // 
+            this.addNewBootToolStripMenuItem.Enabled = false;
             this.addNewBootToolStripMenuItem.Name = "addNewBootToolStripMenuItem";
             this.addNewBootToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
             this.addNewBootToolStripMenuItem.Text = "Add new boot";
             // 
             // addNewGloveToolStripMenuItem
             // 
+            this.addNewGloveToolStripMenuItem.Enabled = false;
             this.addNewGloveToolStripMenuItem.Name = "addNewGloveToolStripMenuItem";
             this.addNewGloveToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
             this.addNewGloveToolStripMenuItem.Text = "Add new glove";
@@ -1070,8 +1193,10 @@
             this.tabControl1.Controls.Add(this.Teams);
             this.tabControl1.Controls.Add(this.Coach);
             this.tabControl1.Controls.Add(this.Competitions);
+            this.tabControl1.Controls.Add(this.competitionStudy);
             this.tabControl1.Controls.Add(this.Derby);
             this.tabControl1.Controls.Add(this.Stadiums);
+            this.tabControl1.Controls.Add(this.stadiumsOrder);
             this.tabControl1.Controls.Add(this.Balls);
             this.tabControl1.Controls.Add(this.Boots);
             this.tabControl1.Controls.Add(this.Gloves);
@@ -3296,7 +3421,9 @@
             // 
             // Competitions
             // 
-            this.Competitions.Controls.Add(this.label42);
+            this.Competitions.Controls.Add(this.groupBox5);
+            this.Competitions.Controls.Add(this.DataGridView1);
+            this.Competitions.Controls.Add(this.competitionEntryBox);
             this.Competitions.Location = new System.Drawing.Point(4, 22);
             this.Competitions.Name = "Competitions";
             this.Competitions.Size = new System.Drawing.Size(907, 632);
@@ -3304,18 +3431,152 @@
             this.Competitions.Text = "Competitions";
             this.Competitions.UseVisualStyleBackColor = true;
             // 
-            // label42
+            // competitionEntryBox
             // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(364, 235);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(70, 13);
-            this.label42.TabIndex = 0;
-            this.label42.Text = "Coming Soon";
+            this.competitionEntryBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
+            this.competitionEntryBox.FormattingEnabled = true;
+            this.competitionEntryBox.Location = new System.Drawing.Point(3, 6);
+            this.competitionEntryBox.Name = "competitionEntryBox";
+            this.competitionEntryBox.Size = new System.Drawing.Size(233, 589);
+            this.competitionEntryBox.TabIndex = 131;
+            // 
+            // competitionStudy
+            // 
+            this.competitionStudy.Controls.Add(this.GroupBox11);
+            this.competitionStudy.Controls.Add(this.GroupBox10);
+            this.competitionStudy.Location = new System.Drawing.Point(4, 22);
+            this.competitionStudy.Name = "competitionStudy";
+            this.competitionStudy.Size = new System.Drawing.Size(907, 632);
+            this.competitionStudy.TabIndex = 14;
+            this.competitionStudy.Text = "Competition Study";
+            this.competitionStudy.UseVisualStyleBackColor = true;
+            // 
+            // GroupBox10
+            // 
+            this.GroupBox10.Controls.Add(this.applyCompetitionKind);
+            this.GroupBox10.Controls.Add(this.Label170);
+            this.GroupBox10.Controls.Add(this.NumericUpDown19);
+            this.GroupBox10.Controls.Add(this.Label133);
+            this.GroupBox10.Controls.Add(this.competitionsKind);
+            this.GroupBox10.Controls.Add(this.UNK3_KIND_BOX);
+            this.GroupBox10.Controls.Add(this.UNK2_KIND_BOX);
+            this.GroupBox10.Controls.Add(this.Label139);
+            this.GroupBox10.Controls.Add(this.UNK1_KIND_BOX);
+            this.GroupBox10.Controls.Add(this.Label140);
+            this.GroupBox10.Location = new System.Drawing.Point(3, 6);
+            this.GroupBox10.Margin = new System.Windows.Forms.Padding(2);
+            this.GroupBox10.Name = "GroupBox10";
+            this.GroupBox10.Padding = new System.Windows.Forms.Padding(2);
+            this.GroupBox10.Size = new System.Drawing.Size(320, 609);
+            this.GroupBox10.TabIndex = 3;
+            this.GroupBox10.TabStop = false;
+            this.GroupBox10.Text = "CompetitionKind.bin";
+            // 
+            // applyCompetitionKind
+            // 
+            this.applyCompetitionKind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetitionKind.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.applyCompetitionKind.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.applyCompetitionKind.FlatAppearance.BorderSize = 0;
+            this.applyCompetitionKind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.applyCompetitionKind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetitionKind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyCompetitionKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.applyCompetitionKind.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.applyCompetitionKind.Location = new System.Drawing.Point(215, 561);
+            this.applyCompetitionKind.Margin = new System.Windows.Forms.Padding(0);
+            this.applyCompetitionKind.Name = "applyCompetitionKind";
+            this.applyCompetitionKind.Size = new System.Drawing.Size(86, 29);
+            this.applyCompetitionKind.TabIndex = 135;
+            this.applyCompetitionKind.Text = "Apply";
+            this.applyCompetitionKind.UseVisualStyleBackColor = false;
+            this.applyCompetitionKind.Click += new System.EventHandler(this.applyCompetitionKind_Click);
+            // 
+            // Label170
+            // 
+            this.Label170.AutoSize = true;
+            this.Label170.Location = new System.Drawing.Point(212, 29);
+            this.Label170.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label170.Name = "Label170";
+            this.Label170.Size = new System.Drawing.Size(70, 13);
+            this.Label170.TabIndex = 25;
+            this.Label170.Text = "C. Kind Order";
+            // 
+            // NumericUpDown19
+            // 
+            this.NumericUpDown19.Location = new System.Drawing.Point(214, 52);
+            this.NumericUpDown19.Margin = new System.Windows.Forms.Padding(2);
+            this.NumericUpDown19.Name = "NumericUpDown19";
+            this.NumericUpDown19.Size = new System.Drawing.Size(32, 20);
+            this.NumericUpDown19.TabIndex = 24;
+            // 
+            // Label133
+            // 
+            this.Label133.AutoSize = true;
+            this.Label133.Location = new System.Drawing.Point(251, 142);
+            this.Label133.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label133.Name = "Label133";
+            this.Label133.Size = new System.Drawing.Size(13, 13);
+            this.Label133.TabIndex = 23;
+            this.Label133.Text = "3";
+            // 
+            // competitionsKind
+            // 
+            this.competitionsKind.FormattingEnabled = true;
+            this.competitionsKind.Location = new System.Drawing.Point(14, 29);
+            this.competitionsKind.Margin = new System.Windows.Forms.Padding(2);
+            this.competitionsKind.Name = "competitionsKind";
+            this.competitionsKind.Size = new System.Drawing.Size(192, 563);
+            this.competitionsKind.TabIndex = 18;
+            this.competitionsKind.SelectedIndexChanged += new System.EventHandler(this.competitionsKind_SelectedIndexChanged);
+            // 
+            // UNK3_KIND_BOX
+            // 
+            this.UNK3_KIND_BOX.Location = new System.Drawing.Point(214, 141);
+            this.UNK3_KIND_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK3_KIND_BOX.Name = "UNK3_KIND_BOX";
+            this.UNK3_KIND_BOX.Size = new System.Drawing.Size(32, 20);
+            this.UNK3_KIND_BOX.TabIndex = 22;
+            // 
+            // UNK2_KIND_BOX
+            // 
+            this.UNK2_KIND_BOX.Location = new System.Drawing.Point(214, 118);
+            this.UNK2_KIND_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK2_KIND_BOX.Name = "UNK2_KIND_BOX";
+            this.UNK2_KIND_BOX.Size = new System.Drawing.Size(32, 20);
+            this.UNK2_KIND_BOX.TabIndex = 19;
+            // 
+            // Label139
+            // 
+            this.Label139.AutoSize = true;
+            this.Label139.Location = new System.Drawing.Point(251, 119);
+            this.Label139.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label139.Name = "Label139";
+            this.Label139.Size = new System.Drawing.Size(13, 13);
+            this.Label139.TabIndex = 21;
+            this.Label139.Text = "2";
+            // 
+            // UNK1_KIND_BOX
+            // 
+            this.UNK1_KIND_BOX.Location = new System.Drawing.Point(214, 95);
+            this.UNK1_KIND_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK1_KIND_BOX.Name = "UNK1_KIND_BOX";
+            this.UNK1_KIND_BOX.Size = new System.Drawing.Size(32, 20);
+            this.UNK1_KIND_BOX.TabIndex = 18;
+            // 
+            // Label140
+            // 
+            this.Label140.AutoSize = true;
+            this.Label140.Location = new System.Drawing.Point(251, 97);
+            this.Label140.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label140.Name = "Label140";
+            this.Label140.Size = new System.Drawing.Size(13, 13);
+            this.Label140.TabIndex = 20;
+            this.Label140.Text = "1";
             // 
             // Derby
             // 
-            this.Derby.Controls.Add(this.button6);
+            this.Derby.Controls.Add(this.applyDerby);
             this.Derby.Controls.Add(this.groupBox4);
             this.Derby.Controls.Add(this.DataGridView_derby);
             this.Derby.Location = new System.Drawing.Point(4, 22);
@@ -3325,24 +3586,25 @@
             this.Derby.Text = "Derby";
             this.Derby.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // applyDerby
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button6.Location = new System.Drawing.Point(809, 593);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(86, 29);
-            this.button6.TabIndex = 133;
-            this.button6.Text = "Apply";
-            this.button6.UseVisualStyleBackColor = false;
+            this.applyDerby.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyDerby.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.applyDerby.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.applyDerby.FlatAppearance.BorderSize = 0;
+            this.applyDerby.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.applyDerby.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyDerby.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyDerby.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.applyDerby.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.applyDerby.Location = new System.Drawing.Point(809, 593);
+            this.applyDerby.Margin = new System.Windows.Forms.Padding(0);
+            this.applyDerby.Name = "applyDerby";
+            this.applyDerby.Size = new System.Drawing.Size(86, 29);
+            this.applyDerby.TabIndex = 133;
+            this.applyDerby.Text = "Apply";
+            this.applyDerby.UseVisualStyleBackColor = false;
+            this.applyDerby.Click += new System.EventHandler(this.button6_Click);
             // 
             // groupBox4
             // 
@@ -3476,6 +3738,7 @@
             this.DataGridView_derby.AllowUserToDeleteRows = false;
             this.DataGridView_derby.AllowUserToResizeColumns = false;
             this.DataGridView_derby.AllowUserToResizeRows = false;
+            this.DataGridView_derby.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DataGridView_derby.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column29,
             this.Column23,
@@ -3560,7 +3823,7 @@
             // Stadiums
             // 
             this.Stadiums.Controls.Add(this.applyStadium);
-            this.Stadiums.Controls.Add(this.button2);
+            this.Stadiums.Controls.Add(this.pasteStadiumDb);
             this.Stadiums.Controls.Add(this.stadiumsBox);
             this.Stadiums.Controls.Add(this.button5);
             this.Stadiums.Controls.Add(this.searchStadium);
@@ -3594,20 +3857,20 @@
             this.applyStadium.UseVisualStyleBackColor = false;
             this.applyStadium.Click += new System.EventHandler(this.applyStadium_Click);
             // 
-            // button2
+            // pasteStadiumDb
             // 
-            this.button2.Enabled = false;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.Location = new System.Drawing.Point(242, 528);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(111, 29);
-            this.button2.TabIndex = 131;
-            this.button2.Text = "Paste From DB";
-            this.button2.UseVisualStyleBackColor = true;
+            this.pasteStadiumDb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.pasteStadiumDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.pasteStadiumDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.pasteStadiumDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.pasteStadiumDb.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.pasteStadiumDb.Location = new System.Drawing.Point(242, 528);
+            this.pasteStadiumDb.Name = "pasteStadiumDb";
+            this.pasteStadiumDb.Size = new System.Drawing.Size(111, 29);
+            this.pasteStadiumDb.TabIndex = 131;
+            this.pasteStadiumDb.Text = "Paste From DB";
+            this.pasteStadiumDb.UseVisualStyleBackColor = true;
+            this.pasteStadiumDb.Click += new System.EventHandler(this.button2_Click);
             // 
             // stadiumsBox
             // 
@@ -3760,8 +4023,6 @@
             this.groupBox8.Controls.Add(this.button3);
             this.groupBox8.Controls.Add(this.stadiumName);
             this.groupBox8.Controls.Add(this.label85);
-            this.groupBox8.Controls.Add(this.stadiumOrder);
-            this.groupBox8.Controls.Add(this.label89);
             this.groupBox8.Controls.Add(this.stadiumId);
             this.groupBox8.Controls.Add(this.label90);
             this.groupBox8.Location = new System.Drawing.Point(242, 6);
@@ -3858,25 +4119,6 @@
             this.label85.TabIndex = 12;
             this.label85.Text = "Stadium Name:";
             // 
-            // stadiumOrder
-            // 
-            this.stadiumOrder.Enabled = false;
-            this.stadiumOrder.Location = new System.Drawing.Point(13, 90);
-            this.stadiumOrder.MaxLength = 3;
-            this.stadiumOrder.Name = "stadiumOrder";
-            this.stadiumOrder.Size = new System.Drawing.Size(63, 20);
-            this.stadiumOrder.TabIndex = 11;
-            this.stadiumOrder.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
-            // 
-            // label89
-            // 
-            this.label89.AutoSize = true;
-            this.label89.Location = new System.Drawing.Point(10, 70);
-            this.label89.Name = "label89";
-            this.label89.Size = new System.Drawing.Size(36, 13);
-            this.label89.TabIndex = 10;
-            this.label89.Text = "Order:";
-            // 
             // stadiumId
             // 
             this.stadiumId.Location = new System.Drawing.Point(13, 43);
@@ -3894,6 +4136,15 @@
             this.label90.Size = new System.Drawing.Size(62, 13);
             this.label90.TabIndex = 8;
             this.label90.Text = "Stadium ID:";
+            // 
+            // stadiumsOrder
+            // 
+            this.stadiumsOrder.Location = new System.Drawing.Point(4, 22);
+            this.stadiumsOrder.Name = "stadiumsOrder";
+            this.stadiumsOrder.Size = new System.Drawing.Size(907, 632);
+            this.stadiumsOrder.TabIndex = 13;
+            this.stadiumsOrder.Text = "Stadiums Order";
+            this.stadiumsOrder.UseVisualStyleBackColor = true;
             // 
             // Balls
             // 
@@ -4595,6 +4846,7 @@
             this.globalFunctionPlayer.TabIndex = 115;
             this.globalFunctionPlayer.Text = "Apply";
             this.globalFunctionPlayer.UseVisualStyleBackColor = true;
+            this.globalFunctionPlayer.Click += new System.EventHandler(this.globalFunctionPlayer_Click);
             // 
             // groupBox1
             // 
@@ -4654,9 +4906,11 @@
             this.globalFunctionTeam.TabIndex = 115;
             this.globalFunctionTeam.Text = "Apply";
             this.globalFunctionTeam.UseVisualStyleBackColor = true;
+            this.globalFunctionTeam.Click += new System.EventHandler(this.globalFunctionTeam_Click);
             // 
             // FmStats
             // 
+            this.FmStats.Controls.Add(this.label119);
             this.FmStats.Location = new System.Drawing.Point(4, 22);
             this.FmStats.Name = "FmStats";
             this.FmStats.Size = new System.Drawing.Size(907, 632);
@@ -4666,7 +4920,7 @@
             // 
             // Database
             // 
-            this.Database.Controls.Add(this.accept);
+            this.Database.Controls.Add(this.copyFromDb);
             this.Database.Controls.Add(this.label80);
             this.Database.Controls.Add(this.groupBox6);
             this.Database.Controls.Add(this.databaseBox);
@@ -4678,20 +4932,20 @@
             this.Database.Text = "Database";
             this.Database.UseVisualStyleBackColor = true;
             // 
-            // accept
+            // copyFromDb
             // 
-            this.accept.Enabled = false;
-            this.accept.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.accept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.accept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.accept.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.accept.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.accept.Location = new System.Drawing.Point(242, 599);
-            this.accept.Name = "accept";
-            this.accept.Size = new System.Drawing.Size(111, 29);
-            this.accept.TabIndex = 124;
-            this.accept.Text = "Copy From DB";
-            this.accept.UseVisualStyleBackColor = true;
+            this.copyFromDb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.copyFromDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.copyFromDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.copyFromDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.copyFromDb.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.copyFromDb.Location = new System.Drawing.Point(242, 599);
+            this.copyFromDb.Name = "copyFromDb";
+            this.copyFromDb.Size = new System.Drawing.Size(111, 29);
+            this.copyFromDb.TabIndex = 124;
+            this.copyFromDb.Text = "Copy From DB";
+            this.copyFromDb.UseVisualStyleBackColor = true;
+            this.copyFromDb.Click += new System.EventHandler(this.copyFromDb_Click);
             // 
             // label80
             // 
@@ -4714,8 +4968,6 @@
             this.groupBox6.Controls.Add(this.db15);
             this.groupBox6.Controls.Add(this.db16);
             this.groupBox6.Controls.Add(this.db14);
-            this.groupBox6.Controls.Add(this.label78);
-            this.groupBox6.Controls.Add(this.dbStadiumDlc);
             this.groupBox6.Controls.Add(this.dbStadiumHome);
             this.groupBox6.Controls.Add(this.label77);
             this.groupBox6.Controls.Add(this.dbStadiumRealName);
@@ -4837,26 +5089,6 @@
             this.db14.Text = "Pes 14";
             this.db14.UseVisualStyleBackColor = true;
             // 
-            // label78
-            // 
-            this.label78.AutoSize = true;
-            this.label78.Location = new System.Drawing.Point(479, 23);
-            this.label78.Name = "label78";
-            this.label78.Size = new System.Drawing.Size(28, 13);
-            this.label78.TabIndex = 33;
-            this.label78.Text = "DLC";
-            // 
-            // dbStadiumDlc
-            // 
-            this.dbStadiumDlc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.dbStadiumDlc.Enabled = false;
-            this.dbStadiumDlc.FormattingEnabled = true;
-            this.dbStadiumDlc.Location = new System.Drawing.Point(482, 43);
-            this.dbStadiumDlc.Name = "dbStadiumDlc";
-            this.dbStadiumDlc.Size = new System.Drawing.Size(100, 21);
-            this.dbStadiumDlc.TabIndex = 32;
-            this.dbStadiumDlc.TabStop = false;
-            // 
             // dbStadiumHome
             // 
             this.dbStadiumHome.Location = new System.Drawing.Point(13, 183);
@@ -4938,6 +5170,7 @@
             this.databaseBox.Size = new System.Drawing.Size(233, 21);
             this.databaseBox.TabIndex = 38;
             this.databaseBox.TabStop = false;
+            this.databaseBox.SelectedIndexChanged += new System.EventHandler(this.databaseBox_SelectedIndexChanged);
             // 
             // databaseView
             // 
@@ -4957,6 +5190,7 @@
             this.databaseView.TabStop = false;
             this.databaseView.UseCompatibleStateImageBehavior = false;
             this.databaseView.View = System.Windows.Forms.View.Details;
+            this.databaseView.SelectedIndexChanged += new System.EventHandler(this.databaseView_SelectedIndexChanged);
             // 
             // Team_BMenuStrip3
             // 
@@ -5101,6 +5335,952 @@
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
+            // DataGridView1
+            // 
+            this.DataGridView1.AllowUserToAddRows = false;
+            this.DataGridView1.AllowUserToDeleteRows = false;
+            this.DataGridView1.AllowUserToOrderColumns = true;
+            this.DataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.DataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
+            this.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Order,
+            this.Team_name,
+            this.Total_IndexIn_CEntry,
+            this.Team_Id,
+            this.Column48});
+            this.DataGridView1.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.DataGridView1.Location = new System.Drawing.Point(242, 6);
+            this.DataGridView1.MultiSelect = false;
+            this.DataGridView1.Name = "DataGridView1";
+            this.DataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DataGridView1.Size = new System.Drawing.Size(320, 589);
+            this.DataGridView1.TabIndex = 132;
+            // 
+            // Order
+            // 
+            this.Order.HeaderText = "Order";
+            this.Order.Name = "Order";
+            this.Order.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Order.Width = 40;
+            // 
+            // Team_name
+            // 
+            this.Team_name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Team_name.HeaderText = "Team Name";
+            this.Team_name.Name = "Team_name";
+            this.Team_name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Total_IndexIn_CEntry
+            // 
+            this.Total_IndexIn_CEntry.HeaderText = "C.Entry Index";
+            this.Total_IndexIn_CEntry.Name = "Total_IndexIn_CEntry";
+            this.Total_IndexIn_CEntry.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Total_IndexIn_CEntry.Width = 50;
+            // 
+            // Team_Id
+            // 
+            this.Team_Id.HeaderText = "Team Id";
+            this.Team_Id.Name = "Team_Id";
+            this.Team_Id.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Team_Id.Visible = false;
+            this.Team_Id.Width = 50;
+            // 
+            // Column48
+            // 
+            this.Column48.HeaderText = "UNK";
+            this.Column48.Name = "Column48";
+            this.Column48.Visible = false;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.applyCompetition);
+            this.groupBox5.Controls.Add(this.label42);
+            this.groupBox5.Controls.Add(this.UNK_4_BOX);
+            this.groupBox5.Controls.Add(this.label78);
+            this.groupBox5.Controls.Add(this.label89);
+            this.groupBox5.Controls.Add(this.label104);
+            this.groupBox5.Controls.Add(this.CheckBox62);
+            this.groupBox5.Controls.Add(this.UNK3_box);
+            this.groupBox5.Controls.Add(this.UNK2_box);
+            this.groupBox5.Controls.Add(this.UNK1_box);
+            this.groupBox5.Controls.Add(this.CheckBox61);
+            this.groupBox5.Controls.Add(this.CheckBox60);
+            this.groupBox5.Controls.Add(this.CheckBox59);
+            this.groupBox5.Controls.Add(this.CheckBox58);
+            this.groupBox5.Controls.Add(this.CheckBox57);
+            this.groupBox5.Controls.Add(this.CheckBox56);
+            this.groupBox5.Controls.Add(this.CheckBox55);
+            this.groupBox5.Controls.Add(this.CheckBox54);
+            this.groupBox5.Controls.Add(this.competitionsBox);
+            this.groupBox5.Location = new System.Drawing.Point(580, 6);
+            this.groupBox5.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox5.Size = new System.Drawing.Size(320, 589);
+            this.groupBox5.TabIndex = 133;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Competition.bin";
+            // 
+            // applyCompetition
+            // 
+            this.applyCompetition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetition.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.applyCompetition.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.applyCompetition.FlatAppearance.BorderSize = 0;
+            this.applyCompetition.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.applyCompetition.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.applyCompetition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.applyCompetition.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.applyCompetition.Location = new System.Drawing.Point(225, 550);
+            this.applyCompetition.Margin = new System.Windows.Forms.Padding(0);
+            this.applyCompetition.Name = "applyCompetition";
+            this.applyCompetition.Size = new System.Drawing.Size(86, 29);
+            this.applyCompetition.TabIndex = 134;
+            this.applyCompetition.Text = "Apply";
+            this.applyCompetition.UseVisualStyleBackColor = false;
+            this.applyCompetition.Click += new System.EventHandler(this.applyCompetition_Click);
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(251, 311);
+            this.label42.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(32, 13);
+            this.label42.TabIndex = 17;
+            this.label42.Text = "Zone";
+            // 
+            // UNK_4_BOX
+            // 
+            this.UNK_4_BOX.Location = new System.Drawing.Point(214, 310);
+            this.UNK_4_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK_4_BOX.Name = "UNK_4_BOX";
+            this.UNK_4_BOX.Size = new System.Drawing.Size(32, 20);
+            this.UNK_4_BOX.TabIndex = 16;
+            // 
+            // label78
+            // 
+            this.label78.AutoSize = true;
+            this.label78.Location = new System.Drawing.Point(251, 288);
+            this.label78.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label78.Name = "label78";
+            this.label78.Size = new System.Drawing.Size(42, 13);
+            this.label78.TabIndex = 15;
+            this.label78.Text = "UNK_3";
+            // 
+            // label89
+            // 
+            this.label89.AutoSize = true;
+            this.label89.Location = new System.Drawing.Point(251, 266);
+            this.label89.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label89.Name = "label89";
+            this.label89.Size = new System.Drawing.Size(18, 13);
+            this.label89.TabIndex = 14;
+            this.label89.Text = "ID";
+            // 
+            // label104
+            // 
+            this.label104.AutoSize = true;
+            this.label104.Location = new System.Drawing.Point(251, 210);
+            this.label104.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label104.Name = "label104";
+            this.label104.Size = new System.Drawing.Size(60, 13);
+            this.label104.TabIndex = 13;
+            this.label104.Text = "Team type ";
+            // 
+            // CheckBox62
+            // 
+            this.CheckBox62.AutoSize = true;
+            this.CheckBox62.Location = new System.Drawing.Point(214, 236);
+            this.CheckBox62.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox62.Name = "CheckBox62";
+            this.CheckBox62.Size = new System.Drawing.Size(103, 17);
+            this.CheckBox62.TabIndex = 12;
+            this.CheckBox62.Text = "Second Division";
+            this.CheckBox62.UseVisualStyleBackColor = true;
+            // 
+            // UNK3_box
+            // 
+            this.UNK3_box.Location = new System.Drawing.Point(214, 287);
+            this.UNK3_box.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK3_box.Name = "UNK3_box";
+            this.UNK3_box.Size = new System.Drawing.Size(32, 20);
+            this.UNK3_box.TabIndex = 11;
+            // 
+            // UNK2_box
+            // 
+            this.UNK2_box.Location = new System.Drawing.Point(214, 264);
+            this.UNK2_box.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK2_box.Name = "UNK2_box";
+            this.UNK2_box.Size = new System.Drawing.Size(32, 20);
+            this.UNK2_box.TabIndex = 10;
+            // 
+            // UNK1_box
+            // 
+            this.UNK1_box.Location = new System.Drawing.Point(214, 206);
+            this.UNK1_box.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK1_box.Maximum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.UNK1_box.Name = "UNK1_box";
+            this.UNK1_box.Size = new System.Drawing.Size(32, 20);
+            this.UNK1_box.TabIndex = 9;
+            // 
+            // CheckBox61
+            // 
+            this.CheckBox61.AutoSize = true;
+            this.CheckBox61.Location = new System.Drawing.Point(214, 184);
+            this.CheckBox61.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox61.Name = "CheckBox61";
+            this.CheckBox61.Size = new System.Drawing.Size(69, 17);
+            this.CheckBox61.TabIndex = 8;
+            this.CheckBox61.Text = "Licensed";
+            this.CheckBox61.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox60
+            // 
+            this.CheckBox60.AutoSize = true;
+            this.CheckBox60.Location = new System.Drawing.Point(214, 162);
+            this.CheckBox60.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox60.Name = "CheckBox60";
+            this.CheckBox60.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox60.TabIndex = 7;
+            this.CheckBox60.Text = "CheckBox60";
+            this.CheckBox60.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox59
+            // 
+            this.CheckBox59.AutoSize = true;
+            this.CheckBox59.Location = new System.Drawing.Point(214, 141);
+            this.CheckBox59.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox59.Name = "CheckBox59";
+            this.CheckBox59.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox59.TabIndex = 6;
+            this.CheckBox59.Text = "CheckBox59";
+            this.CheckBox59.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox58
+            // 
+            this.CheckBox58.AutoSize = true;
+            this.CheckBox58.Location = new System.Drawing.Point(214, 119);
+            this.CheckBox58.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox58.Name = "CheckBox58";
+            this.CheckBox58.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox58.TabIndex = 5;
+            this.CheckBox58.Text = "CheckBox58";
+            this.CheckBox58.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox57
+            // 
+            this.CheckBox57.AutoSize = true;
+            this.CheckBox57.Location = new System.Drawing.Point(214, 97);
+            this.CheckBox57.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox57.Name = "CheckBox57";
+            this.CheckBox57.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox57.TabIndex = 4;
+            this.CheckBox57.Text = "CheckBox57";
+            this.CheckBox57.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox56
+            // 
+            this.CheckBox56.AutoSize = true;
+            this.CheckBox56.Location = new System.Drawing.Point(214, 75);
+            this.CheckBox56.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox56.Name = "CheckBox56";
+            this.CheckBox56.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox56.TabIndex = 3;
+            this.CheckBox56.Text = "CheckBox56";
+            this.CheckBox56.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox55
+            // 
+            this.CheckBox55.AutoSize = true;
+            this.CheckBox55.Location = new System.Drawing.Point(214, 53);
+            this.CheckBox55.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox55.Name = "CheckBox55";
+            this.CheckBox55.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox55.TabIndex = 2;
+            this.CheckBox55.Text = "CheckBox55";
+            this.CheckBox55.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox54
+            // 
+            this.CheckBox54.AutoSize = true;
+            this.CheckBox54.Location = new System.Drawing.Point(214, 31);
+            this.CheckBox54.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox54.Name = "CheckBox54";
+            this.CheckBox54.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox54.TabIndex = 1;
+            this.CheckBox54.Text = "CheckBox54";
+            this.CheckBox54.UseVisualStyleBackColor = true;
+            // 
+            // competitionsBox
+            // 
+            this.competitionsBox.FormattingEnabled = true;
+            this.competitionsBox.Location = new System.Drawing.Point(12, 29);
+            this.competitionsBox.Margin = new System.Windows.Forms.Padding(2);
+            this.competitionsBox.Name = "competitionsBox";
+            this.competitionsBox.Size = new System.Drawing.Size(192, 550);
+            this.competitionsBox.TabIndex = 0;
+            this.competitionsBox.SelectedIndexChanged += new System.EventHandler(this.competitionsBox_SelectedIndexChanged);
+            // 
+            // GroupBox11
+            // 
+            this.GroupBox11.Controls.Add(this.button2);
+            this.GroupBox11.Controls.Add(this.CheckBox78);
+            this.GroupBox11.Controls.Add(this.CheckBox79);
+            this.GroupBox11.Controls.Add(this.CheckBox80);
+            this.GroupBox11.Controls.Add(this.CheckBox81);
+            this.GroupBox11.Controls.Add(this.CheckBox74);
+            this.GroupBox11.Controls.Add(this.CheckBox75);
+            this.GroupBox11.Controls.Add(this.CheckBox76);
+            this.GroupBox11.Controls.Add(this.CheckBox77);
+            this.GroupBox11.Controls.Add(this.CheckBox70);
+            this.GroupBox11.Controls.Add(this.CheckBox71);
+            this.GroupBox11.Controls.Add(this.CheckBox72);
+            this.GroupBox11.Controls.Add(this.CheckBox73);
+            this.GroupBox11.Controls.Add(this.CheckBox69);
+            this.GroupBox11.Controls.Add(this.CheckBox66);
+            this.GroupBox11.Controls.Add(this.CheckBox68);
+            this.GroupBox11.Controls.Add(this.CheckBox67);
+            this.GroupBox11.Controls.Add(this.Label155);
+            this.GroupBox11.Controls.Add(this.UNK15_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label154);
+            this.GroupBox11.Controls.Add(this.UNK14_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label153);
+            this.GroupBox11.Controls.Add(this.UNK13_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.CheckBox63);
+            this.GroupBox11.Controls.Add(this.Label147);
+            this.GroupBox11.Controls.Add(this.CheckBox64);
+            this.GroupBox11.Controls.Add(this.CheckBox65);
+            this.GroupBox11.Controls.Add(this.UNK12_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.UNK11_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label148);
+            this.GroupBox11.Controls.Add(this.UNK10_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label149);
+            this.GroupBox11.Controls.Add(this.Label150);
+            this.GroupBox11.Controls.Add(this.UNK9_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.UNK8_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label151);
+            this.GroupBox11.Controls.Add(this.UNK7_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label152);
+            this.GroupBox11.Controls.Add(this.Label144);
+            this.GroupBox11.Controls.Add(this.UNK6_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.UNK5_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label145);
+            this.GroupBox11.Controls.Add(this.UNK4_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label146);
+            this.GroupBox11.Controls.Add(this.Label141);
+            this.GroupBox11.Controls.Add(this.UNK3_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.UNK2_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label142);
+            this.GroupBox11.Controls.Add(this.UNK1_COMP_REG_BOX);
+            this.GroupBox11.Controls.Add(this.Label143);
+            this.GroupBox11.Controls.Add(this.ListBox_comp_reg);
+            this.GroupBox11.Location = new System.Drawing.Point(338, 6);
+            this.GroupBox11.Margin = new System.Windows.Forms.Padding(2);
+            this.GroupBox11.Name = "GroupBox11";
+            this.GroupBox11.Padding = new System.Windows.Forms.Padding(2);
+            this.GroupBox11.Size = new System.Drawing.Size(418, 609);
+            this.GroupBox11.TabIndex = 4;
+            this.GroupBox11.TabStop = false;
+            this.GroupBox11.Text = "CompetitionRegulation.bin";
+            // 
+            // CheckBox78
+            // 
+            this.CheckBox78.AutoSize = true;
+            this.CheckBox78.Location = new System.Drawing.Point(4, 583);
+            this.CheckBox78.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox78.Name = "CheckBox78";
+            this.CheckBox78.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox78.TabIndex = 71;
+            this.CheckBox78.Text = "CheckBox78";
+            this.CheckBox78.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox79
+            // 
+            this.CheckBox79.AutoSize = true;
+            this.CheckBox79.Location = new System.Drawing.Point(94, 583);
+            this.CheckBox79.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox79.Name = "CheckBox79";
+            this.CheckBox79.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox79.TabIndex = 70;
+            this.CheckBox79.Text = "CheckBox79";
+            this.CheckBox79.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox80
+            // 
+            this.CheckBox80.AutoSize = true;
+            this.CheckBox80.Location = new System.Drawing.Point(190, 583);
+            this.CheckBox80.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox80.Name = "CheckBox80";
+            this.CheckBox80.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox80.TabIndex = 69;
+            this.CheckBox80.Text = "CheckBox80";
+            this.CheckBox80.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox81
+            // 
+            this.CheckBox81.AutoSize = true;
+            this.CheckBox81.Location = new System.Drawing.Point(285, 583);
+            this.CheckBox81.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox81.Name = "CheckBox81";
+            this.CheckBox81.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox81.TabIndex = 68;
+            this.CheckBox81.Text = "CheckBox81";
+            this.CheckBox81.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox74
+            // 
+            this.CheckBox74.AutoSize = true;
+            this.CheckBox74.Location = new System.Drawing.Point(4, 561);
+            this.CheckBox74.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox74.Name = "CheckBox74";
+            this.CheckBox74.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox74.TabIndex = 67;
+            this.CheckBox74.Text = "CheckBox74";
+            this.CheckBox74.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox75
+            // 
+            this.CheckBox75.AutoSize = true;
+            this.CheckBox75.Location = new System.Drawing.Point(94, 561);
+            this.CheckBox75.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox75.Name = "CheckBox75";
+            this.CheckBox75.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox75.TabIndex = 66;
+            this.CheckBox75.Text = "CheckBox75";
+            this.CheckBox75.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox76
+            // 
+            this.CheckBox76.AutoSize = true;
+            this.CheckBox76.Location = new System.Drawing.Point(190, 561);
+            this.CheckBox76.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox76.Name = "CheckBox76";
+            this.CheckBox76.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox76.TabIndex = 65;
+            this.CheckBox76.Text = "CheckBox76";
+            this.CheckBox76.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox77
+            // 
+            this.CheckBox77.AutoSize = true;
+            this.CheckBox77.Location = new System.Drawing.Point(285, 561);
+            this.CheckBox77.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox77.Name = "CheckBox77";
+            this.CheckBox77.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox77.TabIndex = 64;
+            this.CheckBox77.Text = "CheckBox77";
+            this.CheckBox77.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox70
+            // 
+            this.CheckBox70.AutoSize = true;
+            this.CheckBox70.Location = new System.Drawing.Point(4, 540);
+            this.CheckBox70.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox70.Name = "CheckBox70";
+            this.CheckBox70.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox70.TabIndex = 63;
+            this.CheckBox70.Text = "CheckBox70";
+            this.CheckBox70.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox71
+            // 
+            this.CheckBox71.AutoSize = true;
+            this.CheckBox71.Location = new System.Drawing.Point(94, 540);
+            this.CheckBox71.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox71.Name = "CheckBox71";
+            this.CheckBox71.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox71.TabIndex = 62;
+            this.CheckBox71.Text = "CheckBox71";
+            this.CheckBox71.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox72
+            // 
+            this.CheckBox72.AutoSize = true;
+            this.CheckBox72.Location = new System.Drawing.Point(190, 540);
+            this.CheckBox72.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox72.Name = "CheckBox72";
+            this.CheckBox72.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox72.TabIndex = 61;
+            this.CheckBox72.Text = "CheckBox72";
+            this.CheckBox72.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox73
+            // 
+            this.CheckBox73.AutoSize = true;
+            this.CheckBox73.Location = new System.Drawing.Point(285, 540);
+            this.CheckBox73.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox73.Name = "CheckBox73";
+            this.CheckBox73.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox73.TabIndex = 60;
+            this.CheckBox73.Text = "CheckBox73";
+            this.CheckBox73.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox69
+            // 
+            this.CheckBox69.AutoSize = true;
+            this.CheckBox69.Location = new System.Drawing.Point(285, 518);
+            this.CheckBox69.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox69.Name = "CheckBox69";
+            this.CheckBox69.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox69.TabIndex = 59;
+            this.CheckBox69.Text = "CheckBox69";
+            this.CheckBox69.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox66
+            // 
+            this.CheckBox66.AutoSize = true;
+            this.CheckBox66.Location = new System.Drawing.Point(4, 518);
+            this.CheckBox66.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox66.Name = "CheckBox66";
+            this.CheckBox66.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox66.TabIndex = 58;
+            this.CheckBox66.Text = "CheckBox66";
+            this.CheckBox66.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox68
+            // 
+            this.CheckBox68.AutoSize = true;
+            this.CheckBox68.Location = new System.Drawing.Point(190, 518);
+            this.CheckBox68.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox68.Name = "CheckBox68";
+            this.CheckBox68.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox68.TabIndex = 57;
+            this.CheckBox68.Text = "CheckBox68";
+            this.CheckBox68.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox67
+            // 
+            this.CheckBox67.AutoSize = true;
+            this.CheckBox67.Location = new System.Drawing.Point(94, 518);
+            this.CheckBox67.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox67.Name = "CheckBox67";
+            this.CheckBox67.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox67.TabIndex = 56;
+            this.CheckBox67.Text = "CheckBox67";
+            this.CheckBox67.UseVisualStyleBackColor = true;
+            // 
+            // Label155
+            // 
+            this.Label155.AutoSize = true;
+            this.Label155.Location = new System.Drawing.Point(327, 486);
+            this.Label155.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label155.Name = "Label155";
+            this.Label155.Size = new System.Drawing.Size(19, 13);
+            this.Label155.TabIndex = 53;
+            this.Label155.Text = "15";
+            // 
+            // UNK15_COMP_REG_BOX
+            // 
+            this.UNK15_COMP_REG_BOX.Location = new System.Drawing.Point(285, 484);
+            this.UNK15_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK15_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK15_COMP_REG_BOX.Name = "UNK15_COMP_REG_BOX";
+            this.UNK15_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK15_COMP_REG_BOX.TabIndex = 52;
+            // 
+            // Label154
+            // 
+            this.Label154.AutoSize = true;
+            this.Label154.Location = new System.Drawing.Point(327, 463);
+            this.Label154.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label154.Name = "Label154";
+            this.Label154.Size = new System.Drawing.Size(81, 13);
+            this.Label154.TabIndex = 51;
+            this.Label154.Text = "Cards Collected";
+            // 
+            // UNK14_COMP_REG_BOX
+            // 
+            this.UNK14_COMP_REG_BOX.Location = new System.Drawing.Point(285, 462);
+            this.UNK14_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK14_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
+            this.UNK14_COMP_REG_BOX.Name = "UNK14_COMP_REG_BOX";
+            this.UNK14_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK14_COMP_REG_BOX.TabIndex = 50;
+            // 
+            // Label153
+            // 
+            this.Label153.AutoSize = true;
+            this.Label153.Location = new System.Drawing.Point(327, 440);
+            this.Label153.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label153.Name = "Label153";
+            this.Label153.Size = new System.Drawing.Size(19, 13);
+            this.Label153.TabIndex = 49;
+            this.Label153.Text = "13";
+            // 
+            // UNK13_COMP_REG_BOX
+            // 
+            this.UNK13_COMP_REG_BOX.Location = new System.Drawing.Point(285, 439);
+            this.UNK13_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK13_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK13_COMP_REG_BOX.Name = "UNK13_COMP_REG_BOX";
+            this.UNK13_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK13_COMP_REG_BOX.TabIndex = 48;
+            // 
+            // CheckBox63
+            // 
+            this.CheckBox63.AutoSize = true;
+            this.CheckBox63.Location = new System.Drawing.Point(283, 289);
+            this.CheckBox63.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox63.Name = "CheckBox63";
+            this.CheckBox63.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox63.TabIndex = 20;
+            this.CheckBox63.Text = "CheckBox63";
+            this.CheckBox63.UseVisualStyleBackColor = true;
+            // 
+            // Label147
+            // 
+            this.Label147.AutoSize = true;
+            this.Label147.Location = new System.Drawing.Point(327, 414);
+            this.Label147.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label147.Name = "Label147";
+            this.Label147.Size = new System.Drawing.Size(19, 13);
+            this.Label147.TabIndex = 47;
+            this.Label147.Text = "12";
+            // 
+            // CheckBox64
+            // 
+            this.CheckBox64.AutoSize = true;
+            this.CheckBox64.Location = new System.Drawing.Point(283, 333);
+            this.CheckBox64.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox64.Name = "CheckBox64";
+            this.CheckBox64.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox64.TabIndex = 19;
+            this.CheckBox64.Text = "CheckBox64";
+            this.CheckBox64.UseVisualStyleBackColor = true;
+            // 
+            // CheckBox65
+            // 
+            this.CheckBox65.AutoSize = true;
+            this.CheckBox65.Location = new System.Drawing.Point(283, 311);
+            this.CheckBox65.Margin = new System.Windows.Forms.Padding(2);
+            this.CheckBox65.Name = "CheckBox65";
+            this.CheckBox65.Size = new System.Drawing.Size(87, 17);
+            this.CheckBox65.TabIndex = 18;
+            this.CheckBox65.Text = "CheckBox65";
+            this.CheckBox65.UseVisualStyleBackColor = true;
+            // 
+            // UNK12_COMP_REG_BOX
+            // 
+            this.UNK12_COMP_REG_BOX.Location = new System.Drawing.Point(285, 413);
+            this.UNK12_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK12_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK12_COMP_REG_BOX.Name = "UNK12_COMP_REG_BOX";
+            this.UNK12_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK12_COMP_REG_BOX.TabIndex = 46;
+            // 
+            // UNK11_COMP_REG_BOX
+            // 
+            this.UNK11_COMP_REG_BOX.Location = new System.Drawing.Point(283, 265);
+            this.UNK11_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK11_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK11_COMP_REG_BOX.Name = "UNK11_COMP_REG_BOX";
+            this.UNK11_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK11_COMP_REG_BOX.TabIndex = 43;
+            // 
+            // Label148
+            // 
+            this.Label148.AutoSize = true;
+            this.Label148.Location = new System.Drawing.Point(325, 266);
+            this.Label148.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label148.Name = "Label148";
+            this.Label148.Size = new System.Drawing.Size(62, 13);
+            this.Label148.TabIndex = 45;
+            this.Label148.Text = "Max Teams";
+            // 
+            // UNK10_COMP_REG_BOX
+            // 
+            this.UNK10_COMP_REG_BOX.Location = new System.Drawing.Point(283, 242);
+            this.UNK10_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK10_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK10_COMP_REG_BOX.Name = "UNK10_COMP_REG_BOX";
+            this.UNK10_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK10_COMP_REG_BOX.TabIndex = 42;
+            // 
+            // Label149
+            // 
+            this.Label149.AutoSize = true;
+            this.Label149.Location = new System.Drawing.Point(325, 244);
+            this.Label149.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label149.Name = "Label149";
+            this.Label149.Size = new System.Drawing.Size(19, 13);
+            this.Label149.TabIndex = 44;
+            this.Label149.Text = "10";
+            // 
+            // Label150
+            // 
+            this.Label150.AutoSize = true;
+            this.Label150.Location = new System.Drawing.Point(325, 221);
+            this.Label150.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label150.Name = "Label150";
+            this.Label150.Size = new System.Drawing.Size(13, 13);
+            this.Label150.TabIndex = 41;
+            this.Label150.Text = "9";
+            // 
+            // UNK9_COMP_REG_BOX
+            // 
+            this.UNK9_COMP_REG_BOX.Location = new System.Drawing.Point(283, 219);
+            this.UNK9_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK9_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK9_COMP_REG_BOX.Name = "UNK9_COMP_REG_BOX";
+            this.UNK9_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK9_COMP_REG_BOX.TabIndex = 40;
+            // 
+            // UNK8_COMP_REG_BOX
+            // 
+            this.UNK8_COMP_REG_BOX.Location = new System.Drawing.Point(283, 197);
+            this.UNK8_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK8_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK8_COMP_REG_BOX.Name = "UNK8_COMP_REG_BOX";
+            this.UNK8_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK8_COMP_REG_BOX.TabIndex = 37;
+            // 
+            // Label151
+            // 
+            this.Label151.AutoSize = true;
+            this.Label151.Location = new System.Drawing.Point(325, 198);
+            this.Label151.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label151.Name = "Label151";
+            this.Label151.Size = new System.Drawing.Size(13, 13);
+            this.Label151.TabIndex = 39;
+            this.Label151.Text = "8";
+            // 
+            // UNK7_COMP_REG_BOX
+            // 
+            this.UNK7_COMP_REG_BOX.Location = new System.Drawing.Point(283, 174);
+            this.UNK7_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK7_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK7_COMP_REG_BOX.Name = "UNK7_COMP_REG_BOX";
+            this.UNK7_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK7_COMP_REG_BOX.TabIndex = 36;
+            // 
+            // Label152
+            // 
+            this.Label152.AutoSize = true;
+            this.Label152.Location = new System.Drawing.Point(325, 176);
+            this.Label152.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label152.Name = "Label152";
+            this.Label152.Size = new System.Drawing.Size(13, 13);
+            this.Label152.TabIndex = 38;
+            this.Label152.Text = "7";
+            // 
+            // Label144
+            // 
+            this.Label144.AutoSize = true;
+            this.Label144.Location = new System.Drawing.Point(325, 153);
+            this.Label144.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label144.Name = "Label144";
+            this.Label144.Size = new System.Drawing.Size(90, 13);
+            this.Label144.TabIndex = 35;
+            this.Label144.Text = "Standings ranked";
+            // 
+            // UNK6_COMP_REG_BOX
+            // 
+            this.UNK6_COMP_REG_BOX.Location = new System.Drawing.Point(283, 151);
+            this.UNK6_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK6_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.UNK6_COMP_REG_BOX.Name = "UNK6_COMP_REG_BOX";
+            this.UNK6_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK6_COMP_REG_BOX.TabIndex = 34;
+            // 
+            // UNK5_COMP_REG_BOX
+            // 
+            this.UNK5_COMP_REG_BOX.Location = new System.Drawing.Point(283, 128);
+            this.UNK5_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK5_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK5_COMP_REG_BOX.Name = "UNK5_COMP_REG_BOX";
+            this.UNK5_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK5_COMP_REG_BOX.TabIndex = 31;
+            // 
+            // Label145
+            // 
+            this.Label145.AutoSize = true;
+            this.Label145.Location = new System.Drawing.Point(325, 130);
+            this.Label145.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label145.Name = "Label145";
+            this.Label145.Size = new System.Drawing.Size(18, 13);
+            this.Label145.TabIndex = 33;
+            this.Label145.Text = "ID";
+            // 
+            // UNK4_COMP_REG_BOX
+            // 
+            this.UNK4_COMP_REG_BOX.Location = new System.Drawing.Point(283, 106);
+            this.UNK4_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK4_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK4_COMP_REG_BOX.Name = "UNK4_COMP_REG_BOX";
+            this.UNK4_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK4_COMP_REG_BOX.TabIndex = 30;
+            // 
+            // Label146
+            // 
+            this.Label146.AutoSize = true;
+            this.Label146.Location = new System.Drawing.Point(325, 107);
+            this.Label146.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label146.Name = "Label146";
+            this.Label146.Size = new System.Drawing.Size(13, 13);
+            this.Label146.TabIndex = 32;
+            this.Label146.Text = "4";
+            // 
+            // Label141
+            // 
+            this.Label141.AutoSize = true;
+            this.Label141.Location = new System.Drawing.Point(325, 84);
+            this.Label141.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label141.Name = "Label141";
+            this.Label141.Size = new System.Drawing.Size(13, 13);
+            this.Label141.TabIndex = 29;
+            this.Label141.Text = "3";
+            // 
+            // UNK3_COMP_REG_BOX
+            // 
+            this.UNK3_COMP_REG_BOX.Location = new System.Drawing.Point(283, 83);
+            this.UNK3_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK3_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK3_COMP_REG_BOX.Name = "UNK3_COMP_REG_BOX";
+            this.UNK3_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK3_COMP_REG_BOX.TabIndex = 28;
+            // 
+            // UNK2_COMP_REG_BOX
+            // 
+            this.UNK2_COMP_REG_BOX.Location = new System.Drawing.Point(283, 60);
+            this.UNK2_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK2_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK2_COMP_REG_BOX.Name = "UNK2_COMP_REG_BOX";
+            this.UNK2_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK2_COMP_REG_BOX.TabIndex = 25;
+            // 
+            // Label142
+            // 
+            this.Label142.AutoSize = true;
+            this.Label142.Location = new System.Drawing.Point(325, 62);
+            this.Label142.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label142.Name = "Label142";
+            this.Label142.Size = new System.Drawing.Size(13, 13);
+            this.Label142.TabIndex = 27;
+            this.Label142.Text = "2";
+            // 
+            // UNK1_COMP_REG_BOX
+            // 
+            this.UNK1_COMP_REG_BOX.Location = new System.Drawing.Point(283, 37);
+            this.UNK1_COMP_REG_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK1_COMP_REG_BOX.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+            this.UNK1_COMP_REG_BOX.Name = "UNK1_COMP_REG_BOX";
+            this.UNK1_COMP_REG_BOX.Size = new System.Drawing.Size(38, 20);
+            this.UNK1_COMP_REG_BOX.TabIndex = 24;
+            // 
+            // Label143
+            // 
+            this.Label143.AutoSize = true;
+            this.Label143.Location = new System.Drawing.Point(325, 39);
+            this.Label143.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.Label143.Name = "Label143";
+            this.Label143.Size = new System.Drawing.Size(13, 13);
+            this.Label143.TabIndex = 26;
+            this.Label143.Text = "1";
+            // 
+            // ListBox_comp_reg
+            // 
+            this.ListBox_comp_reg.FormattingEnabled = true;
+            this.ListBox_comp_reg.Location = new System.Drawing.Point(13, 29);
+            this.ListBox_comp_reg.Margin = new System.Windows.Forms.Padding(2);
+            this.ListBox_comp_reg.Name = "ListBox_comp_reg";
+            this.ListBox_comp_reg.Size = new System.Drawing.Size(266, 485);
+            this.ListBox_comp_reg.TabIndex = 19;
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button2.FlatAppearance.BorderSize = 0;
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.Location = new System.Drawing.Point(283, 367);
+            this.button2.Margin = new System.Windows.Forms.Padding(0);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(86, 29);
+            this.button2.TabIndex = 136;
+            this.button2.Text = "Apply";
+            this.button2.UseVisualStyleBackColor = false;
+            // 
+            // label119
+            // 
+            this.label119.AutoSize = true;
+            this.label119.Location = new System.Drawing.Point(6, 9);
+            this.label119.Name = "label119";
+            this.label119.Size = new System.Drawing.Size(217, 13);
+            this.label119.TabIndex = 7;
+            this.label119.Text = "Click Tools and Load Football Manager stats";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -5154,7 +6334,13 @@
             this.groupBox16.ResumeLayout(false);
             this.groupBox16.PerformLayout();
             this.Competitions.ResumeLayout(false);
-            this.Competitions.PerformLayout();
+            this.competitionStudy.ResumeLayout(false);
+            this.GroupBox10.ResumeLayout(false);
+            this.GroupBox10.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.NumericUpDown19)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK3_KIND_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK2_KIND_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK1_KIND_BOX)).EndInit();
             this.Derby.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
@@ -5189,6 +6375,8 @@
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.FmStats.ResumeLayout(false);
+            this.FmStats.PerformLayout();
             this.Database.ResumeLayout(false);
             this.Database.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -5197,6 +6385,30 @@
             this.Team_AMenuStrip2.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DataGridView1)).EndInit();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK_4_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK3_box)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK2_box)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK1_box)).EndInit();
+            this.GroupBox11.ResumeLayout(false);
+            this.GroupBox11.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK15_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK14_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK13_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK12_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK11_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK10_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK9_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK8_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK7_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK6_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK5_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK4_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK3_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK2_COMP_REG_BOX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.UNK1_COMP_REG_BOX)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -5408,8 +6620,6 @@
         private System.Windows.Forms.Label label76;
         private System.Windows.Forms.TextBox dbStadiumHome;
         private System.Windows.Forms.Label label77;
-        private System.Windows.Forms.Label label78;
-        private System.Windows.Forms.ComboBox dbStadiumDlc;
         private System.Windows.Forms.CheckBox db15;
         private System.Windows.Forms.CheckBox db16;
         private System.Windows.Forms.CheckBox db14;
@@ -5430,8 +6640,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox stadiumName;
         private System.Windows.Forms.Label label85;
-        private System.Windows.Forms.TextBox stadiumOrder;
-        private System.Windows.Forms.Label label89;
         private System.Windows.Forms.TextBox stadiumId;
         private System.Windows.Forms.Label label90;
         private System.Windows.Forms.GroupBox groupBox9;
@@ -5492,7 +6700,6 @@
         private System.Windows.Forms.Label giocatoreWeight;
         private System.Windows.Forms.Label giocatoreFoot;
         private System.Windows.Forms.Label giocatoreType;
-        private System.Windows.Forms.Label label42;
         private System.Windows.Forms.TextBox stadiumJapanese;
         private System.Windows.Forms.Label label97;
         private System.Windows.Forms.TextBox stadiumNa;
@@ -5519,8 +6726,8 @@
         public System.Windows.Forms.ComboBox teamBox2;
         private System.Windows.Forms.Button searchT;
         private System.Windows.Forms.TextBox searchTeamAB;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button accept;
+        private System.Windows.Forms.Button pasteStadiumDb;
+        private System.Windows.Forms.Button copyFromDb;
         private System.Windows.Forms.TextBox dbStadiumJapanese;
         private System.Windows.Forms.Label label81;
         private System.Windows.Forms.TextBox dbStadiumKonami;
@@ -5619,7 +6826,7 @@
         private System.Windows.Forms.TabPage Derby;
         public System.Windows.Forms.ListView teamView1;
         public System.Windows.Forms.ListView teamView2;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button applyDerby;
         private System.Windows.Forms.Label label115;
         private System.Windows.Forms.Label label118;
         private System.Windows.Forms.ToolStripMenuItem addNewDerbyToolStripMenuItem;
@@ -5645,6 +6852,99 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column26;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column27;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column28;
+        private System.Windows.Forms.TabPage competitionStudy;
+        private System.Windows.Forms.TabPage stadiumsOrder;
+        public System.Windows.Forms.ListBox competitionEntryBox;
+        private System.Windows.Forms.GroupBox GroupBox10;
+        public System.Windows.Forms.ListBox competitionsKind;
+        private System.Windows.Forms.Button applyCompetitionKind;
+        private System.Windows.Forms.Label Label170;
+        private System.Windows.Forms.NumericUpDown NumericUpDown19;
+        private System.Windows.Forms.Label Label133;
+        private System.Windows.Forms.NumericUpDown UNK3_KIND_BOX;
+        private System.Windows.Forms.NumericUpDown UNK2_KIND_BOX;
+        private System.Windows.Forms.Label Label139;
+        private System.Windows.Forms.NumericUpDown UNK1_KIND_BOX;
+        private System.Windows.Forms.Label Label140;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button applyCompetition;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.NumericUpDown UNK_4_BOX;
+        private System.Windows.Forms.Label label78;
+        private System.Windows.Forms.Label label89;
+        private System.Windows.Forms.Label label104;
+        private System.Windows.Forms.CheckBox CheckBox62;
+        private System.Windows.Forms.NumericUpDown UNK3_box;
+        private System.Windows.Forms.NumericUpDown UNK2_box;
+        private System.Windows.Forms.NumericUpDown UNK1_box;
+        private System.Windows.Forms.CheckBox CheckBox61;
+        private System.Windows.Forms.CheckBox CheckBox60;
+        private System.Windows.Forms.CheckBox CheckBox59;
+        private System.Windows.Forms.CheckBox CheckBox58;
+        private System.Windows.Forms.CheckBox CheckBox57;
+        private System.Windows.Forms.CheckBox CheckBox56;
+        private System.Windows.Forms.CheckBox CheckBox55;
+        private System.Windows.Forms.CheckBox CheckBox54;
+        public System.Windows.Forms.ListBox competitionsBox;
+        internal System.Windows.Forms.DataGridView DataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Order;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Team_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Total_IndexIn_CEntry;
+        private System.Windows.Forms.DataGridViewButtonColumn Team_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column48;
+        internal System.Windows.Forms.GroupBox GroupBox11;
+        private System.Windows.Forms.Button button2;
+        internal System.Windows.Forms.CheckBox CheckBox78;
+        internal System.Windows.Forms.CheckBox CheckBox79;
+        internal System.Windows.Forms.CheckBox CheckBox80;
+        internal System.Windows.Forms.CheckBox CheckBox81;
+        internal System.Windows.Forms.CheckBox CheckBox74;
+        internal System.Windows.Forms.CheckBox CheckBox75;
+        internal System.Windows.Forms.CheckBox CheckBox76;
+        internal System.Windows.Forms.CheckBox CheckBox77;
+        internal System.Windows.Forms.CheckBox CheckBox70;
+        internal System.Windows.Forms.CheckBox CheckBox71;
+        internal System.Windows.Forms.CheckBox CheckBox72;
+        internal System.Windows.Forms.CheckBox CheckBox73;
+        internal System.Windows.Forms.CheckBox CheckBox69;
+        internal System.Windows.Forms.CheckBox CheckBox66;
+        internal System.Windows.Forms.CheckBox CheckBox68;
+        internal System.Windows.Forms.CheckBox CheckBox67;
+        internal System.Windows.Forms.Label Label155;
+        internal System.Windows.Forms.NumericUpDown UNK15_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label154;
+        internal System.Windows.Forms.NumericUpDown UNK14_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label153;
+        internal System.Windows.Forms.NumericUpDown UNK13_COMP_REG_BOX;
+        internal System.Windows.Forms.CheckBox CheckBox63;
+        internal System.Windows.Forms.Label Label147;
+        internal System.Windows.Forms.CheckBox CheckBox64;
+        internal System.Windows.Forms.CheckBox CheckBox65;
+        internal System.Windows.Forms.NumericUpDown UNK12_COMP_REG_BOX;
+        internal System.Windows.Forms.NumericUpDown UNK11_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label148;
+        internal System.Windows.Forms.NumericUpDown UNK10_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label149;
+        internal System.Windows.Forms.Label Label150;
+        internal System.Windows.Forms.NumericUpDown UNK9_COMP_REG_BOX;
+        internal System.Windows.Forms.NumericUpDown UNK8_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label151;
+        internal System.Windows.Forms.NumericUpDown UNK7_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label152;
+        internal System.Windows.Forms.Label Label144;
+        internal System.Windows.Forms.NumericUpDown UNK6_COMP_REG_BOX;
+        internal System.Windows.Forms.NumericUpDown UNK5_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label145;
+        internal System.Windows.Forms.NumericUpDown UNK4_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label146;
+        internal System.Windows.Forms.Label Label141;
+        internal System.Windows.Forms.NumericUpDown UNK3_COMP_REG_BOX;
+        internal System.Windows.Forms.NumericUpDown UNK2_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label142;
+        internal System.Windows.Forms.NumericUpDown UNK1_COMP_REG_BOX;
+        internal System.Windows.Forms.Label Label143;
+        internal System.Windows.Forms.ListBox ListBox_comp_reg;
+        private System.Windows.Forms.Label label119;
     }
 }
 

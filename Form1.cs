@@ -24,11 +24,13 @@ namespace DinoTem
         }
 
         private Controller controller;
+        private ControllerDB controllerDb;
         private const char chACapo = (char)13;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             controller = new Controller();
+            controllerDb = new ControllerDB();
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 
             //teams
@@ -61,6 +63,8 @@ namespace DinoTem
             stadiumZone.Items.Add("Africa");
             stadiumZone.Items.Add("North America");
             stadiumZone.Items.Add("Oceania America");
+            //Caricamento Database
+            databaseBox.Items.Add("Stadium");
         }
 
         private void sfondoTeamView()
@@ -406,7 +410,6 @@ namespace DinoTem
             //pulire campi
             stadiumName.Text = "";
             stadiumId.Text = "";
-            stadiumOrder.Text = "";
             stadiumJapanese.Text = "";
             stadiumCapacity.Text = "";
             stadiumNa.Text = "";
@@ -762,7 +765,37 @@ namespace DinoTem
                 teamsBox.Items[intselectedindex] = teamName.Text;
                 teamBox1.Items[intselectedindex] = teamName.Text;
                 teamBox2.Items[intselectedindex] = teamName.Text;
+                derbyTeam1.Items[intselectedindex] = teamName.Text;
+                derbyTeam2.Items[intselectedindex] = teamName.Text;
             }
+        }
+
+        //derby
+        private void DataGridView_derby_SelectionChanged(object sender, EventArgs e)
+        {
+            derbyTeam1.Text = DataGridView_derby.CurrentRow.Cells[1].Value.ToString();
+            derbyTeam2.Text = DataGridView_derby.CurrentRow.Cells[3].Value.ToString();
+            derbyKind.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[4].Value.ToString());
+            derbySlot.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[5].Value.ToString());
+            derbyOrder.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[6].Value.ToString());
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Derby derby = new Derby();
+            derby.setTeam1DerbyId(controller.leggiSquadra(derbyTeam1.SelectedIndex).getId());
+            derby.setTeam2DerbyId(controller.leggiSquadra(derbyTeam2.SelectedIndex).getId());
+            derby.setFragVal2((ushort)derbyKind.Value);
+            derby.setFragVal3((ushort)derbySlot.Value);
+            derby.setFragVal4((ushort)derbyOrder.Value);
+
+            controller.applyDerbyPersister(DataGridView_derby.CurrentRow.Index, derby);
+
+            DataGridView_derby.CurrentRow.Cells[1].Value = derbyTeam1.Text;
+            DataGridView_derby.CurrentRow.Cells[3].Value = derbyTeam2.Text;
+            DataGridView_derby.CurrentRow.Cells[4].Value = derbyKind.Value;
+            DataGridView_derby.CurrentRow.Cells[5].Value = derbySlot.Value;
+            DataGridView_derby.CurrentRow.Cells[6].Value = derbyOrder.Value;
         }
 
         //save
@@ -773,6 +806,13 @@ namespace DinoTem
             controller.saveBootPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
             controller.saveStadiumPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
             controller.saveCoachPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.savePlayerPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveTeamPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.savePlayerAssignmentPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveTacticsPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveTacticsFormationPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveBallConditionPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveDerbyPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
 
             MessageBox.Show("Saved Data", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             MessageBox.Show("All Files Saved at:" + Environment.NewLine + fbd.SelectedPath, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1405,14 +1445,267 @@ namespace DinoTem
             P.ShowDialog();
         }
 
-        //derby
-        private void DataGridView_derby_SelectionChanged(object sender, EventArgs e)
+        //database
+        private void databaseBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            derbyTeam1.Text = DataGridView_derby.CurrentRow.Cells[1].Value.ToString();
-            derbyTeam2.Text = DataGridView_derby.CurrentRow.Cells[3].Value.ToString();
-            derbyKind.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[4].Value.ToString());
-            derbySlot.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[5].Value.ToString());
-            derbyOrder.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[6].Value.ToString());
+            if (databaseBox.Text == "Stadium")
+                controllerDb.loadStadium(databaseView);
+        }
+
+        private void databaseView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (databaseView.SelectedIndices.Count <= 0)
+                return;
+            int intselectedindex = databaseView.SelectedIndices[0];
+            if (intselectedindex >= 0)
+                controllerDb.readStadium(db14, db15, db16, dbStadiumHome, dbStadiumRealName, dbIdStadium, dbStadiumName, dbStadiumJapanese, dbStadiumCapacity, dbStadiumKonami, dbStadiumLicensed, databaseView, intselectedindex);
+        }
+
+        //copy from database
+        private void copyFromDb_Click(object sender, EventArgs e)
+        {
+            if (databaseBox.Text == "Stadium")
+                controllerDb.setStadiumDatabase(dbStadiumName.Text);
+        }
+
+        //paste from database
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Stadium stadio = controllerDb.getStadiumDatabase();
+            if (stadio == null)
+                MessageBox.Show("Please select stadium from database tab", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
+            {
+                stadiumName.Text = stadio.getName();
+                stadiumId.Text = stadio.getId().ToString();
+                stadiumJapanese.Text = stadio.getJapaneseName();
+                stadiumCapacity.Text = stadio.getCapacity().ToString();
+                stadiumNa.Text = stadio.getNa().ToString();
+                stadiumZone.Text = stadio.getStringZone();
+                stadiumLicense.Text = stadio.getStringLicense();
+                stadiumCountry.SelectedIndex = controller.findCountry(stadio.getCountry());
+                stadiumKonami.Text = stadio.getKonamiName();
+            }
+        }
+
+        //upper, lower teams
+        private void globalFunctionTeam_Click(object sender, EventArgs e)
+        {
+            if (upperTeam.Checked == true)
+                controller.upperTeams();
+            else if (lowerTeam.Checked == true)
+                controller.lowerTeams();
+            else if (firstUpTeam.Checked == true)
+                controller.firstUpTeams();
+            MessageBox.Show("New teams names applied", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //upper, lower players
+        private void globalFunctionPlayer_Click(object sender, EventArgs e)
+        {
+            if (upperPlayer.Checked == true)
+                controller.upperPlayers();
+            else if (lowerPlayer.Checked == true)
+                controller.lowerPlayers();
+            else if (firstUpPlayer.Checked == true)
+                controller.firstUpPlayers();
+            MessageBox.Show("New players names applied", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //Competition
+        private void competitionsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (competitionsBox.SelectedIndices.Count <= 0)
+                return;
+
+            int intselectedindex = competitionsBox.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                Competition comp = controller.leggiCompetizione(intselectedindex);
+                if ((comp.getCheck54() == 1))
+                {
+                    CheckBox54.Checked = true;
+                }
+                else
+                {
+                    CheckBox54.Checked = false;
+                }
+
+                if ((comp.getCheck55() == 1))
+                {
+                    CheckBox55.Checked = true;
+                }
+                else
+                {
+                    CheckBox55.Checked = false;
+                }
+
+                if ((comp.getCheck56() == 1))
+                {
+                    CheckBox56.Checked = true;
+                }
+                else
+                {
+                    CheckBox56.Checked = false;
+                }
+
+                if ((comp.getCheck57() == 1))
+                {
+                    CheckBox57.Checked = true;
+                }
+                else
+                {
+                    CheckBox57.Checked = false;
+                }
+
+                if ((comp.getCheck58() == 1))
+                {
+                    CheckBox58.Checked = true;
+                }
+                else
+                {
+                    CheckBox58.Checked = false;
+                }
+
+                if ((comp.getCheck59() == 1))
+                {
+                    CheckBox59.Checked = true;
+                }
+                else
+                {
+                    CheckBox59.Checked = false;
+                }
+
+                if ((comp.getCheck60() == 1))
+                {
+                    CheckBox60.Checked = true;
+                }
+                else
+                {
+                    CheckBox60.Checked = false;
+                }
+
+                if ((comp.getLicensed() == 1))
+                {
+                    CheckBox61.Checked = true;
+                }
+                else
+                {
+                    CheckBox61.Checked = false;
+                }
+
+                if ((comp.getSecondDivision() == 1))
+                {
+                    CheckBox62.Checked = true;
+                }
+                else
+                {
+                    CheckBox62.Checked = false;
+                }
+
+                UNK1_box.Value = comp.getType();
+                switch (comp.getType())
+                {
+                    case 0:
+                        label104.Text = "Club Team";
+                        break;
+                    case 1:
+                        label104.Text = "National Team";
+                        break;
+                    case 2:
+                        label104.Text = "Fake Team";
+                        break;
+                    default:
+                        label104.Text = "Unknown";
+                        break;
+                }
+
+                UNK2_box.Value = comp.getId();
+                UNK3_box.Value = comp.getUnk3();
+                UNK_4_BOX.Value = comp.getZone();
+            }
+        }
+
+        private void applyCompetition_Click(object sender, EventArgs e)
+        {
+            int intselectedindex = competitionsBox.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                Competition competition = new Competition((uint) (UNK2_box.Value));
+                if (CheckBox54.Checked)
+                    competition.setCheck54(1);
+                else
+                    competition.setCheck54(0);
+                if (CheckBox55.Checked)
+                    competition.setCheck55(1);
+                else
+                    competition.setCheck55(0);
+                if (CheckBox56.Checked)
+                    competition.setCheck56(1);
+                else
+                    competition.setCheck56(0);
+                if (CheckBox57.Checked)
+                    competition.setCheck57(1);
+                else
+                    competition.setCheck57(0);
+                if (CheckBox58.Checked)
+                    competition.setCheck58(1);
+                else
+                    competition.setCheck58(0);
+                if (CheckBox59.Checked)
+                    competition.setCheck59(1);
+                else
+                    competition.setCheck59(0);
+                if (CheckBox60.Checked)
+                    competition.setCheck60(1);
+                else
+                    competition.setCheck60(0);
+                if (CheckBox61.Checked)
+                    competition.setLicensed(1);
+                else
+                    competition.setLicensed(0);
+                if (CheckBox62.Checked)
+                    competition.setSecondDivision(1);
+                else
+                    competition.setSecondDivision(0);
+                competition.setType((uint)(UNK1_box.Value));
+                competition.setUnk3((uint)(UNK3_box.Value));
+                competition.setZone((uint)(UNK_4_BOX.Value));
+
+                controller.applyCompetitionPersister(intselectedindex, competition);
+            }
+        }
+
+        //CompetitionKind
+        private void competitionsKind_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (competitionsKind.SelectedIndices.Count <= 0)
+                return;
+
+            int intselectedindex = competitionsKind.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                CompetitionKind comp = controller.leggiCompetizioneKind(intselectedindex);
+                NumericUpDown19.Value = comp.getOrder();
+                UNK1_KIND_BOX.Value = comp.getUnk1();
+                UNK2_KIND_BOX.Value = comp.getUnk2();
+                UNK3_KIND_BOX.Value = comp.getUnk3();
+            }
+        }
+
+        private void applyCompetitionKind_Click(object sender, EventArgs e)
+        {
+            int intselectedindex = competitionsKind.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                CompetitionKind competition = new CompetitionKind();
+                competition.setOrder((byte)NumericUpDown19.Value);
+                competition.setUnk1((byte)UNK1_KIND_BOX.Value);
+                competition.setUnk2((byte)UNK2_KIND_BOX.Value);
+                competition.setUnk3((byte)UNK3_KIND_BOX.Value);
+
+                controller.applyCompetitionKindPersister(intselectedindex, competition);
+            }
         }
     }
 }
