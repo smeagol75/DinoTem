@@ -64,6 +64,18 @@ namespace DinoTem.ui
         private MemoryStream unzlibCompetitionKind;
         private BinaryReader leggiCompetitionKind;
         private BinaryWriter scriviCompetitionKind;
+        private MemoryStream unzlibCompetitionRegulation;
+        private BinaryReader leggiCompetitionRegulation;
+        private BinaryWriter scriviCompetitionRegulation;
+        private MemoryStream unzlibStadiumOrder;
+        private BinaryReader leggiStadiumOrder;
+        private BinaryWriter scriviStadiumOrder;
+        private MemoryStream unzlibStadiumOrderInConfederation;
+        private BinaryReader leggiStadiumOrderInConfederation;
+        private BinaryWriter scriviStadiumOrderInConfederation;
+        private MemoryStream unzlibCompetitionEntry;
+        private BinaryReader leggiCompetitionEntry;
+        private BinaryWriter scriviCompetitionEntry;
 
         public void readBallPersister(string patch, int bitRecognized)
         {
@@ -245,7 +257,7 @@ namespace DinoTem.ui
             {
                 derbyReader.load(patch, bitRecognized, ref unzlibDerby, ref leggiDerby, ref scriviDerby);
 
-                for (int i = 0; i < Form1._Form1.DataGridView_derby.RowCount - 1; i++)
+                for (int i = 0; i < Form1._Form1.DataGridView_derby.RowCount; i++)
                 {
                     UInt32 id = uint.Parse(Form1._Form1.DataGridView_derby.Rows[i].Cells[0].Value.ToString());
                     int index = findTeam(id);
@@ -290,6 +302,82 @@ namespace DinoTem.ui
             try
             {
                 cReader.load(patch, bitRecognized, ref unzlibCompetitionKind, ref leggiCompetitionKind, ref scriviCompetitionKind);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readCompetitionRegulationPersister(string patch, int bitRecognized)
+        {
+            MyCompetitionRegulationPersister cReader = new MyCompetitionRegulationPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibCompetitionRegulation, ref leggiCompetitionRegulation, ref scriviCompetitionRegulation);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readStadiumOrderPersister(string patch, int bitRecognized)
+        {
+            MyStadiumOrderPersister cReader = new MyStadiumOrderPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibStadiumOrder, ref leggiStadiumOrder, ref scriviStadiumOrder);
+
+                for (int i = 0; i < Form1._Form1.DataGridView_stadium_order.RowCount; i++)
+                {
+                    UInt16 id = ushort.Parse(Form1._Form1.DataGridView_stadium_order.Rows[i].Cells[2].Value.ToString());
+                    int index = findStadium(id);
+                    if (index != Form1._Form1.stadiumsBox.Items.Count)
+                        Form1._Form1.DataGridView_stadium_order.Rows[i].Cells[0].Value = leggiStadium(index).getName();
+                    else
+                        Form1._Form1.DataGridView_stadium_order.Rows[i].Cells[0].Value = "No Stadium Found";
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readStadiumOrderInConfederationPersister(string patch, int bitRecognized)
+        {
+            MyStadiumOrderInConfederationPersister cReader = new MyStadiumOrderInConfederationPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibStadiumOrderInConfederation, ref leggiStadiumOrderInConfederation, ref scriviStadiumOrderInConfederation);
+
+                for (int i = 0; i < Form1._Form1.DataGridView_stadium_order_in_conf.RowCount; i++)
+                {
+                    UInt16 id = ushort.Parse(Form1._Form1.DataGridView_stadium_order_in_conf.Rows[i].Cells[2].Value.ToString());
+                    int index = findStadium(id);
+                    if (index != Form1._Form1.stadiumsBox.Items.Count)
+                        Form1._Form1.DataGridView_stadium_order_in_conf.Rows[i].Cells[0].Value = leggiStadium(index).getName();
+                    else
+                        Form1._Form1.DataGridView_stadium_order_in_conf.Rows[i].Cells[0].Value = "No Stadium Found";
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readCompetitionEntryPersister(string patch, int bitRecognized)
+        {
+            MyCompetitionEntryPersister cReader = new MyCompetitionEntryPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibCompetitionEntry, ref leggiCompetitionEntry, ref scriviCompetitionEntry);
             }
             catch (FileNotFoundException e)
             {
@@ -493,6 +581,34 @@ namespace DinoTem.ui
             }
         }
 
+        public void saveCompetitionRegulationPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCompetitionRegulationPersister cSave = new MyCompetitionRegulationPersister();
+
+            try
+            {
+                cSave.save(patch, ref unzlibCompetitionRegulation, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved CompetitionRegulation.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveCompetitionEntryPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCompetitionEntryPersister dSave = new MyCompetitionEntryPersister();
+
+            try
+            {
+                dSave.save(patch, ref unzlibCompetitionEntry, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved CompetitionEntry.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void applyBallPersister(int index, Ball pallone)
         {
             MyBallPersister ball = new MyBallPersister();
@@ -591,27 +707,27 @@ namespace DinoTem.ui
             }
         }
 
-        public void applyPlayerAssignmentPersister(int index, PlayerAssignment pa)
+        public void applyPlayerAssignmentPersister(List<PlayerAssignment> pa)
         {
             MyPlayerAssignmentPersister playerA = new MyPlayerAssignmentPersister();
 
             try
             {
-                playerA.applyPlayerA(index, unzlibPlayerAssign, pa, ref scriviPlayerAssign);
+                playerA.applyPlayerA(unzlibPlayerAssign, leggiPlayerAssign, pa, ref scriviPlayerAssign);
             }
             catch
             {
-                MessageBox.Show("Error apply transfer - id player: " + pa.getPlayerId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error apply transfer - id team: " + pa[0].getTeamId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public void applyTacticsPersister(int index, Tactics ta)
+        public void applyTacticsPersister(Tactics ta)
         {
             MyTacticsPersister playerA = new MyTacticsPersister();
 
             try
             {
-                playerA.applyTactics(index, unzlibPlayerAssign, ta, ref scriviPlayerAssign);
+                playerA.applyTactics(leggiTattiche ,unzlibTattiche, ta, ref scriviTattiche);
             }
             catch
             {
@@ -619,17 +735,17 @@ namespace DinoTem.ui
             }
         }
 
-        public void applyTacticsFormationPersister(int index, TacticsFormation tf)
+        public void applyTacticsFormationPersister(List<TacticsFormation> tf)
         {
             MyTacticsFormationPersister tacticF = new MyTacticsFormationPersister();
 
             try
             {
-                tacticF.applyTacticsFormation(index, unzlibTacticsFormation, tf, ref scriviTacticsFormation);
+                tacticF.applyTacticsFormation(unzlibTacticsFormation, leggiTacticsFormation, tf, ref scriviTacticsFormation);
             }
             catch
             {
-                MessageBox.Show("Error apply tactics formation - id tactic: " + tf.getTeamTacticId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error apply tactics formation - id tactic: " + tf[0].getTeamTacticId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -701,6 +817,34 @@ namespace DinoTem.ui
             }
         }
 
+        public void applyCompetitionRegulationPersister(int index, CompetitionRegulation c)
+        {
+            MyCompetitionRegulationPersister com = new MyCompetitionRegulationPersister();
+
+            try
+            {
+                com.applyCompetitionRegulation(index, unzlibCompetitionRegulation, c, ref scriviCompetitionRegulation);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply competition regulation", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyCompetitionEntryPersister(int index, CompetitionEntry c)
+        {
+            MyCompetitionEntryPersister com = new MyCompetitionEntryPersister();
+
+            try
+            {
+                com.applyCompetitionEntry(index, unzlibCompetitionEntry, c, ref scriviCompetitionEntry);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply competition entry", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void closeMemory()
         {
             if (getBitRecognized() != -1)
@@ -750,6 +894,18 @@ namespace DinoTem.ui
                 unzlibCompetitionKind.Close();
                 leggiCompetitionKind.Close();
                 scriviCompetitionKind.Close();
+                unzlibCompetitionRegulation.Close();
+                leggiCompetitionRegulation.Close();
+                scriviCompetitionRegulation.Close();
+                unzlibStadiumOrder.Close();
+                leggiStadiumOrder.Close();
+                scriviStadiumOrder.Close();
+                unzlibStadiumOrderInConfederation.Close();
+                leggiStadiumOrderInConfederation.Close();
+                scriviStadiumOrderInConfederation.Close();
+                unzlibCompetitionEntry.Close();
+                leggiCompetitionEntry.Close();
+                scriviCompetitionEntry.Close();
             }
         }
 
@@ -843,11 +999,35 @@ namespace DinoTem.ui
             byteFirst += reader13.ReadByte();
             reader13.Close();
 
-            if (byteFirst == 0 || byteFirst == 56)
+            byte[] file14 = File.ReadAllBytes(folder + @"\CompetitionRegulation.bin");
+            MemoryStream memory14 = new MemoryStream(file14);
+            BinaryReader reader14 = new BinaryReader(memory14);
+            byteFirst += reader14.ReadByte();
+            reader14.Close();
+
+            byte[] file15 = File.ReadAllBytes(folder + @"\StadiumOrder.bin");
+            MemoryStream memory15 = new MemoryStream(file15);
+            BinaryReader reader15 = new BinaryReader(memory15);
+            byteFirst += reader15.ReadByte();
+            reader15.Close();
+
+            byte[] file16 = File.ReadAllBytes(folder + @"\StadiumOrderInConfederation.bin");
+            MemoryStream memory16 = new MemoryStream(file16);
+            BinaryReader reader16 = new BinaryReader(memory16);
+            byteFirst += reader16.ReadByte();
+            reader16.Close();
+
+            byte[] file17 = File.ReadAllBytes(folder + @"\CompetitionEntry.bin");
+            MemoryStream memory17 = new MemoryStream(file17);
+            BinaryReader reader17 = new BinaryReader(memory17);
+            byteFirst += reader17.ReadByte();
+            reader17.Close();
+
+            if (byteFirst == 0 || byteFirst == 72)
                 return 0;
-            else if (byteFirst == 14)
+            else if (byteFirst == 18)
                 return 1;
-            else if (byteFirst == 28)
+            else if (byteFirst == 36)
                 return 2;
             else
             {
@@ -890,6 +1070,11 @@ namespace DinoTem.ui
             Form1._Form1.derbyTeam1.Items.Clear();
             Form1._Form1.derbyTeam2.Items.Clear();
             Form1._Form1.competitionsKind.Items.Clear();
+            Form1._Form1.ListBox_comp_reg.Items.Clear();
+            Form1._Form1.DataGridView_stadium_order.Rows.Clear();
+            Form1._Form1.DataGridView_stadium_order_in_conf.Rows.Clear();
+            Form1._Form1.DataGridView1.Rows.Clear();
+            Form1._Form1.competitionEntryBox.Items.Clear();
 
             readBallPersister(folder, bitRecognized);
             readGlovePersister(folder, bitRecognized);
@@ -906,6 +1091,10 @@ namespace DinoTem.ui
             readDerbyPersister(folder, bitRecognized);
             readCompetitionPersister(folder, bitRecognized);
             readCompetitionKindPersister(folder, bitRecognized);
+            readCompetitionRegulationPersister(folder, bitRecognized);
+            readStadiumOrderPersister(folder, bitRecognized);
+            readStadiumOrderInConfederationPersister(folder, bitRecognized);
+            readCompetitionEntryPersister(folder, bitRecognized);
 
             //readCountryPersister(folder, bitRecognized);
             //if (countryList.Count == 0)
@@ -998,6 +1187,9 @@ namespace DinoTem.ui
             Form1._Form1.teamBox2.SelectedIndex = 0;
             Form1._Form1.competitionsKind.SelectedIndex = 0;
             Form1._Form1.competitionsBox.SelectedIndex = 0;
+            Form1._Form1.ListBox_comp_reg.SelectedIndex = 0;
+            Form1._Form1.competitionsBox.SelectedIndex = 0;
+            Form1._Form1.competitionEntryBox.SelectedIndex = 0;
         }
 
         public int getBitRecognized()
@@ -1039,6 +1231,10 @@ namespace DinoTem.ui
 
         public Country leggiPaese(int index)
         {
+            Country temp = new Country(0);
+            if (index == Form1._Form1.stadiumCountry.Items.Count)
+                return temp;
+
             MyCountryPersister countryReader = new MyCountryPersister();
             Country paese = countryReader.loadCountry(index, leggiPaesi);
 
@@ -1070,6 +1266,10 @@ namespace DinoTem.ui
 
         public Team leggiSquadra(int index)
         {
+            Club temp = new Club(0);
+            if (index == Form1._Form1.teamBox1.Items.Count)
+                return temp;
+
             MyTeamPersister teamReader = new MyTeamPersister();
             Team squadra = teamReader.loadTeam(index, leggiSquadre);
 
@@ -1159,6 +1359,20 @@ namespace DinoTem.ui
             return c;
         }
 
+        public CompetitionRegulation leggiCompetizioneRegulation(int index)
+        {
+            MyCompetitionRegulationPersister reader = new MyCompetitionRegulationPersister();
+            CompetitionRegulation c = reader.loadCompetitionRegulation(index, unzlibCompetitionRegulation, leggiCompetitionRegulation);
+
+            return c;
+        }
+
+        public void leggiCompetizioneEntry(UInt32 compId)
+        {
+            MyCompetitionEntryPersister reader = new MyCompetitionEntryPersister();
+            reader.loadCompetitionEntry(compId, unzlibCompetitionEntry, leggiCompetitionEntry);
+        }
+
         public int findCountry(UInt32 idCountry)
         {
             int index = -1;
@@ -1176,15 +1390,33 @@ namespace DinoTem.ui
             return index;
         }
 
+        public int findCountryFm(string name)
+        {
+            int index = -1;
+            for (int i = 0; i < Form1._Form1.nationalityBox.Items.Count - 1; i++)
+            {
+                if (name == Form1._Form1.nationalityBox.Items[i].ToString())
+                    return i;
+            }
+
+            return index;
+        }
+
         public int findStadium(UInt32 idStadium)
         {
+            int index = -1;
             for (int i = 0; i < Form1._Form1.teamStadium.Items.Count - 1; i++)
             {
                 Stadium c = leggiStadium(i);
                 if (c.getId() == (UInt16)idStadium)
                     return i;
             }
-            return 0;
+
+            //for "no stadium" 
+            if (index == -1)
+                index = Form1._Form1.stadiumsBox.Items.Count;
+
+            return index;
         }
 
         public int findCoach(UInt32 idCoach)
@@ -1228,6 +1460,24 @@ namespace DinoTem.ui
             return 0;
         }
 
+        public void findCompetition(int selectedIndex)
+        {
+            Form1._Form1.DataGridView1.Rows.Clear();
+
+            CompetitionRegulation r = leggiCompetizioneRegulation(selectedIndex);
+            leggiCompetizioneEntry(r.getUNK5());
+
+            for (int i = 0; i < Form1._Form1.DataGridView1.Rows.Count; i++)
+            {
+                int index = findTeam((uint)(Form1._Form1.DataGridView1.Rows[i].Cells[3].Value));
+                if (index != Form1._Form1.teamsBox.Items.Count)
+                    Form1._Form1.DataGridView1.Rows[i].Cells[1].Value = leggiSquadra(index).getEnglish();
+                else
+                    Form1._Form1.DataGridView1.Rows[i].Cells[1].Value = "No Team Found";
+            }
+
+        }
+
         public void UpdateTeamView(UInt32 idPlayer, string name)
         {
             for (int i = 0; i < Form1._Form1.teamView1.Items.Count; i++)
@@ -1247,6 +1497,36 @@ namespace DinoTem.ui
                     Form1._Form1.teamView2.Items[i].SubItems[2].Text = name;
                 }
             }
+        }
+
+        public void UpdateForm()
+        {
+            ComboBox t1 = Form1._Form1.teamBox1;
+            ComboBox t2 = Form1._Form1.teamBox2;
+            t1.SelectedIndex = t1.SelectedIndex;
+            t2.SelectedIndex = t2.SelectedIndex;
+
+            /*try
+            {
+                t1.SelectedIndex = t1.SelectedIndex + 1;
+                t1.SelectedIndex = t1.SelectedIndex - 1;
+            }
+            catch
+            {
+                t1.SelectedIndex = t1.SelectedIndex - 1;
+                t1.SelectedIndex = t1.SelectedIndex + 1;
+            };*/
+
+            /*try
+            {
+                t2.SelectedIndex = t2.SelectedIndex + 1;
+                t2.SelectedIndex = t2.SelectedIndex - 1;
+            }
+            catch
+            {
+                t2.SelectedIndex = t2.SelectedIndex - 1;
+                t2.SelectedIndex = t2.SelectedIndex + 1;
+            };*/
         }
 
         public void UpdateFormPlayer(int index, string name)
@@ -1528,268 +1808,6 @@ namespace DinoTem.ui
             }
         }
 
-        private List<Ball> ballList = new List<Ball>();
-        private List<PlayerAppearance> playerAppearanceList = new List<PlayerAppearance>();
-        private List<PlayerAssignment> playerAssignmentList = new List<PlayerAssignment>();
-        private List<TacticsFormation> tacticsFormationList = new List<TacticsFormation>();
-        private List<Tactics> tacticsList = new List<Tactics>();
-        private List<Team> teamList = new List<Team>();
-
-        //form1
-        //player
-        //team
-        //Formazione form
-        //Giocatore form
-        //transferPlayer Drag&Drop
-        //remove fake team
-        //fm form
-        public void readPlayerAppearancePersister(string patch, int bitRecognized)
-        {
-            MyPlayerAppearancePersister playerAppearanceReader = new MyPlayerAppearancePersister();
-
-            try
-            {
-                playerAppearanceList = playerAppearanceReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void savePlayerAppearancePersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyPlayerAppearancePersister playerAppearanceSave = new MyPlayerAppearancePersister();
-
-            try
-            {
-                playerAppearanceSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved PlayerAppearance.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public List<Team> getListTeam()
-        {
-            return teamList;
-        }
-
-        public List<Ball> getListBall()
-        {
-            return ballList;
-        }
-
-        public List<PlayerAssignment> getPlayerAssignmentList()
-        {
-            return playerAssignmentList;
-        }
-
-        public List<PlayerAppearance> getPlayerAppearanceList()
-        {
-            return playerAppearanceList;
-        }
-
-        public List<TacticsFormation> getTacticsFormationList()
-        {
-            return tacticsFormationList;
-        }
-
-        public List<Tactics> getTacticsList()
-        {
-            return tacticsList;
-        }
-
-        public List<PlayerAssignment> getPlayersTeam(int idTeam)
-        {
-            List<PlayerAssignment> result = new List<PlayerAssignment>();
-            foreach (PlayerAssignment playerA in playerAssignmentList)
-            {
-                if (idTeam == playerA.getTeamId())
-                    result.Add(playerA);
-            }
-            return result;
-        }
-
-        public Player getPlayerById(int positionList)
-        {
-            int k = 0;
-            //foreach (Player player in playerList)
-            //{
-                //if (k == positionList)
-                    //return player;
-                //k++;
-            //}
-            return null;
-        }
-
-        /*public Player getPlayerById(int positionInTeam, int team)
-        {
-            foreach (PlayerAssignment playerA in playerAssignmentList)
-            {
-                if (playerA.getTeamId() == team)
-                    if (playerA.getOrder() == positionInTeam)
-                        return getPlayerById(playerA.getPlayerId());
-            }
-            return null;
-        }*/
-
-        public Team getTeamById(int positionList)
-        {
-            int k = 0;
-            foreach (Team team in teamList)
-            {
-                if (k == positionList)
-                    return team;
-                k++;
-            }
-            return null;
-        }
-
-        public Team getTeamById2(int teamId) {
-            foreach (Team temp in teamList)
-            {
-			    if (teamId == temp.getId())
-                    return temp;
-		    }
-		    return null;
-	    }
-
-        public void changePlayerNumber(long idPlayer, int idTeam, int shirtNumber)
-        {
-            foreach (PlayerAssignment temp in playerAssignmentList)
-            {
-                //if (idPlayer == temp.getPlayerId() && idTeam == temp.getTeamId())
-                    //temp.setShirtNumber(shirtNumber);
-            }
-        }
-
-        /*public void updatePlayerList(ListView l1)
-        {
-            l1.Items.Clear();
-            foreach (Player x in getListPlayer())
-            {
-                l1.Items.Add(x.ToString());
-            }
-            l1.Items[0].Selected = true;
-            l1.Select();
-        }*/
-
-        public void UpdateBallList(ListBox l1)
-        {
-            l1.Items.Clear();
-            foreach (Ball x in getListBall())
-            {
-                l1.Items.Add(x);
-            }
-            l1.SelectedIndex = 0;
-        }
-
-        /*public string getStringClubTeamOfPlayer(long idPlayer, int type) {
-
-            //club = 0; national = 1;
-
-            List<int> b = new List<int>();
-            foreach (PlayerAssignment temp in playerAssignmentList)
-            {
-                if (idPlayer == temp.getPlayerId())
-                    b.Add(temp.getTeamId());
-            }
-
-            string finale = "";
-            if (type == 0)
-            {
-                foreach (int i in b)
-                {
-                    foreach (Team temp in teamList)
-                    {
-                        if (i == temp.getId() && !temp.getNational())
-                            return temp.getEnglish();
-                    }
-                }
-            }
-            else if (type == 1)
-            {
-                foreach (int i in b)
-                {
-                    foreach (Team temp in teamList)
-                    {
-                        if (i == temp.getId() && temp.getNational())
-                            finale += temp.getEnglish() + "+";
-                    }
-
-                }
-
-                if (finale.EndsWith("+"))
-                {
-                    finale = finale.Substring(0, finale.LastIndexOf("+"));
-                }
-            }
-		
-		    return finale;
-        }
-        */
-        public List<int> getNumberFormation(int idTeam) {
-		    List<int> result = new List<int>();
-
-            foreach (Tactics tactics in tacticsList)
-            {
-                if (idTeam == tactics.getTeamId())
-                    result.Add(tactics.getTacticsId());  
-		    }
-
-		    return result;
-	    }
-
-        public List<TacticsFormation> getPositionTeam(int tattica)
-        {
-            List<TacticsFormation> result = new List<TacticsFormation>();
-
-            foreach (TacticsFormation temp in tacticsFormationList)
-            {
-			    if (tattica == temp.getTeamTacticId())
-				    result.Add(temp);
-		    }
-            
-		    return result;
-	    }
-
-        public Ball getBallById(int positionList)
-        {
-            int k = 0;
-            foreach (Ball ball in ballList)
-            {
-                if (k == positionList)
-                    return ball;
-                k++;
-            }
-            return null;
-        }
-
-        public Ball getBallById2(int idBall)
-        {
-            foreach (Ball ball in ballList)
-            {
-                if (idBall == ball.getId())
-                    return ball;
-            }
-            return null;
-        }
-
-        //Player
-        /*public void changeNationalPlayer(Player temp, Country country)
-        {
-            temp.setNational(country.getId());
-        }
-
-        public void changeSecondNationalPlayer(Player temp, Country country)
-        {
-            temp.setNational2(country.getId());
-        }*/
-
         //Formazione form
         public void numeriMagliaPitch(ListView list, Button player1, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11)
         {
@@ -1806,13 +1824,14 @@ namespace DinoTem.ui
             player11.Text = list.Items[10].SubItems[5].Text;
         }
 
-        public void schemiPitch(int formationNumber, string nomeSchema, int typeSchema, Button player1, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11)
+        public void schemiPitch(ushort formationNumber, string nomeSchema, int typeSchema, Button player1, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11)
         {
             //typeSchema CUSTOM = 0, OFFENSIVE = 1, DEFENSIVE = 2;
             int k = 0;
-            foreach (TacticsFormation temp in getPositionTeam(formationNumber))
+            foreach (TacticsFormation temp in leggiFormazione(formationNumber))
             {
-                if (nomeSchema == "Default") {
+                if (nomeSchema == "Default")
+                {
                     if (typeSchema == 0)
                         schemaDefault(temp.getX(), temp.getY(), k, player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11);
                     else if (typeSchema == 1)
@@ -2111,96 +2130,104 @@ namespace DinoTem.ui
                 player11.Location = new System.Drawing.Point(115, 26);
         }
 
-        /*
-        public void changeFormation(int formation, int i, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11,
+        public void changeFormation(ushort formation, int i, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11,
             Button player13, Button player14, Button player15, Button player16, Button player17, Button player18, Button player19, Button player20, Button player21, Button player22,
-            Button player24, Button player25, Button player26, Button player27, Button player28, Button player29, Button player30, Button player31, Button player32, Button player33)
+            Button player24, Button player25, Button player26, Button player27, Button player28, Button player29, Button player30, Button player31, Button player32, Button player33, ListView teamView1)
         {
             //int i = 0 (CUSTOM), 1 (OFFENSIVE), 2 (DEFENSIVE)
             //CUSTOM
             int aa = -1;
-            foreach (TacticsFormation x in tacticsFormationList)
+            List<TacticsFormation> tacticsFormation = leggiFormazione(formation);
+            foreach (TacticsFormation x in tacticsFormation)
             {
-                if (x.getTeamTacticId() == formation)
-                {
-                    aa = aa + 1;
+                    aa += 1;
                     if (aa == 1 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player2.Location.X - 1) / 3;
-                        int Y2 = (413 - player2.Location.Y) / 9;
+                        byte X2 = (byte) ((player2.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player2.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 2 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player3.Location.X - 1) / 3;
-                        int Y2 = (413 - player3.Location.Y) / 9;
+                        byte X2 = (byte) ((player3.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player3.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 3 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player4.Location.X - 1) / 3;
-                        int Y2 = (413 - player4.Location.Y) / 9;
+                        byte X2 = (byte) ((player4.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player4.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 4 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player5.Location.X - 1) / 3;
-                        int Y2 = (413 - player5.Location.Y) / 9;
+                        byte X2 = (byte) ((player5.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player5.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 5 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player6.Location.X - 1) / 3;
-                        int Y2 = (413 - player6.Location.Y) / 9;
+                        byte X2 = (byte) ((player6.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player6.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 6 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player7.Location.X - 1) / 3;
-                        int Y2 = (413 - player7.Location.Y) / 9;
+                        byte X2 = (byte) ((player7.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player7.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 7 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player8.Location.X - 1) / 3;
-                        int Y2 = (413 - player8.Location.Y) / 9;
+                        byte X2 = (byte) ((player8.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player8.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 8 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player9.Location.X - 1) / 3;
-                        int Y2 = (413 - player9.Location.Y) / 9;
+                        byte X2 = (byte) ((player9.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player9.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 9 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player10.Location.X - 1) / 3;
-                        int Y2 = (413 - player10.Location.Y) / 9;
+                        byte X2 = (byte) ((player10.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player10.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 10 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player11.Location.X - 1) / 3;
-                        int Y2 = (413 - player11.Location.Y) / 9;
+                        byte X2 = (byte) ((player11.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player11.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
@@ -2208,80 +2235,90 @@ namespace DinoTem.ui
                     if (aa == (1 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player13.Location.X - 1) / 3;
-                        int Y2 = (413 - player13.Location.Y) / 9;
+                        byte X2 = (byte)((player13.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player13.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (2 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player14.Location.X - 1) / 3;
-                        int Y2 = (413 - player14.Location.Y) / 9;
+                        byte X2 = (byte)((player14.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player14.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (3 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player15.Location.X - 1) / 3;
-                        int Y2 = (413 - player15.Location.Y) / 9;
+                        byte X2 = (byte)((player15.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player15.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (4 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player16.Location.X - 1) / 3;
-                        int Y2 = (413 - player16.Location.Y) / 9;
+                        byte X2 = (byte)((player16.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player16.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (5 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player17.Location.X - 1) / 3;
-                        int Y2 = (413 - player17.Location.Y) / 9;
+                        byte X2 = (byte)((player17.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player17.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (6 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player18.Location.X - 1) / 3;
-                        int Y2 = (413 - player18.Location.Y) / 9;
+                        byte X2 = (byte)((player18.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player18.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (7 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player19.Location.X - 1) / 3;
-                        int Y2 = (413 - player19.Location.Y) / 9;
+                        byte X2 = (byte)((player19.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player19.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (8 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player20.Location.X - 1) / 3;
-                        int Y2 = (413 - player20.Location.Y) / 9;
+                        byte X2 = (byte)((player20.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player20.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (9 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player21.Location.X - 1) / 3;
-                        int Y2 = (413 - player21.Location.Y) / 9;
+                        byte X2 = (byte)((player21.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player21.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (10 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player22.Location.X - 1) / 3;
-                        int Y2 = (413 - player22.Location.Y) / 9;
+                        byte X2 = (byte)((player22.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player22.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
@@ -2289,98 +2326,108 @@ namespace DinoTem.ui
                     if (aa == (1 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player24.Location.X - 1) / 3;
-                        int Y2 = (413 - player24.Location.Y) / 9;
+                        byte X2 = (byte)((player24.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player24.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (2 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player25.Location.X - 1) / 3;
-                        int Y2 = (413 - player25.Location.Y) / 9;
+                        byte X2 = (byte)((player25.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player25.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (3 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player26.Location.X - 1) / 3;
-                        int Y2 = (413 - player26.Location.Y) / 9;
+                        byte X2 = (byte)((player26.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player26.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (4 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player27.Location.X - 1) / 3;
-                        int Y2 = (413 - player27.Location.Y) / 9;
+                        byte X2 = (byte)((player27.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player27.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (5 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player28.Location.X - 1) / 3;
-                        int Y2 = (413 - player28.Location.Y) / 9;
+                        byte X2 = (byte)((player28.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player28.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (6 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player29.Location.X - 1) / 3;
-                        int Y2 = (413 - player29.Location.Y) / 9;
+                        byte X2 = (byte)((player29.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player29.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (7 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player30.Location.X - 1) / 3;
-                        int Y2 = (413 - player30.Location.Y) / 9;
+                        byte X2 = (byte)((player30.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player30.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (8 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player31.Location.X - 1) / 3;
-                        int Y2 = (413 - player31.Location.Y) / 9;
+                        byte X2 = (byte)((player31.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player31.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (9 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player32.Location.X - 1) / 3;
-                        int Y2 = (413 - player32.Location.Y) / 9;
+                        byte X2 = (byte)((player32.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player32.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (10 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player33.Location.X - 1) / 3;
-                        int Y2 = (413 - player33.Location.Y) / 9;
+                        byte X2 = (byte)((player33.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player33.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
-                }
             }
-            
+            applyTacticsFormationPersister(tacticsFormation);
         }
-        */
 
-        private int getPosition(int k, int subItem, ListView teamView1)
+        private byte getPosition(int k, int subItem, ListView teamView1)
         {
-            int pos = -1;
+            //int subItem = 1 (CUSTOM), 2 (OFFENSIVE), 3 (DEFENSIVE)
+            byte pos = 0;
             if (k >= 11 && k < 22)
-                k = k - 10;
+                k = k - 11;
 
             if (k >= 22)
-                k = k - 21;
+                k = k - 22;
             //Position
+            subItem += 1;
             if (teamView1.Items[k].SubItems[subItem].Text == "GK")
                 pos = 0;
             else if (teamView1.Items[k].SubItems[subItem].Text == "CB")
@@ -2411,332 +2458,34 @@ namespace DinoTem.ui
             return pos;
         }
 
-        /*
-        public void applyTeam(int formation, int i, ListView teamView1)
-        {
-            //int i = 1 (CUSTOM), 2 (OFFENSIVE), 3 (DEFENSIVE)
-            //cambiare posizione ai giocatori
-            int aa = -1;
-            foreach (TacticsFormation x in tacticsFormationList)
-            {
-                if (x.getTeamTacticId() == formation)
-                {
-                    aa = aa + 1;
-                    if (aa == 0)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 1)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 2)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 3)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 4)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 5)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 6)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 7)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 8)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 9)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 10)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                }
-            }
-        }
-        */
-
-        public void changeShooters(Team temp, int capitainSelectedIndex, int penaltySelectedIndex,
-            int longSelectedIndex, int leftSelectedIndex, int shortSelectedIndex, int rightSelectedIndex)
-        {
-            //save Captain, etc...
-            foreach (PlayerAssignment x in playerAssignmentList)
-            {
-                /*if (x.getTeamId() == temp.getId())
-                {
-                    x.setCaptain(false);
-                    x.setLeftCkTk(false);
-                    x.setLongShotLk(false);
-                    x.setPenaltyKick(false);
-                    x.setRightCornerKick(false);
-                    x.setShortFoulFk(false);
-
-                    if (x.getOrder() == capitainSelectedIndex)
-                        x.setCaptain(true);
-                    if (x.getOrder() == penaltySelectedIndex)
-                        x.setPenaltyKick(true);
-                    if (x.getOrder() == longSelectedIndex)
-                        x.setLongShotLk(true);
-                    if (x.getOrder() == leftSelectedIndex)
-                        x.setLeftCkTk(true);
-                    if (x.getOrder() == shortSelectedIndex)
-                        x.setShortFoulFk(true);
-                    if (x.getOrder() == rightSelectedIndex)
-                        x.setRightCornerKick(true);
-                }*/
-            }
-        }
-
-        //Giocatore form
-        public int getSkinColour(Player temp)
-        {
-            int output1 = 0;
-            foreach (PlayerAppearance x in getPlayerAppearanceList())
-            {
-                if (temp.getId() == x.getId())
-                {
-                    if (getBitRecognized() == 0)
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = eye.Substring(5, 3);
-                        output1 = Convert.ToInt32(eye, 2);
-                    }
-                    else
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = eye.Substring(0, 3);
-                        output1 = Convert.ToInt32(eye, 2);
-                    }
-                    
-                }
-            }
-            return output1;
-        }
-
-        public void changeSkinColour(Player temp, int value)
-        {
-            foreach (PlayerAppearance x in getPlayerAppearanceList())
-            {
-                if (temp.getId() == x.getId())
-                {
-                    if (getBitRecognized() == 0)
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = eye.Substring(0, 5) + MyBinary.ToBinaryX(value, 3);
-                        x.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
-                    }
-                    else
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = MyBinary.ToBinaryX(value, 3) + eye.Substring(3, 5);
-                        x.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
-                    }
-                }
-            }
-        }
-
         //transferPlayer Drag&Drop
-        public void transferPlayerAtoA(int intselectedindex, int dropIndex, int idTeam, ComboBox teamBox1, ComboBox teamBox2)
+        public void transferPlayerFormatione(ListView listview, uint teamId)
         {
-            foreach (PlayerAssignment x in playerAssignmentList)
+            List<PlayerAssignment> pa = new List<PlayerAssignment>();
+            for (int i = 0; i < listview.Items.Count - 1; i++)
             {
-                long playerID = 0;
-                long playerID2 = 0;
-                if (x.getTeamId() == idTeam)
-                {
-                    if (x.getOrder() == intselectedindex)
-                        playerID = x.getPlayerId();
-                    if (x.getOrder() == dropIndex)
-                        playerID2 = x.getPlayerId();
+                PlayerAssignment temp = new PlayerAssignment(uint.Parse(listview.Items[i].SubItems[13].Text), teamId);
+                temp.setCaptain(ushort.Parse(listview.Items[i].SubItems[7].Text));
+                temp.setEntryId(ushort.Parse(listview.Items[i].SubItems[6].Text));
+                temp.setLeftCkTk(ushort.Parse(listview.Items[i].SubItems[8].Text));
+                temp.setLongShotLk(ushort.Parse(listview.Items[i].SubItems[9].Text));
+                temp.setOrder((ushort) (ushort.Parse(listview.Items[i].SubItems[0].Text) - 1));
+                temp.setPenaltyKick(ushort.Parse(listview.Items[i].SubItems[10].Text));
+                temp.setRightCornerKick(ushort.Parse(listview.Items[i].SubItems[11].Text));
+                temp.setShirtNumber(byte.Parse(listview.Items[i].SubItems[5].Text));
+                temp.setShortFoulFk(ushort.Parse(listview.Items[i].SubItems[12].Text));
 
-                    //if (x.getPlayerId() == playerID)
-                        //x.setOrder(dropIndex);
-                    //if (x.getPlayerId() == playerID2)
-                        //x.setOrder(intselectedindex);
-                }
+                pa.Add(temp);
             }
-            //
-            //UpdateForm(teamBox1, teamBox2);
-        }
-
-        private void setPlayerTrasfer(PlayerAssignment temp, int idTeamA, int order)
-        {
-            /*temp.setTeamId(idTeamA);
-            temp.setShortFoulFk(false);
-            temp.setRightCornerKick(false);
-            temp.setPenaltyKick(false);
-            temp.setOrder(order);
-            temp.setLongShotLk(false);
-            temp.setLeftCkTk(false);
-            temp.setCaptain(false);*/
-        }
-
-        private void findEntryID(PlayerAssignment temp)
-        {
-            //genera anche numero causuale
-            // estremi [da, a)
-            int da = 1;
-            int a = 99;
-
-            // Possibili valori di numeroCasuale: {1, 2, 3, 4, 5, 6...}
-            Random random = new Random();
-            int numeroCasuale = random.Next(da, a);
-            //temp.setShirtNumber(numeroCasuale);
-            //SEARCH VALUE
-            int n = -1;
-            while (n == -1)
-            {
-                // estremi [da, a)
-                int da1 = 1;
-                int a1 = 9999;
-
-                // Possibili valori di numeroCasuale: {1, 2, 3, 4, 5, 6...}
-                Random random1 = new Random();
-                int numeroCasuale1 = random1.Next(da1, a1);
-
-                foreach (PlayerAssignment x in playerAssignmentList)
-                {
-                    if (numeroCasuale1 != x.getEntryId())
-                    {
-                        n = numeroCasuale1;
-                        //temp.setEntryId(n);
-                        return;
-                    }
-                }
-            }
-            return;
-        }
-
-        /*public void transferPlayerBtoA(int intselectedindexPlayer, Team teamA, Team teamB, int orderTeamA, ComboBox teamBox1, ComboBox teamBox2)
-        {
-            bool ok = false;
-            foreach (PlayerAssignment x in playerAssignmentList)
-            {
-                if (teamB.getId() == x.getTeamId())
-                    if (x.getOrder() == intselectedindexPlayer) //trovo il giocatore della squadra di partenza
-                        ok = true;
-
-                if (ok)
-                {
-                    if (teamB.getNational()) //squadra partenza é una nazionale
-                    {
-                        if (teamA.getNational()) //se la squadra di destinazione è una nazionale
-                        {
-                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
-                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
-                            findEntryID(temp);
-                            playerAssignmentList.Add(temp);
-                        }
-                        else // se è un club
-                        {
-                            foreach (PlayerAssignment playerA in playerAssignmentList)
-                            {
-                                if (x.getPlayerId() == playerA.getPlayerId())
-                                {
-                                    if (!getTeamById2(playerA.getTeamId()).getNational())
-                                    {
-                                        setPlayerTrasfer(playerA, teamA.getId(), orderTeamA);
-                                        //
-                                        UpdateForm(teamBox1, teamBox2);
-                                        return;
-                                    }
-                                }
-
-                            }
-                            // se il giocatore è svincolato
-                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
-                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
-                            findEntryID(temp);
-                            playerAssignmentList.Add(temp);
-                        }
-
-                    }
-                    else //squadra partenza é un club
-                    {
-                        if (teamA.getNational()) //se la squadra di destinazione è una nazionale
-                        {
-                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
-                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
-                            findEntryID(temp);
-                            playerAssignmentList.Add(temp);
-                        }
-                        else  //o un club
-                            setPlayerTrasfer(x, teamA.getId(), orderTeamA);
-
-                    }
-                    //
-                    UpdateForm(teamBox1, teamBox2);
-                    return;
-                }
-            }
-        }
-        */
-
-        /*public void playerFromPlayerList(long player, int teamId, ComboBox teamBox1, ComboBox teamBox2)
-        {
-            if (getTeamById2(teamId).getNational()) //se il team di destinazione è una nazionale
-            {
-                PlayerAssignment temp = new PlayerAssignment(player, teamId);
-                setPlayerTrasfer(temp, teamId, getPlayersTeam(teamId).Count);
-                findEntryID(temp);
-                playerAssignmentList.Add(temp);
-            }
-            else //se è un club
-            {
-                if (getStringClubTeamOfPlayer(player,0) == "") //se non ha una squadra
-                {
-                    PlayerAssignment temp = new PlayerAssignment(player, teamId);
-                    setPlayerTrasfer(temp, teamId, getPlayersTeam(teamId).Count);
-                    findEntryID(temp);
-                    playerAssignmentList.Add(temp);
-                }
-                else  //se ha una squadra
-                {
-
-                    foreach (PlayerAssignment playerA in playerAssignmentList)
-                    {
-                        if (player == playerA.getPlayerId())
-                        {
-                            if (!getTeamById2(playerA.getTeamId()).getNational())
-                            {
-                                setPlayerTrasfer(playerA, teamId, getPlayersTeam(teamId).Count);
-                                UpdateForm(teamBox1, teamBox2);
-                                return;
-                            }
-
-                        }
-                    }
-
-                }
-            }
-            UpdateForm(teamBox1, teamBox2);
-            return;
-        }
-        */
-        public void deletePlayerTeam(int intselectedindex, int teamId, ComboBox teamBox1, ComboBox teamBox2)
-        {
-            for (int i = 0; i < playerAssignmentList.Count; i++)
-            {
-                PlayerAssignment x = (PlayerAssignment) playerAssignmentList[i];
-                if (x.getTeamId() == teamId)
-                {
-                    if (x.getOrder() == intselectedindex)
-                    {
-                        playerAssignmentList.Remove(x);
-                    }
-                }
-                
-            }
-            //
-            //UpdateForm(teamBox1, teamBox2);
+            applyPlayerAssignmentPersister(pa);
         }
 
         //remove fake team
         public void removeFakeTeam()
         {
-            foreach (Team temp in teamList)
+            for (int i = 0; i < Form1._Form1.teamBox1.Items.Count - 1; i++)
             {
+                Team temp = leggiSquadra(i);
                 /* PREMIER LEAGUE */
                 if (temp.getId() == 100)
                 {
@@ -3302,15 +3051,29 @@ namespace DinoTem.ui
                 {
                     temp.setEnglish("BOAVISTA FC");
                 }
+                applyTeamPersister(i, temp);
+                Form1._Form1.teamsBox.Items[i] = temp.getEnglish();
+                Form1._Form1.teamBox1.Items[i] = temp.getEnglish();
+                Form1._Form1.teamBox2.Items[i] = temp.getEnglish();
+                Form1._Form1.derbyTeam1.Items[i] = temp.getEnglish();
+                Form1._Form1.derbyTeam2.Items[i] = temp.getEnglish();
+                for (int i1 = 0; i1 < Form1._Form1.DataGridView_derby.RowCount; i1++)
+                {
+                    if (Form1._Form1.DataGridView_derby.Rows[i].Cells[0].Value.ToString() == temp.getId().ToString())
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[1].Value = temp.getEnglish();
+                    if (Form1._Form1.DataGridView_derby.Rows[i].Cells[2].Value.ToString() == temp.getId().ToString())
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[3].Value = temp.getEnglish();
+                }
             }
             //
         }
 
-        //remove fake team
-        /*public void removeFakePlayer()
+        //remove fake player
+        public void removeFakePlayer()
         {
-            foreach (Player temp in playerList)
+            for (int i = 0; i < Form1._Form1.teamBox1.Items.Count - 1; i++)
             {
+                Player temp = leggiGiocatore(i);
                 if (temp.getId() == 263150)
                 {
                     temp.setName("O. KAHN");
@@ -3632,24 +3395,402 @@ namespace DinoTem.ui
                     temp.setName("G. WEAH");
                     temp.setShirtName("WEAH");
                 }
+                applyPlayerPersister(i, temp);
+                UpdateTeamView(temp.getId(), temp.getName());
+                UpdateFormPlayer(i, temp.getName());
             }
+        }
 
-            UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
-            //updatePlayerList(Form1._Form1.giocatoreView);
-        }*/
+        private List<PlayerAppearance> playerAppearanceList = new List<PlayerAppearance>();
+        private List<PlayerAssignment> playerAssignmentList = new List<PlayerAssignment>();
+        private List<Team> teamList = new List<Team>();
 
-        //fm form
-        /*public Country getCountryFm(Fm temp2)
+        //form1
+        //Giocatore form
+        //transferPlayer Drag&Drop
+        //remove fake team
+        public void readPlayerAppearancePersister(string patch, int bitRecognized)
         {
-            Country country = null;
-            foreach (Country x in getListCountry())
+            MyPlayerAppearancePersister playerAppearanceReader = new MyPlayerAppearancePersister();
+
+            try
             {
-                if (x.getNationFm().ToUpper() == temp2.getNation().ToUpper())
-                    country = x;
+                playerAppearanceList = playerAppearanceReader.load(patch, bitRecognized);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return country;
+        }
+
+        public void savePlayerAppearancePersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyPlayerAppearancePersister playerAppearanceSave = new MyPlayerAppearancePersister();
+
+            try
+            {
+                playerAppearanceSave.save(patch, controller, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved PlayerAppearance.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public List<Team> getListTeam()
+        {
+            return teamList;
+        }
+
+        public List<PlayerAssignment> getPlayerAssignmentList()
+        {
+            return playerAssignmentList;
+        }
+
+        public List<PlayerAppearance> getPlayerAppearanceList()
+        {
+            return playerAppearanceList;
+        }
+
+        public Player getPlayerById(int positionList)
+        {
+            int k = 0;
+            //foreach (Player player in playerList)
+            //{
+                //if (k == positionList)
+                    //return player;
+                //k++;
+            //}
+            return null;
+        }
+
+        /*public Player getPlayerById(int positionInTeam, int team)
+        {
+            foreach (PlayerAssignment playerA in playerAssignmentList)
+            {
+                if (playerA.getTeamId() == team)
+                    if (playerA.getOrder() == positionInTeam)
+                        return getPlayerById(playerA.getPlayerId());
+            }
+            return null;
         }*/
+
+        public Team getTeamById(int positionList)
+        {
+            int k = 0;
+            foreach (Team team in teamList)
+            {
+                if (k == positionList)
+                    return team;
+                k++;
+            }
+            return null;
+        }
+
+        public Team getTeamById2(int teamId) {
+            foreach (Team temp in teamList)
+            {
+			    if (teamId == temp.getId())
+                    return temp;
+		    }
+		    return null;
+	    }
+
+        public void changePlayerNumber(long idPlayer, int idTeam, int shirtNumber)
+        {
+            foreach (PlayerAssignment temp in playerAssignmentList)
+            {
+                //if (idPlayer == temp.getPlayerId() && idTeam == temp.getTeamId())
+                    //temp.setShirtNumber(shirtNumber);
+            }
+        }
+
+        /*public void updatePlayerList(ListView l1)
+        {
+            l1.Items.Clear();
+            foreach (Player x in getListPlayer())
+            {
+                l1.Items.Add(x.ToString());
+            }
+            l1.Items[0].Selected = true;
+            l1.Select();
+        }*/
+
+        /*public string getStringClubTeamOfPlayer(long idPlayer, int type) {
+
+            //club = 0; national = 1;
+
+            List<int> b = new List<int>();
+            foreach (PlayerAssignment temp in playerAssignmentList)
+            {
+                if (idPlayer == temp.getPlayerId())
+                    b.Add(temp.getTeamId());
+            }
+
+            string finale = "";
+            if (type == 0)
+            {
+                foreach (int i in b)
+                {
+                    foreach (Team temp in teamList)
+                    {
+                        if (i == temp.getId() && !temp.getNational())
+                            return temp.getEnglish();
+                    }
+                }
+            }
+            else if (type == 1)
+            {
+                foreach (int i in b)
+                {
+                    foreach (Team temp in teamList)
+                    {
+                        if (i == temp.getId() && temp.getNational())
+                            finale += temp.getEnglish() + "+";
+                    }
+
+                }
+
+                if (finale.EndsWith("+"))
+                {
+                    finale = finale.Substring(0, finale.LastIndexOf("+"));
+                }
+            }
+		
+		    return finale;
+        }
+        */
+
+        //Giocatore form
+        public int getSkinColour(Player temp)
+        {
+            int output1 = 0;
+            foreach (PlayerAppearance x in getPlayerAppearanceList())
+            {
+                if (temp.getId() == x.getId())
+                {
+                    if (getBitRecognized() == 0)
+                    {
+                        int skin = x.getEyeskinColor();
+                        string eye = skin.ToString("X2");
+                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                        eye = eye.Substring(5, 3);
+                        output1 = Convert.ToInt32(eye, 2);
+                    }
+                    else
+                    {
+                        int skin = x.getEyeskinColor();
+                        string eye = skin.ToString("X2");
+                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                        eye = eye.Substring(0, 3);
+                        output1 = Convert.ToInt32(eye, 2);
+                    }
+                    
+                }
+            }
+            return output1;
+        }
+
+        public void changeSkinColour(Player temp, int value)
+        {
+            foreach (PlayerAppearance x in getPlayerAppearanceList())
+            {
+                if (temp.getId() == x.getId())
+                {
+                    if (getBitRecognized() == 0)
+                    {
+                        int skin = x.getEyeskinColor();
+                        string eye = skin.ToString("X2");
+                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                        eye = eye.Substring(0, 5) + MyBinary.ToBinaryX(value, 3);
+                        x.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
+                    }
+                    else
+                    {
+                        int skin = x.getEyeskinColor();
+                        string eye = skin.ToString("X2");
+                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                        eye = MyBinary.ToBinaryX(value, 3) + eye.Substring(3, 5);
+                        x.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
+                    }
+                }
+            }
+        }
+
+        //transferPlayer Drag&Drop
+        private void setPlayerTrasfer(PlayerAssignment temp, int idTeamA, int order)
+        {
+            /*temp.setTeamId(idTeamA);
+            temp.setShortFoulFk(false);
+            temp.setRightCornerKick(false);
+            temp.setPenaltyKick(false);
+            temp.setOrder(order);
+            temp.setLongShotLk(false);
+            temp.setLeftCkTk(false);
+            temp.setCaptain(false);*/
+        }
+
+        private void findEntryID(PlayerAssignment temp)
+        {
+            //genera anche numero causuale
+            // estremi [da, a)
+            int da = 1;
+            int a = 99;
+
+            // Possibili valori di numeroCasuale: {1, 2, 3, 4, 5, 6...}
+            Random random = new Random();
+            int numeroCasuale = random.Next(da, a);
+            //temp.setShirtNumber(numeroCasuale);
+            //SEARCH VALUE
+            int n = -1;
+            while (n == -1)
+            {
+                // estremi [da, a)
+                int da1 = 1;
+                int a1 = 9999;
+
+                // Possibili valori di numeroCasuale: {1, 2, 3, 4, 5, 6...}
+                Random random1 = new Random();
+                int numeroCasuale1 = random1.Next(da1, a1);
+
+                foreach (PlayerAssignment x in playerAssignmentList)
+                {
+                    if (numeroCasuale1 != x.getEntryId())
+                    {
+                        n = numeroCasuale1;
+                        //temp.setEntryId(n);
+                        return;
+                    }
+                }
+            }
+            return;
+        }
+
+        /*public void transferPlayerBtoA(int intselectedindexPlayer, Team teamA, Team teamB, int orderTeamA, ComboBox teamBox1, ComboBox teamBox2)
+        {
+            bool ok = false;
+            foreach (PlayerAssignment x in playerAssignmentList)
+            {
+                if (teamB.getId() == x.getTeamId())
+                    if (x.getOrder() == intselectedindexPlayer) //trovo il giocatore della squadra di partenza
+                        ok = true;
+
+                if (ok)
+                {
+                    if (teamB.getNational()) //squadra partenza é una nazionale
+                    {
+                        if (teamA.getNational()) //se la squadra di destinazione è una nazionale
+                        {
+                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
+                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
+                            findEntryID(temp);
+                            playerAssignmentList.Add(temp);
+                        }
+                        else // se è un club
+                        {
+                            foreach (PlayerAssignment playerA in playerAssignmentList)
+                            {
+                                if (x.getPlayerId() == playerA.getPlayerId())
+                                {
+                                    if (!getTeamById2(playerA.getTeamId()).getNational())
+                                    {
+                                        setPlayerTrasfer(playerA, teamA.getId(), orderTeamA);
+                                        //
+                                        UpdateForm(teamBox1, teamBox2);
+                                        return;
+                                    }
+                                }
+
+                            }
+                            // se il giocatore è svincolato
+                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
+                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
+                            findEntryID(temp);
+                            playerAssignmentList.Add(temp);
+                        }
+
+                    }
+                    else //squadra partenza é un club
+                    {
+                        if (teamA.getNational()) //se la squadra di destinazione è una nazionale
+                        {
+                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
+                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
+                            findEntryID(temp);
+                            playerAssignmentList.Add(temp);
+                        }
+                        else  //o un club
+                            setPlayerTrasfer(x, teamA.getId(), orderTeamA);
+
+                    }
+                    //
+                    UpdateForm(teamBox1, teamBox2);
+                    return;
+                }
+            }
+        }
+        */
+
+        /*public void playerFromPlayerList(long player, int teamId, ComboBox teamBox1, ComboBox teamBox2)
+        {
+            if (getTeamById2(teamId).getNational()) //se il team di destinazione è una nazionale
+            {
+                PlayerAssignment temp = new PlayerAssignment(player, teamId);
+                setPlayerTrasfer(temp, teamId, getPlayersTeam(teamId).Count);
+                findEntryID(temp);
+                playerAssignmentList.Add(temp);
+            }
+            else //se è un club
+            {
+                if (getStringClubTeamOfPlayer(player,0) == "") //se non ha una squadra
+                {
+                    PlayerAssignment temp = new PlayerAssignment(player, teamId);
+                    setPlayerTrasfer(temp, teamId, getPlayersTeam(teamId).Count);
+                    findEntryID(temp);
+                    playerAssignmentList.Add(temp);
+                }
+                else  //se ha una squadra
+                {
+
+                    foreach (PlayerAssignment playerA in playerAssignmentList)
+                    {
+                        if (player == playerA.getPlayerId())
+                        {
+                            if (!getTeamById2(playerA.getTeamId()).getNational())
+                            {
+                                setPlayerTrasfer(playerA, teamId, getPlayersTeam(teamId).Count);
+                                UpdateForm(teamBox1, teamBox2);
+                                return;
+                            }
+
+                        }
+                    }
+
+                }
+            }
+            UpdateForm(teamBox1, teamBox2);
+            return;
+        }
+        */
+        public void deletePlayerTeam(int intselectedindex, int teamId, ComboBox teamBox1, ComboBox teamBox2)
+        {
+            for (int i = 0; i < playerAssignmentList.Count; i++)
+            {
+                PlayerAssignment x = (PlayerAssignment) playerAssignmentList[i];
+                if (x.getTeamId() == teamId)
+                {
+                    if (x.getOrder() == intselectedindex)
+                    {
+                        playerAssignmentList.Remove(x);
+                    }
+                }
+                
+            }
+            //
+            //UpdateForm(teamBox1, teamBox2);
+        }
 
     }
 }

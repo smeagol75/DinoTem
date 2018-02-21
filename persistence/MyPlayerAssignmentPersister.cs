@@ -74,23 +74,23 @@ namespace DinoTem.persistence
                     byte number = reader.ReadByte();
 
                     UInt16 Valor_partido = reader.ReadUInt16();
-                    UInt32 CHECK46 = (uint) (Valor_partido << 4);
+                    UInt32 CHECK46 = (ushort)(Valor_partido << 4);
                     CHECK46 = CHECK46 >> 15; //CAPTAIN
 
-                    UInt32 CHECK47 = (uint) (Valor_partido << 5);
+                    UInt32 CHECK47 = (ushort)(Valor_partido << 5);
                     CHECK47 = CHECK47 >> 15; //PENALTY_KICK
 
-                    UInt32 CHECK48 = (uint) (Valor_partido << 6);
+                    UInt32 CHECK48 = (ushort)(Valor_partido << 6);
                     CHECK48 = CHECK48 >> 15; //LONG_SHOT
 
-                    UInt32 CHECK49 = (uint) (Valor_partido << 7);
+                    UInt32 CHECK49 = (ushort)(Valor_partido << 7);
                     CHECK49 = CHECK49 >> 15; //LEFT_CK
 
-                    UInt32 CHECK50 = (uint) (Valor_partido << 8);
+                    UInt32 CHECK50 = (ushort)(Valor_partido << 8);
                     CHECK50 = CHECK50 >> 15; //SHORT_FOUL
 
-                    UInt32 CHECK51 = (uint)(Valor_partido << 9);
-                    CHECK51 = CHECK51 >> 15; //RIGHT_CK
+                    UInt32 CHECK51 = (ushort) (Valor_partido << 9);
+                    CHECK51 = (CHECK51 >> 15); //RIGHT_CK
 
                     UInt16 Order_in_Team = (ushort) (Valor_partido << 10);
                     Order_in_Team = (ushort) (Order_in_Team >> 10);
@@ -117,9 +117,64 @@ namespace DinoTem.persistence
             return list;
         }
 
-        public void applyPlayerA(int index, MemoryStream unzlibPlayerAssign, PlayerAssignment pa, ref BinaryWriter scriviPlayerAssign)
+        public void applyPlayerA(MemoryStream unzlibPlayerAssign, BinaryReader reader, List<PlayerAssignment> pa, ref BinaryWriter writer)
         {
-            throw new NotImplementedException();
+            int bytesPlayer = (int)unzlibPlayerAssign.Length;
+            int bloques_assig = bytesPlayer / block;
+
+            int k = 0;
+            long START2 = -16;
+            for (int i = 0; i <= (bloques_assig - 1); i++)
+            {
+                START2 += block;
+                unzlibPlayerAssign.Seek(START2, SeekOrigin.Begin);
+
+                if (k < pa.Count)
+                    if (pa[k].getEntryId() == reader.ReadUInt32())
+                    {
+                        writer.BaseStream.Position = START2 + 4;
+
+                        UInt32 New_ID = pa[k].getPlayerId();
+                        UInt32 New_team = pa[k].getTeamId();
+                        byte New_Number = pa[k].getShirtNumber();
+                        writer.Write(New_ID);
+                        writer.Write(New_team);
+                        writer.Write(New_Number);
+                        UInt16 Nuevo_Valor_16 = 0;
+                        UInt16 Aux_16 = 0;
+                        UInt16 CHECK_CAP = (ushort) pa[k].getCaptain();
+                        UInt16 CHECK_PENAL = (ushort) pa[k].getPenaltyKick();
+                        UInt16 CHECK_Long = (ushort) pa[k].getLongShotLk();
+                        UInt16 CHECK_LCK = (ushort) pa[k].getLeftCkTk();
+                        UInt16 CHECK_SHORT = (ushort) pa[k].getShortFoulFk();
+                        UInt16 CHECK_RCK = (ushort) pa[k].getRightCornerKick();
+                        UInt16 New_Order = pa[k].getOrder();
+                        Aux_16 = CHECK_CAP;
+                        Aux_16 = (ushort) (Aux_16 << 11);
+                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = CHECK_PENAL;
+                        Aux_16 = (ushort) (Aux_16 << 10);
+                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = CHECK_Long;
+                        Aux_16 = (ushort) (Aux_16 << 9);
+                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = CHECK_LCK;
+                        Aux_16 = (ushort) (Aux_16 << 8);
+                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = CHECK_SHORT;
+                        Aux_16 = (ushort) (Aux_16 << 7);
+                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = CHECK_RCK;
+                        Aux_16 = (ushort) (Aux_16 << 6);
+                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = New_Order;
+                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+
+                        writer.Write(Nuevo_Valor_16);
+
+                        k++;
+                    }
+            }
         }
 
         public void save(string patch, ref MemoryStream memoryGicotori, int bitRecognized)

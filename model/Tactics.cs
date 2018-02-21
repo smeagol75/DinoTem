@@ -65,7 +65,7 @@ namespace DinoTem.model
             return this.attackingNumbers;
         }
 
-        public UInt16 getDefendingNumbersAttackingNumbers()
+        public UInt16 getDefendingNumbers()
         {
             return this.defendingNumbers;
         }

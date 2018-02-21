@@ -70,7 +70,9 @@
     <Compile Include="model\Club.cs" />
     <Compile Include="model\Coach.cs" />
     <Compile Include="model\Competition.cs" />
+    <Compile Include="model\CompetitionEntry.cs" />
     <Compile Include="model\CompetitionKind.cs" />
+    <Compile Include="model\CompetitionRegulation.cs" />
     <Compile Include="model\Country.cs" />
     <Compile Include="model\Derby.cs" />
     <Compile Include="model\Fm.cs" />
@@ -87,8 +89,10 @@
     <Compile Include="persistence\MyBallConditionPersister.cs" />
     <Compile Include="persistence\MyBallPersister.cs" />
     <Compile Include="persistence\MyBinary.cs" />
+    <Compile Include="persistence\MyCompetitionEntryPersister.cs" />
     <Compile Include="persistence\MyCompetitionKindPersister.cs" />
     <Compile Include="persistence\MyCompetitionPersister.cs" />
+    <Compile Include="persistence\MyCompetitionRegulationPersister.cs" />
     <Compile Include="persistence\MyCountryPersister.cs" />
     <Compile Include="persistence\MyDerbyPersister.cs" />
     <Compile Include="persistence\MyFmPersister.cs" />
@@ -96,12 +100,15 @@
     <Compile Include="persistence\MyPlayerAppearancePersister.cs" />
     <Compile Include="persistence\MyPlayerAssignmentPersister.cs" />
     <Compile Include="persistence\MyPlayerPersister.cs" />
+    <Compile Include="persistence\MyStadiumOrderInConfederationPersister.cs" />
+    <Compile Include="persistence\MyStadiumOrderPersister.cs" />
     <Compile Include="persistence\MyStadiumPersister.cs" />
     <Compile Include="persistence\MyTacticsFormationPersister.cs" />
     <Compile Include="persistence\MyTacticsPersister.cs" />
     <Compile Include="persistence\MyTeamPersister.cs" />
     <Compile Include="psd\ini.cs" />
     <Compile Include="psd\Psd.cs" />
+    <Compile Include="skills\skills.cs" />
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +134,7 @@
     <Compile Include="persistence\MyBootPersister.cs" />
     <Compile Include="persistence\MyCoachPersister.cs" />
     <Compile Include="ui\ControllerDB.cs" />
+    <Compile Include="ui\ControllerFm.cs" />
     <Compile Include="ui\UniDecode.cs" />
     <Compile Include="ui\UtilGUI.cs" />
     <Compile Include="Update.cs">

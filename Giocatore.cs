@@ -1254,8 +1254,8 @@ namespace DinoTem
             temp.setDefense(uint.Parse(defense.Text));
             temp.setClearing(uint.Parse(clearing.Text));
             temp.setLowPass(uint.Parse(lowPass.Text));
-            //controller.changeNationalPlayer(temp, (Country)nationality.SelectedItem);
-            //controller.changeSecondNationalPlayer(temp, (Country)sndNationality.SelectedItem);
+            temp.setNational((ushort)controller.leggiPaese(nationality.SelectedIndex).getId());
+            temp.setNational2((ushort)controller.leggiPaese(sndNationality.SelectedIndex).getId());
             temp.setPlaceKick(uint.Parse(placeKick.Text));
             temp.setGoalCelebrate(uint.Parse(goalCeleb.Text));
             temp.setLb((uint)LB.SelectedIndex);

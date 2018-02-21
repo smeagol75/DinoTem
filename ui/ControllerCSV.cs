@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using UniDecode;
 using DinoTem.ui;
 using DinoTem.model;
+using DinoTem;
 
 namespace Team_Editor_Manager_New_Generation.ui
 {
@@ -232,8 +233,9 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    StringBuilder sb = new StringBuilder();
 		    sb.Append("Id;BallName;Order");
 		    sb.Append("\n");
-            foreach (Ball temp in controller.getListBall())
+            for (int i = 0; i < Form1._Form1.ballsBox.Items.Count; i++)
             {
+                Ball temp = controller.leggiPallone(i);
 			    sb.Append(temp.getId() + ";");
 			    sb.Append(temp.getName() + ";");
 			    sb.Append(temp.getOrder() + ";");
@@ -247,12 +249,17 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    StringBuilder sb = new StringBuilder();
 		    sb.Append("Id;unknow");
 		    sb.Append("\n");
-            //foreach (BallCondition temp in controller.getBallConditionList())
-            //{
-			    //sb.Append(temp.getId() + ";");
-			    //sb.Append(temp.getUnknown() + ";");
-			    //sb.Append("\n");
-		    //}
+            for (int i = 0; i < Form1._Form1.ballsBox.Items.Count; i++)
+            {
+                Ball temp1 = controller.leggiPallone(i);
+                List<BallCondition> temp = controller.leggiCondizioniPalloni(temp1.getId());
+                foreach (BallCondition bC in temp)
+                {
+                    sb.Append(bC.getId() + ";");
+                    sb.Append(bC.getUnknown() + ";");
+                    sb.Append("\n");
+                }
+            }
 		    return sb.ToString();
 	    }
 
@@ -261,13 +268,18 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    StringBuilder sb = new StringBuilder();
 		    sb.Append("Id_player;player_name;id_team;team_name");
 		    sb.Append("\n");
-            foreach (PlayerAssignment temp in controller.getPlayerAssignmentList())
+            for (int i = 0; i < Form1._Form1.teamBox1.Items.Count; i++)
             {
-			    sb.Append(temp.getPlayerId()+ ";");
-                //sb.Append(controller.getPlayerById(temp.getPlayerId()).getName() + ";");
-			    sb.Append(temp.getTeamId() + ";");
-                //sb.Append(controller.getTeamById2(temp.getTeamId()).getEnglish());
-			    sb.Append("\n");
+                Team t = controller.leggiSquadra(i);
+                foreach (PlayerAssignment pA in controller.leggiGiocatoriSquadra(t.getId()))
+                {
+                    sb.Append(pA.getPlayerId() + ";");
+                    Player pa = controller.leggiGiocatoreById(pA.getPlayerId());
+                    sb.Append(pa.getName() + ";");
+                    sb.Append(t.getId() + ";");
+                    sb.Append(t.getEnglish());
+                    sb.Append("\n");
+                }
 		    }
 		    return sb.ToString();
 	    }
@@ -304,7 +316,7 @@ namespace Team_Editor_Manager_New_Generation.ui
                     i++;
                 }
             }
-            controller.UpdateBallList(ballBox);
+            //controller.UpdateBallList(ballBox);
         }
 
         private int parseInt(string s)

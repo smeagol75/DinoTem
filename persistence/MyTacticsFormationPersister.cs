@@ -111,8 +111,36 @@ namespace DinoTem.persistence
             return list;
         }
 
-        public void applyTacticsFormation(int selectedIndex, MemoryStream unzlib, TacticsFormation tatticsF, ref BinaryWriter writer)
+        public void applyTacticsFormation(MemoryStream unzlib, BinaryReader reader, List<TacticsFormation> tatticsF, ref BinaryWriter writer)
         {
+            //Calcolo tattiche
+            int bytesTactics = (int)unzlib.Length;
+            int tactics = bytesTactics / block;
+
+            long START2 = -8;
+            int k = 0;
+
+            UInt16 TeamTacticIdFormation;
+            int NumberOfRepetitions2 = Convert.ToInt32(tactics);
+            for (int i2 = 0; i2 <= NumberOfRepetitions2 - 1; i2++)
+            {
+                START2 += block;
+                unzlib.Seek(START2, SeekOrigin.Begin);
+                TeamTacticIdFormation = reader.ReadUInt16();
+                if (TeamTacticIdFormation == tatticsF[0].getTeamTacticId())
+                {
+                    writer.BaseStream.Position = START2 - 4;
+                    writer.Write(tatticsF[k].getPosition());
+
+                    writer.BaseStream.Position = START2 + 2;
+                    writer.Write(tatticsF[k].getY());
+
+                    writer.BaseStream.Position = START2 + 3;
+                    writer.Write(tatticsF[k].getX());
+
+                    k++;
+                }
+            }
         }
 
         public void save(string patch, ref MemoryStream memoryTattiche, int bitRecognized)

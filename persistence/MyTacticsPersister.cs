@@ -113,7 +113,7 @@ namespace DinoTem.persistence
                     Tactics temp = new Tactics(Team_id, tactics_id);
                     temp.setDefendingNumbers(Frag_val1);
                     temp.setAttackingNumbers(Frag_val2);
-                    temp.setDefensiveLine(Frag_val3);
+                    temp.setDefensiveLine((ushort)(Frag_val3 + 1));
                     temp.setSupportRange((ushort) (Frag_val4 + 1));
                     temp.setCompactness((ushort)(Frag_val5 + 1));
                     temp.setBuildUp(CHECK103);
@@ -135,8 +135,146 @@ namespace DinoTem.persistence
             return list;
         }
 
-        public void applyTactics(int selectedIndex, MemoryStream unzlib, Tactics tattica, ref BinaryWriter writer)
+        public void applyTactics(BinaryReader reader, MemoryStream unzlib, Tactics tattica, ref BinaryWriter writer)
         {
+            //Calcolo tattiche
+            int bytesTactics = (int)unzlib.Length;
+            int tactics = bytesTactics / block;
+
+            UInt16 Frag_val1;
+            UInt16 Frag_val2;
+            UInt16 Frag_val3;
+            UInt16 Frag_val4;
+            UInt16 Frag_val5;
+            UInt16 FRAG_VAL = 0;
+
+            long START2 = -8;
+            for (int i = 0; i <= (tactics - 1); i++)
+            {
+                START2 += block;
+                unzlib.Seek(START2, SeekOrigin.Begin);
+                if (tattica.getTacticsId() == reader.ReadUInt16())
+                {
+                    writer.BaseStream.Position = START2;
+                    Frag_val1 = tattica.getDefendingNumbers();
+                    Frag_val2 = tattica.getAttackingNumbers();
+                    Frag_val3 = (ushort)(tattica.getDefensiveLine() - 1);
+                    Frag_val4 = (ushort)(tattica.getSupportRange() - 1);
+                    Frag_val5 = (ushort)(tattica.getCompactness() - 1);
+                    UInt16 aux16 = (ushort)(Frag_val1 << 14);
+                    FRAG_VAL = (ushort)(aux16 | FRAG_VAL);
+                    aux16 = (ushort)(Frag_val2 << 12);
+                    FRAG_VAL = (ushort)(aux16 | FRAG_VAL);
+                    aux16 = (ushort)(Frag_val3 << 8);
+                    FRAG_VAL = (ushort)(aux16 | FRAG_VAL);
+                    aux16 = (ushort)(Frag_val4 << 4);
+                    FRAG_VAL = (ushort)(aux16 | FRAG_VAL);
+                    aux16 = Frag_val5;
+                    FRAG_VAL = (ushort)(aux16 | FRAG_VAL);
+
+                    byte CHECK103;
+                    if (tattica.getBuildUp() == 1)
+                    {
+                        CHECK103 = 1;
+                    }
+                    else
+                    {
+                        CHECK103 = 0;
+                    }
+
+                    byte CHECK104;
+                    if (tattica.getDefensiveStyle() == 1)
+                    {
+                        CHECK104 = 1;
+                    }
+                    else
+                    {
+                        CHECK104 = 0;
+                    }
+
+                    byte CHECK105;
+                    if (tattica.getAttackingArea() == 1)
+                    {
+                        CHECK105 = 1;
+                    }
+                    else
+                    {
+                        CHECK105 = 0;
+                    }
+
+                    byte CHECK106;
+                    if (tattica.getContainmentArea() == 1)
+                    {
+                        CHECK106 = 1;
+                    }
+                    else
+                    {
+                        CHECK106 = 0;
+                    }
+
+                    byte CHECK107;
+                    if (tattica.getPressuring() == 1)
+                    {
+                        CHECK107 = 1;
+                    }
+                    else
+                    {
+                        CHECK107 = 0;
+                    }
+
+                    byte CHECK108;
+                    if (tattica.getAttackingStyle() == 1)
+                    {
+                        CHECK108 = 1;
+                    }
+                    else
+                    {
+                        CHECK108 = 0;
+                    }
+
+                    byte CHECK109;
+                    if (tattica.getFluidFormation() == 1)
+                    {
+                        CHECK109 = 1;
+                    }
+                    else
+                    {
+                        CHECK109 = 0;
+                    }
+
+                    byte CHECK110;
+                    if (tattica.getPositioning() == 1)
+                    {
+                        CHECK110 = 1;
+                    }
+                    else
+                    {
+                        CHECK110 = 0;
+                    }
+
+                    byte AuxByte = (byte)(CHECK103 << 7);
+                    byte Byte_GRAB = 0;
+                    Byte_GRAB = (byte)(AuxByte | Byte_GRAB);
+                    AuxByte = (byte)(CHECK104 << 6);
+                    Byte_GRAB = (byte)(AuxByte | Byte_GRAB);
+                    AuxByte = (byte)(CHECK105 << 5);
+                    Byte_GRAB = (byte)(AuxByte | Byte_GRAB);
+                    AuxByte = (byte)(CHECK106 << 4);
+                    Byte_GRAB = (byte)(AuxByte | Byte_GRAB);
+                    AuxByte = (byte)(CHECK107 << 3);
+                    Byte_GRAB = (byte)(AuxByte | Byte_GRAB);
+                    AuxByte = (byte)(CHECK108 << 2);
+                    Byte_GRAB = (byte)(AuxByte | Byte_GRAB);
+                    AuxByte = (byte)(CHECK109 << 1);
+                    Byte_GRAB = (byte)(AuxByte | Byte_GRAB);
+                    AuxByte = CHECK110;
+                    Byte_GRAB = (byte)(AuxByte | Byte_GRAB);
+
+                    writer.BaseStream.Position += 2;
+                    writer.Write(FRAG_VAL);
+                    writer.Write(Byte_GRAB);
+                }
+            }
         }
 
         public void save(string patch, ref MemoryStream memoryTattiche, int bitRecognized)

@@ -41,6 +41,7 @@ namespace DinoTem.persistence
             memory1 = unzlib(patch, bitRecognized);
 
             var result = readNationality();
+            var result2 = readNation();
 
             //Calcolo paesi
             int bytesCountries = (int)memory1.Length;
@@ -77,7 +78,14 @@ namespace DinoTem.persistence
                         throw new ArgumentException("id not found in file Nationality.ini");
                     Form1._Form1.allenatoreNationality.Items.Add(mapValue);
                     Form1._Form1.giocatoreNationality.Items.Add(mapValue);
+
+                    string mapValue2;
+                    if (!result2.TryGetValue(countryId, out mapValue2))
+                        throw new ArgumentException("id not found in file Nation.ini");
+                    Form1._Form1.nationalityBox.Items.Add(mapValue2);
                 }
+                Form1._Form1.nationalityBox.Items.Add("All");
+
                 writer = new BinaryWriter(memory1);
             }
             catch (IOException e)
@@ -118,7 +126,7 @@ namespace DinoTem.persistence
                 if (id != 0)
                 {
                     string nationality = tokenizer[1].Replace(" ", "").Trim();
-                    //result.Add(id, nationality);
+                    result.Add(id, nationality);
                 }
             }
 

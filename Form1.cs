@@ -11,6 +11,7 @@ using DinoTem.model;
 using DinoTem.ui;
 using Team_Editor_Manager_New_Generation.update;
 using Team_Editor_Manager_New_Generation.persistence;
+using UniDecode;
 
 namespace DinoTem
 {
@@ -25,12 +26,14 @@ namespace DinoTem
 
         private Controller controller;
         private ControllerDB controllerDb;
+        private ControllerFm controllerFm;
         private const char chACapo = (char)13;
 
         private void Form1_Load(object sender, EventArgs e)
         {
             controller = new Controller();
             controllerDb = new ControllerDB();
+            controllerFm = new ControllerFm();
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 
             //teams
@@ -558,6 +561,9 @@ namespace DinoTem
             //giocatoreSquadra.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 0);
             //giocatoreNazionale.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 1);
             giocatoreNationality.SelectedIndex = controller.findCountry(temp.getNational());
+
+            //controllerFm
+            controllerFm.setPlayer(temp);
         }
 
         private void playersBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -767,6 +773,14 @@ namespace DinoTem
                 teamBox2.Items[intselectedindex] = teamName.Text;
                 derbyTeam1.Items[intselectedindex] = teamName.Text;
                 derbyTeam2.Items[intselectedindex] = teamName.Text;
+                for (int i1 = 0; i1 < Form1._Form1.DataGridView_derby.RowCount; i1++)
+                {
+                    if (Form1._Form1.DataGridView_derby.Rows[i1].Cells[0].Value.ToString() == team.getId().ToString())
+                        Form1._Form1.DataGridView_derby.Rows[i1].Cells[1].Value = team.getEnglish();
+                    if (Form1._Form1.DataGridView_derby.Rows[i1].Cells[2].Value.ToString() == team.getId().ToString())
+                        Form1._Form1.DataGridView_derby.Rows[i1].Cells[3].Value = team.getEnglish();
+                }
+
             }
         }
 
@@ -1177,8 +1191,6 @@ namespace DinoTem
                 UInt32 id = uint.Parse(teamView1.Items[intselectedindex].SubItems[11].Text);
                 Player temp2 = controller.leggiGiocatoreById(id);
                 leggereGiocatore(temp2);
-                //inserisco id in fmstats form
-                //controllerFm.setPlayer(controller.getPlayerById(intselectedindex, temp.getId()));
                 giocatoreNumber.Text = teamView1.Items[intselectedindex].SubItems[3].Text;
             }
         }
@@ -1218,8 +1230,6 @@ namespace DinoTem
                 UInt32 id = uint.Parse(teamView2.Items[intselectedindex].SubItems[11].Text);
                 Player temp2 = controller.leggiGiocatoreById(id);
                 leggereGiocatore(temp2);
-                //inserisco id in fmstats form
-                //controllerFm.setPlayer(controller.getPlayerById(intselectedindex, temp.getId()));
                 giocatoreNumber.Text = teamView2.Items[intselectedindex].SubItems[3].Text;
             }
         }
@@ -1706,6 +1716,1062 @@ namespace DinoTem
 
                 controller.applyCompetitionKindPersister(intselectedindex, competition);
             }
+        }
+
+        //competitionRegulation
+        private void ListBox_comp_reg_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ListBox_comp_reg.SelectedIndices.Count <= 0)
+                return;
+
+            int intselectedindex = ListBox_comp_reg.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                CompetitionRegulation comp = controller.leggiCompetizioneRegulation(intselectedindex);
+                UNK1_COMP_REG_BOX.Value = comp.getUNK1();
+                UNK2_COMP_REG_BOX.Value = comp.getUNK2();
+                UNK3_COMP_REG_BOX.Value = comp.getUNK3();
+                UNK4_COMP_REG_BOX.Value = comp.getUNK4();
+                UNK5_COMP_REG_BOX.Value = comp.getUNK5();
+                UNK6_COMP_REG_BOX.Value = comp.getUNK6();
+                UNK7_COMP_REG_BOX.Value = comp.getUNK7();
+                UNK8_COMP_REG_BOX.Value = comp.getUNK8();
+                UNK9_COMP_REG_BOX.Value = comp.getUNK9();
+                UNK10_COMP_REG_BOX.Value = comp.getUNK10();
+                UNK11_COMP_REG_BOX.Value = comp.getUNK11();
+
+                if ((comp.getCHECK63() == 1))
+                {
+                    CheckBox63.Checked = true;
+                }
+                else
+                {
+                    CheckBox63.Checked = false;
+                }
+
+                if ((comp.getCHECK64() == 1))
+                {
+                    CheckBox64.Checked = true;
+                }
+                else
+                {
+                    CheckBox64.Checked = false;
+                }
+
+                if ((comp.getCHECK65() == 1))
+                {
+                    CheckBox65.Checked = true;
+                }
+                else
+                {
+                    CheckBox65.Checked = false;
+                }
+                UNK12_COMP_REG_BOX.Value = comp.getUNK12();
+                UNK13_COMP_REG_BOX.Value = comp.getUNK13();
+                UNK14_COMP_REG_BOX.Value = comp.getUNK14();
+                UNK15_COMP_REG_BOX.Value = comp.getUNK15();
+                if ((comp.getCHECK66() == 1))
+                {
+                    CheckBox66.Checked = true;
+                }
+                else
+                {
+                    CheckBox66.Checked = false;
+                }
+                if ((comp.getCHECK67() == 1))
+                {
+                    CheckBox67.Checked = true;
+                }
+                else
+                {
+                    CheckBox67.Checked = false;
+                }
+                if ((comp.getCHECK68() == 1))
+                {
+                    CheckBox68.Checked = true;
+                }
+                else
+                {
+                    CheckBox68.Checked = false;
+                }
+                if ((comp.getCHECK69() == 1))
+                {
+                    CheckBox69.Checked = true;
+                }
+                else
+                {
+                    CheckBox69.Checked = false;
+                }
+                if ((comp.getCHECK70() == 1))
+                {
+                    CheckBox70.Checked = true;
+                }
+                else
+                {
+                    CheckBox70.Checked = false;
+                }
+                if ((comp.getCHECK71() == 1))
+                {
+                    CheckBox71.Checked = true;
+                }
+                else
+                {
+                    CheckBox71.Checked = false;
+                }
+                if ((comp.getCHECK72() == 1))
+                {
+                    CheckBox72.Checked = true;
+                }
+                else
+                {
+                    CheckBox72.Checked = false;
+                }
+                if ((comp.getCHECK73() == 1))
+                {
+                    CheckBox73.Checked = true;
+                }
+                else
+                {
+                    CheckBox73.Checked = false;
+                }
+                if ((comp.getCHECK74() == 1))
+                {
+                    CheckBox74.Checked = true;
+                }
+                else
+                {
+                    CheckBox74.Checked = false;
+                }
+                if ((comp.getCHECK75() == 1))
+                {
+                    CheckBox75.Checked = true;
+                }
+                else
+                {
+                    CheckBox75.Checked = false;
+                }
+                if ((comp.getCHECK76() == 1))
+                {
+                    CheckBox76.Checked = true;
+                }
+                else
+                {
+                    CheckBox76.Checked = false;
+                }
+                if ((comp.getCHECK77() == 1))
+                {
+                    CheckBox77.Checked = true;
+                }
+                else
+                {
+                    CheckBox77.Checked = false;
+                }
+                if ((comp.getCHECK78() == 1))
+                {
+                    CheckBox78.Checked = true;
+                }
+                else
+                {
+                    CheckBox78.Checked = false;
+                }
+                if ((comp.getCHECK79() == 1))
+                {
+                    CheckBox79.Checked = true;
+                }
+                else
+                {
+                    CheckBox79.Checked = false;
+                }
+                if ((comp.getCHECK80() == 1))
+                {
+                    CheckBox80.Checked = true;
+                }
+                else
+                {
+                    CheckBox80.Checked = false;
+                }
+                if ((comp.getCHECK81() == 1))
+                {
+                    CheckBox81.Checked = true;
+                }
+                else
+                {
+                    CheckBox81.Checked = false;
+                }
+            }
+        }
+
+        private void applyCompetitionRegulation_Click(object sender, EventArgs e)
+        {
+            int intselectedindex = ListBox_comp_reg.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                CompetitionRegulation competition = new CompetitionRegulation();
+                competition.setUNK1((byte)UNK1_COMP_REG_BOX.Value);
+                competition.setUNK2((byte)UNK2_COMP_REG_BOX.Value);
+                competition.setUNK3((byte)UNK3_COMP_REG_BOX.Value);
+                competition.setUNK4((byte)UNK4_COMP_REG_BOX.Value);
+                competition.setUNK5((byte)UNK5_COMP_REG_BOX.Value);
+                competition.setUNK6((byte)UNK6_COMP_REG_BOX.Value);
+                competition.setUNK7((byte)UNK7_COMP_REG_BOX.Value);
+                competition.setUNK8((byte)UNK8_COMP_REG_BOX.Value);
+                competition.setUNK9((byte)UNK9_COMP_REG_BOX.Value);
+                competition.setUNK10((byte)UNK10_COMP_REG_BOX.Value);
+                competition.setUNK11((byte)UNK11_COMP_REG_BOX.Value);
+
+                if (CheckBox63.Checked == true)
+                {
+                    competition.setCHECK63(1);
+                }
+                else
+                {
+                    competition.setCHECK63(0);
+                }
+
+                if (CheckBox64.Checked == true)
+                {
+                    competition.setCHECK64(1);
+                }
+                else
+                {
+                    competition.setCHECK64(0);
+                }
+
+                if (CheckBox65.Checked == true)
+                {
+                    competition.setCHECK65(1);
+                }
+                else
+                {
+                    competition.setCHECK65(0);
+                }
+                competition.setUNK12((byte)UNK12_COMP_REG_BOX.Value);
+                competition.setUNK13((byte)UNK13_COMP_REG_BOX.Value);
+                competition.setUNK14((byte)UNK14_COMP_REG_BOX.Value);
+                competition.setUNK15((byte)UNK15_COMP_REG_BOX.Value);
+
+                if (CheckBox66.Checked == true)
+                {
+                    competition.setCHECK66(1);
+                }
+                else
+                {
+                    competition.setCHECK66(0);
+                }
+                if (CheckBox67.Checked == true)
+                {
+                    competition.setCHECK67(1);
+                }
+                else
+                {
+                    competition.setCHECK67(0);
+                }
+                if (CheckBox68.Checked == true)
+                {
+                    competition.setCHECK68(1);
+                }
+                else
+                {
+                    competition.setCHECK68(0);
+                }
+                if (CheckBox69.Checked == true)
+                {
+                    competition.setCHECK69(1);
+                }
+                else
+                {
+                    competition.setCHECK69(0);
+                }
+                if (CheckBox70.Checked == true)
+                {
+                    competition.setCHECK70(1);
+                }
+                else
+                {
+                    competition.setCHECK70(0);
+                }
+                if (CheckBox71.Checked == true)
+                {
+                    competition.setCHECK71(1);
+                }
+                else
+                {
+                    competition.setCHECK71(0);
+                }
+                if (CheckBox72.Checked == true)
+                {
+                    competition.setCHECK72(1);
+                }
+                else
+                {
+                    competition.setCHECK72(0);
+                }
+                if (CheckBox73.Checked == true)
+                {
+                    competition.setCHECK73(1);
+                }
+                else
+                {
+                    competition.setCHECK73(0);
+                }
+                if (CheckBox74.Checked == true)
+                {
+                    competition.setCHECK74(1);
+                }
+                else
+                {
+                    competition.setCHECK74(0);
+                }
+                if (CheckBox75.Checked == true)
+                {
+                    competition.setCHECK75(1);
+                }
+                else
+                {
+                    competition.setCHECK75(0);
+                }
+                if (CheckBox76.Checked == true)
+                {
+                    competition.setCHECK76(1);
+                }
+                else
+                {
+                    competition.setCHECK76(0);
+                }
+                if (CheckBox77.Checked == true)
+                {
+                    competition.setCHECK77(1);
+                }
+                else
+                {
+                    competition.setCHECK77(0);
+                }
+                if (CheckBox78.Checked == true)
+                {
+                    competition.setCHECK78(1);
+                }
+                else
+                {
+                    competition.setCHECK78(0);
+                }
+                if (CheckBox79.Checked == true)
+                {
+                    competition.setCHECK79(1);
+                }
+                else
+                {
+                    competition.setCHECK79(0);
+                }
+                if (CheckBox80.Checked == true)
+                {
+                    competition.setCHECK80(1);
+                }
+                else
+                {
+                    competition.setCHECK80(0);
+                }
+                if (CheckBox81.Checked == true)
+                {
+                    competition.setCHECK81(1);
+                }
+                else
+                {
+                    competition.setCHECK81(0);
+                }
+
+                controller.applyCompetitionRegulationPersister(intselectedindex, competition);
+            }
+        }
+
+        //fm stats
+        private void loadFootballManager_Click(object sender, EventArgs e)
+        {
+            if (controllerFm.getFmList().Count == 0)
+                controllerFm.readFmPersister();
+
+            //abilito i comandi
+            label122.Visible = true;
+            nationalityBox.Visible = true;
+            label121.Visible = true;
+            clubBox.Visible = true;
+            playerList.Visible = true;
+            fmSearchPlayer.Visible = true;
+            fmSearchTeam.Visible = true;
+            searchPlayerFm.Visible = true;
+            searchTeamFm.Visible = true;
+            groupBox13.Visible = true;
+            groupBox7.Visible = true;
+            groupBox18.Visible = true;
+            groupBox19.Visible = true;
+            groupBox17.Visible = true;
+            technicalGk.Visible = true;
+            technical.Visible = true;
+            groupBox20.Visible = true;
+            applyFm.Visible = true;
+            technical.Visible = true;
+            label119.Visible = false;
+
+            playerList.DataSource = controllerFm.getFmList();
+            clubBox.DataSource = controllerFm.getClub();
+            count.Text = playerList.Items.Count.ToString();
+            clubBox.SelectedIndex = clubBox.Items.Count - 1;
+            nationalityBox.SelectedIndex = nationalityBox.Items.Count - 1;
+            playerList.SelectedIndex = 0;
+        }
+
+        //filtri
+        private void nationalityBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            playerList.DataSource = controllerFm.filter(clubBox.Text, nationalityBox.Text);
+        }
+
+        private void clubBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            playerList.DataSource = controllerFm.filter(clubBox.Text, nationalityBox.Text);
+        }
+
+        //selezionare giocatore
+        private void playerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Fm temp = (Fm)playerList.Items[playerList.SelectedIndex];
+            //mental
+            aggression.Text = temp.getAggression().ToString();
+            anticipation.Text = temp.getAnticipation().ToString();
+            bravery.Text = temp.getBravery().ToString();
+            composure.Text = temp.getComposure().ToString();
+            concentration.Text = temp.getConcentration().ToString();
+            decisions.Text = temp.getDecisions().ToString();
+            determination.Text = temp.getDetermination().ToString();
+            frair.Text = temp.getFlair().ToString();
+            leadership.Text = temp.getLeadership().ToString();
+            offtheball.Text = temp.getOffTheBall().ToString();
+            positioning.Text = temp.getPositioning().ToString();
+            teamwork.Text = temp.getTeamwork().ToString();
+            vision.Text = temp.getVision().ToString();
+            workrate.Text = temp.getWorkRate().ToString();
+            //physical
+            acceleration.Text = temp.getAcceleration().ToString();
+            agility.Text = temp.getAgility().ToString().ToString();
+            balance.Text = temp.getBalance().ToString();
+            jumpingReach.Text = temp.getJumping().ToString();
+            naturalFitness.Text = temp.getNaturalFitness().ToString();
+            pace.Text = temp.getPace().ToString();
+            staminaFm.Text = temp.getStamina().ToString();
+            strenght.Text = temp.getStrength().ToString();
+            //basic info
+            var today = DateTime.Today;
+            var eta = today.Year - int.Parse(temp.getDateOfBirth().Substring(6));
+            if (DateTime.Parse(temp.getDateOfBirth()) > today.AddYears(-eta)) eta--;
+            age.Text = eta.ToString();
+            //technical
+            corners.Text = temp.getCorners().ToString();
+            freeKickTaking.Text = temp.getFreeKicks().ToString();
+            heading.Text = temp.getHeading().ToString();
+            tackling.Text = temp.getTackling().ToString();
+            crossing.Text = temp.getCrossing().ToString();
+            driblingFm.Text = temp.getDribbling().ToString();
+            finishingFm.Text = temp.getFinishing().ToString();
+            marking.Text = temp.getMarking().ToString();
+            passing.Text = temp.getPassing().ToString();
+            penaltyTaking.Text = temp.getPenalties().ToString();
+            longThrows.Text = temp.getLongThrows().ToString();
+            technique.Text = temp.getTechnique().ToString();
+            longShots.Text = temp.getLongShots().ToString();
+            firstTouch.Text = temp.getFirstTouch().ToString();
+            commandOfArea.Text = temp.getCommandOfArea().ToString();
+            communication.Text = temp.getCommunication().ToString();
+            eccentricity.Text = temp.getEccentricity().ToString();
+            aerialAbility.Text = temp.getAerialAbility().ToString();
+            handling.Text = temp.getHandling().ToString();
+            tendencyToPunch.Text = temp.getTendancyToPunch().ToString();
+            reflexesFm.Text = temp.getReflexes().ToString();
+            passing2.Text = temp.getPassing().ToString();
+            penaltyTaking2.Text = temp.getPenalties().ToString();
+            throwing.Text = temp.getThrowing().ToString();
+            kicking.Text = temp.getKicking().ToString();
+            oneOnOnes.Text = temp.getOneOnOnes().ToString();
+            rushingOut.Text = temp.getRushingOut().ToString();
+            firstTouch2.Text = temp.getFirstTouch().ToString();
+            //fm stats
+            averageGk.Text = controllerFm.mediaGk(int.Parse(commandOfArea.Text), int.Parse(communication.Text), int.Parse(firstTouch2.Text), int.Parse(eccentricity.Text),
+                int.Parse(aerialAbility.Text), int.Parse(passing2.Text)
+                , int.Parse(handling.Text), int.Parse(tendencyToPunch.Text), int.Parse(reflexes.Text), int.Parse(penaltyTaking2.Text), int.Parse(throwing.Text),
+                int.Parse(kicking.Text)
+                , int.Parse(oneOnOnes.Text), int.Parse(rushingOut.Text), int.Parse(technique.Text), int.Parse(freeKickTaking.Text), int.Parse(aggression.Text),
+                int.Parse(anticipation.Text), int.Parse(bravery.Text),
+                int.Parse(composure.Text), int.Parse(concentration.Text), int.Parse(decisions.Text),
+                int.Parse(determination.Text), int.Parse(frair.Text), int.Parse(leadership.Text),
+                int.Parse(offtheball.Text), int.Parse(positioning.Text), int.Parse(teamwork.Text),
+                int.Parse(vision.Text), int.Parse(workrate.Text), int.Parse(acceleration.Text),
+                int.Parse(agility.Text), int.Parse(balance.Text), int.Parse(jumpingReach.Text),
+                int.Parse(naturalFitness.Text), int.Parse(pace.Text), int.Parse(stamina.Text), int.Parse(strenght.Text)).ToString();
+            average.Text = controllerFm.media(int.Parse(corners.Text), int.Parse(freeKickTaking.Text), int.Parse(heading.Text), int.Parse(tackling.Text),
+                int.Parse(firstTouch.Text), int.Parse(crossing.Text)
+                , int.Parse(dribbling.Text), int.Parse(finishing.Text), int.Parse(marking.Text), int.Parse(passing.Text),
+                int.Parse(penaltyTaking.Text)
+                , int.Parse(longThrows.Text), int.Parse(longShots.Text), int.Parse(technique.Text), int.Parse(aggression.Text), int.Parse(anticipation.Text),
+                int.Parse(bravery.Text),
+                int.Parse(composure.Text), int.Parse(concentration.Text), int.Parse(decisions.Text),
+                int.Parse(determination.Text), int.Parse(frair.Text), int.Parse(leadership.Text),
+                int.Parse(offtheball.Text), int.Parse(positioning.Text), int.Parse(teamwork.Text),
+                int.Parse(vision.Text), int.Parse(workrate.Text), int.Parse(acceleration.Text),
+                int.Parse(agility.Text), int.Parse(balance.Text), int.Parse(jumpingReach.Text),
+                int.Parse(naturalFitness.Text), int.Parse(pace.Text), int.Parse(stamina.Text), int.Parse(strenght.Text)).ToString();
+            //position
+            gkrat.Text = temp.getGk().ToString();
+            swrat.Text = temp.getSw().ToString();
+            rbrat.Text = temp.getRb().ToString();
+            lbrat.Text = temp.getLb().ToString();
+            cbrat.Text = temp.getCb().ToString();
+            wbrat.Text = temp.getWbr().ToString();
+            wblrat.Text = temp.getWbl().ToString();
+            dmrat.Text = temp.getDm().ToString();
+            rmrat.Text = temp.getRm().ToString();
+            lmrat.Text = temp.getLm().ToString();
+            cmrat.Text = temp.getCm().ToString();
+            amlrat.Text = temp.getAml().ToString();
+            amrat.Text = temp.getAmr().ToString();
+            amcrat.Text = temp.getAmc().ToString();
+            strat.Text = temp.getSt().ToString();
+            controllerFm.positionPlayer(gk, cb, lb, rb, dmf, cmf, lmf, amf, rmf, lwf, rwf, ss, cf, temp, int.Parse(average.Text), int.Parse(averageGk.Text));
+        }
+
+        private void commandOfArea_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(commandOfArea);
+        }
+
+        private void communication_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(communication);
+        }
+
+        private void firstTouch2_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(firstTouch2);
+        }
+
+        private void eccentricity_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(eccentricity);
+        }
+
+        private void aerialAbility_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(aerialAbility);
+        }
+
+        private void passing2_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(passing2);
+        }
+
+        private void handling_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(handling);
+        }
+
+        private void tendencyToPunch_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(tendencyToPunch);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(reflexesFm);
+        }
+
+        private void penaltyTaking2_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(penaltyTaking2);
+        }
+
+        private void throwing_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(throwing);
+        }
+
+        private void kicking_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(kicking);
+        }
+
+        private void oneOnOnes_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(oneOnOnes);
+        }
+
+        private void rushingOut_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(rushingOut);
+        }
+
+        private void corners_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(corners);
+        }
+
+        private void freeKickTaking_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(freeKickTaking);
+        }
+
+        private void heading_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(heading);
+        }
+
+        private void tackling_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(tackling);
+        }
+
+        private void firstTouch_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(firstTouch);
+        }
+
+        private void crossing_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(crossing);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(driblingFm);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(finishingFm);
+        }
+
+        private void marking_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(marking);
+        }
+
+        private void passing_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(passing);
+        }
+
+        private void penaltyTaking_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(penaltyTaking);
+        }
+
+        private void longThrows_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(longThrows);
+        }
+
+        private void technique_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(technique);
+        }
+
+        private void longShots_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(longShots);
+        }
+
+        private void acceleration_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(acceleration);
+        }
+
+        private void agility_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(agility);
+        }
+
+        private void balance_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(balance);
+        }
+
+        private void jumpingReach_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(jumpingReach);
+        }
+
+        private void naturalFitness_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(naturalFitness);
+        }
+
+        private void pace_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(pace);
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(staminaFm);
+        }
+
+        private void strenght_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(strenght);
+        }
+
+        private void workrate_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(workrate);
+        }
+
+        private void vision_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(vision);
+        }
+
+        private void teamwork_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(teamwork);
+        }
+
+        private void positioning_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(positioning);
+        }
+
+        private void offtheball_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(offtheball);
+        }
+
+        private void leadership_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(leadership);
+        }
+
+        private void frair_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(frair);
+        }
+
+        private void determination_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(determination);
+        }
+
+        private void decisions_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(decisions);
+        }
+
+        private void concentration_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(concentration);
+        }
+
+        private void composure_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(composure);
+        }
+
+        private void bravery_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(bravery);
+        }
+
+        private void anticipation_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(anticipation);
+        }
+
+        private void aggression_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(aggression);
+        }
+
+        //cercare un giocatore (INVIO)
+        private void fmSearchPlayer_Click(object sender, EventArgs e)
+        {
+            fmSearchPlayer.SelectAll();
+            fmSearchPlayer.Focus();
+        }
+
+        private void fmSearchPlayer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                UtilGUI.listBoxSearch(playerList, fmSearchPlayer);
+            }
+        }
+
+        private void searchPlayerFm_Click(object sender, EventArgs e)
+        {
+            UtilGUI.listBoxSearch(playerList, fmSearchPlayer);
+        }
+
+        //cercare una squadra Invio
+        private void fmSearchTeam_TextChanged(object sender, EventArgs e)
+        {
+            fmSearchTeam.SelectAll();
+            fmSearchTeam.Focus();
+        }
+
+        private void fmSearchTeam_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                UtilGUI.comboBoxSearch(clubBox, fmSearchTeam);
+            }
+        }
+
+        private void searchTeamFm_Click(object sender, EventArgs e)
+        {
+            UtilGUI.comboBoxSearch(clubBox, fmSearchTeam);
+        }
+
+        private void applyFm_Click(object sender, EventArgs e)
+        {
+            Fm temp2 = (Fm)playerList.Items[playerList.SelectedIndex];
+            Player temp = controllerFm.getPlayer();
+            //player name
+            if (playerList.Text.Length <= 44)
+                temp.setName(playerList.Text);
+            else
+                temp.setName(playerList.Text.Substring(0, 44));
+            //shirt name
+            string decode = Unidecoder.Unidecode(temp2.getSurname());
+            if (temp2.getSurname().Length <= 44)
+                temp.setShirtName(decode.ToUpper());
+            else
+                temp.setShirtName(decode.ToUpper().Substring(0, 44));
+            //playing style
+            temp.setPlayingStyle(0);
+
+            int ind = controller.findCountryFm(temp2.getNation());
+            temp.setNational((ushort)controller.leggiPaese(ind).getId());
+            temp.setNational2(0);
+
+            //position
+            controllerFm.calculatePosition(temp2);
+            controllerFm.registredPosition(gk, cb, lb, rb, dmf, cmf, lmf, amf, rmf, lwf, rwf, ss, cf);
+            //basic info
+            temp.setAge(uint.Parse(age.Text));
+            temp.setStrongerFoot(controllerFm.calculateStrongFoot(temp2));
+            temp.setInjuryRes(controllerFm.calculateInjuryRes(int.Parse(naturalFitness.Text)));
+            temp.setForm(controllerFm.calculateForm(int.Parse(staminaFm.Text), int.Parse(naturalFitness.Text), int.Parse(balance.Text), controllerFm.getPlayer().getPosition()));
+            temp.setWcUsage(controllerFm.calculateWcUsage(int.Parse(technique.Text), controllerFm.getPlayer().getPosition()));
+            temp.setWeakFootAcc(controllerFm.calculateWcAcc(int.Parse(technique.Text), int.Parse(offtheball.Text), controllerFm.getPlayer().getPosition()));
+            //ability
+            temp.setStamina(controllerFm.calculateStamina(int.Parse(staminaFm.Text), int.Parse(average.Text), int.Parse(averageGk.Text), int.Parse(naturalFitness.Text), int.Parse(strenght.Text), int.Parse(workrate.Text), controllerFm.getPlayer().getPosition()));
+            temp.setCoverage(controllerFm.calculateCoverage(int.Parse(commandOfArea.Text), int.Parse(communication.Text), int.Parse(positioning.Text), int.Parse(leadership.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setReflexes(controllerFm.calculateRflexes(int.Parse(reflexesFm.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setClearing(controllerFm.calculateClearing(int.Parse(tendencyToPunch.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setCathing(controllerFm.calculateCatching(int.Parse(handling.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setGoalkeeping(controllerFm.calculateGoalkeeping(int.Parse(commandOfArea.Text), int.Parse(communication.Text), int.Parse(aerialAbility.Text), int.Parse(handling.Text),
+                int.Parse(throwing.Text), int.Parse(kicking.Text), int.Parse(oneOnOnes.Text), int.Parse(tendencyToPunch.Text), int.Parse(concentration.Text),
+                int.Parse(leadership.Text), int.Parse(positioning.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setJump(controllerFm.calculateJump(int.Parse(jumpingReach.Text), int.Parse(agility.Text), int.Parse(strenght.Text), int.Parse(average.Text), controllerFm.getPlayer().getPosition()));
+            temp.setPhysical(controllerFm.calculatePhysicalContact(int.Parse(positioning.Text), int.Parse(tackling.Text), int.Parse(eccentricity.Text), int.Parse(workrate.Text), int.Parse(naturalFitness.Text),
+                int.Parse(staminaFm.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+
+            temp.setBodyControl(controllerFm.calculateBodyControll(int.Parse(naturalFitness.Text), int.Parse(balance.Text), int.Parse(strenght.Text), int.Parse(average.Text), controllerFm.getPlayer().getPosition()));
+            temp.setExplosiveP(controllerFm.calculateExplosivePower(int.Parse(naturalFitness.Text), int.Parse(agility.Text), int.Parse(acceleration.Text), int.Parse(strenght.Text), int.Parse(staminaFm.Text), int.Parse(determination.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setSpeed(controllerFm.calculateSpeed(int.Parse(pace.Text), int.Parse(acceleration.Text), int.Parse(naturalFitness.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setKickingPower(controllerFm.calculateKickingPower(int.Parse(passing.Text), int.Parse(eccentricity.Text), int.Parse(strenght.Text), int.Parse(freeKickTaking.Text), int.Parse(penaltyTaking.Text), int.Parse(longShots.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setBallWinning(controllerFm.calculateBallWinning(int.Parse(aggression.Text), int.Parse(eccentricity.Text), int.Parse(positioning.Text), int.Parse(marking.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setDefense(controllerFm.calculateDefensiveProwess(int.Parse(positioning.Text), int.Parse(aggression.Text), int.Parse(eccentricity.Text), int.Parse(concentration.Text), int.Parse(teamwork.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setHeader(controllerFm.calculateHeader(int.Parse(eccentricity.Text), int.Parse(rushingOut.Text), int.Parse(aerialAbility.Text), int.Parse(jumpingReach.Text), int.Parse(heading.Text), int.Parse(anticipation.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setSwerve(controllerFm.calculateSwerve(int.Parse(passing.Text), int.Parse(freeKickTaking.Text), int.Parse(technique.Text), int.Parse(corners.Text), int.Parse(firstTouch.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setPlaceKick(controllerFm.calculatePlaceKicking(int.Parse(composure.Text), int.Parse(determination.Text), int.Parse(technique.Text), int.Parse(freeKickTaking.Text), int.Parse(strenght.Text), int.Parse(leadership.Text), int.Parse(average.Text), controllerFm.getPlayer().getPosition()));
+            temp.setFinishing(controllerFm.calculateFinishing(int.Parse(penaltyTaking.Text), int.Parse(freeKickTaking.Text), int.Parse(vision.Text), int.Parse(finishingFm.Text), int.Parse(longShots.Text), int.Parse(composure.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setLoftedPass(controllerFm.calculateLoftedPass(int.Parse(passing.Text), int.Parse(kicking.Text), int.Parse(eccentricity.Text), int.Parse(corners.Text), int.Parse(longThrows.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setLowPass(controllerFm.calculateLowPass(int.Parse(eccentricity.Text), int.Parse(firstTouch.Text), int.Parse(passing.Text), int.Parse(decisions.Text), int.Parse(vision.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setDribbling(controllerFm.calculateDribbling(int.Parse(frair.Text), int.Parse(eccentricity.Text), int.Parse(driblingFm.Text), int.Parse(firstTouch.Text), int.Parse(technique.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setBallControll(controllerFm.calculateBallControll(int.Parse(firstTouch.Text), int.Parse(eccentricity.Text), int.Parse(technique.Text), int.Parse(vision.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setAttack(controllerFm.calculateAttackingProwness(int.Parse(offtheball.Text), int.Parse(teamwork.Text), int.Parse(finishingFm.Text), int.Parse(firstTouch.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+
+            temp.setEarlyCross(0);
+            temp.setPinCrossing(0);
+            temp.setSombrero(0);
+            temp.setSpeedingBullet(0);
+            temp.setSchotMove(0);
+            temp.setGkLong(0);
+            temp.setLongThrow(0);
+            temp.setScissorFeint(0);
+            temp.setTrackBack(0);
+            temp.setSuperSub(0);
+            temp.setRabona(0);
+            temp.setAcrobatingFinishing(0);
+            temp.setKnucleShot(0);
+            temp.setFirstTimeShot(0);
+            temp.setComIncisiveRun(0);
+            /*unk3*/
+            temp.setLongRange(0);
+            temp.setOneTouchPass(0);
+            temp.setHellTick(0);
+            /*unk4*/
+            temp.setManMarking(0);
+            /*unk5*/
+            temp.setMarseilleTurn(0);
+            temp.setHeading(0);
+            temp.setOutsideCurler(0);
+            temp.setCaptaincy(0);
+            temp.setMalicia(0);
+            temp.setLowPuntTrajectory(0);
+            temp.setComTrickster(0);
+            temp.setLowLoftedPass(0);
+            temp.setFightingSpirit(0);
+            temp.setFlipFlap(0);
+            temp.setWeightnessPass(0);
+            /*unk6*/
+            /*unk7*/
+            /*unk8*/
+            temp.setComMazingRun(0);
+            temp.setAcrobatingClear(0);
+            temp.setComBallExpert(0);
+            temp.setCutBehind(0);
+            temp.setComLongRanger(0);
+
+            temp.setYouthPlayerId(0);
+            temp.setLegendGoldenBall(0);
+            temp.setHiddenPlayer(0);
+
+            controller.applyPlayerPersister(controller.findPlayer(temp.getId()), temp);
+            controller.UpdateTeamView(temp.getId(), temp.getName());
+            controller.UpdateFormPlayer(controller.findPlayer(temp.getId()), temp.getName());
+        }
+
+        //CompetitionEntry
+        private void competitionEntryBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (competitionEntryBox.SelectedIndices.Count <= 0)
+                return;
+
+            int intselectedindex = competitionEntryBox.SelectedIndices[0];
+            if (intselectedindex >= 0)
+            {
+                controller.findCompetition(intselectedindex);
+            }
+        }
+
+        //remove fake team
+        private void removeFakeTeam_Click(object sender, EventArgs e)
+        {
+            controller.removeFakeTeam();
+
+            MessageBox.Show("Fake teams corrected!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void removeFakeClassicPlayer_Click(object sender, EventArgs e)
+        {
+            controller.removeFakePlayer();
+
+            MessageBox.Show("Classic players fake names corrected!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        //export Player
+        private void csvToolStripMenuItem6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //export PlayerAppareance
+        private void csvToolStripMenuItem12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //export team
+        private void csvToolStripMenuItem7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //export PlayerAssignment
+        private void csvToolStripMenuItem8_Click(object sender, EventArgs e)
+        {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
+
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportPlayerAssignment(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //export Coaches
+        private void csvToolStripMenuItem16_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //export Stadium
+        private void csvToolStripMenuItem11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //export Ball
+        private void csvToolStripMenuItem9_Click(object sender, EventArgs e)
+        {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
+
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportBall(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //export BallCondition
+        private void csvToolStripMenuItem13_Click(object sender, EventArgs e)
+        {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
+
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportBallCondition(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //export Boots
+        private void csvToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //export Gloves
+        private void csvToolStripMenuItem10_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
