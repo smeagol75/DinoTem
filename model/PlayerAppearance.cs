@@ -8,7 +8,7 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class PlayerAppearance
     {
-        private long id;
+        private UInt32 id;
         private byte unknown1 = 0;
         private byte unknown2 = 0;
         private byte unknown3 = 0;
@@ -65,20 +65,21 @@ namespace DinoTem.model
         private byte unknown54 = 0;
         private byte unknown55 = 0;
         private byte unknown56 = 0;
-    
-        public PlayerAppearance(long id) {
+
+        public PlayerAppearance(UInt32 id)
+        {
     	    if (id < 0)
                 throw new ArgumentException("Player's appearance id isn't valid: " + id);
     	
     	    this.id = id;
         }
 
-        public long getId()
+        public UInt32 getId()
         {
             return this.id;
         }
 
-        public void setId(long id)
+        public void setId(UInt32 id)
         {
     	    if (id < 0)
                 throw new ArgumentException("Player id isn't valid: " + +id);

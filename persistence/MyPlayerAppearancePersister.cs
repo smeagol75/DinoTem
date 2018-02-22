@@ -6,6 +6,7 @@ using System.IO;
 using System.Windows.Forms;
 using DinoTem.model;
 using DinoTem.ui;
+using Team_Editor_Manager_New_Generation.zlibUnzlib;
 
 namespace DinoTem.persistence
 {
@@ -13,6 +14,7 @@ namespace DinoTem.persistence
     public class MyPlayerAppearancePersister
     {
         private static string PATH = "/PlayerAppearance.bin";
+        private static int block = 60;
 
         private MemoryStream unzlib(string patch, int bitRecognized)
         {
@@ -32,16 +34,31 @@ namespace DinoTem.persistence
             return memory1;
         }
 
-        public List<PlayerAppearance> load(string patch, int bitRecognized)
+        public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
-            List<PlayerAppearance> playerAppearanceList = new List<PlayerAppearance>();
+            memory1 = unzlib(patch, bitRecognized);
 
-            MemoryStream memory1 = unzlib(patch, bitRecognized);
+            try
+            {
+                // Use the memory stream in a binary reader.
+                reader = new BinaryReader(memory1);
+                writer = new BinaryWriter(memory1);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+        }
+
+        public PlayerAppearance loadPlayerAppearance(UInt32 id, MemoryStream memory1, BinaryReader reader)
+        {
+            PlayerAppearance temp = null;
 
             //calcolo giocatori
             // Create new FileInfo object and get the Length.
             int bytes_player = (int)memory1.Length;
-            int calcolo_player = bytes_player / 60;
+            int calcolo_player = bytes_player / block;
 
             UInt32 IdPlayer;
             byte unknown1;
@@ -102,10 +119,6 @@ namespace DinoTem.persistence
             byte unknown56;
             try
             {
-                // Use the memory stream in a binary reader.
-                BinaryReader reader = new BinaryReader(memory1);
-                int i = 0;
-
                 long START1 = -60; //ID
                 long START2 = -56;
                 long START3 = -55;
@@ -165,299 +178,299 @@ namespace DinoTem.persistence
                 long START57 = -1;
 
                 int NumberOfRepetitions = Convert.ToInt32(calcolo_player);
-                for (i = 1; i <= NumberOfRepetitions; i++)
+                for (int i = 1; i <= NumberOfRepetitions; i++)
                 {
-                    START1 += 60;
+                    START1 += block;
+                    START2 += block;
+                    START3 += block;
+                    START4 += block;
+                    START5 += block;
+                    START6 += block;
+                    START7 += block;
+                    START8 += block;
+                    START9 += block;
+                    START10 += block;
+                    START11 += block;
+                    START12 += block;
+                    START13 += block;
+                    START14 += block;
+                    START15 += block;
+                    START16 += block;
+                    START17 += block;
+                    START18 += block;
+                    START19 += block;
+                    START20 += block;
+                    START21 += block;
+                    START22 += block;
+                    START23 += block;
+                    START24 += block;
+                    START25 += block;
+                    START26 += block;
+                    START27 += block;
+                    START28 += block;
+                    START29 += block;
+                    START30 += block;
+                    START31 += block;
+                    START32 += block;
+                    START33 += block;
+                    START34 += block;
+                    START35 += block;
+                    START36 += block;
+                    START37 += block;
+                    START38 += block;
+                    START39 += block;
+                    START40 += block;
+                    START41 += block;
+                    START42 += block;
+                    START43 += block;
+                    START44 += block;
+                    START45 += block;
+                    START46 += block;
+                    START47 += block;
+                    START48 += block;
+                    START49 += block;
+                    START50 += block;
+                    START51 += block;
+                    START52 += block;
+                    START53 += block;
+                    START54 += block;
+                    START55 += block;
+                    START56 += block;
+                    START57 += block;
+
                     memory1.Seek(START1, SeekOrigin.Begin);
                     IdPlayer = reader.ReadUInt32();
 
-                    START2 += 60;
-                    memory1.Seek(START2, SeekOrigin.Begin);
-                    unknown1 = reader.ReadByte();
+                    if (IdPlayer == id)
+                    {
+                        memory1.Seek(START2, SeekOrigin.Begin);
+                        unknown1 = reader.ReadByte();
 
-                    START3 += 60;
-                    memory1.Seek(START3, SeekOrigin.Begin);
-                    unknown2 = reader.ReadByte();
+                        memory1.Seek(START3, SeekOrigin.Begin);
+                        unknown2 = reader.ReadByte();
 
-                    START4 += 60;
-                    memory1.Seek(START4, SeekOrigin.Begin);
-                    unknown3 = reader.ReadByte();
+                        memory1.Seek(START4, SeekOrigin.Begin);
+                        unknown3 = reader.ReadByte();
 
-                    START5 += 60;
-                    memory1.Seek(START5, SeekOrigin.Begin);
-                    unknown4 = reader.ReadByte();
+                        memory1.Seek(START5, SeekOrigin.Begin);
+                        unknown4 = reader.ReadByte();
 
-                    START6 += 60;
-                    memory1.Seek(START6, SeekOrigin.Begin);
-                    unknown5 = reader.ReadByte();
+                        memory1.Seek(START6, SeekOrigin.Begin);
+                        unknown5 = reader.ReadByte();
 
-                    START7 += 60;
-                    memory1.Seek(START7, SeekOrigin.Begin);
-                    unknown6 = reader.ReadByte();
+                        memory1.Seek(START7, SeekOrigin.Begin);
+                        unknown6 = reader.ReadByte();
 
-                    START8 += 60;
-                    memory1.Seek(START8, SeekOrigin.Begin);
-                    unknown7 = reader.ReadByte();
+                        memory1.Seek(START8, SeekOrigin.Begin);
+                        unknown7 = reader.ReadByte();
 
-                    START9 += 60;
-                    memory1.Seek(START9, SeekOrigin.Begin);
-                    unknown8 = reader.ReadByte();
+                        memory1.Seek(START9, SeekOrigin.Begin);
+                        unknown8 = reader.ReadByte();
 
-                    START10 += 60;
-                    memory1.Seek(START10, SeekOrigin.Begin);
-                    unknown9 = reader.ReadByte();
+                        memory1.Seek(START10, SeekOrigin.Begin);
+                        unknown9 = reader.ReadByte();
 
-                    START11 += 60;
-                    memory1.Seek(START11, SeekOrigin.Begin);
-                    unknown10 = reader.ReadByte();
+                        memory1.Seek(START11, SeekOrigin.Begin);
+                        unknown10 = reader.ReadByte();
 
-                    START12 += 60;
-                    memory1.Seek(START12, SeekOrigin.Begin);
-                    unknown11 = reader.ReadByte();
+                        memory1.Seek(START12, SeekOrigin.Begin);
+                        unknown11 = reader.ReadByte();
 
-                    START13 += 60;
-                    memory1.Seek(START13, SeekOrigin.Begin);
-                    unknown12 = reader.ReadByte();
+                        memory1.Seek(START13, SeekOrigin.Begin);
+                        unknown12 = reader.ReadByte();
 
-                    START14 += 60;
-                    memory1.Seek(START14, SeekOrigin.Begin);
-                    unknown13 = reader.ReadByte();
+                        memory1.Seek(START14, SeekOrigin.Begin);
+                        unknown13 = reader.ReadByte();
 
-                    START15 += 60;
-                    memory1.Seek(START15, SeekOrigin.Begin);
-                    unknown14 = reader.ReadByte();
+                        memory1.Seek(START15, SeekOrigin.Begin);
+                        unknown14 = reader.ReadByte();
 
-                    START16 += 60;
-                    memory1.Seek(START16, SeekOrigin.Begin);
-                    unknown15 = reader.ReadByte();
+                        memory1.Seek(START16, SeekOrigin.Begin);
+                        unknown15 = reader.ReadByte();
 
-                    START17 += 60;
-                    memory1.Seek(START17, SeekOrigin.Begin);
-                    unknown16 = reader.ReadByte();
+                        memory1.Seek(START17, SeekOrigin.Begin);
+                        unknown16 = reader.ReadByte();
 
-                    START18 += 60;
-                    memory1.Seek(START18, SeekOrigin.Begin);
-                    unknown17 = reader.ReadByte();
+                        memory1.Seek(START18, SeekOrigin.Begin);
+                        unknown17 = reader.ReadByte();
 
-                    START19 += 60;
-                    memory1.Seek(START19, SeekOrigin.Begin);
-                    unknown18 = reader.ReadByte();
+                        memory1.Seek(START19, SeekOrigin.Begin);
+                        unknown18 = reader.ReadByte();
 
-                    START20 += 60;
-                    memory1.Seek(START20, SeekOrigin.Begin);
-                    unknown19 = reader.ReadByte();
+                        memory1.Seek(START20, SeekOrigin.Begin);
+                        unknown19 = reader.ReadByte();
 
-                    START21 += 60;
-                    memory1.Seek(START21, SeekOrigin.Begin);
-                    unknown20 = reader.ReadByte();
+                        memory1.Seek(START21, SeekOrigin.Begin);
+                        unknown20 = reader.ReadByte();
 
-                    START22 += 60;
-                    memory1.Seek(START22, SeekOrigin.Begin);
-                    unknown21 = reader.ReadByte();
+                        memory1.Seek(START22, SeekOrigin.Begin);
+                        unknown21 = reader.ReadByte();
 
-                    START23 += 60;
-                    memory1.Seek(START23, SeekOrigin.Begin);
-                    unknown22 = reader.ReadByte();
+                        memory1.Seek(START23, SeekOrigin.Begin);
+                        unknown22 = reader.ReadByte();
 
-                    START24 += 60;
-                    memory1.Seek(START24, SeekOrigin.Begin);
-                    unknown23 = reader.ReadByte();
+                        memory1.Seek(START24, SeekOrigin.Begin);
+                        unknown23 = reader.ReadByte();
 
-                    START25 += 60;
-                    memory1.Seek(START25, SeekOrigin.Begin);
-                    unknown24 = reader.ReadByte();
+                        memory1.Seek(START25, SeekOrigin.Begin);
+                        unknown24 = reader.ReadByte();
 
-                    START26 += 60;
-                    memory1.Seek(START26, SeekOrigin.Begin);
-                    unknown25 = reader.ReadByte();
+                        memory1.Seek(START26, SeekOrigin.Begin);
+                        unknown25 = reader.ReadByte();
 
-                    START27 += 60;
-                    memory1.Seek(START27, SeekOrigin.Begin);
-                    unknown26 = reader.ReadByte();
+                        memory1.Seek(START27, SeekOrigin.Begin);
+                        unknown26 = reader.ReadByte();
 
-                    START28 += 60;
-                    memory1.Seek(START28, SeekOrigin.Begin);
-                    unknown27 = reader.ReadByte();
+                        memory1.Seek(START28, SeekOrigin.Begin);
+                        unknown27 = reader.ReadByte();
 
-                    START29 += 60;
-                    memory1.Seek(START29, SeekOrigin.Begin);
-                    unknown28 = reader.ReadByte();
+                        memory1.Seek(START29, SeekOrigin.Begin);
+                        unknown28 = reader.ReadByte();
 
-                    START30 += 60;
-                    memory1.Seek(START30, SeekOrigin.Begin);
-                    unknown29 = reader.ReadByte();
+                        memory1.Seek(START30, SeekOrigin.Begin);
+                        unknown29 = reader.ReadByte();
 
-                    START31 += 60;
-                    memory1.Seek(START31, SeekOrigin.Begin);
-                    unknown30 = reader.ReadByte();
+                        memory1.Seek(START31, SeekOrigin.Begin);
+                        unknown30 = reader.ReadByte();
 
-                    START32 += 60;
-                    memory1.Seek(START32, SeekOrigin.Begin);
-                    unknown31 = reader.ReadByte();
+                        memory1.Seek(START32, SeekOrigin.Begin);
+                        unknown31 = reader.ReadByte();
 
-                    START33 += 60;
-                    memory1.Seek(START33, SeekOrigin.Begin);
-                    unknown32 = reader.ReadByte();
+                        memory1.Seek(START33, SeekOrigin.Begin);
+                        unknown32 = reader.ReadByte();
 
-                    START34 += 60;
-                    memory1.Seek(START34, SeekOrigin.Begin);
-                    unknown33 = reader.ReadByte();
+                        memory1.Seek(START34, SeekOrigin.Begin);
+                        unknown33 = reader.ReadByte();
 
-                    START35 += 60;
-                    memory1.Seek(START35, SeekOrigin.Begin);
-                    eyeSkinColor = reader.ReadByte();
+                        memory1.Seek(START35, SeekOrigin.Begin);
+                        eyeSkinColor = reader.ReadByte();
 
-                    START36 += 60;
-                    memory1.Seek(START36, SeekOrigin.Begin);
-                    unknown34 = reader.ReadByte();
+                        memory1.Seek(START36, SeekOrigin.Begin);
+                        unknown34 = reader.ReadByte();
 
-                    START37 += 60;
-                    memory1.Seek(START37, SeekOrigin.Begin);
-                    unknown35 = reader.ReadByte();
+                        memory1.Seek(START37, SeekOrigin.Begin);
+                        unknown35 = reader.ReadByte();
 
-                    START38 += 60;
-                    memory1.Seek(START38, SeekOrigin.Begin);
-                    unknown36 = reader.ReadByte();
+                        memory1.Seek(START38, SeekOrigin.Begin);
+                        unknown36 = reader.ReadByte();
 
-                    START39 += 60;
-                    memory1.Seek(START39, SeekOrigin.Begin);
-                    unknown38 = reader.ReadByte();
+                        memory1.Seek(START39, SeekOrigin.Begin);
+                        unknown38 = reader.ReadByte();
 
-                    START40 += 60;
-                    memory1.Seek(START40, SeekOrigin.Begin);
-                    unknown39 = reader.ReadByte();
+                        memory1.Seek(START40, SeekOrigin.Begin);
+                        unknown39 = reader.ReadByte();
 
-                    START41 += 60;
-                    memory1.Seek(START41, SeekOrigin.Begin);
-                    unknown40 = reader.ReadByte();
+                        memory1.Seek(START41, SeekOrigin.Begin);
+                        unknown40 = reader.ReadByte();
 
-                    START42 += 60;
-                    memory1.Seek(START42, SeekOrigin.Begin);
-                    unknown41 = reader.ReadByte();
+                        memory1.Seek(START42, SeekOrigin.Begin);
+                        unknown41 = reader.ReadByte();
 
-                    START43 += 60;
-                    memory1.Seek(START43, SeekOrigin.Begin);
-                    unknown42 = reader.ReadByte();
+                        memory1.Seek(START43, SeekOrigin.Begin);
+                        unknown42 = reader.ReadByte();
 
-                    START44 += 60;
-                    memory1.Seek(START44, SeekOrigin.Begin);
-                    unknown43 = reader.ReadByte();
+                        memory1.Seek(START44, SeekOrigin.Begin);
+                        unknown43 = reader.ReadByte();
 
-                    START45 += 60;
-                    memory1.Seek(START45, SeekOrigin.Begin);
-                    unknown44 = reader.ReadByte();
+                        memory1.Seek(START45, SeekOrigin.Begin);
+                        unknown44 = reader.ReadByte();
 
-                    START46 += 60;
-                    memory1.Seek(START46, SeekOrigin.Begin);
-                    unknown45 = reader.ReadByte();
+                        memory1.Seek(START46, SeekOrigin.Begin);
+                        unknown45 = reader.ReadByte();
 
-                    START47 += 60;
-                    memory1.Seek(START47, SeekOrigin.Begin);
-                    unknown46 = reader.ReadByte();
+                        memory1.Seek(START47, SeekOrigin.Begin);
+                        unknown46 = reader.ReadByte();
 
-                    START48 += 60;
-                    memory1.Seek(START48, SeekOrigin.Begin);
-                    unknown47 = reader.ReadByte();
+                        memory1.Seek(START48, SeekOrigin.Begin);
+                        unknown47 = reader.ReadByte();
 
-                    START49 += 60;
-                    memory1.Seek(START49, SeekOrigin.Begin);
-                    unknown48 = reader.ReadByte();
+                        memory1.Seek(START49, SeekOrigin.Begin);
+                        unknown48 = reader.ReadByte();
 
-                    START50 += 60;
-                    memory1.Seek(START50, SeekOrigin.Begin);
-                    unknown49 = reader.ReadByte();
+                        memory1.Seek(START50, SeekOrigin.Begin);
+                        unknown49 = reader.ReadByte();
 
-                    START51 += 60;
-                    memory1.Seek(START51, SeekOrigin.Begin);
-                    unknown50 = reader.ReadByte();
+                        memory1.Seek(START51, SeekOrigin.Begin);
+                        unknown50 = reader.ReadByte();
 
-                    START52 += 60;
-                    memory1.Seek(START52, SeekOrigin.Begin);
-                    unknown51 = reader.ReadByte();
+                        memory1.Seek(START52, SeekOrigin.Begin);
+                        unknown51 = reader.ReadByte();
 
-                    START53 += 60;
-                    memory1.Seek(START53, SeekOrigin.Begin);
-                    unknown52 = reader.ReadByte();
+                        memory1.Seek(START53, SeekOrigin.Begin);
+                        unknown52 = reader.ReadByte();
 
-                    START54 += 60;
-                    memory1.Seek(START54, SeekOrigin.Begin);
-                    unknown53 = reader.ReadByte();
+                        memory1.Seek(START54, SeekOrigin.Begin);
+                        unknown53 = reader.ReadByte();
 
-                    START55 += 60;
-                    memory1.Seek(START55, SeekOrigin.Begin);
-                    unknown54 = reader.ReadByte();
+                        memory1.Seek(START55, SeekOrigin.Begin);
+                        unknown54 = reader.ReadByte();
 
-                    START56 += 60;
-                    memory1.Seek(START56, SeekOrigin.Begin);
-                    unknown55 = reader.ReadByte();
+                        memory1.Seek(START56, SeekOrigin.Begin);
+                        unknown55 = reader.ReadByte();
 
-                    START57 += 60;
-                    memory1.Seek(START57, SeekOrigin.Begin);
-                    unknown56 = reader.ReadByte();
+                        memory1.Seek(START57, SeekOrigin.Begin);
+                        unknown56 = reader.ReadByte();
 
-                    PlayerAppearance temp = new PlayerAppearance(IdPlayer);
-                    temp.setUnknown1(unknown1);
-                    temp.setUnknown2(unknown2);
-                    temp.setUnknown3(unknown3);
-                    temp.setUnknown4(unknown4);
-                    temp.setUnknown5(unknown5);
-                    temp.setUnknown6(unknown6);
-                    temp.setUnknown7(unknown7);
-                    temp.setUnknown8(unknown8);
-                    temp.setUnknown9(unknown9);
-                    temp.setUnknown10(unknown10);
-                    temp.setUnknown11(unknown11);
-                    temp.setUnknown12(unknown12);
-                    temp.setUnknown13(unknown13);
-                    temp.setUnknown14(unknown14);
-                    temp.setUnknown15(unknown15);
-                    temp.setUnknown16(unknown16);
-                    temp.setUnknown17(unknown17);
-                    temp.setUnknown18(unknown18);
-                    temp.setUnknown19(unknown19);
-                    temp.setUnknown20(unknown20);
-                    temp.setUnknown21(unknown21);
-                    temp.setUnknown22(unknown22);
-                    temp.setUnknown23(unknown23);
-                    temp.setUnknown24(unknown24);
-                    temp.setUnknown25(unknown25);
-                    temp.setUnknown26(unknown26);
-                    temp.setUnknown27(unknown27);
-                    temp.setUnknown28(unknown28);
-                    temp.setUnknown29(unknown29);
-                    temp.setUnknown30(unknown30);
-                    temp.setUnknown31(unknown31);
-                    temp.setUnknown32(unknown32);
-                    temp.setUnknown33(unknown33);
-					temp.setEyeskinColor(eyeSkinColor);
-                    temp.setUnknown34(unknown34);
-                    temp.setUnknown35(unknown35);
-                    temp.setUnknown36(unknown36);
-                    temp.setUnknown38(unknown38);
-                    temp.setUnknown39(unknown39);
-                    temp.setUnknown40(unknown40);
-                    temp.setUnknown41(unknown41);
-                    temp.setUnknown42(unknown42);
-                    temp.setUnknown43(unknown43);
-                    temp.setUnknown44(unknown44);
-                    temp.setUnknown45(unknown45);
-                    temp.setUnknown46(unknown46);
-                    temp.setUnknown47(unknown47);
-                    temp.setUnknown48(unknown48);
-                    temp.setUnknown49(unknown49);
-                    temp.setUnknown50(unknown50);
-                    temp.setUnknown51(unknown51);
-                    temp.setUnknown52(unknown52);
-                    temp.setUnknown53(unknown53);
-                    temp.setUnknown54(unknown54);
-                    temp.setUnknown55(unknown55);
-                    temp.setUnknown56(unknown56);
-
-                    playerAppearanceList.Add(temp);
+                        temp = new PlayerAppearance(IdPlayer);
+                        temp.setUnknown1(unknown1);
+                        temp.setUnknown2(unknown2);
+                        temp.setUnknown3(unknown3);
+                        temp.setUnknown4(unknown4);
+                        temp.setUnknown5(unknown5);
+                        temp.setUnknown6(unknown6);
+                        temp.setUnknown7(unknown7);
+                        temp.setUnknown8(unknown8);
+                        temp.setUnknown9(unknown9);
+                        temp.setUnknown10(unknown10);
+                        temp.setUnknown11(unknown11);
+                        temp.setUnknown12(unknown12);
+                        temp.setUnknown13(unknown13);
+                        temp.setUnknown14(unknown14);
+                        temp.setUnknown15(unknown15);
+                        temp.setUnknown16(unknown16);
+                        temp.setUnknown17(unknown17);
+                        temp.setUnknown18(unknown18);
+                        temp.setUnknown19(unknown19);
+                        temp.setUnknown20(unknown20);
+                        temp.setUnknown21(unknown21);
+                        temp.setUnknown22(unknown22);
+                        temp.setUnknown23(unknown23);
+                        temp.setUnknown24(unknown24);
+                        temp.setUnknown25(unknown25);
+                        temp.setUnknown26(unknown26);
+                        temp.setUnknown27(unknown27);
+                        temp.setUnknown28(unknown28);
+                        temp.setUnknown29(unknown29);
+                        temp.setUnknown30(unknown30);
+                        temp.setUnknown31(unknown31);
+                        temp.setUnknown32(unknown32);
+                        temp.setUnknown33(unknown33);
+                        temp.setEyeskinColor(eyeSkinColor);
+                        temp.setUnknown34(unknown34);
+                        temp.setUnknown35(unknown35);
+                        temp.setUnknown36(unknown36);
+                        temp.setUnknown38(unknown38);
+                        temp.setUnknown39(unknown39);
+                        temp.setUnknown40(unknown40);
+                        temp.setUnknown41(unknown41);
+                        temp.setUnknown42(unknown42);
+                        temp.setUnknown43(unknown43);
+                        temp.setUnknown44(unknown44);
+                        temp.setUnknown45(unknown45);
+                        temp.setUnknown46(unknown46);
+                        temp.setUnknown47(unknown47);
+                        temp.setUnknown48(unknown48);
+                        temp.setUnknown49(unknown49);
+                        temp.setUnknown50(unknown50);
+                        temp.setUnknown51(unknown51);
+                        temp.setUnknown52(unknown52);
+                        temp.setUnknown53(unknown53);
+                        temp.setUnknown54(unknown54);
+                        temp.setUnknown55(unknown55);
+                        temp.setUnknown56(unknown56);
+                    }
 
                 }
-                memory1.Close();
-                reader.Close();
             }
             catch (IOException e)
             {
@@ -465,103 +478,95 @@ namespace DinoTem.persistence
                 SplashScreen._SplashScreen.Close();
             }
 
-            return playerAppearanceList;
+            return temp;
         }
 
-        private void saveHex0(long value, BinaryWriter b)
+        public void applyPlayerAppearance(BinaryReader reader, MemoryStream unzlib, PlayerAppearance playerApp, ref BinaryWriter writer)
         {
-            string hex2klkoa6 = value.ToString("X8").Substring(6, 2) + " " + value.ToString("X8").Substring(4, 2) + " " + value.ToString("X8").Substring(2, 2) + " " + value.ToString("X8").Substring(0, 2);  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
+            //calcolo giocatori
+            // Create new FileInfo object and get the Length.
+            int bytes_player = (int)unzlib.Length;
+            int calcolo_player = bytes_player / block;
 
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
+            long START2 = -60;
+            for (int i = 0; i <= (calcolo_player - 1); i++)
             {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
-
-        private void saveHex2(int value, BinaryWriter b)
-        {
-            string hex2klkoa6 = value.ToString("X2");  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
-
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
-            {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
-
-        public void save(string patch, Controller controller, int bitRecognized)
-        {
-            using (BinaryWriter b = new BinaryWriter(File.Open(patch + PATH, FileMode.Create)))
-            {
-                // Use foreach and write all 12 integers.
-                foreach (PlayerAppearance temp in controller.getPlayerAppearanceList())
+                START2 += block;
+                unzlib.Seek(START2, SeekOrigin.Begin);
+                if (playerApp.getId() == reader.ReadUInt32())
                 {
-                    saveHex0(temp.getId(), b);
-                    saveHex2(temp.getUnknown1(), b);
-                    saveHex2(temp.getUnknown2(), b);
-                    saveHex2(temp.getUnknown3(), b);
-                    saveHex2(temp.getUnknown4(), b);
-                    saveHex2(temp.getUnknown5(), b);
-                    saveHex2(temp.getUnknown6(), b);
-                    saveHex2(temp.getUnknown7(), b);
-                    saveHex2(temp.getUnknown8(), b);
-                    saveHex2(temp.getUnknown9(), b);
-                    saveHex2(temp.getUnknown10(), b);
-                    saveHex2(temp.getUnknown11(), b);
-                    saveHex2(temp.getUnknown12(), b);
-                    saveHex2(temp.getUnknown13(), b);
-                    saveHex2(temp.getUnknown14(), b);
-                    saveHex2(temp.getUnknown15(), b);
-                    saveHex2(temp.getUnknown16(), b);
-                    saveHex2(temp.getUnknown17(), b);
-                    saveHex2(temp.getUnknown18(), b);
-                    saveHex2(temp.getUnknown19(), b);
-                    saveHex2(temp.getUnknown20(), b);
-                    saveHex2(temp.getUnknown21(), b);
-                    saveHex2(temp.getUnknown22(), b);
-                    saveHex2(temp.getUnknown23(), b);
-                    saveHex2(temp.getUnknown24(), b);
-                    saveHex2(temp.getUnknown25(), b);
-                    saveHex2(temp.getUnknown26(), b);
-                    saveHex2(temp.getUnknown27(), b);
-                    saveHex2(temp.getUnknown28(), b);
-                    saveHex2(temp.getUnknown29(), b);
-                    saveHex2(temp.getUnknown30(), b);
-                    saveHex2(temp.getUnknown31(), b);
-                    saveHex2(temp.getUnknown32(), b);
-                    saveHex2(temp.getUnknown33(), b);
-                    saveHex2(temp.getEyeskinColor(), b);
-                    saveHex2(temp.getUnknown34(), b);
-                    saveHex2(temp.getUnknown35(), b);
-                    saveHex2(temp.getUnknown36(), b);
-                    saveHex2(temp.getUnknown38(), b);
-                    saveHex2(temp.getUnknown39(), b);
-                    saveHex2(temp.getUnknown40(), b);
-                    saveHex2(temp.getUnknown41(), b);
-                    saveHex2(temp.getUnknown42(), b);
-                    saveHex2(temp.getUnknown43(), b);
-                    saveHex2(temp.getUnknown44(), b);
-                    saveHex2(temp.getUnknown45(), b);
-                    saveHex2(temp.getUnknown46(), b);
-                    saveHex2(temp.getUnknown47(), b);
-                    saveHex2(temp.getUnknown48(), b);
-                    saveHex2(temp.getUnknown49(), b);
-                    saveHex2(temp.getUnknown50(), b);
-                    saveHex2(temp.getUnknown51(), b);
-                    saveHex2(temp.getUnknown52(), b);
-                    saveHex2(temp.getUnknown53(), b);
-                    saveHex2(temp.getUnknown54(), b);
-                    saveHex2(temp.getUnknown55(), b);
-                    saveHex2(temp.getUnknown56(), b);
+                    writer.BaseStream.Position = START2;
+                    writer.Write(playerApp.getId());
+                    writer.Write(playerApp.getUnknown1());
+                    writer.Write(playerApp.getUnknown2());
+                    writer.Write(playerApp.getUnknown3());
+                    writer.Write(playerApp.getUnknown4());
+                    writer.Write(playerApp.getUnknown5());
+                    writer.Write(playerApp.getUnknown6());
+                    writer.Write(playerApp.getUnknown7());
+                    writer.Write(playerApp.getUnknown8());
+                    writer.Write(playerApp.getUnknown9());
+                    writer.Write(playerApp.getUnknown10());
+                    writer.Write(playerApp.getUnknown11());
+                    writer.Write(playerApp.getUnknown12());
+                    writer.Write(playerApp.getUnknown13());
+                    writer.Write(playerApp.getUnknown14());
+                    writer.Write(playerApp.getUnknown15());
+                    writer.Write(playerApp.getUnknown16());
+                    writer.Write(playerApp.getUnknown17());
+                    writer.Write(playerApp.getUnknown18());
+                    writer.Write(playerApp.getUnknown19());
+                    writer.Write(playerApp.getUnknown20());
+                    writer.Write(playerApp.getUnknown21());
+                    writer.Write(playerApp.getUnknown22());
+                    writer.Write(playerApp.getUnknown23());
+                    writer.Write(playerApp.getUnknown24());
+                    writer.Write(playerApp.getUnknown25());
+                    writer.Write(playerApp.getUnknown26());
+                    writer.Write(playerApp.getUnknown27());
+                    writer.Write(playerApp.getUnknown28());
+                    writer.Write(playerApp.getUnknown29());
+                    writer.Write(playerApp.getUnknown30());
+                    writer.Write(playerApp.getUnknown31());
+                    writer.Write(playerApp.getUnknown32());
+                    writer.Write(playerApp.getUnknown33());
+                    writer.Write(playerApp.getEyeskinColor());
+                    writer.Write(playerApp.getUnknown34());
+                    writer.Write(playerApp.getUnknown35());
+                    writer.Write(playerApp.getUnknown36());
+                    writer.Write(playerApp.getUnknown38());
+                    writer.Write(playerApp.getUnknown39());
+                    writer.Write(playerApp.getUnknown40());
+                    writer.Write(playerApp.getUnknown41());
+                    writer.Write(playerApp.getUnknown42());
+                    writer.Write(playerApp.getUnknown43());
+                    writer.Write(playerApp.getUnknown44());
+                    writer.Write(playerApp.getUnknown45());
+                    writer.Write(playerApp.getUnknown46());
+                    writer.Write(playerApp.getUnknown47());
+                    writer.Write(playerApp.getUnknown48());
+                    writer.Write(playerApp.getUnknown49());
+                    writer.Write(playerApp.getUnknown50());
+                    writer.Write(playerApp.getUnknown51());
+                    writer.Write(playerApp.getUnknown52());
+                    writer.Write(playerApp.getUnknown53());
+                    writer.Write(playerApp.getUnknown54());
+                    writer.Write(playerApp.getUnknown55());
+                    writer.Write(playerApp.getUnknown56());
                 }
             }
 
-            if (bitRecognized == 1 || bitRecognized == 2)
+        }
+
+        public void save(string patch, ref MemoryStream memoryGicotori, int bitRecognized)
+        {
+            if (bitRecognized == 0)
+            {
+                //save zlib
+                byte[] ss13 = Zlib18.ZLIBFile(memoryGicotori.ToArray());
+                File.WriteAllBytes(patch + PATH, ss13);
+            }
+            else if (bitRecognized == 1 || bitRecognized == 2)
             {
                 byte[] inputData13 = File.ReadAllBytes(patch + PATH);
                 MemoryStream memory1 = new MemoryStream(inputData13);
@@ -569,7 +574,6 @@ namespace DinoTem.persistence
                 File.WriteAllBytes(patch + PATH, memory1.ToArray());
                 memory1.Close();
             }
-
         }
 
     }

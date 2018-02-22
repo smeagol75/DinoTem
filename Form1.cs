@@ -68,6 +68,55 @@ namespace DinoTem
             stadiumZone.Items.Add("Oceania America");
             //Caricamento Database
             databaseBox.Items.Add("Stadium");
+
+            //ToolTip
+            toolTip1.ToolTipTitle = "DinoTem Editor";
+            toolTip1.SetToolTip(playersBox, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
+            toolTip1.SetToolTip(searchPlayer, "Write a player name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the player, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a player");
+            toolTip1.SetToolTip(searchTeamAB, "Write a team name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
+            toolTip1.SetToolTip(searchById, "Click if you want to search by id");
+            toolTip1.SetToolTip(teamView1, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
+            toolTip1.SetToolTip(teamView2, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
+            toolTip1.SetToolTip(teamBox1, "Click to select a team");
+            toolTip1.SetToolTip(teamBox2, "Click to select a team");
+            toolTip1.SetToolTip(giocatoreName, "Change Player Name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(giocatoreShirt, "Change Shirt Name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(giocatoreNumber, "Change Player Number" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+
+            toolTip1.SetToolTip(searchTeam, "Write a team name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
+            toolTip1.SetToolTip(teamsBox, "Click to select a team" + Environment.NewLine + "Also use double click or right click for more option");
+            toolTip1.SetToolTip(teamName, "Change team name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamShort, "Change short name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamFake, "Change if the team is a fake");
+            toolTip1.SetToolTip(teamNotPlayableLeague, "Change league of team");
+            toolTip1.SetToolTip(teamFake, "Change if the team is a fake");
+            toolTip1.SetToolTip(teamLicense, "Change team's license");
+            toolTip1.SetToolTip(teamCoachLicense, "Change coach's license");
+            toolTip1.SetToolTip(teamType, "Change team's type");
+            toolTip1.SetToolTip(teamCountry, "Change team's country");
+            toolTip1.SetToolTip(teamStadium, "Change team's stadium");
+            toolTip1.SetToolTip(teamCoach, "Change team's coach");
+            toolTip1.SetToolTip(teamAnthem, "Change team's anthem");
+            toolTip1.SetToolTip(teamHasLicensedPlayers, "Change if theam has licensed players");
+            toolTip1.SetToolTip(unknown, "Change unknown value");
+            toolTip1.SetToolTip(anthemStandingAngle, "Change anthem standing angle");
+            toolTip1.SetToolTip(anthemPlayersSinging, "Change anthem players singing");
+            toolTip1.SetToolTip(anthemStandingStyle, "anthem standing style");
+            toolTip1.SetToolTip(teamJapanese, "Change team name (only Japanese language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamFrench, "Change team name (only French language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamDutch, "Change team name (only Dutch language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamSpanish, "Change team name (only Spanish language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamTurkish, "Change team name (only Turkish language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamSwedish, "Change team name (only Swedish language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamGreek, "Change team name (only Greek language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamPortuguese, "Change team name (only Portuguese language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamItalian, "Change team name (only Italian language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamEnglish, "Change team name (only English language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamGerman, "Change team name (only German language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamRussian, "Change team name (only Russian language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamSpanish2, "Change team name (only Spanish (Latin American) language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamPortuguese2, "Change team name (only Portuguese (Latin American) language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamEnglish2, "Change team name (only English (UK) language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
         }
 
         private void sfondoTeamView()
@@ -573,7 +622,11 @@ namespace DinoTem
 
             int intselectedindex = playersBox.SelectedIndices[0];
             if (intselectedindex >= 0)
+            {
                 leggereGiocatore(controller.leggiGiocatore(intselectedindex));
+                //
+                team = 0;
+            }
         }
 
         //team
@@ -1177,6 +1230,7 @@ namespace DinoTem
                         LeggereFormazioni(tacticsFormation, teamView1);
                 }
             }
+
             sfondoTeamView();
         }
 
@@ -1192,6 +1246,8 @@ namespace DinoTem
                 Player temp2 = controller.leggiGiocatoreById(id);
                 leggereGiocatore(temp2);
                 giocatoreNumber.Text = teamView1.Items[intselectedindex].SubItems[3].Text;
+                //
+                team = 1;
             }
         }
 
@@ -1231,6 +1287,8 @@ namespace DinoTem
                 Player temp2 = controller.leggiGiocatoreById(id);
                 leggereGiocatore(temp2);
                 giocatoreNumber.Text = teamView2.Items[intselectedindex].SubItems[3].Text;
+                //
+                team = 2;
             }
         }
 
@@ -1279,10 +1337,19 @@ namespace DinoTem
                 controller.changePlayerName(ushort.Parse(giocatoreID.Text), giocatoreName.Text);
         }
 
+        //cambiare nome tshirt
         private void giocatoreShirt_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
                 controller.changeShirtPlayer(ushort.Parse(giocatoreID.Text), giocatoreShirt.Text);
+        }
+
+        //cambiare numero al giocatore
+        int team = 1;
+        private void giocatoreNumber_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                controller.changePlayerNumber(uint.Parse(giocatoreID.Text), team, giocatoreNumber.Text);
         }
 
         private void teamView1_MouseDown(object sender, MouseEventArgs e)
@@ -2669,19 +2736,68 @@ namespace DinoTem
         //export Player
         private void csvToolStripMenuItem6_Click(object sender, EventArgs e)
         {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
 
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportPlayer(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //export PlayerAppareance
         private void csvToolStripMenuItem12_Click(object sender, EventArgs e)
         {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
 
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportPlayerAppareance(controller));
+                sw.Close();
+                MessageBox.Show("Exported values are in hexadecimal", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //export team
         private void csvToolStripMenuItem7_Click(object sender, EventArgs e)
         {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
 
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportTeam(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //export PlayerAssignment
@@ -2709,13 +2825,45 @@ namespace DinoTem
         //export Coaches
         private void csvToolStripMenuItem16_Click(object sender, EventArgs e)
         {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
 
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportCoach(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //export Stadium
         private void csvToolStripMenuItem11_Click(object sender, EventArgs e)
         {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
 
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportStadium(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //export Ball
@@ -2765,13 +2913,45 @@ namespace DinoTem
         //export Boots
         private void csvToolStripMenuItem2_Click(object sender, EventArgs e)
         {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
 
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportBoot(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         //export Gloves
         private void csvToolStripMenuItem10_Click(object sender, EventArgs e)
         {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
 
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportGlove(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
     }
 }

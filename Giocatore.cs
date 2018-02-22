@@ -630,13 +630,16 @@ namespace DinoTem
             else
                 earlyCross.Checked = false;
 
-            /*if (controller.getSkinColour(temp) > 0)
-                skinColour.Value = controller.getSkinColour(temp);
+            int skin = controller.getSkinColour(temp.getId());
+            if (skin > 0) {
+                skinColour.Value = skin;
+                skin1.Visible = true;
+            }
             else
             {
                 skinColour.Visible = false;
-                skin1.Visible = false;
-            }*/
+                skinNull.Visible = true;
+            }
 
             starIndicator.Value = temp.getStarPlayerIndicator();
 
@@ -1463,12 +1466,12 @@ namespace DinoTem
 
             temp.setYouthPlayerId(controller.leggiSquadra(youthClub.SelectedIndex).getId());
 
-            //if (skinColour.Value > 0)
-                //controller.changeSkinColour(temp, int.Parse(skinColour.Value.ToString()));
+            if (skinNull.Visible == false)
+                controller.changeSkinColour(temp.getId(), int.Parse(skinColour.Value.ToString()));
 
             controller.applyPlayerPersister(index, temp);
 
-            //controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
+            controller.UpdateTeamView(temp.getId(), temp.getName());
             controller.UpdateFormPlayer(index, temp.getName());
             this.Close();
         }

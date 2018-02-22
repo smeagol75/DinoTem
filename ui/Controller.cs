@@ -76,6 +76,9 @@ namespace DinoTem.ui
         private MemoryStream unzlibCompetitionEntry;
         private BinaryReader leggiCompetitionEntry;
         private BinaryWriter scriviCompetitionEntry;
+        private MemoryStream unzlibPlayerApp;
+        private BinaryReader leggiPlayerApp;
+        private BinaryWriter scriviPlayerApp;
 
         public void readBallPersister(string patch, int bitRecognized)
         {
@@ -385,6 +388,21 @@ namespace DinoTem.ui
             }
         }
 
+        public void readPlayerAppearancePersister(string patch, int bitRecognized)
+        {
+            MyPlayerAppearancePersister playerAppearanceReader = new MyPlayerAppearancePersister();
+
+            try
+            {
+                playerAppearanceReader.load(patch, bitRecognized, ref unzlibPlayerApp, ref leggiPlayerApp, ref scriviPlayerApp);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
         public void saveBallPersister(string patch, Controller controller, int bitRecognized)
         {
             MyBallPersister ballSave = new MyBallPersister();
@@ -607,6 +625,21 @@ namespace DinoTem.ui
             {
                 MessageBox.Show("Error saved CompetitionEntry.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void savePlayerAppearancePersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyPlayerAppearancePersister playerAppearanceSave = new MyPlayerAppearancePersister();
+
+            try
+            {
+                playerAppearanceSave.save(patch, ref unzlibPlayerApp, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved PlayerAppearance.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         public void applyBallPersister(int index, Ball pallone)
@@ -845,6 +878,20 @@ namespace DinoTem.ui
             }
         }
 
+        public void applyPlayerAppearancePersister(PlayerAppearance a)
+        {
+            MyPlayerAppearancePersister com = new MyPlayerAppearancePersister();
+
+            try
+            {
+                com.applyPlayerAppearance(leggiPlayerApp, unzlibPlayerApp, a, ref scriviPlayerApp);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply appareance - id player: " + a.getId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void closeMemory()
         {
             if (getBitRecognized() != -1)
@@ -906,6 +953,9 @@ namespace DinoTem.ui
                 unzlibCompetitionEntry.Close();
                 leggiCompetitionEntry.Close();
                 scriviCompetitionEntry.Close();
+                unzlibPlayerApp.Close();
+                leggiPlayerApp.Close();
+                scriviPlayerApp.Close();
             }
         }
 
@@ -1095,6 +1145,7 @@ namespace DinoTem.ui
             readStadiumOrderPersister(folder, bitRecognized);
             readStadiumOrderInConfederationPersister(folder, bitRecognized);
             readCompetitionEntryPersister(folder, bitRecognized);
+            readPlayerAppearancePersister(folder, bitRecognized);
 
             //readCountryPersister(folder, bitRecognized);
             //if (countryList.Count == 0)
@@ -1373,6 +1424,14 @@ namespace DinoTem.ui
             reader.loadCompetitionEntry(compId, unzlibCompetitionEntry, leggiCompetitionEntry);
         }
 
+        public PlayerAppearance leggiGiocatoreApparenza(UInt32 id)
+        {
+            MyPlayerAppearancePersister reader = new MyPlayerAppearancePersister();
+            PlayerAppearance player = reader.loadPlayerAppearance(id, unzlibPlayerApp, leggiPlayerApp);
+
+            return player;
+        }
+
         public int findCountry(UInt32 idCountry)
         {
             int index = -1;
@@ -1478,6 +1537,58 @@ namespace DinoTem.ui
 
         }
 
+        public int getSkinColour(UInt32 id)
+        {
+            PlayerAppearance pA = leggiGiocatoreApparenza(id);
+
+            int output1 = 0;
+
+            if (pA != null)
+            {
+                if (getBitRecognized() == 0)
+                {
+                    int skin = pA.getEyeskinColor();
+                    string eye = skin.ToString("X2");
+                    eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                    eye = eye.Substring(5, 3);
+                    output1 = Convert.ToInt32(eye, 2);
+                }
+                else
+                {
+                    int skin = pA.getEyeskinColor();
+                    string eye = skin.ToString("X2");
+                    eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                    eye = eye.Substring(0, 3);
+                    output1 = Convert.ToInt32(eye, 2);
+                }
+
+            }
+
+            return output1;
+        }
+
+        public void changeSkinColour(UInt32 id, int value)
+        {
+            PlayerAppearance pA = leggiGiocatoreApparenza(id);
+            if (getBitRecognized() == 0)
+            {
+                int skin = pA.getEyeskinColor();
+                string eye = skin.ToString("X2");
+                eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                eye = eye.Substring(0, 5) + MyBinary.ToBinaryX(value, 3);
+                pA.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
+            }
+            else
+            {
+                int skin = pA.getEyeskinColor();
+                string eye = skin.ToString("X2");
+                eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                eye = MyBinary.ToBinaryX(value, 3) + eye.Substring(3, 5);
+                pA.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
+            }
+            applyPlayerAppearancePersister(pA);
+        }
+
         public void UpdateTeamView(UInt32 idPlayer, string name)
         {
             for (int i = 0; i < Form1._Form1.teamView1.Items.Count; i++)
@@ -1550,6 +1661,29 @@ namespace DinoTem.ui
             Player player = leggiGiocatore(index);
             player.setShirtName(name);
             applyPlayerPersister(index, player);
+        }
+
+        public void changePlayerNumber(UInt32 idPlayer, int team, string shirtNumber)
+        {
+            int intselectedindex = 0;
+            if (team == 1) {
+                intselectedindex = Form1._Form1.teamView1.SelectedIndices[0];
+                Form1._Form1.teamView1.Items[intselectedindex].SubItems[3].Text = shirtNumber;
+                transferPlayerAtoA(Form1._Form1.teamView1, leggiSquadra(Form1._Form1.teamBox1.SelectedIndex).getId());
+
+                //update
+                if (Form1._Form1.teamBox1.SelectedIndex == Form1._Form1.teamBox2.SelectedIndex)
+                    Form1._Form1.teamView2.Items[intselectedindex].SubItems[3].Text = shirtNumber;
+            }
+            else if (team == 2) {
+                intselectedindex = Form1._Form1.teamView2.SelectedIndices[0];
+                Form1._Form1.teamView2.Items[intselectedindex].SubItems[3].Text = shirtNumber;
+                transferPlayerAtoA(Form1._Form1.teamView2, leggiSquadra(Form1._Form1.teamBox2.SelectedIndex).getId());
+
+                //update
+                if (Form1._Form1.teamBox1.SelectedIndex == Form1._Form1.teamBox2.SelectedIndex)
+                    Form1._Form1.teamView1.Items[intselectedindex].SubItems[3].Text = shirtNumber;
+            }
         }
 
         //globalFunction
@@ -2459,6 +2593,27 @@ namespace DinoTem.ui
         }
 
         //transferPlayer Drag&Drop
+        public void transferPlayerAtoA(ListView listview, uint teamId)
+        {
+            List<PlayerAssignment> pa = new List<PlayerAssignment>();
+            for (int i = 0; i < listview.Items.Count - 1; i++)
+            {
+                PlayerAssignment temp = new PlayerAssignment(uint.Parse(listview.Items[i].SubItems[11].Text), teamId);
+                temp.setCaptain(ushort.Parse(listview.Items[i].SubItems[5].Text));
+                temp.setEntryId(ushort.Parse(listview.Items[i].SubItems[4].Text));
+                temp.setLeftCkTk(ushort.Parse(listview.Items[i].SubItems[6].Text));
+                temp.setLongShotLk(ushort.Parse(listview.Items[i].SubItems[7].Text));
+                temp.setOrder((ushort)(ushort.Parse(listview.Items[i].SubItems[0].Text) - 1));
+                temp.setPenaltyKick(ushort.Parse(listview.Items[i].SubItems[8].Text));
+                temp.setRightCornerKick(ushort.Parse(listview.Items[i].SubItems[9].Text));
+                temp.setShirtNumber(byte.Parse(listview.Items[i].SubItems[3].Text));
+                temp.setShortFoulFk(ushort.Parse(listview.Items[i].SubItems[10].Text));
+
+                pa.Add(temp);
+            }
+            applyPlayerAssignmentPersister(pa);
+        }
+
         public void transferPlayerFormatione(ListView listview, uint teamId)
         {
             List<PlayerAssignment> pa = new List<PlayerAssignment>();
@@ -3401,7 +3556,6 @@ namespace DinoTem.ui
             }
         }
 
-        private List<PlayerAppearance> playerAppearanceList = new List<PlayerAppearance>();
         private List<PlayerAssignment> playerAssignmentList = new List<PlayerAssignment>();
         private List<Team> teamList = new List<Team>();
 
@@ -3409,35 +3563,6 @@ namespace DinoTem.ui
         //Giocatore form
         //transferPlayer Drag&Drop
         //remove fake team
-        public void readPlayerAppearancePersister(string patch, int bitRecognized)
-        {
-            MyPlayerAppearancePersister playerAppearanceReader = new MyPlayerAppearancePersister();
-
-            try
-            {
-                playerAppearanceList = playerAppearanceReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void savePlayerAppearancePersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyPlayerAppearancePersister playerAppearanceSave = new MyPlayerAppearancePersister();
-
-            try
-            {
-                playerAppearanceSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved PlayerAppearance.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
 
         public List<Team> getListTeam()
         {
@@ -3447,11 +3572,6 @@ namespace DinoTem.ui
         public List<PlayerAssignment> getPlayerAssignmentList()
         {
             return playerAssignmentList;
-        }
-
-        public List<PlayerAppearance> getPlayerAppearanceList()
-        {
-            return playerAppearanceList;
         }
 
         public Player getPlayerById(int positionList)
@@ -3465,17 +3585,6 @@ namespace DinoTem.ui
             //}
             return null;
         }
-
-        /*public Player getPlayerById(int positionInTeam, int team)
-        {
-            foreach (PlayerAssignment playerA in playerAssignmentList)
-            {
-                if (playerA.getTeamId() == team)
-                    if (playerA.getOrder() == positionInTeam)
-                        return getPlayerById(playerA.getPlayerId());
-            }
-            return null;
-        }*/
 
         public Team getTeamById(int positionList)
         {
@@ -3497,26 +3606,6 @@ namespace DinoTem.ui
 		    }
 		    return null;
 	    }
-
-        public void changePlayerNumber(long idPlayer, int idTeam, int shirtNumber)
-        {
-            foreach (PlayerAssignment temp in playerAssignmentList)
-            {
-                //if (idPlayer == temp.getPlayerId() && idTeam == temp.getTeamId())
-                    //temp.setShirtNumber(shirtNumber);
-            }
-        }
-
-        /*public void updatePlayerList(ListView l1)
-        {
-            l1.Items.Clear();
-            foreach (Player x in getListPlayer())
-            {
-                l1.Items.Add(x.ToString());
-            }
-            l1.Items[0].Selected = true;
-            l1.Select();
-        }*/
 
         /*public string getStringClubTeamOfPlayer(long idPlayer, int type) {
 
@@ -3562,62 +3651,6 @@ namespace DinoTem.ui
 		    return finale;
         }
         */
-
-        //Giocatore form
-        public int getSkinColour(Player temp)
-        {
-            int output1 = 0;
-            foreach (PlayerAppearance x in getPlayerAppearanceList())
-            {
-                if (temp.getId() == x.getId())
-                {
-                    if (getBitRecognized() == 0)
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = eye.Substring(5, 3);
-                        output1 = Convert.ToInt32(eye, 2);
-                    }
-                    else
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = eye.Substring(0, 3);
-                        output1 = Convert.ToInt32(eye, 2);
-                    }
-                    
-                }
-            }
-            return output1;
-        }
-
-        public void changeSkinColour(Player temp, int value)
-        {
-            foreach (PlayerAppearance x in getPlayerAppearanceList())
-            {
-                if (temp.getId() == x.getId())
-                {
-                    if (getBitRecognized() == 0)
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = eye.Substring(0, 5) + MyBinary.ToBinaryX(value, 3);
-                        x.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
-                    }
-                    else
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = MyBinary.ToBinaryX(value, 3) + eye.Substring(3, 5);
-                        x.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
-                    }
-                }
-            }
-        }
 
         //transferPlayer Drag&Drop
         private void setPlayerTrasfer(PlayerAssignment temp, int idTeamA, int order)

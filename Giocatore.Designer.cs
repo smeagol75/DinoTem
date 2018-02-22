@@ -228,6 +228,7 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.starIndicator = new System.Windows.Forms.NumericUpDown();
             this.label43 = new System.Windows.Forms.Label();
+            this.skinNull = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -249,6 +250,7 @@
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starIndicator)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skinNull)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -2408,6 +2410,7 @@
             // 
             this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox5.Controls.Add(this.skinNull);
             this.groupBox5.Controls.Add(this.skin6);
             this.groupBox5.Controls.Add(this.skin5);
             this.groupBox5.Controls.Add(this.skin4);
@@ -2526,6 +2529,7 @@
             this.skin1.Size = new System.Drawing.Size(40, 37);
             this.skin1.TabIndex = 127;
             this.skin1.TabStop = false;
+            this.skin1.Visible = false;
             // 
             // pictureBox3
             // 
@@ -2620,6 +2624,18 @@
             this.label43.TabIndex = 132;
             this.label43.Text = "Star Player Indicator:";
             // 
+            // skinNull
+            // 
+            this.skinNull.BackColor = System.Drawing.Color.LightGray;
+            this.skinNull.Image = ((System.Drawing.Image)(resources.GetObject("skinNull.Image")));
+            this.skinNull.InitialImage = null;
+            this.skinNull.Location = new System.Drawing.Point(62, 61);
+            this.skinNull.Name = "skinNull";
+            this.skinNull.Size = new System.Drawing.Size(40, 37);
+            this.skinNull.TabIndex = 135;
+            this.skinNull.TabStop = false;
+            this.skinNull.Visible = false;
+            // 
             // Giocatore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2678,6 +2694,7 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starIndicator)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.skinNull)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2882,5 +2899,6 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.NumericUpDown starIndicator;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.PictureBox skinNull;
     }
 }

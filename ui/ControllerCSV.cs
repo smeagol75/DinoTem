@@ -20,9 +20,10 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    sb.Append("starPlayerIndicator;Running_arm_mov;Dribling_arm_mov;Corner_kick;FORM;Position;Free_kick;Playing_Style;Pinpoint_Crossing;Sombrero;Runing_Hutching;SS;unk2;RWF;LMF;RB;LWF;CF;CB;Dribling_hutching;AMF;Weak_foot_acc;RMF;Injury_res;CMF;COM_Speeding Bullet;Scotch_Move;GK_long;Long_Throw;Scissors_Feint;Track Back;Super-sub;Rabona;Acrobatic_Finishing;Stronger_Foot;Knuckle_Shot;First-time_Shot;COM_Incisive_Run;Stronger_Hand;Hidden_Player;");
 		    sb.Append("COM_Long_Ranger;One-touch_Pass;Heel_Trick;UNK4;Man_Marking;legendGoldenBall;Marseille_Turn;Heading;Outside_Curler;Captaincy;Malicia;Low_Punt_Trajectory;COM_Trickster;Low_Lofted_Pass;Fighting_Spirit;Flip_Flap;Weightness_Pass;unk6;UNK7;UNK8;comMazingRun;acrobatingClear;comBallExpert;cutBehind;longRange");
 		    sb.Append("\n");
-            //foreach (Player temp in controller.getListPlayer())
-            //{
-			    /*sb.Append(temp.getId() + ";");
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count; i++)
+            {
+                Player temp = controller.leggiGiocatore(i);
+			    sb.Append(temp.getId() + ";");
                 string decode = Unidecoder.Unidecode(temp.getName());
                 sb.Append(decode + ";");
 			    sb.Append(temp.getShirtName() + ";");
@@ -30,7 +31,7 @@ namespace Team_Editor_Manager_New_Generation.ui
 			    sb.Append(temp.getHeight() + ";");
 			    sb.Append(temp.getNational() + ";");
 			    sb.Append(temp.getNational2() + ";");
-			    sb.Append(booleanstring(temp.getEarlyCross()) + ";");
+			    sb.Append(temp.getEarlyCross() + ";");
 			    sb.Append(temp.getDefense() + ";");
 			    sb.Append(temp.getClearing() + ";");
 			    sb.Append(temp.getLowPass() + ";");
@@ -58,7 +59,7 @@ namespace Team_Editor_Manager_New_Generation.ui
 			    sb.Append(temp.getAge() + ";");
 			    sb.Append(temp.getLoftedPass() + ";");
 			    sb.Append(temp.getPhysical() + ";");
-			    sb.Append(temp.getBodyControll() + ";");
+			    sb.Append(temp.getBodyControl() + ";");
 			    sb.Append(temp.getAttack() + ";");
 			    sb.Append(temp.getWcUsage() + ";");
 			    sb.Append(temp.getDmf() + ";");
@@ -70,8 +71,8 @@ namespace Team_Editor_Manager_New_Generation.ui
 			    sb.Append(temp.getPosition() + ";");
 			    sb.Append(temp.getFreeKick() + ";");
 			    sb.Append(temp.getPlayingStyle() + ";");
-			    sb.Append(booleanstring(temp.getPinCrossing()) + ";");
-			    sb.Append(booleanstring(temp.getSombrero()) + ";");
+			    sb.Append(temp.getPinCrossing() + ";");
+			    sb.Append(temp.getSombrero() + ";");
 			    sb.Append(temp.getRunningH() + ";");
 			    sb.Append(temp.getSs() + ";");
 			    sb.Append(temp.getUnk2() + ";");
@@ -87,48 +88,48 @@ namespace Team_Editor_Manager_New_Generation.ui
 			    sb.Append(temp.getRmf() + ";");
 			    sb.Append(temp.getInjuryRes() + ";");
 			    sb.Append(temp.getCmf() + ";");
-			    sb.Append(booleanstring(temp.getSpeedingBullet()) + ";");
-			    sb.Append(booleanstring(temp.getSchotMove()) + ";");
-			    sb.Append(booleanstring(temp.getGkLong()) + ";");
-			    sb.Append(booleanstring(temp.getLongThrow()) + ";");
-			    sb.Append(booleanstring(temp.getScissorFeint()) + ";");
-			    sb.Append(booleanstring(temp.getTrackBack()) + ";");
-			    sb.Append(booleanstring(temp.getSuperSub()) + ";");
-			    sb.Append(booleanstring(temp.getRabona()) + ";");
-			    sb.Append(booleanstring(temp.getAcrobatingFinishing()) + ";");
-			    sb.Append(booleanstring(temp.getStrongerFoot()) + ";");
-			    sb.Append(booleanstring(temp.getKnucleShot()) + ";");
-			    sb.Append(booleanstring(temp.getFirstTimeShot()) + ";");
-			    sb.Append(booleanstring(temp.getComIncisiveRun()) + ";");
-			    sb.Append(booleanstring(temp.getStrongerHand()) + ";");
-			    sb.Append(booleanstring(temp.getHiddenPlayer()) + ";");
-			    sb.Append(booleanstring(temp.getLongRange()) + ";");
-			    sb.Append(booleanstring(temp.getOneTouchPass()) + ";");
-			    sb.Append(booleanstring(temp.getHellTick()) + ";");
-			    sb.Append(booleanstring(temp.getUnk4()) + ";");
-			    sb.Append(booleanstring(temp.getManMarking()) + ";");
-			    sb.Append(booleanstring(temp.getLegendGoldenBall()) + ";");
-			    sb.Append(booleanstring(temp.getMarseilleTurn()) + ";");
-			    sb.Append(booleanstring(temp.getHeading()) + ";");
-			    sb.Append(booleanstring(temp.getOutsideCurler()) + ";");
-			    sb.Append(booleanstring(temp.getCaptaincy()) + ";");
-			    sb.Append(booleanstring(temp.getMalicia()) + ";");
-			    sb.Append(booleanstring(temp.getLowPuntTrajectory()) + ";");
-			    sb.Append(booleanstring(temp.getComTrickster()) + ";");
-			    sb.Append(booleanstring(temp.getLowLoftedPass()) + ";");
-			    sb.Append(booleanstring(temp.getFightingSpirit()) + ";");
-			    sb.Append(booleanstring(temp.getFlipFlap()) + ";");
-			    sb.Append(booleanstring(temp.getWeightnessPass()) + ";");
-			    sb.Append(booleanstring(temp.getUnk6()) + ";");
-			    sb.Append(booleanstring(temp.getUnk7()) + ";");
-			    sb.Append(booleanstring(temp.getUnk8()) + ";");
-			    sb.Append(booleanstring(temp.getComMazingRun()) + ";");
-			    sb.Append(booleanstring(temp.getAcrobatingClear()) + ";");
-			    sb.Append(booleanstring(temp.getComBallExpert()) + ";");
-			    sb.Append(booleanstring(temp.getCutBehind()) + ";");
-			    sb.Append(booleanstring(temp.getLongRange()));
-			    sb.Append("\n");*/
-		    //}
+			    sb.Append(temp.getSpeedingBullet() + ";");
+			    sb.Append(temp.getSchotMove() + ";");
+			    sb.Append(temp.getGkLong() + ";");
+			    sb.Append(temp.getLongThrow() + ";");
+			    sb.Append(temp.getScissorFeint() + ";");
+			    sb.Append(temp.getTrackBack() + ";");
+			    sb.Append(temp.getSuperSub() + ";");
+			    sb.Append(temp.getRabona() + ";");
+			    sb.Append(temp.getAcrobatingFinishing() + ";");
+			    sb.Append(temp.getStrongerFoot() + ";");
+			    sb.Append(temp.getKnucleShot() + ";");
+			    sb.Append(temp.getFirstTimeShot() + ";");
+			    sb.Append(temp.getComIncisiveRun() + ";");
+			    sb.Append(temp.getStrongerHand() + ";");
+			    sb.Append(temp.getHiddenPlayer() + ";");
+			    sb.Append(temp.getLongRange() + ";");
+			    sb.Append(temp.getOneTouchPass() + ";");
+			    sb.Append(temp.getHellTick() + ";");
+			    sb.Append(temp.getUnk4() + ";");
+			    sb.Append(temp.getManMarking() + ";");
+			    sb.Append(temp.getLegendGoldenBall() + ";");
+			    sb.Append(temp.getMarseilleTurn() + ";");
+			    sb.Append(temp.getHeading() + ";");
+			    sb.Append(temp.getOutsideCurler() + ";");
+			    sb.Append(temp.getCaptaincy() + ";");
+			    sb.Append(temp.getMalicia() + ";");
+			    sb.Append(temp.getLowPuntTrajectory() + ";");
+			    sb.Append(temp.getComTrickster() + ";");
+			    sb.Append(temp.getLowLoftedPass() + ";");
+			    sb.Append(temp.getFightingSpirit() + ";");
+			    sb.Append(temp.getFlipFlap() + ";");
+			    sb.Append(temp.getWeightnessPass() + ";");
+			    sb.Append(temp.getUnk6() + ";");
+			    sb.Append(temp.getUnk7() + ";");
+			    sb.Append(temp.getUnk8() + ";");
+			    sb.Append(temp.getComMazingRun() + ";");
+			    sb.Append(temp.getAcrobatingClear() + ";");
+			    sb.Append(temp.getComBallExpert() + ";");
+			    sb.Append(temp.getCutBehind() + ";");
+			    sb.Append(temp.getLongRange());
+			    sb.Append("\n");
+		    }
 		    return sb.ToString();
 	    }
 
@@ -136,66 +137,70 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    StringBuilder sb = new StringBuilder();
             sb.Append("Id;UNK1;UNK2;UNK3;UNK4;UNK5;UNK6;UNK7;UNK8;UNK9;UNK10;UNK11;UNK12;UNK13;UNK14;UNK15;UNK16;UNK17;UNK18;UNK19;UNK20;UNK21;UNK22;UNK23;UNK24;UNK25;UNK26;UNK27;UNK28;UNK29;UNK30;UNK31;UNK32;UNK33;UNK34;UNK35;UNK36;Eyes_Skin_Color;38;UNK39;UNK40;UNK41;UNK42;UNK43;UNK44;UNK45;UNK46;UNK47;UNK48;UNK49;UNK50;UNK51;UNK52;UNK53;UNK54;UNK55;UNK56");
 		    sb.Append("\n");
-            foreach (PlayerAppearance temp in controller.getPlayerAppearanceList())
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count; i++)
             {
-			    sb.Append(temp.getId() + ";");
-                sb.Append(string.Format("{0:X2}", temp.getUnknown1()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown2()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown3()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown4()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown5()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown6()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown7()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown8()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown9()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown10()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown11()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown12()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown13()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown14()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown15()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown16()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown17()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown18()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown19()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown20()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown21()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown22()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown23()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown24()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown25()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown26()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown27()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown28()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown29()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown30()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown31()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown32()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown33()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown34()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown35()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown36()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getEyeskinColor()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown38()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown39()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown40()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown41()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown42()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown43()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown44()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown45()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown46()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown47()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown48()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown49()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown50()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown51()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown52()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown53()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown54()) + ";");
-			    sb.Append(string.Format("{0:X2}", temp.getUnknown55()) + ";");
-                sb.Append(string.Format("{0:X2}", temp.getUnknown56()) + ";");
-			    sb.Append("\n");
+                PlayerAppearance temp = controller.leggiGiocatoreApparenza(controller.leggiGiocatore(i).getId());
+                if (temp != null)
+                {
+                    sb.Append(temp.getId() + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown1()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown2()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown3()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown4()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown5()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown6()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown7()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown8()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown9()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown10()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown11()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown12()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown13()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown14()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown15()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown16()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown17()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown18()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown19()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown20()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown21()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown22()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown23()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown24()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown25()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown26()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown27()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown28()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown29()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown30()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown31()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown32()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown33()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown34()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown35()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown36()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getEyeskinColor()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown38()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown39()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown40()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown41()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown42()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown43()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown44()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown45()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown46()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown47()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown48()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown49()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown50()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown51()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown52()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown53()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown54()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown55()) + ";");
+                    sb.Append(string.Format("{0:X2}", temp.getUnknown56()) + ";");
+                    sb.Append("\n");
+                }
 		    }
             return sb.ToString();
 	    }
@@ -205,28 +210,101 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    StringBuilder sb = new StringBuilder();
             sb.Append("Id;teamName;shortSquadra;hasLicensedPlayers;licensedTeam;national;fakeTeam;licensedCoach;hasAnthem;anthemStandingAngle;anthemPlayersSinging;anthemStandingStyle;UNK6;notPlayableLeague;country");
 		    sb.Append("\n");
-            foreach (Team temp in controller.getListTeam())
+            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count; i++)
             {
+                Team temp = controller.leggiSquadra(i);
 			    sb.Append(temp.getId() + ";");
                 string decode = Unidecoder.Unidecode(temp.getEnglish());
-                /*sb.Append(decode + ";");
+                sb.Append(decode + ";");
 			    sb.Append(temp.getShortSquadra() + ";");
-                sb.Append(booleanstring(temp.getHasLicensedPlayers()) + ";");
-			    sb.Append(booleanstring(temp.getLicensedTeam()) + ";");
-			    sb.Append(booleanstring(temp.getNational()) + ";");
-			    sb.Append(booleanstring(temp.getFakeTeam()) + ";");
-			    sb.Append(booleanstring(temp.getLicensedCoach()) + ";");
-                sb.Append(booleanstring(temp.getHasAnthem()) + ";");
+                sb.Append(temp.getHasLicensedPlayers() + ";");
+			    sb.Append(temp.getLicensedTeam() + ";");
+			    sb.Append(temp.getNational() + ";");
+			    sb.Append(temp.getFakeTeam() + ";");
+			    sb.Append(temp.getLicensedCoach() + ";");
+                sb.Append(temp.getHasAnthem() + ";");
                 sb.Append(temp.getAnthemStandingAngle() + ";");
                 sb.Append(temp.getAnthemPlayersSinging() + ";");
                 sb.Append(temp.getAnthemStandingStyle() + ";");
-                sb.Append(booleanstring(temp.getUnknown6()) + ";");
+                sb.Append(temp.getUnknown6() + ";");
 			    sb.Append(temp.getNotPlayableLeague() + ";");
 			    sb.Append(temp.getCountry() + ";");
-			    sb.Append("\n");*/
+			    sb.Append("\n");
 		    }
             return sb.ToString();
 	    }
+
+        public string exportCoach(Controller controller)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Id;CoachName;idCountry");
+            sb.Append("\n");
+            for (int i = 0; i < Form1._Form1.coachBox.Items.Count; i++)
+            {
+                Coach temp = controller.leggiCoach(i);
+                sb.Append(temp.getId() + ";");
+                sb.Append(temp.getName() + ";");
+                sb.Append(temp.getCountry() + ";");
+                sb.Append("\n");
+            }
+            return sb.ToString();
+        }
+
+        public string exportStadium(Controller controller)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Id;StadiumName;N/a;License;CountryId;Zone;Capacity;KonamiName");
+            sb.Append("\n");
+            for (int i = 0; i < Form1._Form1.stadiumsBox.Items.Count; i++)
+            {
+                Stadium temp = controller.leggiStadium(i);
+                sb.Append(temp.getId() + ";");
+                sb.Append(temp.getName() + ";");
+                sb.Append(temp.getNa() + ";");
+                sb.Append(temp.getLicense() + ";");
+                sb.Append(temp.getCountry() + ";");
+                sb.Append(temp.getZone() + ";");
+                sb.Append(temp.getCapacity() + ";");
+                sb.Append(temp.getKonamiName() + ";");
+                sb.Append("\n");
+            }
+            return sb.ToString();
+        }
+
+        public string exportGlove(Controller controller)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Id;Order;GloveName;Color");
+            sb.Append("\n");
+            for (int i = 0; i < Form1._Form1.glovesBox.Items.Count; i++)
+            {
+                Glove temp = controller.leggiGuanto(i);
+                sb.Append(temp.getId() + ";");
+                sb.Append(temp.getOrder() + ";");
+                sb.Append(temp.getName() + ";");
+                sb.Append(temp.getColor() + ";");
+                sb.Append("\n");
+            }
+            return sb.ToString();
+        }
+
+        public string exportBoot(Controller controller)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("Id;Order;Color;Material;BootName");
+            sb.Append("\n");
+            for (int i = 0; i < Form1._Form1.bootsBox.Items.Count; i++)
+            {
+                Boot temp = controller.leggiScarpa(i);
+                sb.Append(temp.getId() + ";");
+                sb.Append(temp.getOrder() + ";");
+                sb.Append(temp.getColor() + ";");
+                sb.Append(temp.getMaterial() + ";");
+                sb.Append(temp.getName() + ";");
+                sb.Append("\n");
+            }
+            return sb.ToString();
+        }
 
         public string exportBall(Controller controller)
         {
@@ -283,14 +361,6 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    }
 		    return sb.ToString();
 	    }
-
-        private string booleanstring(bool value)
-        {
-            if (value)
-                return "1";
-
-            return "0";
-        }
 
         public void importBallCondition(Controller controller, string file, ListBox ballBox)
         {
@@ -361,8 +431,8 @@ namespace Team_Editor_Manager_New_Generation.ui
         public void importPlayerAppareance(Controller controller, string file)
         {
             int lineCount = File.ReadLines(file).Count();
-            if (lineCount - 1 != controller.getPlayerAppearanceList().Count)
-                throw new Exception("number of line is different " + lineCount + " " + controller.getPlayerAppearanceList().Count);
+            //if (lineCount - 1 != controller.getPlayerAppearanceList().Count)
+                //throw new Exception("number of line is different " + lineCount + " " + controller.getPlayerAppearanceList().Count);
 
             using (System.IO.StreamReader sr = new System.IO.StreamReader(file))
             {
@@ -376,8 +446,8 @@ namespace Team_Editor_Manager_New_Generation.ui
                     string[] temp = line.Split(';');
                     if (temp.Length != 58)
                         throw new Exception("format line unrecognized");
-                    PlayerAppearance playerA = (PlayerAppearance)controller.getPlayerAppearanceList()[i];
-                    playerA.setId(parseLong(temp[0]));
+                    /*PlayerAppearance playerA = (PlayerAppearance)controller.getPlayerAppearanceList()[i];
+                    //playerA.setId(parseLong(temp[0]));
                     playerA.setUnknown1(parseByte(temp[1]));
                     playerA.setUnknown2(parseByte(temp[2]));
                     playerA.setUnknown3(parseByte(temp[3]));
@@ -434,7 +504,7 @@ namespace Team_Editor_Manager_New_Generation.ui
                     playerA.setUnknown54(parseByte(temp[54]));
                     playerA.setUnknown55(parseByte(temp[55]));
                     playerA.setUnknown56(parseByte(temp[56]));
-                    i++;
+                    i++;*/
                 }
             }
         }

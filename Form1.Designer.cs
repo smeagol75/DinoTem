@@ -51,14 +51,18 @@
             this.csvToolStripMenuItem7 = new System.Windows.Forms.ToolStripMenuItem();
             this.playersTeamsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.csvToolStripMenuItem8 = new System.Windows.Forms.ToolStripMenuItem();
+            this.coachesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.csvToolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
+            this.stadiumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.csvToolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.ballsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.csvToolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
             this.ballConditionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.csvToolStripMenuItem13 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bootsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.csvToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.glovesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.csvToolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.stadiumsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.csvToolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.import = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem10 = new System.Windows.Forms.ToolStripMenuItem();
             this.csvToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,13 +70,18 @@
             this.csvToolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem12 = new System.Windows.Forms.ToolStripMenuItem();
             this.csvToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.coachesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.csvToolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
+            this.csvToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem11 = new System.Windows.Forms.ToolStripMenuItem();
             this.csvToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.ballConditionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.csvToolStripMenuItem15 = new System.Windows.Forms.ToolStripMenuItem();
+            this.bootsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.csvToolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem9 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem14 = new System.Windows.Forms.ToolStripMenuItem();
-            this.csvToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.csvToolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.loadFootballManager = new System.Windows.Forms.ToolStripMenuItem();
             this.loadFifa = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,7 +108,7 @@
             this.csvToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.Transfers = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.searchById = new System.Windows.Forms.CheckBox();
             this.playersBox = new System.Windows.Forms.ListBox();
             this.PlayerMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -746,15 +755,6 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.bootsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.csvToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.coachesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.csvToolStripMenuItem16 = new System.Windows.Forms.ToolStripMenuItem();
-            this.csvToolStripMenuItem17 = new System.Windows.Forms.ToolStripMenuItem();
-            this.coachesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.csvToolStripMenuItem18 = new System.Windows.Forms.ToolStripMenuItem();
-            this.bootsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.csvToolStripMenuItem19 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Transfers.SuspendLayout();
@@ -1001,7 +1001,7 @@
             // csvToolStripMenuItem6
             // 
             this.csvToolStripMenuItem6.Name = "csvToolStripMenuItem6";
-            this.csvToolStripMenuItem6.Size = new System.Drawing.Size(152, 22);
+            this.csvToolStripMenuItem6.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem6.Text = ".csv";
             this.csvToolStripMenuItem6.Click += new System.EventHandler(this.csvToolStripMenuItem6_Click);
             // 
@@ -1016,7 +1016,7 @@
             // csvToolStripMenuItem12
             // 
             this.csvToolStripMenuItem12.Name = "csvToolStripMenuItem12";
-            this.csvToolStripMenuItem12.Size = new System.Drawing.Size(152, 22);
+            this.csvToolStripMenuItem12.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem12.Text = ".csv";
             this.csvToolStripMenuItem12.Click += new System.EventHandler(this.csvToolStripMenuItem12_Click);
             // 
@@ -1031,7 +1031,7 @@
             // csvToolStripMenuItem7
             // 
             this.csvToolStripMenuItem7.Name = "csvToolStripMenuItem7";
-            this.csvToolStripMenuItem7.Size = new System.Drawing.Size(152, 22);
+            this.csvToolStripMenuItem7.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem7.Text = ".csv";
             this.csvToolStripMenuItem7.Click += new System.EventHandler(this.csvToolStripMenuItem7_Click);
             // 
@@ -1046,9 +1046,39 @@
             // csvToolStripMenuItem8
             // 
             this.csvToolStripMenuItem8.Name = "csvToolStripMenuItem8";
-            this.csvToolStripMenuItem8.Size = new System.Drawing.Size(152, 22);
+            this.csvToolStripMenuItem8.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem8.Text = ".csv";
             this.csvToolStripMenuItem8.Click += new System.EventHandler(this.csvToolStripMenuItem8_Click);
+            // 
+            // coachesToolStripMenuItem
+            // 
+            this.coachesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csvToolStripMenuItem16});
+            this.coachesToolStripMenuItem.Name = "coachesToolStripMenuItem";
+            this.coachesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.coachesToolStripMenuItem.Text = "Coaches";
+            // 
+            // csvToolStripMenuItem16
+            // 
+            this.csvToolStripMenuItem16.Name = "csvToolStripMenuItem16";
+            this.csvToolStripMenuItem16.Size = new System.Drawing.Size(94, 22);
+            this.csvToolStripMenuItem16.Text = ".csv";
+            this.csvToolStripMenuItem16.Click += new System.EventHandler(this.csvToolStripMenuItem16_Click);
+            // 
+            // stadiumsToolStripMenuItem
+            // 
+            this.stadiumsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csvToolStripMenuItem11});
+            this.stadiumsToolStripMenuItem.Name = "stadiumsToolStripMenuItem";
+            this.stadiumsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stadiumsToolStripMenuItem.Text = "Stadiums";
+            // 
+            // csvToolStripMenuItem11
+            // 
+            this.csvToolStripMenuItem11.Name = "csvToolStripMenuItem11";
+            this.csvToolStripMenuItem11.Size = new System.Drawing.Size(94, 22);
+            this.csvToolStripMenuItem11.Text = ".csv";
+            this.csvToolStripMenuItem11.Click += new System.EventHandler(this.csvToolStripMenuItem11_Click);
             // 
             // ballsToolStripMenuItem
             // 
@@ -1061,7 +1091,7 @@
             // csvToolStripMenuItem9
             // 
             this.csvToolStripMenuItem9.Name = "csvToolStripMenuItem9";
-            this.csvToolStripMenuItem9.Size = new System.Drawing.Size(152, 22);
+            this.csvToolStripMenuItem9.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem9.Text = ".csv";
             this.csvToolStripMenuItem9.Click += new System.EventHandler(this.csvToolStripMenuItem9_Click);
             // 
@@ -1076,9 +1106,24 @@
             // csvToolStripMenuItem13
             // 
             this.csvToolStripMenuItem13.Name = "csvToolStripMenuItem13";
-            this.csvToolStripMenuItem13.Size = new System.Drawing.Size(152, 22);
+            this.csvToolStripMenuItem13.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem13.Text = ".csv";
             this.csvToolStripMenuItem13.Click += new System.EventHandler(this.csvToolStripMenuItem13_Click);
+            // 
+            // bootsToolStripMenuItem
+            // 
+            this.bootsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csvToolStripMenuItem2});
+            this.bootsToolStripMenuItem.Name = "bootsToolStripMenuItem";
+            this.bootsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bootsToolStripMenuItem.Text = "Boots";
+            // 
+            // csvToolStripMenuItem2
+            // 
+            this.csvToolStripMenuItem2.Name = "csvToolStripMenuItem2";
+            this.csvToolStripMenuItem2.Size = new System.Drawing.Size(94, 22);
+            this.csvToolStripMenuItem2.Text = ".csv";
+            this.csvToolStripMenuItem2.Click += new System.EventHandler(this.csvToolStripMenuItem2_Click);
             // 
             // glovesToolStripMenuItem
             // 
@@ -1091,24 +1136,9 @@
             // csvToolStripMenuItem10
             // 
             this.csvToolStripMenuItem10.Name = "csvToolStripMenuItem10";
-            this.csvToolStripMenuItem10.Size = new System.Drawing.Size(152, 22);
+            this.csvToolStripMenuItem10.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem10.Text = ".csv";
             this.csvToolStripMenuItem10.Click += new System.EventHandler(this.csvToolStripMenuItem10_Click);
-            // 
-            // stadiumsToolStripMenuItem
-            // 
-            this.stadiumsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.csvToolStripMenuItem11});
-            this.stadiumsToolStripMenuItem.Name = "stadiumsToolStripMenuItem";
-            this.stadiumsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.stadiumsToolStripMenuItem.Text = "Stadiums";
-            // 
-            // csvToolStripMenuItem11
-            // 
-            this.csvToolStripMenuItem11.Name = "csvToolStripMenuItem11";
-            this.csvToolStripMenuItem11.Size = new System.Drawing.Size(152, 22);
-            this.csvToolStripMenuItem11.Text = ".csv";
-            this.csvToolStripMenuItem11.Click += new System.EventHandler(this.csvToolStripMenuItem11_Click);
             // 
             // import
             // 
@@ -1171,6 +1201,34 @@
             this.csvToolStripMenuItem1.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem1.Text = ".csv";
             // 
+            // coachesToolStripMenuItem1
+            // 
+            this.coachesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csvToolStripMenuItem18});
+            this.coachesToolStripMenuItem1.Name = "coachesToolStripMenuItem1";
+            this.coachesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.coachesToolStripMenuItem1.Text = "Coaches";
+            // 
+            // csvToolStripMenuItem18
+            // 
+            this.csvToolStripMenuItem18.Name = "csvToolStripMenuItem18";
+            this.csvToolStripMenuItem18.Size = new System.Drawing.Size(94, 22);
+            this.csvToolStripMenuItem18.Text = ".csv";
+            // 
+            // toolStripMenuItem14
+            // 
+            this.toolStripMenuItem14.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csvToolStripMenuItem5});
+            this.toolStripMenuItem14.Name = "toolStripMenuItem14";
+            this.toolStripMenuItem14.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem14.Text = "Stadiums";
+            // 
+            // csvToolStripMenuItem5
+            // 
+            this.csvToolStripMenuItem5.Name = "csvToolStripMenuItem5";
+            this.csvToolStripMenuItem5.Size = new System.Drawing.Size(94, 22);
+            this.csvToolStripMenuItem5.Text = ".csv";
+            // 
             // toolStripMenuItem11
             // 
             this.toolStripMenuItem11.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1199,6 +1257,20 @@
             this.csvToolStripMenuItem15.Size = new System.Drawing.Size(94, 22);
             this.csvToolStripMenuItem15.Text = ".csv";
             // 
+            // bootsToolStripMenuItem1
+            // 
+            this.bootsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.csvToolStripMenuItem19});
+            this.bootsToolStripMenuItem1.Name = "bootsToolStripMenuItem1";
+            this.bootsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.bootsToolStripMenuItem1.Text = "Boots";
+            // 
+            // csvToolStripMenuItem19
+            // 
+            this.csvToolStripMenuItem19.Name = "csvToolStripMenuItem19";
+            this.csvToolStripMenuItem19.Size = new System.Drawing.Size(94, 22);
+            this.csvToolStripMenuItem19.Text = ".csv";
+            // 
             // toolStripMenuItem9
             // 
             this.toolStripMenuItem9.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1207,19 +1279,11 @@
             this.toolStripMenuItem9.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem9.Text = "Gloves";
             // 
-            // toolStripMenuItem14
+            // csvToolStripMenuItem17
             // 
-            this.toolStripMenuItem14.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.csvToolStripMenuItem5});
-            this.toolStripMenuItem14.Name = "toolStripMenuItem14";
-            this.toolStripMenuItem14.Size = new System.Drawing.Size(180, 22);
-            this.toolStripMenuItem14.Text = "Stadiums";
-            // 
-            // csvToolStripMenuItem5
-            // 
-            this.csvToolStripMenuItem5.Name = "csvToolStripMenuItem5";
-            this.csvToolStripMenuItem5.Size = new System.Drawing.Size(152, 22);
-            this.csvToolStripMenuItem5.Text = ".csv";
+            this.csvToolStripMenuItem17.Name = "csvToolStripMenuItem17";
+            this.csvToolStripMenuItem17.Size = new System.Drawing.Size(94, 22);
+            this.csvToolStripMenuItem17.Text = ".csv";
             // 
             // toolStripSeparator5
             // 
@@ -1434,7 +1498,7 @@
             // 
             // Transfers
             // 
-            this.Transfers.Controls.Add(this.checkBox1);
+            this.Transfers.Controls.Add(this.searchById);
             this.Transfers.Controls.Add(this.playersBox);
             this.Transfers.Controls.Add(this.searchT);
             this.Transfers.Controls.Add(this.searchTeamAB);
@@ -1454,15 +1518,15 @@
             this.Transfers.Text = "Players & Transfers";
             this.Transfers.UseVisualStyleBackColor = true;
             // 
-            // checkBox1
+            // searchById
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(5, 8);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(117, 17);
-            this.checkBox1.TabIndex = 132;
-            this.checkBox1.Text = "Search player by Id";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.searchById.AutoSize = true;
+            this.searchById.Location = new System.Drawing.Point(5, 8);
+            this.searchById.Name = "searchById";
+            this.searchById.Size = new System.Drawing.Size(117, 17);
+            this.searchById.TabIndex = 132;
+            this.searchById.Text = "Search player by Id";
+            this.searchById.UseVisualStyleBackColor = true;
             // 
             // playersBox
             // 
@@ -2489,6 +2553,7 @@
             this.giocatoreNumber.Name = "giocatoreNumber";
             this.giocatoreNumber.Size = new System.Drawing.Size(35, 20);
             this.giocatoreNumber.TabIndex = 28;
+            this.giocatoreNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.giocatoreNumber_KeyDown);
             this.giocatoreNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label5
@@ -8514,70 +8579,6 @@
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // bootsToolStripMenuItem
-            // 
-            this.bootsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.csvToolStripMenuItem2});
-            this.bootsToolStripMenuItem.Name = "bootsToolStripMenuItem";
-            this.bootsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.bootsToolStripMenuItem.Text = "Boots";
-            // 
-            // csvToolStripMenuItem2
-            // 
-            this.csvToolStripMenuItem2.Name = "csvToolStripMenuItem2";
-            this.csvToolStripMenuItem2.Size = new System.Drawing.Size(152, 22);
-            this.csvToolStripMenuItem2.Text = ".csv";
-            this.csvToolStripMenuItem2.Click += new System.EventHandler(this.csvToolStripMenuItem2_Click);
-            // 
-            // coachesToolStripMenuItem
-            // 
-            this.coachesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.csvToolStripMenuItem16});
-            this.coachesToolStripMenuItem.Name = "coachesToolStripMenuItem";
-            this.coachesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.coachesToolStripMenuItem.Text = "Coaches";
-            // 
-            // csvToolStripMenuItem16
-            // 
-            this.csvToolStripMenuItem16.Name = "csvToolStripMenuItem16";
-            this.csvToolStripMenuItem16.Size = new System.Drawing.Size(152, 22);
-            this.csvToolStripMenuItem16.Text = ".csv";
-            this.csvToolStripMenuItem16.Click += new System.EventHandler(this.csvToolStripMenuItem16_Click);
-            // 
-            // csvToolStripMenuItem17
-            // 
-            this.csvToolStripMenuItem17.Name = "csvToolStripMenuItem17";
-            this.csvToolStripMenuItem17.Size = new System.Drawing.Size(152, 22);
-            this.csvToolStripMenuItem17.Text = ".csv";
-            // 
-            // coachesToolStripMenuItem1
-            // 
-            this.coachesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.csvToolStripMenuItem18});
-            this.coachesToolStripMenuItem1.Name = "coachesToolStripMenuItem1";
-            this.coachesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.coachesToolStripMenuItem1.Text = "Coaches";
-            // 
-            // csvToolStripMenuItem18
-            // 
-            this.csvToolStripMenuItem18.Name = "csvToolStripMenuItem18";
-            this.csvToolStripMenuItem18.Size = new System.Drawing.Size(152, 22);
-            this.csvToolStripMenuItem18.Text = ".csv";
-            // 
-            // bootsToolStripMenuItem1
-            // 
-            this.bootsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.csvToolStripMenuItem19});
-            this.bootsToolStripMenuItem1.Name = "bootsToolStripMenuItem1";
-            this.bootsToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.bootsToolStripMenuItem1.Text = "Boots";
-            // 
-            // csvToolStripMenuItem19
-            // 
-            this.csvToolStripMenuItem19.Name = "csvToolStripMenuItem19";
-            this.csvToolStripMenuItem19.Size = new System.Drawing.Size(152, 22);
-            this.csvToolStripMenuItem19.Text = ".csv";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -9450,7 +9451,7 @@
         private System.Windows.Forms.Button button2;
         public System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label213;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox searchById;
         private System.Windows.Forms.ToolStripMenuItem coachesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem csvToolStripMenuItem16;
         private System.Windows.Forms.ToolStripMenuItem bootsToolStripMenuItem;
