@@ -117,6 +117,34 @@ namespace DinoTem.persistence
             return list;
         }
 
+        public List<UInt32> loadTeamId(UInt32 idPlayer, MemoryStream memory1, BinaryReader reader)
+        {
+            List<UInt32> list = new List<UInt32>();
+
+            int bytesPlayer = (int)memory1.Length;
+            int bloques_assig = bytesPlayer / block;
+
+            reader.BaseStream.Position = 0;
+            for (int i = 0; (i <= (bloques_assig - 1)); i++)
+            {
+                reader.BaseStream.Position += 4;
+                UInt32 player = reader.ReadUInt32();
+                if ((player == idPlayer))
+                {
+                    UInt32 Team = reader.ReadUInt32();
+
+                    reader.BaseStream.Position += 4;
+
+                    list.Add(Team);
+                }
+                else
+                    reader.BaseStream.Position += 8;
+
+            }
+
+            return list;
+        }
+
         public void applyPlayerA(MemoryStream unzlibPlayerAssign, BinaryReader reader, List<PlayerAssignment> pa, ref BinaryWriter writer)
         {
             int bytesPlayer = (int)unzlibPlayerAssign.Length;

@@ -137,6 +137,25 @@ namespace DinoTem.persistence
             writer.Write(gloveName.ToCharArray());
         }
 
+        public void addGlove(ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
+        {
+            byte[] test = new byte[(int)memory1.Length + block];
+            for (int i = 0; i < test.Count() - 1; i++ )
+            {
+                test[i] = 0;
+            }
+            
+            byte[] temp = memory1.ToArray();
+            for (int i = 0; i < (int)memory1.Length - 1; i++)
+            {
+                test[i] = temp[i];
+            }
+
+            memory1 = new MemoryStream(test);
+            reader = new BinaryReader(memory1);
+            writer = new BinaryWriter(memory1);
+        }
+
         public void save(string patch, ref MemoryStream memoryGlove, int bitRecognized)
         {
             if (bitRecognized == 0)

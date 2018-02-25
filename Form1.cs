@@ -24,6 +24,10 @@ namespace DinoTem
             _Form1 = this;
         }
 
+        private const string TEAM_A = "Team A";
+        private const string TEAM_B = "Team B";
+        private const string PLAYER = "Player";
+
         private Controller controller;
         private ControllerDB controllerDb;
         private ControllerFm controllerFm;
@@ -85,8 +89,8 @@ namespace DinoTem
 
             toolTip1.SetToolTip(searchTeam, "Write a team name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
             toolTip1.SetToolTip(teamsBox, "Click to select a team" + Environment.NewLine + "Also use double click or right click for more option");
-            toolTip1.SetToolTip(teamName, "Change team name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamShort, "Change short name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamName, "Change team name");
+            toolTip1.SetToolTip(teamShort, "Change short name");
             toolTip1.SetToolTip(teamFake, "Change if the team is a fake");
             toolTip1.SetToolTip(teamNotPlayableLeague, "Change league of team");
             toolTip1.SetToolTip(teamFake, "Change if the team is a fake");
@@ -102,21 +106,70 @@ namespace DinoTem
             toolTip1.SetToolTip(anthemStandingAngle, "Change anthem standing angle");
             toolTip1.SetToolTip(anthemPlayersSinging, "Change anthem players singing");
             toolTip1.SetToolTip(anthemStandingStyle, "anthem standing style");
-            toolTip1.SetToolTip(teamJapanese, "Change team name (only Japanese language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamFrench, "Change team name (only French language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamDutch, "Change team name (only Dutch language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamSpanish, "Change team name (only Spanish language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamTurkish, "Change team name (only Turkish language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamSwedish, "Change team name (only Swedish language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamGreek, "Change team name (only Greek language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamPortuguese, "Change team name (only Portuguese language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamItalian, "Change team name (only Italian language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamEnglish, "Change team name (only English language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamGerman, "Change team name (only German language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamRussian, "Change team name (only Russian language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamSpanish2, "Change team name (only Spanish (Latin American) language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamPortuguese2, "Change team name (only Portuguese (Latin American) language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(teamEnglish2, "Change team name (only English (UK) language)" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(teamJapanese, "Change team name (only Japanese language)");
+            toolTip1.SetToolTip(teamFrench, "Change team name (only French language)");
+            toolTip1.SetToolTip(teamDutch, "Change team name (only Dutch language)");
+            toolTip1.SetToolTip(teamSpanish, "Change team name (only Spanish language)");
+            toolTip1.SetToolTip(teamTurkish, "Change team name (only Turkish language)");
+            toolTip1.SetToolTip(teamSwedish, "Change team name (only Swedish language)");
+            toolTip1.SetToolTip(teamGreek, "Change team name (only Greek language)");
+            toolTip1.SetToolTip(teamPortuguese, "Change team name (only Portuguese language)");
+            toolTip1.SetToolTip(teamItalian, "Change team name (only Italian language)");
+            toolTip1.SetToolTip(teamEnglish, "Change team name (only English language)");
+            toolTip1.SetToolTip(teamGerman, "Change team name (only German language)");
+            toolTip1.SetToolTip(teamRussian, "Change team name (only Russian language)");
+            toolTip1.SetToolTip(teamSpanish2, "Change team name (only Spanish (Latin American) language)");
+            toolTip1.SetToolTip(teamPortuguese2, "Change team name (only Portuguese (Latin American) language)");
+            toolTip1.SetToolTip(teamEnglish2, "Change team name (only English (UK) language)");
+            toolTip1.SetToolTip(applyTeam, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(searchCoach, "Write a coach name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the coach, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a coach");
+            toolTip1.SetToolTip(coachBox, "Click to select a coach");
+            toolTip1.SetToolTip(allenatoreName, "Change coach name");
+            toolTip1.SetToolTip(allenatoreJap, "Change coach japanese name");
+            toolTip1.SetToolTip(allenatoreNationality, "Change coach's nationality");
+            toolTip1.SetToolTip(allenatoreLic, "click to get a real" + Environment.NewLine + "NOTE: only fake coaches have this option");
+            toolTip1.SetToolTip(applyCoach, "Click 'apply' if you want save the changes");
+
+            //competition
+
+            toolTip1.SetToolTip(DataGridView_derby, "Click to select a derby");
+            toolTip1.SetToolTip(derbyKind, "Select a kind of derby");
+            toolTip1.SetToolTip(derbySlot, "Select a slot");
+            toolTip1.SetToolTip(derbyOrder, "Select a order in the file");
+            toolTip1.SetToolTip(derbyTeam1, "Select a new derby's team");
+            toolTip1.SetToolTip(derbyTeam2, "Select a new derby's team");
+            toolTip1.SetToolTip(applyDerby, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(searchStadium, "Write a stadium name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the stadium, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a stadium");
+            toolTip1.SetToolTip(stadiumsBox, "Click to select a stadium");
+            toolTip1.SetToolTip(stadiumName, "Select a stadium name");
+            toolTip1.SetToolTip(stadiumJapanese, "Select a japanese name");
+            toolTip1.SetToolTip(stadiumCapacity, "Insert new stadium's capacity");
+            toolTip1.SetToolTip(stadiumCountry, "Change stadium's country");
+            toolTip1.SetToolTip(stadiumNa, "Change stadium's n/a");
+            toolTip1.SetToolTip(stadiumZone, "Change stadium's zone");
+            toolTip1.SetToolTip(stadiumLicense, "Change stadium's license");
+            toolTip1.SetToolTip(applyStadium, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(DataGridView_stadium_order, "Click to select a stadium's order");
+            toolTip1.SetToolTip(DataGridView_stadium_order_in_conf, "Click to select stadium's order");
+
+            toolTip1.SetToolTip(searchBall, "Write a ball name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the ball, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a ball");
+            toolTip1.SetToolTip(ballsBox, "Click to select a ball");
+            toolTip1.SetToolTip(palloneName, "Change ball name");
+            toolTip1.SetToolTip(palloneOrder, "Change order of the ball");
+            toolTip1.SetToolTip(palloneUnknowB1, "Change unknow value");
+            toolTip1.SetToolTip(palloneUnknowB2, "Change unknow value");
+            toolTip1.SetToolTip(palloneUnknowB3, "Change unknow value");
+            toolTip1.SetToolTip(palloneUnknowB4, "Change unknow value");
+            toolTip1.SetToolTip(applyBall, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(searchGlove, "Write a glove name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the glove, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a glove");
+            toolTip1.SetToolTip(glovesBox, "Click to select a glove");
+            toolTip1.SetToolTip(guantoOrder, "Change order of the glove");
+            toolTip1.SetToolTip(guantoColor, "Change glove's color");
+            toolTip1.SetToolTip(guantoName, "Change glove name");
         }
 
         private void sfondoTeamView()
@@ -128,10 +181,10 @@ namespace DinoTem
                 int NumberOfRepetitions5 = Convert.ToInt32(10);
                 for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
                 {
-                    teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView1.Items[0].UseItemStyleForSubItems = false;
                 }
             }
@@ -144,10 +197,10 @@ namespace DinoTem
                 int NumberOfRepetitions5 = Convert.ToInt32(10);
                 for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
                 {
-                    teamView2.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView2.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView2.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView2.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView2.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView2.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView2.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView2.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView2.Items[0].UseItemStyleForSubItems = false;
                 }
             }
@@ -291,6 +344,14 @@ namespace DinoTem
                 removeFakeClassicPlayer.Enabled = true;
                 reload.Enabled = true;
                 loadFootballManager.Enabled = true;
+                addNewBall.Enabled = true;
+                addNewBoot.Enabled = true;
+                addNewCoach.Enabled = true;
+                addNewDerby.Enabled = true;
+                addNewGlove.Enabled = true;
+                addNewPlayer.Enabled = true;
+                addNewStadium.Enabled = true;
+                addNewTeam.Enabled = true;
             }
         }
 
@@ -607,8 +668,8 @@ namespace DinoTem
             reflexes.Text = temp.getReflexes().ToString();
             coverage.Text = temp.getCoverage().ToString();
             giocatoreFoot.Text = temp.getStringStrongerFoot();
-            //giocatoreSquadra.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 0);
-            //giocatoreNazionale.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 1);
+            giocatoreSquadra.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 0);
+            giocatoreNazionale.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 1);
             giocatoreNationality.SelectedIndex = controller.findCountry(temp.getNational());
 
             //controllerFm
@@ -1352,6 +1413,12 @@ namespace DinoTem
                 controller.changePlayerNumber(uint.Parse(giocatoreID.Text), team, giocatoreNumber.Text);
         }
 
+        //cambiare nazionalità al giocatore
+        private void giocatoreNationality_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            controller.changeNationalityPlayer(uint.Parse(giocatoreID.Text), giocatoreNationality.SelectedIndex);
+        }
+
         private void teamView1_MouseDown(object sender, MouseEventArgs e)
         {
             //abilitare il tasto destro
@@ -1423,6 +1490,9 @@ namespace DinoTem
                     P.ShowDialog();
                 }
             }
+
+            //drag&drop
+            DragDropEffects dde1 = DoDragDrop(PLAYER, DragDropEffects.All);
         }
 
         private void teamsBox_MouseDown(object sender, MouseEventArgs e)
@@ -2951,6 +3021,206 @@ namespace DinoTem
                 sw.Write(csv.exportGlove(controller));
                 sw.Close();
                 MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //Add new glove
+        private void addNewGloveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.addGlovePersister();
+        }
+
+        //Add new boot
+        private void addNewBoot_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Add new ball
+        private void addNewBall_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Add new stadium
+        private void addNewStadium_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Add new derby
+        private void addNewDerby_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Add new coach
+        private void addNewCoach_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Add new team
+        private void addNewTeam_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Add new player
+        private void addNewPlayer_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Export Player bin
+        private void exportPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.ExportPlayer(ushort.Parse(giocatoreID.Text), giocatoreShirt.Text);
+        }
+
+        //Import Player bin
+        private void importPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.ImportPlayer();
+        }
+
+        private void importPlayerFromDinoEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.ImportPlayer();
+        }
+
+        //Export PlayerAppareance bin
+        private void exportPlayerAppareanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.exportPlayerApp(ushort.Parse(giocatoreID.Text), giocatoreShirt.Text);
+        }
+
+        private void importPlayerAppearanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.importPlayerApp();
+        }
+
+        private void importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.importPlayerApp();
+        }
+
+        //PlayersBox Drag&Drop
+        private void playersBox_DragOver(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.Text))
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+
+            String text = (String)e.Data.GetData(TEAM_A.GetType());
+            String text1 = (String)e.Data.GetData(TEAM_B.GetType());
+            if (text.CompareTo(TEAM_A) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+            else if (text1.CompareTo(TEAM_B) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void playersBox_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void playersBox_DragDrop(object sender, DragEventArgs e)
+        {
+            string text = (string)e.Data.GetData(TEAM_A.GetType());
+            string text1 = (string)e.Data.GetData(TEAM_B.GetType());
+            if (text.CompareTo(TEAM_A) == 0)
+            {
+                MessageBox.Show("A");
+            }
+            else if (text.CompareTo(TEAM_B) == 0)
+            {
+                MessageBox.Show("B");
+            }
+        }
+
+        //teamView1 drag&drop
+        private void teamView1_DragOver(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.Text))
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+            Point cp = teamView1.PointToClient(new Point(e.X, e.Y));
+            ListViewItem hoverItem = teamView1.GetItemAt(cp.X, cp.Y);
+            if (hoverItem == null)
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+            foreach (ListViewItem moveItem in teamView1.SelectedItems)
+            {
+                if (moveItem.Index == hoverItem.Index)
+                {
+                    e.Effect = DragDropEffects.None;
+                    hoverItem.EnsureVisible();
+                    return;
+                }
+            }
+            String text = (String)e.Data.GetData(TEAM_A.GetType());
+            String text1 = (String)e.Data.GetData(TEAM_B.GetType());
+            String text2 = (String)e.Data.GetData(PLAYER.GetType());
+            if (text.CompareTo(TEAM_A) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+                hoverItem.EnsureVisible();
+            }
+            else if (text1.CompareTo(TEAM_B) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+                hoverItem.EnsureVisible();
+            }
+            else if (text2.CompareTo(PLAYER) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+                hoverItem.EnsureVisible();
+            }
+            else
+                e.Effect = DragDropEffects.None;
+        }
+
+        private void teamView1_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            teamView1.DoDragDrop(TEAM_A, DragDropEffects.Move);
+        }
+
+        private void teamView1_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void teamView1_DragDrop(object sender, DragEventArgs e)
+        {
+            string text = (string)e.Data.GetData(TEAM_A.GetType());
+            string text1 = (string)e.Data.GetData(TEAM_B.GetType());
+            string text2 = (string)e.Data.GetData(PLAYER.GetType());
+            if (text.CompareTo(TEAM_A) == 0)
+            {
+                MessageBox.Show("A");
+            }
+            else if (text.CompareTo(TEAM_B) == 0)
+            {
+                MessageBox.Show("B");
+            }
+            else if (text2.CompareTo(PLAYER) == 0)
+            {
+                MessageBox.Show("P");
             }
         }
     }

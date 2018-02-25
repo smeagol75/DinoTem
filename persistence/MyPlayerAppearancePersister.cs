@@ -16,27 +16,10 @@ namespace DinoTem.persistence
         private static string PATH = "/PlayerAppearance.bin";
         private static int block = 60;
 
-        private MemoryStream unzlib(string patch, int bitRecognized)
-        {
-            MemoryStream memory1 = null;
-            if (bitRecognized == 0)
-            {
-                byte[] file = File.ReadAllBytes(patch + PATH);
-                memory1 = new MemoryStream(file);
-            }
-            else if (bitRecognized == 1 || bitRecognized == 2)
-            {
-                byte[] file = File.ReadAllBytes(patch + PATH);
-                memory1 = new MemoryStream(file);
-                UnzlibZlibConsole.UnzlibZlibConsole.PlayerAppearance(ref memory1);
-            }
-
-            return memory1;
-        }
-
         public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
-            memory1 = unzlib(patch, bitRecognized);
+            byte[] file = File.ReadAllBytes(patch + PATH);
+            memory1 = new MemoryStream(file);
 
             try
             {
@@ -51,7 +34,7 @@ namespace DinoTem.persistence
             }
         }
 
-        public PlayerAppearance loadPlayerAppearance(UInt32 id, MemoryStream memory1, BinaryReader reader)
+        public PlayerAppearance loadPlayerAppearance(UInt32 id, int bitRecognized, MemoryStream memory1, BinaryReader reader)
         {
             PlayerAppearance temp = null;
 
@@ -60,7 +43,7 @@ namespace DinoTem.persistence
             int bytes_player = (int)memory1.Length;
             int calcolo_player = bytes_player / block;
 
-            UInt32 IdPlayer;
+            UInt32 IdPlayer = 0;
             byte unknown1;
             byte unknown2;
             byte unknown3;
@@ -239,7 +222,10 @@ namespace DinoTem.persistence
                     START57 += block;
 
                     memory1.Seek(START1, SeekOrigin.Begin);
-                    IdPlayer = reader.ReadUInt32();
+                    if (bitRecognized == 0)
+                        IdPlayer = reader.ReadUInt32();
+                    else if (bitRecognized == 1 || bitRecognized == 2)
+                        IdPlayer = UnzlibZlibConsole.swaps.swap32(reader.ReadUInt32());
 
                     if (IdPlayer == id)
                     {
@@ -560,20 +546,9 @@ namespace DinoTem.persistence
 
         public void save(string patch, ref MemoryStream memoryGicotori, int bitRecognized)
         {
-            if (bitRecognized == 0)
-            {
-                //save zlib
-                byte[] ss13 = Zlib18.ZLIBFile(memoryGicotori.ToArray());
-                File.WriteAllBytes(patch + PATH, ss13);
-            }
-            else if (bitRecognized == 1 || bitRecognized == 2)
-            {
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                MemoryStream memory1 = new MemoryStream(inputData13);
-                UnzlibZlibConsole.UnzlibZlibConsole.PlayerAppearance(ref memory1);
-                File.WriteAllBytes(patch + PATH, memory1.ToArray());
-                memory1.Close();
-            }
+            //save zlib
+            byte[] ss13 = Zlib18.ZLIBFile(memoryGicotori.ToArray());
+            File.WriteAllBytes(patch + PATH, ss13);
         }
 
     }

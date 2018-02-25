@@ -1625,7 +1625,7 @@ namespace DinoTem
         private void button4_Click(object sender, EventArgs e)
         {
             controller.transferPlayerFormatione(teamView1, team.getId());
-            //controller.UpdateForm();
+            controller.UpdateForm(team.getId(), teamView1);
 
             this.Close();
         }

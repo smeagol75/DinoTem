@@ -892,6 +892,55 @@ namespace DinoTem.ui
             }
         }
 
+        private UInt16 findIdGlove()
+        {
+            UInt16 id = 0;
+
+            int da = 1;
+            int a = 65535;
+            Random random = new Random();
+            id = (ushort)random.Next(da, a);
+            bool ok = true;
+
+            while (ok) {
+
+                for (int i = 0; i < Form1._Form1.glovesBox.Items.Count; i++)
+                {
+                    Glove glove = leggiGuanto(i);
+                    if (glove.getId() == id)
+                        ok = false;
+                }
+
+                if (ok)
+                    return id;
+
+            }
+            
+            return id;
+        }
+
+        public void addGlovePersister()
+        {
+            MyGlovePersister glove = new MyGlovePersister();
+
+            try
+            {
+                glove.addGlove(ref unzlibGuanti, ref leggiGuanti, ref scriviGuanti);
+
+                Glove temp = new Glove(findIdGlove());
+                temp.setName("Glove " + Form1._Form1.glovesBox.Items.Count);
+                temp.setOrder(20);
+                temp.setColor("Test");
+                applyGlovePersister(Form1._Form1.glovesBox.Items.Count, temp);
+
+                Form1._Form1.glovesBox.Items.Add("Glove " + Form1._Form1.glovesBox.Items.Count);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new glove", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void closeMemory()
         {
             if (getBitRecognized() != -1)
@@ -1427,7 +1476,7 @@ namespace DinoTem.ui
         public PlayerAppearance leggiGiocatoreApparenza(UInt32 id)
         {
             MyPlayerAppearancePersister reader = new MyPlayerAppearancePersister();
-            PlayerAppearance player = reader.loadPlayerAppearance(id, unzlibPlayerApp, leggiPlayerApp);
+            PlayerAppearance player = reader.loadPlayerAppearance(id, getBitRecognized(), unzlibPlayerApp, leggiPlayerApp);
 
             return player;
         }
@@ -1610,34 +1659,43 @@ namespace DinoTem.ui
             }
         }
 
-        public void UpdateForm()
+        public void UpdateForm(UInt32 idTeam, ListView l1)
         {
-            ComboBox t1 = Form1._Form1.teamBox1;
-            ComboBox t2 = Form1._Form1.teamBox2;
-            t1.SelectedIndex = t1.SelectedIndex;
-            t2.SelectedIndex = t2.SelectedIndex;
-
-            /*try
+            if (leggiSquadra(Form1._Form1.teamBox1.SelectedIndex).getId() == idTeam)
             {
-                t1.SelectedIndex = t1.SelectedIndex + 1;
-                t1.SelectedIndex = t1.SelectedIndex - 1;
+                for (int i = 0; i < Form1._Form1.teamView1.Items.Count; i++)
+                {
+                    Form1._Form1.teamView1.Items[i].SubItems[1].Text = l1.Items[i].SubItems[1].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[2].Text = l1.Items[i].SubItems[4].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[3].Text = l1.Items[i].SubItems[5].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[4].Text = l1.Items[i].SubItems[6].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[5].Text = l1.Items[i].SubItems[7].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[6].Text = l1.Items[i].SubItems[8].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[7].Text = l1.Items[i].SubItems[9].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[8].Text = l1.Items[i].SubItems[10].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[9].Text = l1.Items[i].SubItems[11].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[10].Text = l1.Items[i].SubItems[12].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[11].Text = l1.Items[i].SubItems[13].Text;
+                }
             }
-            catch
-            {
-                t1.SelectedIndex = t1.SelectedIndex - 1;
-                t1.SelectedIndex = t1.SelectedIndex + 1;
-            };*/
 
-            /*try
+            if (leggiSquadra(Form1._Form1.teamBox2.SelectedIndex).getId() == idTeam)
             {
-                t2.SelectedIndex = t2.SelectedIndex + 1;
-                t2.SelectedIndex = t2.SelectedIndex - 1;
+                for (int i = 0; i < Form1._Form1.teamView2.Items.Count; i++)
+                {
+                    Form1._Form1.teamView2.Items[i].SubItems[1].Text = l1.Items[i].SubItems[1].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[2].Text = l1.Items[i].SubItems[4].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[3].Text = l1.Items[i].SubItems[5].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[4].Text = l1.Items[i].SubItems[6].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[5].Text = l1.Items[i].SubItems[7].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[6].Text = l1.Items[i].SubItems[8].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[7].Text = l1.Items[i].SubItems[9].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[8].Text = l1.Items[i].SubItems[10].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[9].Text = l1.Items[i].SubItems[11].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[10].Text = l1.Items[i].SubItems[12].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[11].Text = l1.Items[i].SubItems[13].Text;
+                }
             }
-            catch
-            {
-                t2.SelectedIndex = t2.SelectedIndex - 1;
-                t2.SelectedIndex = t2.SelectedIndex + 1;
-            };*/
         }
 
         public void UpdateFormPlayer(int index, string name)
@@ -1663,6 +1721,14 @@ namespace DinoTem.ui
             applyPlayerPersister(index, player);
         }
 
+        public void changeNationalityPlayer(UInt32 id, int selecIndex)
+        {
+            int index = findPlayer(id);
+            Player player = leggiGiocatore(index);
+            player.setNational((ushort)leggiPaese(selecIndex).getId());
+            applyPlayerPersister(index, player);
+        }
+
         public void changePlayerNumber(UInt32 idPlayer, int team, string shirtNumber)
         {
             int intselectedindex = 0;
@@ -1684,6 +1750,43 @@ namespace DinoTem.ui
                 if (Form1._Form1.teamBox1.SelectedIndex == Form1._Form1.teamBox2.SelectedIndex)
                     Form1._Form1.teamView1.Items[intselectedindex].SubItems[3].Text = shirtNumber;
             }
+        }
+        
+        public string getStringClubTeamOfPlayer(UInt32 idPlayer, int type) 
+        {
+            //club = 0; national = 1;
+
+            MyPlayerAssignmentPersister ass = new MyPlayerAssignmentPersister();
+            List<UInt32> b = ass.loadTeamId(idPlayer, unzlibPlayerAssign, leggiPlayerAssign);
+
+            string finale = "";
+            if (type == 0)
+            {
+                foreach (UInt32 i in b)
+                {
+                    int index = findTeam(i);
+                    Team team = leggiSquadra(index);
+                    if (team.getNational() == 0)
+                        return team.getEnglish();
+                }
+            }
+            else if (type == 1)
+            {
+                foreach (UInt32 i in b)
+                {
+                    int index = findTeam(i);
+                    Team team = leggiSquadra(index);
+                    if (team.getNational() == 1)
+                        finale += team.getEnglish() + "+";
+                }
+
+                if (finale.EndsWith("+"))
+                {
+                    finale = finale.Substring(0, finale.LastIndexOf("+"));
+                }
+            }
+		
+            return finale;
         }
 
         //globalFunction
@@ -3556,101 +3659,179 @@ namespace DinoTem.ui
             }
         }
 
+        public void ExportPlayer(ushort id, string shirtName)
+        {
+            int block = 192;
+
+            byte[] Byte_array_Export;
+            leggiGiocatori.BaseStream.Position = (Form1._Form1.playersBox.SelectedIndex * block);
+            Byte_array_Export = leggiGiocatori.ReadBytes(block);
+            string Nombre_archivo = (id + ("_"
+                        + (shirtName + ".exported")));
+
+            //Setup OpenFileDialog
+            FolderBrowserDialog ofd = new FolderBrowserDialog();
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                FileStream Stream_a_exportar = new FileStream(ofd.SelectedPath + @"\" + Nombre_archivo, FileMode.OpenOrCreate);
+                Stream_a_exportar.Write(Byte_array_Export, 0, Byte_array_Export.Length);
+                Stream_a_exportar.Close();
+                MessageBox.Show(shirtName + " Succesfully Exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public void ImportPlayer()
+        {
+            int block = 192;
+            UInt32 player_check = 0;
+
+            OpenFileDialog OpenPes = new OpenFileDialog();
+            OpenPes.Title = "Open Exported Player";
+            OpenPes.Filter = "*.exported (*.exported)|*.exported";
+            OpenPes.Multiselect = true;
+
+            if (OpenPes.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                int number_of_files = OpenPes.FileNames.Count();
+                foreach (string archivo in OpenPes.FileNames) 
+                {
+                    string NombreSinPath = Path.GetFileNameWithoutExtension(archivo);
+                    string Id = "";
+                    foreach (char val in NombreSinPath.ToCharArray()) {
+                        if ((val == '_')) {
+                            break;
+                        }
+                        else {
+                            Id = (Id + val);
+                        }
+            
+                    }
+        
+                    UInt32 ID_A_IMPORTAR = Convert.ToUInt32(Id);
+                    FileStream stream_a_importar = new FileStream(archivo, FileMode.Open, FileAccess.Read);
+                    BinaryReader Leer_archivo = new BinaryReader(stream_a_importar);
+                    leggiGiocatori.BaseStream.Position = 0;
+                    for (int i = 0; (i  <= ((unzlibGiocatori.Length / block) - 1)); i++) 
+                    {
+                        leggiGiocatori.BaseStream.Position += 8;
+
+                        if (bitRecognized == 0)
+                            player_check = leggiGiocatori.ReadUInt32();
+                        else if (bitRecognized == 1 || bitRecognized == 2)
+                            player_check = UnzlibZlibConsole.swaps.swap32(leggiGiocatori.ReadUInt32());
+
+                        if ((player_check == ID_A_IMPORTAR)) {
+                            leggiGiocatori.BaseStream.Position -= 12;
+                            byte[] Byte_array = Leer_archivo.ReadBytes(block);
+                            scriviGiocatori.Write(Byte_array, 0, Byte_array.Length);
+                            Form1._Form1.playersBox.SelectedIndex = i;
+                            break;
+                        }
+                        leggiGiocatori.BaseStream.Position -= 12;
+                        leggiGiocatori.BaseStream.Position = (leggiGiocatori.BaseStream.Position + block);
+                    }
+                }
+                MessageBox.Show("Player(s) imported succesfully", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public void exportPlayerApp(ushort id, string shirtName)
+        {
+            byte[] Byte_array_Export;
+            leggiPlayerApp.BaseStream.Position = 0;
+
+            UInt32 player_check = 0;
+            if (bitRecognized == 0)
+                player_check = leggiPlayerApp.ReadUInt32();
+            else if (bitRecognized == 1 || bitRecognized == 2)
+                player_check = UnzlibZlibConsole.swaps.swap32(leggiPlayerApp.ReadUInt32());
+
+            while (player_check != id)
+            {
+                if (leggiPlayerApp.BaseStream.Position == unzlibPlayerApp.Length - 56)
+                {
+                    MessageBox.Show("No playerAppareance present in the file", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else
+                    leggiPlayerApp.BaseStream.Position += 56;
+
+                if (bitRecognized == 0)
+                    player_check = leggiPlayerApp.ReadUInt32();
+                else if (bitRecognized == 1 || bitRecognized == 2)
+                    player_check = UnzlibZlibConsole.swaps.swap32(leggiPlayerApp.ReadUInt32());
+            }
+
+            leggiPlayerApp.BaseStream.Position -= 4;
+            Byte_array_Export = leggiPlayerApp.ReadBytes(60);
+            string Nombre_archivo = id + "_" + shirtName + "_appareance" + ".exported_app";
+
+            //Setup OpenFileDialog
+            FolderBrowserDialog ofd = new FolderBrowserDialog();
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                FileStream Stream_a_exportar = new FileStream(ofd.SelectedPath + @"\" + Nombre_archivo, FileMode.OpenOrCreate);
+                Stream_a_exportar.Write(Byte_array_Export, 0, Byte_array_Export.Length);
+                Stream_a_exportar.Close();
+                MessageBox.Show(shirtName + " Succesfully Exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public void importPlayerApp()
+        {
+            UInt32 player_check = 0;
+
+            OpenFileDialog OpenPes = new OpenFileDialog();
+            OpenPes.Title = "Open A Exported Player Appareance";
+            OpenPes.Filter = "*.exported_app (*.exported_app)|*.exported_app";
+            OpenPes.Multiselect = true;
+
+            if ((OpenPes.ShowDialog() == System.Windows.Forms.DialogResult.OK))
+            {
+                int number_of_files = OpenPes.FileNames.Count();
+                foreach (string archivo in OpenPes.FileNames) {
+                    string NombreSinPath = Path.GetFileNameWithoutExtension(archivo);
+                    string Id = "";
+                    foreach (char val in NombreSinPath.ToCharArray()) {
+                        if ((val == '_')) {
+                            break;
+                        }
+                        else {
+                            Id = (Id + val);
+                        }
+            
+                    }
+        
+                    UInt32 ID_A_IMPORTAR = Convert.ToUInt32(Id);
+                    FileStream stream_a_importar = new FileStream(archivo, FileMode.Open, FileAccess.Read);
+                    BinaryReader Leer_archivo = new BinaryReader(stream_a_importar);
+                    leggiPlayerApp.BaseStream.Position = 0;
+                    for (int i = 0; i  <= unzlibPlayerApp.Length / 60 - 1; i++) {
+
+                        if (bitRecognized == 0)
+                            player_check = leggiGiocatori.ReadUInt32();
+                        else if (bitRecognized == 1 || bitRecognized == 2)
+                            player_check = UnzlibZlibConsole.swaps.swap32(leggiPlayerApp.ReadUInt32());
+
+                        if ((player_check == ID_A_IMPORTAR)) {
+                            leggiPlayerApp.BaseStream.Position -= 4;
+                            byte[] Byte_array = Leer_archivo.ReadBytes(60);
+                            scriviPlayerApp.Write(Byte_array, 0, Byte_array.Length);
+                            Form1._Form1.playersBox.SelectedIndex = i;
+                            break;
+                        }
+
+                        leggiPlayerApp.BaseStream.Position += 56;
+                    }
+        
+                }
+
+                MessageBox.Show("Player(s) imported succesfully", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         private List<PlayerAssignment> playerAssignmentList = new List<PlayerAssignment>();
-        private List<Team> teamList = new List<Team>();
-
-        //form1
-        //Giocatore form
-        //transferPlayer Drag&Drop
-        //remove fake team
-
-        public List<Team> getListTeam()
-        {
-            return teamList;
-        }
-
-        public List<PlayerAssignment> getPlayerAssignmentList()
-        {
-            return playerAssignmentList;
-        }
-
-        public Player getPlayerById(int positionList)
-        {
-            int k = 0;
-            //foreach (Player player in playerList)
-            //{
-                //if (k == positionList)
-                    //return player;
-                //k++;
-            //}
-            return null;
-        }
-
-        public Team getTeamById(int positionList)
-        {
-            int k = 0;
-            foreach (Team team in teamList)
-            {
-                if (k == positionList)
-                    return team;
-                k++;
-            }
-            return null;
-        }
-
-        public Team getTeamById2(int teamId) {
-            foreach (Team temp in teamList)
-            {
-			    if (teamId == temp.getId())
-                    return temp;
-		    }
-		    return null;
-	    }
-
-        /*public string getStringClubTeamOfPlayer(long idPlayer, int type) {
-
-            //club = 0; national = 1;
-
-            List<int> b = new List<int>();
-            foreach (PlayerAssignment temp in playerAssignmentList)
-            {
-                if (idPlayer == temp.getPlayerId())
-                    b.Add(temp.getTeamId());
-            }
-
-            string finale = "";
-            if (type == 0)
-            {
-                foreach (int i in b)
-                {
-                    foreach (Team temp in teamList)
-                    {
-                        if (i == temp.getId() && !temp.getNational())
-                            return temp.getEnglish();
-                    }
-                }
-            }
-            else if (type == 1)
-            {
-                foreach (int i in b)
-                {
-                    foreach (Team temp in teamList)
-                    {
-                        if (i == temp.getId() && temp.getNational())
-                            finale += temp.getEnglish() + "+";
-                    }
-
-                }
-
-                if (finale.EndsWith("+"))
-                {
-                    finale = finale.Substring(0, finale.LastIndexOf("+"));
-                }
-            }
-		
-		    return finale;
-        }
-        */
 
         //transferPlayer Drag&Drop
         private void setPlayerTrasfer(PlayerAssignment temp, int idTeamA, int order)

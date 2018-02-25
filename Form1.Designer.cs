@@ -88,12 +88,12 @@
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.addNewPlayer = new System.Windows.Forms.ToolStripMenuItem();
             this.addNewTeam = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewCoachToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewDerbyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewStadiumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewBallToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewBootToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.addNewGloveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewCoach = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewDerby = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewStadium = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewBall = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewBoot = new System.Windows.Forms.ToolStripMenuItem();
+            this.addNewGlove = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.removeFakeTeam = new System.Windows.Forms.ToolStripMenuItem();
             this.removeFakeClassicPlayer = new System.Windows.Forms.ToolStripMenuItem();
@@ -114,7 +114,11 @@
             this.editPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
             this.exportPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportPlayerAppareanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerFromDinoEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.searchT = new System.Windows.Forms.Button();
             this.searchTeamAB = new System.Windows.Forms.TextBox();
             this.teamBox2 = new System.Windows.Forms.ComboBox();
@@ -739,16 +743,23 @@
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceFromDinoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerFromDinoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceFromDinoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.Team_AMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editPlayerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.editTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.exportPlayerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportPlayerAppearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportAllPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerFromDinoEditorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.importAllPlayersInTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -957,12 +968,12 @@
             this.toolStripSeparator4,
             this.addNewPlayer,
             this.addNewTeam,
-            this.addNewCoachToolStripMenuItem,
-            this.addNewDerbyToolStripMenuItem,
-            this.addNewStadiumToolStripMenuItem,
-            this.addNewBallToolStripMenuItem,
-            this.addNewBootToolStripMenuItem,
-            this.addNewGloveToolStripMenuItem,
+            this.addNewCoach,
+            this.addNewDerby,
+            this.addNewStadium,
+            this.addNewBall,
+            this.addNewBoot,
+            this.addNewGlove,
             this.toolStripSeparator7,
             this.removeFakeTeam,
             this.removeFakeClassicPlayer});
@@ -1321,6 +1332,7 @@
             this.addNewPlayer.Name = "addNewPlayer";
             this.addNewPlayer.Size = new System.Drawing.Size(265, 30);
             this.addNewPlayer.Text = "Add new player";
+            this.addNewPlayer.Click += new System.EventHandler(this.addNewPlayer_Click);
             // 
             // addNewTeam
             // 
@@ -1330,48 +1342,55 @@
             this.addNewTeam.Name = "addNewTeam";
             this.addNewTeam.Size = new System.Drawing.Size(265, 30);
             this.addNewTeam.Text = "Add new team";
+            this.addNewTeam.Click += new System.EventHandler(this.addNewTeam_Click);
             // 
-            // addNewCoachToolStripMenuItem
+            // addNewCoach
             // 
-            this.addNewCoachToolStripMenuItem.Enabled = false;
-            this.addNewCoachToolStripMenuItem.Name = "addNewCoachToolStripMenuItem";
-            this.addNewCoachToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
-            this.addNewCoachToolStripMenuItem.Text = "Add new coach";
+            this.addNewCoach.Enabled = false;
+            this.addNewCoach.Name = "addNewCoach";
+            this.addNewCoach.Size = new System.Drawing.Size(265, 30);
+            this.addNewCoach.Text = "Add new coach";
+            this.addNewCoach.Click += new System.EventHandler(this.addNewCoach_Click);
             // 
-            // addNewDerbyToolStripMenuItem
+            // addNewDerby
             // 
-            this.addNewDerbyToolStripMenuItem.Enabled = false;
-            this.addNewDerbyToolStripMenuItem.Name = "addNewDerbyToolStripMenuItem";
-            this.addNewDerbyToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
-            this.addNewDerbyToolStripMenuItem.Text = "Add new derby";
+            this.addNewDerby.Enabled = false;
+            this.addNewDerby.Name = "addNewDerby";
+            this.addNewDerby.Size = new System.Drawing.Size(265, 30);
+            this.addNewDerby.Text = "Add new derby";
+            this.addNewDerby.Click += new System.EventHandler(this.addNewDerby_Click);
             // 
-            // addNewStadiumToolStripMenuItem
+            // addNewStadium
             // 
-            this.addNewStadiumToolStripMenuItem.Enabled = false;
-            this.addNewStadiumToolStripMenuItem.Name = "addNewStadiumToolStripMenuItem";
-            this.addNewStadiumToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
-            this.addNewStadiumToolStripMenuItem.Text = "Add new stadium";
+            this.addNewStadium.Enabled = false;
+            this.addNewStadium.Name = "addNewStadium";
+            this.addNewStadium.Size = new System.Drawing.Size(265, 30);
+            this.addNewStadium.Text = "Add new stadium";
+            this.addNewStadium.Click += new System.EventHandler(this.addNewStadium_Click);
             // 
-            // addNewBallToolStripMenuItem
+            // addNewBall
             // 
-            this.addNewBallToolStripMenuItem.Enabled = false;
-            this.addNewBallToolStripMenuItem.Name = "addNewBallToolStripMenuItem";
-            this.addNewBallToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
-            this.addNewBallToolStripMenuItem.Text = "Add new ball";
+            this.addNewBall.Enabled = false;
+            this.addNewBall.Name = "addNewBall";
+            this.addNewBall.Size = new System.Drawing.Size(265, 30);
+            this.addNewBall.Text = "Add new ball";
+            this.addNewBall.Click += new System.EventHandler(this.addNewBall_Click);
             // 
-            // addNewBootToolStripMenuItem
+            // addNewBoot
             // 
-            this.addNewBootToolStripMenuItem.Enabled = false;
-            this.addNewBootToolStripMenuItem.Name = "addNewBootToolStripMenuItem";
-            this.addNewBootToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
-            this.addNewBootToolStripMenuItem.Text = "Add new boot";
+            this.addNewBoot.Enabled = false;
+            this.addNewBoot.Name = "addNewBoot";
+            this.addNewBoot.Size = new System.Drawing.Size(265, 30);
+            this.addNewBoot.Text = "Add new boot";
+            this.addNewBoot.Click += new System.EventHandler(this.addNewBoot_Click);
             // 
-            // addNewGloveToolStripMenuItem
+            // addNewGlove
             // 
-            this.addNewGloveToolStripMenuItem.Enabled = false;
-            this.addNewGloveToolStripMenuItem.Name = "addNewGloveToolStripMenuItem";
-            this.addNewGloveToolStripMenuItem.Size = new System.Drawing.Size(265, 30);
-            this.addNewGloveToolStripMenuItem.Text = "Add new glove";
+            this.addNewGlove.Enabled = false;
+            this.addNewGlove.Name = "addNewGlove";
+            this.addNewGlove.Size = new System.Drawing.Size(265, 30);
+            this.addNewGlove.Text = "Add new glove";
+            this.addNewGlove.Click += new System.EventHandler(this.addNewGloveToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
@@ -1530,6 +1549,7 @@
             // 
             // playersBox
             // 
+            this.playersBox.AllowDrop = true;
             this.playersBox.ContextMenuStrip = this.PlayerMenuStrip1;
             this.playersBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.5F);
             this.playersBox.FormattingEnabled = true;
@@ -1538,6 +1558,9 @@
             this.playersBox.Size = new System.Drawing.Size(193, 537);
             this.playersBox.TabIndex = 131;
             this.playersBox.SelectedIndexChanged += new System.EventHandler(this.playersBox_SelectedIndexChanged);
+            this.playersBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.playersBox_DragDrop);
+            this.playersBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.playersBox_DragEnter);
+            this.playersBox.DragOver += new System.Windows.Forms.DragEventHandler(this.playersBox_DragOver);
             this.playersBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.playersBox_MouseDown);
             // 
             // PlayerMenuStrip1
@@ -1546,35 +1569,67 @@
             this.editPlayerToolStripMenuItem,
             this.toolStripSeparator12,
             this.exportPlayerToolStripMenuItem,
-            this.importPlayerToolStripMenuItem});
+            this.exportPlayerAppareanceToolStripMenuItem,
+            this.importPlayerToolStripMenuItem,
+            this.importPlayerFromDinoEditorToolStripMenuItem,
+            this.importPlayerAppearanceToolStripMenuItem,
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem});
             this.PlayerMenuStrip1.Name = "contextMenuStrip1";
-            this.PlayerMenuStrip1.Size = new System.Drawing.Size(146, 76);
+            this.PlayerMenuStrip1.Size = new System.Drawing.Size(268, 164);
             // 
             // editPlayerToolStripMenuItem
             // 
             this.editPlayerToolStripMenuItem.Name = "editPlayerToolStripMenuItem";
-            this.editPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.editPlayerToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.editPlayerToolStripMenuItem.Text = "Edit Player";
             this.editPlayerToolStripMenuItem.Click += new System.EventHandler(this.editPlayerToolStripMenuItem_Click);
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(142, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(264, 6);
             // 
             // exportPlayerToolStripMenuItem
             // 
-            this.exportPlayerToolStripMenuItem.Enabled = false;
             this.exportPlayerToolStripMenuItem.Name = "exportPlayerToolStripMenuItem";
-            this.exportPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.exportPlayerToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.exportPlayerToolStripMenuItem.Text = "Export Player";
+            this.exportPlayerToolStripMenuItem.Click += new System.EventHandler(this.exportPlayerToolStripMenuItem_Click);
+            // 
+            // exportPlayerAppareanceToolStripMenuItem
+            // 
+            this.exportPlayerAppareanceToolStripMenuItem.Name = "exportPlayerAppareanceToolStripMenuItem";
+            this.exportPlayerAppareanceToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.exportPlayerAppareanceToolStripMenuItem.Text = "Export PlayerAppearance";
+            this.exportPlayerAppareanceToolStripMenuItem.Click += new System.EventHandler(this.exportPlayerAppareanceToolStripMenuItem_Click);
             // 
             // importPlayerToolStripMenuItem
             // 
-            this.importPlayerToolStripMenuItem.Enabled = false;
             this.importPlayerToolStripMenuItem.Name = "importPlayerToolStripMenuItem";
-            this.importPlayerToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.importPlayerToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.importPlayerToolStripMenuItem.Text = "Import Player";
+            this.importPlayerToolStripMenuItem.Click += new System.EventHandler(this.importPlayerToolStripMenuItem_Click);
+            // 
+            // importPlayerFromDinoEditorToolStripMenuItem
+            // 
+            this.importPlayerFromDinoEditorToolStripMenuItem.Name = "importPlayerFromDinoEditorToolStripMenuItem";
+            this.importPlayerFromDinoEditorToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerFromDinoEditorToolStripMenuItem.Text = "Import Player From Dino";
+            this.importPlayerFromDinoEditorToolStripMenuItem.Click += new System.EventHandler(this.importPlayerFromDinoEditorToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceToolStripMenuItem
+            // 
+            this.importPlayerAppearanceToolStripMenuItem.Name = "importPlayerAppearanceToolStripMenuItem";
+            this.importPlayerAppearanceToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerAppearanceToolStripMenuItem.Text = "Import PlayerAppearance";
+            this.importPlayerAppearanceToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceFromDinoEditorToolStripMenuItem
+            // 
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Name = "importPlayerAppearanceFromDinoEditorToolStripMenuItem";
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Text = "Import PlayerAppearance From Dino";
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
             // 
             // searchT
             // 
@@ -1690,7 +1745,7 @@
             // 
             // giocatorePanel2
             // 
-            this.giocatorePanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.giocatorePanel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.giocatorePanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.giocatorePanel2.Controls.Add(this.panel1);
             this.giocatorePanel2.Controls.Add(this.coverage);
@@ -2507,6 +2562,7 @@
             this.giocatoreNationality.Size = new System.Drawing.Size(199, 21);
             this.giocatoreNationality.TabIndex = 132;
             this.giocatoreNationality.TabStop = false;
+            this.giocatoreNationality.SelectedIndexChanged += new System.EventHandler(this.giocatoreNationality_SelectedIndexChanged);
             // 
             // giocatoreSquadra
             // 
@@ -2665,7 +2721,11 @@
             this.teamView1.TabStop = false;
             this.teamView1.UseCompatibleStateImageBehavior = false;
             this.teamView1.View = System.Windows.Forms.View.Details;
+            this.teamView1.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.teamView1_ItemDrag);
             this.teamView1.SelectedIndexChanged += new System.EventHandler(this.teamView1_SelectedIndexChanged);
+            this.teamView1.DragDrop += new System.Windows.Forms.DragEventHandler(this.teamView1_DragDrop);
+            this.teamView1.DragEnter += new System.Windows.Forms.DragEventHandler(this.teamView1_DragEnter);
+            this.teamView1.DragOver += new System.Windows.Forms.DragEventHandler(this.teamView1_DragOver);
             this.teamView1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.teamView1_MouseDown);
             // 
             // columnHeader11
@@ -2972,12 +3032,12 @@
             // 
             // applyTeam
             // 
-            this.applyTeam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyTeam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyTeam.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyTeam.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyTeam.FlatAppearance.BorderSize = 0;
-            this.applyTeam.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyTeam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyTeam.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyTeam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyTeam.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3571,12 +3631,12 @@
             // 
             // applyCoach
             // 
-            this.applyCoach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCoach.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyCoach.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyCoach.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyCoach.FlatAppearance.BorderSize = 0;
-            this.applyCoach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyCoach.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCoach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyCoach.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyCoach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyCoach.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3753,12 +3813,12 @@
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3802,12 +3862,12 @@
             // 
             // applyCompetition
             // 
-            this.applyCompetition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetition.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyCompetition.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyCompetition.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyCompetition.FlatAppearance.BorderSize = 0;
-            this.applyCompetition.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyCompetition.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetition.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyCompetition.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyCompetition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCompetition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyCompetition.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -4152,12 +4212,12 @@
             // 
             // applyCompetitionRegulation
             // 
-            this.applyCompetitionRegulation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetitionRegulation.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyCompetitionRegulation.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyCompetitionRegulation.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyCompetitionRegulation.FlatAppearance.BorderSize = 0;
-            this.applyCompetitionRegulation.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyCompetitionRegulation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetitionRegulation.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyCompetitionRegulation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyCompetitionRegulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCompetitionRegulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyCompetitionRegulation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -4757,12 +4817,12 @@
             // 
             // applyCompetitionKind
             // 
-            this.applyCompetitionKind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetitionKind.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyCompetitionKind.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyCompetitionKind.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyCompetitionKind.FlatAppearance.BorderSize = 0;
-            this.applyCompetitionKind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyCompetitionKind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyCompetitionKind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyCompetitionKind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyCompetitionKind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCompetitionKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyCompetitionKind.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -4871,12 +4931,12 @@
             // 
             // applyDerby
             // 
-            this.applyDerby.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyDerby.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyDerby.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyDerby.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyDerby.FlatAppearance.BorderSize = 0;
-            this.applyDerby.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyDerby.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyDerby.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyDerby.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyDerby.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyDerby.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyDerby.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -5123,12 +5183,12 @@
             // 
             // applyStadium
             // 
-            this.applyStadium.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyStadium.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyStadium.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyStadium.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyStadium.FlatAppearance.BorderSize = 0;
-            this.applyStadium.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyStadium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyStadium.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyStadium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyStadium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyStadium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyStadium.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -5143,8 +5203,11 @@
             // 
             // pasteStadiumDb
             // 
-            this.pasteStadiumDb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.pasteStadiumDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.pasteStadiumDb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.pasteStadiumDb.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.pasteStadiumDb.FlatAppearance.BorderSize = 0;
+            this.pasteStadiumDb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.pasteStadiumDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.pasteStadiumDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pasteStadiumDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pasteStadiumDb.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -5153,7 +5216,7 @@
             this.pasteStadiumDb.Size = new System.Drawing.Size(111, 29);
             this.pasteStadiumDb.TabIndex = 131;
             this.pasteStadiumDb.Text = "Paste From DB";
-            this.pasteStadiumDb.UseVisualStyleBackColor = true;
+            this.pasteStadiumDb.UseVisualStyleBackColor = false;
             this.pasteStadiumDb.Click += new System.EventHandler(this.button2_Click);
             // 
             // stadiumsBox
@@ -5435,11 +5498,11 @@
             // groupBox22
             // 
             this.groupBox22.Controls.Add(this.DataGridView_stadium_order_in_conf);
-            this.groupBox22.Location = new System.Drawing.Point(7, 306);
+            this.groupBox22.Location = new System.Drawing.Point(3, 308);
             this.groupBox22.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox22.Name = "groupBox22";
             this.groupBox22.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox22.Size = new System.Drawing.Size(849, 296);
+            this.groupBox22.Size = new System.Drawing.Size(896, 296);
             this.groupBox22.TabIndex = 5;
             this.groupBox22.TabStop = false;
             this.groupBox22.Text = "StadiumOrderInConfederation.bin";
@@ -5497,7 +5560,7 @@
             this.groupBox21.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox21.Name = "groupBox21";
             this.groupBox21.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox21.Size = new System.Drawing.Size(853, 296);
+            this.groupBox21.Size = new System.Drawing.Size(896, 298);
             this.groupBox21.TabIndex = 4;
             this.groupBox21.TabStop = false;
             this.groupBox21.Text = "StadiumOrder.bin";
@@ -5580,12 +5643,12 @@
             // 
             // applyBall
             // 
-            this.applyBall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyBall.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyBall.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyBall.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyBall.FlatAppearance.BorderSize = 0;
-            this.applyBall.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyBall.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyBall.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyBall.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyBall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyBall.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -5864,12 +5927,12 @@
             // 
             // bootApply
             // 
-            this.bootApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.bootApply.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.bootApply.Cursor = System.Windows.Forms.Cursors.Hand;
             this.bootApply.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.bootApply.FlatAppearance.BorderSize = 0;
-            this.bootApply.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.bootApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.bootApply.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.bootApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.bootApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bootApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.bootApply.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -6060,12 +6123,12 @@
             // 
             // applyGlove
             // 
-            this.applyGlove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyGlove.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyGlove.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyGlove.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyGlove.FlatAppearance.BorderSize = 0;
-            this.applyGlove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyGlove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyGlove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyGlove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyGlove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyGlove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyGlove.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -6173,6 +6236,7 @@
             this.guantoID.ReadOnly = true;
             this.guantoID.Size = new System.Drawing.Size(63, 20);
             this.guantoID.TabIndex = 9;
+            this.guantoID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label98
             // 
@@ -6660,12 +6724,12 @@
             // 
             // applyFm
             // 
-            this.applyFm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyFm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyFm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.applyFm.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyFm.FlatAppearance.BorderSize = 0;
-            this.applyFm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyFm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.applyFm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyFm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.applyFm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyFm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyFm.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -8178,17 +8242,22 @@
             // 
             // copyFromDb
             // 
-            this.copyFromDb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.copyFromDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.copyFromDb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.copyFromDb.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.copyFromDb.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.copyFromDb.FlatAppearance.BorderSize = 0;
+            this.copyFromDb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.copyFromDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.copyFromDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.copyFromDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.copyFromDb.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.copyFromDb.Location = new System.Drawing.Point(242, 599);
+            this.copyFromDb.Margin = new System.Windows.Forms.Padding(0);
             this.copyFromDb.Name = "copyFromDb";
             this.copyFromDb.Size = new System.Drawing.Size(111, 29);
             this.copyFromDb.TabIndex = 124;
             this.copyFromDb.Text = "Copy From DB";
-            this.copyFromDb.UseVisualStyleBackColor = true;
+            this.copyFromDb.UseVisualStyleBackColor = false;
             this.copyFromDb.Click += new System.EventHandler(this.copyFromDb_Click);
             // 
             // label80
@@ -8443,57 +8512,81 @@
             this.toolStripMenuItem2,
             this.toolStripSeparator15,
             this.toolStripMenuItem3,
+            this.importPlayerAppearanceFromDinoToolStripMenuItem1,
             this.toolStripMenuItem4,
             this.toolStripMenuItem5,
+            this.importPlayerFromDinoToolStripMenuItem,
+            this.importPlayerAppearanceFromDinoToolStripMenuItem,
             this.toolStripMenuItem6});
             this.Team_BMenuStrip3.Name = "contextMenuStrip2";
-            this.Team_BMenuStrip3.Size = new System.Drawing.Size(225, 142);
+            this.Team_BMenuStrip3.Size = new System.Drawing.Size(268, 208);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(224, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
             this.toolStripMenuItem1.Text = "Edit Player";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(224, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(267, 22);
             this.toolStripMenuItem2.Text = "Edit Team";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripSeparator15
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
-            this.toolStripSeparator15.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator15.Size = new System.Drawing.Size(264, 6);
             // 
             // toolStripMenuItem3
             // 
-            this.toolStripMenuItem3.Enabled = false;
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(224, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(267, 22);
             this.toolStripMenuItem3.Text = "Export Player";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.exportPlayerToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceFromDinoToolStripMenuItem1
+            // 
+            this.importPlayerAppearanceFromDinoToolStripMenuItem1.Name = "importPlayerAppearanceFromDinoToolStripMenuItem1";
+            this.importPlayerAppearanceFromDinoToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerAppearanceFromDinoToolStripMenuItem1.Text = "Export PlayerAppearance";
+            this.importPlayerAppearanceFromDinoToolStripMenuItem1.Click += new System.EventHandler(this.exportPlayerAppareanceToolStripMenuItem_Click);
             // 
             // toolStripMenuItem4
             // 
             this.toolStripMenuItem4.Enabled = false;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(224, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(267, 22);
             this.toolStripMenuItem4.Text = "Export all players to team";
             // 
             // toolStripMenuItem5
             // 
-            this.toolStripMenuItem5.Enabled = false;
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(224, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(267, 22);
             this.toolStripMenuItem5.Text = "Import Player";
+            this.toolStripMenuItem5.Click += new System.EventHandler(this.importPlayerToolStripMenuItem_Click);
+            // 
+            // importPlayerFromDinoToolStripMenuItem
+            // 
+            this.importPlayerFromDinoToolStripMenuItem.Name = "importPlayerFromDinoToolStripMenuItem";
+            this.importPlayerFromDinoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerFromDinoToolStripMenuItem.Text = "Import Player From Dino";
+            this.importPlayerFromDinoToolStripMenuItem.Click += new System.EventHandler(this.importPlayerFromDinoEditorToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceFromDinoToolStripMenuItem
+            // 
+            this.importPlayerAppearanceFromDinoToolStripMenuItem.Name = "importPlayerAppearanceFromDinoToolStripMenuItem";
+            this.importPlayerAppearanceFromDinoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerAppearanceFromDinoToolStripMenuItem.Text = "Import PlayerAppearance From Dino";
+            this.importPlayerAppearanceFromDinoToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Enabled = false;
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(224, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(267, 22);
             this.toolStripMenuItem6.Text = "Import all players from team";
             // 
             // Team_AMenuStrip2
@@ -8503,57 +8596,89 @@
             this.editTeamToolStripMenuItem,
             this.toolStripSeparator13,
             this.exportPlayerToolStripMenuItem1,
+            this.exportPlayerAppearanceToolStripMenuItem,
             this.exportAllPlayerToolStripMenuItem,
             this.importPlayerToolStripMenuItem1,
+            this.importPlayerFromDinoEditorToolStripMenuItem1,
+            this.importPlayerAppearanceToolStripMenuItem1,
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1,
             this.importAllPlayersInTeamToolStripMenuItem});
             this.Team_AMenuStrip2.Name = "contextMenuStrip2";
-            this.Team_AMenuStrip2.Size = new System.Drawing.Size(225, 142);
+            this.Team_AMenuStrip2.Size = new System.Drawing.Size(268, 230);
             // 
             // editPlayerToolStripMenuItem1
             // 
             this.editPlayerToolStripMenuItem1.Name = "editPlayerToolStripMenuItem1";
-            this.editPlayerToolStripMenuItem1.Size = new System.Drawing.Size(224, 22);
+            this.editPlayerToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
             this.editPlayerToolStripMenuItem1.Text = "Edit Player";
             this.editPlayerToolStripMenuItem1.Click += new System.EventHandler(this.editPlayerToolStripMenuItem1_Click);
             // 
             // editTeamToolStripMenuItem
             // 
             this.editTeamToolStripMenuItem.Name = "editTeamToolStripMenuItem";
-            this.editTeamToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.editTeamToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.editTeamToolStripMenuItem.Text = "Edit Team";
             this.editTeamToolStripMenuItem.Click += new System.EventHandler(this.editTeamToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(221, 6);
+            this.toolStripSeparator13.Size = new System.Drawing.Size(264, 6);
             // 
             // exportPlayerToolStripMenuItem1
             // 
-            this.exportPlayerToolStripMenuItem1.Enabled = false;
             this.exportPlayerToolStripMenuItem1.Name = "exportPlayerToolStripMenuItem1";
-            this.exportPlayerToolStripMenuItem1.Size = new System.Drawing.Size(224, 22);
+            this.exportPlayerToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
             this.exportPlayerToolStripMenuItem1.Text = "Export Player";
+            this.exportPlayerToolStripMenuItem1.Click += new System.EventHandler(this.exportPlayerToolStripMenuItem_Click);
+            // 
+            // exportPlayerAppearanceToolStripMenuItem
+            // 
+            this.exportPlayerAppearanceToolStripMenuItem.Name = "exportPlayerAppearanceToolStripMenuItem";
+            this.exportPlayerAppearanceToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.exportPlayerAppearanceToolStripMenuItem.Text = "Export PlayerAppearance";
+            this.exportPlayerAppearanceToolStripMenuItem.Click += new System.EventHandler(this.exportPlayerAppareanceToolStripMenuItem_Click);
             // 
             // exportAllPlayerToolStripMenuItem
             // 
             this.exportAllPlayerToolStripMenuItem.Enabled = false;
             this.exportAllPlayerToolStripMenuItem.Name = "exportAllPlayerToolStripMenuItem";
-            this.exportAllPlayerToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.exportAllPlayerToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.exportAllPlayerToolStripMenuItem.Text = "Export all players to team";
             // 
             // importPlayerToolStripMenuItem1
             // 
-            this.importPlayerToolStripMenuItem1.Enabled = false;
             this.importPlayerToolStripMenuItem1.Name = "importPlayerToolStripMenuItem1";
-            this.importPlayerToolStripMenuItem1.Size = new System.Drawing.Size(224, 22);
+            this.importPlayerToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
             this.importPlayerToolStripMenuItem1.Text = "Import Player";
+            this.importPlayerToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerToolStripMenuItem_Click);
+            // 
+            // importPlayerFromDinoEditorToolStripMenuItem1
+            // 
+            this.importPlayerFromDinoEditorToolStripMenuItem1.Name = "importPlayerFromDinoEditorToolStripMenuItem1";
+            this.importPlayerFromDinoEditorToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerFromDinoEditorToolStripMenuItem1.Text = "Import Player From Dino";
+            this.importPlayerFromDinoEditorToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerFromDinoEditorToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceToolStripMenuItem1
+            // 
+            this.importPlayerAppearanceToolStripMenuItem1.Name = "importPlayerAppearanceToolStripMenuItem1";
+            this.importPlayerAppearanceToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerAppearanceToolStripMenuItem1.Text = "Import PlayerAppearance";
+            this.importPlayerAppearanceToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerAppearanceToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceFromDinoEditorToolStripMenuItem1
+            // 
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Name = "importPlayerAppearanceFromDinoEditorToolStripMenuItem1";
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Text = "Import PlayerAppearance From Dino";
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
             // 
             // importAllPlayersInTeamToolStripMenuItem
             // 
             this.importAllPlayersInTeamToolStripMenuItem.Enabled = false;
             this.importAllPlayersInTeamToolStripMenuItem.Name = "importAllPlayersInTeamToolStripMenuItem";
-            this.importAllPlayersInTeamToolStripMenuItem.Size = new System.Drawing.Size(224, 22);
+            this.importAllPlayersInTeamToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
             this.importAllPlayersInTeamToolStripMenuItem.Text = "Import all players from team";
             // 
             // statusStrip1
@@ -8587,6 +8712,7 @@
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -9149,12 +9275,12 @@
         private System.Windows.Forms.Button applyDerby;
         private System.Windows.Forms.Label label115;
         private System.Windows.Forms.Label label118;
-        private System.Windows.Forms.ToolStripMenuItem addNewDerbyToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewStadiumToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewBallToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewBootToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewGloveToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem addNewCoachToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addNewDerby;
+        private System.Windows.Forms.ToolStripMenuItem addNewStadium;
+        private System.Windows.Forms.ToolStripMenuItem addNewBall;
+        private System.Windows.Forms.ToolStripMenuItem addNewBoot;
+        private System.Windows.Forms.ToolStripMenuItem addNewGlove;
+        private System.Windows.Forms.ToolStripMenuItem addNewCoach;
         public System.Windows.Forms.DataGridView DataGridView_derby;
         public System.Windows.Forms.ComboBox derbyTeam1;
         public System.Windows.Forms.GroupBox groupBox4;
@@ -9461,6 +9587,17 @@
         private System.Windows.Forms.ToolStripMenuItem bootsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem csvToolStripMenuItem19;
         private System.Windows.Forms.ToolStripMenuItem csvToolStripMenuItem17;
+        private System.Windows.Forms.ToolStripMenuItem exportPlayerAppareanceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportPlayerAppearanceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerFromDinoEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceFromDinoEditorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerFromDinoEditorToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceFromDinoEditorToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerFromDinoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceFromDinoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceFromDinoToolStripMenuItem1;
     }
 }
 

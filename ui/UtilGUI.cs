@@ -15,7 +15,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             {
                 if (int.Parse(label.Text) < 75)
                 {
-                    label.BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
+                    label.BackColor = System.Drawing.Color.Transparent;
                 }
                 if (int.Parse(label.Text) >= 75 & int.Parse(label.Text) < 80)
                 {
@@ -36,7 +36,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             }
             catch
             {
-                label.BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
+                label.BackColor = System.Drawing.Color.Transparent;
             }
         }
 

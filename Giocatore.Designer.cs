@@ -212,6 +212,7 @@
             this.accept = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.skinNull = new System.Windows.Forms.PictureBox();
             this.skin6 = new System.Windows.Forms.PictureBox();
             this.skin5 = new System.Windows.Forms.PictureBox();
             this.skin4 = new System.Windows.Forms.PictureBox();
@@ -228,7 +229,6 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.starIndicator = new System.Windows.Forms.NumericUpDown();
             this.label43 = new System.Windows.Forms.Label();
-            this.skinNull = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -238,6 +238,7 @@
             this.groupBox19.SuspendLayout();
             this.groupBox23.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skinNull)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin4)).BeginInit();
@@ -250,7 +251,6 @@
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starIndicator)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skinNull)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -2260,8 +2260,11 @@
             // 
             // button7
             // 
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2270,13 +2273,16 @@
             this.button7.Size = new System.Drawing.Size(44, 29);
             this.button7.TabIndex = 113;
             this.button7.Text = "-";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2285,13 +2291,16 @@
             this.button8.Size = new System.Drawing.Size(98, 26);
             this.button8.TabIndex = 114;
             this.button8.Text = "=";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button12
             // 
-            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2300,7 +2309,7 @@
             this.button12.Size = new System.Drawing.Size(42, 29);
             this.button12.TabIndex = 115;
             this.button12.Text = "+%";
-            this.button12.UseVisualStyleBackColor = true;
+            this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // adjust
@@ -2318,8 +2327,11 @@
             // 
             // button6
             // 
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2328,13 +2340,16 @@
             this.button6.Size = new System.Drawing.Size(42, 28);
             this.button6.TabIndex = 112;
             this.button6.Text = "+";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button13
             // 
-            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2343,13 +2358,17 @@
             this.button13.Size = new System.Drawing.Size(44, 29);
             this.button13.TabIndex = 116;
             this.button13.Text = "-%";
-            this.button13.UseVisualStyleBackColor = true;
+            this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // searchPsd
             // 
-            this.searchPsd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.searchPsd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.searchPsd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.searchPsd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchPsd.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.searchPsd.FlatAppearance.BorderSize = 0;
+            this.searchPsd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.searchPsd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.searchPsd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchPsd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.searchPsd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2358,13 +2377,17 @@
             this.searchPsd.Size = new System.Drawing.Size(111, 29);
             this.searchPsd.TabIndex = 119;
             this.searchPsd.Text = "Search on PSD";
-            this.searchPsd.UseVisualStyleBackColor = true;
+            this.searchPsd.UseVisualStyleBackColor = false;
             this.searchPsd.Click += new System.EventHandler(this.button1_Click);
             // 
             // psdPaste
             // 
-            this.psdPaste.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.psdPaste.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.psdPaste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.psdPaste.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.psdPaste.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.psdPaste.FlatAppearance.BorderSize = 0;
+            this.psdPaste.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.psdPaste.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.psdPaste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.psdPaste.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.psdPaste.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2373,13 +2396,17 @@
             this.psdPaste.Size = new System.Drawing.Size(111, 29);
             this.psdPaste.TabIndex = 120;
             this.psdPaste.Text = "Paste PSD Stats";
-            this.psdPaste.UseVisualStyleBackColor = true;
+            this.psdPaste.UseVisualStyleBackColor = false;
             this.psdPaste.Click += new System.EventHandler(this.psdPaste_Click);
             // 
             // accept
             // 
-            this.accept.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.accept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.accept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.accept.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.accept.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.accept.FlatAppearance.BorderSize = 0;
+            this.accept.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.accept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.accept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accept.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.accept.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2388,13 +2415,17 @@
             this.accept.Size = new System.Drawing.Size(111, 29);
             this.accept.TabIndex = 123;
             this.accept.Text = "Accept";
-            this.accept.UseVisualStyleBackColor = true;
+            this.accept.UseVisualStyleBackColor = false;
             this.accept.Click += new System.EventHandler(this.button4_Click);
             // 
             // cancel
             // 
-            this.cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.cancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancel.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.cancel.FlatAppearance.BorderSize = 0;
+            this.cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2403,7 +2434,7 @@
             this.cancel.Size = new System.Drawing.Size(111, 29);
             this.cancel.TabIndex = 124;
             this.cancel.Text = "Cancel";
-            this.cancel.UseVisualStyleBackColor = true;
+            this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox5
@@ -2426,6 +2457,18 @@
             this.groupBox5.TabIndex = 125;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Skin Colour";
+            // 
+            // skinNull
+            // 
+            this.skinNull.BackColor = System.Drawing.Color.LightGray;
+            this.skinNull.Image = ((System.Drawing.Image)(resources.GetObject("skinNull.Image")));
+            this.skinNull.InitialImage = null;
+            this.skinNull.Location = new System.Drawing.Point(62, 61);
+            this.skinNull.Name = "skinNull";
+            this.skinNull.Size = new System.Drawing.Size(40, 37);
+            this.skinNull.TabIndex = 135;
+            this.skinNull.TabStop = false;
+            this.skinNull.Visible = false;
             // 
             // skin6
             // 
@@ -2624,18 +2667,6 @@
             this.label43.TabIndex = 132;
             this.label43.Text = "Star Player Indicator:";
             // 
-            // skinNull
-            // 
-            this.skinNull.BackColor = System.Drawing.Color.LightGray;
-            this.skinNull.Image = ((System.Drawing.Image)(resources.GetObject("skinNull.Image")));
-            this.skinNull.InitialImage = null;
-            this.skinNull.Location = new System.Drawing.Point(62, 61);
-            this.skinNull.Name = "skinNull";
-            this.skinNull.Size = new System.Drawing.Size(40, 37);
-            this.skinNull.TabIndex = 135;
-            this.skinNull.TabStop = false;
-            this.skinNull.Visible = false;
-            // 
             // Giocatore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2658,6 +2689,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Giocatore";
@@ -2681,6 +2713,7 @@
             this.groupBox23.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skinNull)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin4)).EndInit();
@@ -2694,7 +2727,6 @@
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.starIndicator)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.skinNull)).EndInit();
             this.ResumeLayout(false);
 
         }
