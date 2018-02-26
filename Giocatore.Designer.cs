@@ -346,8 +346,8 @@
             // 
             this.characterS1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.characterS1.FlatAppearance.BorderSize = 0;
-            this.characterS1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.characterS1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.characterS1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.characterS1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.characterS1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.characterS1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.characterS1.Image = ((System.Drawing.Image)(resources.GetObject("characterS1.Image")));
@@ -363,8 +363,8 @@
             this.fakeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.fakeButton.Enabled = false;
             this.fakeButton.FlatAppearance.BorderSize = 0;
-            this.fakeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.fakeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.fakeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.fakeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.fakeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fakeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.fakeButton.Image = ((System.Drawing.Image)(resources.GetObject("fakeButton.Image")));
@@ -1943,7 +1943,6 @@
             // bootsRelink
             // 
             this.bootsRelink.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bootsRelink.Enabled = false;
             this.bootsRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.bootsRelink.FormattingEnabled = true;
             this.bootsRelink.Location = new System.Drawing.Point(18, 21);
@@ -2264,7 +2263,7 @@
             this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2282,7 +2281,7 @@
             this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button8.FlatAppearance.BorderSize = 0;
             this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2300,7 +2299,7 @@
             this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button12.FlatAppearance.BorderSize = 0;
             this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2331,7 +2330,7 @@
             this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button6.FlatAppearance.BorderSize = 0;
             this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2349,7 +2348,7 @@
             this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button13.FlatAppearance.BorderSize = 0;
             this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2368,7 +2367,7 @@
             this.searchPsd.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.searchPsd.FlatAppearance.BorderSize = 0;
             this.searchPsd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.searchPsd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.searchPsd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.searchPsd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchPsd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.searchPsd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2387,7 +2386,7 @@
             this.psdPaste.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.psdPaste.FlatAppearance.BorderSize = 0;
             this.psdPaste.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.psdPaste.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.psdPaste.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.psdPaste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.psdPaste.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.psdPaste.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2406,7 +2405,7 @@
             this.accept.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.accept.FlatAppearance.BorderSize = 0;
             this.accept.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.accept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.accept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.accept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accept.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.accept.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2425,7 +2424,7 @@
             this.cancel.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.cancel.FlatAppearance.BorderSize = 0;
             this.cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2596,7 +2595,6 @@
             // glovesRelink
             // 
             this.glovesRelink.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.glovesRelink.Enabled = false;
             this.glovesRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.glovesRelink.FormattingEnabled = true;
             this.glovesRelink.Location = new System.Drawing.Point(18, 21);

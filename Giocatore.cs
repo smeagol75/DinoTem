@@ -364,6 +364,16 @@ namespace DinoTem
             Team nullo = new Club(99999);
             nullo.setEnglish("No Team");
             youthClub.Items.Add(nullo);
+
+            //Glove List
+            glovesRelink.Items.Clear();
+            foreach (string x in Form1._Form1.glovesBox.Items)
+            {
+                glovesRelink.Items.Add(x);
+            }
+            Glove nullo2 = new Glove(9999);
+            nullo2.setName("No Glove");
+            glovesRelink.Items.Add(nullo2);
         }
 
         //non far inserire lettere
@@ -647,6 +657,8 @@ namespace DinoTem
             sndNationality.SelectedIndex = controller.findCountry(temp.getNational2());
 
             youthClub.SelectedIndex = controller.findTeam(temp.getYouthPlayerId());
+
+            glovesRelink.SelectedIndex = controller.findGloveList(temp.getId());
         }
 
         //ADJUST STATS
@@ -1470,6 +1482,10 @@ namespace DinoTem
                 controller.changeSkinColour(temp.getId(), int.Parse(skinColour.Value.ToString()));
 
             controller.applyPlayerPersister(index, temp);
+
+            GloveList glove = new GloveList(temp.getId());
+            glove.setGloveId(controller.leggiGuanto(glovesRelink.SelectedIndex).getId());
+            controller.applyGloveListPersister(glove);
 
             controller.UpdateTeamView(temp.getId(), temp.getName());
             controller.UpdateFormPlayer(index, temp.getName());

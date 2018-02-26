@@ -3033,31 +3033,31 @@ namespace DinoTem
         //Add new boot
         private void addNewBoot_Click(object sender, EventArgs e)
         {
-
+            controller.addBootPersister();
         }
 
         //Add new ball
         private void addNewBall_Click(object sender, EventArgs e)
         {
-
+            controller.addBallPersister();
         }
 
         //Add new stadium
         private void addNewStadium_Click(object sender, EventArgs e)
         {
-
+            controller.addStadiumPersister();
         }
 
         //Add new derby
         private void addNewDerby_Click(object sender, EventArgs e)
         {
-
+            controller.addDerbyPersister();
         }
 
         //Add new coach
         private void addNewCoach_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         //Add new team
@@ -3141,11 +3141,41 @@ namespace DinoTem
             string text1 = (string)e.Data.GetData(TEAM_B.GetType());
             if (text.CompareTo(TEAM_A) == 0)
             {
-                MessageBox.Show("A");
+                int intselectedindex = teamView1.SelectedIndices[0];
+                if (teamView1.Items.Count > 11)
+                {
+                    controller.deletePlayerTeam(teamView1, intselectedindex);
+                    controller.transferPlayerAtoA(teamView1, controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+                    if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                    {
+                        teamView2.Items.RemoveAt(intselectedindex);
+                        for (int i = 0; i < teamView2.Items.Count; i++)
+                        {
+                            teamView2.Items[i].SubItems[0].Text = i.ToString();
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("There are only 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (text.CompareTo(TEAM_B) == 0)
             {
-                MessageBox.Show("B");
+                int intselectedindex = teamView2.SelectedIndices[0];
+                if (teamView2.Items.Count > 11)
+                {
+                    controller.deletePlayerTeam(teamView2, intselectedindex);
+                    controller.transferPlayerAtoA(teamView2, controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+                    if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                    {
+                        teamView1.Items.RemoveAt(intselectedindex);
+                        for (int i = 0; i < teamView1.Items.Count; i++)
+                        {
+                            teamView1.Items[i].SubItems[0].Text = i.ToString();
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("There are only 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -3212,11 +3242,96 @@ namespace DinoTem
             string text2 = (string)e.Data.GetData(PLAYER.GetType());
             if (text.CompareTo(TEAM_A) == 0)
             {
-                MessageBox.Show("A");
+                controller.transferPlayerAtoA(teamView1, controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+                if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                    controller.transferPlayerAtoA(teamView2, controller.leggiSquadra(teamBox2.SelectedIndex).getId());
             }
             else if (text.CompareTo(TEAM_B) == 0)
             {
-                MessageBox.Show("B");
+                Point cp = teamView1.PointToClient(new Point(e.X, e.Y));
+                ListViewItem dragToItem = teamView1.GetItemAt(cp.X, cp.Y);
+                int dropIndex = dragToItem.Index;
+                int intselectedindex = teamView2.SelectedIndices[0];
+                controller.transferPlayerBtoA(teamView1, teamView2, teamBox1, teamBox2, intselectedindex, dropIndex);
+            }
+            else if (text2.CompareTo(PLAYER) == 0)
+            {
+                MessageBox.Show("P");
+            }
+        }
+
+        //teamView2 drag&drop
+        private void teamView2_DragOver(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.Text))
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+            Point cp = teamView2.PointToClient(new Point(e.X, e.Y));
+            ListViewItem hoverItem = teamView2.GetItemAt(cp.X, cp.Y);
+            if (hoverItem == null)
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+            foreach (ListViewItem moveItem in teamView2.SelectedItems)
+            {
+                if (moveItem.Index == hoverItem.Index)
+                {
+                    e.Effect = DragDropEffects.None;
+                    hoverItem.EnsureVisible();
+                    return;
+                }
+            }
+            String text = (String)e.Data.GetData(TEAM_A.GetType());
+            String text1 = (String)e.Data.GetData(TEAM_B.GetType());
+            String text2 = (String)e.Data.GetData(PLAYER.GetType());
+            if (text.CompareTo(TEAM_A) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+                hoverItem.EnsureVisible();
+            }
+            else if (text1.CompareTo(TEAM_B) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+                hoverItem.EnsureVisible();
+            }
+            else if (text2.CompareTo(PLAYER) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+                hoverItem.EnsureVisible();
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void teamView2_ItemDrag(object sender, ItemDragEventArgs e)
+        {
+            teamView2.DoDragDrop(TEAM_B, DragDropEffects.Move);
+        }
+
+        private void teamView2_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void teamView2_DragDrop(object sender, DragEventArgs e)
+        {
+            string text = (string)e.Data.GetData(TEAM_A.GetType());
+            string text1 = (string)e.Data.GetData(TEAM_B.GetType());
+            string text2 = (string)e.Data.GetData(PLAYER.GetType());
+            if (text.CompareTo(TEAM_A) == 0)
+            {
+                controller.transferPlayerAtoA(teamView2, controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+                if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                    controller.transferPlayerAtoA(teamView1, controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+            }
+            else if (text.CompareTo(TEAM_B) == 0)
+            {
+                
             }
             else if (text2.CompareTo(PLAYER) == 0)
             {

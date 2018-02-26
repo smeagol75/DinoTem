@@ -67,6 +67,7 @@
     <Compile Include="model\Ball.cs" />
     <Compile Include="model\BallCondition.cs" />
     <Compile Include="model\Boot.cs" />
+    <Compile Include="model\BootList.cs" />
     <Compile Include="model\Club.cs" />
     <Compile Include="model\Coach.cs" />
     <Compile Include="model\Competition.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="model\Derby.cs" />
     <Compile Include="model\Fm.cs" />
     <Compile Include="model\Glove.cs" />
+    <Compile Include="model\GloveList.cs" />
     <Compile Include="model\National.cs" />
     <Compile Include="model\Player.cs" />
     <Compile Include="model\PlayerAppearance.cs" />
@@ -96,6 +98,7 @@
     <Compile Include="persistence\MyCountryPersister.cs" />
     <Compile Include="persistence\MyDerbyPersister.cs" />
     <Compile Include="persistence\MyFmPersister.cs" />
+    <Compile Include="persistence\MyGloveListPersister.cs" />
     <Compile Include="persistence\MyGlovePersister.cs" />
     <Compile Include="persistence\MyPlayerAppearancePersister.cs" />
     <Compile Include="persistence\MyPlayerAssignmentPersister.cs" />

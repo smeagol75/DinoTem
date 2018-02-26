@@ -79,6 +79,9 @@ namespace DinoTem.ui
         private MemoryStream unzlibPlayerApp;
         private BinaryReader leggiPlayerApp;
         private BinaryWriter scriviPlayerApp;
+        private MemoryStream unzlibGloveList;
+        private BinaryReader leggiGloveList;
+        private BinaryWriter scriviGloveList;
 
         public void readBallPersister(string patch, int bitRecognized)
         {
@@ -400,6 +403,20 @@ namespace DinoTem.ui
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void readGloveListPersister(string patch, int bitRecognized)
+        {
+            MyGloveListPersister gloveListReader = new MyGloveListPersister();
+
+            try
+            {
+                gloveListReader.load(patch, bitRecognized, ref unzlibGloveList, ref leggiGloveList, ref scriviGloveList);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -639,7 +656,20 @@ namespace DinoTem.ui
             {
                 MessageBox.Show("Error saved PlayerAppearance.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        public void saveGloveListPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyGloveListPersister dSave = new MyGloveListPersister();
+
+            try
+            {
+                dSave.save(patch, ref unzlibGloveList, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved GloveList.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void applyBallPersister(int index, Ball pallone)
@@ -892,6 +922,20 @@ namespace DinoTem.ui
             }
         }
 
+        public void applyGloveListPersister(GloveList a)
+        {
+            MyGloveListPersister com = new MyGloveListPersister();
+
+            try
+            {
+                com.applyGloveList(leggiGloveList, getBitRecognized(), unzlibGloveList, a, ref scriviGloveList);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply glove list - id player: " + a.getPlayerId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private UInt16 findIdGlove()
         {
             UInt16 id = 0;
@@ -938,6 +982,203 @@ namespace DinoTem.ui
             catch
             {
                 MessageBox.Show("Error add new glove", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private UInt16 findIdBoot()
+        {
+            UInt16 id = 0;
+
+            int da = 1;
+            int a = 65535;
+            Random random = new Random();
+            id = (ushort)random.Next(da, a);
+            bool ok = true;
+
+            while (ok)
+            {
+
+                for (int i = 0; i < Form1._Form1.bootsBox.Items.Count; i++)
+                {
+                    Boot boot = leggiScarpa(i);
+                    if (boot.getId() == id)
+                        ok = false;
+                }
+
+                if (ok)
+                    return id;
+
+            }
+
+            return id;
+        }
+
+        public void addBootPersister()
+        {
+            MyBootPersister boot = new MyBootPersister();
+
+            try
+            {
+                boot.addBoot(ref unzlibScarpe, ref leggiScarpe, ref scriviScarpe);
+
+                Boot temp = new Boot(findIdBoot());
+                temp.setName("Boot " + Form1._Form1.bootsBox.Items.Count);
+                temp.setOrder(20);
+                temp.setColor("Test");
+                temp.setMaterial("Test");
+                applyBootPersister(Form1._Form1.bootsBox.Items.Count, temp);
+
+                Form1._Form1.bootsBox.Items.Add("Boot " + Form1._Form1.bootsBox.Items.Count);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new boot", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private UInt16 findIdBall()
+        {
+            UInt16 id = 0;
+
+            int da = 1;
+            int a = 65535;
+            Random random = new Random();
+            id = (ushort)random.Next(da, a);
+            bool ok = true;
+
+            while (ok)
+            {
+
+                for (int i = 0; i < Form1._Form1.ballsBox.Items.Count; i++)
+                {
+                    Ball ball = leggiPallone(i);
+                    if (ball.getId() == id)
+                        ok = false;
+                }
+
+                if (ok)
+                    return id;
+
+            }
+
+            return id;
+        }
+
+        public void addBallPersister()
+        {
+            MyBallPersister ball = new MyBallPersister();
+
+            try
+            {
+                ball.addBall(ref unzlibPalloni, ref leggiPalloni, ref scriviPalloni);
+
+                UInt16 id = findIdBall();
+                Ball temp = new Ball(id);
+                temp.setName("Ball " + Form1._Form1.ballsBox.Items.Count);
+                temp.setOrder(20);
+                applyBallPersister(Form1._Form1.ballsBox.Items.Count, temp);
+
+                Form1._Form1.ballsBox.Items.Add("Ball " + Form1._Form1.ballsBox.Items.Count);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new ball", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private UInt16 findIdStadium()
+        {
+            UInt16 id = 0;
+
+            int da = 1;
+            int a = 65535;
+            Random random = new Random();
+            id = (ushort)random.Next(da, a);
+            bool ok = true;
+
+            while (ok)
+            {
+
+                for (int i = 0; i < Form1._Form1.stadiumsBox.Items.Count; i++)
+                {
+                    Stadium stadium = leggiStadium(i);
+                    if (stadium.getId() == id)
+                        ok = false;
+                }
+
+                if (ok)
+                    return id;
+
+            }
+
+            return id;
+        }
+
+        public void addStadiumPersister()
+        {
+            MyStadiumPersister stadium = new MyStadiumPersister();
+
+            try
+            {
+                stadium.addStadium(ref unzlibStadi, ref leggiStadi, ref scriviStadi);
+
+                Stadium temp = new Stadium(findIdStadium());
+                temp.setName("Stadium " + Form1._Form1.stadiumsBox.Items.Count);
+                temp.setCapacity(1000);
+                temp.setCountry(215);
+                temp.setJapaneseName("Stadium " + Form1._Form1.stadiumsBox.Items.Count);
+                temp.setKonamiName("Stadium");
+                temp.setLicense(0);
+                temp.setNa(0);
+                temp.setZone(2);
+                applyStadiumPersister(Form1._Form1.stadiumsBox.Items.Count, temp);
+
+                Form1._Form1.stadiumsBox.Items.Add("Stadium " + Form1._Form1.stadiumsBox.Items.Count);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new stadium", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addDerbyPersister()
+        {
+            MyDerbyPersister derby = new MyDerbyPersister();
+            try
+            {
+                derby.addDerby(ref unzlibDerby, ref leggiDerby, ref scriviDerby);
+
+                UInt32 New_order = Convert.ToUInt32(Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[6].Value);
+                New_order = (New_order + 1);
+                UInt32 new_slot = (uint)Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[5].Value;
+                UInt32 team1 = (uint)Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[0].Value;
+                UInt32 team2 = (uint)Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[2].Value;
+                string teamName1 = (string)Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[1].Value;
+                string teamName2 = (string)Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[3].Value;
+                if ((New_order > 127))
+                {
+                    new_slot = (new_slot + 1);
+                    New_order = 0;
+                    if ((new_slot > 3))
+                        MessageBox.Show("Maximum slots are reached, please eidt, not add more", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        Form1._Form1.DataGridView_derby.Rows.Add(team1, teamName1, team2, teamName2, 0, new_slot, New_order);
+                }
+                else
+                    Form1._Form1.DataGridView_derby.Rows.Add(team1, teamName1, team2, teamName2, 0, new_slot, New_order);
+
+                Derby temp = new Derby();
+                temp.setTeam1DerbyId(team1);
+                temp.setTeam2DerbyId(team2);
+                temp.setFragVal2((ushort)0);
+                temp.setFragVal3((ushort)new_slot);
+                temp.setFragVal4((ushort)New_order);
+
+                applyDerbyPersister(Form1._Form1.DataGridView_derby.Rows[Form1._Form1.DataGridView_derby.Rows.Count].Index, temp);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new derby", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1005,6 +1246,9 @@ namespace DinoTem.ui
                 unzlibPlayerApp.Close();
                 leggiPlayerApp.Close();
                 scriviPlayerApp.Close();
+                unzlibGloveList.Close();
+                leggiGloveList.Close();
+                scriviGloveList.Close();
             }
         }
 
@@ -1122,11 +1366,17 @@ namespace DinoTem.ui
             byteFirst += reader17.ReadByte();
             reader17.Close();
 
-            if (byteFirst == 0 || byteFirst == 72)
+            byte[] file18 = File.ReadAllBytes(folder + @"\GloveList.bin");
+            MemoryStream memory18 = new MemoryStream(file18);
+            BinaryReader reader18 = new BinaryReader(memory18);
+            byteFirst += reader18.ReadByte();
+            reader18.Close();
+
+            if (byteFirst == 0 || byteFirst == 76)
                 return 0;
-            else if (byteFirst == 18)
+            else if (byteFirst == 19)
                 return 1;
-            else if (byteFirst == 36)
+            else if (byteFirst == 38)
                 return 2;
             else
             {
@@ -1195,6 +1445,7 @@ namespace DinoTem.ui
             readStadiumOrderInConfederationPersister(folder, bitRecognized);
             readCompetitionEntryPersister(folder, bitRecognized);
             readPlayerAppearancePersister(folder, bitRecognized);
+            readGloveListPersister(folder, bitRecognized);
 
             //readCountryPersister(folder, bitRecognized);
             //if (countryList.Count == 0)
@@ -1307,6 +1558,10 @@ namespace DinoTem.ui
 
         public Glove leggiGuanto(int index)
         {
+            Glove temp = new Glove(0);
+            if (index == Form1._Form1.glovesBox.Items.Count)
+                return temp;
+
             MyGlovePersister gloveReader = new MyGlovePersister();
             Glove guanto = gloveReader.loadGlove(index, leggiGuanti);
 
@@ -1481,6 +1736,14 @@ namespace DinoTem.ui
             return player;
         }
 
+        public GloveList leggiGuantiLista(UInt32 id)
+        {
+            MyGloveListPersister reader = new MyGloveListPersister();
+            GloveList glove = reader.loadGloveList(id, getBitRecognized(), unzlibGloveList, leggiGloveList);
+
+            return glove;
+        }
+
         public int findCountry(UInt32 idCountry)
         {
             int index = -1;
@@ -1584,6 +1847,25 @@ namespace DinoTem.ui
                     Form1._Form1.DataGridView1.Rows[i].Cells[1].Value = "No Team Found";
             }
 
+        }
+
+        public int findGloveList(UInt32 idPlayer)
+        {
+            int index = Form1._Form1.glovesBox.Items.Count;
+
+            GloveList c = leggiGuantiLista(idPlayer);
+
+            //for "no glove" 
+            if (c == null)
+                return index = Form1._Form1.glovesBox.Items.Count;
+
+            for (int i = 0; i < Form1._Form1.glovesBox.Items.Count; i++)
+            {
+                if (c.getGloveId() == leggiGuanto(i).getId())
+                    return i;
+            }
+
+            return index;
         }
 
         public int getSkinColour(UInt32 id)
@@ -2738,6 +3020,250 @@ namespace DinoTem.ui
             applyPlayerAssignmentPersister(pa);
         }
 
+        public void deletePlayerTeam(ListView l1, int selectIndex)
+        {
+            UInt32 Player_Ass_to_delete = ushort.Parse(l1.Items[selectIndex].SubItems[4].Text);
+            MemoryStream unzlib_player_Assignament_aux = new MemoryStream();
+            BinaryWriter Grabar_Player_Assignament_aux = new BinaryWriter(unzlib_player_Assignament_aux);
+            leggiPlayerAssign.BaseStream.Position = 0;
+            UInt32 index_a_borrar = leggiPlayerAssign.ReadUInt32();
+
+            // mirar si tienen algo de capitan o lanzador para ponerselo a otro y borrar la fila.
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[5].Text) == 1))
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[5].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[5].Text = "1";
+            }
+
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[8].Text) == 1))
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[8].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[8].Text = "1";
+            }
+
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[7].Text) == 1))
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[7].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[7].Text = "1";
+            }
+
+            if (ushort.Parse(l1.Items[selectIndex].SubItems[6].Text) == 1)
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[6].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[6].Text = "1";
+            }
+
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[10].Text) == 1))
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[10].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[10].Text = "1";
+            }
+
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[9].Text) == 1))
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[9].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[9].Text = "1";
+            }
+
+            while ((index_a_borrar != Player_Ass_to_delete))
+            {
+                leggiPlayerAssign.BaseStream.Position += 12;
+                index_a_borrar = leggiPlayerAssign.ReadUInt32();
+            }
+
+            UInt32 Posicion_a_borrar = (uint) (leggiPlayerAssign.BaseStream.Position - 4);
+            leggiPlayerAssign.BaseStream.Position = 0;
+            while ((unzlibPlayerAssign.Position < Posicion_a_borrar))
+            {
+                Grabar_Player_Assignament_aux.Write(leggiPlayerAssign.ReadByte());
+            }
+
+            leggiPlayerAssign.BaseStream.Position += 16;
+            while ((leggiPlayerAssign.BaseStream.Position < unzlibPlayerAssign.Length))
+            {
+                Grabar_Player_Assignament_aux.Write(leggiPlayerAssign.ReadByte());
+            }
+
+            unzlibPlayerAssign.Close();
+            unzlibPlayerAssign = new MemoryStream();
+            unzlib_player_Assignament_aux.Position = 0;
+            unzlib_player_Assignament_aux.CopyTo(unzlibPlayerAssign);
+            unzlib_player_Assignament_aux.Close();
+            leggiPlayerAssign = new BinaryReader(unzlibPlayerAssign);
+            scriviPlayerAssign = new BinaryWriter(unzlibPlayerAssign);
+
+            l1.Items.RemoveAt(selectIndex);
+            for (int i = 0; i < l1.Items.Count; i++)
+            {
+                l1.Items[i].SubItems[0].Text = i.ToString();
+            }
+        }
+
+        public void transferPlayerBtoA(ListView toL, ListView fromL, ComboBox toC, ComboBox fromC, int selectIndex, int dropIndex)
+        {
+            int block = 192;
+
+            if (toL.Items.Count < 32 && fromL.Items.Count > 16)
+            {
+                Team team = leggiSquadra(toC.SelectedIndex);
+                if (team.getNational() == 0)
+                {
+                    int dorsal = int.Parse(fromL.Items[selectIndex].SubItems[3].Text);
+                    bool repetido = false;
+                    List<int> usados = new List<int>();
+                    UInt32 Team_Origen = leggiSquadra(fromC.SelectedIndex).getId();
+                    UInt32 Team_destino = leggiSquadra(toC.SelectedIndex).getId();
+                    for (int i = 0; i <= toL.Items.Count - 1; i++)
+                    {
+                        usados.Add(int.Parse(toL.Items[i].SubItems[3].Text));
+                        if (int.Parse(toL.Items[i].SubItems[3].Text) == dorsal)
+                            repetido = true;
+                    }
+
+                    if ((repetido == true))
+                    {
+                        dorsal = 1;
+                        while (usados.Contains(dorsal))
+                        {
+                            dorsal++;
+                        }
+
+                    }
+
+                    ListViewItem item = new ListViewItem();
+                    item = new ListViewItem((toL.Items.Count + 1).ToString());
+                    item.SubItems.Add(fromL.Items[selectIndex].SubItems[1].Text);
+                    item.SubItems.Add(fromL.Items[selectIndex].SubItems[2].Text);
+                    item.SubItems.Add(dorsal.ToString());
+                    item.SubItems.Add(fromL.Items[selectIndex].SubItems[4].Text);
+                    item.SubItems.Add("0");
+                    item.SubItems.Add("0");
+                    item.SubItems.Add("0");
+                    item.SubItems.Add("0");
+                    item.SubItems.Add("0");
+                    item.SubItems.Add("0");
+                    item.SubItems.Add(fromL.Items[selectIndex].SubItems[11].Text);
+                    toL.Items.Add(item);
+
+                    // copio los datos del 1 al 2 poniendo 0 en lo de capitan y lanzador.
+                    // mirar si tienen algo de capitan o lanzador para ponerselo a otro y borrar la fila.
+                    if ((ushort.Parse(fromL.Items[selectIndex].SubItems[5].Text) == 1))
+                    {
+                        if ((selectIndex == 0))
+                            fromL.Items[(selectIndex + 1)].SubItems[5].Text = "1";
+                        else
+                            fromL.Items[(selectIndex - 1)].SubItems[5].Text = "1";
+                    }
+
+                    if ((ushort.Parse(fromL.Items[selectIndex].SubItems[8].Text) == 1))
+                    {
+                        if ((selectIndex == 0))
+                            fromL.Items[(selectIndex + 1)].SubItems[8].Text = "1";
+                        else
+                            fromL.Items[(selectIndex - 1)].SubItems[8].Text = "1";
+                    }
+
+                    if ((ushort.Parse(fromL.Items[selectIndex].SubItems[7].Text) == 1))
+                    {
+                        if ((selectIndex == 0))
+                            fromL.Items[(selectIndex + 1)].SubItems[7].Text = "1";
+                        else
+                            fromL.Items[(selectIndex - 1)].SubItems[7].Text = "1";
+                    }
+
+                    if (ushort.Parse(fromL.Items[selectIndex].SubItems[6].Text) == 1)
+                    {
+                        if ((selectIndex == 0))
+                            fromL.Items[(selectIndex + 1)].SubItems[6].Text = "1";
+                        else
+                            fromL.Items[(selectIndex - 1)].SubItems[6].Text = "1";
+                    }
+
+                    if ((ushort.Parse(fromL.Items[selectIndex].SubItems[10].Text) == 1))
+                    {
+                        if ((selectIndex == 0))
+                            fromL.Items[(selectIndex + 1)].SubItems[10].Text = "1";
+                        else
+                            fromL.Items[(selectIndex - 1)].SubItems[10].Text = "1";
+                    }
+
+                    if ((ushort.Parse(fromL.Items[selectIndex].SubItems[9].Text) == 1))
+                    {
+                        if ((selectIndex == 0))
+                            fromL.Items[(selectIndex + 1)].SubItems[9].Text = "1";
+                        else
+                            fromL.Items[(selectIndex - 1)].SubItems[9].Text = "1";
+                    }
+
+                    int fila_actual = selectIndex;
+                    fromL.Items.RemoveAt(selectIndex);
+                    for (int i = fila_actual; i <= fromL.Items.Count - 1; i++)
+                    {
+                        fromL.Items[i].SubItems[0].Text = (int.Parse(fromL.Items[i].SubItems[0].Text) - 1).ToString();
+                    }
+                }
+                else
+                {
+                    UInt32 Index_club_2_sel_player = uint.Parse(fromL.Items[selectIndex].SubItems[11].Text);
+                    List<int> List_players = new List<int>();
+                    for (int j = 0; (j <= (toL.Items.Count - 1)); j++)
+                    {
+                        List_players.Add(int.Parse(toL.Items[(selectIndex - 1)].SubItems[11].Text));
+                    }
+
+                    // comprobar que es un jugador de ese pais y que no est repetido
+                    if (List_players.Contains((int)Index_club_2_sel_player))
+                        MessageBox.Show("Player already on National Team", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                    {
+                        leggiGiocatori.BaseStream.Position = 4;
+                        for (int i = 0; i <= (unzlibGiocatori.Length / block) - 1; i++)
+                        {
+                            leggiGiocatori.BaseStream.Position += 4;
+                            UInt32 CHECK_PLAYER = leggiGiocatori.ReadUInt32();
+                            if ((CHECK_PLAYER == Index_club_2_sel_player))
+                            {
+                                UInt32 index_new_player = (uint)i;
+                                Player Player_check = leggiGiocatoreById(index_new_player);
+                                if (Player_check.getNational() == leggiSquadra(toC.SelectedIndex).getId())
+                                {
+                                    // Hacer traspaso
+                                    toL.Items[dropIndex].SubItems[2].Text = fromL.Items[selectIndex].SubItems[2].Text;
+                                    toL.Items[dropIndex].SubItems[1].Text = fromL.Items[selectIndex].SubItems[1].Text;
+                                    break;
+                                }
+                                else
+                                {
+                                    MessageBox.Show("The player of team 2, doesn't belong to" + team.getEnglish() + " nationality", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    break;
+                                }
+
+                            }
+                            else
+                                leggiGiocatori.BaseStream.Position = leggiGiocatori.BaseStream.Position + (block - 8);
+                        }
+
+                    }
+
+                }
+
+            }
+            else
+                MessageBox.Show("Team Full, Please remove player before", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
         //remove fake team
         public void removeFakeTeam()
         {
@@ -3831,21 +4357,7 @@ namespace DinoTem.ui
             }
         }
 
-        private List<PlayerAssignment> playerAssignmentList = new List<PlayerAssignment>();
-
         //transferPlayer Drag&Drop
-        private void setPlayerTrasfer(PlayerAssignment temp, int idTeamA, int order)
-        {
-            /*temp.setTeamId(idTeamA);
-            temp.setShortFoulFk(false);
-            temp.setRightCornerKick(false);
-            temp.setPenaltyKick(false);
-            temp.setOrder(order);
-            temp.setLongShotLk(false);
-            temp.setLeftCkTk(false);
-            temp.setCaptain(false);*/
-        }
-
         private void findEntryID(PlayerAssignment temp)
         {
             //genera anche numero causuale
@@ -3869,7 +4381,7 @@ namespace DinoTem.ui
                 Random random1 = new Random();
                 int numeroCasuale1 = random1.Next(da1, a1);
 
-                foreach (PlayerAssignment x in playerAssignmentList)
+                /*foreach (PlayerAssignment x in playerAssignmentList)
                 {
                     if (numeroCasuale1 != x.getEntryId())
                     {
@@ -3877,75 +4389,10 @@ namespace DinoTem.ui
                         //temp.setEntryId(n);
                         return;
                     }
-                }
+                }*/
             }
             return;
         }
-
-        /*public void transferPlayerBtoA(int intselectedindexPlayer, Team teamA, Team teamB, int orderTeamA, ComboBox teamBox1, ComboBox teamBox2)
-        {
-            bool ok = false;
-            foreach (PlayerAssignment x in playerAssignmentList)
-            {
-                if (teamB.getId() == x.getTeamId())
-                    if (x.getOrder() == intselectedindexPlayer) //trovo il giocatore della squadra di partenza
-                        ok = true;
-
-                if (ok)
-                {
-                    if (teamB.getNational()) //squadra partenza é una nazionale
-                    {
-                        if (teamA.getNational()) //se la squadra di destinazione è una nazionale
-                        {
-                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
-                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
-                            findEntryID(temp);
-                            playerAssignmentList.Add(temp);
-                        }
-                        else // se è un club
-                        {
-                            foreach (PlayerAssignment playerA in playerAssignmentList)
-                            {
-                                if (x.getPlayerId() == playerA.getPlayerId())
-                                {
-                                    if (!getTeamById2(playerA.getTeamId()).getNational())
-                                    {
-                                        setPlayerTrasfer(playerA, teamA.getId(), orderTeamA);
-                                        //
-                                        UpdateForm(teamBox1, teamBox2);
-                                        return;
-                                    }
-                                }
-
-                            }
-                            // se il giocatore è svincolato
-                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
-                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
-                            findEntryID(temp);
-                            playerAssignmentList.Add(temp);
-                        }
-
-                    }
-                    else //squadra partenza é un club
-                    {
-                        if (teamA.getNational()) //se la squadra di destinazione è una nazionale
-                        {
-                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
-                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
-                            findEntryID(temp);
-                            playerAssignmentList.Add(temp);
-                        }
-                        else  //o un club
-                            setPlayerTrasfer(x, teamA.getId(), orderTeamA);
-
-                    }
-                    //
-                    UpdateForm(teamBox1, teamBox2);
-                    return;
-                }
-            }
-        }
-        */
 
         /*public void playerFromPlayerList(long player, int teamId, ComboBox teamBox1, ComboBox teamBox2)
         {
@@ -3988,23 +4435,6 @@ namespace DinoTem.ui
             return;
         }
         */
-        public void deletePlayerTeam(int intselectedindex, int teamId, ComboBox teamBox1, ComboBox teamBox2)
-        {
-            for (int i = 0; i < playerAssignmentList.Count; i++)
-            {
-                PlayerAssignment x = (PlayerAssignment) playerAssignmentList[i];
-                if (x.getTeamId() == teamId)
-                {
-                    if (x.getOrder() == intselectedindex)
-                    {
-                        playerAssignmentList.Remove(x);
-                    }
-                }
-                
-            }
-            //
-            //UpdateForm(teamBox1, teamBox2);
-        }
 
     }
 }

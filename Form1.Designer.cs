@@ -1720,7 +1720,11 @@
             this.teamView2.TabStop = false;
             this.teamView2.UseCompatibleStateImageBehavior = false;
             this.teamView2.View = System.Windows.Forms.View.Details;
+            this.teamView2.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.teamView2_ItemDrag);
             this.teamView2.SelectedIndexChanged += new System.EventHandler(this.teamView2_SelectedIndexChanged);
+            this.teamView2.DragDrop += new System.Windows.Forms.DragEventHandler(this.teamView2_DragDrop);
+            this.teamView2.DragEnter += new System.Windows.Forms.DragEventHandler(this.teamView2_DragEnter);
+            this.teamView2.DragOver += new System.Windows.Forms.DragEventHandler(this.teamView2_DragOver);
             this.teamView2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.teamView2_MouseDown);
             // 
             // columnHeader3
@@ -3037,7 +3041,7 @@
             this.applyTeam.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyTeam.FlatAppearance.BorderSize = 0;
             this.applyTeam.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyTeam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyTeam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyTeam.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3496,8 +3500,8 @@
             // 
             this.characterS1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.characterS1.FlatAppearance.BorderSize = 0;
-            this.characterS1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.characterS1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.characterS1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.characterS1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.characterS1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.characterS1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.characterS1.Image = ((System.Drawing.Image)(resources.GetObject("characterS1.Image")));
@@ -3636,7 +3640,7 @@
             this.applyCoach.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyCoach.FlatAppearance.BorderSize = 0;
             this.applyCoach.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyCoach.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyCoach.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyCoach.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCoach.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyCoach.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3720,7 +3724,7 @@
             this.button14.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button14.FlatAppearance.BorderSize = 0;
             this.button14.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button14.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button14.Image = ((System.Drawing.Image)(resources.GetObject("button14.Image")));
@@ -3818,7 +3822,7 @@
             this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -3867,7 +3871,7 @@
             this.applyCompetition.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyCompetition.FlatAppearance.BorderSize = 0;
             this.applyCompetition.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyCompetition.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyCompetition.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyCompetition.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCompetition.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyCompetition.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -4217,7 +4221,7 @@
             this.applyCompetitionRegulation.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyCompetitionRegulation.FlatAppearance.BorderSize = 0;
             this.applyCompetitionRegulation.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyCompetitionRegulation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyCompetitionRegulation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyCompetitionRegulation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCompetitionRegulation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyCompetitionRegulation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -4822,7 +4826,7 @@
             this.applyCompetitionKind.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyCompetitionKind.FlatAppearance.BorderSize = 0;
             this.applyCompetitionKind.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyCompetitionKind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyCompetitionKind.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyCompetitionKind.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyCompetitionKind.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyCompetitionKind.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -4936,7 +4940,7 @@
             this.applyDerby.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyDerby.FlatAppearance.BorderSize = 0;
             this.applyDerby.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyDerby.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyDerby.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyDerby.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyDerby.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyDerby.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -5188,7 +5192,7 @@
             this.applyStadium.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyStadium.FlatAppearance.BorderSize = 0;
             this.applyStadium.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyStadium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyStadium.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyStadium.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyStadium.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyStadium.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -5207,7 +5211,7 @@
             this.pasteStadiumDb.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.pasteStadiumDb.FlatAppearance.BorderSize = 0;
             this.pasteStadiumDb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.pasteStadiumDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.pasteStadiumDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.pasteStadiumDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.pasteStadiumDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.pasteStadiumDb.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -5436,8 +5440,8 @@
             // 
             this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
@@ -5648,7 +5652,7 @@
             this.applyBall.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyBall.FlatAppearance.BorderSize = 0;
             this.applyBall.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyBall.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyBall.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyBall.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyBall.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -5817,8 +5821,8 @@
             // 
             this.characterS2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.characterS2.FlatAppearance.BorderSize = 0;
-            this.characterS2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.characterS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.characterS2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.characterS2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.characterS2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.characterS2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.characterS2.Image = ((System.Drawing.Image)(resources.GetObject("characterS2.Image")));
@@ -5932,7 +5936,7 @@
             this.bootApply.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.bootApply.FlatAppearance.BorderSize = 0;
             this.bootApply.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.bootApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.bootApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.bootApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.bootApply.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.bootApply.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -6003,8 +6007,8 @@
             // 
             this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button13.FlatAppearance.BorderSize = 0;
-            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button13.Image = ((System.Drawing.Image)(resources.GetObject("button13.Image")));
@@ -6128,7 +6132,7 @@
             this.applyGlove.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyGlove.FlatAppearance.BorderSize = 0;
             this.applyGlove.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyGlove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyGlove.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyGlove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyGlove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyGlove.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -6180,8 +6184,8 @@
             // 
             this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button12.Image = ((System.Drawing.Image)(resources.GetObject("button12.Image")));
@@ -6729,7 +6733,7 @@
             this.applyFm.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.applyFm.FlatAppearance.BorderSize = 0;
             this.applyFm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.applyFm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.applyFm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.applyFm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.applyFm.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.applyFm.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -8247,7 +8251,7 @@
             this.copyFromDb.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.copyFromDb.FlatAppearance.BorderSize = 0;
             this.copyFromDb.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.copyFromDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.copyFromDb.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.copyFromDb.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.copyFromDb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.copyFromDb.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
