@@ -131,6 +131,27 @@ namespace DinoTem.persistence
             return stadium;
         }
 
+        public UInt16 findIdStadium(MemoryStream memory1, BinaryReader reader)
+        {
+            UInt16 stadium_index_mayor = 0;
+
+            int bytesStadiums = (int)memory1.Length;
+            int stadium = bytesStadiums / block;
+
+            reader.BaseStream.Position = 4;
+            for (int i = 0; (i <= (stadium - 1)); i++)
+            {
+                UInt16 temp_index = reader.ReadUInt16();
+                if ((temp_index >= stadium_index_mayor))
+                {
+                    stadium_index_mayor = (ushort)(temp_index + 1);
+                }
+                reader.BaseStream.Position += block - 2;
+            }
+
+            return stadium_index_mayor;
+        }
+
         public void applyStadium(int selectedIndex, MemoryStream unzlib, Stadium stadium, ref BinaryWriter writer)
         {
             int Index = (block * selectedIndex);

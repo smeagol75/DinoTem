@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
-using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using DinoTem.model;
+using Team_Editor_Manager_New_Generation.zlibUnzlib;
 
 namespace DinoTem.persistence
 {
-    public class MyGloveListPersister
+    public class MyBootListPersister
     {
-        private static string PATH = "/GloveList.bin";
+        private static string PATH = "/BootsList.bin";
         private static int block = 8;
 
         private MemoryStream unzlib(string patch, int bitRecognized)
@@ -49,19 +49,19 @@ namespace DinoTem.persistence
             }
         }
 
-        public GloveList loadGloveList(UInt32 id, int bitRecognized, MemoryStream memory1, BinaryReader reader)
+        public BootList loadBootList(UInt32 id, int bitRecognized, MemoryStream memory1, BinaryReader reader)
         {
             reader.BaseStream.Position = 0;
-            UInt16 Gloves_id = 0;
+            UInt16 Boots_id = 0;
             if (bitRecognized == 0)
             {
-                for (int i = 0; i <= memory1.Length / block - 1; i++)
+                for (int i = 0; i <= memory1.Length / 8 - 1; i++)
                 {
                     if (id == reader.ReadUInt32())
                     {
-                        Gloves_id = reader.ReadUInt16();
-                        GloveList list = new GloveList(id);
-                        list.setGloveId(Gloves_id);
+                        Boots_id = reader.ReadUInt16();
+                        BootList list = new BootList(id);
+                        list.setBootId(Boots_id);
                         return list;
                     }
                     else
@@ -72,13 +72,13 @@ namespace DinoTem.persistence
 
             if (bitRecognized == 1 || bitRecognized == 2)
             {
-                for (int i = 0; i <= memory1.Length / block - 1; i++)
+                for (int i = 0; i <= memory1.Length / 8 - 1; i++)
                 {
                     if (id == UnzlibZlibConsole.swaps.swap32(reader.ReadUInt32()))
                     {
-                        Gloves_id = UnzlibZlibConsole.swaps.swap16(reader.ReadUInt16());
-                        GloveList list = new GloveList(id);
-                        list.setGloveId(Gloves_id);
+                        Boots_id = UnzlibZlibConsole.swaps.swap16(reader.ReadUInt16());
+                        BootList list = new BootList(id);
+                        list.setBootId(Boots_id);
                         return list;
                     }
                     else
@@ -89,7 +89,7 @@ namespace DinoTem.persistence
             return null;
         }
 
-        public void applyGloveList(BinaryReader reader, int bitRecognized, MemoryStream unzlib, GloveList glove, ref BinaryWriter writer)
+        public void applyBootList(BinaryReader reader, int bitRecognized, MemoryStream unzlib, BootList boot, ref BinaryWriter writer)
         {
             reader.BaseStream.Position = 0;
             if (bitRecognized == 0)
@@ -97,10 +97,10 @@ namespace DinoTem.persistence
                 for (int i = 0; (i <= ((unzlib.Length / block) - 1)); i++)
                 {
                     UInt32 Player_to_find = reader.ReadUInt32();
-                    if ((glove.getPlayerId() == Player_to_find))
+                    if ((boot.getPlayerId() == Player_to_find))
                     {
-                        UInt16 Glove_to_save = glove.getGloveId();
-                        writer.Write(Glove_to_save);
+                        UInt16 Boot_to_save = boot.getBootId();
+                        writer.Write(Boot_to_save);
                         break;
                     }
                     else
@@ -114,10 +114,10 @@ namespace DinoTem.persistence
                 for (int i = 0; (i <= ((unzlib.Length / block) - 1)); i++)
                 {
                     UInt32 Player_to_find = UnzlibZlibConsole.swaps.swap32(reader.ReadUInt32());
-                    if ((glove.getPlayerId() == Player_to_find))
+                    if ((boot.getPlayerId() == Player_to_find))
                     {
-                        UInt16 Glove_to_save = glove.getGloveId();
-                        writer.Write(UnzlibZlibConsole.swaps.swap16(Glove_to_save));
+                        UInt16 Boot_to_save = boot.getBootId();
+                        writer.Write(UnzlibZlibConsole.swaps.swap16(Boot_to_save));
                         break;
                     }
                     else

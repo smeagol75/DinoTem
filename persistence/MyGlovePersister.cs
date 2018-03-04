@@ -104,6 +104,26 @@ namespace DinoTem.persistence
             return guanto;
         }
 
+        public UInt16 findIdGlove(MemoryStream memory1, BinaryReader reader)
+        {
+            UInt16 glove_index_mayor = 0;
+
+            int bytesGloves = (int)memory1.Length;
+            int glove = bytesGloves / block;
+
+            for (int i = 0; (i <= (glove - 1)); i++)
+            {
+                UInt16 temp_index = reader.ReadUInt16();
+                if ((temp_index >= glove_index_mayor))
+                {
+                    glove_index_mayor = (ushort) (temp_index + 1);
+                }
+                reader.BaseStream.Position += block - 2;
+            }
+
+            return glove_index_mayor;
+        }
+
         public void applyGlove(int selectedIndex, MemoryStream unzlib, Glove guanto, ref BinaryWriter writer)
         {
             int Index = (block * selectedIndex);

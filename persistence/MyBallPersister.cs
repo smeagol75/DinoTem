@@ -100,6 +100,26 @@ namespace DinoTem.persistence
             return pallone;
         }
 
+        public UInt16 findIdBall(MemoryStream memory1, BinaryReader reader)
+        {
+            UInt16 ball_index_mayor = 0;
+
+            int bytes_ball = (int)memory1.Length;
+            int ball = bytes_ball / block;
+
+            for (int i = 0; (i <= (ball - 1)); i++)
+            {
+                UInt16 temp_index = reader.ReadUInt16();
+                if ((temp_index >= ball_index_mayor))
+                {
+                    ball_index_mayor = (ushort)(temp_index + 1);
+                }
+                reader.BaseStream.Position += block - 2;
+            }
+
+            return ball_index_mayor;
+        }
+
         public void applyBall(int selectedIndex, MemoryStream unzlib, Ball pallone, ref BinaryWriter writer)
         {
             int Index = (block * selectedIndex);

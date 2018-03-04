@@ -109,6 +109,26 @@ namespace DinoTem.ui
             return boot;
         }
 
+        public UInt16 findIdBoot(MemoryStream memory1, BinaryReader reader)
+        {
+            UInt16 boot_index_mayor = 0;
+
+            int bytesBoots = (int)memory1.Length;
+            int boot = bytesBoots / block;
+
+            for (int i = 0; (i <= (boot - 1)); i++)
+            {
+                UInt16 temp_index = reader.ReadUInt16();
+                if ((temp_index >= boot_index_mayor))
+                {
+                    boot_index_mayor = (ushort)(temp_index + 1);
+                }
+                reader.BaseStream.Position += block - 2;
+            }
+
+            return boot_index_mayor;
+        }
+
         public void applyBoot(int selectedIndex, MemoryStream unzlib, Boot scarpa, ref BinaryWriter writer)
         {
             int Index = (block * selectedIndex);

@@ -6319,8 +6319,10 @@
             // 
             // globalFunctionPlayer
             // 
-            this.globalFunctionPlayer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.globalFunctionPlayer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.globalFunctionPlayer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
+            this.globalFunctionPlayer.FlatAppearance.BorderSize = 0;
+            this.globalFunctionPlayer.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.globalFunctionPlayer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.globalFunctionPlayer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.globalFunctionPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.globalFunctionPlayer.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -6329,7 +6331,7 @@
             this.globalFunctionPlayer.Size = new System.Drawing.Size(98, 26);
             this.globalFunctionPlayer.TabIndex = 115;
             this.globalFunctionPlayer.Text = "Apply";
-            this.globalFunctionPlayer.UseVisualStyleBackColor = true;
+            this.globalFunctionPlayer.UseVisualStyleBackColor = false;
             this.globalFunctionPlayer.Click += new System.EventHandler(this.globalFunctionPlayer_Click);
             // 
             // groupBox1
@@ -6379,8 +6381,10 @@
             // 
             // globalFunctionTeam
             // 
-            this.globalFunctionTeam.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.globalFunctionTeam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.globalFunctionTeam.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
+            this.globalFunctionTeam.FlatAppearance.BorderSize = 0;
+            this.globalFunctionTeam.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.globalFunctionTeam.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.globalFunctionTeam.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.globalFunctionTeam.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.globalFunctionTeam.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -6389,7 +6393,7 @@
             this.globalFunctionTeam.Size = new System.Drawing.Size(98, 26);
             this.globalFunctionTeam.TabIndex = 115;
             this.globalFunctionTeam.Text = "Apply";
-            this.globalFunctionTeam.UseVisualStyleBackColor = true;
+            this.globalFunctionTeam.UseVisualStyleBackColor = false;
             this.globalFunctionTeam.Click += new System.EventHandler(this.globalFunctionTeam_Click);
             // 
             // FmStats

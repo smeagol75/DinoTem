@@ -172,143 +172,151 @@ namespace DinoTem
             toolTip1.SetToolTip(guantoName, "Change glove name");
         }
 
-        private void sfondoTeamView()
+        private void sfondoTeamView(int i)
         {
-            try
+            //i = 1 --> team1, i = 2 --> team2
+            if (i == 1)
             {
-                //colore sfondo
-                int i5 = 0;
-                int NumberOfRepetitions5 = Convert.ToInt32(10);
-                for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
+                try
                 {
-                    teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
-                    teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
-                    teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
-                    teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
-                    teamView1.Items[0].UseItemStyleForSubItems = false;
-                }
-            }
-            catch { }
-
-            try
-            {
-                //colore sfondo
-                int i5 = 0;
-                int NumberOfRepetitions5 = Convert.ToInt32(10);
-                for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
-                {
-                    teamView2.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
-                    teamView2.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
-                    teamView2.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
-                    teamView2.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
-                    teamView2.Items[0].UseItemStyleForSubItems = false;
-                }
-            }
-            catch { }
-
-            try
-            {
-                //tutti in numeri in nero
-                string numeri = "";
-                int i6 = 0;
-                int NumberOfRepetitions6 = Convert.ToInt32(teamView1.Items.Count);
-                for (i6 = 1; i6 <= NumberOfRepetitions6; i6++)
-                {
-                    teamView1.Items[i6 - 1].SubItems[3].ForeColor = SystemColors.WindowText;
-
-                    //vedere se ci sono numeri uguali
-                    numeri = numeri + teamView1.Items[i6 - 1].SubItems[3].Text + ",";
-                }
-
-                //TeamA
-                numeri = numeri.Substring(0, numeri.Length - 1);
-                string[] words = numeri.Split(',');
-
-                foreach (string word in words)
-                {
-                    int numero = 0;
-                    int i4 = 0;
-                    int NumberOfRepetitions4 = Convert.ToInt32(words.Length);
-                    for (i4 = 1; i4 <= NumberOfRepetitions4; i4++)
+                    //colore sfondo
+                    int i5 = 0;
+                    int NumberOfRepetitions5 = Convert.ToInt32(10);
+                    for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
                     {
-                        if (word == words[i4 - 1])
+                        teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView1.Items[0].UseItemStyleForSubItems = false;
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    //tutti in numeri in nero
+                    string numeri = "";
+                    int i6 = 0;
+                    int NumberOfRepetitions6 = Convert.ToInt32(teamView1.Items.Count);
+                    for (i6 = 1; i6 <= NumberOfRepetitions6; i6++)
+                    {
+                        teamView1.Items[i6 - 1].SubItems[3].ForeColor = SystemColors.WindowText;
+
+                        //vedere se ci sono numeri uguali
+                        numeri = numeri + teamView1.Items[i6 - 1].SubItems[3].Text + ",";
+                    }
+
+                    //TeamA
+                    numeri = numeri.Substring(0, numeri.Length - 1);
+                    string[] words = numeri.Split(',');
+
+                    foreach (string word in words)
+                    {
+                        int numero = 0;
+                        int i4 = 0;
+                        int NumberOfRepetitions4 = Convert.ToInt32(words.Length);
+                        for (i4 = 1; i4 <= NumberOfRepetitions4; i4++)
                         {
-                            numero = numero + 1;
-                            if (numero > 1)
+                            if (word == words[i4 - 1])
                             {
-                                //cambiare il primo numero uguale
-                                int i2 = 0;
-                                int NumberOfRepetitions2 = Convert.ToInt32(teamView1.Items.Count);
-                                for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
+                                numero = numero + 1;
+                                if (numero > 1)
                                 {
-                                    if (word == teamView1.Items[i2 - 1].SubItems[3].Text)
+                                    //cambiare il primo numero uguale
+                                    int i2 = 0;
+                                    int NumberOfRepetitions2 = Convert.ToInt32(teamView1.Items.Count);
+                                    for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
                                     {
-                                        teamView1.Items[i2 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
-                                        teamView1.Items[i2 - 1].UseItemStyleForSubItems = false;
+                                        if (word == teamView1.Items[i2 - 1].SubItems[3].Text)
+                                        {
+                                            teamView1.Items[i2 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
+                                            teamView1.Items[i2 - 1].UseItemStyleForSubItems = false;
+                                        }
                                     }
+                                    //numero
+                                    teamView1.Items[i4 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
+                                    teamView1.Items[i4 - 1].UseItemStyleForSubItems = false;
                                 }
-                                //numero
-                                teamView1.Items[i4 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
-                                teamView1.Items[i4 - 1].UseItemStyleForSubItems = false;
                             }
                         }
                     }
+                    //
                 }
-                //
+                catch { }
             }
-            catch { }
 
-            try
+            if (i == 2)
             {
-                //tutti in numeri in nero
-                string numeri1 = "";
-                int i7 = 0;
-                int NumberOfRepetitions7 = Convert.ToInt32(teamView2.Items.Count);
-                for (i7 = 1; i7 <= NumberOfRepetitions7; i7++)
+                try
                 {
-                    teamView2.Items[i7 - 1].SubItems[3].ForeColor = SystemColors.WindowText;
-
-                    //vedere se ci sono numeri uguali
-                    numeri1 = numeri1 + teamView2.Items[i7 - 1].SubItems[3].Text + ",";
-                }
-
-                //TeamB
-                numeri1 = numeri1.Substring(0, numeri1.Length - 1);
-                string[] words1 = numeri1.Split(',');
-
-                foreach (string word in words1)
-                {
-                    int numero1 = 0;
-                    int i4 = 0;
-                    int NumberOfRepetitions4 = Convert.ToInt32(words1.Length);
-                    for (i4 = 1; i4 <= NumberOfRepetitions4; i4++)
+                    //colore sfondo
+                    int i5 = 0;
+                    int NumberOfRepetitions5 = Convert.ToInt32(10);
+                    for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
                     {
-                        if (word == words1[i4 - 1])
+                        teamView2.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView2.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView2.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView2.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView2.Items[0].UseItemStyleForSubItems = false;
+                    }
+                }
+                catch { }
+
+                try
+                {
+                    //tutti in numeri in nero
+                    string numeri1 = "";
+                    int i7 = 0;
+                    int NumberOfRepetitions7 = Convert.ToInt32(teamView2.Items.Count);
+                    for (i7 = 1; i7 <= NumberOfRepetitions7; i7++)
+                    {
+                        teamView2.Items[i7 - 1].SubItems[3].ForeColor = SystemColors.WindowText;
+
+                        //vedere se ci sono numeri uguali
+                        numeri1 = numeri1 + teamView2.Items[i7 - 1].SubItems[3].Text + ",";
+                    }
+
+                    //TeamB
+                    numeri1 = numeri1.Substring(0, numeri1.Length - 1);
+                    string[] words1 = numeri1.Split(',');
+
+                    foreach (string word in words1)
+                    {
+                        int numero1 = 0;
+                        int i4 = 0;
+                        int NumberOfRepetitions4 = Convert.ToInt32(words1.Length);
+                        for (i4 = 1; i4 <= NumberOfRepetitions4; i4++)
                         {
-                            numero1 = numero1 + 1;
-                            if (numero1 > 1)
+                            if (word == words1[i4 - 1])
                             {
-                                //cambiare il primo numero uguale
-                                int i2 = 0;
-                                int NumberOfRepetitions2 = Convert.ToInt32(teamView2.Items.Count);
-                                for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
+                                numero1 = numero1 + 1;
+                                if (numero1 > 1)
                                 {
-                                    if (word == teamView2.Items[i2 - 1].SubItems[3].Text)
+                                    //cambiare il primo numero uguale
+                                    int i2 = 0;
+                                    int NumberOfRepetitions2 = Convert.ToInt32(teamView2.Items.Count);
+                                    for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
                                     {
-                                        teamView2.Items[i2 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
-                                        teamView2.Items[i2 - 1].UseItemStyleForSubItems = false;
+                                        if (word == teamView2.Items[i2 - 1].SubItems[3].Text)
+                                        {
+                                            teamView2.Items[i2 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
+                                            teamView2.Items[i2 - 1].UseItemStyleForSubItems = false;
+                                        }
                                     }
+                                    //numero
+                                    teamView2.Items[i4 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
+                                    teamView2.Items[i4 - 1].UseItemStyleForSubItems = false;
                                 }
-                                //numero
-                                teamView2.Items[i4 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
-                                teamView2.Items[i4 - 1].UseItemStyleForSubItems = false;
                             }
                         }
                     }
+                    //
                 }
-                //
+                catch { }
             }
-            catch { }
+
         }
 
         private FolderBrowserDialog fbd;
@@ -1291,8 +1299,7 @@ namespace DinoTem
                         LeggereFormazioni(tacticsFormation, teamView1);
                 }
             }
-
-            sfondoTeamView();
+            sfondoTeamView(1);
         }
 
         //selezionare giocatore da teamView1
@@ -1333,7 +1340,7 @@ namespace DinoTem
                         LeggereFormazioni(tacticsFormation, teamView2);
                 }
             }
-            sfondoTeamView();
+            sfondoTeamView(2);
         }
 
         //selezionare giocatore da teamView2
@@ -1379,10 +1386,14 @@ namespace DinoTem
                 if (new Updated().verificoAssembler() != new Updated().verificoVersioneAggiornata())
                 {
                     Update forma = new Update();
-                    forma.Show();
+                    forma.ShowDialog();
 
                     forma.label3.Text = new Updated().verificoAssembler();
                     forma.label4.Text = new Updated().verificoVersioneAggiornata();
+                }
+                else
+                {
+                    MessageBox.Show("This version is updated!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch
@@ -3028,48 +3039,65 @@ namespace DinoTem
         private void addNewGloveToolStripMenuItem_Click(object sender, EventArgs e)
         {
             controller.addGlovePersister();
+
+            tabControl1.SelectedIndex = 10;
+            MessageBox.Show("New glove added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new boot
         private void addNewBoot_Click(object sender, EventArgs e)
         {
             controller.addBootPersister();
+
+            tabControl1.SelectedIndex = 9;
+            MessageBox.Show("New boot added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new ball
         private void addNewBall_Click(object sender, EventArgs e)
         {
             controller.addBallPersister();
+
+            tabControl1.SelectedIndex = 8;
+            MessageBox.Show("New ball added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new stadium
         private void addNewStadium_Click(object sender, EventArgs e)
         {
             controller.addStadiumPersister();
+
+            tabControl1.SelectedIndex = 6;
+            MessageBox.Show("New stadium added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new derby
         private void addNewDerby_Click(object sender, EventArgs e)
         {
             controller.addDerbyPersister();
+
+            tabControl1.SelectedIndex = 5;
+            MessageBox.Show("New derby added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new coach
         private void addNewCoach_Click(object sender, EventArgs e)
         {
-            
+            tabControl1.SelectedIndex = 2;
+            MessageBox.Show("New coach added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new team
         private void addNewTeam_Click(object sender, EventArgs e)
         {
-
+            tabControl1.SelectedIndex = 1;
+            MessageBox.Show("New team added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new player
         private void addNewPlayer_Click(object sender, EventArgs e)
         {
-
+            MessageBox.Show("New player added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Export Player bin
@@ -3145,13 +3173,12 @@ namespace DinoTem
                 if (teamView1.Items.Count > 11)
                 {
                     controller.deletePlayerTeam(teamView1, intselectedindex);
-                    controller.transferPlayerAtoA(teamView1, controller.leggiSquadra(teamBox1.SelectedIndex).getId());
                     if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
                     {
                         teamView2.Items.RemoveAt(intselectedindex);
                         for (int i = 0; i < teamView2.Items.Count; i++)
                         {
-                            teamView2.Items[i].SubItems[0].Text = i.ToString();
+                            teamView2.Items[i].SubItems[0].Text = (i + 1).ToString();
                         }
                     }
                 }
@@ -3164,13 +3191,12 @@ namespace DinoTem
                 if (teamView2.Items.Count > 11)
                 {
                     controller.deletePlayerTeam(teamView2, intselectedindex);
-                    controller.transferPlayerAtoA(teamView2, controller.leggiSquadra(teamBox2.SelectedIndex).getId());
                     if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
                     {
                         teamView1.Items.RemoveAt(intselectedindex);
                         for (int i = 0; i < teamView1.Items.Count; i++)
                         {
-                            teamView1.Items[i].SubItems[0].Text = i.ToString();
+                            teamView1.Items[i].SubItems[0].Text = (i + 1).ToString();
                         }
                     }
                 }
@@ -3256,7 +3282,11 @@ namespace DinoTem
             }
             else if (text2.CompareTo(PLAYER) == 0)
             {
-                MessageBox.Show("P");
+                controller.playerFromPlayerList(uint.Parse(giocatoreID.Text), controller.leggiSquadra(teamBox1.SelectedIndex).getId(), teamView1);
+                if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                {
+                    
+                }
             }
         }
 

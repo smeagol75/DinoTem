@@ -82,6 +82,9 @@ namespace DinoTem.ui
         private MemoryStream unzlibGloveList;
         private BinaryReader leggiGloveList;
         private BinaryWriter scriviGloveList;
+        private MemoryStream unzlibBootList;
+        private BinaryReader leggiBootList;
+        private BinaryWriter scriviBootList;
 
         public void readBallPersister(string patch, int bitRecognized)
         {
@@ -417,7 +420,20 @@ namespace DinoTem.ui
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        public void readBootListPersister(string patch, int bitRecognized)
+        {
+            MyBootListPersister bootListReader = new MyBootListPersister();
+
+            try
+            {
+                bootListReader.load(patch, bitRecognized, ref unzlibBootList, ref leggiBootList, ref scriviBootList);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void saveBallPersister(string patch, Controller controller, int bitRecognized)
@@ -669,6 +685,20 @@ namespace DinoTem.ui
             catch
             {
                 MessageBox.Show("Error saved GloveList.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveBootListPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyBootListPersister dSave = new MyBootListPersister();
+
+            try
+            {
+                dSave.save(patch, ref unzlibBootList, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved BootList.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -936,31 +966,18 @@ namespace DinoTem.ui
             }
         }
 
-        private UInt16 findIdGlove()
+        public void applyBootListPersister(BootList a)
         {
-            UInt16 id = 0;
+            MyBootListPersister com = new MyBootListPersister();
 
-            int da = 1;
-            int a = 65535;
-            Random random = new Random();
-            id = (ushort)random.Next(da, a);
-            bool ok = true;
-
-            while (ok) {
-
-                for (int i = 0; i < Form1._Form1.glovesBox.Items.Count; i++)
-                {
-                    Glove glove = leggiGuanto(i);
-                    if (glove.getId() == id)
-                        ok = false;
-                }
-
-                if (ok)
-                    return id;
-
+            try
+            {
+                com.applyBootList(leggiBootList, getBitRecognized(), unzlibBootList, a, ref scriviBootList);
             }
-            
-            return id;
+            catch
+            {
+                MessageBox.Show("Error apply boot list - id player: " + a.getPlayerId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void addGlovePersister()
@@ -971,7 +988,7 @@ namespace DinoTem.ui
             {
                 glove.addGlove(ref unzlibGuanti, ref leggiGuanti, ref scriviGuanti);
 
-                Glove temp = new Glove(findIdGlove());
+                Glove temp = new Glove(glove.findIdGlove(unzlibGuanti, leggiGuanti));
                 temp.setName("Glove " + Form1._Form1.glovesBox.Items.Count);
                 temp.setOrder(20);
                 temp.setColor("Test");
@@ -985,34 +1002,6 @@ namespace DinoTem.ui
             }
         }
 
-        private UInt16 findIdBoot()
-        {
-            UInt16 id = 0;
-
-            int da = 1;
-            int a = 65535;
-            Random random = new Random();
-            id = (ushort)random.Next(da, a);
-            bool ok = true;
-
-            while (ok)
-            {
-
-                for (int i = 0; i < Form1._Form1.bootsBox.Items.Count; i++)
-                {
-                    Boot boot = leggiScarpa(i);
-                    if (boot.getId() == id)
-                        ok = false;
-                }
-
-                if (ok)
-                    return id;
-
-            }
-
-            return id;
-        }
-
         public void addBootPersister()
         {
             MyBootPersister boot = new MyBootPersister();
@@ -1021,7 +1010,7 @@ namespace DinoTem.ui
             {
                 boot.addBoot(ref unzlibScarpe, ref leggiScarpe, ref scriviScarpe);
 
-                Boot temp = new Boot(findIdBoot());
+                Boot temp = new Boot(boot.findIdBoot(unzlibScarpe, leggiScarpe));
                 temp.setName("Boot " + Form1._Form1.bootsBox.Items.Count);
                 temp.setOrder(20);
                 temp.setColor("Test");
@@ -1036,34 +1025,6 @@ namespace DinoTem.ui
             }
         }
 
-        private UInt16 findIdBall()
-        {
-            UInt16 id = 0;
-
-            int da = 1;
-            int a = 65535;
-            Random random = new Random();
-            id = (ushort)random.Next(da, a);
-            bool ok = true;
-
-            while (ok)
-            {
-
-                for (int i = 0; i < Form1._Form1.ballsBox.Items.Count; i++)
-                {
-                    Ball ball = leggiPallone(i);
-                    if (ball.getId() == id)
-                        ok = false;
-                }
-
-                if (ok)
-                    return id;
-
-            }
-
-            return id;
-        }
-
         public void addBallPersister()
         {
             MyBallPersister ball = new MyBallPersister();
@@ -1072,7 +1033,7 @@ namespace DinoTem.ui
             {
                 ball.addBall(ref unzlibPalloni, ref leggiPalloni, ref scriviPalloni);
 
-                UInt16 id = findIdBall();
+                UInt16 id = ball.findIdBall(unzlibPalloni, leggiPalloni);
                 Ball temp = new Ball(id);
                 temp.setName("Ball " + Form1._Form1.ballsBox.Items.Count);
                 temp.setOrder(20);
@@ -1086,34 +1047,6 @@ namespace DinoTem.ui
             }
         }
 
-        private UInt16 findIdStadium()
-        {
-            UInt16 id = 0;
-
-            int da = 1;
-            int a = 65535;
-            Random random = new Random();
-            id = (ushort)random.Next(da, a);
-            bool ok = true;
-
-            while (ok)
-            {
-
-                for (int i = 0; i < Form1._Form1.stadiumsBox.Items.Count; i++)
-                {
-                    Stadium stadium = leggiStadium(i);
-                    if (stadium.getId() == id)
-                        ok = false;
-                }
-
-                if (ok)
-                    return id;
-
-            }
-
-            return id;
-        }
-
         public void addStadiumPersister()
         {
             MyStadiumPersister stadium = new MyStadiumPersister();
@@ -1122,7 +1055,7 @@ namespace DinoTem.ui
             {
                 stadium.addStadium(ref unzlibStadi, ref leggiStadi, ref scriviStadi);
 
-                Stadium temp = new Stadium(findIdStadium());
+                Stadium temp = new Stadium(stadium.findIdStadium(unzlibStadi, leggiStadi));
                 temp.setName("Stadium " + Form1._Form1.stadiumsBox.Items.Count);
                 temp.setCapacity(1000);
                 temp.setCountry(215);
@@ -1249,6 +1182,9 @@ namespace DinoTem.ui
                 unzlibGloveList.Close();
                 leggiGloveList.Close();
                 scriviGloveList.Close();
+                unzlibBootList.Close();
+                leggiBootList.Close();
+                scriviBootList.Close();
             }
         }
 
@@ -1372,11 +1308,17 @@ namespace DinoTem.ui
             byteFirst += reader18.ReadByte();
             reader18.Close();
 
-            if (byteFirst == 0 || byteFirst == 76)
+            byte[] file19 = File.ReadAllBytes(folder + @"\BootsList.bin");
+            MemoryStream memory19 = new MemoryStream(file19);
+            BinaryReader reader19 = new BinaryReader(memory19);
+            byteFirst += reader19.ReadByte();
+            reader19.Close();
+
+            if (byteFirst == 0 || byteFirst == 80)
                 return 0;
-            else if (byteFirst == 19)
+            else if (byteFirst == 20)
                 return 1;
-            else if (byteFirst == 38)
+            else if (byteFirst == 40)
                 return 2;
             else
             {
@@ -1446,6 +1388,7 @@ namespace DinoTem.ui
             readCompetitionEntryPersister(folder, bitRecognized);
             readPlayerAppearancePersister(folder, bitRecognized);
             readGloveListPersister(folder, bitRecognized);
+            readBootListPersister(folder, bitRecognized);
 
             //readCountryPersister(folder, bitRecognized);
             //if (countryList.Count == 0)
@@ -1570,6 +1513,10 @@ namespace DinoTem.ui
 
         public Boot leggiScarpa(int index)
         {
+            Boot temp = new Boot(0);
+            if (index == Form1._Form1.bootsBox.Items.Count)
+                return temp;
+
             MyBootPersister bootReader = new MyBootPersister();
             Boot scarpa = bootReader.loadBoot(index, leggiScarpe);
 
@@ -1741,7 +1688,19 @@ namespace DinoTem.ui
             MyGloveListPersister reader = new MyGloveListPersister();
             GloveList glove = reader.loadGloveList(id, getBitRecognized(), unzlibGloveList, leggiGloveList);
 
+            //if glove==null
+
             return glove;
+        }
+
+        public BootList leggiScarpeLista(UInt32 id)
+        {
+            MyBootListPersister reader = new MyBootListPersister();
+            BootList boot = reader.loadBootList(id, getBitRecognized(), unzlibBootList, leggiBootList);
+
+            //if glove==null
+
+            return boot;
         }
 
         public int findCountry(UInt32 idCountry)
@@ -1862,6 +1821,25 @@ namespace DinoTem.ui
             for (int i = 0; i < Form1._Form1.glovesBox.Items.Count; i++)
             {
                 if (c.getGloveId() == leggiGuanto(i).getId())
+                    return i;
+            }
+
+            return index;
+        }
+
+        public int findBootList(UInt32 idPlayer)
+        {
+            int index = Form1._Form1.bootsBox.Items.Count;
+
+            BootList c = leggiScarpeLista(idPlayer);
+
+            //for "no glove" 
+            if (c == null)
+                return index = Form1._Form1.bootsBox.Items.Count;
+
+            for (int i = 0; i < Form1._Form1.bootsBox.Items.Count; i++)
+            {
+                if (c.getBootId() == leggiScarpa(i).getId())
                     return i;
             }
 
@@ -3107,8 +3085,183 @@ namespace DinoTem.ui
             l1.Items.RemoveAt(selectIndex);
             for (int i = 0; i < l1.Items.Count; i++)
             {
-                l1.Items[i].SubItems[0].Text = i.ToString();
+                l1.Items[i].SubItems[0].Text = (i + 1).ToString();
             }
+        }
+
+        public void playerFromPlayerList(UInt32 playerId, UInt32 teamId, ListView l1)
+        {
+            Team team = leggiSquadra(findTeam(teamId));
+            Player player = leggiGiocatore(findPlayer(playerId));
+            MyPlayerAssignmentPersister ass = new MyPlayerAssignmentPersister();
+
+            bool repetido = false;
+            List<int> usados = new List<int>();
+            int dorsal = 1;
+            for (int i = 0; (i <= (l1.Items.Count - 1)); i++)
+            {
+                usados.Add(int.Parse(l1.Items[i].SubItems[3].Text));
+                if (int.Parse(l1.Items[i].SubItems[3].Text) == dorsal)
+                    repetido = true;
+            }
+
+            if ((repetido == true))
+            {
+                dorsal = 1;
+                while (usados.Contains(dorsal))
+                {
+                    dorsal++;
+                }
+            }
+
+            UInt32 assignId = ass.findIdAssign(unzlibPlayerAssign, leggiPlayerAssign);
+
+            if (team.getNational() == 1) //se il team di destinazione è una nazionale
+            {
+                if (l1.Items.Count >= 23)
+                    MessageBox.Show("National is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    if (team.getNational() == 1 && team.getCountry() != player.getNational())
+                        MessageBox.Show("Change Player's Nationality, to fit on his National Team first", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item = new ListViewItem((l1.Items.Count + 1).ToString());
+                        item.SubItems.Add(player.getStringPosition());
+                        item.SubItems.Add(player.getName());
+                        item.SubItems.Add(dorsal.ToString());
+                        item.SubItems.Add(assignId.ToString());
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add(player.getId().ToString());
+                        l1.Items.Add(item);
+
+                        ass.addPlayerAssign(ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign, assignId);
+                    }
+                } 
+            }
+            else //se è un club
+            {
+                if (l1.Items.Count >= 32)
+                    MessageBox.Show("Club is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    List<UInt32> b = ass.loadTeamId(playerId, unzlibPlayerAssign, leggiPlayerAssign);
+                    int numberteam = 0;
+                    foreach (UInt32 i in b)
+                    {
+                        int index = findTeam(i);
+                        Team team2 = leggiSquadra(index);
+                        if (team2.getNational() == 0)
+                            numberteam = 1;
+                    }
+
+                    if (numberteam == 0) //se non ha una squadra
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item = new ListViewItem((l1.Items.Count + 1).ToString());
+                        item.SubItems.Add(player.getStringPosition());
+                        item.SubItems.Add(player.getName());
+                        item.SubItems.Add(dorsal.ToString());
+                        item.SubItems.Add(assignId.ToString());
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add(player.getId().ToString());
+                        l1.Items.Add(item);
+
+                        ass.addPlayerAssign(ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign, assignId);
+                    }
+                    else  //se ha una squadra
+                    {
+                        List<PlayerAssignment> team2 = leggiGiocatoriSquadra(b[0]);
+                        for (int i = 0; i < team2.Count - 1; i++)
+                        {
+                            if (team2[i].getPlayerId() == playerId)
+                            {
+                                ListViewItem item = new ListViewItem();
+                                item = new ListViewItem((l1.Items.Count + 1).ToString());
+                                item.SubItems.Add(player.getStringPosition());
+                                item.SubItems.Add(player.getName());
+                                item.SubItems.Add(dorsal.ToString());
+                                item.SubItems.Add(team2[i].getEntryId().ToString());
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add(player.getId().ToString());
+                                l1.Items.Add(item);
+
+                                // copio los datos del 1 al 2 poniendo 0 en lo de capitan y lanzador.
+                                // mirar si tienen algo de capitan o lanzador para ponerselo a otro y borrar la fila.
+                                if (team2[i].getCaptain() == 1)
+                                {
+                                    if (i == 0)
+                                        team2[i + 1].setCaptain(1);
+                                    else
+                                        team2[i - 1].setCaptain(0);
+                                }
+
+                                if (team2[i].getPenaltyKick() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setPenaltyKick(1);
+                                    else
+                                        team2[i - 1].setPenaltyKick(0);
+                                }
+
+                                if (team2[i].getLongShotLk() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setLongShotLk(1);
+                                    else
+                                        team2[i - 1].setLongShotLk(0);
+                                }
+
+                                if (team2[i].getLeftCkTk() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setLeftCkTk(1);
+                                    else
+                                        team2[i - 1].setLeftCkTk(0);
+                                }
+
+                                if (team2[i].getShortFoulFk() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setShortFoulFk(1);
+                                    else
+                                        team2[i - 1].setShortFoulFk(0);
+                                }
+
+                                if (team2[i].getRightCornerKick() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setRightCornerKick(1);
+                                    else
+                                        team2[i - 1].setRightCornerKick(0);
+                                }
+                                //team2[i].setTeamId(team.getId());
+                                //team2[i].setOrder((ushort)(l1.Items.Count));
+                                //team2[i].setShirtNumber((byte)dorsal);
+                                //ass.applyPlayerA(unzlibPlayerAssign, leggiPlayerAssign, team2, ref scriviPlayerAssign);
+                            }
+                        }
+                    }
+
+                }
+            }
+            transferPlayerAtoA(l1, teamId);
         }
 
         public void transferPlayerBtoA(ListView toL, ListView fromL, ComboBox toC, ComboBox fromC, int selectIndex, int dropIndex)
@@ -3139,7 +3292,6 @@ namespace DinoTem.ui
                         {
                             dorsal++;
                         }
-
                     }
 
                     ListViewItem item = new ListViewItem();
@@ -4356,85 +4508,6 @@ namespace DinoTem.ui
                 MessageBox.Show("Player(s) imported succesfully", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
-        //transferPlayer Drag&Drop
-        private void findEntryID(PlayerAssignment temp)
-        {
-            //genera anche numero causuale
-            // estremi [da, a)
-            int da = 1;
-            int a = 99;
-
-            // Possibili valori di numeroCasuale: {1, 2, 3, 4, 5, 6...}
-            Random random = new Random();
-            int numeroCasuale = random.Next(da, a);
-            //temp.setShirtNumber(numeroCasuale);
-            //SEARCH VALUE
-            int n = -1;
-            while (n == -1)
-            {
-                // estremi [da, a)
-                int da1 = 1;
-                int a1 = 9999;
-
-                // Possibili valori di numeroCasuale: {1, 2, 3, 4, 5, 6...}
-                Random random1 = new Random();
-                int numeroCasuale1 = random1.Next(da1, a1);
-
-                /*foreach (PlayerAssignment x in playerAssignmentList)
-                {
-                    if (numeroCasuale1 != x.getEntryId())
-                    {
-                        n = numeroCasuale1;
-                        //temp.setEntryId(n);
-                        return;
-                    }
-                }*/
-            }
-            return;
-        }
-
-        /*public void playerFromPlayerList(long player, int teamId, ComboBox teamBox1, ComboBox teamBox2)
-        {
-            if (getTeamById2(teamId).getNational()) //se il team di destinazione è una nazionale
-            {
-                PlayerAssignment temp = new PlayerAssignment(player, teamId);
-                setPlayerTrasfer(temp, teamId, getPlayersTeam(teamId).Count);
-                findEntryID(temp);
-                playerAssignmentList.Add(temp);
-            }
-            else //se è un club
-            {
-                if (getStringClubTeamOfPlayer(player,0) == "") //se non ha una squadra
-                {
-                    PlayerAssignment temp = new PlayerAssignment(player, teamId);
-                    setPlayerTrasfer(temp, teamId, getPlayersTeam(teamId).Count);
-                    findEntryID(temp);
-                    playerAssignmentList.Add(temp);
-                }
-                else  //se ha una squadra
-                {
-
-                    foreach (PlayerAssignment playerA in playerAssignmentList)
-                    {
-                        if (player == playerA.getPlayerId())
-                        {
-                            if (!getTeamById2(playerA.getTeamId()).getNational())
-                            {
-                                setPlayerTrasfer(playerA, teamId, getPlayersTeam(teamId).Count);
-                                UpdateForm(teamBox1, teamBox2);
-                                return;
-                            }
-
-                        }
-                    }
-
-                }
-            }
-            UpdateForm(teamBox1, teamBox2);
-            return;
-        }
-        */
 
     }
 }

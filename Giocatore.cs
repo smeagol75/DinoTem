@@ -374,6 +374,16 @@ namespace DinoTem
             Glove nullo2 = new Glove(9999);
             nullo2.setName("No Glove");
             glovesRelink.Items.Add(nullo2);
+
+            //Boot List
+            bootsRelink.Items.Clear();
+            foreach (string x in Form1._Form1.bootsBox.Items)
+            {
+                bootsRelink.Items.Add(x);
+            }
+            Boot nullo3 = new Boot(9999);
+            nullo3.setName("No Boot");
+            bootsRelink.Items.Add(nullo3);
         }
 
         //non far inserire lettere
@@ -659,6 +669,7 @@ namespace DinoTem
             youthClub.SelectedIndex = controller.findTeam(temp.getYouthPlayerId());
 
             glovesRelink.SelectedIndex = controller.findGloveList(temp.getId());
+            bootsRelink.SelectedIndex = controller.findBootList(temp.getId());
         }
 
         //ADJUST STATS
@@ -1486,6 +1497,10 @@ namespace DinoTem
             GloveList glove = new GloveList(temp.getId());
             glove.setGloveId(controller.leggiGuanto(glovesRelink.SelectedIndex).getId());
             controller.applyGloveListPersister(glove);
+
+            BootList boot = new BootList(temp.getId());
+            boot.setBootId(controller.leggiScarpa(bootsRelink.SelectedIndex).getId());
+            controller.applyBootListPersister(boot);
 
             controller.UpdateTeamView(temp.getId(), temp.getName());
             controller.UpdateFormPlayer(index, temp.getName());
