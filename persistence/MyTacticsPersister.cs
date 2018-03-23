@@ -39,6 +39,15 @@ namespace DinoTem.persistence
         {
             memory1 = unzlib(patch, bitRecognized);
 
+            int bytes = (int)memory1.Length;
+            int tactics = bytes / block;
+
+            if (tactics == 0)
+            {
+                MessageBox.Show("No tactics found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             try
             {
                 // Use the memory stream in a binary reader.
@@ -59,6 +68,12 @@ namespace DinoTem.persistence
             //Calcolo tattiche
             int bytesTactics = (int)memory1.Length;
             int tactics = bytesTactics / block;
+
+            if (tactics == 0)
+            {
+                MessageBox.Show("No tactics found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
 
             UInt32 Team_id;
             UInt16 tactics_id;

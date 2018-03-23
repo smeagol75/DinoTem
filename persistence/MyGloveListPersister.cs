@@ -36,6 +36,15 @@ namespace DinoTem.persistence
         {
             memory1 = unzlib(patch, bitRecognized);
 
+            int bytes = (int)memory1.Length;
+            int glove = bytes / block;
+
+            if (glove == 0)
+            {
+                MessageBox.Show("No gloves list found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             try
             {
                 // Use the memory stream in a binary reader.
@@ -123,6 +132,82 @@ namespace DinoTem.persistence
                     else
                         writer.BaseStream.Position += 4;
                 }
+            }
+        }
+
+        public void addGloveList(UInt32 idPlayer, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
+        {
+            byte[] Player_block = { 0, 0, 0, 0 };
+
+            byte[] end_of_file;
+            reader.BaseStream.Position = 0;
+            UInt32 Check_order = 0;
+            for (int j = 0; j <= (memory1.Length / block) - 1; j++)
+            {
+                Check_order = reader.ReadUInt32();
+
+                if (Check_order < idPlayer)
+                {
+                    reader.BaseStream.Position += 4;
+                }
+                else if (j == (memory1.Length / block) - 1)
+                {
+                    byte[] test = new byte[(int)memory1.Length + block];
+                    for (int i = 0; i < test.Count() - 1; i++)
+                    {
+                        test[i] = 0;
+                    }
+
+                    byte[] temp = memory1.ToArray();
+                    for (int i = 0; i < (int)memory1.Length - 1; i++)
+                    {
+                        test[i] = temp[i];
+                    }
+
+                    memory1 = new MemoryStream(test);
+                    reader = new BinaryReader(memory1);
+                    writer = new BinaryWriter(memory1);
+
+                    writer.Write(idPlayer);
+                    writer.Write(Player_block);
+                    break;
+                }
+                //else if ((Check_order == idPlayer))
+                //{
+                //writer.Write(Player_Player_appareance_block);
+                //break;
+                //}
+                else
+                {
+                    // leer hasta el final
+                    reader.BaseStream.Position -= 4;
+                    long Posicion_a_grabar = reader.BaseStream.Position;
+                    long Tamanho_a_leer = (memory1.Length - Posicion_a_grabar);
+                    end_of_file = reader.ReadBytes((int)Tamanho_a_leer);
+
+                    byte[] test = new byte[(int)memory1.Length + block];
+                    for (int i = 0; i < test.Count() - 1; i++)
+                    {
+                        test[i] = 0;
+                    }
+
+                    byte[] temp = memory1.ToArray();
+                    for (int i = 0; i < (int)memory1.Length - 1; i++)
+                    {
+                        test[i] = temp[i];
+                    }
+
+                    memory1 = new MemoryStream(test);
+                    reader = new BinaryReader(memory1);
+                    writer = new BinaryWriter(memory1);
+
+                    writer.BaseStream.Position = Posicion_a_grabar;
+                    writer.Write(idPlayer);
+                    writer.Write(Player_block);
+                    writer.Write(end_of_file);
+                    break;
+                }
+
             }
         }
 

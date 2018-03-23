@@ -42,6 +42,12 @@ namespace DinoTem.ui
             int bytesBoots = (int)memory1.Length;
             int boot = bytesBoots / block;
 
+            if (boot == 0)
+            {
+                MessageBox.Show("No boots found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             string bootName;
             try
             {

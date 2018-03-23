@@ -7,7 +7,6 @@ using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using System.Windows.Forms;
 using DinoTem.model;
 using DinoTem;
-using Team_Editor_Manager_New_Generation.persistence;
 
 namespace DinoTem.persistence
 {
@@ -46,6 +45,12 @@ namespace DinoTem.persistence
             //Calcolo paesi
             int bytesCountries = (int)memory1.Length;
             int country = bytesCountries / block;
+
+            if (country == 0)
+            {
+                MessageBox.Show("No countries found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
 
             string countryName;
             UInt32 countryId;

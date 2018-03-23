@@ -41,6 +41,12 @@ namespace DinoTem.persistence
             int bytesCompetition = (int)memory1.Length;
             int comp = bytesCompetition / block;
 
+            if (comp == 0)
+            {
+                MessageBox.Show("No competitions kind found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             string name;
             try
             {

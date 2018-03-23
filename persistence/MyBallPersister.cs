@@ -6,7 +6,6 @@ using System.IO;
 using System.Windows.Forms;
 using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using DinoTem.model;
-using Team_Editor_Manager_New_Generation.persistence;
 
 namespace DinoTem.persistence
 {
@@ -42,6 +41,12 @@ namespace DinoTem.persistence
             //Calcolo palloni
             int bytes_ball = (int)memory1.Length;
             int ball = bytes_ball / block;
+
+            if (ball == 0)
+            {
+                MessageBox.Show("No balls found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
 
             string ballName;
             try

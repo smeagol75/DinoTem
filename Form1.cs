@@ -10,7 +10,6 @@ using Team_Editor_Manager_New_Generation.ui;
 using DinoTem.model;
 using DinoTem.ui;
 using Team_Editor_Manager_New_Generation.update;
-using Team_Editor_Manager_New_Generation.persistence;
 using UniDecode;
 
 namespace DinoTem
@@ -76,20 +75,24 @@ namespace DinoTem
             //ToolTip
             toolTip1.ToolTipTitle = "DinoTem Editor";
             toolTip1.SetToolTip(playersBox, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
-            toolTip1.SetToolTip(searchPlayer, "Write a player name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the player, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a player");
-            toolTip1.SetToolTip(searchTeamAB, "Write a team name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
+            toolTip1.SetToolTip(searchPlayer, "Write a player's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the player, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a player");
+            toolTip1.SetToolTip(searchTeamAB, "Write a team's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
             toolTip1.SetToolTip(searchById, "Click if you want to search by id");
             toolTip1.SetToolTip(teamView1, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
             toolTip1.SetToolTip(teamView2, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
+            toolTip1.SetToolTip(searchT, "Click to search team/s" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again");
+            toolTip1.SetToolTip(searchP, "Click to search player/s" + Environment.NewLine + Environment.NewLine + "If you don't see the player, click again");
             toolTip1.SetToolTip(teamBox1, "Click to select a team");
             toolTip1.SetToolTip(teamBox2, "Click to select a team");
-            toolTip1.SetToolTip(giocatoreName, "Change Player Name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(giocatoreShirt, "Change Shirt Name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
-            toolTip1.SetToolTip(giocatoreNumber, "Change Player Number" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(giocatoreName, "Change player's name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(giocatoreShirt, "Change shirt's name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(giocatoreNumber, "Change player's number" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(giocatoreNationality, "Select player's new nationality");
 
-            toolTip1.SetToolTip(searchTeam, "Write a team name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
+            toolTip1.SetToolTip(button1, "Click to search team/s" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again");
+            toolTip1.SetToolTip(searchTeam, "Write a team's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
             toolTip1.SetToolTip(teamsBox, "Click to select a team" + Environment.NewLine + "Also use double click or right click for more option");
-            toolTip1.SetToolTip(teamName, "Change team name");
+            toolTip1.SetToolTip(teamName, "Change team's name");
             toolTip1.SetToolTip(teamShort, "Change short name");
             toolTip1.SetToolTip(teamFake, "Change if the team is a fake");
             toolTip1.SetToolTip(teamNotPlayableLeague, "Change league of team");
@@ -102,36 +105,41 @@ namespace DinoTem
             toolTip1.SetToolTip(teamCoach, "Change team's coach");
             toolTip1.SetToolTip(teamAnthem, "Change team's anthem");
             toolTip1.SetToolTip(teamHasLicensedPlayers, "Change if theam has licensed players");
-            toolTip1.SetToolTip(unknown, "Change unknown value");
+            toolTip1.SetToolTip(unknown, "Change unknown value if you want test in the game");
             toolTip1.SetToolTip(anthemStandingAngle, "Change anthem standing angle");
             toolTip1.SetToolTip(anthemPlayersSinging, "Change anthem players singing");
             toolTip1.SetToolTip(anthemStandingStyle, "anthem standing style");
-            toolTip1.SetToolTip(teamJapanese, "Change team name (only Japanese language)");
-            toolTip1.SetToolTip(teamFrench, "Change team name (only French language)");
-            toolTip1.SetToolTip(teamDutch, "Change team name (only Dutch language)");
-            toolTip1.SetToolTip(teamSpanish, "Change team name (only Spanish language)");
-            toolTip1.SetToolTip(teamTurkish, "Change team name (only Turkish language)");
-            toolTip1.SetToolTip(teamSwedish, "Change team name (only Swedish language)");
-            toolTip1.SetToolTip(teamGreek, "Change team name (only Greek language)");
-            toolTip1.SetToolTip(teamPortuguese, "Change team name (only Portuguese language)");
-            toolTip1.SetToolTip(teamItalian, "Change team name (only Italian language)");
-            toolTip1.SetToolTip(teamEnglish, "Change team name (only English language)");
-            toolTip1.SetToolTip(teamGerman, "Change team name (only German language)");
-            toolTip1.SetToolTip(teamRussian, "Change team name (only Russian language)");
-            toolTip1.SetToolTip(teamSpanish2, "Change team name (only Spanish (Latin American) language)");
-            toolTip1.SetToolTip(teamPortuguese2, "Change team name (only Portuguese (Latin American) language)");
-            toolTip1.SetToolTip(teamEnglish2, "Change team name (only English (UK) language)");
+            toolTip1.SetToolTip(teamJapanese, "Change team's name (only Japanese language)");
+            toolTip1.SetToolTip(teamFrench, "Change team's name (only French language)");
+            toolTip1.SetToolTip(teamDutch, "Change team's name (only Dutch language)");
+            toolTip1.SetToolTip(teamSpanish, "Change team's name (only Spanish language)");
+            toolTip1.SetToolTip(teamTurkish, "Change team's name (only Turkish language)");
+            toolTip1.SetToolTip(teamSwedish, "Change team's name (only Swedish language)");
+            toolTip1.SetToolTip(teamGreek, "Change team's name (only Greek language)");
+            toolTip1.SetToolTip(teamPortuguese, "Change team's name (only Portuguese language)");
+            toolTip1.SetToolTip(teamItalian, "Change team's name (only Italian language)");
+            toolTip1.SetToolTip(teamEnglish, "Change team's name (only English language)");
+            toolTip1.SetToolTip(teamGerman, "Change team's name (only German language)");
+            toolTip1.SetToolTip(teamRussian, "Change team's name (only Russian language)");
+            toolTip1.SetToolTip(teamSpanish2, "Change team's name (only Spanish (Latin American) language)");
+            toolTip1.SetToolTip(teamPortuguese2, "Change team's name (only Portuguese (Latin American) language)");
+            toolTip1.SetToolTip(teamEnglish2, "Change team's name (only English (UK) language)");
             toolTip1.SetToolTip(applyTeam, "Click 'apply' if you want save the changes");
 
-            toolTip1.SetToolTip(searchCoach, "Write a coach name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the coach, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a coach");
+            toolTip1.SetToolTip(searchC, "Click to search coach/s" + Environment.NewLine + Environment.NewLine + "If you don't see the coach, click again");
+            toolTip1.SetToolTip(searchCoach, "Write a coach's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the coach, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a coach");
             toolTip1.SetToolTip(coachBox, "Click to select a coach");
-            toolTip1.SetToolTip(allenatoreName, "Change coach name");
-            toolTip1.SetToolTip(allenatoreJap, "Change coach japanese name");
+            toolTip1.SetToolTip(allenatoreName, "Change coach's name");
+            toolTip1.SetToolTip(allenatoreJap, "Change coach's japanese name");
             toolTip1.SetToolTip(allenatoreNationality, "Change coach's nationality");
             toolTip1.SetToolTip(allenatoreLic, "click to get a real" + Environment.NewLine + "NOTE: only fake coaches have this option");
             toolTip1.SetToolTip(applyCoach, "Click 'apply' if you want save the changes");
 
             //competition
+            toolTip1.SetToolTip(applyCompEntry, "Click 'apply' if you want save the changes");
+            toolTip1.SetToolTip(applyCompetition, "Click 'apply' if you want save the changes");
+            toolTip1.SetToolTip(applyCompetitionKind, "Click 'apply' if you want save the changes");
+            toolTip1.SetToolTip(applyCompetitionRegulation, "Click 'apply' if you want save the changes");
 
             toolTip1.SetToolTip(DataGridView_derby, "Click to select a derby");
             toolTip1.SetToolTip(derbyKind, "Select a kind of derby");
@@ -141,23 +149,26 @@ namespace DinoTem
             toolTip1.SetToolTip(derbyTeam2, "Select a new derby's team");
             toolTip1.SetToolTip(applyDerby, "Click 'apply' if you want save the changes");
 
-            toolTip1.SetToolTip(searchStadium, "Write a stadium name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the stadium, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a stadium");
+            toolTip1.SetToolTip(searchS, "Click to search stadium/s" + Environment.NewLine + Environment.NewLine + "If you don't see the stadium, click again");
+            toolTip1.SetToolTip(searchStadium, "Write a stadium's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the stadium, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a stadium");
             toolTip1.SetToolTip(stadiumsBox, "Click to select a stadium");
-            toolTip1.SetToolTip(stadiumName, "Select a stadium name");
-            toolTip1.SetToolTip(stadiumJapanese, "Select a japanese name");
+            toolTip1.SetToolTip(stadiumName, "Change stadium's name");
+            toolTip1.SetToolTip(stadiumJapanese, "Change japanese name");
             toolTip1.SetToolTip(stadiumCapacity, "Insert new stadium's capacity");
             toolTip1.SetToolTip(stadiumCountry, "Change stadium's country");
             toolTip1.SetToolTip(stadiumNa, "Change stadium's n/a");
             toolTip1.SetToolTip(stadiumZone, "Change stadium's zone");
             toolTip1.SetToolTip(stadiumLicense, "Change stadium's license");
             toolTip1.SetToolTip(applyStadium, "Click 'apply' if you want save the changes");
+            toolTip1.SetToolTip(pasteStadiumDb, "Click this button if you want paste a stadium from a 'Database Tab'");
 
             toolTip1.SetToolTip(DataGridView_stadium_order, "Click to select a stadium's order");
             toolTip1.SetToolTip(DataGridView_stadium_order_in_conf, "Click to select stadium's order");
 
-            toolTip1.SetToolTip(searchBall, "Write a ball name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the ball, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a ball");
+            toolTip1.SetToolTip(searchB, "Click to search ball/s" + Environment.NewLine + Environment.NewLine + "If you don't see the ball, click again");
+            toolTip1.SetToolTip(searchBall, "Write a ball's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the ball, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a ball");
             toolTip1.SetToolTip(ballsBox, "Click to select a ball");
-            toolTip1.SetToolTip(palloneName, "Change ball name");
+            toolTip1.SetToolTip(palloneName, "Change ball's name");
             toolTip1.SetToolTip(palloneOrder, "Change order of the ball");
             toolTip1.SetToolTip(palloneUnknowB1, "Change unknow value");
             toolTip1.SetToolTip(palloneUnknowB2, "Change unknow value");
@@ -165,11 +176,22 @@ namespace DinoTem
             toolTip1.SetToolTip(palloneUnknowB4, "Change unknow value");
             toolTip1.SetToolTip(applyBall, "Click 'apply' if you want save the changes");
 
-            toolTip1.SetToolTip(searchGlove, "Write a glove name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the glove, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a glove");
+            toolTip1.SetToolTip(searchBo, "Click to search boot/s" + Environment.NewLine + Environment.NewLine + "If you don't see the boot, click again");
+            toolTip1.SetToolTip(searchBoot, "Write a boot's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the boot, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a ball");
+            toolTip1.SetToolTip(bootsBox, "Click to select a boot");
+            toolTip1.SetToolTip(scarpaName, "Change boot's name");
+            toolTip1.SetToolTip(scarpaOrder, "Change order of the boot");
+            toolTip1.SetToolTip(scarpaMaterial, "Change material's boot");
+            toolTip1.SetToolTip(scarpaColor, "Change color's boot");
+            toolTip1.SetToolTip(applyBoot, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(searchG, "Click to search glove/s" + Environment.NewLine + Environment.NewLine + "If you don't see the glove, click again");
+            toolTip1.SetToolTip(searchGlove, "Write a glove's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the glove, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a glove");
             toolTip1.SetToolTip(glovesBox, "Click to select a glove");
             toolTip1.SetToolTip(guantoOrder, "Change order of the glove");
             toolTip1.SetToolTip(guantoColor, "Change glove's color");
-            toolTip1.SetToolTip(guantoName, "Change glove name");
+            toolTip1.SetToolTip(guantoName, "Change glove's name");
+            toolTip1.SetToolTip(applyGlove, "Click 'apply' if you want save the changes");
         }
 
         private void sfondoTeamView(int i)
@@ -193,7 +215,7 @@ namespace DinoTem
                 }
                 catch { }
 
-                try
+                /*try
                 {
                     //tutti in numeri in nero
                     string numeri = "";
@@ -243,7 +265,7 @@ namespace DinoTem
                     }
                     //
                 }
-                catch { }
+                catch { }*/
             }
 
             if (i == 2)
@@ -264,7 +286,7 @@ namespace DinoTem
                 }
                 catch { }
 
-                try
+                /*try
                 {
                     //tutti in numeri in nero
                     string numeri1 = "";
@@ -314,7 +336,7 @@ namespace DinoTem
                     }
                     //
                 }
-                catch { }
+                catch { }*/
             }
 
         }
@@ -346,7 +368,7 @@ namespace DinoTem
                 tabControl1.Enabled = true;
                 //Menu a tendina
                 save.Enabled = true;
-                import.Enabled = true;
+                //import.Enabled = true;
                 export.Enabled = true;
                 removeFakeTeam.Enabled = true;
                 removeFakeClassicPlayer.Enabled = true;
@@ -388,7 +410,7 @@ namespace DinoTem
         //ball
         private void ballsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ballsBox.SelectedIndices.Count <= 0)
+            if (ballsBox.SelectedIndex < 0)
                 return;
 
             //pulire i campi
@@ -404,28 +426,23 @@ namespace DinoTem
             palloneUnknowB3.Enabled = false;
             palloneUnknowB4.Enabled = false;
 
-            int intselectedindex = ballsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Ball pallone = controller.leggiPallone(intselectedindex);
-                palloneID.Text = pallone.getId().ToString();
-                palloneName.Text = pallone.getName();
-                palloneOrder.Text = pallone.getOrder().ToString();
+            Ball pallone = controller.leggiPallone(ballsBox.SelectedIndex);
+            palloneID.Text = pallone.getId().ToString();
+            palloneName.Text = pallone.getName();
+            palloneOrder.Text = pallone.getOrder().ToString();
 
-                List<BallCondition> ballCondition = controller.leggiCondizioniPalloni(pallone.getId());
-                controller.getBallConditionById(ballCondition, palloneUnknowB1, palloneUnknowB2, palloneUnknowB3, palloneUnknowB4);
-            }
+            List<BallCondition> ballCondition = controller.leggiCondizioniPalloni(pallone.getId());
+            controller.getBallConditionById(ballCondition, palloneUnknowB1, palloneUnknowB2, palloneUnknowB3, palloneUnknowB4);
         }
 
         private void applyBall_Click(object sender, EventArgs e)
         {
-            int intselectedindex = ballsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (ballsBox.SelectedIndex >= 0)
             {
                 Ball pallone = new Ball(ushort.Parse(palloneID.Text));
                 pallone.setName(palloneName.Text);
                 pallone.setOrder(byte.Parse(palloneOrder.Text));
-                controller.applyBallPersister(intselectedindex, pallone);
+                controller.applyBallPersister(ballsBox.SelectedIndex, pallone);
                 List<BallCondition> ba = controller.leggiCondizioniPalloni(pallone.getId());
                 if (ba.Count == 1)
                     controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), 0, 0, 0, ba);
@@ -437,14 +454,14 @@ namespace DinoTem
                     controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), byte.Parse(palloneUnknowB2.Text), byte.Parse(palloneUnknowB3.Text), byte.Parse(palloneUnknowB4.Text), ba);
 
                 //Update listbox
-                ballsBox.Items[intselectedindex] = palloneName.Text;
+                ballsBox.Items[ballsBox.SelectedIndex] = palloneName.Text;
             }
         }
 
         //glove
         private void glovesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (glovesBox.SelectedIndices.Count <= 0)
+            if (glovesBox.SelectedIndex < 0)
                 return;
 
             //pulire i campi
@@ -453,37 +470,32 @@ namespace DinoTem
             guantoOrder.Text = "";
             guantoColor.Text = "";
 
-            int intselectedindex = glovesBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Glove guanto = controller.leggiGuanto(intselectedindex);
-                guantoID.Text = guanto.getId().ToString();
-                guantoName.Text = guanto.getName();
-                guantoOrder.Text = guanto.getOrder().ToString();
-                guantoColor.Text = guanto.getColor();
-            }
+            Glove guanto = controller.leggiGuanto(glovesBox.SelectedIndex);
+            guantoID.Text = guanto.getId().ToString();
+            guantoName.Text = guanto.getName();
+            guantoOrder.Text = guanto.getOrder().ToString();
+            guantoColor.Text = guanto.getColor();
         }
 
         private void applyGlove_Click(object sender, EventArgs e)
         {
-            int intselectedindex = glovesBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (glovesBox.SelectedIndex >= 0)
             {
                 Glove glove = new Glove(ushort.Parse(guantoID.Text));
                 glove.setName(guantoName.Text);
                 glove.setOrder(byte.Parse(guantoOrder.Text));
                 glove.setColor(guantoColor.Text);
-                controller.applyGlovePersister(intselectedindex, glove);
+                controller.applyGlovePersister(glovesBox.SelectedIndex, glove);
 
                 //Update listbox
-                glovesBox.Items[intselectedindex] = guantoName.Text;
+                glovesBox.Items[glovesBox.SelectedIndex] = guantoName.Text;
             }
         }
 
         //boot
         private void bootsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (bootsBox.SelectedIndices.Count <= 0)
+            if (bootsBox.SelectedIndex < 0)
                 return;
 
             //pulire i campi
@@ -493,39 +505,34 @@ namespace DinoTem
             scarpaColor.Text = "";
             scarpaMaterial.Text = "";
 
-            int intselectedindex = bootsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Boot scarpa = controller.leggiScarpa(intselectedindex);
-                scarpaID.Text = scarpa.getId().ToString();
-                scarpaName.Text = scarpa.getName();
-                scarpaOrder.Text = scarpa.getOrder().ToString();
-                scarpaColor.Text = scarpa.getColor();
-                scarpaMaterial.Text = scarpa.getMaterial();
-            }
+            Boot scarpa = controller.leggiScarpa(bootsBox.SelectedIndex);
+            scarpaID.Text = scarpa.getId().ToString();
+            scarpaName.Text = scarpa.getName();
+            scarpaOrder.Text = scarpa.getOrder().ToString();
+            scarpaColor.Text = scarpa.getColor();
+            scarpaMaterial.Text = scarpa.getMaterial();
         }
 
         private void bootApply_Click(object sender, EventArgs e)
         {
-            int intselectedindex = bootsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (bootsBox.SelectedIndex >= 0)
             {
                 Boot boot = new Boot(ushort.Parse(scarpaID.Text));
                 boot.setName(scarpaName.Text);
                 boot.setOrder(byte.Parse(scarpaOrder.Text));
                 boot.setColor(scarpaColor.Text);
                 boot.setMaterial(scarpaMaterial.Text);
-                controller.applyBootPersister(intselectedindex, boot);
+                controller.applyBootPersister(bootsBox.SelectedIndex, boot);
 
                 //Update listbox
-                bootsBox.Items[intselectedindex] = scarpaName.Text;
+                bootsBox.Items[bootsBox.SelectedIndex] = scarpaName.Text;
             }
         }
 
         //stadium
         private void stadiumsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (stadiumsBox.SelectedIndices.Count <= 0)
+            if (stadiumsBox.SelectedIndex < 0)
                 return;
 
             //pulire campi
@@ -535,26 +542,21 @@ namespace DinoTem
             stadiumCapacity.Text = "";
             stadiumNa.Text = "";
 
-            int intselectedindex = stadiumsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Stadium stadio = controller.leggiStadium(intselectedindex);
-                stadiumName.Text = stadio.getName();
-                stadiumId.Text = stadio.getId().ToString();
-                stadiumJapanese.Text = stadio.getJapaneseName();
-                stadiumCapacity.Text = stadio.getCapacity().ToString();
-                stadiumNa.Text = stadio.getNa().ToString();
-                stadiumZone.Text = stadio.getStringZone();
-                stadiumLicense.Text = stadio.getStringLicense();
-                stadiumCountry.SelectedIndex = controller.findCountry(stadio.getCountry());
-                stadiumKonami.Text = stadio.getKonamiName();
-            }
+            Stadium stadio = controller.leggiStadium(stadiumsBox.SelectedIndex);
+            stadiumName.Text = stadio.getName();
+            stadiumId.Text = stadio.getId().ToString();
+            stadiumJapanese.Text = stadio.getJapaneseName();
+            stadiumCapacity.Text = stadio.getCapacity().ToString();
+            stadiumNa.Text = stadio.getNa().ToString();
+            stadiumZone.Text = stadio.getStringZone();
+            stadiumLicense.Text = stadio.getStringLicense();
+            stadiumCountry.SelectedIndex = controller.findCountry(stadio.getCountry());
+            stadiumKonami.Text = stadio.getKonamiName();
         }
 
         private void applyStadium_Click(object sender, EventArgs e)
         {
-            int intselectedindex = stadiumsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (stadiumsBox.SelectedIndex >= 0)
             {
                 Stadium stadium = new Stadium(ushort.Parse(stadiumId.Text));
                 stadium.setCapacity(uint.Parse(stadiumCapacity.Text));
@@ -566,18 +568,18 @@ namespace DinoTem
                 stadium.setName(stadiumName.Text);
                 stadium.setZone(byte.Parse((stadiumZone.SelectedIndex + 2).ToString()));
                 stadium.setKonamiName(stadiumKonami.Text);
-                controller.applyStadiumPersister(intselectedindex, stadium);
+                controller.applyStadiumPersister(stadiumsBox.SelectedIndex, stadium);
 
                 //Update listbox
-                stadiumsBox.Items[intselectedindex] = stadiumName.Text;
-                teamStadium.Items[intselectedindex] = stadiumName.Text;
+                stadiumsBox.Items[stadiumsBox.SelectedIndex] = stadiumName.Text;
+                teamStadium.Items[stadiumsBox.SelectedIndex] = stadiumName.Text;
             }
         }
 
         //coach
         private void coachBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (coachBox.SelectedIndices.Count <= 0)
+            if (coachBox.SelectedIndex < 0)
                 return;
 
             //pulire campi
@@ -586,26 +588,20 @@ namespace DinoTem
             allenatoreJap.Text = "";
             allenatoreLic.Checked = false;
 
-            int intselectedindex = coachBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Coach allenatore = controller.leggiCoach(intselectedindex);
-                allenatoreId.Text = allenatore.getId().ToString();
-                allenatoreName.Text = allenatore.getName();
-                allenatoreJap.Text = allenatore.getJapName();
-                allenatoreNationality.SelectedIndex = controller.findCountry(allenatore.getCountry());
-                if (allenatore.getByteLic() != 0)
-                    allenatoreLic.Visible = true;
-                else
-                    allenatoreLic.Visible = false;
-                    
-            }
+            Coach allenatore = controller.leggiCoach(coachBox.SelectedIndex);
+            allenatoreId.Text = allenatore.getId().ToString();
+            allenatoreName.Text = allenatore.getName();
+            allenatoreJap.Text = allenatore.getJapName();
+            allenatoreNationality.SelectedIndex = controller.findCountry(allenatore.getCountry());
+            if (allenatore.getByteLic() != 0)
+                allenatoreLic.Visible = true;
+            else
+                allenatoreLic.Visible = false;
         }
 
         private void applyCoach_Click(object sender, EventArgs e)
         {
-            int intselectedindex = coachBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (coachBox.SelectedIndex >= 0)
             {
                 Coach coach = new Coach(uint.Parse(allenatoreId.Text));
                 coach.setJapName(allenatoreJap.Text);
@@ -615,20 +611,19 @@ namespace DinoTem
                     coach.setByteLic(0);
                 else
                     coach.setByteLic(1);
-                controller.applyCoachPersister(intselectedindex, coach);
+                controller.applyCoachPersister(coachBox.SelectedIndex, coach);
 
                 //Update listbox
-                coachBox.Items[intselectedindex] = allenatoreName.Text;
-                teamCoach.Items[intselectedindex] = allenatoreName.Text;
+                coachBox.Items[coachBox.SelectedIndex] = allenatoreName.Text;
+                teamCoach.Items[coachBox.SelectedIndex] = allenatoreName.Text;
             }
         }
 
         private void allenatoriLic_CheckedChanged(object sender, EventArgs e)
         {
-            int intselectedindex = coachBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (coachBox.SelectedIndex >= 0)
             {
-                Coach allenatore = controller.leggiCoach(intselectedindex);
+                Coach allenatore = controller.leggiCoach(coachBox.SelectedIndex);
                 allenatoreId.Text = allenatore.getCoachLicId().ToString();
             }
         }
@@ -686,22 +681,17 @@ namespace DinoTem
 
         private void playersBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (playersBox.SelectedIndices.Count <= 0)
+            if (playersBox.SelectedIndex < 0)
                 return;
 
-            int intselectedindex = playersBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                leggereGiocatore(controller.leggiGiocatore(intselectedindex));
-                //
-                team = 0;
-            }
+            leggereGiocatore(controller.leggiGiocatore(playersBox.SelectedIndex));
+            team = 0;
         }
 
         //team
         private void teamsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
+            if (teamsBox.SelectedIndex < 0)
                 return;
 
             //pulire campi
@@ -720,92 +710,87 @@ namespace DinoTem
             teamSwedish.Text = "";
             teamTurkish.Text = "";
 
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Team team = controller.leggiSquadra(intselectedindex);
-                teamName.Text = team.getEnglish();
-                teamJapanese.Text = team.getJapanese();
-                teamID.Text = team.getId().ToString();
-                teamShort.Text = team.getShortSquadra();
+            Team team = controller.leggiSquadra(teamsBox.SelectedIndex);
+            teamName.Text = team.getEnglish();
+            teamJapanese.Text = team.getJapanese();
+            teamID.Text = team.getId().ToString();
+            teamShort.Text = team.getShortSquadra();
                 
-                teamLicense.Text = team.getStringLicensedTeam();
-                teamType.Text = team.getStringNational();
-                teamFake.Text = team.getStringFakeTeam();
-                teamCoachLicense.Text = team.getStringLicensedCoach();
-                teamCoach.SelectedIndex = controller.findCoach(team.getManagerId());
-                teamNotPlayableLeague.Text = team.getStringNotPlayableLeague();
-                teamStadium.SelectedIndex = controller.findStadium(team.getStadiumId());
-                teamHasLicensedPlayers.Text = team.getStringHasLicensedPlayers();
-                teamAnthem.Text = team.getStringHasAnthem();
-                teamKonami.Text = team.getKonami();
-                anthemStandingAngle.Value = team.getAnthemStandingAngle();
-                anthemPlayersSinging.Value = team.getAnthemPlayersSinging();
-                anthemStandingStyle.Value = team.getAnthemStandingStyle();
+            teamLicense.Text = team.getStringLicensedTeam();
+            teamType.Text = team.getStringNational();
+            teamFake.Text = team.getStringFakeTeam();
+            teamCoachLicense.Text = team.getStringLicensedCoach();
+            teamCoach.SelectedIndex = controller.findCoach(team.getManagerId());
+            teamNotPlayableLeague.Text = team.getStringNotPlayableLeague();
+            teamStadium.SelectedIndex = controller.findStadium(team.getStadiumId());
+            teamHasLicensedPlayers.Text = team.getStringHasLicensedPlayers();
+            teamAnthem.Text = team.getStringHasAnthem();
+            teamKonami.Text = team.getKonami();
+            anthemStandingAngle.Value = team.getAnthemStandingAngle();
+            anthemPlayersSinging.Value = team.getAnthemPlayersSinging();
+            anthemStandingStyle.Value = team.getAnthemStandingStyle();
 
-                if (team.getUnknown6() == 1)
-                    unknown.Checked = true;
-                else
-                    unknown.Checked = false;
+            if (team.getUnknown6() == 1)
+                unknown.Checked = true;
+            else
+                unknown.Checked = false;
 
-                if (team.getNational() == 1)
-                {
-                    National temp2 = (National)team;
-                    teamDutch.Enabled = true;
-                    teamEnglish.Enabled = true;
-                    teamEnglish2.Enabled = true;
-                    teamFrench.Enabled = true;
-                    teamGerman.Enabled = true;
-                    teamGreek.Enabled = true;
-                    teamItalian.Enabled = true;
-                    teamPortuguese.Enabled = true;
-                    teamPortuguese2.Enabled = true;
-                    teamRussian.Enabled = true;
-                    teamSpanish.Enabled = true;
-                    teamSpanish2.Enabled = true;
-                    teamSwedish.Enabled = true;
-                    teamTurkish.Enabled = true;
-                    teamDutch.Text = temp2.getDutch();
-                    teamEnglish.Text = temp2.getEnglish();
-                    teamEnglish2.Text = temp2.getEnglishUS();
-                    teamFrench.Text = temp2.getFrench();
-                    teamGerman.Text = temp2.getGerman();
-                    teamGreek.Text = temp2.getGreek();
-                    teamItalian.Text = temp2.getItalian();
-                    teamPortuguese.Text = temp2.getPortuguese();
-                    teamPortuguese2.Text = temp2.getBrazilianPortuguese();
-                    teamRussian.Text = temp2.getRussian();
-                    teamSpanish.Text = temp2.getSpanish();
-                    teamSpanish2.Text = temp2.getLatinAmericaSpanish();
-                    teamSwedish.Text = temp2.getSwedish();
-                    teamTurkish.Text = temp2.getTurkish();
-                }
-                else
-                {
-                    teamDutch.Enabled = false;
-                    teamEnglish.Enabled = false;
-                    teamEnglish2.Enabled = false;
-                    teamFrench.Enabled = false;
-                    teamGerman.Enabled = false;
-                    teamGreek.Enabled = false;
-                    teamItalian.Enabled = false;
-                    teamPortuguese.Enabled = false;
-                    teamPortuguese2.Enabled = false;
-                    teamRussian.Enabled = false;
-                    teamSpanish.Enabled = false;
-                    teamSpanish2.Enabled = false;
-                    teamSwedish.Enabled = false;
-                    teamTurkish.Enabled = false;
-                }
-                teamCountry.SelectedIndex = controller.findCountry(team.getCountry());
-
+            if (team.getNational() == 1)
+            {
+                National temp2 = (National)team;
+                teamDutch.Enabled = true;
+                teamEnglish.Enabled = true;
+                teamEnglish2.Enabled = true;
+                teamFrench.Enabled = true;
+                teamGerman.Enabled = true;
+                teamGreek.Enabled = true;
+                teamItalian.Enabled = true;
+                teamPortuguese.Enabled = true;
+                teamPortuguese2.Enabled = true;
+                teamRussian.Enabled = true;
+                teamSpanish.Enabled = true;
+                teamSpanish2.Enabled = true;
+                teamSwedish.Enabled = true;
+                teamTurkish.Enabled = true;
+                teamDutch.Text = temp2.getDutch();
+                teamEnglish.Text = temp2.getEnglish();
+                teamEnglish2.Text = temp2.getEnglishUS();
+                teamFrench.Text = temp2.getFrench();
+                teamGerman.Text = temp2.getGerman();
+                teamGreek.Text = temp2.getGreek();
+                teamItalian.Text = temp2.getItalian();
+                teamPortuguese.Text = temp2.getPortuguese();
+                teamPortuguese2.Text = temp2.getBrazilianPortuguese();
+                teamRussian.Text = temp2.getRussian();
+                teamSpanish.Text = temp2.getSpanish();
+                teamSpanish2.Text = temp2.getLatinAmericaSpanish();
+                teamSwedish.Text = temp2.getSwedish();
+                teamTurkish.Text = temp2.getTurkish();
             }
+            else
+            {
+                teamDutch.Enabled = false;
+                teamEnglish.Enabled = false;
+                teamEnglish2.Enabled = false;
+                teamFrench.Enabled = false;
+                teamGerman.Enabled = false;
+                teamGreek.Enabled = false;
+                teamItalian.Enabled = false;
+                teamPortuguese.Enabled = false;
+                teamPortuguese2.Enabled = false;
+                teamRussian.Enabled = false;
+                teamSpanish.Enabled = false;
+                teamSpanish2.Enabled = false;
+                teamSwedish.Enabled = false;
+                teamTurkish.Enabled = false;
+            }
+            teamCountry.SelectedIndex = controller.findCountry(team.getCountry());
+
         }
 
         private void applyTeam_Click(object sender, EventArgs e)
         {
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (teamsBox.SelectedIndex >= 0)
             {
                 Team team = null;
                 if (teamType.Text == "Club")
@@ -838,7 +823,7 @@ namespace DinoTem
                     team.setUnknown6(0);
                 if (team.getNational() == 1)
                 {
-                    if (teamName.Text != controller.leggiSquadra(intselectedindex).getEnglish())
+                    if (teamName.Text != controller.leggiSquadra(teamsBox.SelectedIndex).getEnglish())
                     {
                         teamJapanese.Text = teamName.Text;
                         teamDutch.Text = teamName.Text;
@@ -876,7 +861,7 @@ namespace DinoTem
                 }
                 else
                 {
-                    if (teamName.Text != controller.leggiSquadra(intselectedindex).getEnglish())
+                    if (teamName.Text != controller.leggiSquadra(teamsBox.SelectedIndex).getEnglish())
                     {
                         teamJapanese.Text = teamName.Text;
                         teamEnglish.Text = teamName.Text;
@@ -887,14 +872,14 @@ namespace DinoTem
                 }
                 team.setKonami(teamKonami.Text);
 
-                controller.applyTeamPersister(intselectedindex, team);
+                controller.applyTeamPersister(teamsBox.SelectedIndex, team);
 
                 //Update listbox
-                teamsBox.Items[intselectedindex] = teamName.Text;
-                teamBox1.Items[intselectedindex] = teamName.Text;
-                teamBox2.Items[intselectedindex] = teamName.Text;
-                derbyTeam1.Items[intselectedindex] = teamName.Text;
-                derbyTeam2.Items[intselectedindex] = teamName.Text;
+                teamsBox.Items[teamsBox.SelectedIndex] = teamName.Text;
+                teamBox1.Items[teamsBox.SelectedIndex] = teamName.Text;
+                teamBox2.Items[teamsBox.SelectedIndex] = teamName.Text;
+                derbyTeam1.Items[teamsBox.SelectedIndex] = teamName.Text;
+                derbyTeam2.Items[teamsBox.SelectedIndex] = teamName.Text;
                 for (int i1 = 0; i1 < Form1._Form1.DataGridView_derby.RowCount; i1++)
                 {
                     if (Form1._Form1.DataGridView_derby.Rows[i1].Cells[0].Value.ToString() == team.getId().ToString())
@@ -927,7 +912,9 @@ namespace DinoTem
 
             controller.applyDerbyPersister(DataGridView_derby.CurrentRow.Index, derby);
 
+            DataGridView_derby.CurrentRow.Cells[0].Value = controller.leggiSquadra(derbyTeam1.SelectedIndex).getId();
             DataGridView_derby.CurrentRow.Cells[1].Value = derbyTeam1.Text;
+            DataGridView_derby.CurrentRow.Cells[2].Value = controller.leggiSquadra(derbyTeam2.SelectedIndex).getId();
             DataGridView_derby.CurrentRow.Cells[3].Value = derbyTeam2.Text;
             DataGridView_derby.CurrentRow.Cells[4].Value = derbyKind.Value;
             DataGridView_derby.CurrentRow.Cells[5].Value = derbySlot.Value;
@@ -949,6 +936,14 @@ namespace DinoTem
             controller.saveTacticsFormationPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
             controller.saveBallConditionPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
             controller.saveDerbyPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCompetitionPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCompetitionKindPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCompetitionRegulationPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCompetitionEntryPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.savePlayerAppearancePersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveGloveListPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveBootListPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+
 
             MessageBox.Show("Saved Data", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             MessageBox.Show("All Files Saved at:" + Environment.NewLine + fbd.SelectedPath, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1141,7 +1136,7 @@ namespace DinoTem
         }
 
         //ricerca stadi
-        private void searchStadium_TextChanged(object sender, EventArgs e)
+        private void searchStadium_Click(object sender, EventArgs e)
         {
             searchStadium.SelectAll();
             searchStadium.Focus();
@@ -1161,7 +1156,7 @@ namespace DinoTem
         }
 
         //ricerca palloni
-        private void searchBall_TextChanged(object sender, EventArgs e)
+        private void searchBall_Click(object sender, EventArgs e)
         {
             searchBall.SelectAll();
             searchBall.Focus();
@@ -1181,7 +1176,7 @@ namespace DinoTem
         }
 
         //ricerca allenatori
-        private void searchCoach_TextChanged(object sender, EventArgs e)
+        private void searchCoach_Click(object sender, EventArgs e)
         {
             searchCoach.SelectAll();
             searchCoach.Focus();
@@ -1201,7 +1196,7 @@ namespace DinoTem
         }
 
         //ricerca boot
-        private void searchBoot_TextChanged(object sender, EventArgs e)
+        private void searchBoot_Click(object sender, EventArgs e)
         {
             searchBoot.SelectAll();
             searchBoot.Focus();
@@ -1220,7 +1215,7 @@ namespace DinoTem
             UtilGUI.listBoxSearch(bootsBox, searchBoot);
         }
 
-        private void searchGlove_TextChanged(object sender, EventArgs e)
+        private void searchGlove_Click(object sender, EventArgs e)
         {
             searchGlove.SelectAll();
             searchGlove.Focus();
@@ -1289,7 +1284,7 @@ namespace DinoTem
                 teamView1.Items.Add(Leggere_GiocatoreSquadre(temp2));
             }
 
-            if (teamView1.Items.Count > 10)
+            /*if (teamView1.Items.Count > 10)
             {
                 List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamBox1.SelectedIndex).getId());
                 if (tactics.Count > 0)
@@ -1298,7 +1293,7 @@ namespace DinoTem
                     if (tacticsFormation.Count > 0)
                         LeggereFormazioni(tacticsFormation, teamView1);
                 }
-            }
+            }*/
             sfondoTeamView(1);
         }
 
@@ -1330,7 +1325,7 @@ namespace DinoTem
                 teamView2.Items.Add(Leggere_GiocatoreSquadre(temp2));
             }
 
-            if (teamView2.Items.Count > 10)
+            /*if (teamView2.Items.Count > 10)
             {
                 List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamBox2.SelectedIndex).getId());
                 if (tactics.Count > 0)
@@ -1339,7 +1334,7 @@ namespace DinoTem
                     if (tacticsFormation.Count > 0)
                         LeggereFormazioni(tacticsFormation, teamView2);
                 }
-            }
+            }*/
             sfondoTeamView(2);
         }
 
@@ -1406,14 +1401,14 @@ namespace DinoTem
         private void giocatoreName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                controller.changePlayerName(ushort.Parse(giocatoreID.Text), giocatoreName.Text);
+                controller.changePlayerName(uint.Parse(giocatoreID.Text), giocatoreName.Text);
         }
 
         //cambiare nome tshirt
         private void giocatoreShirt_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-                controller.changeShirtPlayer(ushort.Parse(giocatoreID.Text), giocatoreShirt.Text);
+                controller.changeShirtPlayer(uint.Parse(giocatoreID.Text), giocatoreShirt.Text);
         }
 
         //cambiare numero al giocatore
@@ -1425,7 +1420,7 @@ namespace DinoTem
         }
 
         //cambiare nazionalità al giocatore
-        private void giocatoreNationality_SelectedIndexChanged(object sender, EventArgs e)
+        private void giocatoreNationality_SelectionChangeCommitted(object sender, EventArgs e)
         {
             controller.changeNationalityPlayer(uint.Parse(giocatoreID.Text), giocatoreNationality.SelectedIndex);
         }
@@ -1490,12 +1485,24 @@ namespace DinoTem
 
         private void playersBox_MouseDown(object sender, MouseEventArgs e)
         {
+            if (playersBox.SelectedIndex < 0)
+                return;
+
+            leggereGiocatore(controller.leggiGiocatore(playersBox.SelectedIndex));
+            team = 0;
+
+            //abilitare il tasto destro
+            if (e.Button == MouseButtons.Right)
+            {
+                PlayerMenuStrip1.Show(Cursor.Position);
+            }
+
             //Doppio clicco
             if (e.Button == MouseButtons.Left)
             {
                 if (e.Clicks >= 2)
                 {
-                    if (playersBox.SelectedIndices.Count <= 0)
+                    if (playersBox.SelectedIndex < 0)
                         return;
                     Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
                     P.ShowDialog();
@@ -1517,8 +1524,8 @@ namespace DinoTem
                     if (tactics.Count > 0)
                     {
                         List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
-                        if (tacticsFormation.Count < 11)
-                            MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (tacticsFormation.Count < 12)
+                            MessageBox.Show("Team hasn't 12 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         else
                         {
                             Formazione F = new Formazione(controller, controller.leggiSquadra(teamsBox.SelectedIndex));
@@ -1597,7 +1604,7 @@ namespace DinoTem
         //tasto destro listBox
         private void editPlayerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (playersBox.SelectedIndices.Count <= 0)
+            if (playersBox.SelectedIndex < 0)
                 return;
             Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
             P.ShowDialog();
@@ -1673,121 +1680,116 @@ namespace DinoTem
         //Competition
         private void competitionsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (competitionsBox.SelectedIndices.Count <= 0)
+            if (competitionsBox.SelectedIndex < 0)
                 return;
 
-            int intselectedindex = competitionsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            Competition comp = controller.leggiCompetizione(competitionsBox.SelectedIndex);
+            if ((comp.getCheck54() == 1))
             {
-                Competition comp = controller.leggiCompetizione(intselectedindex);
-                if ((comp.getCheck54() == 1))
-                {
-                    CheckBox54.Checked = true;
-                }
-                else
-                {
-                    CheckBox54.Checked = false;
-                }
-
-                if ((comp.getCheck55() == 1))
-                {
-                    CheckBox55.Checked = true;
-                }
-                else
-                {
-                    CheckBox55.Checked = false;
-                }
-
-                if ((comp.getCheck56() == 1))
-                {
-                    CheckBox56.Checked = true;
-                }
-                else
-                {
-                    CheckBox56.Checked = false;
-                }
-
-                if ((comp.getCheck57() == 1))
-                {
-                    CheckBox57.Checked = true;
-                }
-                else
-                {
-                    CheckBox57.Checked = false;
-                }
-
-                if ((comp.getCheck58() == 1))
-                {
-                    CheckBox58.Checked = true;
-                }
-                else
-                {
-                    CheckBox58.Checked = false;
-                }
-
-                if ((comp.getCheck59() == 1))
-                {
-                    CheckBox59.Checked = true;
-                }
-                else
-                {
-                    CheckBox59.Checked = false;
-                }
-
-                if ((comp.getCheck60() == 1))
-                {
-                    CheckBox60.Checked = true;
-                }
-                else
-                {
-                    CheckBox60.Checked = false;
-                }
-
-                if ((comp.getLicensed() == 1))
-                {
-                    CheckBox61.Checked = true;
-                }
-                else
-                {
-                    CheckBox61.Checked = false;
-                }
-
-                if ((comp.getSecondDivision() == 1))
-                {
-                    CheckBox62.Checked = true;
-                }
-                else
-                {
-                    CheckBox62.Checked = false;
-                }
-
-                UNK1_box.Value = comp.getType();
-                switch (comp.getType())
-                {
-                    case 0:
-                        label104.Text = "Club Team";
-                        break;
-                    case 1:
-                        label104.Text = "National Team";
-                        break;
-                    case 2:
-                        label104.Text = "Fake Team";
-                        break;
-                    default:
-                        label104.Text = "Unknown";
-                        break;
-                }
-
-                UNK2_box.Value = comp.getId();
-                UNK3_box.Value = comp.getUnk3();
-                UNK_4_BOX.Value = comp.getZone();
+                CheckBox54.Checked = true;
             }
+            else
+            {
+                CheckBox54.Checked = false;
+            }
+
+            if ((comp.getCheck55() == 1))
+            {
+                CheckBox55.Checked = true;
+            }
+            else
+            {
+                CheckBox55.Checked = false;
+            }
+
+            if ((comp.getCheck56() == 1))
+            {
+                CheckBox56.Checked = true;
+            }
+            else
+            {
+                CheckBox56.Checked = false;
+            }
+
+            if ((comp.getCheck57() == 1))
+            {
+                CheckBox57.Checked = true;
+            }
+            else
+            {
+                CheckBox57.Checked = false;
+            }
+
+            if ((comp.getCheck58() == 1))
+            {
+                CheckBox58.Checked = true;
+            }
+            else
+            {
+                CheckBox58.Checked = false;
+            }
+
+            if ((comp.getCheck59() == 1))
+            {
+                CheckBox59.Checked = true;
+            }
+            else
+            {
+                CheckBox59.Checked = false;
+            }
+
+            if ((comp.getCheck60() == 1))
+            {
+                CheckBox60.Checked = true;
+            }
+            else
+            {
+                CheckBox60.Checked = false;
+            }
+
+            if ((comp.getLicensed() == 1))
+            {
+                CheckBox61.Checked = true;
+            }
+            else
+            {
+                CheckBox61.Checked = false;
+            }
+
+            if ((comp.getSecondDivision() == 1))
+            {
+                CheckBox62.Checked = true;
+            }
+            else
+            {
+                CheckBox62.Checked = false;
+            }
+
+            UNK1_box.Value = comp.getType();
+            switch (comp.getType())
+            {
+                case 0:
+                    label104.Text = "Club Team";
+                    break;
+                case 1:
+                    label104.Text = "National Team";
+                    break;
+                case 2:
+                    label104.Text = "Fake Team";
+                    break;
+                default:
+                    label104.Text = "Unknown";
+                    break;
+            }
+
+            UNK2_box.Value = comp.getId();
+            UNK3_box.Value = comp.getUnk3();
+            UNK_4_BOX.Value = comp.getZone();
         }
 
         private void applyCompetition_Click(object sender, EventArgs e)
         {
-            int intselectedindex = competitionsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (competitionsBox.SelectedIndex >= 0)
             {
                 Competition competition = new Competition((uint) (UNK2_box.Value));
                 if (CheckBox54.Checked)
@@ -1830,31 +1832,26 @@ namespace DinoTem
                 competition.setUnk3((uint)(UNK3_box.Value));
                 competition.setZone((uint)(UNK_4_BOX.Value));
 
-                controller.applyCompetitionPersister(intselectedindex, competition);
+                controller.applyCompetitionPersister(competitionsBox.SelectedIndex, competition);
             }
         }
 
         //CompetitionKind
         private void competitionsKind_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (competitionsKind.SelectedIndices.Count <= 0)
+            if (competitionsKind.SelectedIndex < 0)
                 return;
 
-            int intselectedindex = competitionsKind.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                CompetitionKind comp = controller.leggiCompetizioneKind(intselectedindex);
-                NumericUpDown19.Value = comp.getOrder();
-                UNK1_KIND_BOX.Value = comp.getUnk1();
-                UNK2_KIND_BOX.Value = comp.getUnk2();
-                UNK3_KIND_BOX.Value = comp.getUnk3();
-            }
+            CompetitionKind comp = controller.leggiCompetizioneKind(competitionsKind.SelectedIndex);
+            NumericUpDown19.Value = comp.getOrder();
+            UNK1_KIND_BOX.Value = comp.getUnk1();
+            UNK2_KIND_BOX.Value = comp.getUnk2();
+            UNK3_KIND_BOX.Value = comp.getUnk3();
         }
 
         private void applyCompetitionKind_Click(object sender, EventArgs e)
         {
-            int intselectedindex = competitionsKind.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (competitionsKind.SelectedIndex >= 0)
             {
                 CompetitionKind competition = new CompetitionKind();
                 competition.setOrder((byte)NumericUpDown19.Value);
@@ -1862,197 +1859,192 @@ namespace DinoTem
                 competition.setUnk2((byte)UNK2_KIND_BOX.Value);
                 competition.setUnk3((byte)UNK3_KIND_BOX.Value);
 
-                controller.applyCompetitionKindPersister(intselectedindex, competition);
+                controller.applyCompetitionKindPersister(competitionsKind.SelectedIndex, competition);
             }
         }
 
         //competitionRegulation
         private void ListBox_comp_reg_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ListBox_comp_reg.SelectedIndices.Count <= 0)
+            if (ListBox_comp_reg.SelectedIndex < 0)
                 return;
 
-            int intselectedindex = ListBox_comp_reg.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            CompetitionRegulation comp = controller.leggiCompetizioneRegulation(ListBox_comp_reg.SelectedIndex);
+            UNK1_COMP_REG_BOX.Value = comp.getUNK1();
+            UNK2_COMP_REG_BOX.Value = comp.getUNK2();
+            UNK3_COMP_REG_BOX.Value = comp.getUNK3();
+            UNK4_COMP_REG_BOX.Value = comp.getUNK4();
+            UNK5_COMP_REG_BOX.Value = comp.getUNK5();
+            UNK6_COMP_REG_BOX.Value = comp.getUNK6();
+            UNK7_COMP_REG_BOX.Value = comp.getUNK7();
+            UNK8_COMP_REG_BOX.Value = comp.getUNK8();
+            UNK9_COMP_REG_BOX.Value = comp.getUNK9();
+            UNK10_COMP_REG_BOX.Value = comp.getUNK10();
+            UNK11_COMP_REG_BOX.Value = comp.getUNK11();
+
+            if ((comp.getCHECK63() == 1))
             {
-                CompetitionRegulation comp = controller.leggiCompetizioneRegulation(intselectedindex);
-                UNK1_COMP_REG_BOX.Value = comp.getUNK1();
-                UNK2_COMP_REG_BOX.Value = comp.getUNK2();
-                UNK3_COMP_REG_BOX.Value = comp.getUNK3();
-                UNK4_COMP_REG_BOX.Value = comp.getUNK4();
-                UNK5_COMP_REG_BOX.Value = comp.getUNK5();
-                UNK6_COMP_REG_BOX.Value = comp.getUNK6();
-                UNK7_COMP_REG_BOX.Value = comp.getUNK7();
-                UNK8_COMP_REG_BOX.Value = comp.getUNK8();
-                UNK9_COMP_REG_BOX.Value = comp.getUNK9();
-                UNK10_COMP_REG_BOX.Value = comp.getUNK10();
-                UNK11_COMP_REG_BOX.Value = comp.getUNK11();
+                CheckBox63.Checked = true;
+            }
+            else
+            {
+                CheckBox63.Checked = false;
+            }
 
-                if ((comp.getCHECK63() == 1))
-                {
-                    CheckBox63.Checked = true;
-                }
-                else
-                {
-                    CheckBox63.Checked = false;
-                }
+            if ((comp.getCHECK64() == 1))
+            {
+                CheckBox64.Checked = true;
+            }
+            else
+            {
+                CheckBox64.Checked = false;
+            }
 
-                if ((comp.getCHECK64() == 1))
-                {
-                    CheckBox64.Checked = true;
-                }
-                else
-                {
-                    CheckBox64.Checked = false;
-                }
-
-                if ((comp.getCHECK65() == 1))
-                {
-                    CheckBox65.Checked = true;
-                }
-                else
-                {
-                    CheckBox65.Checked = false;
-                }
-                UNK12_COMP_REG_BOX.Value = comp.getUNK12();
-                UNK13_COMP_REG_BOX.Value = comp.getUNK13();
-                UNK14_COMP_REG_BOX.Value = comp.getUNK14();
-                UNK15_COMP_REG_BOX.Value = comp.getUNK15();
-                if ((comp.getCHECK66() == 1))
-                {
-                    CheckBox66.Checked = true;
-                }
-                else
-                {
-                    CheckBox66.Checked = false;
-                }
-                if ((comp.getCHECK67() == 1))
-                {
-                    CheckBox67.Checked = true;
-                }
-                else
-                {
-                    CheckBox67.Checked = false;
-                }
-                if ((comp.getCHECK68() == 1))
-                {
-                    CheckBox68.Checked = true;
-                }
-                else
-                {
-                    CheckBox68.Checked = false;
-                }
-                if ((comp.getCHECK69() == 1))
-                {
-                    CheckBox69.Checked = true;
-                }
-                else
-                {
-                    CheckBox69.Checked = false;
-                }
-                if ((comp.getCHECK70() == 1))
-                {
-                    CheckBox70.Checked = true;
-                }
-                else
-                {
-                    CheckBox70.Checked = false;
-                }
-                if ((comp.getCHECK71() == 1))
-                {
-                    CheckBox71.Checked = true;
-                }
-                else
-                {
-                    CheckBox71.Checked = false;
-                }
-                if ((comp.getCHECK72() == 1))
-                {
-                    CheckBox72.Checked = true;
-                }
-                else
-                {
-                    CheckBox72.Checked = false;
-                }
-                if ((comp.getCHECK73() == 1))
-                {
-                    CheckBox73.Checked = true;
-                }
-                else
-                {
-                    CheckBox73.Checked = false;
-                }
-                if ((comp.getCHECK74() == 1))
-                {
-                    CheckBox74.Checked = true;
-                }
-                else
-                {
-                    CheckBox74.Checked = false;
-                }
-                if ((comp.getCHECK75() == 1))
-                {
-                    CheckBox75.Checked = true;
-                }
-                else
-                {
-                    CheckBox75.Checked = false;
-                }
-                if ((comp.getCHECK76() == 1))
-                {
-                    CheckBox76.Checked = true;
-                }
-                else
-                {
-                    CheckBox76.Checked = false;
-                }
-                if ((comp.getCHECK77() == 1))
-                {
-                    CheckBox77.Checked = true;
-                }
-                else
-                {
-                    CheckBox77.Checked = false;
-                }
-                if ((comp.getCHECK78() == 1))
-                {
-                    CheckBox78.Checked = true;
-                }
-                else
-                {
-                    CheckBox78.Checked = false;
-                }
-                if ((comp.getCHECK79() == 1))
-                {
-                    CheckBox79.Checked = true;
-                }
-                else
-                {
-                    CheckBox79.Checked = false;
-                }
-                if ((comp.getCHECK80() == 1))
-                {
-                    CheckBox80.Checked = true;
-                }
-                else
-                {
-                    CheckBox80.Checked = false;
-                }
-                if ((comp.getCHECK81() == 1))
-                {
-                    CheckBox81.Checked = true;
-                }
-                else
-                {
-                    CheckBox81.Checked = false;
-                }
+            if ((comp.getCHECK65() == 1))
+            {
+                CheckBox65.Checked = true;
+            }
+            else
+            {
+                CheckBox65.Checked = false;
+            }
+            UNK12_COMP_REG_BOX.Value = comp.getUNK12();
+            UNK13_COMP_REG_BOX.Value = comp.getUNK13();
+            UNK14_COMP_REG_BOX.Value = comp.getUNK14();
+            UNK15_COMP_REG_BOX.Value = comp.getUNK15();
+            if ((comp.getCHECK66() == 1))
+            {
+                CheckBox66.Checked = true;
+            }
+            else
+            {
+                CheckBox66.Checked = false;
+            }
+            if ((comp.getCHECK67() == 1))
+            {
+                CheckBox67.Checked = true;
+            }
+            else
+            {
+                CheckBox67.Checked = false;
+            }
+            if ((comp.getCHECK68() == 1))
+            {
+                CheckBox68.Checked = true;
+            }
+            else
+            {
+                CheckBox68.Checked = false;
+            }
+            if ((comp.getCHECK69() == 1))
+            {
+                CheckBox69.Checked = true;
+            }
+            else
+            {
+                CheckBox69.Checked = false;
+            }
+            if ((comp.getCHECK70() == 1))
+            {
+                CheckBox70.Checked = true;
+            }
+            else
+            {
+                CheckBox70.Checked = false;
+            }
+            if ((comp.getCHECK71() == 1))
+            {
+                CheckBox71.Checked = true;
+            }
+            else
+            {
+                CheckBox71.Checked = false;
+            }
+            if ((comp.getCHECK72() == 1))
+            {
+                CheckBox72.Checked = true;
+            }
+            else
+            {
+                CheckBox72.Checked = false;
+            }
+            if ((comp.getCHECK73() == 1))
+            {
+                CheckBox73.Checked = true;
+            }
+            else
+            {
+                CheckBox73.Checked = false;
+            }
+            if ((comp.getCHECK74() == 1))
+            {
+                CheckBox74.Checked = true;
+            }
+            else
+            {
+                CheckBox74.Checked = false;
+            }
+            if ((comp.getCHECK75() == 1))
+            {
+                CheckBox75.Checked = true;
+            }
+            else
+            {
+                CheckBox75.Checked = false;
+            }
+            if ((comp.getCHECK76() == 1))
+            {
+                CheckBox76.Checked = true;
+            }
+            else
+            {
+                CheckBox76.Checked = false;
+            }
+            if ((comp.getCHECK77() == 1))
+            {
+                CheckBox77.Checked = true;
+            }
+            else
+            {
+                CheckBox77.Checked = false;
+            }
+            if ((comp.getCHECK78() == 1))
+            {
+                CheckBox78.Checked = true;
+            }
+            else
+            {
+                CheckBox78.Checked = false;
+            }
+            if ((comp.getCHECK79() == 1))
+            {
+                CheckBox79.Checked = true;
+            }
+            else
+            {
+                CheckBox79.Checked = false;
+            }
+            if ((comp.getCHECK80() == 1))
+            {
+                CheckBox80.Checked = true;
+            }
+            else
+            {
+                CheckBox80.Checked = false;
+            }
+            if ((comp.getCHECK81() == 1))
+            {
+                CheckBox81.Checked = true;
+            }
+            else
+            {
+                CheckBox81.Checked = false;
             }
         }
 
         private void applyCompetitionRegulation_Click(object sender, EventArgs e)
         {
-            int intselectedindex = ListBox_comp_reg.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (ListBox_comp_reg.SelectedIndex >= 0)
             {
                 CompetitionRegulation competition = new CompetitionRegulation();
                 competition.setUNK1((byte)UNK1_COMP_REG_BOX.Value);
@@ -2227,7 +2219,7 @@ namespace DinoTem
                     competition.setCHECK81(0);
                 }
 
-                controller.applyCompetitionRegulationPersister(intselectedindex, competition);
+                controller.applyCompetitionRegulationPersister(ListBox_comp_reg.SelectedIndex, competition);
             }
         }
 
@@ -2784,19 +2776,52 @@ namespace DinoTem
             controller.applyPlayerPersister(controller.findPlayer(temp.getId()), temp);
             controller.UpdateTeamView(temp.getId(), temp.getName());
             controller.UpdateFormPlayer(controller.findPlayer(temp.getId()), temp.getName());
+
+            //aggiornare textbox
+            giocatoreName.Text = temp.getName();
+            giocatoreShirt.Text = temp.getShirtName();
         }
 
         //CompetitionEntry
         private void competitionEntryBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (competitionEntryBox.SelectedIndices.Count <= 0)
+            if (competitionEntryBox.SelectedIndex < 0)
+                return;
+            controller.findCompetition(competitionEntryBox.SelectedIndex);
+        }
+
+        private void applyCompEntry_Click(object sender, EventArgs e)
+        {
+            if (competitionEntryBox.SelectedIndex >= 0)
+            {
+                controller.applyCompetitionEntryPersister(competitionEntryBox.SelectedIndex);
+            }
+        }
+
+        private void deleteCompetitionEntry_Click(object sender, EventArgs e)
+        {
+            if ((DataGridView1.Rows.Count > 0))
+            {
+                DataGridView1.Rows.RemoveAt((DataGridView1.Rows.Count - 1));
+            }
+            else
+                MessageBox.Show("Select a team!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void competitionTeamList_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (Form1._Form1.DataGridView1.Rows.Count <= 0)
                 return;
 
-            int intselectedindex = competitionEntryBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                controller.findCompetition(intselectedindex);
-            }
+            Team team = controller.leggiSquadra(competitionTeamList.SelectedIndex);
+
+            DataGridView1.CurrentRow.Cells[3].Value = team.getId();
+            DataGridView1.CurrentRow.Cells[1].Value = team.getEnglish();
+        }
+
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            competitionTeamList.SelectedIndex = controller.findTeam(uint.Parse(DataGridView1.CurrentRow.Cells[3].Value.ToString()));
         }
 
         //remove fake team
@@ -2807,6 +2832,7 @@ namespace DinoTem
             MessageBox.Show("Fake teams corrected!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        //remove fake classic player
         private void removeFakeClassicPlayer_Click(object sender, EventArgs e)
         {
             controller.removeFakePlayer();
@@ -3041,7 +3067,6 @@ namespace DinoTem
             controller.addGlovePersister();
 
             tabControl1.SelectedIndex = 10;
-            MessageBox.Show("New glove added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new boot
@@ -3050,7 +3075,6 @@ namespace DinoTem
             controller.addBootPersister();
 
             tabControl1.SelectedIndex = 9;
-            MessageBox.Show("New boot added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new ball
@@ -3059,7 +3083,6 @@ namespace DinoTem
             controller.addBallPersister();
 
             tabControl1.SelectedIndex = 8;
-            MessageBox.Show("New ball added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new stadium
@@ -3068,7 +3091,6 @@ namespace DinoTem
             controller.addStadiumPersister();
 
             tabControl1.SelectedIndex = 6;
-            MessageBox.Show("New stadium added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new derby
@@ -3077,27 +3099,30 @@ namespace DinoTem
             controller.addDerbyPersister();
 
             tabControl1.SelectedIndex = 5;
-            MessageBox.Show("New derby added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new coach
         private void addNewCoach_Click(object sender, EventArgs e)
         {
+            controller.addCoachPersister();
+
             tabControl1.SelectedIndex = 2;
-            MessageBox.Show("New coach added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Add new team
         private void addNewTeam_Click(object sender, EventArgs e)
         {
-            tabControl1.SelectedIndex = 1;
-            MessageBox.Show("New team added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            controller.addTeamPersister();
+
+            //tabControl1.SelectedIndex = 1;
         }
 
         //Add new player
         private void addNewPlayer_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("New player added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            controller.addPlayerPersister();
+
+            tabControl1.SelectedIndex = 0;
         }
 
         //Export Player bin
@@ -3170,7 +3195,7 @@ namespace DinoTem
             if (text.CompareTo(TEAM_A) == 0)
             {
                 int intselectedindex = teamView1.SelectedIndices[0];
-                if (teamView1.Items.Count > 11)
+                if (teamView1.Items.Count > 12)
                 {
                     controller.deletePlayerTeam(teamView1, intselectedindex);
                     if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
@@ -3183,12 +3208,12 @@ namespace DinoTem
                     }
                 }
                 else
-                    MessageBox.Show("There are only 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("There are only 12 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else if (text.CompareTo(TEAM_B) == 0)
             {
                 int intselectedindex = teamView2.SelectedIndices[0];
-                if (teamView2.Items.Count > 11)
+                if (teamView2.Items.Count > 12)
                 {
                     controller.deletePlayerTeam(teamView2, intselectedindex);
                     if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
@@ -3201,7 +3226,7 @@ namespace DinoTem
                     }
                 }
                 else
-                    MessageBox.Show("There are only 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("There are only 12 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -3268,9 +3293,14 @@ namespace DinoTem
             string text2 = (string)e.Data.GetData(PLAYER.GetType());
             if (text.CompareTo(TEAM_A) == 0)
             {
+                int intselectedindex = teamView1.SelectedIndices[0];
+                Point cp = teamView1.PointToClient(new Point(e.X, e.Y));
+                ListViewItem dragToItem = teamView1.GetItemAt(cp.X, cp.Y);
+                int dropIndex = dragToItem.Index;
+                controller.transferAtoA(teamView1, dropIndex, intselectedindex);
                 controller.transferPlayerAtoA(teamView1, controller.leggiSquadra(teamBox1.SelectedIndex).getId());
                 if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
-                    controller.transferPlayerAtoA(teamView2, controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+                    controller.transferAtoA(teamView2, dropIndex, intselectedindex);
             }
             else if (text.CompareTo(TEAM_B) == 0)
             {
@@ -3282,11 +3312,7 @@ namespace DinoTem
             }
             else if (text2.CompareTo(PLAYER) == 0)
             {
-                controller.playerFromPlayerList(uint.Parse(giocatoreID.Text), controller.leggiSquadra(teamBox1.SelectedIndex).getId(), teamView1);
-                if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
-                {
-                    
-                }
+                controller.playerFromPlayerList(uint.Parse(giocatoreID.Text), controller.leggiSquadra(teamBox1.SelectedIndex).getId(), teamView1, controller.leggiSquadra(teamBox2.SelectedIndex).getId(), teamView2);
             }
         }
 
@@ -3355,17 +3381,26 @@ namespace DinoTem
             string text2 = (string)e.Data.GetData(PLAYER.GetType());
             if (text.CompareTo(TEAM_A) == 0)
             {
-                controller.transferPlayerAtoA(teamView2, controller.leggiSquadra(teamBox2.SelectedIndex).getId());
-                if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
-                    controller.transferPlayerAtoA(teamView1, controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+                Point cp = teamView2.PointToClient(new Point(e.X, e.Y));
+                ListViewItem dragToItem = teamView2.GetItemAt(cp.X, cp.Y);
+                int dropIndex = dragToItem.Index;
+                int intselectedindex = teamView1.SelectedIndices[0];
+                controller.transferPlayerBtoA(teamView2, teamView1, teamBox2, teamBox1, intselectedindex, dropIndex);
             }
             else if (text.CompareTo(TEAM_B) == 0)
             {
-                
+                int intselectedindex = teamView2.SelectedIndices[0];
+                Point cp = teamView2.PointToClient(new Point(e.X, e.Y));
+                ListViewItem dragToItem = teamView2.GetItemAt(cp.X, cp.Y);
+                int dropIndex = dragToItem.Index;
+                controller.transferAtoA(teamView2, dropIndex, intselectedindex);
+                controller.transferPlayerAtoA(teamView2, controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+                if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                    controller.transferAtoA(teamView1, dropIndex, intselectedindex);
             }
             else if (text2.CompareTo(PLAYER) == 0)
             {
-                MessageBox.Show("P");
+                controller.playerFromPlayerList(uint.Parse(giocatoreID.Text), controller.leggiSquadra(teamBox2.SelectedIndex).getId(), teamView2, controller.leggiSquadra(teamBox1.SelectedIndex).getId(), teamView1);
             }
         }
     }

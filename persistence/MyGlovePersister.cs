@@ -42,6 +42,12 @@ namespace DinoTem.persistence
             int bytesGloves = (int)memory1.Length;
             int glove = bytesGloves / block;
 
+            if (glove == 0)
+            {
+                MessageBox.Show("No gloves found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             string gloveName;
             try
             {

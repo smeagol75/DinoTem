@@ -21,6 +21,15 @@ namespace DinoTem.persistence
             byte[] file = File.ReadAllBytes(patch + PATH);
             memory1 = new MemoryStream(file);
 
+            int bytes = (int)memory1.Length;
+            int pa = bytes / block;
+
+            if (pa == 0)
+            {
+                MessageBox.Show("No players appearances found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             try
             {
                 // Use the memory stream in a binary reader.
@@ -467,7 +476,7 @@ namespace DinoTem.persistence
             return temp;
         }
 
-        public void applyPlayerAppearance(BinaryReader reader, MemoryStream unzlib, PlayerAppearance playerApp, ref BinaryWriter writer)
+        public void applyPlayerAppearance(BinaryReader reader, int bitRecognized, MemoryStream unzlib, PlayerAppearance playerApp, ref BinaryWriter writer)
         {
             //calcolo giocatori
             // Create new FileInfo object and get the Length.
@@ -479,10 +488,19 @@ namespace DinoTem.persistence
             {
                 START2 += block;
                 unzlib.Seek(START2, SeekOrigin.Begin);
-                if (playerApp.getId() == reader.ReadUInt32())
+
+                UInt32 Check_order = 0;
+                if (bitRecognized == 0)
+                    Check_order = reader.ReadUInt32();
+                else if (bitRecognized == 1 || bitRecognized == 2)
+                    Check_order = UnzlibZlibConsole.swaps.swap32(reader.ReadUInt32());
+                if (playerApp.getId() == Check_order)
                 {
                     writer.BaseStream.Position = START2;
-                    writer.Write(playerApp.getId());
+                    if (bitRecognized == 0)
+                        writer.Write(playerApp.getId());
+                    else if (bitRecognized == 1 || bitRecognized == 2)
+                        writer.Write(UnzlibZlibConsole.swaps.swap32(playerApp.getId()));
                     writer.Write(playerApp.getUnknown1());
                     writer.Write(playerApp.getUnknown2());
                     writer.Write(playerApp.getUnknown3());
@@ -542,6 +560,96 @@ namespace DinoTem.persistence
                 }
             }
 
+        }
+
+        public void addPlayerAppearance(UInt32 idPlayer, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
+        {
+            byte[] Player_Player_appareance_block;
+            Random numAleatorio = new Random();
+            int valorAleatorio = numAleatorio.Next(0, 500);
+            reader.BaseStream.Position = ((valorAleatorio * block) + 4);
+            Player_Player_appareance_block = reader.ReadBytes(56);
+            
+            byte[] end_of_file;
+            reader.BaseStream.Position = 0;
+            UInt32 Check_order = 0;
+            for (int j = 0; j <= (memory1.Length / block) - 1; j++)
+            {
+                if (bitRecognized == 0)
+                    Check_order = reader.ReadUInt32();
+                else if (bitRecognized == 1 || bitRecognized == 2)
+                    Check_order = UnzlibZlibConsole.swaps.swap32(reader.ReadUInt32());
+
+                if (Check_order < idPlayer)
+                {
+                    reader.BaseStream.Position += 56;
+                }
+                else if (j == (memory1.Length / block) - 1)
+                {
+                    byte[] test = new byte[(int)memory1.Length + block];
+                    for (int i = 0; i < test.Count() - 1; i++)
+                    {
+                        test[i] = 0;
+                    }
+
+                    byte[] temp = memory1.ToArray();
+                    for (int i = 0; i < (int)memory1.Length - 1; i++)
+                    {
+                        test[i] = temp[i];
+                    }
+
+                    memory1 = new MemoryStream(test);
+                    reader = new BinaryReader(memory1);
+                    writer = new BinaryWriter(memory1);
+
+                    writer.BaseStream.Position = memory1.Length - 60;
+                    if (bitRecognized == 0)
+                        writer.Write(idPlayer);
+                    else if (bitRecognized == 1 || bitRecognized == 2)
+                        writer.Write(UnzlibZlibConsole.swaps.swap32(idPlayer));
+                    writer.Write(Player_Player_appareance_block);
+                    break;
+                }
+                //else if ((Check_order == idPlayer))
+                //{
+                    //writer.Write(Player_Player_appareance_block);
+                    //break;
+                //}
+                else
+                {
+                    // leer hasta el final
+                    reader.BaseStream.Position -= 4;
+                    long Posicion_a_grabar = reader.BaseStream.Position;
+                    long Tamanho_a_leer = (memory1.Length - Posicion_a_grabar);
+                    end_of_file = reader.ReadBytes((int)Tamanho_a_leer);
+
+                    byte[] test = new byte[(int)memory1.Length + block];
+                    for (int i = 0; i < test.Count() - 1; i++)
+                    {
+                        test[i] = 0;
+                    }
+
+                    byte[] temp = memory1.ToArray();
+                    for (int i = 0; i < (int)memory1.Length - 1; i++)
+                    {
+                        test[i] = temp[i];
+                    }
+
+                    memory1 = new MemoryStream(test);
+                    reader = new BinaryReader(memory1);
+                    writer = new BinaryWriter(memory1);
+
+                    writer.BaseStream.Position = Posicion_a_grabar;
+                    if (bitRecognized == 0)
+                        writer.Write(idPlayer);
+                    else if (bitRecognized == 1 || bitRecognized == 2)
+                        writer.Write(UnzlibZlibConsole.swaps.swap32(idPlayer));
+                    writer.Write(Player_Player_appareance_block);
+                    writer.Write(end_of_file);
+                    break;
+                }
+
+            }
         }
 
         public void save(string patch, ref MemoryStream memoryGicotori, int bitRecognized)

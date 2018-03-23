@@ -6,7 +6,6 @@ using System.IO;
 using System.Windows.Forms;
 using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using DinoTem.model;
-using Team_Editor_Manager_New_Generation.persistence;
 using DinoTem.ui;
 
 namespace DinoTem.persistence
@@ -43,6 +42,12 @@ namespace DinoTem.persistence
             //Calcolo stadi
             int bytesStadiums = (int)memory1.Length;
             int stadium = bytesStadiums / block;
+
+            if (stadium == 0)
+            {
+                MessageBox.Show("No stadiums found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
 
             string stadiumName;
             try

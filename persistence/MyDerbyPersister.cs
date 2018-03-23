@@ -41,6 +41,12 @@ namespace DinoTem.persistence
             int bytesDerby = (int)memory1.Length;
             int derby = bytesDerby / block;
 
+            if (derby == 0)
+            {
+                MessageBox.Show("No derby found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             UInt32 Team1_Derby_id;
             UInt32 Team2_Derby_id;
             UInt16 Frag_val1;

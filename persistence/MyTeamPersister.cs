@@ -6,7 +6,6 @@ using System.IO;
 using System.Windows.Forms;
 using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using DinoTem.model;
-using Team_Editor_Manager_New_Generation.persistence;
 using DinoTem.ui;
 
 namespace DinoTem.persistence
@@ -44,6 +43,12 @@ namespace DinoTem.persistence
             int bytesTeam = (int)memory1.Length;
             int team = bytesTeam / block;
 
+            if (team == 0)
+            {
+                MessageBox.Show("No teams found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             string teamName;
             try
             {
@@ -64,6 +69,7 @@ namespace DinoTem.persistence
                     Form1._Form1.teamsBox.Items.Add(teamName);
                     Form1._Form1.derbyTeam1.Items.Add(teamName);
                     Form1._Form1.derbyTeam2.Items.Add(teamName);
+                    Form1._Form1.competitionTeamList.Items.Add(teamName);
                 }
                 writer = new BinaryWriter(memory1);
             }
@@ -266,6 +272,27 @@ namespace DinoTem.persistence
             }
 
             return team;
+        }
+
+        public UInt32 findIdTeam(MemoryStream memory1, BinaryReader reader)
+        {
+            UInt32 team_index_mayor = 0;
+
+            int bytesTeam = (int)memory1.Length;
+            int team = bytesTeam / block;
+
+            reader.BaseStream.Position = 8;
+            for (int i = 0; (i <= (team - 1)); i++)
+            {
+                UInt32 temp_index = reader.ReadUInt32();
+                if ((temp_index >= team_index_mayor))
+                {
+                    team_index_mayor = (uint)(temp_index + 1);
+                }
+                reader.BaseStream.Position += block - 4;
+            }
+
+            return team_index_mayor;
         }
 
         public void applyTeam(int selectedIndex, MemoryStream unzlib, Team squadra, ref BinaryWriter writer)
@@ -689,6 +716,25 @@ namespace DinoTem.persistence
                 writer.BaseStream.Position = (pos_ini_team_block + 1248);
                 writer.Write(squadra.getShortSquadra().ToCharArray());
             }
+        }
+
+        public void addTeam(ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
+        {
+            byte[] test = new byte[(int)memory1.Length + block];
+            for (int i = 0; i < test.Count() - 1; i++)
+            {
+                test[i] = 0;
+            }
+
+            byte[] temp = memory1.ToArray();
+            for (int i = 0; i < (int)memory1.Length - 1; i++)
+            {
+                test[i] = temp[i];
+            }
+
+            memory1 = new MemoryStream(test);
+            reader = new BinaryReader(memory1);
+            writer = new BinaryWriter(memory1);
         }
 
         public void save(string patch, ref MemoryStream memorySquadre, int bitRecognized)

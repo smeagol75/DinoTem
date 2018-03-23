@@ -6,7 +6,6 @@ using System.IO;
 using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using System.Windows.Forms;
 using DinoTem.model;
-using Team_Editor_Manager_New_Generation.persistence;
 using DinoTem.ui;
 
 namespace DinoTem.persistence
@@ -39,6 +38,15 @@ namespace DinoTem.persistence
         public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
             memory1 = unzlib(patch, bitRecognized);
+
+            int bytes = (int)memory1.Length;
+            int pa = bytes / block;
+
+            if (pa == 0)
+            {
+                MessageBox.Show("No players assignment found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
 
             try
             {

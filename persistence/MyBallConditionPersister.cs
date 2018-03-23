@@ -6,7 +6,6 @@ using System.IO;
 using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using System.Windows.Forms;
 using DinoTem.model;
-using Team_Editor_Manager_New_Generation.persistence;
 using DinoTem.ui;
 
 namespace DinoTem.persistence
@@ -38,6 +37,15 @@ namespace DinoTem.persistence
         public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
             memory1 = unzlib(patch, bitRecognized);
+
+            int bytes_ball1 = (int)memory1.Length;
+            int ball1 = bytes_ball1 / block;
+
+            if (ball1 == 0)
+            {
+                MessageBox.Show("No balls conditions found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
 
             try
             {

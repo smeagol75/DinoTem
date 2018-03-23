@@ -40,6 +40,12 @@ namespace DinoTem.persistence
             int bytes = (int)memory1.Length;
             int stadium = bytes / block;
 
+            if (stadium == 0)
+            {
+                MessageBox.Show("No stadiums order in confederations found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             UInt16 order_index_in_conf;
             UInt16 order_id_in_conf;
             byte byte_in_conf;

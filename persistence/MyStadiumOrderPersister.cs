@@ -40,6 +40,12 @@ namespace DinoTem.persistence
             int bytes = (int)memory1.Length;
             int stadiumOrder = bytes / block;
 
+            if (stadiumOrder == 0)
+            {
+                MessageBox.Show("No stadiums order found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             UInt16 order_index;
             UInt16 order_id;
             UInt16 Order_frag;

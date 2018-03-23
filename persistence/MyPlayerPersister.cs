@@ -7,7 +7,6 @@ using System.IO;
 using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using DinoTem.model;
 using DinoTem.ui;
-using Team_Editor_Manager_New_Generation.persistence;
 
 namespace DinoTem.persistence
 {
@@ -44,6 +43,12 @@ namespace DinoTem.persistence
             int bytesPlayer = (int)memory1.Length;
             int player = bytesPlayer / block;
 
+            if (player == 0)
+            {
+                MessageBox.Show("No players found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             string playerName;
             try
             {
@@ -70,7 +75,7 @@ namespace DinoTem.persistence
             }
         }
 
-        public Player loadPlayer(int index, BinaryReader reader)
+        public Player loadPlayer(int selectIndex, BinaryReader reader)
         {
             Player player = null;
 
@@ -116,7 +121,7 @@ namespace DinoTem.persistence
             UInt32 RMF;
             UInt32 injuryRes;
             UInt32 CMF;
-            UInt32 weakFootUse;
+            UInt32 weakFootUsage;
             UInt32 DMF;
             UInt32 playingAttitude;
             UInt32 runningArmMov;
@@ -182,7 +187,7 @@ namespace DinoTem.persistence
             UInt32 CHECK142;
             try
             {
-                index = index * block;
+                int index = selectIndex * block;
 
                 reader.BaseStream.Position = (index + 0);
                 youthId = reader.ReadUInt32();
@@ -190,7 +195,7 @@ namespace DinoTem.persistence
                 reader.BaseStream.Position = (index + 8);
                 playerId = reader.ReadUInt32();
 
-                reader.BaseStream.Position = (index + 12);
+                //reader.BaseStream.Position = (index + 12);
                 UInt32 original_32_first_val = reader.ReadUInt32();
                 placeKicking = original_32_first_val >> 26;
                 height = original_32_first_val << 6;
@@ -200,7 +205,7 @@ namespace DinoTem.persistence
                 national = original_32_first_val << 23;
                 national = national >> 23;
 
-                reader.BaseStream.Position = (index + 16);
+                //reader.BaseStream.Position = (index + 16);
                 UInt32 original_32_second_val = reader.ReadUInt32();
                 defProwess = original_32_second_val >> 26;
                 clearing = original_32_second_val << 6;
@@ -212,7 +217,7 @@ namespace DinoTem.persistence
                 weight = original_32_second_val << 25;
                 weight = weight >> 25;
 
-                reader.BaseStream.Position = (index + 20);
+                //reader.BaseStream.Position = (index + 20);
                 UInt32 original_32_3rd_val = reader.ReadUInt32();
                 LB = original_32_3rd_val >> 30;
                 coverage = original_32_3rd_val << 2;
@@ -226,7 +231,7 @@ namespace DinoTem.persistence
                 ballControl = original_32_3rd_val << 26;
                 ballControl = ballControl >> 26;
 
-                reader.BaseStream.Position = (index + 24);
+                //reader.BaseStream.Position = (index + 24);
                 UInt32 original_32_4th_val = reader.ReadUInt32();
                 GK = original_32_4th_val >> 30;
                 goalKeeping = original_32_4th_val << 2;
@@ -240,7 +245,7 @@ namespace DinoTem.persistence
                 speed = original_32_4th_val << 26;
                 speed = speed >> 26;
 
-                reader.BaseStream.Position = (index + 28);
+                //reader.BaseStream.Position = (index + 28);
                 UInt32 original_32_5th_val = reader.ReadUInt32();
                 penaltyKick = original_32_5th_val >> 30;
                 kickingPower = original_32_5th_val << 2;
@@ -254,7 +259,7 @@ namespace DinoTem.persistence
                 swerve = original_32_5th_val << 26;
                 swerve = swerve >> 26;
 
-                reader.BaseStream.Position = (index + 32);
+                //reader.BaseStream.Position = (index + 32);
                 UInt32 original_32_6th_val = reader.ReadUInt32();
                 playingAttitude = original_32_6th_val >> 30;
                 age = original_32_6th_val << 2;
@@ -268,9 +273,9 @@ namespace DinoTem.persistence
                 attackingProwess = original_32_6th_val << 26;
                 attackingProwess = attackingProwess >> 26;
 
-                reader.BaseStream.Position = (index + 36);
+                //reader.BaseStream.Position = (index + 36);
                 UInt32 original_32_7th_val = reader.ReadUInt32();
-                weakFootUse = original_32_7th_val >> 30;
+                weakFootUsage = original_32_7th_val >> 30;
                 DMF = original_32_7th_val << 2;
                 DMF = DMF >> 30;
                 starPlayerIndicator = original_32_7th_val << 4;
@@ -290,7 +295,7 @@ namespace DinoTem.persistence
                 playingStyle = original_32_7th_val << 27;
                 playingStyle = playingStyle >> 27;
 
-                reader.BaseStream.Position = (index + 40);
+                //reader.BaseStream.Position = (index + 40);
                 original_32_8th_val = reader.ReadUInt32();
                 CHECK1 = original_32_8th_val >> 31;
                 CHECK2 = original_32_8th_val << 1;
@@ -326,7 +331,7 @@ namespace DinoTem.persistence
                 CMF = original_32_8th_val << 30;
                 CMF = CMF >> 30;
 
-                reader.BaseStream.Position = (index + 44);
+                //reader.BaseStream.Position = (index + 44);
                 UInt32 original_32_9th_val = reader.ReadUInt32();
                 CHECK9 = original_32_9th_val >> 31;
                 CHECK10 = original_32_9th_val << 1;
@@ -392,16 +397,16 @@ namespace DinoTem.persistence
                 CHECK40 = original_32_9th_val << 31;
                 CHECK40 = CHECK40 >> 31;
 
-                reader.BaseStream.Position = (index + 48);
+                //reader.BaseStream.Position = (index + 48);
                 byte byte_nuevo = reader.ReadByte();
                 CHECK3 = (byte) (byte_nuevo >> 7);
-                CHECK4 = (byte) (byte_nuevo << 1);
+                CHECK4 = (byte)(byte_nuevo << 1);
                 CHECK4 = CHECK4 >> 7;
-                CHECK5 = (byte) (byte_nuevo << 2);
+                CHECK5 = (byte)(byte_nuevo << 2);
                 CHECK5 = CHECK5 >> 7;
-                CHECK6 = (byte) (byte_nuevo << 3);
+                CHECK6 = (byte)(byte_nuevo << 3);
                 CHECK6 = CHECK6 >> 7;
-                CHECK7 = (byte) (byte_nuevo << 4);
+                CHECK7 = (byte)(byte_nuevo << 4);
                 CHECK7 = CHECK7 >> 7;
                 CHECK8 = (byte)(byte_nuevo << 5);
                 CHECK8 = CHECK8 >> 7;
@@ -454,7 +459,7 @@ namespace DinoTem.persistence
                 player.setPhysical(physicalContact + 40);
                 player.setBodyControl(bodyControl + 40);
                 player.setAttack(attackingProwess + 40);
-                player.setWcUsage(weakFootUse + 1);
+                player.setWcUsage(weakFootUsage + 1);
                 player.setDmf(DMF);
                 player.setStarPlayerIndicator(starPlayerIndicator + 1);
                 player.setRunningArm(runningArmMov + 1);
@@ -532,6 +537,27 @@ namespace DinoTem.persistence
             }
 
             return player;
+        }
+
+        public UInt32 findIdPlayer(MemoryStream memory1, BinaryReader reader)
+        {
+            UInt32 player_index_mayor = 0;
+
+            int bytesPlayer = (int)memory1.Length;
+            int player = bytesPlayer / block;
+
+            reader.BaseStream.Position = 8;
+            for (int i = 0; (i <= (player - 1)); i++)
+            {
+                UInt32 temp_index = reader.ReadUInt32();
+                if ((temp_index >= player_index_mayor))
+                {
+                    player_index_mayor = (uint)(temp_index + 1);
+                }
+                reader.BaseStream.Position += block - 4;
+            }
+
+            return player_index_mayor;
         }
 
         public void applyPlayer(int selectedIndex, MemoryStream unzlib, Player giocatore, ref BinaryWriter writer)
@@ -770,7 +796,7 @@ namespace DinoTem.persistence
             Aux = Aux << 28;
             Nuevo_val_32_8th = (Aux | Nuevo_val_32_8th);
             Aux = ss;
-            Aux = Aux << 16;
+            Aux = Aux << 26;
             Nuevo_val_32_8th = (Aux | Nuevo_val_32_8th);
             Aux = Blue_2;
             Aux = Aux << 24;
@@ -893,7 +919,7 @@ namespace DinoTem.persistence
             }
 
             UInt32 CHECK17;
-            if (giocatore.getKnucleShot() == 1)
+            if (giocatore.getStrongerFoot() == 1)
             {
                 CHECK17 = 1;
             }
@@ -903,7 +929,7 @@ namespace DinoTem.persistence
             }
 
             UInt32 CHECK18;
-            if (giocatore.getHellTick() == 1)
+            if (giocatore.getKnucleShot() == 1)
             {
                 CHECK18 = 1;
             }
@@ -1363,6 +1389,25 @@ namespace DinoTem.persistence
             writer.BaseStream.Position = Index + 144;
             string Nom_Jugador = giocatore.getName();
             writer.Write(Nom_Jugador.ToCharArray());
+        }
+
+        public void addPlayer(ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
+        {
+            byte[] test = new byte[(int)memory1.Length + block];
+            for (int i = 0; i < test.Count() - 1; i++)
+            {
+                test[i] = 0;
+            }
+
+            byte[] temp = memory1.ToArray();
+            for (int i = 0; i < (int)memory1.Length - 1; i++)
+            {
+                test[i] = temp[i];
+            }
+
+            memory1 = new MemoryStream(test);
+            reader = new BinaryReader(memory1);
+            writer = new BinaryWriter(memory1);
         }
 
         public void save(string patch, ref MemoryStream memoryGicotori, int bitRecognized)

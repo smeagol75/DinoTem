@@ -42,6 +42,12 @@ namespace DinoTem.ui
             int bytesCoach = (int)memory1.Length;
             int coach = bytesCoach / block;
 
+            if (coach == 0)
+            {
+                MessageBox.Show("No coaches found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             string coachName;
             try
             {
@@ -120,6 +126,26 @@ namespace DinoTem.ui
             return coach;
         }
 
+        public UInt32 findIdCoach(MemoryStream memory1, BinaryReader reader)
+        {
+            UInt32 coach_index_mayor = 0;
+
+            int bytesCoach = (int)memory1.Length;
+            int coach = bytesCoach / block;
+
+            for (int i = 0; (i <= (coach - 1)); i++)
+            {
+                UInt32 temp_index = reader.ReadUInt32();
+                if ((temp_index >= coach_index_mayor))
+                {
+                    coach_index_mayor = (uint)(temp_index + 1);
+                }
+                reader.BaseStream.Position += block - 4;
+            }
+
+            return coach_index_mayor;
+        }
+
         public void applyCoach(int selectedIndex, MemoryStream unzlib, Coach allenatore, ref BinaryWriter writer)
         {
             int index = (block * selectedIndex);
@@ -161,6 +187,25 @@ namespace DinoTem.ui
 
             writer.BaseStream.Position = (index + 62);
             writer.Write(allenatore.getName().ToCharArray());
+        }
+
+        public void addCoach(ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
+        {
+            byte[] test = new byte[(int)memory1.Length + block];
+            for (int i = 0; i < test.Count() - 1; i++)
+            {
+                test[i] = 0;
+            }
+
+            byte[] temp = memory1.ToArray();
+            for (int i = 0; i < (int)memory1.Length - 1; i++)
+            {
+                test[i] = temp[i];
+            }
+
+            memory1 = new MemoryStream(test);
+            reader = new BinaryReader(memory1);
+            writer = new BinaryWriter(memory1);
         }
 
         public void save(string patch, ref MemoryStream memoryAllenatori, int bitRecognized)

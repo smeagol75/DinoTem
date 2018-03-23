@@ -311,7 +311,7 @@ namespace Team_Editor_Manager_New_Generation.ui
 		    StringBuilder sb = new StringBuilder();
 		    sb.Append("Id;BallName;Order");
 		    sb.Append("\n");
-            for (int i = 0; i < Form1._Form1.ballsBox.Items.Count; i++)
+            for (int i = 0; i < Form1._Form1.ballsBox.Items.Count - 1; i++)
             {
                 Ball temp = controller.leggiPallone(i);
 			    sb.Append(temp.getId() + ";");
@@ -344,16 +344,18 @@ namespace Team_Editor_Manager_New_Generation.ui
         public string exportPlayerAssignment(Controller controller)
         {
 		    StringBuilder sb = new StringBuilder();
-		    sb.Append("Id_player;player_name;id_team;team_name");
+		    //sb.Append("Id_player;player_name;id_team;team_name");
+            sb.Append("Id_player;id_team;team_name");
 		    sb.Append("\n");
             for (int i = 0; i < Form1._Form1.teamBox1.Items.Count; i++)
             {
                 Team t = controller.leggiSquadra(i);
-                foreach (PlayerAssignment pA in controller.leggiGiocatoriSquadra(t.getId()))
+                List<PlayerAssignment> list = controller.leggiGiocatoriSquadra(t.getId());
+                foreach (PlayerAssignment temp2 in list)
                 {
-                    sb.Append(pA.getPlayerId() + ";");
-                    Player pa = controller.leggiGiocatoreById(pA.getPlayerId());
-                    sb.Append(pa.getName() + ";");
+                    sb.Append(temp2.getPlayerId() + ";");
+                    //Player pa = controller.leggiGiocatoreById(temp2.getPlayerId());
+                    //sb.Append(pa.getName() + ";");
                     sb.Append(t.getId() + ";");
                     sb.Append(t.getEnglish());
                     sb.Append("\n");

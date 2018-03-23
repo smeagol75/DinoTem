@@ -182,6 +182,8 @@ namespace Team_Editor_Manager_New_Generation.ui
         private static int fmPlayer = 0;
         private static int player = 0;
         private static int coach = 0;
+        private static int boot = 0;
+        private static int glove = 0;
         public static void listBoxSearch(ListBox listbox, TextBox search)
         {
             int col = 0;
@@ -200,6 +202,10 @@ namespace Team_Editor_Manager_New_Generation.ui
                 lastItm2 = player;
             else if (search.Name == "searchCoach")
                 lastItm2 = coach;
+            else if (search.Name == "searchBoot")
+                lastItm2 = boot;
+            else if (search.Name == "searchGlove")
+                lastItm2 = glove;
 
             for (int colAll = col; colAll < colCount; colAll++)
             {
@@ -242,6 +248,10 @@ namespace Team_Editor_Manager_New_Generation.ui
                 player = lastItm2;
             else if (search.Name == "searchCoach")
                 coach = lastItm2;
+            else if (search.Name == "searchBoot")
+                boot = lastItm2;
+            else if (search.Name == "searchGlove")
+                glove = lastItm2;
         }
 
         private static int lastItm3 = 0;

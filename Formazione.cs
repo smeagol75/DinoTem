@@ -103,12 +103,12 @@ namespace DinoTem
                 int NumberOfRepetitions5 = Convert.ToInt32(10);
                 for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
                 {
-                    teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[4].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[5].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[4].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[5].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView1.Items[0].UseItemStyleForSubItems = false;
                 }
             }
@@ -167,7 +167,7 @@ namespace DinoTem
                 int NumberOfRepetitions6a = Convert.ToInt32(10);
                 for (i6a = 0; i6a <= NumberOfRepetitions6a; i6a++)
                 {
-                    teamView1.Items[i6a].SubItems[1].BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
+                    teamView1.Items[i6a].SubItems[1].BackColor = System.Drawing.Color.FromArgb(12, 143, 80);
                     teamView1.Items[i6a].UseItemStyleForSubItems = false;
                 }
 
@@ -284,22 +284,22 @@ namespace DinoTem
             }
 
             if (pAssignment.getRightCornerKick() == 1)
-                rightCK.SelectedIndex = pAssignment.getOrder();
+                rightCK.SelectedIndex = rightCK.Items.Count - 1;
 
             if (pAssignment.getPenaltyKick() == 1)
-                penaltyKT.SelectedIndex = pAssignment.getOrder();
+                penaltyKT.SelectedIndex = rightCK.Items.Count - 1;
 
             if (pAssignment.getLongShotLk() == 1)
-                longFT.SelectedIndex = pAssignment.getOrder();
+                longFT.SelectedIndex = rightCK.Items.Count - 1;
 
             if (pAssignment.getLeftCkTk() == 1)
-                leftCK.SelectedIndex = pAssignment.getOrder();
+                leftCK.SelectedIndex = rightCK.Items.Count - 1;
 
             if (pAssignment.getShortFoulFk() == 1)
-                shortFT.SelectedIndex = pAssignment.getOrder();
+                shortFT.SelectedIndex = rightCK.Items.Count - 1;
 
             if (pAssignment.getCaptain() == 1)
-                capitain.SelectedIndex = pAssignment.getOrder();
+                capitain.SelectedIndex = rightCK.Items.Count - 1;
 
             return item;
         }
@@ -377,6 +377,8 @@ namespace DinoTem
         private void Formazione_Load(object sender, EventArgs e)
         {
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+
+            this.Name += " " + team.getEnglish();
 
             Caricare_Campi();
 
@@ -944,9 +946,9 @@ namespace DinoTem
                 int NumberOfRepetitions6 = Convert.ToInt32(10);
                 for (i6 = 0; i6 <= NumberOfRepetitions6; i6++)
                 {
-                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
-                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(12, 143, 80);
+                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView1.Items[i6].UseItemStyleForSubItems = false;
                 }
             }
@@ -957,9 +959,9 @@ namespace DinoTem
                 int NumberOfRepetitions6 = Convert.ToInt32(10);
                 for (i6 = 0; i6 <= NumberOfRepetitions6; i6++)
                 {
-                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
-                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(12, 143, 80);
+                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView1.Items[i6].UseItemStyleForSubItems = false;
                 }
             }
@@ -970,9 +972,9 @@ namespace DinoTem
                 int NumberOfRepetitions6 = Convert.ToInt32(10);
                 for (i6 = 0; i6 <= NumberOfRepetitions6; i6++)
                 {
-                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
-                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(12, 143, 80);
+                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView1.Items[i6].UseItemStyleForSubItems = false;
                 }
             }

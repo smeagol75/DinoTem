@@ -630,10 +630,15 @@ namespace DinoTem
             else
                 mazingRun.Checked = false;
 
-            if (temp.getComLongRanger() == 1)
+            if (temp.getComBallExpert() == 1)
                 longBallExpert.Checked = true;
             else
                 longBallExpert.Checked = false;
+
+            if (temp.getComLongRanger() == 1)
+                longRanger.Checked = true;
+            else
+                longRanger.Checked = false;
 
             if (temp.getComIncisiveRun() == 1)
                 incisiveRun.Checked = true;
@@ -669,7 +674,15 @@ namespace DinoTem
             youthClub.SelectedIndex = controller.findTeam(temp.getYouthPlayerId());
 
             glovesRelink.SelectedIndex = controller.findGloveList(temp.getId());
+            if (controller.leggiGuantiLista(temp.getId()) == null)
+                addGloveRelink.Visible = true;
+            else
+                addGloveRelink.Visible = false;
             bootsRelink.SelectedIndex = controller.findBootList(temp.getId());
+            if (controller.leggiScarpeLista(temp.getId()) == null)
+                addBootRelink.Visible = true;
+            else
+                addBootRelink.Visible = false;
         }
 
         //ADJUST STATS
@@ -1280,8 +1293,8 @@ namespace DinoTem
             temp.setDefense(uint.Parse(defense.Text));
             temp.setClearing(uint.Parse(clearing.Text));
             temp.setLowPass(uint.Parse(lowPass.Text));
-            temp.setNational((ushort)controller.leggiPaese(nationality.SelectedIndex).getId());
-            temp.setNational2((ushort)controller.leggiPaese(sndNationality.SelectedIndex).getId());
+            temp.setNational(controller.leggiPaese(nationality.SelectedIndex).getId());
+            temp.setNational2(controller.leggiPaese(sndNationality.SelectedIndex).getId());
             temp.setPlaceKick(uint.Parse(placeKick.Text));
             temp.setGoalCelebrate(uint.Parse(goalCeleb.Text));
             temp.setLb((uint)LB.SelectedIndex);
@@ -1378,9 +1391,9 @@ namespace DinoTem
             else
                 temp.setAcrobatingFinishing(0);
             if (strongerFoot.SelectedIndex == 0)
-                temp.setStrongerFoot(0);
-            else
                 temp.setStrongerFoot(1);
+            else
+                temp.setStrongerFoot(0);
             if (knucleShot.Checked)
                 temp.setKnucleShot(1);
             else
@@ -1574,6 +1587,39 @@ namespace DinoTem
         private void characterS1_Click(object sender, EventArgs e)
         {
             Process.Start(Application.StartupPath + @"\Res\charmap.exe");
+        }
+
+        //add boot relink
+        private void addBootRelink_Click(object sender, EventArgs e)
+        {
+            controller.addBootListPersister(temp.getId());
+
+            bootsRelink.SelectedIndex = 0;
+
+            addBootRelink.Enabled = false;
+        }
+
+        //add glove relink
+        private void addGloveRelink_Click(object sender, EventArgs e)
+        {
+            controller.addGloveListPersister(temp.getId());
+
+            glovesRelink.SelectedIndex = 0;
+
+            addGloveRelink.Enabled = false;
+        }
+
+        //add new skin
+        private void skinNull_Click(object sender, EventArgs e)
+        {
+            controller.addPlayerAppearancePersister(temp.getId());
+
+            skinNull.Visible = false;
+            skin1.Visible = true;
+            skinColour.Visible = true;
+
+            if (skinNull.Visible == false)
+                controller.changeSkinColour(temp.getId(), int.Parse(skinColour.Value.ToString()));
         }
 
     }
