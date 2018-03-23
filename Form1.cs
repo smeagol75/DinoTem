@@ -10,6 +10,7 @@ using Team_Editor_Manager_New_Generation.ui;
 using DinoTem.model;
 using DinoTem.ui;
 using Team_Editor_Manager_New_Generation.update;
+using UniDecode;
 
 namespace DinoTem
 {
@@ -27,67 +28,18 @@ namespace DinoTem
         private const string PLAYER = "Player";
 
         private Controller controller;
-        //private ControllerFm controllerFm;
+        private ControllerDB controllerDb;
+        private ControllerFm controllerFm;
         private const char chACapo = (char)13;
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //controllerFm = new ControllerFm();
             controller = new Controller();
+            controllerDb = new ControllerDB();
+            controllerFm = new ControllerFm();
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 
-            //ToolTip
-            toolTip1.ToolTipTitle = "DinoTem Editor";
-            toolTip1.SetToolTip(giocatoreView, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
-            toolTip1.SetToolTip(searchPlayer, "Write a player name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the player, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a player");
-            toolTip1.SetToolTip(teamView1, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
-            toolTip1.SetToolTip(teamView2, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
-            toolTip1.SetToolTip(teamBox1, "Click to select a team" + Environment.NewLine + "Also use double click or right click for more option");
-            toolTip1.SetToolTip(teamBox2, "Click to select a team" + Environment.NewLine + "Also use double click or right click for more option");
-            toolTip1.SetToolTip(giocatoreName, "Change Player Name" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(giocatoreShirt, "Change Shirt Name" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(giocatoreNumber, "Change Player Number" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-
-            toolTip1.SetToolTip(searchTeam, "Write a team name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
-            toolTip1.SetToolTip(teamsBox, "Click to select a team" + Environment.NewLine + "Also use double click or right click for more option");
-            toolTip1.SetToolTip(teamName, "Change Team Name" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamShort, "Change Short Name" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamID, "Change ID Team" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamFake, "Change if the Team is a Fake");
-            toolTip1.SetToolTip(teamNotPlayableLeague, "Change League of Team");
-            toolTip1.SetToolTip(teamFake, "Change if the Team is a Fake");
-            toolTip1.SetToolTip(teamLicense, "Change Team's License");
-            toolTip1.SetToolTip(teamCoachLicense, "Change Coach's License");
-            toolTip1.SetToolTip(teamJapanese, "Change Team Name (only Japanese language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamFrench, "Change Team Name (only French language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamDutch, "Change Team Name (only Dutch language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamSpanish, "Change Team Name (only Spanish language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamTurkish, "Change Team Name (only Turkish language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamSwedish, "Change Team Name (only Swedish language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamGreek, "Change Team Name (only Greek language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamPortuguese, "Change Team Name (only Portuguese language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamItalian, "Change Team Name (only Italian language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamEnglish, "Change Team Name (only English language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamGerman, "Change Team Name (only German language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamRussian, "Change Team Name (only Russian language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamSpanish2, "Change Team Name (only Spanish (Latin American) language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamPortuguese2, "Change Team Name (only Portuguese (Latin American) language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(teamEnglish2, "Change Team Name (only English (UK) language)" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-
-            toolTip1.SetToolTip(searchBall, "Write a ball name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the ball, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a ball");
-            toolTip1.SetToolTip(palloneID, "Change ID Ball" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(palloneName, "Change Ball Name" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(palloneOrder, "Change Order of the ball" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(palloneUnknowB1, "Change Unknow value" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(palloneUnknowB2, "Change Unknow value" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(palloneUnknowB3, "Change Unknow value" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-            toolTip1.SetToolTip(palloneUnknowB4, "Change Unknow value" + Environment.NewLine + Environment.NewLine + "Press Enter to save");
-
-            //Caricamento Database
-            databaseBox.Items.Add("Stadium");
-            //Team Tab
-            teamType.Items.Add("National");
-            teamType.Items.Add("Club");
+            //teams
             teamNotPlayableLeague.Items.Add("No League");
             teamNotPlayableLeague.Items.Add("Classic League");
             teamNotPlayableLeague.Items.Add("Other Europe League");
@@ -96,14 +48,18 @@ namespace DinoTem
             teamNotPlayableLeague.Items.Add("ML Hidden League");
             teamNotPlayableLeague.Items.Add("Other America League");
             teamNotPlayableLeague.Items.Add("Other Africa League");
-            teamLicense.Items.Add("Licensed");
             teamLicense.Items.Add("Unlicensed");
-            teamCoachLicense.Items.Add("Licensed");
+            teamLicense.Items.Add("Licensed");
             teamCoachLicense.Items.Add("Unlicensed");
-            teamFake.Items.Add("Yes");
+            teamCoachLicense.Items.Add("Licensed");
             teamFake.Items.Add("No");
-            teamLicense.Items.Add("Licensed");
-            teamLicense.Items.Add("Unlicensed");
+            teamFake.Items.Add("Yes");
+            teamHasLicensedPlayers.Items.Add("No");
+            teamHasLicensedPlayers.Items.Add("Yes");
+            teamAnthem.Items.Add("No");
+            teamAnthem.Items.Add("Yes");
+            teamType.Items.Add("Club");
+            teamType.Items.Add("National");
             //Stadium Tab
             stadiumLicense.Items.Add("Licensed");
             stadiumLicense.Items.Add("Unlicensed");
@@ -113,192 +69,276 @@ namespace DinoTem
             stadiumZone.Items.Add("Africa");
             stadiumZone.Items.Add("North America");
             stadiumZone.Items.Add("Oceania America");
+            //Caricamento Database
+            databaseBox.Items.Add("Stadium");
+
+            //ToolTip
+            toolTip1.ToolTipTitle = "DinoTem Editor";
+            toolTip1.SetToolTip(playersBox, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
+            toolTip1.SetToolTip(searchPlayer, "Write a player's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the player, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a player");
+            toolTip1.SetToolTip(searchTeamAB, "Write a team's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
+            toolTip1.SetToolTip(searchById, "Click if you want to search by id");
+            toolTip1.SetToolTip(teamView1, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
+            toolTip1.SetToolTip(teamView2, "Click to select a player" + Environment.NewLine + "Also use double click or right click for more option");
+            toolTip1.SetToolTip(searchT, "Click to search team/s" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again");
+            toolTip1.SetToolTip(searchP, "Click to search player/s" + Environment.NewLine + Environment.NewLine + "If you don't see the player, click again");
+            toolTip1.SetToolTip(teamBox1, "Click to select a team");
+            toolTip1.SetToolTip(teamBox2, "Click to select a team");
+            toolTip1.SetToolTip(giocatoreName, "Change player's name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(giocatoreShirt, "Change shirt's name" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(giocatoreNumber, "Change player's number" + Environment.NewLine + Environment.NewLine + "Press ENTER to save");
+            toolTip1.SetToolTip(giocatoreNationality, "Select player's new nationality");
+
+            toolTip1.SetToolTip(button1, "Click to search team/s" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again");
+            toolTip1.SetToolTip(searchTeam, "Write a team's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the team, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a team");
+            toolTip1.SetToolTip(teamsBox, "Click to select a team" + Environment.NewLine + "Also use double click or right click for more option");
+            toolTip1.SetToolTip(teamName, "Change team's name");
+            toolTip1.SetToolTip(teamShort, "Change short name");
+            toolTip1.SetToolTip(teamFake, "Change if the team is a fake");
+            toolTip1.SetToolTip(teamNotPlayableLeague, "Change league of team");
+            toolTip1.SetToolTip(teamFake, "Change if the team is a fake");
+            toolTip1.SetToolTip(teamLicense, "Change team's license");
+            toolTip1.SetToolTip(teamCoachLicense, "Change coach's license");
+            toolTip1.SetToolTip(teamType, "Change team's type");
+            toolTip1.SetToolTip(teamCountry, "Change team's country");
+            toolTip1.SetToolTip(teamStadium, "Change team's stadium");
+            toolTip1.SetToolTip(teamCoach, "Change team's coach");
+            toolTip1.SetToolTip(teamAnthem, "Change team's anthem");
+            toolTip1.SetToolTip(teamHasLicensedPlayers, "Change if theam has licensed players");
+            toolTip1.SetToolTip(unknown, "Change unknown value if you want test in the game");
+            toolTip1.SetToolTip(anthemStandingAngle, "Change anthem standing angle");
+            toolTip1.SetToolTip(anthemPlayersSinging, "Change anthem players singing");
+            toolTip1.SetToolTip(anthemStandingStyle, "anthem standing style");
+            toolTip1.SetToolTip(teamJapanese, "Change team's name (only Japanese language)");
+            toolTip1.SetToolTip(teamFrench, "Change team's name (only French language)");
+            toolTip1.SetToolTip(teamDutch, "Change team's name (only Dutch language)");
+            toolTip1.SetToolTip(teamSpanish, "Change team's name (only Spanish language)");
+            toolTip1.SetToolTip(teamTurkish, "Change team's name (only Turkish language)");
+            toolTip1.SetToolTip(teamSwedish, "Change team's name (only Swedish language)");
+            toolTip1.SetToolTip(teamGreek, "Change team's name (only Greek language)");
+            toolTip1.SetToolTip(teamPortuguese, "Change team's name (only Portuguese language)");
+            toolTip1.SetToolTip(teamItalian, "Change team's name (only Italian language)");
+            toolTip1.SetToolTip(teamEnglish, "Change team's name (only English language)");
+            toolTip1.SetToolTip(teamGerman, "Change team's name (only German language)");
+            toolTip1.SetToolTip(teamRussian, "Change team's name (only Russian language)");
+            toolTip1.SetToolTip(teamSpanish2, "Change team's name (only Spanish (Latin American) language)");
+            toolTip1.SetToolTip(teamPortuguese2, "Change team's name (only Portuguese (Latin American) language)");
+            toolTip1.SetToolTip(teamEnglish2, "Change team's name (only English (UK) language)");
+            toolTip1.SetToolTip(applyTeam, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(searchC, "Click to search coach/s" + Environment.NewLine + Environment.NewLine + "If you don't see the coach, click again");
+            toolTip1.SetToolTip(searchCoach, "Write a coach's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the coach, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a coach");
+            toolTip1.SetToolTip(coachBox, "Click to select a coach");
+            toolTip1.SetToolTip(allenatoreName, "Change coach's name");
+            toolTip1.SetToolTip(allenatoreJap, "Change coach's japanese name");
+            toolTip1.SetToolTip(allenatoreNationality, "Change coach's nationality");
+            toolTip1.SetToolTip(allenatoreLic, "click to get a real" + Environment.NewLine + "NOTE: only fake coaches have this option");
+            toolTip1.SetToolTip(applyCoach, "Click 'apply' if you want save the changes");
+
+            //competition
+            toolTip1.SetToolTip(applyCompEntry, "Click 'apply' if you want save the changes");
+            toolTip1.SetToolTip(applyCompetition, "Click 'apply' if you want save the changes");
+            toolTip1.SetToolTip(applyCompetitionKind, "Click 'apply' if you want save the changes");
+            toolTip1.SetToolTip(applyCompetitionRegulation, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(DataGridView_derby, "Click to select a derby");
+            toolTip1.SetToolTip(derbyKind, "Select a kind of derby");
+            toolTip1.SetToolTip(derbySlot, "Select a slot");
+            toolTip1.SetToolTip(derbyOrder, "Select a order in the file");
+            toolTip1.SetToolTip(derbyTeam1, "Select a new derby's team");
+            toolTip1.SetToolTip(derbyTeam2, "Select a new derby's team");
+            toolTip1.SetToolTip(applyDerby, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(searchS, "Click to search stadium/s" + Environment.NewLine + Environment.NewLine + "If you don't see the stadium, click again");
+            toolTip1.SetToolTip(searchStadium, "Write a stadium's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the stadium, click again ENTER" + Environment.NewLine + "" + "Note: You can also write a few letters of a stadium");
+            toolTip1.SetToolTip(stadiumsBox, "Click to select a stadium");
+            toolTip1.SetToolTip(stadiumName, "Change stadium's name");
+            toolTip1.SetToolTip(stadiumJapanese, "Change japanese name");
+            toolTip1.SetToolTip(stadiumCapacity, "Insert new stadium's capacity");
+            toolTip1.SetToolTip(stadiumCountry, "Change stadium's country");
+            toolTip1.SetToolTip(stadiumNa, "Change stadium's n/a");
+            toolTip1.SetToolTip(stadiumZone, "Change stadium's zone");
+            toolTip1.SetToolTip(stadiumLicense, "Change stadium's license");
+            toolTip1.SetToolTip(applyStadium, "Click 'apply' if you want save the changes");
+            toolTip1.SetToolTip(pasteStadiumDb, "Click this button if you want paste a stadium from a 'Database Tab'");
+
+            toolTip1.SetToolTip(DataGridView_stadium_order, "Click to select a stadium's order");
+            toolTip1.SetToolTip(DataGridView_stadium_order_in_conf, "Click to select stadium's order");
+
+            toolTip1.SetToolTip(searchB, "Click to search ball/s" + Environment.NewLine + Environment.NewLine + "If you don't see the ball, click again");
+            toolTip1.SetToolTip(searchBall, "Write a ball's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the ball, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a ball");
+            toolTip1.SetToolTip(ballsBox, "Click to select a ball");
+            toolTip1.SetToolTip(palloneName, "Change ball's name");
+            toolTip1.SetToolTip(palloneOrder, "Change order of the ball");
+            toolTip1.SetToolTip(palloneUnknowB1, "Change unknow value");
+            toolTip1.SetToolTip(palloneUnknowB2, "Change unknow value");
+            toolTip1.SetToolTip(palloneUnknowB3, "Change unknow value");
+            toolTip1.SetToolTip(palloneUnknowB4, "Change unknow value");
+            toolTip1.SetToolTip(applyBall, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(searchBo, "Click to search boot/s" + Environment.NewLine + Environment.NewLine + "If you don't see the boot, click again");
+            toolTip1.SetToolTip(searchBoot, "Write a boot's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the boot, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a ball");
+            toolTip1.SetToolTip(bootsBox, "Click to select a boot");
+            toolTip1.SetToolTip(scarpaName, "Change boot's name");
+            toolTip1.SetToolTip(scarpaOrder, "Change order of the boot");
+            toolTip1.SetToolTip(scarpaMaterial, "Change material's boot");
+            toolTip1.SetToolTip(scarpaColor, "Change color's boot");
+            toolTip1.SetToolTip(applyBoot, "Click 'apply' if you want save the changes");
+
+            toolTip1.SetToolTip(searchG, "Click to search glove/s" + Environment.NewLine + Environment.NewLine + "If you don't see the glove, click again");
+            toolTip1.SetToolTip(searchGlove, "Write a glove's name and click ENTER" + Environment.NewLine + Environment.NewLine + "If you don't see the glove, click again Enter" + Environment.NewLine + "" + "Note: You can also write a few letters of a glove");
+            toolTip1.SetToolTip(glovesBox, "Click to select a glove");
+            toolTip1.SetToolTip(guantoOrder, "Change order of the glove");
+            toolTip1.SetToolTip(guantoColor, "Change glove's color");
+            toolTip1.SetToolTip(guantoName, "Change glove's name");
+            toolTip1.SetToolTip(applyGlove, "Click 'apply' if you want save the changes");
         }
 
-        private void sfondoTeamView()
+        private void sfondoTeamView(int i)
         {
-            try
+            //i = 1 --> team1, i = 2 --> team2
+            if (i == 1)
             {
-                //colore sfondo
-                int i5 = 0;
-                int NumberOfRepetitions5 = Convert.ToInt32(10);
-                for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
+                try
                 {
-                    teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[0].UseItemStyleForSubItems = false;
-                }
-            }
-            catch {}
-
-            try
-            {
-                //colore sfondo
-                int i5 = 0;
-                int NumberOfRepetitions5 = Convert.ToInt32(10);
-                for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
-                {
-                    teamView2.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView2.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView2.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView2.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView2.Items[0].UseItemStyleForSubItems = false;
-                }
-            }
-            catch {}
-
-            try
-            {
-                //tutti in numeri in nero
-                string numeri = "";
-                int i6 = 0;
-                int NumberOfRepetitions6 = Convert.ToInt32(teamView1.Items.Count);
-                for (i6 = 1; i6 <= NumberOfRepetitions6; i6++)
-                {
-                    teamView1.Items[i6 - 1].SubItems[3].ForeColor = SystemColors.WindowText;
-
-                    //vedere se ci sono numeri uguali
-                    numeri = numeri + teamView1.Items[i6 - 1].SubItems[3].Text + ",";
-                }
-
-                //TeamA
-                numeri = numeri.Substring(0, numeri.Length - 1);
-                string[] words = numeri.Split(',');
-
-                foreach (string word in words)
-                {
-                    int numero = 0;
-                    int i4 = 0;
-                    int NumberOfRepetitions4 = Convert.ToInt32(words.Length);
-                    for (i4 = 1; i4 <= NumberOfRepetitions4; i4++)
+                    //colore sfondo
+                    int i5 = 0;
+                    int NumberOfRepetitions5 = Convert.ToInt32(10);
+                    for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
                     {
-                        if (word == words[i4 - 1])
+                        teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView1.Items[0].UseItemStyleForSubItems = false;
+                    }
+                }
+                catch { }
+
+                /*try
+                {
+                    //tutti in numeri in nero
+                    string numeri = "";
+                    int i6 = 0;
+                    int NumberOfRepetitions6 = Convert.ToInt32(teamView1.Items.Count);
+                    for (i6 = 1; i6 <= NumberOfRepetitions6; i6++)
+                    {
+                        teamView1.Items[i6 - 1].SubItems[3].ForeColor = SystemColors.WindowText;
+
+                        //vedere se ci sono numeri uguali
+                        numeri = numeri + teamView1.Items[i6 - 1].SubItems[3].Text + ",";
+                    }
+
+                    //TeamA
+                    numeri = numeri.Substring(0, numeri.Length - 1);
+                    string[] words = numeri.Split(',');
+
+                    foreach (string word in words)
+                    {
+                        int numero = 0;
+                        int i4 = 0;
+                        int NumberOfRepetitions4 = Convert.ToInt32(words.Length);
+                        for (i4 = 1; i4 <= NumberOfRepetitions4; i4++)
                         {
-                            numero = numero + 1;
-                            if (numero > 1)
+                            if (word == words[i4 - 1])
                             {
-                                //cambiare il primo numero uguale
-                                int i2 = 0;
-                                int NumberOfRepetitions2 = Convert.ToInt32(teamView1.Items.Count);
-                                for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
+                                numero = numero + 1;
+                                if (numero > 1)
                                 {
-                                    if (word == teamView1.Items[i2 - 1].SubItems[3].Text)
+                                    //cambiare il primo numero uguale
+                                    int i2 = 0;
+                                    int NumberOfRepetitions2 = Convert.ToInt32(teamView1.Items.Count);
+                                    for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
                                     {
-                                        teamView1.Items[i2 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
-                                        teamView1.Items[i2 - 1].UseItemStyleForSubItems = false;
+                                        if (word == teamView1.Items[i2 - 1].SubItems[3].Text)
+                                        {
+                                            teamView1.Items[i2 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
+                                            teamView1.Items[i2 - 1].UseItemStyleForSubItems = false;
+                                        }
                                     }
+                                    //numero
+                                    teamView1.Items[i4 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
+                                    teamView1.Items[i4 - 1].UseItemStyleForSubItems = false;
                                 }
-                                //numero
-                                teamView1.Items[i4 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
-                                teamView1.Items[i4 - 1].UseItemStyleForSubItems = false;
                             }
                         }
                     }
+                    //
                 }
-                //
+                catch { }*/
             }
-            catch {}
 
-            try
+            if (i == 2)
             {
-                //tutti in numeri in nero
-                string numeri1 = "";
-                int i7 = 0;
-                int NumberOfRepetitions7 = Convert.ToInt32(teamView2.Items.Count);
-                for (i7 = 1; i7 <= NumberOfRepetitions7; i7++)
+                try
                 {
-                    teamView2.Items[i7 - 1].SubItems[3].ForeColor = SystemColors.WindowText;
-
-                    //vedere se ci sono numeri uguali
-                    numeri1 = numeri1 + teamView2.Items[i7 - 1].SubItems[3].Text + ",";
-                }
-
-                //TeamB
-                numeri1 = numeri1.Substring(0, numeri1.Length - 1);
-                string[] words1 = numeri1.Split(',');
-
-                foreach (string word in words1)
-                {
-                    int numero1 = 0;
-                    int i4 = 0;
-                    int NumberOfRepetitions4 = Convert.ToInt32(words1.Length);
-                    for (i4 = 1; i4 <= NumberOfRepetitions4; i4++)
+                    //colore sfondo
+                    int i5 = 0;
+                    int NumberOfRepetitions5 = Convert.ToInt32(10);
+                    for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
                     {
-                        if (word == words1[i4 - 1])
+                        teamView2.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView2.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView2.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView2.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                        teamView2.Items[0].UseItemStyleForSubItems = false;
+                    }
+                }
+                catch { }
+
+                /*try
+                {
+                    //tutti in numeri in nero
+                    string numeri1 = "";
+                    int i7 = 0;
+                    int NumberOfRepetitions7 = Convert.ToInt32(teamView2.Items.Count);
+                    for (i7 = 1; i7 <= NumberOfRepetitions7; i7++)
+                    {
+                        teamView2.Items[i7 - 1].SubItems[3].ForeColor = SystemColors.WindowText;
+
+                        //vedere se ci sono numeri uguali
+                        numeri1 = numeri1 + teamView2.Items[i7 - 1].SubItems[3].Text + ",";
+                    }
+
+                    //TeamB
+                    numeri1 = numeri1.Substring(0, numeri1.Length - 1);
+                    string[] words1 = numeri1.Split(',');
+
+                    foreach (string word in words1)
+                    {
+                        int numero1 = 0;
+                        int i4 = 0;
+                        int NumberOfRepetitions4 = Convert.ToInt32(words1.Length);
+                        for (i4 = 1; i4 <= NumberOfRepetitions4; i4++)
                         {
-                            numero1 = numero1 + 1;
-                            if (numero1 > 1)
+                            if (word == words1[i4 - 1])
                             {
-                                //cambiare il primo numero uguale
-                                int i2 = 0;
-                                int NumberOfRepetitions2 = Convert.ToInt32(teamView2.Items.Count);
-                                for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
+                                numero1 = numero1 + 1;
+                                if (numero1 > 1)
                                 {
-                                    if (word == teamView2.Items[i2 - 1].SubItems[3].Text)
+                                    //cambiare il primo numero uguale
+                                    int i2 = 0;
+                                    int NumberOfRepetitions2 = Convert.ToInt32(teamView2.Items.Count);
+                                    for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
                                     {
-                                        teamView2.Items[i2 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
-                                        teamView2.Items[i2 - 1].UseItemStyleForSubItems = false;
+                                        if (word == teamView2.Items[i2 - 1].SubItems[3].Text)
+                                        {
+                                            teamView2.Items[i2 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
+                                            teamView2.Items[i2 - 1].UseItemStyleForSubItems = false;
+                                        }
                                     }
+                                    //numero
+                                    teamView2.Items[i4 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
+                                    teamView2.Items[i4 - 1].UseItemStyleForSubItems = false;
                                 }
-                                //numero
-                                teamView2.Items[i4 - 1].SubItems[3].ForeColor = System.Drawing.Color.Red;
-                                teamView2.Items[i4 - 1].UseItemStyleForSubItems = false;
                             }
                         }
                     }
+                    //
                 }
-                //
+                catch { }*/
             }
-            catch {}
-        }
 
-        //form che si sta chiudendo
-        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Do you really want to quit?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).Equals(DialogResult.No))
-                e.Cancel = true;
-            else
-            {
-                DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Temp");
-                foreach (FileInfo file in di.GetFiles())
-                    file.Delete();
-                e.Cancel = false;
-                SplashScreen._SplashScreen.Close();
-            }
-        }
-
-        //readme.txt
-        private void readme_Click(object sender, EventArgs e)
-        {
-            Process.Start(Application.StartupPath + "/readme.txt");
-        }
-
-        //close
-        private void close_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        //update
-        private void checkForUpdate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                //verifico aggiornamenti
-                if (new Updated().verificoAssembler() != new Updated().verificoVersioneAggiornata())
-                {
-                    Update forma = new Update();
-                    forma.Show();
-
-                    forma.label3.Text = new Updated().verificoAssembler();
-                    forma.label4.Text = new Updated().verificoVersioneAggiornata();
-                }
-            }
-            catch {
-                MessageBox.Show("Control the internet access" + chACapo + chACapo + "Access impossible to internet", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
         }
 
         private FolderBrowserDialog fbd;
@@ -322,242 +362,286 @@ namespace DinoTem
             DialogResult result = fbd.ShowDialog();
             if (result == DialogResult.OK)
             {
-                controller.openDatabase(fbd.SelectedPath, teamBox1, teamBox2, teamsBox, stadiumsBox, ballsBox, teamCountry, stadiumCountry, teamStadium, giocatoreView, Form1._Form1);
+                controller.openDatabase(fbd.SelectedPath, Form1._Form1);
 
                 //abilitare i controlli
                 tabControl1.Enabled = true;
                 //Menu a tendina
                 save.Enabled = true;
-                import.Enabled = true;
+                //import.Enabled = true;
                 export.Enabled = true;
                 removeFakeTeam.Enabled = true;
                 removeFakeClassicPlayer.Enabled = true;
                 reload.Enabled = true;
                 loadFootballManager.Enabled = true;
-                openDB2.Enabled = true;
+                addNewBall.Enabled = true;
+                addNewBoot.Enabled = true;
+                addNewCoach.Enabled = true;
+                addNewDerby.Enabled = true;
+                addNewGlove.Enabled = true;
+                addNewPlayer.Enabled = true;
+                addNewStadium.Enabled = true;
+                addNewTeam.Enabled = true;
             }
         }
 
         //reload
         private void reload_Click(object sender, EventArgs e)
         {
-            controller.openDatabase(fbd.SelectedPath, teamBox1, teamBox2, teamsBox, stadiumsBox, ballsBox, teamCountry, stadiumCountry, teamStadium, giocatoreView, Form1._Form1);
+            controller.openDatabase(fbd.SelectedPath, Form1._Form1);
         }
 
-        //ricerca giocatori (invio)
-        private void giocatoreSearch_KeyPress(object sender, KeyPressEventArgs e)
+        //form che si sta chiudendo
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                UtilGUI.giocatoreSearch(giocatoreView, searchPlayer);
-            }
-        }
-
-        private void search_Click(object sender, EventArgs e)
-        {
-            UtilGUI.giocatoreSearch(giocatoreView, searchPlayer);
-        }
-
-        private void giocatoreSearch_Click(object sender, EventArgs e)
-        {
-            searchPlayer.SelectAll();
-            searchPlayer.Focus();
-        }
-
-        //ricerca squadre A/B
-        private void searchTeamAB_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                if ((searchTeamAB.Text.StartsWith("A-") || searchTeamAB.Text.StartsWith("a-")) && searchTeamAB.Text.Length > 2)
-                    UtilGUI.comboBoxSearch(teamBox1, searchTeamAB);
-                else if ((searchTeamAB.Text.StartsWith("B-") || searchTeamAB.Text.StartsWith("b-")) && searchTeamAB.Text.Length > 2)
-                    UtilGUI.comboBoxSearch(teamBox2, searchTeamAB);
-                else
-                    MessageBox.Show("Invalid syntax!" + chACapo + "Example: A-london for Team A" + chACapo + "Example: a-london for Team A" + chACapo + "Example 2: B-juve for Team B" + chACapo + "Example 2: b-juve for Team B", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void searchTeamAB_Click(object sender, EventArgs e)
-        {
-            searchTeamAB.SelectAll();
-            searchTeamAB.Focus();
-        }
-
-        private void searchT_Click(object sender, EventArgs e)
-        {
-            if ((searchTeamAB.Text.StartsWith("A-") || searchTeamAB.Text.StartsWith("a-")) && searchTeamAB.Text.Length > 2)
-                UtilGUI.comboBoxSearch(teamBox1, searchTeamAB);
-            else if ((searchTeamAB.Text.StartsWith("B-") || searchTeamAB.Text.StartsWith("b-")) && searchTeamAB.Text.Length > 2)
-                UtilGUI.comboBoxSearch(teamBox2, searchTeamAB);
+            if (MessageBox.Show("Do you really want to quit?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).Equals(DialogResult.No))
+                e.Cancel = true;
             else
-                MessageBox.Show("Invalid syntax!" + chACapo + "Example: A-london for Team A" + chACapo + "Example: a-london for Team A" + chACapo + "Example 2: B-juve for Team B" + chACapo + "Example 2: b-juve for Team B", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
-
-        //ricerca squadre (invio)
-        private void SearchSquadre_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
             {
-                UtilGUI.listBoxSearch(teamsBox, searchTeam);
+                DirectoryInfo di = new DirectoryInfo(Application.StartupPath + @"\Temp");
+                foreach (FileInfo file in di.GetFiles())
+                    file.Delete();
+                e.Cancel = false;
+                controller.closeMemory();
+                SplashScreen._SplashScreen.Close();
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        //ball
+        private void ballsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UtilGUI.listBoxSearch(teamsBox, searchTeam);
+            if (ballsBox.SelectedIndex < 0)
+                return;
+
+            //pulire i campi
+            palloneName.Text = "";
+            palloneID.Text = "";
+            palloneOrder.Text = "";
+            palloneUnknowB1.Text = "";
+            palloneUnknowB2.Text = "";
+            palloneUnknowB3.Text = "";
+            palloneUnknowB4.Text = "";
+            palloneUnknowB1.Enabled = false;
+            palloneUnknowB2.Enabled = false;
+            palloneUnknowB3.Enabled = false;
+            palloneUnknowB4.Enabled = false;
+
+            Ball pallone = controller.leggiPallone(ballsBox.SelectedIndex);
+            palloneID.Text = pallone.getId().ToString();
+            palloneName.Text = pallone.getName();
+            palloneOrder.Text = pallone.getOrder().ToString();
+
+            List<BallCondition> ballCondition = controller.leggiCondizioniPalloni(pallone.getId());
+            controller.getBallConditionById(ballCondition, palloneUnknowB1, palloneUnknowB2, palloneUnknowB3, palloneUnknowB4);
         }
 
-        private void SearchSquadre_Click(object sender, EventArgs e)
+        private void applyBall_Click(object sender, EventArgs e)
         {
-            searchTeam.SelectAll();
-            searchTeam.Focus();
-        }
-
-        //ricerca palloni
-        private void textBox3_Click(object sender, EventArgs e)
-        {
-            searchBall.SelectAll();
-            searchBall.Focus();
-        }
-
-        private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (ballsBox.SelectedIndex >= 0)
             {
-                UtilGUI.listBoxSearch(ballsBox, searchBall);
+                Ball pallone = new Ball(ushort.Parse(palloneID.Text));
+                pallone.setName(palloneName.Text);
+                pallone.setOrder(byte.Parse(palloneOrder.Text));
+                controller.applyBallPersister(ballsBox.SelectedIndex, pallone);
+                List<BallCondition> ba = controller.leggiCondizioniPalloni(pallone.getId());
+                if (ba.Count == 1)
+                    controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), 0, 0, 0, ba);
+                else if (ba.Count == 2)
+                    controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), byte.Parse(palloneUnknowB2.Text), 0, 0, ba);
+                else if (ba.Count == 3)
+                    controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), byte.Parse(palloneUnknowB2.Text), byte.Parse(palloneUnknowB3.Text), 0, ba);
+                else if (ba.Count == 4)
+                    controller.applyBallConditionPersister(byte.Parse(palloneUnknowB1.Text), byte.Parse(palloneUnknowB2.Text), byte.Parse(palloneUnknowB3.Text), byte.Parse(palloneUnknowB4.Text), ba);
+
+                //Update listbox
+                ballsBox.Items[ballsBox.SelectedIndex] = palloneName.Text;
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        //glove
+        private void glovesBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UtilGUI.listBoxSearch(ballsBox, searchBall);
+            if (glovesBox.SelectedIndex < 0)
+                return;
+
+            //pulire i campi
+            guantoName.Text = "";
+            guantoID.Text = "";
+            guantoOrder.Text = "";
+            guantoColor.Text = "";
+
+            Glove guanto = controller.leggiGuanto(glovesBox.SelectedIndex);
+            guantoID.Text = guanto.getId().ToString();
+            guantoName.Text = guanto.getName();
+            guantoOrder.Text = guanto.getOrder().ToString();
+            guantoColor.Text = guanto.getColor();
         }
 
-        //ricerca stadi
-        private void searchStadium_Click(object sender, EventArgs e)
+        private void applyGlove_Click(object sender, EventArgs e)
         {
-            searchStadium.SelectAll();
-            searchStadium.Focus();
-        }
-
-        private void searchStadium_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
+            if (glovesBox.SelectedIndex >= 0)
             {
-                UtilGUI.listBoxSearch(stadiumsBox, searchStadium);
+                Glove glove = new Glove(ushort.Parse(guantoID.Text));
+                glove.setName(guantoName.Text);
+                glove.setOrder(byte.Parse(guantoOrder.Text));
+                glove.setColor(guantoColor.Text);
+                controller.applyGlovePersister(glovesBox.SelectedIndex, glove);
+
+                //Update listbox
+                glovesBox.Items[glovesBox.SelectedIndex] = guantoName.Text;
             }
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        //boot
+        private void bootsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UtilGUI.listBoxSearch(stadiumsBox, searchStadium);
+            if (bootsBox.SelectedIndex < 0)
+                return;
+
+            //pulire i campi
+            scarpaName.Text = "";
+            scarpaID.Text = "";
+            scarpaOrder.Text = "";
+            scarpaColor.Text = "";
+            scarpaMaterial.Text = "";
+
+            Boot scarpa = controller.leggiScarpa(bootsBox.SelectedIndex);
+            scarpaID.Text = scarpa.getId().ToString();
+            scarpaName.Text = scarpa.getName();
+            scarpaOrder.Text = scarpa.getOrder().ToString();
+            scarpaColor.Text = scarpa.getColor();
+            scarpaMaterial.Text = scarpa.getMaterial();
         }
 
-        //non far inserire lettere
-        private void giocatoreNumber_KeyPress(object sender, KeyPressEventArgs e)
+        private void bootApply_Click(object sender, EventArgs e)
         {
-            if ((e.KeyChar != (char)Keys.Back) & (!char.IsNumber(e.KeyChar.ToString(), 0)))
-                e.Handled = true;
-        }
-
-        private ListViewItem Leggere_GiocatoreSquadre(PlayerAssignment pAssignment)
-        {
-            ListViewItem item = new ListViewItem();
-            Player temp2 = (Player)controller.getPlayerById(pAssignment.getPlayerId());
-
-            item = new ListViewItem((pAssignment.getOrder() + 1).ToString());
-            item.SubItems.Add(temp2.getStringPosition());
-            item.SubItems.Add(temp2.getPlayerName());
-            item.SubItems.Add(pAssignment.getShirtNumber().ToString());
-
-            return item;
-        }
-
-        private void Leggere_Formazioni(List<TacticsFormation> position, ListView list)
-        {
-            int k = 0;
-            foreach (TacticsFormation temp in position) {
-                if (k <= 10) {
-                    list.Items[k].SubItems[1].Text = temp.getStringPosition();
-                }
-                k++;
-            }
-        }
-
-        //selezionare Team A
-        private void teamBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            teamView1.Items.Clear();
-
-            //caricare giocatori nella squadra
-            Team temp = (Team)teamBox1.SelectedItem;
-
-            List<PlayerAssignment> SortedList = controller.getPlayersTeam(temp.getId());
-            SortedList.Sort((x, y) => x.getOrder().CompareTo(y.getOrder()));
-            controller.orderPlayerInTeam2(SortedList); //vedere se l'ordine è 1,2,3..
-            foreach (PlayerAssignment temp2 in SortedList)
+            if (bootsBox.SelectedIndex >= 0)
             {
-                teamView1.Items.Add(Leggere_GiocatoreSquadre(temp2)); //Add this row to the ListView
-            }
+                Boot boot = new Boot(ushort.Parse(scarpaID.Text));
+                boot.setName(scarpaName.Text);
+                boot.setOrder(byte.Parse(scarpaOrder.Text));
+                boot.setColor(scarpaColor.Text);
+                boot.setMaterial(scarpaMaterial.Text);
+                controller.applyBootPersister(bootsBox.SelectedIndex, boot);
 
-            //caricare posizioni giocatori
-            if (teamView1.Items.Count > 10)
-            {
-                if (controller.getNumberFormation(temp.getId()).Count > 0)
-                {
-                    List<TacticsFormation> position = controller.getPositionTeam(controller.getNumberFormation(temp.getId())[0]);
-                    Leggere_Formazioni(position, teamView1);
-                }
+                //Update listbox
+                bootsBox.Items[bootsBox.SelectedIndex] = scarpaName.Text;
             }
-
-            sfondoTeamView();
         }
 
-        //selezionare Team B
-        private void teamBox2_SelectedIndexChanged(object sender, EventArgs e)
+        //stadium
+        private void stadiumsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            teamView2.Items.Clear();
+            if (stadiumsBox.SelectedIndex < 0)
+                return;
 
-            //caricare giocatori nella squadra
-            Team temp = (Team)teamBox2.SelectedItem;
+            //pulire campi
+            stadiumName.Text = "";
+            stadiumId.Text = "";
+            stadiumJapanese.Text = "";
+            stadiumCapacity.Text = "";
+            stadiumNa.Text = "";
 
-            List<PlayerAssignment> SortedList = controller.getPlayersTeam(temp.getId());
-            SortedList.Sort((x, y) => x.getOrder().CompareTo(y.getOrder()));
-            controller.orderPlayerInTeam2(SortedList); //vedere se l'ordine è 1,2,3..
-            foreach (PlayerAssignment x in SortedList)
-            {
-                teamView2.Items.Add(Leggere_GiocatoreSquadre(x)); //Add this row to the ListView
-            }
-
-            //caricare posizioni giocatori
-            if (teamView2.Items.Count > 10)
-            {
-                if (controller.getNumberFormation(temp.getId()).Count > 0)
-                {
-                    List<TacticsFormation> position = controller.getPositionTeam(controller.getNumberFormation(temp.getId())[0]);
-                    Leggere_Formazioni(position, teamView2);
-                }
-            }
-
-            sfondoTeamView();
+            Stadium stadio = controller.leggiStadium(stadiumsBox.SelectedIndex);
+            stadiumName.Text = stadio.getName();
+            stadiumId.Text = stadio.getId().ToString();
+            stadiumJapanese.Text = stadio.getJapaneseName();
+            stadiumCapacity.Text = stadio.getCapacity().ToString();
+            stadiumNa.Text = stadio.getNa().ToString();
+            stadiumZone.Text = stadio.getStringZone();
+            stadiumLicense.Text = stadio.getStringLicense();
+            stadiumCountry.SelectedIndex = controller.findCountry(stadio.getCountry());
+            stadiumKonami.Text = stadio.getKonamiName();
         }
 
-        private void Leggere_Giocatore(Player temp)
+        private void applyStadium_Click(object sender, EventArgs e)
+        {
+            if (stadiumsBox.SelectedIndex >= 0)
+            {
+                Stadium stadium = new Stadium(ushort.Parse(stadiumId.Text));
+                stadium.setCapacity(uint.Parse(stadiumCapacity.Text));
+                stadium.setCountry(controller.leggiPaese(stadiumCountry.SelectedIndex).getId());
+                stadium.setJapaneseName(stadiumJapanese.Text);
+                if (stadiumLicense.Text.Equals("Licensed"))
+                    stadium.setLicense(0);
+                stadium.setNa(ushort.Parse(stadiumNa.Text));
+                stadium.setName(stadiumName.Text);
+                stadium.setZone(byte.Parse((stadiumZone.SelectedIndex + 2).ToString()));
+                stadium.setKonamiName(stadiumKonami.Text);
+                controller.applyStadiumPersister(stadiumsBox.SelectedIndex, stadium);
+
+                //Update listbox
+                stadiumsBox.Items[stadiumsBox.SelectedIndex] = stadiumName.Text;
+                teamStadium.Items[stadiumsBox.SelectedIndex] = stadiumName.Text;
+            }
+        }
+
+        //coach
+        private void coachBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (coachBox.SelectedIndex < 0)
+                return;
+
+            //pulire campi
+            allenatoreId.Text = "";
+            allenatoreName.Text = "";
+            allenatoreJap.Text = "";
+            allenatoreLic.Checked = false;
+
+            Coach allenatore = controller.leggiCoach(coachBox.SelectedIndex);
+            allenatoreId.Text = allenatore.getId().ToString();
+            allenatoreName.Text = allenatore.getName();
+            allenatoreJap.Text = allenatore.getJapName();
+            allenatoreNationality.SelectedIndex = controller.findCountry(allenatore.getCountry());
+            if (allenatore.getByteLic() != 0)
+                allenatoreLic.Visible = true;
+            else
+                allenatoreLic.Visible = false;
+        }
+
+        private void applyCoach_Click(object sender, EventArgs e)
+        {
+            if (coachBox.SelectedIndex >= 0)
+            {
+                Coach coach = new Coach(uint.Parse(allenatoreId.Text));
+                coach.setJapName(allenatoreJap.Text);
+                coach.setCountry((ushort) controller.leggiPaese(allenatoreNationality.SelectedIndex).getId());
+                coach.setName(allenatoreName.Text);
+                if (allenatoreLic.Checked == true)
+                    coach.setByteLic(0);
+                else
+                    coach.setByteLic(1);
+                controller.applyCoachPersister(coachBox.SelectedIndex, coach);
+
+                //Update listbox
+                coachBox.Items[coachBox.SelectedIndex] = allenatoreName.Text;
+                teamCoach.Items[coachBox.SelectedIndex] = allenatoreName.Text;
+            }
+        }
+
+        private void allenatoriLic_CheckedChanged(object sender, EventArgs e)
+        {
+            if (coachBox.SelectedIndex >= 0)
+            {
+                Coach allenatore = controller.leggiCoach(coachBox.SelectedIndex);
+                allenatoreId.Text = allenatore.getCoachLicId().ToString();
+            }
+        }
+
+        //player
+        private void leggereGiocatore(Player temp)
         {
             giocatoreNazionale.Text = "";
-            giocatoreNazionalità.Text = "";
             giocatoreSquadra.Text = "";
             giocatoreNumber.Text = "";
 
-            giocatoreName.Text = temp.getPlayerName();
+            giocatoreName.Text = temp.getName();
             giocatoreShirt.Text = temp.getShirtName();
             giocatoreID.Text = temp.getId().ToString();
             giocatoreType.Text = temp.getStringFake();
             giocatoreAge.Text = temp.getAge().ToString();
             giocatoreWeight.Text = temp.getWeight().ToString();
             giocatoreHeight.Text = temp.getHeight().ToString();
-            giocatoreNazionalità.Text = temp.getNational().ToString();
             giocatoreForm.Text = temp.getForm().ToString();
             giocatoreAcc.Text = temp.getWeakFootAcc().ToString();
             giocatoreUse.Text = temp.getWcUsage().ToString();
@@ -577,7 +661,7 @@ namespace DinoTem
             kickingPower.Text = temp.getKickingPower().ToString();
             speed.Text = temp.getSpeed().ToString();
             explosivePower.Text = temp.getExplosiveP().ToString();
-            bodyControll.Text = temp.getBodyControll().ToString();
+            bodyControll.Text = temp.getBodyControl().ToString();
             physical.Text = temp.getPhysical().ToString();
             jump.Text = temp.getJump().ToString();
             stamina.Text = temp.getStamina().ToString();
@@ -586,29 +670,283 @@ namespace DinoTem
             clearing.Text = temp.getClearing().ToString();
             reflexes.Text = temp.getReflexes().ToString();
             coverage.Text = temp.getCoverage().ToString();
-            if (temp.getStrongerFoot())
-                giocatoreFoot.Text = "Left";
-            else
-                giocatoreFoot.Text = "Right";
+            giocatoreFoot.Text = temp.getStringStrongerFoot();
             giocatoreSquadra.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 0);
             giocatoreNazionale.Text = controller.getStringClubTeamOfPlayer(temp.getId(), 1);
-            controller.getCountryMap().GetType();
-            Country value;
-            if (!controller.getCountryMap().TryGetValue((long)temp.getNational(), out value))
-                throw new ArgumentException("id country not found");
+            giocatoreNationality.SelectedIndex = controller.findCountry(temp.getNational());
 
-            giocatoreNazionalità.Text = value.getNationality();
+            //controllerFm
+            controllerFm.setPlayer(temp);
         }
 
-        //selezionare un giocatore da giocatoreView
-        private void giocatoreView_SelectedIndexChanged(object sender, EventArgs e)
+        private void playersBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (giocatoreView.SelectedIndices.Count <= 0)
+            if (playersBox.SelectedIndex < 0)
                 return;
 
-            int intselectedindex = giocatoreView.SelectedIndices[0];
-            if (intselectedindex >= 0)
-                Leggere_Giocatore(controller.getPlayerById(intselectedindex)); //leggo giocatore
+            leggereGiocatore(controller.leggiGiocatore(playersBox.SelectedIndex));
+            team = 0;
+        }
+
+        //team
+        private void teamsBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (teamsBox.SelectedIndex < 0)
+                return;
+
+            //pulire campi
+            teamDutch.Text = "";
+            teamEnglish.Text = "";
+            teamEnglish2.Text = "";
+            teamFrench.Text = "";
+            teamGerman.Text = "";
+            teamGreek.Text = "";
+            teamItalian.Text = "";
+            teamPortuguese.Text = "";
+            teamPortuguese2.Text = "";
+            teamRussian.Text = "";
+            teamSpanish.Text = "";
+            teamSpanish2.Text = "";
+            teamSwedish.Text = "";
+            teamTurkish.Text = "";
+
+            Team team = controller.leggiSquadra(teamsBox.SelectedIndex);
+            teamName.Text = team.getEnglish();
+            teamJapanese.Text = team.getJapanese();
+            teamID.Text = team.getId().ToString();
+            teamShort.Text = team.getShortSquadra();
+                
+            teamLicense.Text = team.getStringLicensedTeam();
+            teamType.Text = team.getStringNational();
+            teamFake.Text = team.getStringFakeTeam();
+            teamCoachLicense.Text = team.getStringLicensedCoach();
+            teamCoach.SelectedIndex = controller.findCoach(team.getManagerId());
+            teamNotPlayableLeague.Text = team.getStringNotPlayableLeague();
+            teamStadium.SelectedIndex = controller.findStadium(team.getStadiumId());
+            teamHasLicensedPlayers.Text = team.getStringHasLicensedPlayers();
+            teamAnthem.Text = team.getStringHasAnthem();
+            teamKonami.Text = team.getKonami();
+            anthemStandingAngle.Value = team.getAnthemStandingAngle();
+            anthemPlayersSinging.Value = team.getAnthemPlayersSinging();
+            anthemStandingStyle.Value = team.getAnthemStandingStyle();
+
+            if (team.getUnknown6() == 1)
+                unknown.Checked = true;
+            else
+                unknown.Checked = false;
+
+            if (team.getNational() == 1)
+            {
+                National temp2 = (National)team;
+                teamDutch.Enabled = true;
+                teamEnglish.Enabled = true;
+                teamEnglish2.Enabled = true;
+                teamFrench.Enabled = true;
+                teamGerman.Enabled = true;
+                teamGreek.Enabled = true;
+                teamItalian.Enabled = true;
+                teamPortuguese.Enabled = true;
+                teamPortuguese2.Enabled = true;
+                teamRussian.Enabled = true;
+                teamSpanish.Enabled = true;
+                teamSpanish2.Enabled = true;
+                teamSwedish.Enabled = true;
+                teamTurkish.Enabled = true;
+                teamDutch.Text = temp2.getDutch();
+                teamEnglish.Text = temp2.getEnglish();
+                teamEnglish2.Text = temp2.getEnglishUS();
+                teamFrench.Text = temp2.getFrench();
+                teamGerman.Text = temp2.getGerman();
+                teamGreek.Text = temp2.getGreek();
+                teamItalian.Text = temp2.getItalian();
+                teamPortuguese.Text = temp2.getPortuguese();
+                teamPortuguese2.Text = temp2.getBrazilianPortuguese();
+                teamRussian.Text = temp2.getRussian();
+                teamSpanish.Text = temp2.getSpanish();
+                teamSpanish2.Text = temp2.getLatinAmericaSpanish();
+                teamSwedish.Text = temp2.getSwedish();
+                teamTurkish.Text = temp2.getTurkish();
+            }
+            else
+            {
+                teamDutch.Enabled = false;
+                teamEnglish.Enabled = false;
+                teamEnglish2.Enabled = false;
+                teamFrench.Enabled = false;
+                teamGerman.Enabled = false;
+                teamGreek.Enabled = false;
+                teamItalian.Enabled = false;
+                teamPortuguese.Enabled = false;
+                teamPortuguese2.Enabled = false;
+                teamRussian.Enabled = false;
+                teamSpanish.Enabled = false;
+                teamSpanish2.Enabled = false;
+                teamSwedish.Enabled = false;
+                teamTurkish.Enabled = false;
+            }
+            teamCountry.SelectedIndex = controller.findCountry(team.getCountry());
+
+        }
+
+        private void applyTeam_Click(object sender, EventArgs e)
+        {
+            if (teamsBox.SelectedIndex >= 0)
+            {
+                Team team = null;
+                if (teamType.Text == "Club")
+                    team = new Club(uint.Parse(teamID.Text));
+                else
+                    team = new National(uint.Parse(teamID.Text));
+                team.setAnthemPlayersSinging(uint.Parse(anthemPlayersSinging.Value.ToString()));
+                team.setAnthemStandingAngle(uint.Parse(anthemStandingAngle.Value.ToString()));
+                team.setAnthemStandingStyle(uint.Parse(anthemStandingStyle.Value.ToString()));
+                team.setCountry((ushort)controller.leggiPaese(teamCountry.SelectedIndex).getId());
+                if (teamFake.Text == "Yes")
+                    team.setFakeTeam(1);
+                else
+                    team.setFakeTeam(0);
+                //team.setFeederTeamId();
+                team.setHasAnthem(uint.Parse(teamAnthem.SelectedIndex.ToString()));
+                team.setHasLicensedPlayers(uint.Parse(teamHasLicensedPlayers.SelectedIndex.ToString()));
+                team.setLicensedCoach(uint.Parse(teamCoachLicense.SelectedIndex.ToString()));
+                team.setLicensedCoach2(uint.Parse(teamCoachLicense.SelectedIndex.ToString()));
+                team.setLicensedTeam(uint.Parse(teamLicense.SelectedIndex.ToString()));
+                team.setNational(uint.Parse(teamType.SelectedIndex.ToString()));
+                team.setManagerId(controller.leggiCoach(teamCoach.SelectedIndex).getId());
+                team.setNotPlayableLeague(uint.Parse(teamNotPlayableLeague.SelectedIndex.ToString()));
+                //team.setParentTeamId
+                team.setShortSquadra(teamShort.Text);
+                team.setStadiumId((ushort)controller.leggiStadium(teamStadium.SelectedIndex).getId());
+                if (unknown.Checked == true)
+                    team.setUnknown6(1);
+                else
+                    team.setUnknown6(0);
+                if (team.getNational() == 1)
+                {
+                    if (teamName.Text != controller.leggiSquadra(teamsBox.SelectedIndex).getEnglish())
+                    {
+                        teamJapanese.Text = teamName.Text;
+                        teamDutch.Text = teamName.Text;
+                        teamEnglish.Text = teamName.Text;
+                        teamEnglish2.Text = teamName.Text;
+                        teamFrench.Text = teamName.Text;
+                        teamGerman.Text = teamName.Text;
+                        teamGreek.Text = teamName.Text;
+                        teamItalian.Text = teamName.Text;
+                        teamPortuguese.Text = teamName.Text;
+                        teamPortuguese2.Text = teamName.Text;
+                        teamRussian.Text = teamName.Text;
+                        teamSpanish.Text = teamName.Text;
+                        teamSpanish2.Text = teamName.Text;
+                        teamSwedish.Text = teamName.Text;
+                        teamTurkish.Text = teamName.Text;
+                    }
+
+                    National temp2 = (National)team;
+                    temp2.setDutch(teamDutch.Text);
+                    team.setEnglish(teamEnglish.Text);
+                    temp2.setEnglishUS(teamEnglish2.Text);
+                    temp2.setFrench(teamFrench.Text);
+                    temp2.setGerman(teamGerman.Text);
+                    temp2.setGreek(teamGreek.Text);
+                    temp2.setItalian(teamItalian.Text);
+                    temp2.setPortuguese(teamPortuguese.Text);
+                    temp2.setBrazilianPortuguese(teamPortuguese2.Text);
+                    temp2.setRussian(teamRussian.Text);
+                    temp2.setSpanish(teamSpanish.Text);
+                    temp2.setLatinAmericaSpanish(teamSpanish2.Text);
+                    temp2.setSwedish(teamSwedish.Text);
+                    temp2.setTurkish(teamTurkish.Text);
+                    team.setJapanese(teamJapanese.Text);
+                }
+                else
+                {
+                    if (teamName.Text != controller.leggiSquadra(teamsBox.SelectedIndex).getEnglish())
+                    {
+                        teamJapanese.Text = teamName.Text;
+                        teamEnglish.Text = teamName.Text;
+                    }
+
+                    team.setEnglish(teamName.Text);
+                    team.setJapanese(teamJapanese.Text);
+                }
+                team.setKonami(teamKonami.Text);
+
+                controller.applyTeamPersister(teamsBox.SelectedIndex, team);
+
+                //Update listbox
+                teamsBox.Items[teamsBox.SelectedIndex] = teamName.Text;
+                teamBox1.Items[teamsBox.SelectedIndex] = teamName.Text;
+                teamBox2.Items[teamsBox.SelectedIndex] = teamName.Text;
+                derbyTeam1.Items[teamsBox.SelectedIndex] = teamName.Text;
+                derbyTeam2.Items[teamsBox.SelectedIndex] = teamName.Text;
+                for (int i1 = 0; i1 < Form1._Form1.DataGridView_derby.RowCount; i1++)
+                {
+                    if (Form1._Form1.DataGridView_derby.Rows[i1].Cells[0].Value.ToString() == team.getId().ToString())
+                        Form1._Form1.DataGridView_derby.Rows[i1].Cells[1].Value = team.getEnglish();
+                    if (Form1._Form1.DataGridView_derby.Rows[i1].Cells[2].Value.ToString() == team.getId().ToString())
+                        Form1._Form1.DataGridView_derby.Rows[i1].Cells[3].Value = team.getEnglish();
+                }
+
+            }
+        }
+
+        //derby
+        private void DataGridView_derby_SelectionChanged(object sender, EventArgs e)
+        {
+            derbyTeam1.Text = DataGridView_derby.CurrentRow.Cells[1].Value.ToString();
+            derbyTeam2.Text = DataGridView_derby.CurrentRow.Cells[3].Value.ToString();
+            derbyKind.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[4].Value.ToString());
+            derbySlot.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[5].Value.ToString());
+            derbyOrder.Value = decimal.Parse(DataGridView_derby.CurrentRow.Cells[6].Value.ToString());
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Derby derby = new Derby();
+            derby.setTeam1DerbyId(controller.leggiSquadra(derbyTeam1.SelectedIndex).getId());
+            derby.setTeam2DerbyId(controller.leggiSquadra(derbyTeam2.SelectedIndex).getId());
+            derby.setFragVal2((ushort)derbyKind.Value);
+            derby.setFragVal3((ushort)derbySlot.Value);
+            derby.setFragVal4((ushort)derbyOrder.Value);
+
+            controller.applyDerbyPersister(DataGridView_derby.CurrentRow.Index, derby);
+
+            DataGridView_derby.CurrentRow.Cells[0].Value = controller.leggiSquadra(derbyTeam1.SelectedIndex).getId();
+            DataGridView_derby.CurrentRow.Cells[1].Value = derbyTeam1.Text;
+            DataGridView_derby.CurrentRow.Cells[2].Value = controller.leggiSquadra(derbyTeam2.SelectedIndex).getId();
+            DataGridView_derby.CurrentRow.Cells[3].Value = derbyTeam2.Text;
+            DataGridView_derby.CurrentRow.Cells[4].Value = derbyKind.Value;
+            DataGridView_derby.CurrentRow.Cells[5].Value = derbySlot.Value;
+            DataGridView_derby.CurrentRow.Cells[6].Value = derbyOrder.Value;
+        }
+
+        //save
+        private void save_Click(object sender, EventArgs e)
+        {
+            controller.saveBallPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveGlovePersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveBootPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveStadiumPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCoachPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.savePlayerPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveTeamPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.savePlayerAssignmentPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveTacticsPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveTacticsFormationPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveBallConditionPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveDerbyPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCompetitionPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCompetitionKindPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCompetitionRegulationPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveCompetitionEntryPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.savePlayerAppearancePersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveGloveListPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+            controller.saveBootListPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
+
+
+            MessageBox.Show("Saved Data", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("All Files Saved at:" + Environment.NewLine + fbd.SelectedPath, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //Colorare TextBox
@@ -727,10 +1065,236 @@ namespace DinoTem
             UtilGUI.changeColorLabel(coverage);
         }
 
+        //ricerca squadre A/B
+        private void searchTeamAB_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                if ((searchTeamAB.Text.StartsWith("A-") || searchTeamAB.Text.StartsWith("a-")) && searchTeamAB.Text.Length > 2)
+                    UtilGUI.comboBoxSearch(teamBox1, searchTeamAB);
+                else if ((searchTeamAB.Text.StartsWith("B-") || searchTeamAB.Text.StartsWith("b-")) && searchTeamAB.Text.Length > 2)
+                    UtilGUI.comboBoxSearch(teamBox2, searchTeamAB);
+                else
+                    MessageBox.Show("Invalid syntax!" + chACapo + "Example: A-london for Team A" + chACapo + "Example: a-london for Team A" + chACapo + "Example 2: B-juve for Team B" + chACapo + "Example 2: b-juve for Team B", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void searchTeamAB_Click(object sender, EventArgs e)
+        {
+            searchTeamAB.SelectAll();
+            searchTeamAB.Focus();
+        }
+
+        private void searchT_Click(object sender, EventArgs e)
+        {
+            if ((searchTeamAB.Text.StartsWith("A-") || searchTeamAB.Text.StartsWith("a-")) && searchTeamAB.Text.Length > 2)
+                UtilGUI.comboBoxSearch(teamBox1, searchTeamAB);
+            else if ((searchTeamAB.Text.StartsWith("B-") || searchTeamAB.Text.StartsWith("b-")) && searchTeamAB.Text.Length > 2)
+                UtilGUI.comboBoxSearch(teamBox2, searchTeamAB);
+            else
+                MessageBox.Show("Invalid syntax!" + chACapo + "Example: A-london for Team A" + chACapo + "Example: a-london for Team A" + chACapo + "Example 2: B-juve for Team B" + chACapo + "Example 2: b-juve for Team B", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        //ricerca giocatori (invio)
+        private void searchPlayer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                UtilGUI.listBoxSearch(playersBox, searchPlayer);
+            }
+        }
+
+        private void searchPlayer_Click(object sender, EventArgs e)
+        {
+            searchPlayer.SelectAll();
+            searchPlayer.Focus();
+        }
+
+        private void searchP_Click(object sender, EventArgs e)
+        {
+            UtilGUI.listBoxSearch(playersBox, searchPlayer);
+        }
+
+        //ricerca squadre (invio)
+        private void searchTeam_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                UtilGUI.listBoxSearch(teamsBox, searchTeam);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            UtilGUI.listBoxSearch(teamsBox, searchTeam);
+        }
+
+        private void searchTeam_Click(object sender, EventArgs e)
+        {
+            searchTeam.SelectAll();
+            searchTeam.Focus();
+        }
+
+        //ricerca stadi
+        private void searchStadium_Click(object sender, EventArgs e)
+        {
+            searchStadium.SelectAll();
+            searchStadium.Focus();
+        }
+
+        private void searchStadium_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                UtilGUI.listBoxSearch(stadiumsBox, searchStadium);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            UtilGUI.listBoxSearch(stadiumsBox, searchStadium);
+        }
+
+        //ricerca palloni
+        private void searchBall_Click(object sender, EventArgs e)
+        {
+            searchBall.SelectAll();
+            searchBall.Focus();
+        }
+
+        private void searchBall_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                UtilGUI.listBoxSearch(ballsBox, searchBall);
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            UtilGUI.listBoxSearch(ballsBox, searchBall);
+        }
+
+        //ricerca allenatori
+        private void searchCoach_Click(object sender, EventArgs e)
+        {
+            searchCoach.SelectAll();
+            searchCoach.Focus();
+        }
+
+        private void searchCoach_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                UtilGUI.listBoxSearch(coachBox, searchCoach);
+            }
+        }
+
+        private void searchC_Click(object sender, EventArgs e)
+        {
+            UtilGUI.listBoxSearch(coachBox, searchCoach);
+        }
+
+        //ricerca boot
+        private void searchBoot_Click(object sender, EventArgs e)
+        {
+            searchBoot.SelectAll();
+            searchBoot.Focus();
+        }
+
+        private void searchBoot_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                UtilGUI.listBoxSearch(bootsBox, searchBoot);
+            }
+        }
+
+        private void searchB_Click(object sender, EventArgs e)
+        {
+            UtilGUI.listBoxSearch(bootsBox, searchBoot);
+        }
+
+        private void searchGlove_Click(object sender, EventArgs e)
+        {
+            searchGlove.SelectAll();
+            searchGlove.Focus();
+        }
+
+        private void searchGlove_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                UtilGUI.listBoxSearch(glovesBox, searchGlove);
+            }
+        }
+
+        private void searchG_Click(object sender, EventArgs e)
+        {
+            UtilGUI.listBoxSearch(glovesBox, searchGlove);
+        }
+
         //Caratteri speciali
         private void characterS1_Click(object sender, EventArgs e)
         {
             Process.Start(Application.StartupPath + @"\Res\charmap.exe");
+        }
+
+        //selezionare Team
+        private ListViewItem Leggere_GiocatoreSquadre(PlayerAssignment pAssignment)
+        {
+            ListViewItem item = new ListViewItem();
+            Player temp2 = controller.leggiGiocatoreById(pAssignment.getPlayerId());
+
+            item = new ListViewItem((pAssignment.getOrder() + 1).ToString());
+            item.SubItems.Add(temp2.getStringPosition());
+            item.SubItems.Add(temp2.getName());
+            item.SubItems.Add(pAssignment.getShirtNumber().ToString());
+            item.SubItems.Add(pAssignment.getEntryId().ToString());
+            item.SubItems.Add(pAssignment.getCaptain().ToString());
+            item.SubItems.Add(pAssignment.getLeftCkTk().ToString());
+            item.SubItems.Add(pAssignment.getLongShotLk().ToString());
+            item.SubItems.Add(pAssignment.getPenaltyKick().ToString());
+            item.SubItems.Add(pAssignment.getRightCornerKick().ToString());
+            item.SubItems.Add(pAssignment.getShortFoulFk().ToString());
+            item.SubItems.Add(pAssignment.getPlayerId().ToString());
+
+            return item;
+        }
+
+        private void LeggereFormazioni(List<TacticsFormation> position, ListView list)
+        {
+            int k = 0;
+            foreach (TacticsFormation temp in position)
+            {
+                if (k <= 10)
+                    list.Items[k].SubItems[1].Text = temp.getStringPosition();
+                k++;
+            }
+        }
+
+        //A
+        private void teamBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            teamView1.Items.Clear();
+
+            List<PlayerAssignment> list = controller.leggiGiocatoriSquadra(controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+            foreach (PlayerAssignment temp2 in list)
+            {
+                teamView1.Items.Add(Leggere_GiocatoreSquadre(temp2));
+            }
+
+            /*if (teamView1.Items.Count > 10)
+            {
+                List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+                if (tactics.Count > 0)
+                {
+                    List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
+                    if (tacticsFormation.Count > 0)
+                        LeggereFormazioni(tacticsFormation, teamView1);
+                }
+            }*/
+            sfondoTeamView(1);
         }
 
         //selezionare giocatore da teamView1
@@ -741,14 +1305,37 @@ namespace DinoTem
             int intselectedindex = teamView1.SelectedIndices[0];
             if (intselectedindex >= 0)
             {
-                Team temp = (Team)teamBox1.SelectedItem;
-                Leggere_Giocatore(controller.getPlayerById(intselectedindex, temp.getId()));
-                //inserisco id in fmstats form
-                //controllerFm.setPlayer(controller.getPlayerById(intselectedindex, temp.getId()));
-                //numero giocatore
+                UInt32 id = uint.Parse(teamView1.Items[intselectedindex].SubItems[11].Text);
+                Player temp2 = controller.leggiGiocatoreById(id);
+                leggereGiocatore(temp2);
                 giocatoreNumber.Text = teamView1.Items[intselectedindex].SubItems[3].Text;
-                team = teamBox1.SelectedIndex;
+                //
+                team = 1;
             }
+        }
+
+        //B
+        private void teamBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            teamView2.Items.Clear();
+
+            List<PlayerAssignment> list = controller.leggiGiocatoriSquadra(controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+            foreach (PlayerAssignment temp2 in list)
+            {
+                teamView2.Items.Add(Leggere_GiocatoreSquadre(temp2));
+            }
+
+            /*if (teamView2.Items.Count > 10)
+            {
+                List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+                if (tactics.Count > 0)
+                {
+                    List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
+                    if (tacticsFormation.Count > 0)
+                        LeggereFormazioni(tacticsFormation, teamView2);
+                }
+            }*/
+            sfondoTeamView(2);
         }
 
         //selezionare giocatore da teamView2
@@ -759,24 +1346,54 @@ namespace DinoTem
             int intselectedindex = teamView2.SelectedIndices[0];
             if (intselectedindex >= 0)
             {
-                Team temp = (Team)teamBox2.SelectedItem;
-                Leggere_Giocatore(controller.getPlayerById(intselectedindex, temp.getId()));
-                //inserisco id in fmstats form
-                //controllerFm.setPlayer(controller.getPlayerById(intselectedindex, temp.getId()));
-                //giocatorePunteggio();
-
-                //numero giocatore
+                UInt32 id = uint.Parse(teamView2.Items[intselectedindex].SubItems[11].Text);
+                Player temp2 = controller.leggiGiocatoreById(id);
+                leggereGiocatore(temp2);
                 giocatoreNumber.Text = teamView2.Items[intselectedindex].SubItems[3].Text;
-                team = teamBox2.SelectedIndex;
+                //
+                team = 2;
             }
         }
 
-        //cambiare nome shirt
-        private void giocatoreShirt_KeyDown(object sender, KeyEventArgs e)
+        //non far inserire lettere
+        private void giocatoreNumber_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if ((e.KeyChar != (char)Keys.Back) & (!char.IsNumber(e.KeyChar.ToString(), 0)))
+                e.Handled = true;
+        }
+
+        //readme.txt
+        private void readme_Click(object sender, EventArgs e)
+        {
+            Process.Start(Application.StartupPath + "/readme.txt");
+        }
+
+        private void close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void checkForUpdate_Click(object sender, EventArgs e)
+        {
+            try
             {
-                controller.changeShirtPlayer(long.Parse(giocatoreID.Text), giocatoreShirt.Text);
+                //verifico aggiornamenti
+                if (new Updated().verificoAssembler() != new Updated().verificoVersioneAggiornata())
+                {
+                    Update forma = new Update();
+                    forma.ShowDialog();
+
+                    forma.label3.Text = new Updated().verificoAssembler();
+                    forma.label4.Text = new Updated().verificoVersioneAggiornata();
+                }
+                else
+                {
+                    MessageBox.Show("This version is updated!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Control the internet access" + chACapo + chACapo + "Access impossible to internet", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -784,11 +1401,14 @@ namespace DinoTem
         private void giocatoreName_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
-                controller.changePlayerName(long.Parse(giocatoreID.Text), giocatoreName.Text);
-                controller.UpdateForm(teamBox1, teamBox2);
-                controller.UpdateFormPlayer(giocatoreView, controller.getPlayerById(long.Parse(giocatoreID.Text)));
-            }
+                controller.changePlayerName(uint.Parse(giocatoreID.Text), giocatoreName.Text);
+        }
+
+        //cambiare nome tshirt
+        private void giocatoreShirt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                controller.changeShirtPlayer(uint.Parse(giocatoreID.Text), giocatoreShirt.Text);
         }
 
         //cambiare numero al giocatore
@@ -796,10 +1416,13 @@ namespace DinoTem
         private void giocatoreNumber_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
-            {
-                controller.changePlayerNumber(long.Parse(giocatoreID.Text), controller.getTeamById(team).getId(), int.Parse(giocatoreNumber.Text));
-                controller.UpdateForm(teamBox1, teamBox2);
-            }
+                controller.changePlayerNumber(uint.Parse(giocatoreID.Text), team, giocatoreNumber.Text);
+        }
+
+        //cambiare nazionalità al giocatore
+        private void giocatoreNationality_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            controller.changeNationalityPlayer(uint.Parse(giocatoreID.Text), giocatoreNationality.SelectedIndex);
         }
 
         private void teamView1_MouseDown(object sender, MouseEventArgs e)
@@ -823,12 +1446,12 @@ namespace DinoTem
                     int intselectedindex = teamView1.SelectedIndices[0];
                     if (intselectedindex >= 0)
                     {
-                        Team temp = (Team)teamBox1.SelectedItem;
-                        Giocatore P = new Giocatore(controller.getPlayerById(intselectedindex, temp.getId()), controller);
+                        Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
                         P.ShowDialog();
                     }
                 }
             }
+
         }
 
         private void teamView2_MouseDown(object sender, MouseEventArgs e)
@@ -852,26 +1475,26 @@ namespace DinoTem
                     int intselectedindex = teamView2.SelectedIndices[0];
                     if (intselectedindex >= 0)
                     {
-                        Team temp = (Team)teamBox2.SelectedItem;
-                        Giocatore P = new Giocatore(controller.getPlayerById(intselectedindex, temp.getId()), controller);
+                        Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
                         P.ShowDialog();
                     }
                 }
             }
+
         }
 
-        private void giocatoreView_MouseDown(object sender, MouseEventArgs e)
+        private void playersBox_MouseDown(object sender, MouseEventArgs e)
         {
+            if (playersBox.SelectedIndex < 0)
+                return;
+
+            leggereGiocatore(controller.leggiGiocatore(playersBox.SelectedIndex));
+            team = 0;
+
             //abilitare il tasto destro
             if (e.Button == MouseButtons.Right)
             {
-                if (e.Clicks >= 1)
-                {
-                    if (giocatoreView.SelectedIndices.Count <= 0)
-                        return;
-                    if (giocatoreView.FocusedItem.Bounds.Contains(e.Location) == true)
-                        PlayerMenuStrip1.Show(Cursor.Position);
-                }
+                PlayerMenuStrip1.Show(Cursor.Position);
             }
 
             //Doppio clicco
@@ -879,16 +1502,15 @@ namespace DinoTem
             {
                 if (e.Clicks >= 2)
                 {
-                    if (giocatoreView.SelectedIndices.Count <= 0)
+                    if (playersBox.SelectedIndex < 0)
                         return;
-                    int intselectedindex = giocatoreView.SelectedIndices[0];
-                    if (intselectedindex >= 0)
-                    {
-                        Giocatore P = new Giocatore(controller.getPlayerById(intselectedindex), controller);
-                        P.ShowDialog();
-                    }
+                    Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                    P.ShowDialog();
                 }
             }
+
+            //drag&drop
+            DragDropEffects dde1 = DoDragDrop(PLAYER, DragDropEffects.All);
         }
 
         private void teamsBox_MouseDown(object sender, MouseEventArgs e)
@@ -898,39 +1520,42 @@ namespace DinoTem
             {
                 if (e.Clicks >= 2)
                 {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    if (controller.getPlayersTeam(temp.getId()).Count < 11)
-                        MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    else
+                    List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamsBox.SelectedIndex).getId());
+                    if (tactics.Count > 0)
                     {
-                        if (controller.getNumberFormation(temp.getId()).Count > 0)
+                        List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
+                        if (tacticsFormation.Count < 12)
+                            MessageBox.Show("Team hasn't 12 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
                         {
-                            Formazione F = new Formazione(controller, temp);
+                            Formazione F = new Formazione(controller, controller.leggiSquadra(teamsBox.SelectedIndex));
                             F.ShowDialog();
                         }
-                        else
-                            MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                    else
+                        MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
         }
 
         //tasto destro TeamView1
         private void editTeamToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (teamView1.Items.Count < 11)
-                MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+            if (tactics.Count > 0)
             {
-                Team temp = (Team)teamBox1.SelectedItem;
-                if (controller.getNumberFormation(temp.getId()).Count > 0)
+                List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
+                if (tacticsFormation.Count < 11)
+                    MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
                 {
-                    Formazione F = new Formazione(controller, temp);
+                    Formazione F = new Formazione(controller, controller.leggiSquadra(teamBox1.SelectedIndex));
                     F.ShowDialog();
                 }
-                else
-                    MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+                MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void editPlayerToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -940,8 +1565,7 @@ namespace DinoTem
             int intselectedindex = teamView1.SelectedIndices[0];
             if (intselectedindex >= 0)
             {
-                Team temp = (Team)teamBox1.SelectedItem;
-                Giocatore P = new Giocatore(controller.getPlayerById(intselectedindex, temp.getId()), controller);
+                Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
                 P.ShowDialog();
             }
         }
@@ -949,19 +1573,20 @@ namespace DinoTem
         //tasto destro TeamView2
         private void toolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            if (teamView2.Items.Count < 11)
-                MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            else
+            List<Tactics> tactics = controller.leggiTattica(controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+            if (tactics.Count > 0)
             {
-                Team temp = (Team)teamBox2.SelectedItem;
-                if (controller.getNumberFormation(temp.getId()).Count > 0)
+                List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
+                if (tacticsFormation.Count < 11)
+                    MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
                 {
-                    Formazione F = new Formazione(controller, temp);
+                    Formazione F = new Formazione(controller, controller.leggiSquadra(teamBox2.SelectedIndex));
                     F.ShowDialog();
                 }
-                else
-                    MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+                MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -971,716 +1596,1248 @@ namespace DinoTem
             int intselectedindex = teamView2.SelectedIndices[0];
             if (intselectedindex >= 0)
             {
-                Team temp = (Team)teamBox2.SelectedItem;
-                Giocatore P = new Giocatore(controller.getPlayerById(intselectedindex, temp.getId()), controller);
+                Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
                 P.ShowDialog();
             }
         }
 
-        //tasto destro giocatoreView
+        //tasto destro listBox
         private void editPlayerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (giocatoreView.SelectedIndices.Count <= 0)
+            if (playersBox.SelectedIndex < 0)
                 return;
-            int intselectedindex = giocatoreView.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Giocatore P = new Giocatore(controller.getPlayerById(intselectedindex), controller);
-                P.ShowDialog();
-            }
+            Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+            P.ShowDialog();
         }
 
-        //ball
-        private void ballBox_SelectedIndexChanged(object sender, EventArgs e)
+        //database
+        private void databaseBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ballsBox.SelectedIndices.Count <= 0)
+            if (databaseBox.Text == "Stadium")
+                controllerDb.loadStadium(databaseView);
+        }
+
+        private void databaseView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (databaseView.SelectedIndices.Count <= 0)
                 return;
-
-            //pulire i campi
-            palloneName.Text = "";
-            palloneID.Text = "";
-            palloneOrder.Text = "";
-            palloneUnknowB1.Text = "";
-            palloneUnknowB2.Text = "";
-            palloneUnknowB3.Text = "";
-            palloneUnknowB4.Text = "";
-            palloneUnknowB1.Enabled = false;
-            palloneUnknowB2.Enabled = false;
-            palloneUnknowB3.Enabled = false;
-            palloneUnknowB4.Enabled = false;
-
-            int intselectedindex = ballsBox.SelectedIndices[0];
+            int intselectedindex = databaseView.SelectedIndices[0];
             if (intselectedindex >= 0)
+                controllerDb.readStadium(db14, db15, db16, dbStadiumHome, dbStadiumRealName, dbIdStadium, dbStadiumName, dbStadiumJapanese, dbStadiumCapacity, dbStadiumKonami, dbStadiumLicensed, databaseView, intselectedindex);
+        }
+
+        //copy from database
+        private void copyFromDb_Click(object sender, EventArgs e)
+        {
+            if (databaseBox.Text == "Stadium")
+                controllerDb.setStadiumDatabase(dbStadiumName.Text);
+        }
+
+        //paste from database
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Stadium stadio = controllerDb.getStadiumDatabase();
+            if (stadio == null)
+                MessageBox.Show("Please select stadium from database tab", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            else
             {
-                Ball temp = (Ball)ballsBox.SelectedItem;
-                palloneOrder.Text = temp.getOrder().ToString();
-                palloneID.Text = temp.getId().ToString();
-                palloneName.Text = temp.getName();
-                controller.getBallConditionById(temp.getId(), palloneUnknowB1, palloneUnknowB2, palloneUnknowB3, palloneUnknowB4);
+                stadiumName.Text = stadio.getName();
+                stadiumId.Text = stadio.getId().ToString();
+                stadiumJapanese.Text = stadio.getJapaneseName();
+                stadiumCapacity.Text = stadio.getCapacity().ToString();
+                stadiumNa.Text = stadio.getNa().ToString();
+                stadiumZone.Text = stadio.getStringZone();
+                stadiumLicense.Text = stadio.getStringLicense();
+                stadiumCountry.SelectedIndex = controller.findCountry(stadio.getCountry());
+                stadiumKonami.Text = stadio.getKonamiName();
             }
         }
 
-        //quando si clicca invio //NOME PALLONE
-        private void palloneName_KeyDown(object sender, KeyEventArgs e)
+        //upper, lower teams
+        private void globalFunctionTeam_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (ballsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = ballsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Ball temp = (Ball)ballsBox.SelectedItem;
-                    controller.changeBallName(temp, palloneName.Text);
-                    //aggiornare listBox
-                    ballsBox.Items[intselectedindex] = temp;
-                }
-            }
+            if (upperTeam.Checked == true)
+                controller.upperTeams();
+            else if (lowerTeam.Checked == true)
+                controller.lowerTeams();
+            else if (firstUpTeam.Checked == true)
+                controller.firstUpTeams();
+            MessageBox.Show("New teams names applied", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        //quando si clicca invio //ORDER
-        private void palloneOrder_KeyDown(object sender, KeyEventArgs e)
+        //upper, lower players
+        private void globalFunctionPlayer_Click(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (ballsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = ballsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Ball temp = (Ball)ballsBox.SelectedItem;
-                    controller.changeBallOrder(temp, int.Parse(palloneOrder.Text));
-                }
-            }
+            if (upperPlayer.Checked == true)
+                controller.upperPlayers();
+            else if (lowerPlayer.Checked == true)
+                controller.lowerPlayers();
+            else if (firstUpPlayer.Checked == true)
+                controller.firstUpPlayers();
+            MessageBox.Show("New players names applied", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        //quando si clicca invio //UNKNOWN1
-        private void palloneUnknowB1_KeyDown(object sender, KeyEventArgs e)
+        //Competition
+        private void competitionsBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (ballsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = ballsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Ball temp = (Ball)ballsBox.SelectedItem;
-                    controller.changeBallUnknown(temp, 0, int.Parse(palloneUnknowB1.Text));
-                }
-            }
-        }
-
-        //quando si clicca invio //UNKNOWN2
-        private void palloneUnknowB2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (ballsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = ballsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Ball temp = (Ball)ballsBox.SelectedItem;
-                    controller.changeBallUnknown(temp, 1, int.Parse(palloneUnknowB2.Text));
-                }
-            }
-        }
-
-        //quando si clicca invio //UNKNOWN3
-        private void palloneUnknowB3_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (ballsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = ballsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Ball temp = (Ball)ballsBox.SelectedItem;
-                    controller.changeBallUnknown(temp, 2, int.Parse(palloneUnknowB3.Text));
-                }
-            }
-        }
-
-        //quando si clicca invio //UNKNOWN4
-        private void palloneUnknowB4_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (ballsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = ballsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Ball temp = (Ball)ballsBox.SelectedItem;
-                    controller.changeBallUnknown(temp, 3, int.Parse(palloneUnknowB4.Text));
-                }
-            }
-        }
-
-        //team
-        private void teamBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (teamsBox.SelectedIndices.Count <= 0)
+            if (competitionsBox.SelectedIndex < 0)
                 return;
 
-            //pulire campi
-            squadraPanel5.Enabled = false;
-            teamDutch.Text = "";
-            teamEnglish.Text = "";
-            teamEnglish2.Text = "";
-            teamFrench.Text = "";
-            teamGerman.Text = "";
-            teamGreek.Text = "";
-            teamItalian.Text = "";
-            teamPortuguese.Text = "";
-            teamPortuguese2.Text = "";
-            teamRussian.Text = "";
-            teamSpanish.Text = "";
-            teamSpanish2.Text = "";
-            teamSwedish.Text = "";
-            teamTurkish.Text = "";
-
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            Competition comp = controller.leggiCompetizione(competitionsBox.SelectedIndex);
+            if ((comp.getCheck54() == 1))
             {
-                Team temp = (Team)teamsBox.SelectedItem;
-                teamName.Text = temp.getEnglish();
-                teamJapanese.Text = temp.getJapanese();
-                teamID.Text = temp.getId().ToString();
-                teamShort.Text = temp.getShortSquadra();
+                CheckBox54.Checked = true;
+            }
+            else
+            {
+                CheckBox54.Checked = false;
+            }
 
-                if (temp.getLicensedTeam())
-                    teamLicense.Text = "Licensed";
+            if ((comp.getCheck55() == 1))
+            {
+                CheckBox55.Checked = true;
+            }
+            else
+            {
+                CheckBox55.Checked = false;
+            }
+
+            if ((comp.getCheck56() == 1))
+            {
+                CheckBox56.Checked = true;
+            }
+            else
+            {
+                CheckBox56.Checked = false;
+            }
+
+            if ((comp.getCheck57() == 1))
+            {
+                CheckBox57.Checked = true;
+            }
+            else
+            {
+                CheckBox57.Checked = false;
+            }
+
+            if ((comp.getCheck58() == 1))
+            {
+                CheckBox58.Checked = true;
+            }
+            else
+            {
+                CheckBox58.Checked = false;
+            }
+
+            if ((comp.getCheck59() == 1))
+            {
+                CheckBox59.Checked = true;
+            }
+            else
+            {
+                CheckBox59.Checked = false;
+            }
+
+            if ((comp.getCheck60() == 1))
+            {
+                CheckBox60.Checked = true;
+            }
+            else
+            {
+                CheckBox60.Checked = false;
+            }
+
+            if ((comp.getLicensed() == 1))
+            {
+                CheckBox61.Checked = true;
+            }
+            else
+            {
+                CheckBox61.Checked = false;
+            }
+
+            if ((comp.getSecondDivision() == 1))
+            {
+                CheckBox62.Checked = true;
+            }
+            else
+            {
+                CheckBox62.Checked = false;
+            }
+
+            UNK1_box.Value = comp.getType();
+            switch (comp.getType())
+            {
+                case 0:
+                    label104.Text = "Club Team";
+                    break;
+                case 1:
+                    label104.Text = "National Team";
+                    break;
+                case 2:
+                    label104.Text = "Fake Team";
+                    break;
+                default:
+                    label104.Text = "Unknown";
+                    break;
+            }
+
+            UNK2_box.Value = comp.getId();
+            UNK3_box.Value = comp.getUnk3();
+            UNK_4_BOX.Value = comp.getZone();
+        }
+
+        private void applyCompetition_Click(object sender, EventArgs e)
+        {
+            if (competitionsBox.SelectedIndex >= 0)
+            {
+                Competition competition = new Competition((uint) (UNK2_box.Value));
+                if (CheckBox54.Checked)
+                    competition.setCheck54(1);
                 else
-                    teamLicense.Text = "Unlicensed";
-
-                if (temp.getNational())
-                    teamType.Text = "National";
+                    competition.setCheck54(0);
+                if (CheckBox55.Checked)
+                    competition.setCheck55(1);
                 else
-                    teamType.Text = "Club";
-
-                if (temp.getFakeTeam())
-                    teamFake.Text = "Yes";
+                    competition.setCheck55(0);
+                if (CheckBox56.Checked)
+                    competition.setCheck56(1);
                 else
-                    teamFake.Text = "No";
-
-                if (temp.getLicensedCoach())
-                    teamCoachLicense.Text = "Licensed";
+                    competition.setCheck56(0);
+                if (CheckBox57.Checked)
+                    competition.setCheck57(1);
                 else
-                    teamCoachLicense.Text = "Unlicensed";
-
-                if (temp.getNotPlayableLeague() == 0)
-                    teamNotPlayableLeague.Text = "No League";
-                else if (temp.getNotPlayableLeague() == 1)
-                    teamNotPlayableLeague.Text = "Classic League";
-                else if (temp.getNotPlayableLeague() == 2)
-                    teamNotPlayableLeague.Text = "Other Europe League";
-                else if (temp.getNotPlayableLeague() == 3)
-                    teamNotPlayableLeague.Text = "Other Asian League";
-                else if (temp.getNotPlayableLeague() == 4)
-                    teamNotPlayableLeague.Text = "Hidden Fake European League";
-                else if (temp.getNotPlayableLeague() == 5)
-                    teamNotPlayableLeague.Text = "ML Hidden League";
-                else if (temp.getNotPlayableLeague() == 6)
-                    teamNotPlayableLeague.Text = "Other America League";
-                else if (temp.getNotPlayableLeague() == 7)
-                    teamNotPlayableLeague.Text = "Other Africa League";
-
-                teamStadium.SelectedItem = controller.getTeamStadium(temp);
-
-                if (temp.getHasLicensedPlayers())
-                    hasLicensedPlayers.Checked = true;
+                    competition.setCheck57(0);
+                if (CheckBox58.Checked)
+                    competition.setCheck58(1);
                 else
-                    hasLicensedPlayers.Checked = false;
-
-                if (temp.getHasAnthem())
-                    hasAnthem.Checked = true;
+                    competition.setCheck58(0);
+                if (CheckBox59.Checked)
+                    competition.setCheck59(1);
                 else
-                    hasAnthem.Checked = false;
-
-                anthemStandingAngle.Value = temp.getAnthemStandingAngle();
-                anthemPlayersSinging.Value = temp.getAnthemPlayersSinging();
-                anthemStandingStyle.Value = temp.getAnthemStandingStyle();
-
-                if (temp.getUnknown6())
-                    unknown.Checked = true;
+                    competition.setCheck59(0);
+                if (CheckBox60.Checked)
+                    competition.setCheck60(1);
                 else
-                    unknown.Checked = false;
+                    competition.setCheck60(0);
+                if (CheckBox61.Checked)
+                    competition.setLicensed(1);
+                else
+                    competition.setLicensed(0);
+                if (CheckBox62.Checked)
+                    competition.setSecondDivision(1);
+                else
+                    competition.setSecondDivision(0);
+                competition.setType((uint)(UNK1_box.Value));
+                competition.setUnk3((uint)(UNK3_box.Value));
+                competition.setZone((uint)(UNK_4_BOX.Value));
 
-                if (temp.getNational())
-                {
-                    National temp2 = (National)temp;
-                    squadraPanel5.Enabled = true;
-                    teamDutch.Text = temp2.getDutch();
-                    teamEnglish.Text = temp2.getEnglish();
-                    teamEnglish2.Text = temp2.getEnglishUS();
-                    teamFrench.Text = temp2.getFrench();
-                    teamGerman.Text = temp2.getGerman();
-                    teamGreek.Text = temp2.getGreek();
-                    teamItalian.Text = temp2.getItalian();
-                    teamPortuguese.Text = temp2.getPortuguese();
-                    teamPortuguese2.Text = temp2.getBrazilianPortuguese();
-                    teamRussian.Text = temp2.getRussian();
-                    teamSpanish.Text = temp2.getSpanish();
-                    teamSpanish2.Text = temp2.getLatinAmericaSpanish();
-                    teamSwedish.Text = temp2.getSwedish();
-                    teamTurkish.Text = temp2.getTurkish();
-                }
-
-                controller.getCountryMap().GetType();
-                Country value;
-                if (!controller.getCountryMap().TryGetValue((long)temp.getCountry(), out value))
-                    throw new ArgumentException("id country not found");
-
-                teamCountry.Text =  value.getName();
-
+                controller.applyCompetitionPersister(competitionsBox.SelectedIndex, competition);
             }
         }
 
-        //quando si clicca invio //NOME SQUADRA AIO
-        private void squadraName_KeyDown(object sender, KeyEventArgs e)
+        //CompetitionKind
+        private void competitionsKind_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamName(temp, teamName.Text);
-
-                    if (teamType.Text == "National")
-                    {
-                        teamDutch.Text = teamName.Text;
-                        teamEnglish.Text = teamName.Text;
-                        teamEnglish2.Text = teamName.Text;
-                        teamFrench.Text = teamName.Text;
-                        teamGerman.Text = teamName.Text;
-                        teamGreek.Text = teamName.Text;
-                        teamItalian.Text = teamName.Text;
-                        teamPortuguese.Text = teamName.Text;
-                        teamPortuguese2.Text = teamName.Text;
-                        teamRussian.Text = teamName.Text;
-                        teamSpanish.Text = teamName.Text;
-                        teamSpanish2.Text = teamName.Text;
-                        teamSwedish.Text = teamName.Text;
-                        teamTurkish.Text = teamName.Text;
-                    }
-                    teamJapanese.Text = teamName.Text;
-
-                    //aggiornare nome squadra
-                    teamBox1.Items[intselectedindex] = temp;
-                    teamBox2.Items[intselectedindex] = temp;
-                    teamsBox.Items[intselectedindex] = temp;
-                }
-            }
-        }
-
-        private void teamJapanese_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamJapaneseName(temp, teamJapanese.Text);
-                }
-            }
-        }
-
-        private void teamSpanish_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamSpanishName(temp, teamSpanish.Text);
-                }
-            }
-        }
-
-        private void teamTurkish_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamTurkishName(temp, teamTurkish.Text);
-                }
-            }
-        }
-
-        private void teamSwedish_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamSwedishName(temp, teamSwedish.Text);
-                }
-            }
-        }
-
-        private void teamGreek_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamGreekName(temp, teamGreek.Text);
-                }
-            }
-        }
-
-        private void teamPortuguese_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamPortugueseName(temp, teamPortuguese.Text);
-                }
-            }
-        }
-
-        private void teamItalian_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamItalianName(temp, teamItalian.Text);
-                }
-            }
-        }
-
-        private void teamEnglish_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamEnglishName(temp, teamEnglish.Text);
-                }
-            }
-        }
-
-        private void teamGerman_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamGermanName(temp, teamGerman.Text);
-                }
-            }
-        }
-
-        private void teamRussian_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamRussianName(temp, teamRussian.Text);
-                }
-            }
-        }
-
-        private void teamSpanish2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamLatinAmericaSpanishName(temp, teamSpanish2.Text);
-                }
-            }
-        }
-
-        private void teamPortuguese2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamBrazilianPortugueseName(temp, teamPortuguese2.Text);
-                }
-            }
-        }
-
-        private void teamEnglish2_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamEnglishUsName(temp, teamEnglish2.Text);
-                }
-            }
-        }
-
-        private void teamFrench_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamFrenchName(temp, teamFrench.Text);
-                }
-            }
-        }
-
-        private void teamDutch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamDutchName(temp, teamDutch.Text);
-                }
-            }
-        }
-
-        //quando si clicca invio //SHORT SQUADRA
-        private void squadraShort_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (teamsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamsBox.SelectedItem;
-                    controller.changeTeamShortName(temp, teamShort.Text);
-                }
-            }
-        }
-
-        //Fake Team
-        private void squadraFake_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (teamsBox.SelectedIndices.Count <= 0)
+            if (competitionsKind.SelectedIndex < 0)
                 return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+
+            CompetitionKind comp = controller.leggiCompetizioneKind(competitionsKind.SelectedIndex);
+            NumericUpDown19.Value = comp.getOrder();
+            UNK1_KIND_BOX.Value = comp.getUnk1();
+            UNK2_KIND_BOX.Value = comp.getUnk2();
+            UNK3_KIND_BOX.Value = comp.getUnk3();
+        }
+
+        private void applyCompetitionKind_Click(object sender, EventArgs e)
+        {
+            if (competitionsKind.SelectedIndex >= 0)
             {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeFakeTeam(temp, teamFake.Text == "Yes");
+                CompetitionKind competition = new CompetitionKind();
+                competition.setOrder((byte)NumericUpDown19.Value);
+                competition.setUnk1((byte)UNK1_KIND_BOX.Value);
+                competition.setUnk2((byte)UNK2_KIND_BOX.Value);
+                competition.setUnk3((byte)UNK3_KIND_BOX.Value);
+
+                controller.applyCompetitionKindPersister(competitionsKind.SelectedIndex, competition);
             }
         }
 
-        //License Team
-        private void squadraLicense_SelectedIndexChanged(object sender, EventArgs e)
+        //competitionRegulation
+        private void ListBox_comp_reg_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
+            if (ListBox_comp_reg.SelectedIndex < 0)
                 return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+
+            CompetitionRegulation comp = controller.leggiCompetizioneRegulation(ListBox_comp_reg.SelectedIndex);
+            UNK1_COMP_REG_BOX.Value = comp.getUNK1();
+            UNK2_COMP_REG_BOX.Value = comp.getUNK2();
+            UNK3_COMP_REG_BOX.Value = comp.getUNK3();
+            UNK4_COMP_REG_BOX.Value = comp.getUNK4();
+            UNK5_COMP_REG_BOX.Value = comp.getUNK5();
+            UNK6_COMP_REG_BOX.Value = comp.getUNK6();
+            UNK7_COMP_REG_BOX.Value = comp.getUNK7();
+            UNK8_COMP_REG_BOX.Value = comp.getUNK8();
+            UNK9_COMP_REG_BOX.Value = comp.getUNK9();
+            UNK10_COMP_REG_BOX.Value = comp.getUNK10();
+            UNK11_COMP_REG_BOX.Value = comp.getUNK11();
+
+            if ((comp.getCHECK63() == 1))
             {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeLicensedTeam(temp, teamLicense.Text == "Licensed");
+                CheckBox63.Checked = true;
+            }
+            else
+            {
+                CheckBox63.Checked = false;
+            }
+
+            if ((comp.getCHECK64() == 1))
+            {
+                CheckBox64.Checked = true;
+            }
+            else
+            {
+                CheckBox64.Checked = false;
+            }
+
+            if ((comp.getCHECK65() == 1))
+            {
+                CheckBox65.Checked = true;
+            }
+            else
+            {
+                CheckBox65.Checked = false;
+            }
+            UNK12_COMP_REG_BOX.Value = comp.getUNK12();
+            UNK13_COMP_REG_BOX.Value = comp.getUNK13();
+            UNK14_COMP_REG_BOX.Value = comp.getUNK14();
+            UNK15_COMP_REG_BOX.Value = comp.getUNK15();
+            if ((comp.getCHECK66() == 1))
+            {
+                CheckBox66.Checked = true;
+            }
+            else
+            {
+                CheckBox66.Checked = false;
+            }
+            if ((comp.getCHECK67() == 1))
+            {
+                CheckBox67.Checked = true;
+            }
+            else
+            {
+                CheckBox67.Checked = false;
+            }
+            if ((comp.getCHECK68() == 1))
+            {
+                CheckBox68.Checked = true;
+            }
+            else
+            {
+                CheckBox68.Checked = false;
+            }
+            if ((comp.getCHECK69() == 1))
+            {
+                CheckBox69.Checked = true;
+            }
+            else
+            {
+                CheckBox69.Checked = false;
+            }
+            if ((comp.getCHECK70() == 1))
+            {
+                CheckBox70.Checked = true;
+            }
+            else
+            {
+                CheckBox70.Checked = false;
+            }
+            if ((comp.getCHECK71() == 1))
+            {
+                CheckBox71.Checked = true;
+            }
+            else
+            {
+                CheckBox71.Checked = false;
+            }
+            if ((comp.getCHECK72() == 1))
+            {
+                CheckBox72.Checked = true;
+            }
+            else
+            {
+                CheckBox72.Checked = false;
+            }
+            if ((comp.getCHECK73() == 1))
+            {
+                CheckBox73.Checked = true;
+            }
+            else
+            {
+                CheckBox73.Checked = false;
+            }
+            if ((comp.getCHECK74() == 1))
+            {
+                CheckBox74.Checked = true;
+            }
+            else
+            {
+                CheckBox74.Checked = false;
+            }
+            if ((comp.getCHECK75() == 1))
+            {
+                CheckBox75.Checked = true;
+            }
+            else
+            {
+                CheckBox75.Checked = false;
+            }
+            if ((comp.getCHECK76() == 1))
+            {
+                CheckBox76.Checked = true;
+            }
+            else
+            {
+                CheckBox76.Checked = false;
+            }
+            if ((comp.getCHECK77() == 1))
+            {
+                CheckBox77.Checked = true;
+            }
+            else
+            {
+                CheckBox77.Checked = false;
+            }
+            if ((comp.getCHECK78() == 1))
+            {
+                CheckBox78.Checked = true;
+            }
+            else
+            {
+                CheckBox78.Checked = false;
+            }
+            if ((comp.getCHECK79() == 1))
+            {
+                CheckBox79.Checked = true;
+            }
+            else
+            {
+                CheckBox79.Checked = false;
+            }
+            if ((comp.getCHECK80() == 1))
+            {
+                CheckBox80.Checked = true;
+            }
+            else
+            {
+                CheckBox80.Checked = false;
+            }
+            if ((comp.getCHECK81() == 1))
+            {
+                CheckBox81.Checked = true;
+            }
+            else
+            {
+                CheckBox81.Checked = false;
             }
         }
 
-        //License Coach
-        private void squadraCoachLicense_SelectedIndexChanged(object sender, EventArgs e)
+        private void applyCompetitionRegulation_Click(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (ListBox_comp_reg.SelectedIndex >= 0)
             {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeLicensedCoach(temp, teamCoachLicense.Text == "Licensed");
+                CompetitionRegulation competition = new CompetitionRegulation();
+                competition.setUNK1((byte)UNK1_COMP_REG_BOX.Value);
+                competition.setUNK2((byte)UNK2_COMP_REG_BOX.Value);
+                competition.setUNK3((byte)UNK3_COMP_REG_BOX.Value);
+                competition.setUNK4((byte)UNK4_COMP_REG_BOX.Value);
+                competition.setUNK5((byte)UNK5_COMP_REG_BOX.Value);
+                competition.setUNK6((byte)UNK6_COMP_REG_BOX.Value);
+                competition.setUNK7((byte)UNK7_COMP_REG_BOX.Value);
+                competition.setUNK8((byte)UNK8_COMP_REG_BOX.Value);
+                competition.setUNK9((byte)UNK9_COMP_REG_BOX.Value);
+                competition.setUNK10((byte)UNK10_COMP_REG_BOX.Value);
+                competition.setUNK11((byte)UNK11_COMP_REG_BOX.Value);
+
+                if (CheckBox63.Checked == true)
+                {
+                    competition.setCHECK63(1);
+                }
+                else
+                {
+                    competition.setCHECK63(0);
+                }
+
+                if (CheckBox64.Checked == true)
+                {
+                    competition.setCHECK64(1);
+                }
+                else
+                {
+                    competition.setCHECK64(0);
+                }
+
+                if (CheckBox65.Checked == true)
+                {
+                    competition.setCHECK65(1);
+                }
+                else
+                {
+                    competition.setCHECK65(0);
+                }
+                competition.setUNK12((byte)UNK12_COMP_REG_BOX.Value);
+                competition.setUNK13((byte)UNK13_COMP_REG_BOX.Value);
+                competition.setUNK14((byte)UNK14_COMP_REG_BOX.Value);
+                competition.setUNK15((byte)UNK15_COMP_REG_BOX.Value);
+
+                if (CheckBox66.Checked == true)
+                {
+                    competition.setCHECK66(1);
+                }
+                else
+                {
+                    competition.setCHECK66(0);
+                }
+                if (CheckBox67.Checked == true)
+                {
+                    competition.setCHECK67(1);
+                }
+                else
+                {
+                    competition.setCHECK67(0);
+                }
+                if (CheckBox68.Checked == true)
+                {
+                    competition.setCHECK68(1);
+                }
+                else
+                {
+                    competition.setCHECK68(0);
+                }
+                if (CheckBox69.Checked == true)
+                {
+                    competition.setCHECK69(1);
+                }
+                else
+                {
+                    competition.setCHECK69(0);
+                }
+                if (CheckBox70.Checked == true)
+                {
+                    competition.setCHECK70(1);
+                }
+                else
+                {
+                    competition.setCHECK70(0);
+                }
+                if (CheckBox71.Checked == true)
+                {
+                    competition.setCHECK71(1);
+                }
+                else
+                {
+                    competition.setCHECK71(0);
+                }
+                if (CheckBox72.Checked == true)
+                {
+                    competition.setCHECK72(1);
+                }
+                else
+                {
+                    competition.setCHECK72(0);
+                }
+                if (CheckBox73.Checked == true)
+                {
+                    competition.setCHECK73(1);
+                }
+                else
+                {
+                    competition.setCHECK73(0);
+                }
+                if (CheckBox74.Checked == true)
+                {
+                    competition.setCHECK74(1);
+                }
+                else
+                {
+                    competition.setCHECK74(0);
+                }
+                if (CheckBox75.Checked == true)
+                {
+                    competition.setCHECK75(1);
+                }
+                else
+                {
+                    competition.setCHECK75(0);
+                }
+                if (CheckBox76.Checked == true)
+                {
+                    competition.setCHECK76(1);
+                }
+                else
+                {
+                    competition.setCHECK76(0);
+                }
+                if (CheckBox77.Checked == true)
+                {
+                    competition.setCHECK77(1);
+                }
+                else
+                {
+                    competition.setCHECK77(0);
+                }
+                if (CheckBox78.Checked == true)
+                {
+                    competition.setCHECK78(1);
+                }
+                else
+                {
+                    competition.setCHECK78(0);
+                }
+                if (CheckBox79.Checked == true)
+                {
+                    competition.setCHECK79(1);
+                }
+                else
+                {
+                    competition.setCHECK79(0);
+                }
+                if (CheckBox80.Checked == true)
+                {
+                    competition.setCHECK80(1);
+                }
+                else
+                {
+                    competition.setCHECK80(0);
+                }
+                if (CheckBox81.Checked == true)
+                {
+                    competition.setCHECK81(1);
+                }
+                else
+                {
+                    competition.setCHECK81(0);
+                }
+
+                controller.applyCompetitionRegulationPersister(ListBox_comp_reg.SelectedIndex, competition);
             }
         }
 
-        //Playable League
-        private void squadraNotPlayableLeague_SelectedIndexChanged(object sender, EventArgs e)
+        //fm stats
+        private void loadFootballManager_Click(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if (controllerFm.getFmList().Count == 0)
+                controllerFm.readFmPersister();
+
+            //abilito i comandi
+            label122.Visible = true;
+            nationalityBox.Visible = true;
+            label121.Visible = true;
+            clubBox.Visible = true;
+            playerList.Visible = true;
+            fmSearchPlayer.Visible = true;
+            fmSearchTeam.Visible = true;
+            searchPlayerFm.Visible = true;
+            searchTeamFm.Visible = true;
+            groupBox13.Visible = true;
+            groupBox7.Visible = true;
+            groupBox18.Visible = true;
+            groupBox19.Visible = true;
+            groupBox17.Visible = true;
+            technicalGk.Visible = true;
+            technical.Visible = true;
+            groupBox20.Visible = true;
+            applyFm.Visible = true;
+            technical.Visible = true;
+            label119.Visible = false;
+
+            playerList.DataSource = controllerFm.getFmList();
+            clubBox.DataSource = controllerFm.getClub();
+            count.Text = playerList.Items.Count.ToString();
+            clubBox.SelectedIndex = clubBox.Items.Count - 1;
+            nationalityBox.SelectedIndex = nationalityBox.Items.Count - 1;
+            playerList.SelectedIndex = 0;
+        }
+
+        //filtri
+        private void nationalityBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            playerList.DataSource = controllerFm.filter(clubBox.Text, nationalityBox.Text);
+        }
+
+        private void clubBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            playerList.DataSource = controllerFm.filter(clubBox.Text, nationalityBox.Text);
+        }
+
+        //selezionare giocatore
+        private void playerList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Fm temp = (Fm)playerList.Items[playerList.SelectedIndex];
+            //mental
+            aggression.Text = temp.getAggression().ToString();
+            anticipation.Text = temp.getAnticipation().ToString();
+            bravery.Text = temp.getBravery().ToString();
+            composure.Text = temp.getComposure().ToString();
+            concentration.Text = temp.getConcentration().ToString();
+            decisions.Text = temp.getDecisions().ToString();
+            determination.Text = temp.getDetermination().ToString();
+            frair.Text = temp.getFlair().ToString();
+            leadership.Text = temp.getLeadership().ToString();
+            offtheball.Text = temp.getOffTheBall().ToString();
+            positioning.Text = temp.getPositioning().ToString();
+            teamwork.Text = temp.getTeamwork().ToString();
+            vision.Text = temp.getVision().ToString();
+            workrate.Text = temp.getWorkRate().ToString();
+            //physical
+            acceleration.Text = temp.getAcceleration().ToString();
+            agility.Text = temp.getAgility().ToString().ToString();
+            balance.Text = temp.getBalance().ToString();
+            jumpingReach.Text = temp.getJumping().ToString();
+            naturalFitness.Text = temp.getNaturalFitness().ToString();
+            pace.Text = temp.getPace().ToString();
+            staminaFm.Text = temp.getStamina().ToString();
+            strenght.Text = temp.getStrength().ToString();
+            //basic info
+            var today = DateTime.Today;
+            var eta = today.Year - int.Parse(temp.getDateOfBirth().Substring(6));
+            if (DateTime.Parse(temp.getDateOfBirth()) > today.AddYears(-eta)) eta--;
+            age.Text = eta.ToString();
+            //technical
+            corners.Text = temp.getCorners().ToString();
+            freeKickTaking.Text = temp.getFreeKicks().ToString();
+            heading.Text = temp.getHeading().ToString();
+            tackling.Text = temp.getTackling().ToString();
+            crossing.Text = temp.getCrossing().ToString();
+            driblingFm.Text = temp.getDribbling().ToString();
+            finishingFm.Text = temp.getFinishing().ToString();
+            marking.Text = temp.getMarking().ToString();
+            passing.Text = temp.getPassing().ToString();
+            penaltyTaking.Text = temp.getPenalties().ToString();
+            longThrows.Text = temp.getLongThrows().ToString();
+            technique.Text = temp.getTechnique().ToString();
+            longShots.Text = temp.getLongShots().ToString();
+            firstTouch.Text = temp.getFirstTouch().ToString();
+            commandOfArea.Text = temp.getCommandOfArea().ToString();
+            communication.Text = temp.getCommunication().ToString();
+            eccentricity.Text = temp.getEccentricity().ToString();
+            aerialAbility.Text = temp.getAerialAbility().ToString();
+            handling.Text = temp.getHandling().ToString();
+            tendencyToPunch.Text = temp.getTendancyToPunch().ToString();
+            reflexesFm.Text = temp.getReflexes().ToString();
+            passing2.Text = temp.getPassing().ToString();
+            penaltyTaking2.Text = temp.getPenalties().ToString();
+            throwing.Text = temp.getThrowing().ToString();
+            kicking.Text = temp.getKicking().ToString();
+            oneOnOnes.Text = temp.getOneOnOnes().ToString();
+            rushingOut.Text = temp.getRushingOut().ToString();
+            firstTouch2.Text = temp.getFirstTouch().ToString();
+            //fm stats
+            averageGk.Text = controllerFm.mediaGk(int.Parse(commandOfArea.Text), int.Parse(communication.Text), int.Parse(firstTouch2.Text), int.Parse(eccentricity.Text),
+                int.Parse(aerialAbility.Text), int.Parse(passing2.Text)
+                , int.Parse(handling.Text), int.Parse(tendencyToPunch.Text), int.Parse(reflexes.Text), int.Parse(penaltyTaking2.Text), int.Parse(throwing.Text),
+                int.Parse(kicking.Text)
+                , int.Parse(oneOnOnes.Text), int.Parse(rushingOut.Text), int.Parse(technique.Text), int.Parse(freeKickTaking.Text), int.Parse(aggression.Text),
+                int.Parse(anticipation.Text), int.Parse(bravery.Text),
+                int.Parse(composure.Text), int.Parse(concentration.Text), int.Parse(decisions.Text),
+                int.Parse(determination.Text), int.Parse(frair.Text), int.Parse(leadership.Text),
+                int.Parse(offtheball.Text), int.Parse(positioning.Text), int.Parse(teamwork.Text),
+                int.Parse(vision.Text), int.Parse(workrate.Text), int.Parse(acceleration.Text),
+                int.Parse(agility.Text), int.Parse(balance.Text), int.Parse(jumpingReach.Text),
+                int.Parse(naturalFitness.Text), int.Parse(pace.Text), int.Parse(stamina.Text), int.Parse(strenght.Text)).ToString();
+            average.Text = controllerFm.media(int.Parse(corners.Text), int.Parse(freeKickTaking.Text), int.Parse(heading.Text), int.Parse(tackling.Text),
+                int.Parse(firstTouch.Text), int.Parse(crossing.Text)
+                , int.Parse(dribbling.Text), int.Parse(finishing.Text), int.Parse(marking.Text), int.Parse(passing.Text),
+                int.Parse(penaltyTaking.Text)
+                , int.Parse(longThrows.Text), int.Parse(longShots.Text), int.Parse(technique.Text), int.Parse(aggression.Text), int.Parse(anticipation.Text),
+                int.Parse(bravery.Text),
+                int.Parse(composure.Text), int.Parse(concentration.Text), int.Parse(decisions.Text),
+                int.Parse(determination.Text), int.Parse(frair.Text), int.Parse(leadership.Text),
+                int.Parse(offtheball.Text), int.Parse(positioning.Text), int.Parse(teamwork.Text),
+                int.Parse(vision.Text), int.Parse(workrate.Text), int.Parse(acceleration.Text),
+                int.Parse(agility.Text), int.Parse(balance.Text), int.Parse(jumpingReach.Text),
+                int.Parse(naturalFitness.Text), int.Parse(pace.Text), int.Parse(stamina.Text), int.Parse(strenght.Text)).ToString();
+            //position
+            gkrat.Text = temp.getGk().ToString();
+            swrat.Text = temp.getSw().ToString();
+            rbrat.Text = temp.getRb().ToString();
+            lbrat.Text = temp.getLb().ToString();
+            cbrat.Text = temp.getCb().ToString();
+            wbrat.Text = temp.getWbr().ToString();
+            wblrat.Text = temp.getWbl().ToString();
+            dmrat.Text = temp.getDm().ToString();
+            rmrat.Text = temp.getRm().ToString();
+            lmrat.Text = temp.getLm().ToString();
+            cmrat.Text = temp.getCm().ToString();
+            amlrat.Text = temp.getAml().ToString();
+            amrat.Text = temp.getAmr().ToString();
+            amcrat.Text = temp.getAmc().ToString();
+            strat.Text = temp.getSt().ToString();
+            controllerFm.positionPlayer(gk, cb, lb, rb, dmf, cmf, lmf, amf, rmf, lwf, rwf, ss, cf, temp, int.Parse(average.Text), int.Parse(averageGk.Text));
+        }
+
+        private void commandOfArea_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(commandOfArea);
+        }
+
+        private void communication_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(communication);
+        }
+
+        private void firstTouch2_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(firstTouch2);
+        }
+
+        private void eccentricity_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(eccentricity);
+        }
+
+        private void aerialAbility_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(aerialAbility);
+        }
+
+        private void passing2_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(passing2);
+        }
+
+        private void handling_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(handling);
+        }
+
+        private void tendencyToPunch_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(tendencyToPunch);
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(reflexesFm);
+        }
+
+        private void penaltyTaking2_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(penaltyTaking2);
+        }
+
+        private void throwing_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(throwing);
+        }
+
+        private void kicking_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(kicking);
+        }
+
+        private void oneOnOnes_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(oneOnOnes);
+        }
+
+        private void rushingOut_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(rushingOut);
+        }
+
+        private void corners_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(corners);
+        }
+
+        private void freeKickTaking_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(freeKickTaking);
+        }
+
+        private void heading_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(heading);
+        }
+
+        private void tackling_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(tackling);
+        }
+
+        private void firstTouch_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(firstTouch);
+        }
+
+        private void crossing_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(crossing);
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(driblingFm);
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(finishingFm);
+        }
+
+        private void marking_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(marking);
+        }
+
+        private void passing_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(passing);
+        }
+
+        private void penaltyTaking_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(penaltyTaking);
+        }
+
+        private void longThrows_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(longThrows);
+        }
+
+        private void technique_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(technique);
+        }
+
+        private void longShots_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(longShots);
+        }
+
+        private void acceleration_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(acceleration);
+        }
+
+        private void agility_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(agility);
+        }
+
+        private void balance_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(balance);
+        }
+
+        private void jumpingReach_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(jumpingReach);
+        }
+
+        private void naturalFitness_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(naturalFitness);
+        }
+
+        private void pace_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(pace);
+        }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(staminaFm);
+        }
+
+        private void strenght_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(strenght);
+        }
+
+        private void workrate_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(workrate);
+        }
+
+        private void vision_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(vision);
+        }
+
+        private void teamwork_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(teamwork);
+        }
+
+        private void positioning_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(positioning);
+        }
+
+        private void offtheball_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(offtheball);
+        }
+
+        private void leadership_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(leadership);
+        }
+
+        private void frair_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(frair);
+        }
+
+        private void determination_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(determination);
+        }
+
+        private void decisions_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(decisions);
+        }
+
+        private void concentration_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(concentration);
+        }
+
+        private void composure_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(composure);
+        }
+
+        private void bravery_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(bravery);
+        }
+
+        private void anticipation_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(anticipation);
+        }
+
+        private void aggression_TextChanged(object sender, EventArgs e)
+        {
+            UtilGUI.changeColorLabelFm(aggression);
+        }
+
+        //cercare un giocatore (INVIO)
+        private void fmSearchPlayer_Click(object sender, EventArgs e)
+        {
+            fmSearchPlayer.SelectAll();
+            fmSearchPlayer.Focus();
+        }
+
+        private void fmSearchPlayer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                Team temp = (Team)teamsBox.SelectedItem;
-                if (teamNotPlayableLeague.Text == "No League")
-                    controller.changeNotPlayableLeague(temp, 0);
-                else if (teamNotPlayableLeague.Text == "Classic League")
-                    controller.changeNotPlayableLeague(temp, 1);
-                else if (teamNotPlayableLeague.Text == "Other Europe League")
-                    controller.changeNotPlayableLeague(temp, 2);
-                else if (teamNotPlayableLeague.Text == "Other Asian League")
-                    controller.changeNotPlayableLeague(temp, 3);
-                else if (teamNotPlayableLeague.Text == "Hidden Fake European League")
-                    controller.changeNotPlayableLeague(temp, 4);
-                else if (teamNotPlayableLeague.Text == "ML Hidden League")
-                    controller.changeNotPlayableLeague(temp, 5);
-                else if (teamNotPlayableLeague.Text == "Other America League")
-                    controller.changeNotPlayableLeague(temp, 6);
-                else if (teamNotPlayableLeague.Text == "Other Africa League")
-                    controller.changeNotPlayableLeague(temp, 7);
+                UtilGUI.listBoxSearch(playerList, fmSearchPlayer);
             }
         }
 
-        //paese di provenienza squadra
-        private void squadraCountry_SelectedIndexChanged(object sender, EventArgs e)
+        private void searchPlayerFm_Click(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            UtilGUI.listBoxSearch(playerList, fmSearchPlayer);
+        }
+
+        //cercare una squadra Invio
+        private void fmSearchTeam_TextChanged(object sender, EventArgs e)
+        {
+            fmSearchTeam.SelectAll();
+            fmSearchTeam.Focus();
+        }
+
+        private void fmSearchTeam_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeCountryTeam(temp, teamCountry.SelectedIndex);
+                UtilGUI.comboBoxSearch(clubBox, fmSearchTeam);
             }
         }
 
-        private void teamStadium_SelectedIndexChanged(object sender, EventArgs e)
+        private void searchTeamFm_Click(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
+            UtilGUI.comboBoxSearch(clubBox, fmSearchTeam);
+        }
+
+        private void applyFm_Click(object sender, EventArgs e)
+        {
+            Fm temp2 = (Fm)playerList.Items[playerList.SelectedIndex];
+            Player temp = controllerFm.getPlayer();
+            //player name
+            if (playerList.Text.Length <= 44)
+                temp.setName(playerList.Text);
+            else
+                temp.setName(playerList.Text.Substring(0, 44));
+            //shirt name
+            string decode = Unidecoder.Unidecode(temp2.getSurname());
+            if (temp2.getSurname().Length <= 44)
+                temp.setShirtName(decode.ToUpper());
+            else
+                temp.setShirtName(decode.ToUpper().Substring(0, 44));
+            //playing style
+            temp.setPlayingStyle(0);
+
+            int ind = controller.findCountryFm(temp2.getNation());
+            temp.setNational((ushort)controller.leggiPaese(ind).getId());
+            temp.setNational2(0);
+
+            //position
+            controllerFm.calculatePosition(temp2);
+            controllerFm.registredPosition(gk, cb, lb, rb, dmf, cmf, lmf, amf, rmf, lwf, rwf, ss, cf);
+            //basic info
+            temp.setAge(uint.Parse(age.Text));
+            temp.setStrongerFoot(controllerFm.calculateStrongFoot(temp2));
+            temp.setInjuryRes(controllerFm.calculateInjuryRes(int.Parse(naturalFitness.Text)));
+            temp.setForm(controllerFm.calculateForm(int.Parse(staminaFm.Text), int.Parse(naturalFitness.Text), int.Parse(balance.Text), controllerFm.getPlayer().getPosition()));
+            temp.setWcUsage(controllerFm.calculateWcUsage(int.Parse(technique.Text), controllerFm.getPlayer().getPosition()));
+            temp.setWeakFootAcc(controllerFm.calculateWcAcc(int.Parse(technique.Text), int.Parse(offtheball.Text), controllerFm.getPlayer().getPosition()));
+            //ability
+            temp.setStamina(controllerFm.calculateStamina(int.Parse(staminaFm.Text), int.Parse(average.Text), int.Parse(averageGk.Text), int.Parse(naturalFitness.Text), int.Parse(strenght.Text), int.Parse(workrate.Text), controllerFm.getPlayer().getPosition()));
+            temp.setCoverage(controllerFm.calculateCoverage(int.Parse(commandOfArea.Text), int.Parse(communication.Text), int.Parse(positioning.Text), int.Parse(leadership.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setReflexes(controllerFm.calculateRflexes(int.Parse(reflexesFm.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setClearing(controllerFm.calculateClearing(int.Parse(tendencyToPunch.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setCathing(controllerFm.calculateCatching(int.Parse(handling.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setGoalkeeping(controllerFm.calculateGoalkeeping(int.Parse(commandOfArea.Text), int.Parse(communication.Text), int.Parse(aerialAbility.Text), int.Parse(handling.Text),
+                int.Parse(throwing.Text), int.Parse(kicking.Text), int.Parse(oneOnOnes.Text), int.Parse(tendencyToPunch.Text), int.Parse(concentration.Text),
+                int.Parse(leadership.Text), int.Parse(positioning.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setJump(controllerFm.calculateJump(int.Parse(jumpingReach.Text), int.Parse(agility.Text), int.Parse(strenght.Text), int.Parse(average.Text), controllerFm.getPlayer().getPosition()));
+            temp.setPhysical(controllerFm.calculatePhysicalContact(int.Parse(positioning.Text), int.Parse(tackling.Text), int.Parse(eccentricity.Text), int.Parse(workrate.Text), int.Parse(naturalFitness.Text),
+                int.Parse(staminaFm.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+
+            temp.setBodyControl(controllerFm.calculateBodyControll(int.Parse(naturalFitness.Text), int.Parse(balance.Text), int.Parse(strenght.Text), int.Parse(average.Text), controllerFm.getPlayer().getPosition()));
+            temp.setExplosiveP(controllerFm.calculateExplosivePower(int.Parse(naturalFitness.Text), int.Parse(agility.Text), int.Parse(acceleration.Text), int.Parse(strenght.Text), int.Parse(staminaFm.Text), int.Parse(determination.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setSpeed(controllerFm.calculateSpeed(int.Parse(pace.Text), int.Parse(acceleration.Text), int.Parse(naturalFitness.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setKickingPower(controllerFm.calculateKickingPower(int.Parse(passing.Text), int.Parse(eccentricity.Text), int.Parse(strenght.Text), int.Parse(freeKickTaking.Text), int.Parse(penaltyTaking.Text), int.Parse(longShots.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setBallWinning(controllerFm.calculateBallWinning(int.Parse(aggression.Text), int.Parse(eccentricity.Text), int.Parse(positioning.Text), int.Parse(marking.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setDefense(controllerFm.calculateDefensiveProwess(int.Parse(positioning.Text), int.Parse(aggression.Text), int.Parse(eccentricity.Text), int.Parse(concentration.Text), int.Parse(teamwork.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setHeader(controllerFm.calculateHeader(int.Parse(eccentricity.Text), int.Parse(rushingOut.Text), int.Parse(aerialAbility.Text), int.Parse(jumpingReach.Text), int.Parse(heading.Text), int.Parse(anticipation.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setSwerve(controllerFm.calculateSwerve(int.Parse(passing.Text), int.Parse(freeKickTaking.Text), int.Parse(technique.Text), int.Parse(corners.Text), int.Parse(firstTouch.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setPlaceKick(controllerFm.calculatePlaceKicking(int.Parse(composure.Text), int.Parse(determination.Text), int.Parse(technique.Text), int.Parse(freeKickTaking.Text), int.Parse(strenght.Text), int.Parse(leadership.Text), int.Parse(average.Text), controllerFm.getPlayer().getPosition()));
+            temp.setFinishing(controllerFm.calculateFinishing(int.Parse(penaltyTaking.Text), int.Parse(freeKickTaking.Text), int.Parse(vision.Text), int.Parse(finishingFm.Text), int.Parse(longShots.Text), int.Parse(composure.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setLoftedPass(controllerFm.calculateLoftedPass(int.Parse(passing.Text), int.Parse(kicking.Text), int.Parse(eccentricity.Text), int.Parse(corners.Text), int.Parse(longThrows.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setLowPass(controllerFm.calculateLowPass(int.Parse(eccentricity.Text), int.Parse(firstTouch.Text), int.Parse(passing.Text), int.Parse(decisions.Text), int.Parse(vision.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setDribbling(controllerFm.calculateDribbling(int.Parse(frair.Text), int.Parse(eccentricity.Text), int.Parse(driblingFm.Text), int.Parse(firstTouch.Text), int.Parse(technique.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setBallControll(controllerFm.calculateBallControll(int.Parse(firstTouch.Text), int.Parse(eccentricity.Text), int.Parse(technique.Text), int.Parse(vision.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+            temp.setAttack(controllerFm.calculateAttackingProwness(int.Parse(offtheball.Text), int.Parse(teamwork.Text), int.Parse(finishingFm.Text), int.Parse(firstTouch.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
+
+            temp.setEarlyCross(0);
+            temp.setPinCrossing(0);
+            temp.setSombrero(0);
+            temp.setSpeedingBullet(0);
+            temp.setSchotMove(0);
+            temp.setGkLong(0);
+            temp.setLongThrow(0);
+            temp.setScissorFeint(0);
+            temp.setTrackBack(0);
+            temp.setSuperSub(0);
+            temp.setRabona(0);
+            temp.setAcrobatingFinishing(0);
+            temp.setKnucleShot(0);
+            temp.setFirstTimeShot(0);
+            temp.setComIncisiveRun(0);
+            /*unk3*/
+            temp.setLongRange(0);
+            temp.setOneTouchPass(0);
+            temp.setHellTick(0);
+            /*unk4*/
+            temp.setManMarking(0);
+            /*unk5*/
+            temp.setMarseilleTurn(0);
+            temp.setHeading(0);
+            temp.setOutsideCurler(0);
+            temp.setCaptaincy(0);
+            temp.setMalicia(0);
+            temp.setLowPuntTrajectory(0);
+            temp.setComTrickster(0);
+            temp.setLowLoftedPass(0);
+            temp.setFightingSpirit(0);
+            temp.setFlipFlap(0);
+            temp.setWeightnessPass(0);
+            /*unk6*/
+            /*unk7*/
+            /*unk8*/
+            temp.setComMazingRun(0);
+            temp.setAcrobatingClear(0);
+            temp.setComBallExpert(0);
+            temp.setCutBehind(0);
+            temp.setComLongRanger(0);
+
+            temp.setYouthPlayerId(0);
+            temp.setLegendGoldenBall(0);
+            temp.setHiddenPlayer(0);
+
+            controller.applyPlayerPersister(controller.findPlayer(temp.getId()), temp);
+            controller.UpdateTeamView(temp.getId(), temp.getName());
+            controller.UpdateFormPlayer(controller.findPlayer(temp.getId()), temp.getName());
+
+            //aggiornare textbox
+            giocatoreName.Text = temp.getName();
+            giocatoreShirt.Text = temp.getShirtName();
+        }
+
+        //CompetitionEntry
+        private void competitionEntryBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (competitionEntryBox.SelectedIndex < 0)
                 return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            controller.findCompetition(competitionEntryBox.SelectedIndex);
+        }
+
+        private void applyCompEntry_Click(object sender, EventArgs e)
+        {
+            if (competitionEntryBox.SelectedIndex >= 0)
             {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeStadiumTeam(temp, (Stadium)teamStadium.SelectedItem);
+                controller.applyCompetitionEntryPersister(competitionEntryBox.SelectedIndex);
             }
         }
 
-        private void hasLicensedPlayers_CheckedChanged(object sender, EventArgs e)
+        private void deleteCompetitionEntry_Click(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
+            if ((DataGridView1.Rows.Count > 0))
             {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeHasLicensedPlayers(temp, hasLicensedPlayers.Checked);
+                DataGridView1.Rows.RemoveAt((DataGridView1.Rows.Count - 1));
             }
+            else
+                MessageBox.Show("Select a team!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
-        private void hasAnthem_CheckedChanged(object sender, EventArgs e)
+        private void competitionTeamList_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
+            if (Form1._Form1.DataGridView1.Rows.Count <= 0)
                 return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeHasAnthem(temp, hasAnthem.Checked);
-            }
+
+            Team team = controller.leggiSquadra(competitionTeamList.SelectedIndex);
+
+            DataGridView1.CurrentRow.Cells[3].Value = team.getId();
+            DataGridView1.CurrentRow.Cells[1].Value = team.getEnglish();
         }
 
-        private void anthemStandingAngle_ValueChanged(object sender, EventArgs e)
+        private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeAnthemStandingAngle(temp, int.Parse(anthemStandingAngle.Value.ToString()));
-            }
+            competitionTeamList.SelectedIndex = controller.findTeam(uint.Parse(DataGridView1.CurrentRow.Cells[3].Value.ToString()));
         }
 
-        private void anthemPlayersSinging_ValueChanged(object sender, EventArgs e)
+        //remove fake team
+        private void removeFakeTeam_Click(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeAnthemPlayersSinging(temp, int.Parse(anthemPlayersSinging.Value.ToString()));
-            }
+            controller.removeFakeTeam();
+
+            MessageBox.Show("Fake teams corrected!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
-        private void anthemStandingStyle_ValueChanged(object sender, EventArgs e)
+        //remove fake classic player
+        private void removeFakeClassicPlayer_Click(object sender, EventArgs e)
         {
-            if (teamsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeAnthemStandingStyle(temp, int.Parse(anthemStandingStyle.Value.ToString()));
-            }
-        }
+            controller.removeFakePlayer();
 
-        private void unknown_CheckedChanged(object sender, EventArgs e)
-        {
-            if (teamsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = teamsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Team temp = (Team)teamsBox.SelectedItem;
-                controller.changeUnknown(temp, unknown.Checked == true);
-            }
+            MessageBox.Show("Classic players fake names corrected!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         //export Player
@@ -1772,6 +2929,50 @@ namespace DinoTem
             }
         }
 
+        //export Coaches
+        private void csvToolStripMenuItem16_Click(object sender, EventArgs e)
+        {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
+
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportCoach(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //export Stadium
+        private void csvToolStripMenuItem11_Click(object sender, EventArgs e)
+        {
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
+
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportStadium(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
         //export Ball
         private void csvToolStripMenuItem9_Click(object sender, EventArgs e)
         {
@@ -1794,7 +2995,7 @@ namespace DinoTem
             }
         }
 
-        //export ballCondition
+        //export BallCondition
         private void csvToolStripMenuItem13_Click(object sender, EventArgs e)
         {
             ControllerCSV csv = new ControllerCSV();
@@ -1816,22 +3017,217 @@ namespace DinoTem
             }
         }
 
-        //database
-        private void databaseView_SelectedIndexChanged(object sender, EventArgs e)
+        //export Boots
+        private void csvToolStripMenuItem2_Click(object sender, EventArgs e)
         {
-            /*ControllerDB controllerDb = new ControllerDB();
-            if (databaseView.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = databaseView.SelectedIndices[0];
-            if (intselectedindex >= 0)
-                controllerDb.readStadium(db14, db15, db16, dbStadiumDlc, dbStadiumHome, dbStadiumRealName, dbIdStadium, dbStadiumName, dbStadiumJapanese, dbStadiumCapacity, dbStadiumKonami, dbStadiumLicensed, databaseView, intselectedindex);*/
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
+
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportBoot(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        private void databaseBox_SelectedIndexChanged(object sender, EventArgs e)
+        //export Gloves
+        private void csvToolStripMenuItem10_Click(object sender, EventArgs e)
         {
-            /*ControllerDB controllerDb = new ControllerDB();
-            if (databaseBox.Text == "Stadium")
-                controllerDb.loadStadium(databaseView, dbStadiumDlc);*/
+            ControllerCSV csv = new ControllerCSV();
+            StreamWriter sw = null;
+
+            //Setup OpenFileDialog
+            SaveFileDialog ofd = new SaveFileDialog();
+            //Title of OPENFILEDIALOG
+            ofd.Title = "Save File";
+            //Set Filter for only .bin files
+            ofd.Filter = "PES 2018 EXPORT (*.csv)|*.csv";
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                sw = new StreamWriter(ofd.FileName, false);
+                sw.Write(csv.exportGlove(controller));
+                sw.Close();
+                MessageBox.Show("CSV exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        //Add new glove
+        private void addNewGloveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.addGlovePersister();
+
+            tabControl1.SelectedIndex = 10;
+        }
+
+        //Add new boot
+        private void addNewBoot_Click(object sender, EventArgs e)
+        {
+            controller.addBootPersister();
+
+            tabControl1.SelectedIndex = 9;
+        }
+
+        //Add new ball
+        private void addNewBall_Click(object sender, EventArgs e)
+        {
+            controller.addBallPersister();
+
+            tabControl1.SelectedIndex = 8;
+        }
+
+        //Add new stadium
+        private void addNewStadium_Click(object sender, EventArgs e)
+        {
+            controller.addStadiumPersister();
+
+            tabControl1.SelectedIndex = 6;
+        }
+
+        //Add new derby
+        private void addNewDerby_Click(object sender, EventArgs e)
+        {
+            controller.addDerbyPersister();
+
+            tabControl1.SelectedIndex = 5;
+        }
+
+        //Add new coach
+        private void addNewCoach_Click(object sender, EventArgs e)
+        {
+            controller.addCoachPersister();
+
+            tabControl1.SelectedIndex = 2;
+        }
+
+        //Add new team
+        private void addNewTeam_Click(object sender, EventArgs e)
+        {
+            controller.addTeamPersister();
+
+            //tabControl1.SelectedIndex = 1;
+        }
+
+        //Add new player
+        private void addNewPlayer_Click(object sender, EventArgs e)
+        {
+            controller.addPlayerPersister();
+
+            tabControl1.SelectedIndex = 0;
+        }
+
+        //Export Player bin
+        private void exportPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.ExportPlayer(ushort.Parse(giocatoreID.Text), giocatoreShirt.Text);
+        }
+
+        //Import Player bin
+        private void importPlayerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.ImportPlayer();
+        }
+
+        private void importPlayerFromDinoEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.ImportPlayer();
+        }
+
+        //Export PlayerAppareance bin
+        private void exportPlayerAppareanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.exportPlayerApp(ushort.Parse(giocatoreID.Text), giocatoreShirt.Text);
+        }
+
+        private void importPlayerAppearanceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.importPlayerApp();
+        }
+
+        private void importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            controller.importPlayerApp();
+        }
+
+        //PlayersBox Drag&Drop
+        private void playersBox_DragOver(object sender, DragEventArgs e)
+        {
+            if (!e.Data.GetDataPresent(DataFormats.Text))
+            {
+                e.Effect = DragDropEffects.None;
+                return;
+            }
+
+            String text = (String)e.Data.GetData(TEAM_A.GetType());
+            String text1 = (String)e.Data.GetData(TEAM_B.GetType());
+            if (text.CompareTo(TEAM_A) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+            else if (text1.CompareTo(TEAM_B) == 0)
+            {
+                e.Effect = DragDropEffects.Move;
+            }
+            else
+            {
+                e.Effect = DragDropEffects.None;
+            }
+        }
+
+        private void playersBox_DragEnter(object sender, DragEventArgs e)
+        {
+            e.Effect = DragDropEffects.Copy;
+        }
+
+        private void playersBox_DragDrop(object sender, DragEventArgs e)
+        {
+            string text = (string)e.Data.GetData(TEAM_A.GetType());
+            string text1 = (string)e.Data.GetData(TEAM_B.GetType());
+            if (text.CompareTo(TEAM_A) == 0)
+            {
+                int intselectedindex = teamView1.SelectedIndices[0];
+                if (teamView1.Items.Count > 12)
+                {
+                    controller.deletePlayerTeam(teamView1, intselectedindex);
+                    if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                    {
+                        teamView2.Items.RemoveAt(intselectedindex);
+                        for (int i = 0; i < teamView2.Items.Count; i++)
+                        {
+                            teamView2.Items[i].SubItems[0].Text = (i + 1).ToString();
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("There are only 12 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (text.CompareTo(TEAM_B) == 0)
+            {
+                int intselectedindex = teamView2.SelectedIndices[0];
+                if (teamView2.Items.Count > 12)
+                {
+                    controller.deletePlayerTeam(teamView2, intselectedindex);
+                    if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                    {
+                        teamView1.Items.RemoveAt(intselectedindex);
+                        for (int i = 0; i < teamView1.Items.Count; i++)
+                        {
+                            teamView1.Items[i].SubItems[0].Text = (i + 1).ToString();
+                        }
+                    }
+                }
+                else
+                    MessageBox.Show("There are only 12 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         //teamView1 drag&drop
@@ -1877,9 +3273,7 @@ namespace DinoTem
                 hoverItem.EnsureVisible();
             }
             else
-            {
                 e.Effect = DragDropEffects.None;
-            }
         }
 
         private void teamView1_ItemDrag(object sender, ItemDragEventArgs e)
@@ -1899,74 +3293,26 @@ namespace DinoTem
             string text2 = (string)e.Data.GetData(PLAYER.GetType());
             if (text.CompareTo(TEAM_A) == 0)
             {
-                if (teamView1.SelectedIndices.Count <= 0)
-                    return;
                 int intselectedindex = teamView1.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Point cp = teamView1.PointToClient(new Point(e.X, e.Y));
-                    ListViewItem dragToItem = teamView1.GetItemAt(cp.X, cp.Y);
-                    int dropIndex = dragToItem.Index;
-                    Team temp = (Team)teamBox1.SelectedItem;
-                    controller.transferPlayerAtoA(intselectedindex, dropIndex, temp.getId(), teamBox1, teamBox2);
-                }
+                Point cp = teamView1.PointToClient(new Point(e.X, e.Y));
+                ListViewItem dragToItem = teamView1.GetItemAt(cp.X, cp.Y);
+                int dropIndex = dragToItem.Index;
+                controller.transferAtoA(teamView1, dropIndex, intselectedindex);
+                controller.transferPlayerAtoA(teamView1, controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+                if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                    controller.transferAtoA(teamView2, dropIndex, intselectedindex);
             }
             else if (text.CompareTo(TEAM_B) == 0)
             {
-                if (teamView2.SelectedIndices.Count <= 0)
-                    return;
+                Point cp = teamView1.PointToClient(new Point(e.X, e.Y));
+                ListViewItem dragToItem = teamView1.GetItemAt(cp.X, cp.Y);
+                int dropIndex = dragToItem.Index;
                 int intselectedindex = teamView2.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team teamA = (Team)teamBox1.SelectedItem;
-                    Team teamB = (Team)teamBox2.SelectedItem;
-
-                    if (teamView2.Items.Count > 11)
-                    {
-                        if (teamA.getNational())
-                        {
-                            if (teamView1.Items.Count < 23 && teamBox1.SelectedIndex != teamBox2.SelectedIndex)
-                                controller.transferPlayerBtoA(intselectedindex, teamA, teamB, teamView1.Items.Count, teamBox1, teamBox2);
-                            else
-                                MessageBox.Show("National is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            if (teamView1.Items.Count < 32 && teamBox1.SelectedIndex != teamBox2.SelectedIndex)
-                                controller.transferPlayerBtoA(intselectedindex, teamA, teamB, teamView1.Items.Count, teamBox1, teamBox2);
-                            else
-                                MessageBox.Show("Club is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                        MessageBox.Show("There are only 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                controller.transferPlayerBtoA(teamView1, teamView2, teamBox1, teamBox2, intselectedindex, dropIndex);
             }
             else if (text2.CompareTo(PLAYER) == 0)
             {
-                if (giocatoreView.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = giocatoreView.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team teamA = (Team)teamBox1.SelectedItem;
-
-                    if (teamA.getNational())
-                    {
-                        if (teamView1.Items.Count < 23)
-                            controller.playerFromPlayerList(controller.getPlayerById(intselectedindex).getId(), teamA.getId(), teamBox1, teamBox2);
-                        else
-                            MessageBox.Show("National is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        if (teamView1.Items.Count < 32)
-                            controller.playerFromPlayerList(controller.getPlayerById(intselectedindex).getId(), teamA.getId(), teamBox1, teamBox2);
-                        else
-                            MessageBox.Show("Club is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
+                controller.playerFromPlayerList(uint.Parse(giocatoreID.Text), controller.leggiSquadra(teamBox1.SelectedIndex).getId(), teamView1, controller.leggiSquadra(teamBox2.SelectedIndex).getId(), teamView2);
             }
         }
 
@@ -2033,662 +3379,29 @@ namespace DinoTem
             string text = (string)e.Data.GetData(TEAM_A.GetType());
             string text1 = (string)e.Data.GetData(TEAM_B.GetType());
             string text2 = (string)e.Data.GetData(PLAYER.GetType());
-            if (text.CompareTo(TEAM_B) == 0)
-            {
-                if (teamView2.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamView2.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Point cp = teamView2.PointToClient(new Point(e.X, e.Y));
-                    ListViewItem dragToItem = teamView2.GetItemAt(cp.X, cp.Y);
-                    int dropIndex = dragToItem.Index;
-                    Team temp = (Team)teamBox2.SelectedItem;
-                    controller.transferPlayerAtoA(intselectedindex, dropIndex, temp.getId(), teamBox1, teamBox2);
-                }
-            }
-            else if (text.CompareTo(TEAM_A) == 0)
-            {
-                if (teamView1.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = teamView1.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team teamA = (Team)teamBox1.SelectedItem;
-                    Team teamB = (Team)teamBox2.SelectedItem;
-
-                    if (teamView1.Items.Count > 11)
-                    {
-                        if (teamB.getNational())
-                        {
-                            if (teamView2.Items.Count < 23 && teamBox1.SelectedIndex != teamBox2.SelectedIndex)
-                                controller.transferPlayerBtoA(intselectedindex, teamB, teamA, teamView2.Items.Count, teamBox1, teamBox2);
-                            else
-                                MessageBox.Show("National is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                        else
-                        {
-                            if (teamView2.Items.Count < 32 && teamBox1.SelectedIndex != teamBox2.SelectedIndex)
-                                controller.transferPlayerBtoA(intselectedindex, teamB, teamA, teamView2.Items.Count, teamBox1, teamBox2);
-                            else
-                                MessageBox.Show("Club is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                        MessageBox.Show("There are only 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                }
-            }
-            else if (text2.CompareTo(PLAYER) == 0)
-            {
-                if (giocatoreView.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = giocatoreView.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team teamA = (Team)teamBox2.SelectedItem;
-
-                    if (teamA.getNational())
-                    {
-                        if (teamView2.Items.Count < 23)
-                            controller.playerFromPlayerList(controller.getPlayerById(intselectedindex).getId(), controller.getTeamById(teamBox2.SelectedIndex).getId(), teamBox1, teamBox2);
-                        else
-                            MessageBox.Show("National is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        if (teamView2.Items.Count < 32)
-                            controller.playerFromPlayerList(controller.getPlayerById(intselectedindex).getId(), controller.getTeamById(teamBox2.SelectedIndex).getId(), teamBox1, teamBox2);
-                        else
-                            MessageBox.Show("Club is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-            }
-        }
-
-        //giocatoreView
-        private void giocatoreView_DragOver(object sender, DragEventArgs e)
-        {
-            if (!e.Data.GetDataPresent(DataFormats.Text))
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-            Point cp = giocatoreView.PointToClient(new Point(e.X, e.Y));
-            ListViewItem hoverItem = giocatoreView.GetItemAt(cp.X, cp.Y);
-            if (hoverItem == null)
-            {
-                e.Effect = DragDropEffects.None;
-                return;
-            }
-            foreach (ListViewItem moveItem in giocatoreView.SelectedItems)
-            {
-                if (moveItem.Index == hoverItem.Index)
-                {
-                    e.Effect = DragDropEffects.None;
-                    hoverItem.EnsureVisible();
-                    return;
-                }
-            }
-            String text = (String)e.Data.GetData(TEAM_A.GetType());
-            String text1 = (String)e.Data.GetData(TEAM_B.GetType());
             if (text.CompareTo(TEAM_A) == 0)
             {
-                e.Effect = DragDropEffects.Move;
-                hoverItem.EnsureVisible();
-            }
-            else if (text1.CompareTo(TEAM_B) == 0)
-            {
-                e.Effect = DragDropEffects.Move;
-                hoverItem.EnsureVisible();
-            }
-            else
-            {
-                e.Effect = DragDropEffects.None;
-            }
-        }
-
-        private void giocatoreView_ItemDrag(object sender, ItemDragEventArgs e)
-        {
-            giocatoreView.DoDragDrop(PLAYER, DragDropEffects.Move);
-        }
-
-        private void giocatoreView_DragEnter(object sender, DragEventArgs e)
-        {
-            e.Effect = DragDropEffects.Copy;
-        }
-
-        private void giocatoreView_DragDrop(object sender, DragEventArgs e)
-        {
-            string text = (string)e.Data.GetData(TEAM_A.GetType());
-            string text1 = (string)e.Data.GetData(TEAM_B.GetType());
-            if (text.CompareTo(TEAM_A) == 0)
-            {
-                if (teamView1.SelectedIndices.Count <= 0)
-                    return;
+                Point cp = teamView2.PointToClient(new Point(e.X, e.Y));
+                ListViewItem dragToItem = teamView2.GetItemAt(cp.X, cp.Y);
+                int dropIndex = dragToItem.Index;
                 int intselectedindex = teamView1.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamBox1.SelectedItem;
-                    if (teamView1.Items.Count > 11)
-                        controller.deletePlayerTeam(intselectedindex, temp.getId(), teamBox1, teamBox2);
-                    else
-                        MessageBox.Show("There are only 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                controller.transferPlayerBtoA(teamView2, teamView1, teamBox2, teamBox1, intselectedindex, dropIndex);
             }
             else if (text.CompareTo(TEAM_B) == 0)
             {
-                if (teamView2.SelectedIndices.Count <= 0)
-                    return;
                 int intselectedindex = teamView2.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Team temp = (Team)teamBox2.SelectedItem;
-                    if (teamView2.Items.Count > 11)
-                        controller.deletePlayerTeam(intselectedindex, temp.getId(), teamBox1, teamBox2);
-                    else
-                        MessageBox.Show("There are only 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                Point cp = teamView2.PointToClient(new Point(e.X, e.Y));
+                ListViewItem dragToItem = teamView2.GetItemAt(cp.X, cp.Y);
+                int dropIndex = dragToItem.Index;
+                controller.transferAtoA(teamView2, dropIndex, intselectedindex);
+                controller.transferPlayerAtoA(teamView2, controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+                if (teamBox1.SelectedIndex == teamBox2.SelectedIndex)
+                    controller.transferAtoA(teamView1, dropIndex, intselectedindex);
             }
-        }
-
-        //Save
-        private void save_Click(object sender, EventArgs e)
-        {
-            controller.saveBallConditionPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
-            controller.savePlayerAssignmentPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
-            controller.savePlayerAppearancePersister(fbd.SelectedPath, controller, controller.getBitRecognized());
-            controller.saveTacticsFormationPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
-            controller.saveBallPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
-            controller.savePlayerPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
-            controller.saveTeamPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
-            controller.saveStadiumPersister(fbd.SelectedPath, controller, controller.getBitRecognized());
-
-            MessageBox.Show("Saved Data", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            MessageBox.Show("All Files Saved at:" + Environment.NewLine + fbd.SelectedPath, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        //remove fake teams
-        private void removeFakeTeam_Click(object sender, EventArgs e)
-        {
-            controller.removeFakeTeam();
-
-            teamsBox.Items.Clear();
-            teamBox1.Items.Clear();
-            teamBox2.Items.Clear();
-
-            foreach (Team temp in controller.getListTeam())
+            else if (text2.CompareTo(PLAYER) == 0)
             {
-                teamsBox.Items.Add(temp);
-                teamBox1.Items.Add(temp);
-                teamBox2.Items.Add(temp);
+                controller.playerFromPlayerList(uint.Parse(giocatoreID.Text), controller.leggiSquadra(teamBox2.SelectedIndex).getId(), teamView2, controller.leggiSquadra(teamBox1.SelectedIndex).getId(), teamView1);
             }
-
-            //selezionare 2 squadre default
-            teamBox1.SelectedIndex = 0;
-            teamBox2.SelectedIndex = 0;
-            teamsBox.SelectedIndex = 0;
-
-            MessageBox.Show("Fake teams corrected!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        //remove fake players
-        private void removeFakeClassicPlayer_Click(object sender, EventArgs e)
-        {
-            controller.removeFakePlayer();
-
-            MessageBox.Show("Classic players fake names corrected!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        //import BallCondition
-        private void csvToolStripMenuItem15_Click(object sender, EventArgs e)
-        {
-            //Setup OpenFileDialog
-            OpenFileDialog ofd = new OpenFileDialog();
-            //Title of OPENFILEDIALOG
-            ofd.Title = "Open File";
-            //Set Filter for only .bin files
-            ofd.Filter = "PES 2018 IMPORT (*.csv)|*.csv";
-            //Run open file dialog
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                ControllerCSV csv = new ControllerCSV();
-                csv.importBallCondition(controller, ofd.FileName, ballsBox);
-                MessageBox.Show("CSV imported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        //import Ball
-        private void csvToolStripMenuItem3_Click(object sender, EventArgs e)
-        {
-            //Setup OpenFileDialog
-            OpenFileDialog ofd = new OpenFileDialog();
-            //Title of OPENFILEDIALOG
-            ofd.Title = "Open File";
-            //Set Filter for only .bin files
-            ofd.Filter = "PES 2018 IMPORT (*.csv)|*.csv";
-            //Run open file dialog
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                ControllerCSV csv = new ControllerCSV();
-                csv.importBall(controller, ofd.FileName, ballsBox);
-                MessageBox.Show("CSV imported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        //import PlayerAppareance
-        private void csvToolStripMenuItem14_Click(object sender, EventArgs e)
-        {
-            //Setup OpenFileDialog
-            OpenFileDialog ofd = new OpenFileDialog();
-            //Title of OPENFILEDIALOG
-            ofd.Title = "Open File";
-            //Set Filter for only .bin files
-            ofd.Filter = "PES 2018 IMPORT (*.csv)|*.csv";
-            //Run open file dialog
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                ControllerCSV csv = new ControllerCSV();
-                csv.importPlayerAppareance(controller, ofd.FileName);
-                MessageBox.Show("CSV imported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        //import Team
-        private void csvToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            //Setup OpenFileDialog
-            OpenFileDialog ofd = new OpenFileDialog();
-            //Title of OPENFILEDIALOG
-            ofd.Title = "Open File";
-            //Set Filter for only .bin files
-            ofd.Filter = "PES 2018 IMPORT (*.csv)|*.csv";
-            //Run open file dialog
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                ControllerCSV csv = new ControllerCSV();
-                csv.importTeam(controller, ofd.FileName, teamsBox, teamBox1, teamBox2);
-                MessageBox.Show("CSV imported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        //import Player
-        private void csvToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            //Setup OpenFileDialog
-            OpenFileDialog ofd = new OpenFileDialog();
-            //Title of OPENFILEDIALOG
-            ofd.Title = "Open File";
-            //Set Filter for only .bin files
-            ofd.Filter = "PES 2018 IMPORT (*.csv)|*.csv";
-            //Run open file dialog
-            if (ofd.ShowDialog() == DialogResult.OK)
-            {
-                ControllerCSV csv = new ControllerCSV();
-                csv.importPlayer(controller, ofd.FileName, giocatoreView, teamBox1, teamBox2);
-                MessageBox.Show("CSV imported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-        }
-
-        //upper, lower teams
-        private void globalFunctionTeam_Click(object sender, EventArgs e)
-        {
-            if (upperTeam.Checked == true)
-                controller.upperTeams(teamsBox, teamBox1, teamBox2);
-            else if (lowerTeam.Checked == true)
-                controller.lowerTeams(teamsBox, teamBox1, teamBox2);
-            else if (firstUpTeam.Checked == true)
-                controller.firstUpTeams(teamsBox, teamBox1, teamBox2);
-            MessageBox.Show("New teams names applied", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        //upper, lower players
-        private void globalFunctionPlayer_Click(object sender, EventArgs e)
-        {
-            if (upperPlayer.Checked == true)
-                controller.upperPlayers(giocatoreView, teamBox1, teamBox2);
-            else if (lowerPlayer.Checked == true)
-                controller.lowerPlayers(giocatoreView, teamBox1, teamBox2);
-            else if (firstUpPlayer.Checked == true)
-                controller.firstUpPlayers(giocatoreView, teamBox1, teamBox2);
-            MessageBox.Show("New players names applied", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        //load Football Manager stats
-        private void loadFootballManager_Click(object sender, EventArgs e)
-        {
-            //FMStats a = new FMStats(controllerFm, controller);
-            //a.Show();
-        }
-
-        //stadium
-        private void stadiumsBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (stadiumsBox.SelectedIndices.Count <= 0)
-                return;
-
-            //pulire campi
-            stadiumName.Text = "";
-            stadiumId.Text = "";
-            stadiumOrder.Text = "";
-            stadiumJapanese.Text = "";
-            stadiumKonami.Text = "";
-            stadiumCapacity.Text = "";
-            stadiumNa.Text = "";
-
-            int intselectedindex = stadiumsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Stadium temp = (Stadium)stadiumsBox.SelectedItem;
-                stadiumName.Text = temp.getName();
-                stadiumId.Text = temp.getId().ToString();
-                stadiumJapanese.Text = temp.getJapaneseName();
-                stadiumKonami.Text = temp.getKonamiName();
-                stadiumCapacity.Text = temp.getCapacity().ToString();
-                stadiumNa.Text = temp.getNa().ToString();
-                stadiumZone.Text = temp.getStringZone();
-                if (temp.getLicense())
-                    stadiumLicense.Text = "Licensed";
-                else
-                    stadiumLicense.Text = "Unlicensed";
-
-                controller.getCountryMap().GetType();
-                Country value;
-                if (!controller.getCountryMap().TryGetValue((long)temp.getCountry(), out value))
-                    throw new ArgumentException("id country not found");
-                stadiumCountry.Text = value.getName();
-            }
-        }
-
-        //stadium name
-        private void stadiumName_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (stadiumsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = stadiumsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Stadium temp = (Stadium)stadiumsBox.SelectedItem;
-                    controller.changeStadiumName(temp, stadiumName.Text);
-
-                    //selezionare il nome stadio interessato
-                    stadiumsBox.SelectedIndex = intselectedindex;
-                    stadiumsBox.Select();
-
-                    //aggiornare nome stadi
-                    teamStadium.Items[intselectedindex] = temp;
-                    stadiumsBox.Items[intselectedindex] = temp;
-                }
-            }
-        }
-
-        //stadium japanese
-        private void stadiumJapanese_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (stadiumsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = stadiumsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Stadium temp = (Stadium)stadiumsBox.SelectedItem;
-                    controller.changeStadiumJapaneseName(temp, stadiumJapanese.Text);
-
-                    //selezionare il nome stadio interessato
-                    stadiumsBox.SelectedIndex = intselectedindex;
-                    stadiumsBox.Select();
-                }
-            }
-        }
-
-        //stadium konami
-        private void stadiumKonami_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (stadiumsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = stadiumsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Stadium temp = (Stadium)stadiumsBox.SelectedItem;
-                    controller.changeStadiumKonamiName(temp, stadiumKonami.Text);
-
-                    //selezionare il nome stadio interessato
-                    stadiumsBox.SelectedIndex = intselectedindex;
-                    stadiumsBox.Select();
-                }
-            }
-        }
-
-        //stadium capacity
-        private void stadiumCapacity_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (stadiumsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = stadiumsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Stadium temp = (Stadium)stadiumsBox.SelectedItem;
-                    controller.changeStadiumCapacity(temp, int.Parse(stadiumCapacity.Text));
-
-                    //selezionare il nome stadio interessato
-                    stadiumsBox.SelectedIndex = intselectedindex;
-                    stadiumsBox.Select();
-                }
-            }
-        }
-
-        //stadium na
-        private void StadiumNa_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                if (stadiumsBox.SelectedIndices.Count <= 0)
-                    return;
-                int intselectedindex = stadiumsBox.SelectedIndices[0];
-                if (intselectedindex >= 0)
-                {
-                    Stadium temp = (Stadium)stadiumsBox.SelectedItem;
-                    controller.changeStadiumNa(temp, int.Parse(stadiumNa.Text));
-
-                    //selezionare il nome stadio interessato
-                    stadiumsBox.SelectedIndex = intselectedindex;
-                    stadiumsBox.Select();
-                }
-            }
-        }
-
-        //stadium country
-        private void stadiumCountry_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (stadiumsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = stadiumsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Stadium temp = (Stadium)stadiumsBox.SelectedItem;
-                controller.changeCountryStadium(temp, stadiumCountry.SelectedIndex);
-                //selezionare il nome squadra interessata
-                stadiumsBox.SelectedIndex = intselectedindex;
-                stadiumsBox.Select();
-            }
-        }
-
-        //stadium zone
-        private void stadiumZone_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (stadiumsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = stadiumsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Stadium temp = (Stadium)stadiumsBox.SelectedItem;
-                controller.changeZoneStadium(temp, stadiumZone.SelectedIndex);
-                //selezionare il nome squadra interessata
-                stadiumsBox.SelectedIndex = intselectedindex;
-                stadiumsBox.Select();
-            }
-        }
-
-        //stadium licensed
-        private void stadiumLicense_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (stadiumsBox.SelectedIndices.Count <= 0)
-                return;
-            int intselectedindex = stadiumsBox.SelectedIndices[0];
-            if (intselectedindex >= 0)
-            {
-                Stadium temp = (Stadium)stadiumsBox.SelectedItem;
-                controller.changeLicensedStadium(temp, stadiumLicense.Text == "Licensed");
-                //selezionare il nome squadra interessata
-                stadiumsBox.SelectedIndex = intselectedindex;
-                stadiumsBox.Select();
-            }
-        }
-
-        //Copy From DB
-        private void accept_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private FolderBrowserDialog fbd2;
-        private void pes18ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            fbd2 = new FolderBrowserDialog();
-            DialogResult result = fbd2.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                typeDB.Text = "Type DB: 18";
-                path.Text = "Path: " + fbd2.RootFolder;
-
-                controller.openDb2(fbd2.SelectedPath);
-
-                tot.Text = "PLAYERS: " + controller.getListPlayer2().Count + " - TEAMS: " + controller.getListTeam2().Count + " - STADIUMS: " + controller.getListStadium2().Count + " - TACTICSFORMATIONS: " + controller.getListTacticsFormationList2().Count
-                    + " - BALLS: " + controller.getListBall2().Count + " - BALLCONDITION: " + controller.getListBallCondition2().Count;
-
-                groupBox4.Visible = true;
-                groupBox7.Visible = true;
-                groupBox11.Visible = true;
-                groupBox13.Visible = true;
-
-                db2FromPlayers.Value = controller.getListPlayer()[0].getId();
-                db2ToPlayers.Value = controller.getListPlayer()[controller.getListPlayer().Count - 1].getId();
-                db2FromTextBoxPlayers.Text = controller.getListPlayer()[0].getPlayerName();
-                db2FromTeams.Maximum = controller.getListTeam().Count;
-                db2FromTextBoxTeams.Text = controller.getListTeam()[0].getEnglish();
-                db2ToTeams.Maximum = controller.getListTeam().Count;
-                db2ToTeams.Value = controller.getListTeam().Count;
-                db2ToTextBoxTeams.Text = controller.getListTeam()[controller.getListTeam().Count - 1].getEnglish();
-            }
-        }
-
-        private void db2AllBalls_Click(object sender, EventArgs e)
-        {
-            controller.importDb2AllBalls();
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2OrderBalls_Click(object sender, EventArgs e)
-        {
-            controller.importDb2OrderBalls();
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2NamesBalls_Click(object sender, EventArgs e)
-        {
-            controller.importDb2NamesBalls();
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2AllTeams_Click(object sender, EventArgs e)
-        {
-            controller.importDb2AllTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2NamesTeams_Click(object sender, EventArgs e)
-        {
-            controller.importDb2NamesTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2ShortNamesTeams_Click(object sender, EventArgs e)
-        {
-            controller.importDb2ShortNamesTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2HomeStadiumsTeams_Click(object sender, EventArgs e)
-        {
-            controller.importDb2HomeStadiumsTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2OtherDetailsTeams_Click(object sender, EventArgs e)
-        {
-            controller.importDb2OtherDetailsTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2CountryTeams_Click(object sender, EventArgs e)
-        {
-            controller.importDb2CountryTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2FakeTeamTeams_Click(object sender, EventArgs e)
-        {
-            controller.importDb2FakeTeamTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2NonPlayaLeagueTeams_Click(object sender, EventArgs e)
-        {
-            controller.importDb2NotPlayableLeagueTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2LicenseTeams_Click(object sender, EventArgs e)
-        {
-            controller.importDb2LicenseTeamTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            controller.importDb2LicenseCoachTeams(int.Parse(db2FromTeams.Value.ToString()), int.Parse(db2ToTeams.Value.ToString()));
-
-            MessageBox.Show("Operation complete!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void db2FromTeams_ValueChanged(object sender, EventArgs e)
-        {
-            db2FromTextBoxTeams.Text = controller.getTeamById(int.Parse(db2FromTeams.Value.ToString()) - 1).getEnglish();
-        }
-
-        private void db2ToTeams_ValueChanged(object sender, EventArgs e)
-        {
-            db2ToTextBoxTeams.Text = controller.getTeamById(int.Parse(db2ToTeams.Value.ToString()) - 1).getEnglish();
         }
     }
 }

@@ -8,58 +8,46 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class TacticsFormation
     {
-        private int position;
-        private int TeamTacticId;
-        private int Y;
-        private int X;
-        private int byteFrag;
+        private byte position;
+        private UInt16 TeamTacticId;
+        private byte Y;
+        private byte X;
+        private byte byteFrag;
 
-        public TacticsFormation(int position, int TeamTacticId, int Y, int X, int byteFrag)
+        public TacticsFormation(UInt16 TeamTacticId)
         {
             if (TeamTacticId < 0)
                 throw new ArgumentException("Tactic's id isn't valid: " + TeamTacticId);
-    	    if (position < 0)
-                throw new ArgumentException("Position of player in the team isn't valid - id tactic: " + getTeamTacticId());
-    	    if (Y < 0)
-                throw new ArgumentException("X position isn't valid - id tactic: " + getTeamTacticId());
-    	    if (X < 0)
-                throw new ArgumentException("Y position  isn't valid - id tactic: " + getTeamTacticId());
-    	    if (byteFrag < 0)
-                throw new ArgumentException("Tactic's byteFrag isn't valid - id tactic: " + getTeamTacticId());
-    	
-            this.position = position;
+
             this.TeamTacticId = TeamTacticId;
-            this.Y = Y;
-            this.X = X;
-            this.byteFrag = byteFrag;
         }
 
-        public int getPosition()
+        public byte getPosition()
         {
             return this.position;
         }
 
-        public int getTeamTacticId()
+        public UInt16 getTeamTacticId()
         {
             return this.TeamTacticId;
         }
 
-        public int getY()
+        public byte getY()
         {
             return this.Y;
         }
 
-        public int getX()
+        public byte getX()
         {
             return this.X;
         }
 
-        public int getbyteFrag()
+        public byte getbyteFrag()
         {
             return this.byteFrag;
         }
 
-        public void setPosition(int position)
+        public void setPosition(byte position)
         {
     	    if (position < 0)
                 throw new ArgumentException("Position of player in the team isn't valid - id tactic: " + getTeamTacticId());
@@ -67,7 +55,7 @@ namespace DinoTem.model
             this.position = position;
         }
 
-        public void setTeamTacticId(int TeamTacticId)
+        public void setTeamTacticId(UInt16 TeamTacticId)
         {
     	    if (TeamTacticId < 0)
                 throw new ArgumentException("Tactic's id isn't valid: " + TeamTacticId);
@@ -75,7 +63,7 @@ namespace DinoTem.model
             this.TeamTacticId = TeamTacticId;
         }
 
-        public void setX(int X)
+        public void setX(byte X)
         {
     	    if (X < 0)
                 throw new ArgumentException("Y position  isn't valid - id tactic: " + getTeamTacticId());
@@ -83,7 +71,7 @@ namespace DinoTem.model
             this.X = X;
         }
 
-        public void setY(int Y)
+        public void setY(byte Y)
         {
     	    if (Y < 0)
                 throw new ArgumentException("X position isn't valid - id tactic: " + getTeamTacticId());
@@ -91,7 +79,7 @@ namespace DinoTem.model
             this.Y = Y;
         }
 
-        public void setbyteFrag(int byteFrag)
+        public void setbyteFrag(byte byteFrag)
         {
     	    if (byteFrag < 0)
                 throw new ArgumentException("Tactic's byteFrag isn't valid - id tactic: " + getTeamTacticId());
@@ -114,28 +102,28 @@ namespace DinoTem.model
                 case 3: t = "RB";
                     break;
                 case 4: t = "DMF";
-                break;
+                    break;
                 case 5: t = "CMF";
-                break;
+                    break;
                 case 6: t = "LMF";
-                break;
+                    break;
                 case 7: t = "AMF";
-                break;
+                    break;
                 case 8: t = "RMF";
-                break;
+                    break;
                 case 9: t = "LWF";
-                break;
+                    break;
                 case 10: t = "RWF";
-                break;
+                    break;
                 case 11: t = "SS";
-                break;
+                    break;
                 case 12: t = "CF";
-                break;
+                    break;
             }
             return t;
         }
 
-        public override bool Equals(Object obj)
+        /*public override bool Equals(Object obj)
         {
             if (obj is TacticsFormation)
     	    {
@@ -143,6 +131,6 @@ namespace DinoTem.model
     		    return getTeamTacticId() == c.getTeamTacticId();
     	    }
             return false;
-        }
+        }*/
     }
 }

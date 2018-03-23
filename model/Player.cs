@@ -8,114 +8,114 @@ namespace DinoTem.model
     //pes 18
     public class Player
     {
-        private long id;
-        private long youthPlayerId = 0;
-        private string playerName = null;
-        private string shirtName = null;
-        private string japanese = null;
-        private int weight = 30;
-        private int height = 100;
-        private int national = 0;
-        private int national2 = 0;
-        private bool earlyCross;
-        private int defense = 40;
-        private int clearing = 40;
-        private int lowPass = 40;
-        private int placeKick = 40;
-        private int goalCelebrate = 0;
-        private int lb = 0;
-        private int coverage = 40;
-        private int cathing = 40;
-        private int jump = 40;
-        private int header = 40;
-        private int ballControll = 40;
-        private int gk = 40;
-        private int goalkeeping = 40;
-        private int reflexes = 40;
-        private int finishing = 40;
-        private int ballWinning = 40;
-        private int speed = 40;
-        private int penaltyKick = 0;
-        private int kickingPower = 40;
-        private int dribbling = 40;
-        private int explosiveP = 40;
-        private int stamina = 40;
-        private int swerve = 40;
-        private int playingAttitude = 0;
-        private int age = 15;
-        private int loftedPass = 40;
-        private int physical = 40;
-        private int bodyControll = 40;
-        private int attack = 40;
-        private int wcUsage = 0;
-        private int dmf = 0;
-        private int starPlayerIndicator = 0;
-        private int runningArm = 0;
-        private int driblingArm = 0;
-        private int cornerKick = 0;
-        private int form = 0;
-        private int position = 0;
-        private int freeKick = 0;
-        private int playingStyle = 0;
-        private bool pinCrossing;
-        private bool sombrero;
-        private int runningH = 0;
-        private int ss = 0;
-        private int unk2 = 0;
-        private int rwf = 0;
-        private int lmf = 0;
-        private int rb = 0;
-        private int lwf = 0;
-        private int cf = 0;
-        private int cb = 0;
-        private int driblingH = 0;
-        private int amf = 0;
-        private int weakFootAcc = 0;
-        private int rmf = 0;
-        private int injuryRes = 0;
-        private int cmf = 0;
-        private bool speedingBullet;
-        private bool schotMove;
-        private bool gkLong;
-        private bool longThrow;
-        private bool scissorFeint;
-        private bool trackBack;
-        private bool superSub;
-        private bool rabona;
-        private bool acrobatingFinishing;
-        private bool strongerFoot;
-        private bool knucleShot;
-        private bool firstTimeShot;
-        private bool comIncisiveRun;
-        private bool strongerHand;
-        private bool hiddenPlayer;
-        private bool comLongRanger;
-        private bool oneTouchPass;
-        private bool hellTick;
-        private bool unk4;
-        private bool manMarking;
-        private bool legendGoldenBall;
-        private bool marseilleTurn;
-        private bool heading;
-        private bool outsideCurler;
-        private bool captaincy;
-        private bool malicia;
-        private bool lowPuntTrajectory;
-        private bool comTrickster;
-        private bool lowLoftedPass;
-        private bool fightingSpirit;
-        private bool flipFlap;
-        private bool weightnessPass;
-        private bool unk6;
-        private bool unk7;
-        private bool unk8;
-        private bool comMazingRun;
-        private bool acrobatingClear;
-        private bool comBallExpert;
-        private bool cutBehind;
-        private bool longRange;
+        private UInt32 id;
+        private UInt32 youthPlayerId = 0;
+        private string name;
+        private string shirtName;
+        private string japanese;
+        private UInt32 weight = 30;
+        private UInt32 height = 100;
+        private UInt32 national = 0;
+        private UInt32 national2 = 0;
+        private UInt32 earlyCross;
+        private UInt32 defense = 40;
+        private UInt32 clearing = 40;
+        private UInt32 lowPass = 40;
+        private UInt32 placeKick = 40;
+        private UInt32 goalCelebrate = 0;
+        private UInt32 lb = 0;
+        private UInt32 coverage = 40;
+        private UInt32 cathing = 40;
+        private UInt32 jump = 40;
+        private UInt32 header = 40;
+        private UInt32 ballControll = 40;
+        private UInt32 gk = 40;
+        private UInt32 goalkeeping = 40;
+        private UInt32 reflexes = 40;
+        private UInt32 finishing = 40;
+        private UInt32 ballWinning = 40;
+        private UInt32 speed = 40;
+        private UInt32 penaltyKick = 0;
+        private UInt32 kickingPower = 40;
+        private UInt32 dribbling = 40;
+        private UInt32 explosiveP = 40;
+        private UInt32 stamina = 40;
+        private UInt32 swerve = 40;
+        private UInt32 playingAttitude = 0;
+        private UInt32 age = 15;
+        private UInt32 loftedPass = 40;
+        private UInt32 physical = 40;
+        private UInt32 bodyControl = 40;
+        private UInt32 attack = 40;
+        private UInt32 wcUsage = 0;
+        private UInt32 dmf = 0;
+        private UInt32 starPlayerIndicator = 0;
+        private UInt32 runningArm = 0;
+        private UInt32 driblingArm = 0;
+        private UInt32 cornerKick = 0;
+        private UInt32 form = 0;
+        private UInt32 position = 0;
+        private UInt32 freeKick = 0;
+        private UInt32 playingStyle = 0;
+        private UInt32 pinCrossing;
+        private UInt32 sombrero;
+        private UInt32 runningH = 0;
+        private UInt32 ss = 0;
+        private UInt32 unk2 = 0;
+        private UInt32 rwf = 0;
+        private UInt32 lmf = 0;
+        private UInt32 rb = 0;
+        private UInt32 lwf = 0;
+        private UInt32 cf = 0;
+        private UInt32 cb = 0;
+        private UInt32 driblingH = 0;
+        private UInt32 amf = 0;
+        private UInt32 weakFootAcc = 0;
+        private UInt32 rmf = 0;
+        private UInt32 injuryRes = 0;
+        private UInt32 cmf = 0;
+        private UInt32 speedingBullet;
+        private UInt32 schotMove;
+        private UInt32 gkLong;
+        private UInt32 longThrow;
+        private UInt32 scissorFeint;
+        private UInt32 trackBack;
+        private UInt32 superSub;
+        private UInt32 rabona;
+        private UInt32 acrobatingFinishing;
+        private UInt32 strongerFoot;
+        private UInt32 knucleShot;
+        private UInt32 firstTimeShot;
+        private UInt32 comIncisiveRun;
+        private UInt32 strongerHand;
+        private UInt32 hiddenPlayer;
+        private UInt32 comLongRanger;
+        private UInt32 oneTouchPass;
+        private UInt32 hellTick;
+        private UInt32 unk4;
+        private UInt32 manMarking;
+        private UInt32 legendGoldenBall;
+        private UInt32 marseilleTurn;
+        private UInt32 heading;
+        private UInt32 outsideCurler;
+        private UInt32 captaincy;
+        private UInt32 malicia;
+        private UInt32 lowPuntTrajectory;
+        private UInt32 comTrickster;
+        private UInt32 lowLoftedPass;
+        private UInt32 fightingSpirit;
+        private UInt32 flipFlap;
+        private UInt32 weightnessPass;
+        private UInt32 unk6;
+        private UInt32 unk7;
+        private UInt32 unk8;
+        private UInt32 comMazingRun;
+        private UInt32 acrobatingClear;
+        private UInt32 comBallExpert;
+        private UInt32 cutBehind;
+        private UInt32 longRange;
 
-        public Player(long id)
+        public Player(UInt32 id)
         {
     	    if (id < 0)
                 throw new ArgumentException("Player's id isn't valid: " + id);
@@ -123,524 +123,524 @@ namespace DinoTem.model
             this.id = id;
         }
 
-	    public long getId()
+        public UInt32 getId()
         {
             return this.id;
         }
 
-        public long getYouthPlayerId()
+        public UInt32 getYouthPlayerId()
         {
             return this.youthPlayerId;
         }
 
-        public int getFinishing()
+        public UInt32 getFinishing()
         {
             return this.finishing;
         }
 
-        public bool getLongRange()
+        public UInt32 getLongRange()
         {
             return this.longRange;
         }
 
-        public bool getCutBehind()
+        public UInt32 getCutBehind()
         {
             return this.cutBehind;
         }
 
-        public bool getComBallExpert()
+        public UInt32 getComBallExpert()
         {
             return this.comBallExpert;
         }
 
-        public bool getAcrobatingClear()
+        public UInt32 getAcrobatingClear()
         {
             return this.acrobatingClear;
         }
 
-        public bool getComMazingRun()
+        public UInt32 getComMazingRun()
         {
             return this.comMazingRun;
         }
 
-        public bool getUnk8()
+        public UInt32 getUnk8()
         {
             return this.unk8;
         }
 
-        public bool getUnk7()
+        public UInt32 getUnk7()
         {
             return this.unk7;
         }
 
-        public bool getUnk6()
+        public UInt32 getUnk6()
         {
             return this.unk6;
         }
 
-        public bool getWeightnessPass()
+        public UInt32 getWeightnessPass()
         {
             return this.weightnessPass;
         }
 
-        public bool getFlipFlap()
+        public UInt32 getFlipFlap()
         {
             return this.flipFlap;
         }
 
-        public bool getFightingSpirit()
+        public UInt32 getFightingSpirit()
         {
             return this.fightingSpirit;
         }
 
-        public bool getLowLoftedPass()
+        public UInt32 getLowLoftedPass()
         {
             return this.lowLoftedPass;
         }
 
-        public bool getComTrickster()
+        public UInt32 getComTrickster()
         {
             return this.comTrickster;
         }
 
-        public bool getLowPuntTrajectory()
+        public UInt32 getLowPuntTrajectory()
         {
             return this.lowPuntTrajectory;
         }
 
-        public bool getMalicia()
+        public UInt32 getMalicia()
         {
             return this.malicia;
         }
 
-        public bool getCaptaincy()
+        public UInt32 getCaptaincy()
         {
             return this.captaincy;
         }
 
-        public bool getOutsideCurler()
+        public UInt32 getOutsideCurler()
         {
             return this.outsideCurler;
         }
 
-        public bool getHeading()
+        public UInt32 getHeading()
         {
             return this.heading;
         }
 
-        public bool getMarseilleTurn()
+        public UInt32 getMarseilleTurn()
         {
             return this.marseilleTurn;
         }
 
-        public bool getLegendGoldenBall()
+        public UInt32 getLegendGoldenBall()
         {
             return this.legendGoldenBall;
         }
 
-        public bool getManMarking()
+        public UInt32 getManMarking()
         {
             return this.manMarking;
         }
 
-        public bool getUnk4()
+        public UInt32 getUnk4()
         {
             return this.unk4;
         }
 
-        public bool getHellTick()
+        public UInt32 getHellTick()
         {
             return this.hellTick;
         }
 
-        public bool getOneTouchPass()
+        public UInt32 getOneTouchPass()
         {
             return this.oneTouchPass;
         }
 
-        public bool getComLongRanger()
+        public UInt32 getComLongRanger()
         {
             return this.comLongRanger;
         }
 
-        public bool getHiddenPlayer()
+        public UInt32 getHiddenPlayer()
         {
             return this.hiddenPlayer;
         }
 
-        public bool getStrongerHand()
+        public UInt32 getStrongerHand()
         {
             return this.strongerHand;
         }
 
-        public bool getComIncisiveRun()
+        public UInt32 getComIncisiveRun()
         {
             return this.comIncisiveRun;
         }
 
-        public bool getFirstTimeShot()
+        public UInt32 getFirstTimeShot()
         {
             return this.firstTimeShot;
         }
 
-        public bool getKnucleShot()
+        public UInt32 getKnucleShot()
         {
             return this.knucleShot;
         }
 
-        public bool getStrongerFoot()
+        public UInt32 getStrongerFoot()
         {
             return this.strongerFoot;
         }
 
-        public bool getAcrobatingFinishing()
+        public UInt32 getAcrobatingFinishing()
         {
             return this.acrobatingFinishing;
         }
 
-        public bool getRabona()
+        public UInt32 getRabona()
         {
             return this.rabona;
         }
 
-        public bool getSuperSub()
+        public UInt32 getSuperSub()
         {
             return this.superSub;
         }
 
-        public bool getTrackBack()
+        public UInt32 getTrackBack()
         {
             return this.trackBack;
         }
 
-        public bool getScissorFeint()
+        public UInt32 getScissorFeint()
         {
             return this.scissorFeint;
         }
 
-        public bool getLongThrow()
+        public UInt32 getLongThrow()
         {
             return this.longThrow;
         }
 
-        public bool getGkLong()
+        public UInt32 getGkLong()
         {
             return this.gkLong;
         }
 
-        public bool getSchotMove()
+        public UInt32 getSchotMove()
         {
             return this.schotMove;
         }
 
-        public bool getSpeedingBullet()
+        public UInt32 getSpeedingBullet()
         {
             return this.speedingBullet;
         }
 
-        public int getCmf()
+        public UInt32 getCmf()
         {
             return this.cmf;
         }
 
-        public int getWeakFootAcc()
+        public UInt32 getWeakFootAcc()
         {
             return this.weakFootAcc;
         }
 
-        public int getRmf()
+        public UInt32 getRmf()
         {
             return this.rmf;
         }
 
-        public int getInjuryRes()
+        public UInt32 getInjuryRes()
         {
             return this.injuryRes;
         }
 
-        public int getAmf()
+        public UInt32 getAmf()
         {
             return this.amf;
         }
 
-        public int getDriblingH()
+        public UInt32 getDriblingH()
         {
             return this.driblingH;
         }
 
-        public int getCb()
+        public UInt32 getCb()
         {
             return this.cb;
         }
 
-        public int getCf()
+        public UInt32 getCf()
         {
             return this.cf;
         }
 
-        public int getLwf()
+        public UInt32 getLwf()
         {
             return this.lwf;
         }
 
-        public int getRb()
+        public UInt32 getRb()
         {
             return this.rb;
         }
 
-        public int getLmf()
+        public UInt32 getLmf()
         {
             return this.lmf;
         }
 
-        public int getRwf()
+        public UInt32 getRwf()
         {
             return this.rwf;
         }
 
-        public int getUnk2()
+        public UInt32 getUnk2()
         {
             return this.unk2;
         }
 
-        public int getSs()
+        public UInt32 getSs()
         {
             return this.ss;
         }
 
-        public int getRunningH()
+        public UInt32 getRunningH()
         {
             return this.runningH;
         }
 
-        public bool getSombrero()
+        public UInt32 getSombrero()
         {
             return this.sombrero;
         }
 
-        public bool getPinCrossing()
+        public UInt32 getPinCrossing()
         {
             return this.pinCrossing;
         }
 
-        public int getPlayingStyle()
+        public UInt32 getPlayingStyle()
         {
             return this.playingStyle;
         }
 
-        public int getFreeKick()
+        public UInt32 getFreeKick()
         {
             return this.freeKick;
         }
 
-        public int getPosition()
+        public UInt32 getPosition()
         {
             return this.position;
         }
 
-        public int getForm()
+        public UInt32 getForm()
         {
             return this.form;
         }
 
-        public int getCornerKick()
+        public UInt32 getCornerKick()
         {
             return this.cornerKick;
         }
 
-        public int getDriblingArm()
+        public UInt32 getDriblingArm()
         {
             return this.driblingArm;
         }
 
-        public int getRunningArm()
+        public UInt32 getRunningArm()
         {
             return this.runningArm;
         }
 
-        public int getStarPlayerIndicator()
+        public UInt32 getStarPlayerIndicator()
         {
             return this.starPlayerIndicator;
         }
 
-        public int getDmf()
+        public UInt32 getDmf()
         {
             return this.dmf;
         }
 
-        public int getWcUsage()
+        public UInt32 getWcUsage()
         {
             return this.wcUsage;
         }
 
-        public int getAttack()
+        public UInt32 getAttack()
         {
             return this.attack;
         }
 
-        public int getBodyControll()
+        public UInt32 getBodyControl()
         {
-            return this.bodyControll;
+            return this.bodyControl;
         }
 
-        public int getPhysical()
+        public UInt32 getPhysical()
         {
             return this.physical;
         }
 
-        public int getLoftedPass()
+        public UInt32 getLoftedPass()
         {
             return this.loftedPass;
         }
 
-        public int getAge()
+        public UInt32 getAge()
         {
             return this.age;
         }
 
-        public int getPlayingAttitude()
+        public UInt32 getPlayingAttitude()
         {
             return this.playingAttitude;
         }
 
-        public int getSwerve()
+        public UInt32 getSwerve()
         {
             return this.swerve;
         }
 
-        public int getStamina()
+        public UInt32 getStamina()
         {
             return this.stamina;
         }
 
-        public int getExplosiveP()
+        public UInt32 getExplosiveP()
         {
             return this.explosiveP;
         }
 
-        public int getDribbling()
+        public UInt32 getDribbling()
         {
             return this.dribbling;
         }
 
-        public int getKickingPower()
+        public UInt32 getKickingPower()
         {
             return this.kickingPower;
         }
 
-        public int getPenaltyKick()
+        public UInt32 getPenaltyKick()
         {
             return this.penaltyKick;
         }
 
-        public int getSpeed()
+        public UInt32 getSpeed()
         {
             return this.speed;
         }
 
-        public int getBallWinning()
+        public UInt32 getBallWinning()
         {
             return this.ballWinning;
         }
 
-        public int getReflexes()
+        public UInt32 getReflexes()
         {
             return this.reflexes;
         }
 
-        public int getGoalkeeping()
+        public UInt32 getGoalkeeping()
         {
             return this.goalkeeping;
         }
 
-        public int getGk()
+        public UInt32 getGk()
         {
             return this.gk;
         }
 
-        public int getBallControll()
+        public UInt32 getBallControll()
         {
             return this.ballControll;
         }
 
-        public int getHeader()
+        public UInt32 getHeader()
         {
             return this.header;
         }
 
-        public int getJump()
+        public UInt32 getJump()
         {
             return this.jump;
         }
 
-        public int getCathing()
+        public UInt32 getCathing()
         {
             return this.cathing;
         }
 
-        public int getCoverage()
+        public UInt32 getCoverage()
         {
             return this.coverage;
         }
 
-        public int getLb()
+        public UInt32 getLb()
         {
             return this.lb;
         }
 
-        public int getGoalCelebrate()
+        public UInt32 getGoalCelebrate()
         {
             return this.goalCelebrate;
         }
 
-        public int getLowPass()
+        public UInt32 getLowPass()
         {
             return this.lowPass;
         }
 
-        public int getPlaceKick()
+        public UInt32 getPlaceKick()
         {
             return this.placeKick;
         }
 
-        public int getClearing()
+        public UInt32 getClearing()
         {
             return this.clearing;
         }
 
-        public int getDefense()
+        public UInt32 getDefense()
         {
             return this.defense;
         }
 
-        public bool getEarlyCross()
+        public UInt32 getEarlyCross()
         {
             return this.earlyCross;
         }
 
-        public int getNational2()
+        public UInt32 getNational2()
         {
             return this.national2;
         }
 
-        public int getNational()
+        public UInt32 getNational()
         {
             return this.national;
         }
 
-        public int getWeight()
+        public UInt32 getWeight()
         {
             return this.weight;
         }
 
-        public int getHeight()
+        public UInt32 getHeight()
         {
             return this.height;
         }
 
-        public string getPlayerName()
+        public string getName()
         {
-            return this.playerName;
+            return this.name;
         }
 
         public string getShirtName()
@@ -653,7 +653,7 @@ namespace DinoTem.model
             return this.japanese;
         }
 
-        public void setId(long id)
+        public void setId(UInt32 id)
         {
 			if (id < 0)
                 throw new ArgumentException("Player's id isn't valid: " + id);
@@ -662,803 +662,803 @@ namespace DinoTem.model
     
         public void setJapanese(string japanese) {
     	    if (japanese == null || japanese == "")
-    		    throw new ArgumentException("Player's japanese name isn't valid - " + getPlayerName());
+    		    throw new ArgumentException("Player's japanese name isn't valid - " + getName());
     	
 		    this.japanese = japanese;
 	    }
 
-        public void setLongRange(bool longRange)
+        public void setLongRange(UInt32 longRange)
         {
             this.longRange = longRange;
             return;
         }
 
-        public void setCutBehind(bool cutBehind)
+        public void setCutBehind(UInt32 cutBehind)
         {
             this.cutBehind = cutBehind;
             return;
         }
 
-        public void setComBallExpert(bool comBallExpert)
+        public void setComBallExpert(UInt32 comBallExpert)
         {
             this.comBallExpert = comBallExpert;
             return;
         }
 
-        public void setAcrobatingClear(bool acrobatingClear)
+        public void setAcrobatingClear(UInt32 acrobatingClear)
         {
             this.acrobatingClear = acrobatingClear;
             return;
         }
 
-        public void setComMazingRun(bool comMazingRun)
+        public void setComMazingRun(UInt32 comMazingRun)
         {
             this.comMazingRun = comMazingRun;
             return;
         }
 
-        public void setUnk8(bool unk8)
+        public void setUnk8(UInt32 unk8)
         {
             this.unk8 = unk8;
             return;
         }
 
-        public void setUnk7(bool unk7)
+        public void setUnk7(UInt32 unk7)
         {
             this.unk7 = unk7;
             return;
         }
 
-        public void setUnk6(bool unk6)
+        public void setUnk6(UInt32 unk6)
         {
             this.unk6 = unk6;
             return;
         }
 
-        public void setWeightnessPass(bool weightnessPass)
+        public void setWeightnessPass(UInt32 weightnessPass)
         {
             this.weightnessPass = weightnessPass;
             return;
         }
 
-        public void setFlipFlap(bool flipFlap)
+        public void setFlipFlap(UInt32 flipFlap)
         {
             this.flipFlap = flipFlap;
             return;
         }
 
-        public void setFightingSpirit(bool fightingSpirit)
+        public void setFightingSpirit(UInt32 fightingSpirit)
         {
             this.fightingSpirit = fightingSpirit;
             return;
         }
 
-        public void setLowLoftedPass(bool lowLoftedPass)
+        public void setLowLoftedPass(UInt32 lowLoftedPass)
         {
             this.lowLoftedPass = lowLoftedPass;
             return;
         }
 
-        public void setComTrickster(bool comTrickster)
+        public void setComTrickster(UInt32 comTrickster)
         {
             this.comTrickster = comTrickster;
             return;
         }
 
-        public void setLowPuntTrajectory(bool lowPuntTrajectory)
+        public void setLowPuntTrajectory(UInt32 lowPuntTrajectory)
         {
             this.lowPuntTrajectory = lowPuntTrajectory;
             return;
         }
 
-        public void setMalicia(bool malicia)
+        public void setMalicia(UInt32 malicia)
         {
             this.malicia = malicia;
             return;
         }
 
-        public void setCaptaincy(bool captaincy)
+        public void setCaptaincy(UInt32 captaincy)
         {
             this.captaincy = captaincy;
             return;
         }
 
-        public void setOutsideCurler(bool outsideCurler)
+        public void setOutsideCurler(UInt32 outsideCurler)
         {
             this.outsideCurler = outsideCurler;
             return;
         }
 
-        public void setHeading(bool heading)
+        public void setHeading(UInt32 heading)
         {
             this.heading = heading;
             return;
         }
 
-        public void setMarseilleTurn(bool marseilleTurn)
+        public void setMarseilleTurn(UInt32 marseilleTurn)
         {
             this.marseilleTurn = marseilleTurn;
             return;
         }
 
-        public void setLegendGoldenBall(bool legendGoldenBall)
+        public void setLegendGoldenBall(UInt32 legendGoldenBall)
         {
             this.legendGoldenBall = legendGoldenBall;
             return;
         }
 
-        public void setManMarking(bool manMarking)
+        public void setManMarking(UInt32 manMarking)
         {
             this.manMarking = manMarking;
             return;
         }
 
-        public void setUnk4(bool unk4)
+        public void setUnk4(UInt32 unk4)
         {
             this.unk4 = unk4;
             return;
         }
 
-        public void setHellTick(bool hellTick)
+        public void setHellTick(UInt32 hellTick)
         {
             this.hellTick = hellTick;
             return;
         }
 
-        public void setOneTouchPass(bool oneTouchPass)
+        public void setOneTouchPass(UInt32 oneTouchPass)
         {
             this.oneTouchPass = oneTouchPass;
             return;
         }
 
-        public void setComLongRanger(bool comLongRanger)
+        public void setComLongRanger(UInt32 comLongRanger)
         {
             this.comLongRanger = comLongRanger;
             return;
         }
 
-        public void setHiddenPlayer(bool hiddenPlayer)
+        public void setHiddenPlayer(UInt32 hiddenPlayer)
         {
             this.hiddenPlayer = hiddenPlayer;
             return;
         }
 
-        public void setStrongerHand(bool strongerHand)
+        public void setStrongerHand(UInt32 strongerHand)
         {
             this.strongerHand = strongerHand;
             return;
         }
 
-        public void setComIncisiveRun(bool comIncisiveRun)
+        public void setComIncisiveRun(UInt32 comIncisiveRun)
         {
             this.comIncisiveRun = comIncisiveRun;
             return;
         }
 
-        public void setFirstTimeShot(bool firstTimeShot)
+        public void setFirstTimeShot(UInt32 firstTimeShot)
         {
             this.firstTimeShot = firstTimeShot;
             return;
         }
 
-        public void setKnucleShot(bool knucleShot)
+        public void setKnucleShot(UInt32 knucleShot)
         {
             this.knucleShot = knucleShot;
             return;
         }
 
-        public void setStrongerFoot(bool strongerFoot)
+        public void setStrongerFoot(UInt32 strongerFoot)
         {
             this.strongerFoot = strongerFoot;
             return;
         }
 
-        public void setAcrobatingFinishing(bool acrobatingFinishing)
+        public void setAcrobatingFinishing(UInt32 acrobatingFinishing)
         {
             this.acrobatingFinishing = acrobatingFinishing;
             return;
         }
 
-        public void setRabona(bool rabona)
+        public void setRabona(UInt32 rabona)
         {
             this.rabona = rabona;
             return;
         }
 
-        public void setSuperSub(bool superSub)
+        public void setSuperSub(UInt32 superSub)
         {
             this.superSub = superSub;
             return;
         }
 
-        public void setTrackBack(bool trackBack)
+        public void setTrackBack(UInt32 trackBack)
         {
             this.trackBack = trackBack;
             return;
         }
 
-        public void setScissorFeint(bool scissorFeint)
+        public void setScissorFeint(UInt32 scissorFeint)
         {
             this.scissorFeint = scissorFeint;
             return;
         }
 
-        public void setLongThrow(bool longThrow)
+        public void setLongThrow(UInt32 longThrow)
         {
             this.longThrow = longThrow;
             return;
         }
 
-        public void setGkLong(bool gkLong)
+        public void setGkLong(UInt32 gkLong)
         {
             this.gkLong = gkLong;
             return;
         }
 
-        public void setSchotMove(bool schotMove)
+        public void setSchotMove(UInt32 schotMove)
         {
             this.schotMove = schotMove;
             return;
         }
 
-        public void setSpeedingBullet(bool speedingBullet)
+        public void setSpeedingBullet(UInt32 speedingBullet)
         {
             this.speedingBullet = speedingBullet;
             return;
         }
 
-        public void setFinishing(int finishing)
+        public void setFinishing(UInt32 finishing)
         {
     	    if (finishing < 40 || finishing > 99)
-                throw new ArgumentException("Player's finishing isn't valid: " + finishing + " - " + getPlayerName());
+                throw new ArgumentException("Player's finishing isn't valid: " + finishing + " - " + getName());
     	
             this.finishing = finishing;
             return;
         }
 
-        public void setCmf(int cmf)
+        public void setCmf(UInt32 cmf)
         {
     	    if (cmf < 0 && cmf > 2)
-                throw new ArgumentException("Player's cmf isn't valid: " + cmf + " - " + getPlayerName());
+                throw new ArgumentException("Player's cmf isn't valid: " + cmf + " - " + getName());
     	
             this.cmf = cmf;
             return;
         }
 
-        public void setWeakFootAcc(int weakFootAcc)
+        public void setWeakFootAcc(UInt32 weakFootAcc)
         {
     	    if (weakFootAcc < 0)
-                throw new ArgumentException("Player's weak foot acc isn't valid: " + weakFootAcc + " - " + getPlayerName());
+                throw new ArgumentException("Player's weak foot acc isn't valid: " + weakFootAcc + " - " + getName());
     	
             this.weakFootAcc = weakFootAcc;
             return;
         }
 
-        public void setRmf(int rmf)
+        public void setRmf(UInt32 rmf)
         {
             if (rmf < 0 && rmf > 2)
-                throw new ArgumentException("Player's rmf isn't valid: " + rmf + " - " + getPlayerName());
+                throw new ArgumentException("Player's rmf isn't valid: " + rmf + " - " + getName());
     	
             this.rmf = rmf;
             return;
         }
 
-        public void setInjuryRes(int injuryRes)
+        public void setInjuryRes(UInt32 injuryRes)
         {
     	    if (injuryRes < 0)
-                throw new ArgumentException("Player's injury res isn't valid: " + injuryRes + " - " + getPlayerName());
+                throw new ArgumentException("Player's injury res isn't valid: " + injuryRes + " - " + getName());
     	
             this.injuryRes = injuryRes;
             return;
         }
 
-        public void setAmf(int amf)
+        public void setAmf(UInt32 amf)
         {
             if (amf < 0 && amf > 2)
-                throw new ArgumentException("Player's amf isn't valid: " + amf + " - " + getPlayerName());
+                throw new ArgumentException("Player's amf isn't valid: " + amf + " - " + getName());
     	
             this.amf = amf;
             return;
         }
 
-        public void setDriblingH(int driblingH)
+        public void setDriblingH(UInt32 driblingH)
         {
     	    if (driblingH < 0)
-                throw new ArgumentException("Player's dribling hunching isn't valid: " + driblingH + " - " + getPlayerName());
+                throw new ArgumentException("Player's dribling hunching isn't valid: " + driblingH + " - " + getName());
     	
             this.driblingH = driblingH;
             return;
         }
 
-        public void setCb(int cb)
+        public void setCb(UInt32 cb)
         {
             if (cb < 0 && cb > 2)
-                throw new ArgumentException("Player's cb isn't valid: " + cb + " - " + getPlayerName());
+                throw new ArgumentException("Player's cb isn't valid: " + cb + " - " + getName());
     	
             this.cb = cb;
             return;
         }
 
-        public void setCf(int cf)
+        public void setCf(UInt32 cf)
         {
             if (cf < 0 && cf > 2)
-                throw new ArgumentException("Player's cf isn't valid: " + cf + " - " + getPlayerName());
+                throw new ArgumentException("Player's cf isn't valid: " + cf + " - " + getName());
     	
             this.cf = cf;
             return;
         }
 
-        public void setLwf(int lwf)
+        public void setLwf(UInt32 lwf)
         {
             if (lwf < 0 && lwf > 2)
-                throw new ArgumentException("Player's lwf isn't valid: " + lwf + " - " + getPlayerName());
+                throw new ArgumentException("Player's lwf isn't valid: " + lwf + " - " + getName());
     	
             this.lwf = lwf;
             return;
         }
 
-        public void setRb(int rb)
+        public void setRb(UInt32 rb)
         {
             if (rb < 0 && rb > 2)
-                throw new ArgumentException("Player's rb isn't valid: " + rb + " - " + getPlayerName());
+                throw new ArgumentException("Player's rb isn't valid: " + rb + " - " + getName());
     	
             this.rb = rb;
             return;
         }
 
-        public void setRwf(int rwf)
+        public void setRwf(UInt32 rwf)
         {
             if (rwf < 0 && rwf > 2)
-                throw new ArgumentException("Player's rwf isn't valid: " + rwf + " - " + getPlayerName());
+                throw new ArgumentException("Player's rwf isn't valid: " + rwf + " - " + getName());
     	
             this.rwf = rwf;
             return;
         }
 
-        public void setLmf(int lmf)
+        public void setLmf(UInt32 lmf)
         {
             if (lmf < 0 && lmf > 2)
-                throw new ArgumentException("Player's lmf isn't valid: " + lmf + " - " + getPlayerName());
+                throw new ArgumentException("Player's lmf isn't valid: " + lmf + " - " + getName());
     	
             this.lmf = lmf;
             return;
         }
 
-        public void setUnk2(int unk2)
+        public void setUnk2(UInt32 unk2)
         {
     	    if (unk2 < 0)
-                throw new ArgumentException("Player's unk2 isn't valid: " + unk2 + " - " + getPlayerName());
+                throw new ArgumentException("Player's unk2 isn't valid: " + unk2 + " - " + getName());
     	
             this.unk2 = unk2;
             return;
         }
 
-        public void setSs(int ss)
+        public void setSs(UInt32 ss)
         {
             if (ss < 0 && ss > 2)
-                throw new ArgumentException("Player's ss isn't valid: " + ss + " - " + getPlayerName());
+                throw new ArgumentException("Player's ss isn't valid: " + ss + " - " + getName());
     	
             this.ss = ss;
         }
 
-        public void setRunningH(int runningH)
+        public void setRunningH(UInt32 runningH)
         {
     	    if (runningH < 0)
-                throw new ArgumentException("Player's running hunching isn't valid: " + runningH + " - " + getPlayerName());
+                throw new ArgumentException("Player's running hunching isn't valid: " + runningH + " - " + getName());
     	
             this.runningH = runningH;
         }
 
-        public void setSombrero(bool sombrero)
+        public void setSombrero(UInt32 sombrero)
         {
             this.sombrero = sombrero;
         }
 
-        public void setPinCrossing(bool pinCrossing)
+        public void setPinCrossing(UInt32 pinCrossing)
         {
             this.pinCrossing = pinCrossing;
             return;
         }
 
-        public void setPlayingStyle(int playingStyle)
+        public void setPlayingStyle(UInt32 playingStyle)
         {
     	    if (playingStyle < 0)
-                throw new ArgumentException("Player's playing style isn't valid: " + playingStyle + " - " + getPlayerName());
+                throw new ArgumentException("Player's playing style isn't valid: " + playingStyle + " - " + getName());
     	
             this.playingStyle = playingStyle;
             return;
         }
 
-        public void setFreeKick(int freeKick)
+        public void setFreeKick(UInt32 freeKick)
         {
     	    if (freeKick < 0)
-                throw new ArgumentException("Player's free kick isn't valid: " + freeKick + " - " + getPlayerName());
+                throw new ArgumentException("Player's free kick isn't valid: " + freeKick + " - " + getName());
     	
             this.freeKick = freeKick;
             return;
         }
 
-        public void setPosition(int position)
+        public void setPosition(UInt32 position)
         {
             if (position < 0 || position > 12)
-                throw new ArgumentException("Player's position isn't valid: " + position + " - " + getPlayerName());
+                throw new ArgumentException("Player's position isn't valid: " + position + " - " + getName());
     	
             this.position = position;
         }
 
 
-        public void setYouthPlayerId(long youthPlayerId)
+        public void setYouthPlayerId(UInt32 youthPlayerId)
         {
             if (youthPlayerId < 0)
-                throw new ArgumentException("Youth player Id isn't valid: " + youthPlayerId + " - " + getPlayerName());
+                throw new ArgumentException("Youth player Id isn't valid: " + youthPlayerId + " - " + getName());
 
             this.youthPlayerId = youthPlayerId;
         }
 
-        public void setForm(int form)
+        public void setForm(UInt32 form)
         {
     	    if (form < 0)
-                throw new ArgumentException("Player's form isn't valid: " + form + " - " + getPlayerName());
+                throw new ArgumentException("Player's form isn't valid: " + form + " - " + getName());
     	
             this.form = form;
             return;
         }
 
-        public void setCornerKick(int cornerKick)
+        public void setCornerKick(UInt32 cornerKick)
         {
     	    if (cornerKick < 0)
-                throw new ArgumentException("Player's corner kick isn't valid: " + cornerKick + " - " + getPlayerName());
+                throw new ArgumentException("Player's corner kick isn't valid: " + cornerKick + " - " + getName());
     	
             this.cornerKick = cornerKick;
         }
 
-        public void setDriblingArm(int driblingArm)
+        public void setDriblingArm(UInt32 driblingArm)
         {
     	    if (driblingArm < 0)
-                throw new ArgumentException("Player's dribling arm isn't valid: " + driblingArm + " - " + getPlayerName());
+                throw new ArgumentException("Player's dribling arm isn't valid: " + driblingArm + " - " + getName());
     	
             this.driblingArm = driblingArm;
         }
 
-        public void setRunningArm(int runningArm)
+        public void setRunningArm(UInt32 runningArm)
         {
     	    if (runningArm < 0)
-                throw new ArgumentException("Player's running arm isn't valid: " + runningArm + " - " + getPlayerName());
+                throw new ArgumentException("Player's running arm isn't valid: " + runningArm + " - " + getName());
     	
             this.runningArm = runningArm;
         }
 
-        public void setStarPlayerIndicator(int starPlayerIndicator)
+        public void setStarPlayerIndicator(UInt32 starPlayerIndicator)
         {
     	    if (starPlayerIndicator < 0)
-                throw new ArgumentException("Star player indicator isn't valid: " + starPlayerIndicator + " - " + getPlayerName());
+                throw new ArgumentException("Star player indicator isn't valid: " + starPlayerIndicator + " - " + getName());
     	
             this.starPlayerIndicator = starPlayerIndicator;
         }
 
-        public void setDmf(int dmf)
+        public void setDmf(UInt32 dmf)
         {
             if (dmf < 0 && dmf > 2)
-                throw new ArgumentException("Player's dmf isn't valid: " + dmf + " - " + getPlayerName());
+                throw new ArgumentException("Player's dmf isn't valid: " + dmf + " - " + getName());
     	
             this.dmf = dmf;
         }
 
-        public void setWcUsage(int wcUsage)
+        public void setWcUsage(UInt32 wcUsage)
         {
     	    if (wcUsage < 0)
-                throw new ArgumentException("Player's wc usage isn't valid: " + wcUsage + " - " + getPlayerName());
+                throw new ArgumentException("Player's wc usage isn't valid: " + wcUsage + " - " + getName());
     	
             this.wcUsage = wcUsage;
         }
 
-        public void setAttack(int attack)
+        public void setAttack(UInt32 attack)
         {
     	    if (attack < 40 || attack > 99)
-                throw new ArgumentException("Player's attack isn't valid: " + attack + " - " + getPlayerName());
+                throw new ArgumentException("Player's attack isn't valid: " + attack + " - " + getName());
     	
             this.attack = attack;
             return;
         }
 
-        public void setBodyControll(int bodyControll)
+        public void setBodyControl(UInt32 bodyControl)
         {
-    	    if (bodyControll < 40 || bodyControll > 99)
-                throw new ArgumentException("Player's body controll isn't valid: " + bodyControll + " - " + getPlayerName());
+            if (bodyControl < 40 || bodyControl > 99)
+                throw new ArgumentException("Player's body controll isn't valid: " + bodyControl + " - " + getName());
     	
-            this.bodyControll = bodyControll;
+            this.bodyControl = bodyControl;
             return;
         }
 
-        public void setPhysical(int physical)
+        public void setPhysical(UInt32 physical)
         {
     	    if (physical < 40 || physical > 99)
-                throw new ArgumentException("Player's physical isn't valid: " + physical + " - " + getPlayerName());
+                throw new ArgumentException("Player's physical isn't valid: " + physical + " - " + getName());
     	
             this.physical = physical;
             return;
         }
 
-        public void setLoftedPass(int loftedPass)
+        public void setLoftedPass(UInt32 loftedPass)
         {
     	    if (loftedPass < 40 || loftedPass > 99)
-                throw new ArgumentException("Player's lofted pass isn't valid: " + loftedPass + " - " + getPlayerName());
+                throw new ArgumentException("Player's lofted pass isn't valid: " + loftedPass + " - " + getName());
     	
             this.loftedPass = loftedPass;
             return;
         }
 
-        public void setAge(int age)
+        public void setAge(UInt32 age)
         {
     	    if (age < 15 || age > 48)
-                throw new ArgumentException("Player's age isn't valid: " + age + " - " + getPlayerName());
+                throw new ArgumentException("Player's age isn't valid: " + age + " - " + getName());
     	
             this.age = age;
             return;
         }
 
-        public void setPlayingAttitude(int playingAttitude)
+        public void setPlayingAttitude(UInt32 playingAttitude)
         {
     	    if (playingAttitude < 0)
-                throw new ArgumentException("Player's playing attitude isn't valid: " + playingAttitude + " - " + getPlayerName());
+                throw new ArgumentException("Player's playing attitude isn't valid: " + playingAttitude + " - " + getName());
     	
             this.playingAttitude = playingAttitude;
             return;
         }
 
-        public void setSwerve(int swerve)
+        public void setSwerve(UInt32 swerve)
         {
     	    if (swerve < 40 || swerve > 99)
-                throw new ArgumentException("Player's swerve isn't valid: " + swerve + " - " + getPlayerName());
+                throw new ArgumentException("Player's swerve isn't valid: " + swerve + " - " + getName());
     	
             this.swerve = swerve;
             return;
         }
 
-        public void setStamina(int stamina)
+        public void setStamina(UInt32 stamina)
         {
     	    if (stamina < 40 || stamina > 99)
-                throw new ArgumentException("Player's stamina isn't valid: " + stamina + " - " + getPlayerName());
+                throw new ArgumentException("Player's stamina isn't valid: " + stamina + " - " + getName());
     	
             this.stamina = stamina;
             return;
         }
 
-        public void setExplosiveP(int explosiveP)
+        public void setExplosiveP(UInt32 explosiveP)
         {
     	    if (explosiveP < 40 || explosiveP > 99)
-                throw new ArgumentException("Player's explosive power isn't valid: " + explosiveP + " - " + getPlayerName());
+                throw new ArgumentException("Player's explosive power isn't valid: " + explosiveP + " - " + getName());
     	
             this.explosiveP = explosiveP;
             return;
         }
 
-        public void setDribbling(int dribbling)
+        public void setDribbling(UInt32 dribbling)
         {
     	    if (dribbling < 40 || dribbling > 99)
-                throw new ArgumentException("Player's dribbling isn't valid: " + dribbling + " - " + getPlayerName());
+                throw new ArgumentException("Player's dribbling isn't valid: " + dribbling + " - " + getName());
     	
             this.dribbling = dribbling;
             return;
         }
 
-        public void setKickingPower(int kickingPower)
+        public void setKickingPower(UInt32 kickingPower)
         {
     	    if (kickingPower < 40 || kickingPower > 99)
-                throw new ArgumentException("Player's kicking power isn't valid: " + kickingPower + " - " + getPlayerName());
+                throw new ArgumentException("Player's kicking power isn't valid: " + kickingPower + " - " + getName());
     	
             this.kickingPower = kickingPower;
             return;
         }
 
-        public void setPenaltyKick(int penaltyKick)
+        public void setPenaltyKick(UInt32 penaltyKick)
         {
     	    if (penaltyKick < 0)
-                throw new ArgumentException("Player's penalty kick isn't valid: " + penaltyKick + " - " + getPlayerName());
+                throw new ArgumentException("Player's penalty kick isn't valid: " + penaltyKick + " - " + getName());
     	
             this.penaltyKick = penaltyKick;
             return;
         }
 
-        public void setSpeed(int speed)
+        public void setSpeed(UInt32 speed)
         {
     	    if (speed < 40 || speed > 99)
-                throw new ArgumentException("Player's speed isn't valid: " + speed + " - " + getPlayerName());
+                throw new ArgumentException("Player's speed isn't valid: " + speed + " - " + getName());
     	
             this.speed = speed;
             return;
         }
 
-        public void setBallWinning(int ballWinning)
+        public void setBallWinning(UInt32 ballWinning)
         {
     	    if (ballWinning < 40 || ballWinning > 99)
-                throw new ArgumentException("Player's ball winning isn't valid: " + ballWinning + " - " + getPlayerName());
+                throw new ArgumentException("Player's ball winning isn't valid: " + ballWinning + " - " + getName());
     	
             this.ballWinning = ballWinning;
             return;
         }
 
-        public void setReflexes(int reflexes)
+        public void setReflexes(UInt32 reflexes)
         {
     	    if (reflexes < 40 || reflexes > 99)
-                throw new ArgumentException("Player's reflexes isn't valid: " + reflexes + " - " + getPlayerName());
+                throw new ArgumentException("Player's reflexes isn't valid: " + reflexes + " - " + getName());
     	
             this.reflexes = reflexes;
             return;
         }
 
-        public void setGoalkeeping(int goalkeeping)
+        public void setGoalkeeping(UInt32 goalkeeping)
         {
     	    if (goalkeeping < 40 || goalkeeping > 99)
-                throw new ArgumentException("Player's goalkeeping isn't valid: " + goalkeeping + " - " + getPlayerName());
+                throw new ArgumentException("Player's goalkeeping isn't valid: " + goalkeeping + " - " + getName());
     	
             this.goalkeeping = goalkeeping;
             return;
         }
 
-        public void setGk(int gk)
+        public void setGk(UInt32 gk)
         {
             if (gk < 0 && gk > 2)
-                throw new ArgumentException("Player's gk isn't valid: " + gk + " - " + getPlayerName());
+                throw new ArgumentException("Player's gk isn't valid: " + gk + " - " + getName());
     	
             this.gk = gk;
             return;
         }
 
-        public void setBallControll(int ballControll)
+        public void setBallControll(UInt32 ballControll)
         {
     	    if (ballControll < 40 || ballControll > 99)
-                throw new ArgumentException("Player's ball controll isn't valid: " + ballControll + " - " + getPlayerName());
+                throw new ArgumentException("Player's ball controll isn't valid: " + ballControll + " - " + getName());
     	
             this.ballControll = ballControll;
             return;
         }
 
-        public void setHeader(int header)
+        public void setHeader(UInt32 header)
         {
     	    if (header < 40 || header > 99)
-                throw new ArgumentException("Player's header isn't valid: " + header + " - " + getPlayerName());
+                throw new ArgumentException("Player's header isn't valid: " + header + " - " + getName());
     	
             this.header = header;
             return;
         }
 
-        public void setJump(int jump)
+        public void setJump(UInt32 jump)
         {
     	    if (jump < 40 || jump > 99)
-                throw new ArgumentException("Player's jump isn't valid: " + jump + " - " + getPlayerName());
+                throw new ArgumentException("Player's jump isn't valid: " + jump + " - " + getName());
     	
             this.jump = jump;
             return;
         }
 
-        public void setCathing(int cathing)
+        public void setCathing(UInt32 cathing)
         {
     	    if (cathing < 40 || cathing > 99)
-                throw new ArgumentException("Player's cathing isn't valid: " + cathing + " - " + getPlayerName());
+                throw new ArgumentException("Player's cathing isn't valid: " + cathing + " - " + getName());
     	
             this.cathing = cathing;
             return;
         }
 
-        public void setCoverage(int coverage)
+        public void setCoverage(UInt32 coverage)
         {
     	    if (coverage < 40 || coverage > 99)
-                throw new ArgumentException("Player's coverage isn't valid: " + coverage + " - " + getPlayerName());
+                throw new ArgumentException("Player's coverage isn't valid: " + coverage + " - " + getName());
     	
             this.coverage = coverage;
             return;
         }
 
-        public void setLb(int lb)
+        public void setLb(UInt32 lb)
         {
             if (lb < 0 && lb > 2)
-                throw new ArgumentException("Player's lb isn't valid: " + lb + " - " + getPlayerName());
+                throw new ArgumentException("Player's lb isn't valid: " + lb + " - " + getName());
     	
             this.lb = lb;
             return;
         }
 
-        public void setGoalCelebrate(int goalCelebrate)
+        public void setGoalCelebrate(UInt32 goalCelebrate)
         {
     	    if (goalCelebrate < 0)
-                throw new ArgumentException("Player's goal celebrate isn't valid: " + goalCelebrate + " - " + getPlayerName());
+                throw new ArgumentException("Player's goal celebrate isn't valid: " + goalCelebrate + " - " + getName());
     	
             this.goalCelebrate = goalCelebrate;
             return;
         }
 
-        public void setLowPass(int lowPass)
+        public void setLowPass(UInt32 lowPass)
         {
     	    if (lowPass < 40 || lowPass > 99)
-                throw new ArgumentException("Player's low pass isn't valid: " + lowPass + " - " + getPlayerName());
+                throw new ArgumentException("Player's low pass isn't valid: " + lowPass + " - " + getName());
     	
             this.lowPass = lowPass;
             return;
         }
 
-        public void setPlaceKick(int placeKick)
+        public void setPlaceKick(UInt32 placeKick)
         {
     	    if (placeKick < 40 || placeKick > 99)
-                throw new ArgumentException("Player's place kick isn't valid: " + placeKick + " - " + getPlayerName());
+                throw new ArgumentException("Player's place kick isn't valid: " + placeKick + " - " + getName());
     	
             this.placeKick = placeKick;
             return;
         }
 
-        public void setClearing(int clearing)
+        public void setClearing(UInt32 clearing)
         {
     	    if (clearing < 40 || clearing > 99)
-                throw new ArgumentException("Player's clearing isn't valid: " + clearing + " - " + getPlayerName());
+                throw new ArgumentException("Player's clearing isn't valid: " + clearing + " - " + getName());
     	
             this.clearing = clearing;
             return;
         }
 
-        public void setDefense(int defense)
+        public void setDefense(UInt32 defense)
         {
     	    if (defense < 40 || defense > 99)
-                throw new ArgumentException("Player's defense isn't valid: " + defense + " - " + getPlayerName());
+                throw new ArgumentException("Player's defense isn't valid: " + defense + " - " + getName());
     	
             this.defense = defense;
             return;
         }
 
-        public void setEarlyCross(bool earlyCross)
+        public void setEarlyCross(UInt32 earlyCross)
         {
             this.earlyCross = earlyCross;
             return;
         }
 
-        public void setNational(int national)
+        public void setNational(UInt32 national)
         {
     	    if (national < 0)
-                throw new ArgumentException("Player's nationality isn't valid: " + national + " - " + getPlayerName());
+                throw new ArgumentException("Player's nationality isn't valid: " + national + " - " + getName());
     	
             this.national = national;
             return;
         }
 
-        public void setNational2(int national2)
+        public void setNational2(UInt32 national2)
         {
     	    if (national2 < 0)
-                throw new ArgumentException("Player's second nationality isn't valid: " + national2 + " - " + getPlayerName());
+                throw new ArgumentException("Player's second nationality isn't valid: " + national2 + " - " + getName());
     	
             this.national2 = national2;
             return;
         }
 
-        public void setHeight(int height)
+        public void setHeight(UInt32 height)
         {
     	    if (height < 100 || height > 227)
-                throw new ArgumentException("Player's height isn't valid: " + height + " - " + getPlayerName());
+                throw new ArgumentException("Player's height isn't valid: " + height + " - " + getName());
 
             this.height = height;
             return;
         }
 
-        public void setWeight(int weight)
+        public void setWeight(UInt32 weight)
         {
     	    if (weight < 30 || weight > 157)
-                throw new ArgumentException("Player's weight isn't valid: " + weight + " - " + getPlayerName());
+                throw new ArgumentException("Player's weight isn't valid: " + weight + " - " + getName());
     	
             this.weight = weight;
             return;
         }
 
-        public void setPlayerName(string playerName)
+        public void setName(string name)
         {
-    	    if (playerName == null || playerName == "")
+            if (name == null || name == "")
                 throw new ArgumentException("Player's name isn't valid - Id player: " + getId() + ")");
-    	
-            this.playerName = playerName;
+
+            this.name = name;
             return;
         }
 
         public void setShirtName(string shirtName)
         {
     	    if (shirtName == null || shirtName == "")
-                throw new ArgumentException("Player's shirt name isn't valid - " + getPlayerName());
+                throw new ArgumentException("Player's shirt name isn't valid - " + getName());
     	
             this.shirtName = shirtName;
             return;
@@ -1479,9 +1479,9 @@ namespace DinoTem.model
             }
         }
 
-        public string getstringStrongerFoot()
+        public string getStringStrongerFoot()
         {
-            if (getStrongerFoot())
+            if (getStrongerFoot() == 1)
                 return "Left";
             else
                 return "Right";
@@ -1776,7 +1776,7 @@ namespace DinoTem.model
             return t;
         }
 
-        public override bool Equals(Object obj)
+        /*public override UInt32 Equals(Object obj)
         {
             if (obj is Player)
     	    {
@@ -1784,11 +1784,11 @@ namespace DinoTem.model
                 return getId() == c.getId();
     	    }
     	    return false;
-        }
+        }*/
 
         public override string ToString()
         {
-    	    return getPlayerName();
+    	    return getName();
         }
     }
 }

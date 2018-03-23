@@ -14,93 +14,132 @@ namespace DinoTem.ui
 {
     public class Controller
     {
-        private List<Country> countryList = new List<Country>();
-        private List<BallCondition> ballConditionList = new List<BallCondition>();
-        private List<Ball> ballList = new List<Ball>();
-        private List<PlayerAppearance> playerAppearanceList = new List<PlayerAppearance>();
-        private List<PlayerAssignment> playerAssignmentList = new List<PlayerAssignment>();
-        private List<Player> playerList = new List<Player>();
-        private List<TacticsFormation> tacticsFormationList = new List<TacticsFormation>();
-        private List<Tactics> tacticsList = new List<Tactics>();
-        private List<Team> teamList = new List<Team>();
-        private List<Stadium> stadiumList = new List<Stadium>();
-        private int bitRecognized = 0;
-
         public Controller()
         {
         }
-
-        //form1
-        //player
-        //ball
-        //team
-        //stadium
-        //DB2
-        //Formazione form
-        //Giocatore form
-        //transferPlayer Drag&Drop
-        //remove fake team
-        //globalFunction
-        //fm form
-
-        public void readTeamPersister(string patch, int bitRecognized)
-        {
-            MyTeamPersister teamReader = new MyTeamPersister();
-
-            try
-            {
-                teamList = teamReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void readPlayerPersister(string patch, int bitRecognized)
-        {
-            MyPlayerPersister playerReader = new MyPlayerPersister();
-
-            try
-            {
-                playerList = playerReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void readBallConditionPersister(string patch, int bitRecognized)
-        {
-            MyBallConditionPersister ballConditionReader = new MyBallConditionPersister();
-
-            try
-            {
-                ballConditionList = ballConditionReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
+        
+        private int bitRecognized = -1;
+        private MemoryStream unzlibPalloni;
+        private BinaryReader leggiPalloni;
+        private BinaryWriter scriviPalloni;
+        private MemoryStream unzlibGuanti;
+        private BinaryReader leggiGuanti;
+        private BinaryWriter scriviGuanti;
+        private MemoryStream unzlibScarpe;
+        private BinaryReader leggiScarpe;
+        private BinaryWriter scriviScarpe;
+        private MemoryStream unzlibStadi;
+        private BinaryReader leggiStadi;
+        private BinaryWriter scriviStadi;
+        private MemoryStream unzlibPaesi;
+        private BinaryReader leggiPaesi;
+        private BinaryWriter scriviPaesi;
+        private MemoryStream unzlibAllenatori;
+        private BinaryReader leggiAllenatori;
+        private BinaryWriter scriviAllenatori;
+        private MemoryStream unzlibGiocatori;
+        private BinaryReader leggiGiocatori;
+        private BinaryWriter scriviGiocatori;
+        private MemoryStream unzlibSquadre;
+        private BinaryReader leggiSquadre;
+        private BinaryWriter scriviSquadre;
+        private MemoryStream unzlibPlayerAssign;
+        private BinaryReader leggiPlayerAssign;
+        private BinaryWriter scriviPlayerAssign;
+        private MemoryStream unzlibTattiche;
+        private BinaryReader leggiTattiche;
+        private BinaryWriter scriviTattiche;
+        private MemoryStream unzlibTacticsFormation;
+        private BinaryReader leggiTacticsFormation;
+        private BinaryWriter scriviTacticsFormation;
+        private MemoryStream unzlibBallCondition;
+        private BinaryReader leggiBallCondition;
+        private BinaryWriter scriviBallCondition;
+        private MemoryStream unzlibDerby;
+        private BinaryReader leggiDerby;
+        private BinaryWriter scriviDerby;
+        private MemoryStream unzlibCompetition;
+        private BinaryReader leggiCompetition;
+        private BinaryWriter scriviCompetition;
+        private MemoryStream unzlibCompetitionKind;
+        private BinaryReader leggiCompetitionKind;
+        private BinaryWriter scriviCompetitionKind;
+        private MemoryStream unzlibCompetitionRegulation;
+        private BinaryReader leggiCompetitionRegulation;
+        private BinaryWriter scriviCompetitionRegulation;
+        private MemoryStream unzlibStadiumOrder;
+        private BinaryReader leggiStadiumOrder;
+        private BinaryWriter scriviStadiumOrder;
+        private MemoryStream unzlibStadiumOrderInConfederation;
+        private BinaryReader leggiStadiumOrderInConfederation;
+        private BinaryWriter scriviStadiumOrderInConfederation;
+        private MemoryStream unzlibCompetitionEntry;
+        private BinaryReader leggiCompetitionEntry;
+        private BinaryWriter scriviCompetitionEntry;
+        private MemoryStream unzlibPlayerApp;
+        private BinaryReader leggiPlayerApp;
+        private BinaryWriter scriviPlayerApp;
+        private MemoryStream unzlibGloveList;
+        private BinaryReader leggiGloveList;
+        private BinaryWriter scriviGloveList;
+        private MemoryStream unzlibBootList;
+        private BinaryReader leggiBootList;
+        private BinaryWriter scriviBootList;
 
         public void readBallPersister(string patch, int bitRecognized)
         {
             MyBallPersister ballReader = new MyBallPersister();
-
+            
             try
             {
-                ballList = ballReader.load(patch, bitRecognized);
+                ballReader.load(patch, bitRecognized, ref unzlibPalloni, ref leggiPalloni, ref scriviPalloni);
             }
             catch (FileNotFoundException e)
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        public void readGlovePersister(string patch, int bitRecognized)
+        {
+            MyGlovePersister gloveReader = new MyGlovePersister();
+
+            try
+            {
+                gloveReader.load(patch, bitRecognized, ref unzlibGuanti, ref leggiGuanti, ref scriviGuanti);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readBootPersister(string patch, int bitRecognized)
+        {
+            MyBootPersister bootReader = new MyBootPersister();
+
+            try
+            {
+                bootReader.load(patch, bitRecognized, ref unzlibScarpe, ref leggiScarpe, ref scriviScarpe);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readStadiumPersister(string patch, int bitRecognized)
+        {
+            MyStadiumPersister stadiumReader = new MyStadiumPersister();
+
+            try
+            {
+                stadiumReader.load(patch, bitRecognized, ref unzlibStadi, ref leggiStadi, ref scriviStadi);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void readCountryPersister(string patch, int bitRecognized)
@@ -109,13 +148,250 @@ namespace DinoTem.ui
 
             try
             {
-                countryList = countryReader.load(patch, bitRecognized);
+                countryReader.load(patch, bitRecognized, ref unzlibPaesi, ref leggiPaesi, ref scriviPaesi);
             }
             catch (FileNotFoundException e)
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        public void readCoachPersister(string patch, int bitRecognized)
+        {
+            MyCoachPersister coachReader = new MyCoachPersister();
+
+            try
+            {
+                coachReader.load(patch, bitRecognized, ref unzlibAllenatori, ref leggiAllenatori, ref scriviAllenatori);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readPlayerPersister(string patch, int bitRecognized)
+        {
+            MyPlayerPersister playerReader = new MyPlayerPersister();
+
+            try
+            {
+                playerReader.load(patch, bitRecognized, ref unzlibGiocatori, ref leggiGiocatori, ref scriviGiocatori);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readTeamPersister(string patch, int bitRecognized)
+        {
+            MyTeamPersister teamReader = new MyTeamPersister();
+
+            try
+            {
+                teamReader.load(patch, bitRecognized, ref unzlibSquadre, ref leggiSquadre, ref scriviSquadre);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readPlayerAssignmentPersister(string patch, int bitRecognized)
+        {
+            MyPlayerAssignmentPersister paReader = new MyPlayerAssignmentPersister();
+
+            try
+            {
+                paReader.load(patch, bitRecognized, ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readTacticsPersister(string patch, int bitRecognized)
+        {
+            MyTacticsPersister taReader = new MyTacticsPersister();
+
+            try
+            {
+                taReader.load(patch, bitRecognized, ref unzlibTattiche, ref leggiTattiche, ref scriviTattiche);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readTacticsFormationPersister(string patch, int bitRecognized)
+        {
+            MyTacticsFormationPersister tfReader = new MyTacticsFormationPersister();
+
+            try
+            {
+                tfReader.load(patch, bitRecognized, ref unzlibTacticsFormation, ref leggiTacticsFormation, ref scriviTacticsFormation);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readBallConditionPersister(string patch, int bitRecognized)
+        {
+            MyBallConditionPersister ballReader = new MyBallConditionPersister();
+
+            try
+            {
+                ballReader.load(patch, bitRecognized, ref unzlibBallCondition, ref leggiBallCondition, ref scriviBallCondition);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readDerbyPersister(string patch, int bitRecognized)
+        {
+            MyDerbyPersister derbyReader = new MyDerbyPersister();
+
+            Team nullo = new Club(99999);
+            nullo.setEnglish("No Team Found");
+            Form1._Form1.derbyTeam1.Items.Add(nullo);
+            Form1._Form1.derbyTeam2.Items.Add(nullo);
+            try
+            {
+                derbyReader.load(patch, bitRecognized, ref unzlibDerby, ref leggiDerby, ref scriviDerby);
+
+                for (int i = 0; i < Form1._Form1.DataGridView_derby.RowCount; i++)
+                {
+                    UInt32 id = uint.Parse(Form1._Form1.DataGridView_derby.Rows[i].Cells[0].Value.ToString());
+                    int index = findTeam(id);
+                    if (index != Form1._Form1.teamsBox.Items.Count)
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[1].Value = leggiSquadra(index).getEnglish();
+                    else
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[1].Value = "No Team Found";
+
+                    UInt32 id2 = uint.Parse(Form1._Form1.DataGridView_derby.Rows[i].Cells[2].Value.ToString());
+                    int index2 = findTeam(id2);
+                    if (index2 != Form1._Form1.teamsBox.Items.Count)
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[3].Value = leggiSquadra(index2).getEnglish();
+                    else
+                        Form1._Form1.DataGridView_derby.Rows[i].Cells[3].Value = "No Team Found";
+                }
+
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readCompetitionPersister(string patch, int bitRecognized)
+        {
+            MyCompetitionPersister cReader = new MyCompetitionPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibCompetition, ref leggiCompetition, ref scriviCompetition);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readCompetitionKindPersister(string patch, int bitRecognized)
+        {
+            MyCompetitionKindPersister cReader = new MyCompetitionKindPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibCompetitionKind, ref leggiCompetitionKind, ref scriviCompetitionKind);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readCompetitionRegulationPersister(string patch, int bitRecognized)
+        {
+            MyCompetitionRegulationPersister cReader = new MyCompetitionRegulationPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibCompetitionRegulation, ref leggiCompetitionRegulation, ref scriviCompetitionRegulation);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readStadiumOrderPersister(string patch, int bitRecognized)
+        {
+            MyStadiumOrderPersister cReader = new MyStadiumOrderPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibStadiumOrder, ref leggiStadiumOrder, ref scriviStadiumOrder);
+
+                for (int i = 0; i < Form1._Form1.DataGridView_stadium_order.RowCount; i++)
+                {
+                    UInt16 id = ushort.Parse(Form1._Form1.DataGridView_stadium_order.Rows[i].Cells[2].Value.ToString());
+                    int index = findStadium(id);
+                    if (index != Form1._Form1.stadiumsBox.Items.Count)
+                        Form1._Form1.DataGridView_stadium_order.Rows[i].Cells[0].Value = leggiStadium(index).getName();
+                    else
+                       Form1._Form1.DataGridView_stadium_order.Rows[i].Cells[0].Value = "No Stadium Found";
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readStadiumOrderInConfederationPersister(string patch, int bitRecognized)
+        {
+            MyStadiumOrderInConfederationPersister cReader = new MyStadiumOrderInConfederationPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibStadiumOrderInConfederation, ref leggiStadiumOrderInConfederation, ref scriviStadiumOrderInConfederation);
+
+                for (int i = 0; i < Form1._Form1.DataGridView_stadium_order_in_conf.RowCount; i++)
+                {
+                    UInt16 id = ushort.Parse(Form1._Form1.DataGridView_stadium_order_in_conf.Rows[i].Cells[2].Value.ToString());
+                    int index = findStadium(id);
+                    if (index != Form1._Form1.stadiumsBox.Items.Count)
+                        Form1._Form1.DataGridView_stadium_order_in_conf.Rows[i].Cells[0].Value = leggiStadium(index).getName();
+                    else
+                        Form1._Form1.DataGridView_stadium_order_in_conf.Rows[i].Cells[0].Value = "No Stadium Found";
+                }
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void readCompetitionEntryPersister(string patch, int bitRecognized)
+        {
+            MyCompetitionEntryPersister cReader = new MyCompetitionEntryPersister();
+
+            try
+            {
+                cReader.load(patch, bitRecognized, ref unzlibCompetitionEntry, ref leggiCompetitionEntry, ref scriviCompetitionEntry);
+            }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public void readPlayerAppearancePersister(string patch, int bitRecognized)
@@ -124,133 +400,40 @@ namespace DinoTem.ui
 
             try
             {
-                playerAppearanceList = playerAppearanceReader.load(patch, bitRecognized);
+                playerAppearanceReader.load(patch, bitRecognized, ref unzlibPlayerApp, ref leggiPlayerApp, ref scriviPlayerApp);
             }
             catch (FileNotFoundException e)
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        public void readPlayerAssignmentPersister(string patch, int bitRecognized)
+        public void readGloveListPersister(string patch, int bitRecognized)
         {
-            MyPlayerAssignmentPersister playerAssignmentReader = new MyPlayerAssignmentPersister();
+            MyGloveListPersister gloveListReader = new MyGloveListPersister();
 
             try
             {
-                playerAssignmentList = playerAssignmentReader.load(patch, bitRecognized);
+                gloveListReader.load(patch, bitRecognized, ref unzlibGloveList, ref leggiGloveList, ref scriviGloveList);
             }
             catch (FileNotFoundException e)
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        public void readTacticsFormationPersister(string patch, int bitRecognized)
+        public void readBootListPersister(string patch, int bitRecognized)
         {
-            MyTacticsFormationPersister tacticsFormationReader = new MyTacticsFormationPersister();
+            MyBootListPersister bootListReader = new MyBootListPersister();
 
             try
             {
-                tacticsFormationList = tacticsFormationReader.load(patch, bitRecognized);
+                bootListReader.load(patch, bitRecognized, ref unzlibBootList, ref leggiBootList, ref scriviBootList);
             }
             catch (FileNotFoundException e)
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-        }
-
-        public void readTacticsPersister(string patch, int bitRecognized)
-        {
-            MyTacticsPersister tacticsReader = new MyTacticsPersister();
-
-            try
-            {
-                tacticsList = tacticsReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void readStadiumsPersister(string patch, int bitRecognized)
-        {
-            MyStadiumPersister stadiumsReader = new MyStadiumPersister();
-
-            try
-            {
-                stadiumList = stadiumsReader.load(patch, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void saveBallConditionPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyBallConditionPersister ballConditionSave = new MyBallConditionPersister();
-
-            try
-            {
-                ballConditionSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved BallCondition.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void savePlayerAssignmentPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyPlayerAssignmentPersister playerAssignmentSave = new MyPlayerAssignmentPersister();
-
-            try
-            {
-                playerAssignmentSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved PlayerAssignment.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void savePlayerAppearancePersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyPlayerAppearancePersister playerAppearanceSave = new MyPlayerAppearancePersister();
-
-            try
-            {
-                playerAppearanceSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved PlayerAppearance.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-        }
-
-        public void saveTacticsFormationPersister(string patch, Controller controller, int bitRecognized)
-        {
-            MyTacticsFormationPersister tacticsFormationSave = new MyTacticsFormationPersister();
-
-            try
-            {
-                tacticsFormationSave.save(patch, controller, bitRecognized);
-            }
-            catch
-            {
-                MessageBox.Show("Error saved TacticsFormation.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
         }
 
         public void saveBallPersister(string patch, Controller controller, int bitRecognized)
@@ -259,43 +442,40 @@ namespace DinoTem.ui
 
             try
             {
-                ballSave.save(patch, controller, bitRecognized);
+                ballSave.save(patch, ref unzlibPalloni, bitRecognized);
             }
             catch
             {
                 MessageBox.Show("Error saved Ball.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        public void savePlayerPersister(string patch, Controller controller, int bitRecognized)
+        public void saveGlovePersister(string patch, Controller controller, int bitRecognized)
         {
-            MyPlayerPersister playerSave = new MyPlayerPersister();
+            MyGlovePersister gloveSave = new MyGlovePersister();
 
             try
             {
-                playerSave.save(patch, controller, bitRecognized);
+                gloveSave.save(patch, ref unzlibGuanti, bitRecognized);
             }
             catch
             {
-                MessageBox.Show("Error saved Player.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error saved Glove.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
-        public void saveTeamPersister(string patch, Controller controller, int bitRecognized)
+        public void saveBootPersister(string patch, Controller controller, int bitRecognized)
         {
-            MyTeamPersister teamSave = new MyTeamPersister();
+            MyBootPersister bootSave = new MyBootPersister();
 
             try
             {
-                teamSave.save(patch, controller, bitRecognized);
+                bootSave.save(patch, ref unzlibScarpe, bitRecognized);
             }
             catch
             {
-                MessageBox.Show("Error saved Team.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error saved Boots.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         public void saveStadiumPersister(string patch, Controller controller, int bitRecognized)
@@ -304,13 +484,900 @@ namespace DinoTem.ui
 
             try
             {
-                stadiumSave.save(patch, controller, bitRecognized);
+                stadiumSave.save(patch, ref unzlibStadi, bitRecognized);
             }
             catch
             {
                 MessageBox.Show("Error saved Stadium.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        public void saveCoachPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCoachPersister coachSave = new MyCoachPersister();
+
+            try
+            {
+                coachSave.save(patch, ref unzlibAllenatori, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Coach.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void savePlayerPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyPlayerPersister playerSave = new MyPlayerPersister();
+
+            try
+            {
+                playerSave.save(patch, ref unzlibGiocatori, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Player.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveTeamPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyTeamPersister teamSave = new MyTeamPersister();
+
+            try
+            {
+                teamSave.save(patch, ref unzlibSquadre, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Team.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void savePlayerAssignmentPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyPlayerAssignmentPersister paSave = new MyPlayerAssignmentPersister();
+
+            try
+            {
+                paSave.save(patch, ref unzlibPlayerAssign, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved PlayerAssignment.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveTacticsPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyTacticsPersister taSave = new MyTacticsPersister();
+
+            try
+            {
+                taSave.save(patch, ref unzlibTattiche, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Tactics.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveTacticsFormationPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyTacticsFormationPersister tfSave = new MyTacticsFormationPersister();
+
+            try
+            {
+                tfSave.save(patch, ref unzlibTacticsFormation, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved TacticsFormation.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveBallConditionPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyBallConditionPersister baSave = new MyBallConditionPersister();
+
+            try
+            {
+                baSave.save(patch, ref unzlibBallCondition, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved BallCondition.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveDerbyPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyDerbyPersister dSave = new MyDerbyPersister();
+
+            try
+            {
+                dSave.save(patch, ref unzlibDerby, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Derby.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveCompetitionPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCompetitionPersister cSave = new MyCompetitionPersister();
+
+            try
+            {
+                cSave.save(patch, ref unzlibCompetition, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved Competition.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveCompetitionKindPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCompetitionKindPersister cSave = new MyCompetitionKindPersister();
+
+            try
+            {
+                cSave.save(patch, ref unzlibCompetitionKind, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved CompetitionKind.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveCompetitionRegulationPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCompetitionRegulationPersister cSave = new MyCompetitionRegulationPersister();
+
+            try
+            {
+                cSave.save(patch, ref unzlibCompetitionRegulation, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved CompetitionRegulation.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveCompetitionEntryPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyCompetitionEntryPersister dSave = new MyCompetitionEntryPersister();
+
+            try
+            {
+                dSave.save(patch, ref unzlibCompetitionEntry, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved CompetitionEntry.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void savePlayerAppearancePersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyPlayerAppearancePersister playerAppearanceSave = new MyPlayerAppearancePersister();
+
+            try
+            {
+                playerAppearanceSave.save(patch, ref unzlibPlayerApp, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved PlayerAppearance.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveGloveListPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyGloveListPersister dSave = new MyGloveListPersister();
+
+            try
+            {
+                dSave.save(patch, ref unzlibGloveList, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved GloveList.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void saveBootListPersister(string patch, Controller controller, int bitRecognized)
+        {
+            MyBootListPersister dSave = new MyBootListPersister();
+
+            try
+            {
+                dSave.save(patch, ref unzlibBootList, bitRecognized);
+            }
+            catch
+            {
+                MessageBox.Show("Error saved BootList.bin", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyBallPersister(int index, Ball pallone)
+        {
+            MyBallPersister ball = new MyBallPersister();
+
+            try
+            {
+                ball.applyBall(index, unzlibPalloni, pallone, ref scriviPalloni);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + pallone.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyGlovePersister(int index, Glove guanto)
+        {
+            MyGlovePersister glove = new MyGlovePersister();
+
+            try
+            {
+                glove.applyGlove(index, unzlibGuanti, guanto, ref scriviGuanti);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + guanto.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyBootPersister(int index, Boot scarpa)
+        {
+            MyBootPersister boot = new MyBootPersister();
+
+            try
+            {
+                boot.applyBoot(index, unzlibScarpe, scarpa, ref scriviScarpe);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + scarpa.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyStadiumPersister(int index, Stadium stadio)
+        {
+            MyStadiumPersister stadium = new MyStadiumPersister();
+
+            try
+            {
+                stadium.applyStadium(index, unzlibStadi, stadio, ref scriviStadi);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + stadio.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyCoachPersister(int index, Coach allenatore)
+        {
+            MyCoachPersister coach = new MyCoachPersister();
+
+            try
+            {
+                coach.applyCoach(index, unzlibAllenatori, allenatore, ref scriviAllenatori);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + allenatore.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyPlayerPersister(int index, Player giocatore)
+        {
+            MyPlayerPersister player = new MyPlayerPersister();
+
+            try
+            {
+                player.applyPlayer(index, unzlibGiocatori, giocatore, ref scriviGiocatori);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + giocatore.getName(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyTeamPersister(int index, Team squadra)
+        {
+            MyTeamPersister team = new MyTeamPersister();
+
+            try
+            {
+                team.applyTeam(index, unzlibSquadre, squadra, ref scriviSquadre);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply " + squadra.getEnglish(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyPlayerAssignmentPersister(List<PlayerAssignment> pa)
+        {
+            MyPlayerAssignmentPersister playerA = new MyPlayerAssignmentPersister();
+
+            try
+            {
+                playerA.applyPlayerA(unzlibPlayerAssign, leggiPlayerAssign, pa, ref scriviPlayerAssign);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply transfer - id team: " + pa[0].getTeamId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyTacticsPersister(Tactics ta)
+        {
+            MyTacticsPersister playerA = new MyTacticsPersister();
+
+            try
+            {
+                playerA.applyTactics(leggiTattiche ,unzlibTattiche, ta, ref scriviTattiche);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply tactics - id team: " + ta.getTeamId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyTacticsFormationPersister(List<TacticsFormation> tf)
+        {
+            MyTacticsFormationPersister tacticF = new MyTacticsFormationPersister();
+
+            try
+            {
+                tacticF.applyTacticsFormation(unzlibTacticsFormation, leggiTacticsFormation, tf, ref scriviTacticsFormation);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply tactics formation - id tactic: " + tf[0].getTeamTacticId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyBallConditionPersister(byte unk1, byte unk2, byte unk3, byte unk4, List<BallCondition> ba)
+        {
+            MyBallConditionPersister ball = new MyBallConditionPersister();
+
+            if (ba.Count == 0)
+                return;
+            
+            if (ba.Count >= 1)
+                ba[0].setUnknown(unk1);
+            if (ba.Count >= 2)
+                ba[1].setUnknown(unk2);
+            if (ba.Count >= 3)
+                ba[2].setUnknown(unk3);
+            if (ba.Count >= 4)
+                ba[3].setUnknown(unk4);
+
+            try
+            {
+                ball.applyBallCondition(unzlibBallCondition, leggiBallCondition, ba, ref scriviBallCondition);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply ball condition - id ball: " + ba[0].getId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyDerbyPersister(int index, Derby d)
+        {
+            MyDerbyPersister derby = new MyDerbyPersister();
+
+            try
+            {
+                derby.applyDerby(index, unzlibDerby, d, ref scriviDerby);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply derby: " + d.getTeam1DerbyId() + "-" + d.getTeam2DerbyId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyCompetitionPersister(int index, Competition c)
+        {
+            MyCompetitionPersister com = new MyCompetitionPersister();
+
+            try
+            {
+                com.applyCompetition(index, unzlibCompetition, c, ref scriviCompetition);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply derby: " + c.getId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyCompetitionKindPersister(int index, CompetitionKind c)
+        {
+            MyCompetitionKindPersister com = new MyCompetitionKindPersister();
+
+            try
+            {
+                com.applyCompetitionKind(index, unzlibCompetitionKind, c, ref scriviCompetitionKind);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply competition kind", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyCompetitionRegulationPersister(int index, CompetitionRegulation c)
+        {
+            MyCompetitionRegulationPersister com = new MyCompetitionRegulationPersister();
+
+            try
+            {
+                com.applyCompetitionRegulation(index, unzlibCompetitionRegulation, c, ref scriviCompetitionRegulation);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply competition regulation", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyCompetitionEntryPersister(int index)
+        {
+            MyCompetitionEntryPersister com = new MyCompetitionEntryPersister();
+
+            CompetitionRegulation r = leggiCompetizioneRegulation(index);
+            //try
+            //{
+                com.applyCompetitionEntry(index, ref unzlibCompetitionEntry, r.getUNK5(), ref leggiCompetitionEntry, ref scriviCompetitionEntry);
+            //}
+            //catch
+            //{
+                //MessageBox.Show("Error apply competition entry", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
+        }
+
+        public void applyPlayerAppearancePersister(PlayerAppearance a)
+        {
+            MyPlayerAppearancePersister com = new MyPlayerAppearancePersister();
+
+            try
+            {
+                com.applyPlayerAppearance(leggiPlayerApp, getBitRecognized(), unzlibPlayerApp, a, ref scriviPlayerApp);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply appareance - id player: " + a.getId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyGloveListPersister(GloveList a)
+        {
+            MyGloveListPersister com = new MyGloveListPersister();
+
+            try
+            {
+                com.applyGloveList(leggiGloveList, getBitRecognized(), unzlibGloveList, a, ref scriviGloveList);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply glove list - id player: " + a.getPlayerId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void applyBootListPersister(BootList a)
+        {
+            MyBootListPersister com = new MyBootListPersister();
+
+            try
+            {
+                com.applyBootList(leggiBootList, getBitRecognized(), unzlibBootList, a, ref scriviBootList);
+            }
+            catch
+            {
+                MessageBox.Show("Error apply boot list - id player: " + a.getPlayerId(), Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addGlovePersister()
+        {
+            MyGlovePersister glove = new MyGlovePersister();
+
+            try
+            {
+                glove.addGlove(ref unzlibGuanti, ref leggiGuanti, ref scriviGuanti);
+
+                Glove temp = new Glove(glove.findIdGlove(unzlibGuanti, leggiGuanti));
+                temp.setName("Glove " + Form1._Form1.glovesBox.Items.Count);
+                temp.setOrder(20);
+                temp.setColor("Test");
+                applyGlovePersister(Form1._Form1.glovesBox.Items.Count, temp);
+
+                Form1._Form1.glovesBox.Items.Add("Glove " + Form1._Form1.glovesBox.Items.Count);
+
+                MessageBox.Show("New glove added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new glove!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addBootPersister()
+        {
+            MyBootPersister boot = new MyBootPersister();
+
+            try
+            {
+                boot.addBoot(ref unzlibScarpe, ref leggiScarpe, ref scriviScarpe);
+
+                Boot temp = new Boot(boot.findIdBoot(unzlibScarpe, leggiScarpe));
+                temp.setName("Boot " + Form1._Form1.bootsBox.Items.Count);
+                temp.setOrder(20);
+                temp.setColor("Test");
+                temp.setMaterial("Test");
+                applyBootPersister(Form1._Form1.bootsBox.Items.Count, temp);
+
+                Form1._Form1.bootsBox.Items.Add("Boot " + Form1._Form1.bootsBox.Items.Count);
+
+                MessageBox.Show("New boot added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new boot!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addBallPersister()
+        {
+            MyBallPersister ball = new MyBallPersister();
+
+            try
+            {
+                ball.addBall(ref unzlibPalloni, ref leggiPalloni, ref scriviPalloni);
+
+                UInt16 id = ball.findIdBall(unzlibPalloni, leggiPalloni);
+                Ball temp = new Ball(id);
+                temp.setName("Ball " + Form1._Form1.ballsBox.Items.Count);
+                temp.setOrder(20);
+                applyBallPersister(Form1._Form1.ballsBox.Items.Count, temp);
+
+                Form1._Form1.ballsBox.Items.Add("Ball " + Form1._Form1.ballsBox.Items.Count);
+
+                MessageBox.Show("New ball added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new ball!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addStadiumPersister()
+        {
+            MyStadiumPersister stadium = new MyStadiumPersister();
+
+            try
+            {
+                stadium.addStadium(ref unzlibStadi, ref leggiStadi, ref scriviStadi);
+
+                Stadium temp = new Stadium(stadium.findIdStadium(unzlibStadi, leggiStadi));
+                temp.setName("Stadium " + Form1._Form1.stadiumsBox.Items.Count);
+                temp.setCapacity(1000);
+                temp.setCountry(215);
+                temp.setJapaneseName("Stadium " + Form1._Form1.stadiumsBox.Items.Count);
+                temp.setKonamiName("Stadium");
+                temp.setLicense(0);
+                temp.setNa(0);
+                temp.setZone(2);
+                applyStadiumPersister(Form1._Form1.stadiumsBox.Items.Count, temp);
+
+                Form1._Form1.stadiumsBox.Items.Add("Stadium " + Form1._Form1.stadiumsBox.Items.Count);
+                Form1._Form1.teamStadium.Items.Add("Stadium " + Form1._Form1.stadiumsBox.Items.Count);
+
+                MessageBox.Show("New stadium added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new stadium!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addDerbyPersister()
+        {
+            MyDerbyPersister derby = new MyDerbyPersister();
+            try
+            {
+                derby.addDerby(ref unzlibDerby, ref leggiDerby, ref scriviDerby);
+
+                UInt32 New_order = Convert.ToUInt32(Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[6].Value);
+                New_order = (New_order + 1);
+                UInt32 new_slot = Convert.ToUInt32(Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[5].Value);
+                UInt32 team1 = (uint)Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[0].Value;
+                UInt32 team2 = (uint)Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[2].Value;
+                string teamName1 = (string)Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[1].Value;
+                string teamName2 = (string)Form1._Form1.DataGridView_derby.Rows[(Form1._Form1.DataGridView_derby.Rows.Count - 1)].Cells[3].Value;
+                if ((New_order > 127))
+                {
+                    new_slot = (new_slot + 1);
+                    New_order = 0;
+                    if ((new_slot > 3))
+                        MessageBox.Show("Maximum slots are reached, please eidt, not add more", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                        Form1._Form1.DataGridView_derby.Rows.Add(team1, teamName1, team2, teamName2, 0, new_slot, New_order);
+                }
+                else
+                    Form1._Form1.DataGridView_derby.Rows.Add(team1, teamName1, team2, teamName2, 0, new_slot, New_order);
+
+                Derby temp = new Derby();
+                temp.setTeam1DerbyId(team1);
+                temp.setTeam2DerbyId(team2);
+                temp.setFragVal2((ushort)0);
+                temp.setFragVal3((ushort)new_slot);
+                temp.setFragVal4((ushort)New_order);
+
+                applyDerbyPersister(Form1._Form1.DataGridView_derby.Rows[Form1._Form1.DataGridView_derby.Rows.Count - 1].Index, temp);
+
+                MessageBox.Show("New derby added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new derby!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addCoachPersister()
+        {
+            MyCoachPersister coach = new MyCoachPersister();
+
+            try
+            {
+                coach.addCoach(ref unzlibAllenatori, ref leggiAllenatori, ref scriviAllenatori);
+
+                UInt32 id = coach.findIdCoach(unzlibAllenatori, leggiAllenatori);
+                Coach temp = new Coach(id);
+                temp.setName("Coach " + Form1._Form1.coachBox.Items.Count);
+                temp.setJapName("Coach " + Form1._Form1.coachBox.Items.Count);
+                temp.setCountry(215);
+                temp.setByteLic(0);
+
+                applyCoachPersister(Form1._Form1.coachBox.Items.Count, temp);
+
+                Form1._Form1.coachBox.Items.Add("Coach " + Form1._Form1.coachBox.Items.Count);
+                Form1._Form1.teamCoach.Items.Add("Coach " + Form1._Form1.coachBox.Items.Count);
+
+                MessageBox.Show("New coach added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new coach!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addPlayerPersister()
+        {
+            MyPlayerPersister player = new MyPlayerPersister();
+
+            try
+            {
+                player.addPlayer(ref unzlibGiocatori, ref leggiGiocatori, ref scriviGiocatori);
+
+                UInt32 id = player.findIdPlayer(unzlibGiocatori, leggiGiocatori);
+                Player temp = leggiGiocatore(0);
+                temp.setId(id);
+                temp.setNational(215);
+                temp.setName("Player " + Form1._Form1.playersBox.Items.Count);
+                temp.setJapanese("Player " + Form1._Form1.playersBox.Items.Count);
+                temp.setShirtName("Player " + Form1._Form1.playersBox.Items.Count);
+
+                applyPlayerPersister(Form1._Form1.playersBox.Items.Count, temp);
+
+                Form1._Form1.playersBox.Items.Add("Player " + Form1._Form1.playersBox.Items.Count);
+
+                MessageBox.Show("New player added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new player!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addTeamPersister()
+        {
+            MyTeamPersister team = new MyTeamPersister();
+
+            try
+            {
+                team.addTeam(ref unzlibSquadre, ref leggiSquadre, ref scriviSquadre);
+
+                UInt32 idTeam = team.findIdTeam(unzlibSquadre, leggiSquadre);
+                Team temp = leggiSquadra(0);
+                temp.setId(idTeam);
+                temp.setNational(0);
+                temp.setCountry(215);
+                string name = "Team " + Form1._Form1.teamsBox.Items.Count;
+                temp.setEnglish(name);
+                temp.setJapanese(name);
+                applyTeamPersister(Form1._Form1.teamsBox.Items.Count, temp);
+
+                Form1._Form1.teamsBox.Items.Add(name);
+                Form1._Form1.derbyTeam1.Items.Add(name);
+                Form1._Form1.derbyTeam2.Items.Add(name);
+                Form1._Form1.teamBox1.Items.Add(name);
+                Form1._Form1.teamBox2.Items.Add(name);
+                Form1._Form1.competitionTeamList.Items.Add(name);
+
+                Form1._Form1.teamBox1.SelectedIndex = Form1._Form1.teamBox1.Items.Count - 1;
+                for (int i = 0; i < 11; i++)
+                {
+                    MyPlayerPersister player = new MyPlayerPersister();
+                    player.addPlayer(ref unzlibGiocatori, ref leggiGiocatori, ref scriviGiocatori);
+
+                    UInt32 idPlayer = player.findIdPlayer(unzlibGiocatori, leggiGiocatori);
+                    Player tempP = leggiGiocatore(0);
+                    tempP.setId(idPlayer);
+                    tempP.setNational(215);
+                    tempP.setName("Player " + Form1._Form1.playersBox.Items.Count);
+                    tempP.setJapanese("Player " + Form1._Form1.playersBox.Items.Count);
+                    tempP.setShirtName("Player " + Form1._Form1.playersBox.Items.Count);
+
+                    applyPlayerPersister(Form1._Form1.playersBox.Items.Count, tempP);
+
+                    Form1._Form1.playersBox.Items.Add("Player " + Form1._Form1.playersBox.Items.Count);
+                    playerFromPlayerList(idPlayer, idTeam, Form1._Form1.teamView1, leggiSquadra(Form1._Form1.teamBox2.SelectedIndex).getId(), Form1._Form1.teamView2);
+                }
+                transferPlayerAtoA(Form1._Form1.teamView1, idTeam);
+
+                //colore sfondo
+                int i5 = 0;
+                int NumberOfRepetitions5 = Convert.ToInt32(10);
+                for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
+                {
+                    Form1._Form1.teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    Form1._Form1.teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    Form1._Form1.teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    Form1._Form1.teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    Form1._Form1.teamView1.Items[0].UseItemStyleForSubItems = false;
+                }
+
+                MessageBox.Show("New team added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add new team!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addBootListPersister(UInt32 idPlayer)
+        {
+            MyBootListPersister boot = new MyBootListPersister();
+
+            try
+            {
+                boot.addBootList(idPlayer, ref unzlibBootList, ref leggiBootList, ref scriviBootList);
+
+                BootList temp = new BootList(idPlayer);
+                temp.setBootId(leggiScarpa(0).getId());
+
+                applyBootListPersister(temp);
+
+                MessageBox.Show("New boot's list added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add boot's list!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addGloveListPersister(UInt32 idPlayer)
+        {
+            MyGloveListPersister glove = new MyGloveListPersister();
+
+            try
+            {
+                glove.addGloveList(idPlayer, ref unzlibGloveList, ref leggiGloveList, ref scriviGloveList);
+
+                GloveList temp = new GloveList(idPlayer);
+                temp.setGloveId(leggiGuanto(0).getId());
+
+                applyGloveListPersister(temp);
+
+                MessageBox.Show("New glove's list added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add glove's list!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addPlayerAppearancePersister(UInt32 idPlayer)
+        {
+            MyPlayerAppearancePersister player = new MyPlayerAppearancePersister();
+
+            try
+            {
+                player.addPlayerAppearance(idPlayer, getBitRecognized(), ref unzlibPlayerApp, ref leggiPlayerApp, ref scriviPlayerApp);
+
+                MessageBox.Show("New player's appearance added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add player's appearance!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void closeMemory()
+        {
+            if (getBitRecognized() != -1)
+            {
+                unzlibPalloni.Close();
+                leggiPalloni.Close();
+                scriviPalloni.Close();
+                unzlibGuanti.Close();
+                leggiGuanti.Close();
+                scriviGuanti.Close();
+                unzlibScarpe.Close();
+                leggiScarpe.Close();
+                scriviScarpe.Close();
+                unzlibStadi.Close();
+                leggiStadi.Close();
+                scriviStadi.Close();
+                unzlibAllenatori.Close();
+                leggiAllenatori.Close();
+                scriviAllenatori.Close();
+                unzlibPaesi.Close();
+                leggiPaesi.Close();
+                scriviPaesi.Close();
+                unzlibGiocatori.Close();
+                leggiGiocatori.Close();
+                scriviGiocatori.Close();
+                unzlibSquadre.Close();
+                leggiSquadre.Close();
+                scriviSquadre.Close();
+                unzlibPlayerAssign.Close();
+                leggiPlayerAssign.Close();
+                scriviPlayerAssign.Close();
+                unzlibTattiche.Close();
+                leggiTattiche.Close();
+                scriviTattiche.Close();
+                unzlibTacticsFormation.Close();
+                leggiTacticsFormation.Close();
+                scriviTacticsFormation.Close();
+                unzlibBallCondition.Close();
+                leggiBallCondition.Close();
+                scriviBallCondition.Close();
+                unzlibDerby.Close();
+                leggiDerby.Close();
+                scriviDerby.Close();
+                unzlibCompetition.Close();
+                leggiCompetition.Close();
+                scriviCompetition.Close();
+                unzlibCompetitionKind.Close();
+                leggiCompetitionKind.Close();
+                scriviCompetitionKind.Close();
+                unzlibCompetitionRegulation.Close();
+                leggiCompetitionRegulation.Close();
+                scriviCompetitionRegulation.Close();
+                unzlibStadiumOrder.Close();
+                leggiStadiumOrder.Close();
+                scriviStadiumOrder.Close();
+                unzlibStadiumOrderInConfederation.Close();
+                leggiStadiumOrderInConfederation.Close();
+                scriviStadiumOrderInConfederation.Close();
+                unzlibCompetitionEntry.Close();
+                leggiCompetitionEntry.Close();
+                scriviCompetitionEntry.Close();
+                unzlibPlayerApp.Close();
+                leggiPlayerApp.Close();
+                scriviPlayerApp.Close();
+                unzlibGloveList.Close();
+                leggiGloveList.Close();
+                scriviGloveList.Close();
+                unzlibBootList.Close();
+                leggiBootList.Close();
+                scriviBootList.Close();
+            }
         }
 
         private int checkAllFile(string folder)
@@ -324,7 +1391,7 @@ namespace DinoTem.ui
             BinaryReader reader = new BinaryReader(memory);
             byte byteFirst = reader.ReadByte();
             reader.Close();
-            
+
             byte[] file1 = File.ReadAllBytes(folder + @"\PlayerAssignment.bin");
             MemoryStream memory1 = new MemoryStream(file1);
             BinaryReader reader1 = new BinaryReader(memory1);
@@ -373,11 +1440,77 @@ namespace DinoTem.ui
             byteFirst += reader8.ReadByte();
             reader8.Close();
 
-            if (byteFirst == 0 || byteFirst == 36)
+            byte[] file9 = File.ReadAllBytes(folder + @"\Glove.bin");
+            MemoryStream memory9 = new MemoryStream(file9);
+            BinaryReader reader9 = new BinaryReader(memory9);
+            byteFirst += reader9.ReadByte();
+            reader9.Close();
+
+            byte[] file10 = File.ReadAllBytes(folder + @"\Boots.bin");
+            MemoryStream memory10 = new MemoryStream(file10);
+            BinaryReader reader10 = new BinaryReader(memory10);
+            byteFirst += reader10.ReadByte();
+            reader10.Close();
+
+            byte[] file11 = File.ReadAllBytes(folder + @"\Coach.bin");
+            MemoryStream memory11 = new MemoryStream(file11);
+            BinaryReader reader11 = new BinaryReader(memory11);
+            byteFirst += reader11.ReadByte();
+            reader11.Close();
+
+            byte[] file12 = File.ReadAllBytes(folder + @"\Competition.bin");
+            MemoryStream memory12 = new MemoryStream(file12);
+            BinaryReader reader12 = new BinaryReader(memory12);
+            byteFirst += reader12.ReadByte();
+            reader12.Close();
+
+            byte[] file13 = File.ReadAllBytes(folder + @"\CompetitionKind.bin");
+            MemoryStream memory13 = new MemoryStream(file13);
+            BinaryReader reader13 = new BinaryReader(memory13);
+            byteFirst += reader13.ReadByte();
+            reader13.Close();
+
+            byte[] file14 = File.ReadAllBytes(folder + @"\CompetitionRegulation.bin");
+            MemoryStream memory14 = new MemoryStream(file14);
+            BinaryReader reader14 = new BinaryReader(memory14);
+            byteFirst += reader14.ReadByte();
+            reader14.Close();
+
+            byte[] file15 = File.ReadAllBytes(folder + @"\StadiumOrder.bin");
+            MemoryStream memory15 = new MemoryStream(file15);
+            BinaryReader reader15 = new BinaryReader(memory15);
+            byteFirst += reader15.ReadByte();
+            reader15.Close();
+
+            byte[] file16 = File.ReadAllBytes(folder + @"\StadiumOrderInConfederation.bin");
+            MemoryStream memory16 = new MemoryStream(file16);
+            BinaryReader reader16 = new BinaryReader(memory16);
+            byteFirst += reader16.ReadByte();
+            reader16.Close();
+
+            byte[] file17 = File.ReadAllBytes(folder + @"\CompetitionEntry.bin");
+            MemoryStream memory17 = new MemoryStream(file17);
+            BinaryReader reader17 = new BinaryReader(memory17);
+            byteFirst += reader17.ReadByte();
+            reader17.Close();
+
+            byte[] file18 = File.ReadAllBytes(folder + @"\GloveList.bin");
+            MemoryStream memory18 = new MemoryStream(file18);
+            BinaryReader reader18 = new BinaryReader(memory18);
+            byteFirst += reader18.ReadByte();
+            reader18.Close();
+
+            byte[] file19 = File.ReadAllBytes(folder + @"\BootsList.bin");
+            MemoryStream memory19 = new MemoryStream(file19);
+            BinaryReader reader19 = new BinaryReader(memory19);
+            byteFirst += reader19.ReadByte();
+            reader19.Close();
+
+            if (byteFirst == 0 || byteFirst == 80)
                 return 0;
-            else if (byteFirst == 9)
+            else if (byteFirst == 20)
                 return 1;
-            else if (byteFirst == 18)
+            else if (byteFirst == 40)
                 return 2;
             else
             {
@@ -388,8 +1521,7 @@ namespace DinoTem.ui
             return -1;
         }
 
-        public void openDatabase(string folder, ComboBox teamBox1, ComboBox teamBox2, ListBox teamsBox, ListBox stadiumsBox, ListBox ballsBox,
-            ComboBox squadraCountry, ComboBox stadiumCountry, ComboBox teamStadium, ListView giocatoreView, Form1 Form)
+        public void openDatabase(string folder, Form1 Form)
         {
             int bitRecognized = checkAllFile(folder);
             this.bitRecognized = bitRecognized;
@@ -403,107 +1535,70 @@ namespace DinoTem.ui
 
             UtilGUI.resetField();
 
-            teamBox1.Items.Clear();
-            teamBox2.Items.Clear();
-            giocatoreView.Items.Clear();
-            teamsBox.Items.Clear();
-            ballsBox.Items.Clear();
-            stadiumsBox.Items.Clear();
+            Form1._Form1.ballsBox.Items.Clear();
+            Form1._Form1.glovesBox.Items.Clear();
+            Form1._Form1.bootsBox.Items.Clear();
+            Form1._Form1.stadiumsBox.Items.Clear();
+            Form1._Form1.coachBox.Items.Clear();
+            Form1._Form1.stadiumCountry.Items.Clear();
+            Form1._Form1.playersBox.Items.Clear();
+            Form1._Form1.teamsBox.Items.Clear();
+            Form1._Form1.teamBox1.Items.Clear();
+            Form1._Form1.teamBox2.Items.Clear();
+            Form1._Form1.competitionsBox.Items.Clear();
+            Form1._Form1.giocatoreNationality.Items.Clear();
+            Form1._Form1.teamCountry.Items.Clear();
+            Form1._Form1.allenatoreNationality.Items.Clear();
+            Form1._Form1.DataGridView_derby.Rows.Clear();
+            Form1._Form1.derbyTeam1.Items.Clear();
+            Form1._Form1.derbyTeam2.Items.Clear();
+            Form1._Form1.competitionsKind.Items.Clear();
+            Form1._Form1.ListBox_comp_reg.Items.Clear();
+            Form1._Form1.DataGridView_stadium_order.Rows.Clear();
+            Form1._Form1.DataGridView_stadium_order_in_conf.Rows.Clear();
+            Form1._Form1.DataGridView1.Rows.Clear();
+            Form1._Form1.DataGridView1_orig.Rows.Clear();
+            Form1._Form1.competitionEntryBox.Items.Clear();
+            Form1._Form1.teamCoach.Items.Clear();
+            Form1._Form1.teamStadium.Items.Clear();
 
-            readTeamPersister(folder, bitRecognized);
-            if (getListTeam().Count == 0)
-            {
-                MessageBox.Show("No teams found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-
-            foreach (Team x in getListTeam())
-            {
-                teamBox1.Items.Add(x);
-                teamBox2.Items.Add(x);
-                teamsBox.Items.Add(x);
-            }
-
-            readBallConditionPersister(folder, bitRecognized);
-            if (getBallConditionList().Count == 0)
-            {
-                MessageBox.Show("No balls conditions found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
+            readBootPersister(folder, bitRecognized);
             readBallPersister(folder, bitRecognized);
-            if (getListBall().Count == 0)
-            {
-                MessageBox.Show("No balls found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            foreach (Ball x in getListBall())
-            {
-                ballsBox.Items.Add(x);
-            }
-
-            readCountryPersister(folder, bitRecognized);
-            if (countryList.Count == 0)
-            {
-                MessageBox.Show("No countries found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            foreach (Country x in getListCountry())
-            {
-                squadraCountry.Items.Add(x.getName());
-                stadiumCountry.Items.Add(x.getName());
-            }
-
-            readPlayerAppearancePersister(folder, bitRecognized);
-            if (getPlayerAppearanceList().Count == 0)
-            {
-                MessageBox.Show("No players appeareance found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            readPlayerAssignmentPersister(folder, bitRecognized);
-            if (getPlayerAssignmentList().Count == 0)
-            {
-                MessageBox.Show("No countries found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            readPlayerPersister(folder, bitRecognized);
-            if (getListPlayer().Count == 0)
-            {
-                MessageBox.Show("No players found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            foreach (Player x in getListPlayer())
-            {
-                giocatoreView.Items.Add(x.ToString());
-            }
-            readTacticsFormationPersister(folder, bitRecognized);
-            if (getTacticsFormationList().Count == 0)
-            {
-                MessageBox.Show("No tactics formation found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
+            readGlovePersister(folder, bitRecognized);
+            readStadiumPersister(folder, bitRecognized);
+            readCoachPersister(folder, bitRecognized);
             readTacticsPersister(folder, bitRecognized);
-            if (getTacticsList().Count == 0)
-            {
-                MessageBox.Show("No tactics found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            readStadiumsPersister(folder, bitRecognized);
-            if (getListStadium().Count == 0)
-            {
-                MessageBox.Show("No stadiums found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-                SplashScreen._SplashScreen.Close();
-            }
-            foreach (Stadium x in getListStadium())
-            {
-                stadiumsBox.Items.Add(x);
-                teamStadium.Items.Add(x);
-            }
+            readTacticsFormationPersister(folder, bitRecognized);
+            readBallConditionPersister(folder, bitRecognized);
+            readDerbyPersister(folder, bitRecognized);
+            readCompetitionPersister(folder, bitRecognized);
+            readCompetitionKindPersister(folder, bitRecognized);
+            readCompetitionRegulationPersister(folder, bitRecognized);
+            readStadiumOrderPersister(folder, bitRecognized);
+            readStadiumOrderInConfederationPersister(folder, bitRecognized);
+            readCompetitionEntryPersister(folder, bitRecognized);
+            readGloveListPersister(folder, bitRecognized);
+            readBootListPersister(folder, bitRecognized);
+            readPlayerAppearancePersister(folder, bitRecognized);
+            readPlayerAssignmentPersister(folder, bitRecognized);
+            readTeamPersister(folder, bitRecognized);
+            readCountryPersister(folder, bitRecognized);
+            readPlayerPersister(folder, bitRecognized);
 
-            teamBox1.SelectedIndex = 0;
-            teamBox2.SelectedIndex = 0;
-            ballsBox.SelectedIndex = 0;
-            teamsBox.SelectedIndex = 0;
-            stadiumsBox.SelectedIndex = 0;
+            Form1._Form1.ballsBox.SelectedIndex = 0;
+            Form1._Form1.glovesBox.SelectedIndex = 0;
+            Form1._Form1.bootsBox.SelectedIndex = 0;
+            Form1._Form1.stadiumsBox.SelectedIndex = 0;
+            Form1._Form1.coachBox.SelectedIndex = 0;
+            Form1._Form1.playersBox.SelectedIndex = 0;
+            Form1._Form1.teamsBox.SelectedIndex = 0;
+            Form1._Form1.teamBox1.SelectedIndex = 0;
+            Form1._Form1.teamBox2.SelectedIndex = 0;
+            Form1._Form1.competitionsKind.SelectedIndex = 0;
+            Form1._Form1.competitionsBox.SelectedIndex = 0;
+            Form1._Form1.ListBox_comp_reg.SelectedIndex = 0;
+            Form1._Form1.competitionsBox.SelectedIndex = 0;
+            Form1._Form1.competitionEntryBox.SelectedIndex = 0;
         }
 
         public int getBitRecognized()
@@ -511,264 +1606,595 @@ namespace DinoTem.ui
             return bitRecognized;
         }
 
-        public List<Team> getListTeam()
+        public Ball leggiPallone(int index)
         {
-            return teamList;
+            MyBallPersister ballReader = new MyBallPersister();
+            Ball pallone = ballReader.loadBall(index, leggiPalloni);
+
+            return pallone;
         }
 
-        public List<Ball> getListBall()
+        public Glove leggiGuanto(int index)
         {
-            return ballList;
+            Glove temp = new Glove(0);
+            if (index == Form1._Form1.glovesBox.Items.Count)
+                return temp;
+
+            MyGlovePersister gloveReader = new MyGlovePersister();
+            Glove guanto = gloveReader.loadGlove(index, leggiGuanti);
+
+            return guanto;
         }
 
-        public List<Stadium> getListStadium()
+        public Boot leggiScarpa(int index)
         {
-            return stadiumList;
+            Boot temp = new Boot(0);
+            if (index == Form1._Form1.bootsBox.Items.Count)
+                return temp;
+
+            MyBootPersister bootReader = new MyBootPersister();
+            Boot scarpa = bootReader.loadBoot(index, leggiScarpe);
+
+            return scarpa;
         }
 
-        public List<Player> getListPlayer()
+        public Stadium leggiStadium(int index)
         {
-            return playerList;
+            MyStadiumPersister stadiumReader = new MyStadiumPersister();
+            Stadium stadio = stadiumReader.loadStadium(index, leggiStadi);
+
+            return stadio;
         }
 
-        public List<Country> getListCountry()
+        public Country leggiPaese(int index)
         {
-            return countryList;
+            Country temp = new Country(0);
+            if (index == Form1._Form1.stadiumCountry.Items.Count)
+                return temp;
+
+            MyCountryPersister countryReader = new MyCountryPersister();
+            Country paese = countryReader.loadCountry(index, leggiPaesi);
+
+            return paese;
         }
 
-        public Dictionary<long, Country> getCountryMap()
+        public Coach leggiCoach(int index)
         {
-            var result = new Dictionary<long, Country>();
+            MyCoachPersister coachReader = new MyCoachPersister();
+            Coach coach = coachReader.loadCoach(index, leggiAllenatori);
 
-            foreach (Country country in countryList)
+            return coach;
+        }
+
+        public Player leggiGiocatore(int index)
+        {
+            MyPlayerPersister playerReader = new MyPlayerPersister();
+            Player player = playerReader.loadPlayer(index, leggiGiocatori);
+
+            return player;
+        }
+
+        public Player leggiGiocatoreById(UInt32 id)
+        {
+            Player player = leggiGiocatore(findPlayer(id));
+
+            return player;
+        }
+
+        public Team leggiSquadra(int index)
+        {
+            Club temp = new Club(0);
+            if (index == Form1._Form1.teamBox1.Items.Count)
+                return temp;
+
+            MyTeamPersister teamReader = new MyTeamPersister();
+            Team squadra = teamReader.loadTeam(index, leggiSquadre);
+
+            return squadra;
+        }
+
+        public List<PlayerAssignment> leggiGiocatoriSquadra(UInt32 id)
+        {
+            MyPlayerAssignmentPersister paReader = new MyPlayerAssignmentPersister();
+            List<PlayerAssignment> pa = paReader.loadPlayerTeam(id, unzlibPlayerAssign, leggiPlayerAssign);
+            //ordinare giocatori
+            pa.Sort((x, y) => x.getOrder().CompareTo(y.getOrder()));
+            for (int i = 0; i < pa.Count; i++)
             {
-                result.Add((long)country.getId(), country);
+                pa[i].setOrder((ushort) i);
             }
 
-            return result;
+            return pa;
         }
 
-        public List<BallCondition> getBallConditionList()
+        public List<Tactics> leggiTattica(UInt32 idTeam)
         {
-            return ballConditionList;
+            MyTacticsPersister tacticsReader = new MyTacticsPersister();
+            List<Tactics> tattica = tacticsReader.loadTactics(idTeam, unzlibTattiche, leggiTattiche);
+
+            return tattica;
         }
 
-        public List<PlayerAssignment> getPlayerAssignmentList()
+        public List<TacticsFormation> leggiFormazione(UInt16 idTactics)
         {
-            return playerAssignmentList;
+            MyTacticsFormationPersister tacticsReader = new MyTacticsFormationPersister();
+            List<TacticsFormation> tatticaF = tacticsReader.loadTacticsFormation(idTactics, unzlibTacticsFormation, leggiTacticsFormation);
+
+            return tatticaF;
         }
 
-        public List<PlayerAppearance> getPlayerAppearanceList()
+        public List<BallCondition> leggiCondizioniPalloni(UInt16 idBall)
         {
-            return playerAppearanceList;
+            MyBallConditionPersister ballReader = new MyBallConditionPersister();
+            List<BallCondition> ball = ballReader.loadBallCondition(idBall, unzlibBallCondition, leggiBallCondition);
+
+            return ball;
         }
 
-        public List<TacticsFormation> getTacticsFormationList()
-        {
-            return tacticsFormationList;
-        }
-
-        public List<Tactics> getTacticsList()
-        {
-            return tacticsList;
-        }
-
-        public List<PlayerAssignment> getPlayersTeam(int idTeam)
-        {
-            List<PlayerAssignment> result = new List<PlayerAssignment>();
-            foreach (PlayerAssignment playerA in playerAssignmentList)
-            {
-                if (idTeam == playerA.getTeamId())
-                    result.Add(playerA);
-            }
-            return result;
-        }
-
-        public Player getPlayerById(int positionList)
+        public void getBallConditionById(List<BallCondition> list, TextBox t1, TextBox t2, TextBox t3, TextBox t4)
         {
             int k = 0;
-            foreach (Player player in playerList)
+            foreach (BallCondition x in list)
             {
-                if (k == positionList)
-                    return player;
+                if (t1.Enabled == false && k == 0)
+                {
+                    t1.Text = x.getUnknown().ToString();
+                    t1.Enabled = true;
+                }
+                if (t2.Enabled == false && k == 1)
+                {
+                    t2.Text = x.getUnknown().ToString();
+                    t2.Enabled = true;
+                }
+                if (t3.Enabled == false && k == 2)
+                {
+                    t3.Text = x.getUnknown().ToString();
+                    t3.Enabled = true;
+                }
+                if (t4.Enabled == false && k == 3)
+                {
+                    t4.Text = x.getUnknown().ToString();
+                    t4.Enabled = true;
+                }
                 k++;
             }
-            return null;
         }
 
-        public Player getPlayerById(int positionInTeam, int team)
+        public Competition leggiCompetizione(int index)
         {
-            foreach (PlayerAssignment playerA in playerAssignmentList)
+            MyCompetitionPersister reader = new MyCompetitionPersister();
+            Competition c = reader.loadCompetition(index, unzlibCompetition, leggiCompetition);
+
+            return c;
+        }
+
+        public CompetitionKind leggiCompetizioneKind(int index)
+        {
+            MyCompetitionKindPersister reader = new MyCompetitionKindPersister();
+            CompetitionKind c = reader.loadCompetitionKind(index, unzlibCompetitionKind, leggiCompetitionKind);
+
+            return c;
+        }
+
+        public CompetitionRegulation leggiCompetizioneRegulation(int index)
+        {
+            MyCompetitionRegulationPersister reader = new MyCompetitionRegulationPersister();
+            CompetitionRegulation c = reader.loadCompetitionRegulation(index, unzlibCompetitionRegulation, leggiCompetitionRegulation);
+
+            return c;
+        }
+
+        public void leggiCompetizioneEntry(UInt32 compId)
+        {
+            MyCompetitionEntryPersister reader = new MyCompetitionEntryPersister();
+            reader.loadCompetitionEntry(compId, unzlibCompetitionEntry, leggiCompetitionEntry);
+        }
+
+        public PlayerAppearance leggiGiocatoreApparenza(UInt32 id)
+        {
+            MyPlayerAppearancePersister reader = new MyPlayerAppearancePersister();
+            PlayerAppearance player = reader.loadPlayerAppearance(id, getBitRecognized(), unzlibPlayerApp, leggiPlayerApp);
+
+            return player;
+        }
+
+        public GloveList leggiGuantiLista(UInt32 id)
+        {
+            MyGloveListPersister reader = new MyGloveListPersister();
+            GloveList glove = reader.loadGloveList(id, getBitRecognized(), unzlibGloveList, leggiGloveList);
+
+            return glove;
+        }
+
+        public BootList leggiScarpeLista(UInt32 id)
+        {
+            MyBootListPersister reader = new MyBootListPersister();
+            BootList boot = reader.loadBootList(id, getBitRecognized(), unzlibBootList, leggiBootList);
+
+            return boot;
+        }
+
+        public int findCountry(UInt32 idCountry)
+        {
+            int index = -1;
+            for (int i = 0; i < Form1._Form1.stadiumCountry.Items.Count; i++)
             {
-                if (playerA.getTeamId() == team)
-                    if (playerA.getOrder() == positionInTeam)
-                        return getPlayerById(playerA.getPlayerId());
+                Country c = leggiPaese(i);
+                if (c.getId() == idCountry)
+                    return i;
             }
-            return null;
+
+            //for "no country" 
+            if (index == -1)
+                index = Form1._Form1.stadiumCountry.Items.Count;
+
+            return index;
         }
 
-        public int getPositionListPlayerById(long idPlayer) {
-		    int i = 0;
-			foreach (Player temp in playerList) {
-			    if (idPlayer == temp.getId())
-				    return i;
-				i++;
-		    }
-		    return 0;
-        }
-		
-		public Player getPlayerById(long idPlayer) {
-		    foreach (Player temp in playerList) {
-			    if (idPlayer == temp.getId())
-				    return temp;
-		    }
-		    return null;
-        }
-
-        public Team getTeamById(int positionList)
+        public int findCountryFm(string name)
         {
-            int k = 0;
-            foreach (Team team in teamList)
+            int index = -1;
+            for (int i = 0; i < Form1._Form1.nationalityBox.Items.Count; i++)
             {
-                if (k == positionList)
-                    return team;
-                k++;
+                if (name == Form1._Form1.nationalityBox.Items[i].ToString())
+                    return i;
             }
-            return null;
+
+            return index;
         }
 
-        public Team getTeamById2(int teamId) {
-            foreach (Team temp in teamList)
+        public int findStadium(UInt32 idStadium)
+        {
+            int index = -1;
+            for (int i = 0; i < Form1._Form1.teamStadium.Items.Count; i++)
             {
-			    if (teamId == temp.getId())
-                    return temp;
-		    }
-		    return null;
-	    }
+                Stadium c = leggiStadium(i);
+                if (c.getId() == (UInt16)idStadium)
+                    return i;
+            }
 
-        public void changePlayerName(long idPlayer, string name)
-        {
-            Player temp = getPlayerById(idPlayer);
-            if (idPlayer == temp.getId())
-                temp.setPlayerName(name);
+            //for "no stadium" 
+            if (index == -1)
+                index = Form1._Form1.stadiumsBox.Items.Count;
+
+            return index;
         }
 
-        public void changeShirtPlayer(long idPlayer, string name)
+        public int findCoach(UInt32 idCoach)
         {
-            Player temp = getPlayerById(idPlayer);
-            string decode = Unidecoder.Unidecode(name);
-            if (idPlayer == temp.getId())
-                temp.setShirtName(decode);
-        }
-
-        public void changePlayerNumber(long idPlayer, int idTeam, int shirtNumber)
-        {
-            foreach (PlayerAssignment temp in playerAssignmentList)
+            for (int i = 0; i < Form1._Form1.teamCoach.Items.Count; i++)
             {
-                if (idPlayer == temp.getPlayerId() && idTeam == temp.getTeamId())
-                    temp.setShirtNumber(shirtNumber);
+                Coach c = leggiCoach(i);
+                if (c.getId() == idCoach)
+                    return i;
+            }
+
+            return 0;
+        }
+
+        public int findTeam(UInt32 idTeam)
+        {
+            int index = -1;
+            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count; i++)
+            {
+                Team c = leggiSquadra(i);
+                if (c.getId() == idTeam)
+                    return i;
+            }
+
+            //for "no team" 
+            if (index == -1)
+                index = Form1._Form1.teamsBox.Items.Count;
+
+            return index;
+        }
+
+        public int findPlayer(UInt32 idPlayer)
+        {
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count; i++)
+            {
+                Player c = leggiGiocatore(i);
+                if (c.getId() == idPlayer)
+                    return i;
+            }
+
+            return 0;
+        }
+
+        public void findCompetition(int selectedIndex)
+        {
+            Form1._Form1.DataGridView1.Rows.Clear();
+            Form1._Form1.DataGridView1_orig.Rows.Clear();
+
+            CompetitionRegulation r = leggiCompetizioneRegulation(selectedIndex);
+            leggiCompetizioneEntry(r.getUNK5());
+
+            for (int i = 0; i < Form1._Form1.DataGridView1.Rows.Count; i++)
+            {
+                int index = findTeam((uint)(Form1._Form1.DataGridView1.Rows[i].Cells[3].Value));
+                if (index != Form1._Form1.teamsBox.Items.Count)
+                    Form1._Form1.DataGridView1.Rows[i].Cells[1].Value = leggiSquadra(index).getEnglish();
+                else
+                    Form1._Form1.DataGridView1.Rows[i].Cells[1].Value = "No Team Found";
+            }
+
+            if (Form1._Form1.DataGridView1.Rows.Count > 0)
+                Form1._Form1.DataGridView1.SelectedRows[0].Selected = true;
+
+        }
+
+        public int findGloveList(UInt32 idPlayer)
+        {
+            int index = Form1._Form1.glovesBox.Items.Count;
+
+            GloveList c = leggiGuantiLista(idPlayer);
+
+            //for "no glove" 
+            if (c == null)
+                return index = Form1._Form1.glovesBox.Items.Count;
+
+            for (int i = 0; i < Form1._Form1.glovesBox.Items.Count; i++)
+            {
+                if (c.getGloveId() == leggiGuanto(i).getId())
+                    return i;
+            }
+
+            return index;
+        }
+
+        public int findBootList(UInt32 idPlayer)
+        {
+            int index = Form1._Form1.bootsBox.Items.Count;
+
+            BootList c = leggiScarpeLista(idPlayer);
+
+            //for "no glove" 
+            if (c == null)
+                return index = Form1._Form1.bootsBox.Items.Count;
+
+            for (int i = 0; i < Form1._Form1.bootsBox.Items.Count; i++)
+            {
+                if (c.getBootId() == leggiScarpa(i).getId())
+                    return i;
+            }
+
+            return index;
+        }
+
+        public int getSkinColour(UInt32 id)
+        {
+            PlayerAppearance pA = leggiGiocatoreApparenza(id);
+
+            int output1 = 0;
+
+            if (pA != null)
+            {
+                if (getBitRecognized() == 0)
+                {
+                    int skin = pA.getEyeskinColor();
+                    string eye = skin.ToString("X2");
+                    eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                    eye = eye.Substring(5, 3);
+                    output1 = Convert.ToInt32(eye, 2);
+                }
+                else
+                {
+                    int skin = pA.getEyeskinColor();
+                    string eye = skin.ToString("X2");
+                    eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                    eye = eye.Substring(0, 3);
+                    output1 = Convert.ToInt32(eye, 2);
+                }
+
+            }
+
+            return output1;
+        }
+
+        public void changeSkinColour(UInt32 id, int value)
+        {
+            PlayerAppearance pA = leggiGiocatoreApparenza(id);
+            if (getBitRecognized() == 0)
+            {
+                int skin = pA.getEyeskinColor();
+                string eye = skin.ToString("X2");
+                eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                eye = eye.Substring(0, 5) + MyBinary.ToBinaryX(value, 3);
+                pA.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
+            }
+            else
+            {
+                int skin = pA.getEyeskinColor();
+                string eye = skin.ToString("X2");
+                eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
+                eye = MyBinary.ToBinaryX(value, 3) + eye.Substring(3, 5);
+                pA.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
+            }
+            applyPlayerAppearancePersister(pA);
+        }
+
+        public void UpdateTeamView(UInt32 idPlayer, string name)
+        {
+            for (int i = 0; i < Form1._Form1.teamView1.Items.Count; i++)
+            {
+                UInt32 id = uint.Parse(Form1._Form1.teamView1.Items[i].SubItems[11].Text);
+                if (idPlayer == id)
+                {
+                    Form1._Form1.teamView1.Items[i].SubItems[2].Text = name;
+                }
+            }
+
+            for (int i = 0; i < Form1._Form1.teamView2.Items.Count; i++)
+            {
+                UInt32 id = uint.Parse(Form1._Form1.teamView2.Items[i].SubItems[11].Text);
+                if (idPlayer == id)
+                {
+                    Form1._Form1.teamView2.Items[i].SubItems[2].Text = name;
+                }
             }
         }
 
-        public void UpdateForm(ComboBox t1, ComboBox t2)
+        public void UpdateForm(UInt32 idTeam, ListView l1)
         {
-            try
+            if (leggiSquadra(Form1._Form1.teamBox1.SelectedIndex).getId() == idTeam)
             {
-                t1.SelectedIndex = t1.SelectedIndex + 1;
-                t1.SelectedIndex = t1.SelectedIndex - 1;
+                for (int i = 0; i < Form1._Form1.teamView1.Items.Count; i++)
+                {
+                    Form1._Form1.teamView1.Items[i].SubItems[1].Text = l1.Items[i].SubItems[1].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[2].Text = l1.Items[i].SubItems[4].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[3].Text = l1.Items[i].SubItems[5].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[4].Text = l1.Items[i].SubItems[6].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[5].Text = l1.Items[i].SubItems[7].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[6].Text = l1.Items[i].SubItems[8].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[7].Text = l1.Items[i].SubItems[9].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[8].Text = l1.Items[i].SubItems[10].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[9].Text = l1.Items[i].SubItems[11].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[10].Text = l1.Items[i].SubItems[12].Text;
+                    Form1._Form1.teamView1.Items[i].SubItems[11].Text = l1.Items[i].SubItems[13].Text;
+                }
             }
-            catch { 
-			    t1.SelectedIndex = t1.SelectedIndex - 1;
-                t1.SelectedIndex = t1.SelectedIndex + 1;
-			};
 
-            try
+            if (leggiSquadra(Form1._Form1.teamBox2.SelectedIndex).getId() == idTeam)
             {
-                t2.SelectedIndex = t2.SelectedIndex + 1;
-                t2.SelectedIndex = t2.SelectedIndex - 1;
+                for (int i = 0; i < Form1._Form1.teamView2.Items.Count; i++)
+                {
+                    Form1._Form1.teamView2.Items[i].SubItems[1].Text = l1.Items[i].SubItems[1].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[2].Text = l1.Items[i].SubItems[4].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[3].Text = l1.Items[i].SubItems[5].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[4].Text = l1.Items[i].SubItems[6].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[5].Text = l1.Items[i].SubItems[7].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[6].Text = l1.Items[i].SubItems[8].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[7].Text = l1.Items[i].SubItems[9].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[8].Text = l1.Items[i].SubItems[10].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[9].Text = l1.Items[i].SubItems[11].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[10].Text = l1.Items[i].SubItems[12].Text;
+                    Form1._Form1.teamView2.Items[i].SubItems[11].Text = l1.Items[i].SubItems[13].Text;
+                }
             }
-            catch
-            {
-                t2.SelectedIndex = t2.SelectedIndex - 1;
-                t2.SelectedIndex = t2.SelectedIndex + 1;
-            };
         }
 
-        public void updatePlayerList(ListView l1)
+        public void UpdateFormPlayer(int index, string name)
         {
-            l1.Items.Clear();
-            foreach (Player x in getListPlayer())
-            {
-                l1.Items.Add(x.ToString());
+            Form1._Form1.playersBox.Items[index] = name;
+        }
+
+        public void changePlayerName(UInt32 id, string name) 
+        {
+            int index = findPlayer(id);
+            Player player = leggiGiocatore(index);
+            player.setName(name);
+            applyPlayerPersister(index, player);
+            UpdateTeamView(player.getId(), name);
+            UpdateFormPlayer(index, name);
+        }
+
+        public void changeShirtPlayer(UInt32 id, string name)
+        {
+            int index = findPlayer(id);
+            Player player = leggiGiocatore(index);
+            player.setShirtName(Unidecoder.Unidecode(name));
+            applyPlayerPersister(index, player);
+        }
+
+        public void changeNationalityPlayer(UInt32 id, int selecIndex)
+        {
+            int index = findPlayer(id);
+            Player player = leggiGiocatore(index);
+            player.setNational(leggiPaese(selecIndex).getId());
+            applyPlayerPersister(index, player);
+        }
+
+        public void changePlayerNumber(UInt32 idPlayer, int team, string shirtNumber)
+        {
+            int intselectedindex = 0;
+            if (team == 1) {
+
+                for (int i = 0; (i <= (Form1._Form1.teamView1.Items.Count - 1)); i++)
+                {
+                    if (int.Parse(Form1._Form1.teamView1.Items[i].SubItems[3].Text) == int.Parse(shirtNumber))
+                    {
+                        MessageBox.Show("This number is already used", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                intselectedindex = Form1._Form1.teamView1.SelectedIndices[0];
+                Form1._Form1.teamView1.Items[intselectedindex].SubItems[3].Text = shirtNumber;
+                transferPlayerAtoA(Form1._Form1.teamView1, leggiSquadra(Form1._Form1.teamBox1.SelectedIndex).getId());
+
+                if (intselectedindex + 1 < Form1._Form1.teamView1.Items.Count)
+                {
+                    Form1._Form1.teamView1.Items[intselectedindex + 1].Selected = true;
+                    Form1._Form1.teamView1.Select();
+                }
+                else
+                {
+                    Form1._Form1.teamView1.Items[intselectedindex].Selected = true;
+                    Form1._Form1.teamView1.Select();
+                }
+
+                //update
+                if (Form1._Form1.teamBox1.SelectedIndex == Form1._Form1.teamBox2.SelectedIndex)
+                    Form1._Form1.teamView2.Items[intselectedindex].SubItems[3].Text = shirtNumber;
             }
-            l1.Items[0].Selected = true;
-            l1.Select();
-        }
+            else if (team == 2) {
 
-        public void UpdateBallList(ListBox l1)
-        {
-            l1.Items.Clear();
-            foreach (Ball x in getListBall())
-            {
-                l1.Items.Add(x);
+                for (int i = 0; (i <= (Form1._Form1.teamView2.Items.Count - 1)); i++)
+                {
+                    if (int.Parse(Form1._Form1.teamView2.Items[i].SubItems[3].Text) == int.Parse(shirtNumber))
+                    {
+                        MessageBox.Show("This number is already used", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                intselectedindex = Form1._Form1.teamView2.SelectedIndices[0];
+                Form1._Form1.teamView2.Items[intselectedindex].SubItems[3].Text = shirtNumber;
+                transferPlayerAtoA(Form1._Form1.teamView2, leggiSquadra(Form1._Form1.teamBox2.SelectedIndex).getId());
+
+                if (intselectedindex + 1 < Form1._Form1.teamView2.Items.Count)
+                {
+                    Form1._Form1.teamView2.Items[intselectedindex + 1].Selected = true;
+                    Form1._Form1.teamView2.Select();
+                }
+                else
+                {
+                    Form1._Form1.teamView2.Items[intselectedindex].Selected = true;
+                    Form1._Form1.teamView2.Select();
+                }
+
+                //update
+                if (Form1._Form1.teamBox1.SelectedIndex == Form1._Form1.teamBox2.SelectedIndex)
+                    Form1._Form1.teamView1.Items[intselectedindex].SubItems[3].Text = shirtNumber;
             }
-            l1.SelectedIndex = 0;
         }
-
-        public void UpdateTeamList(ListBox l1, ComboBox t1, ComboBox t2)
+        
+        public string getStringClubTeamOfPlayer(UInt32 idPlayer, int type) 
         {
-            l1.Items.Clear();
-            t1.Items.Clear();
-            t2.Items.Clear();
-            foreach (Team x in getListTeam())
-            {
-                l1.Items.Add(x);
-                t1.Items.Add(x);
-                t2.Items.Add(x);
-            }
-            l1.SelectedIndex = 0;
-            t1.SelectedIndex = 0;
-            t2.SelectedIndex = 0;
-        }
-
-        public void UpdateFormPlayer(ListView l1, Player temp)
-        {
-            l1.Items[getPositionListPlayerById(temp.getId())].Text = temp.getPlayerName();
-        }
-
-        public string getStringClubTeamOfPlayer(long idPlayer, int type) {
-
             //club = 0; national = 1;
 
-            List<int> b = new List<int>();
-            foreach (PlayerAssignment temp in playerAssignmentList)
-            {
-                if (idPlayer == temp.getPlayerId())
-                    b.Add(temp.getTeamId());
-            }
+            MyPlayerAssignmentPersister ass = new MyPlayerAssignmentPersister();
+            List<UInt32> b = ass.loadTeamId(idPlayer, unzlibPlayerAssign, leggiPlayerAssign);
 
             string finale = "";
             if (type == 0)
             {
-                foreach (int i in b)
+                foreach (UInt32 i in b)
                 {
-                    foreach (Team temp in teamList)
-                    {
-                        if (i == temp.getId() && !temp.getNational())
-                            return temp.getEnglish();
-                    }
+                    int index = findTeam(i);
+                    Team team = leggiSquadra(index);
+                    if (team.getNational() == 0)
+                        return team.getEnglish();
                 }
             }
             else if (type == 1)
             {
-                foreach (int i in b)
+                foreach (UInt32 i in b)
                 {
-                    foreach (Team temp in teamList)
-                    {
-                        if (i == temp.getId() && temp.getNational())
-                            finale += temp.getEnglish() + "+";
-                    }
-
+                    int index = findTeam(i);
+                    Team team = leggiSquadra(index);
+                    if (team.getNational() == 1)
+                        finale += team.getEnglish() + "+";
                 }
 
                 if (finale.EndsWith("+"))
@@ -777,726 +2203,262 @@ namespace DinoTem.ui
                 }
             }
 		
-		    return finale;
+            return finale;
         }
 
-        public List<int> getNumberFormation(int idTeam) {
-		    List<int> result = new List<int>();
-
-            foreach (Tactics tactics in tacticsList)
-            {
-                if (idTeam == tactics.getTeamID())
-                    result.Add(tactics.getTacticsID());  
-		    }
-
-		    return result;
-	    }
-
-        public List<TacticsFormation> getPositionTeam(int tattica)
+        //globalFunction
+        public void upperTeams()
         {
-            List<TacticsFormation> result = new List<TacticsFormation>();
-
-            foreach (TacticsFormation temp in tacticsFormationList)
+            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count - 1; i++ )
             {
-			    if (tattica == temp.getTeamTacticId())
-				    result.Add(temp);
-		    }
-            
-		    return result;
-	    }
-
-        public Ball getBallById(int positionList)
-        {
-            int k = 0;
-            foreach (Ball ball in ballList)
-            {
-                if (k == positionList)
-                    return ball;
-                k++;
-            }
-            return null;
-        }
-
-        public Ball getBallById2(int idBall)
-        {
-            foreach (Ball ball in ballList)
-            {
-                if (idBall == ball.getId())
-                    return ball;
-            }
-            return null;
-        }
-
-        public void getBallConditionById(int id, TextBox t1, TextBox t2, TextBox t3, TextBox t4)
-        {
-            int k = 0;
-            foreach (BallCondition x in ballConditionList)
-                if (x.getId() == id)
+                Team temp = leggiSquadra(i);
+                temp.setEnglish(temp.getEnglish().ToUpper());
+                if (temp.getNational() == 1)
                 {
-                    if (t1.Enabled == false && k == 0)
-                    {
-                        t1.Text = x.getUnknown().ToString();
-                        t1.Enabled = true;
-                    }
-                    if (t2.Enabled == false && k == 1)
-                    {
-                        t2.Text = x.getUnknown().ToString();
-                        t2.Enabled = true;
-                    }
-                    if (t3.Enabled == false && k == 2)
-                    {
-                        t3.Text = x.getUnknown().ToString();
-                        t3.Enabled = true;
-                    }
-                    if (t4.Enabled == false && k == 3)
-                    {
-                        t4.Text = x.getUnknown().ToString();
-                        t4.Enabled = true;
-                    }
-                    k++;
+                    //japanese
+                    National temp2 = (National)temp;
+                    temp2.setJapanese(temp.getJapanese().ToUpper());
+                    //spanish
+                    temp2.setSpanish(temp2.getSpanish().ToUpper());
+                    //greek
+                    temp2.setGreek(temp2.getGreek().ToUpper());
+                    //latin america
+                    temp2.setLatinAmericaSpanish(temp2.getLatinAmericaSpanish().ToUpper());
+                    //french
+                    temp2.setFrench(temp2.getFrench().ToUpper());
+                    //turkish
+                    temp2.setTurkish(temp2.getTurkish().ToUpper());
+                    //portuguese
+                    temp2.setPortuguese(temp2.getPortuguese().ToUpper());
+                    //german
+                    temp2.setGerman(temp2.getGerman().ToUpper());
+                    //BrazilianPortuguese
+                    temp2.setBrazilianPortuguese(temp2.getBrazilianPortuguese().ToUpper());
+                    //dutch
+                    temp2.setDutch(temp2.getDutch().ToUpper());
+                    //swedish
+                    temp2.setSwedish(temp2.getSwedish().ToUpper());
+                    //italian
+                    temp2.setItalian(temp2.getItalian().ToUpper());
+                    //russian
+                    temp2.setRussian(temp2.getRussian().ToUpper());
+                    //englih us
+                    temp2.setEnglishUS(temp2.getEnglishUS().ToUpper());
                 }
-        }
-
-        public Country getCountryById(int positionList)
-        {
-            int k = 0;
-            foreach (Country temp in countryList)
-            {
-                if (k == positionList)
-                    return temp;
-                k++;
-            }
-            return null;
-        }
-
-        //Player
-        public void changeNationalPlayer(Player temp, Country country)
-        {
-            temp.setNational(country.getId());
-        }
-
-        public void changeSecondNationalPlayer(Player temp, Country country)
-        {
-            temp.setNational2(country.getId());
-        }
-
-        //Ball
-        public void changeBallName(Ball ball, string name)
-        {
-            ball.setName(name);
-        }
-
-        public void changeBallOrder(Ball ball, int order)
-        {
-            ball.setOrder(order);
-        }
-
-        public void changeBallUnknown(Ball x, int bytePosition, int unk)
-        {
-            int k = 0;
-            foreach (BallCondition temp in ballConditionList)
-            {
-                if (x.getId() == temp.getId())  {
-					if (k == bytePosition)
-						temp.setUnknown(unk);
-					k++;
-				}
+                Form1._Form1.teamsBox.Items[i] = temp.getEnglish().ToUpper();
+                Form1._Form1.teamBox1.Items[i] = temp.getEnglish().ToUpper();
+                Form1._Form1.teamBox2.Items[i] = temp.getEnglish().ToUpper();
+                Form1._Form1.derbyTeam1.Items[i] = temp.getEnglish().ToUpper();
+                Form1._Form1.derbyTeam2.Items[i] = temp.getEnglish().ToUpper();
             }
         }
 
-        //Team
-        public void changeTeamName(Team team, string name)
+        public void lowerTeams()
         {
-            if (team.getNational())
+            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count - 1; i++)
             {
-                National temp2 = (National)team;
-
-                temp2.setDutch(name);
-                temp2.setEnglishUS(name);
-                temp2.setFrench(name);
-                temp2.setGerman(name);
-                temp2.setGreek(name);
-                temp2.setItalian(name);
-                temp2.setPortuguese(name);
-                temp2.setBrazilianPortuguese(name);
-                temp2.setRussian(name);
-                temp2.setSpanish(name);
-                temp2.setLatinAmericaSpanish(name);
-                temp2.setSwedish(name);
-                temp2.setTurkish(name);
-            }
-            team.setEnglish(name);
-            team.setJapanese(name);
-        }
-
-        public void changeTeamJapaneseName(Team team, string name)
-        {
-            team.setJapanese(name);
-        }
-
-        public void changeTeamSpanishName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setSpanish(name);
-        }
-
-        public void changeTeamTurkishName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setTurkish(name);
-        }
-
-        public void changeTeamSwedishName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setSwedish(name);
-        }
-
-        public void changeTeamGreekName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setGreek(name);
-        }
-
-        public void changeTeamPortugueseName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setPortuguese(name);
-        }
-
-        public void changeTeamItalianName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setItalian(name);
-        }
-
-        public void changeTeamEnglishName(Team team, string name)
-        {
-            team.setEnglish(name);
-        }
-
-        public void changeTeamGermanName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setGerman(name);
-        }
-
-        public void changeTeamRussianName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setRussian(name);
-        }
-
-        public void changeTeamLatinAmericaSpanishName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setLatinAmericaSpanish(name);
-        }
-
-        public void changeTeamBrazilianPortugueseName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setBrazilianPortuguese(name);
-        }
-
-        public void changeTeamEnglishUsName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setEnglishUS(name);
-        }
-
-        public void changeTeamFrenchName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setFrench(name);
-        }
-
-        public void changeTeamDutchName(Team team, string name)
-        {
-            National temp2 = (National)team;
-            temp2.setDutch(name);
-        }
-
-        public void changeTeamShortName(Team team, string name)
-        {
-            team.setShortSquadra(name);
-        }
-
-        public void changeFakeTeam(Team team, bool boolean)
-        {
-            team.setFakeTeam(boolean);
-        }
-
-        public void changeLicensedTeam(Team team, bool boolean)
-        {
-            team.setLicensedTeam(boolean);
-        }
-
-        public void changeLicensedCoach(Team team, bool boolean)
-        {
-            team.setLicensedCoach(boolean);
-        }
-
-        public void changeNotPlayableLeague(Team team, int value)
-        {
-            team.setNotPlayableLeague(value);
-        }
-
-        public void changeCountryTeam(Team team, int positionListCountry)
-        {
-            Country temp2 = getCountryById(positionListCountry);
-            team.setCountry(temp2.getId());
-        }
-
-        public Stadium getTeamStadium(Team temp)
-        {
-            for (int i = 0; i < getListStadium().Count; i++)
-            {
-                if (temp.getStadiumId() == getListStadium()[i].getId())
-                    return getListStadium()[i];
-            }
-
-            return null;
-        }
-
-        public void changeStadiumTeam(Team team, Stadium stadium)
-        {
-            team.setStadiumId(stadium.getId());
-        }
-
-        public void changeHasLicensedPlayers(Team team, bool value)
-        {
-            team.setHasLicensedPlayers(value);
-        }
-
-        public void changeHasAnthem(Team team, bool value)
-        {
-            team.setHasAnthem(value);
-        }
-
-        public void changeAnthemStandingAngle(Team team, int value)
-        {
-            team.setAnthemStandingAngle(value);
-        }
-
-        public void changeAnthemPlayersSinging(Team team, int value)
-        {
-            team.setAnthemPlayersSinging(value);
-        }
-
-        public void changeAnthemStandingStyle(Team team, int value)
-        {
-            team.setAnthemStandingStyle(value);
-        }
-
-        public void changeUnknown(Team team, bool value)
-        {
-            team.setUnknown6(value);
-        }
-
-        //Stadium
-        public void changeStadiumName(Stadium stadium, string name)
-        {
-            stadium.setName(name);
-        }
-
-        public void changeStadiumJapaneseName(Stadium stadium, string name)
-        {
-            stadium.setJapaneseName(name);
-        }
-
-        public void changeStadiumKonamiName(Stadium stadium, string name)
-        {
-            stadium.setKonamiName(name);
-        }
-
-        public void changeStadiumCapacity(Stadium stadium, int capacity)
-        {
-            stadium.setCapacity(capacity);
-        }
-
-        public void changeStadiumNa(Stadium stadium, int na)
-        {
-            stadium.setNa(na);
-        }
-
-        public void changeCountryStadium(Stadium stadium, int positionListCountry)
-        {
-            Country temp2 = getCountryById(positionListCountry);
-            stadium.setCountry(temp2.getId());
-        }
-
-        public void changeZoneStadium(Stadium stadium, int value)
-        {
-            stadium.setZone(value + 2);
-        }
-
-        public void changeLicensedStadium(Stadium team, bool boolean)
-        {
-            team.setLicense(boolean);
-        }
-
-        //DB2
-        //List<Country> countryList = new List<Country>();
-        List<Stadium> stadiumList2 = new List<Stadium>();
-        List<Team> teamList2 = new List<Team>();
-        List<TacticsFormation> tacticsFormationList2 = new List<TacticsFormation>();
-        //List<Tactics> tacticsList2 = new List<Tactics>();
-        List<Player> playerList2 = new List<Player>();
-        List<BallCondition> ballConditionList2 = new List<BallCondition>();
-        List<Ball> ballList2 = new List<Ball>();
-        List<PlayerAppearance> playerAppearanceList2 = new List<PlayerAppearance>();
-        //List<PlayerAssignment> playerAssignmentList2 = new List<PlayerAssignment>();
-
-        public List<Stadium> getListStadium2()
-        {
-            return stadiumList2;
-        }
-
-        public List<Team> getListTeam2()
-        {
-            return teamList2;
-        }
-
-        public List<TacticsFormation> getListTacticsFormationList2()
-        {
-            return tacticsFormationList2;
-        }
-
-        public List<Player> getListPlayer2()
-        {
-            return playerList2;
-        }
-
-        public List<BallCondition> getListBallCondition2()
-        {
-            return ballConditionList2;
-        }
-
-        public List<Ball> getListBall2()
-        {
-            return ballList2;
-        }
-
-        public List<PlayerAppearance> getListPlayerAppearance2()
-        {
-            return playerAppearanceList2;
-        }
-
-        public void openDb2(string folder)
-        {
-            int bitRecognized = checkAllFile(folder);
-
-            MyTeamPersister teamReader = new MyTeamPersister();
-            try
-            {
-                teamList2 = teamReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            MyPlayerPersister playerReader = new MyPlayerPersister();
-            try
-            {
-                playerList2 = playerReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            MyBallConditionPersister ballConditionReader = new MyBallConditionPersister();
-            try
-            {
-                ballConditionList2 = ballConditionReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            MyBallPersister ballReader = new MyBallPersister();
-            try
-            {
-                ballList2 = ballReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            MyPlayerAppearancePersister playerAppearanceReader = new MyPlayerAppearancePersister();
-            try
-            {
-                playerAppearanceList2 = playerAppearanceReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            MyTacticsFormationPersister tacticsFormationReader = new MyTacticsFormationPersister();
-            try
-            {
-                tacticsFormationList2 = tacticsFormationReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            MyStadiumPersister stadiumsReader = new MyStadiumPersister();
-            try
-            {
-                stadiumList2 = stadiumsReader.load(folder, bitRecognized);
-            }
-            catch (FileNotFoundException e)
-            {
-                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        public void importDb2AllBalls()
-        {
-            for (int i = 0; i < getListBall().Count; i++)
-            {
-                if (i > getListBall2().Count())
-                    return;
-                getListBall()[i].setName(getListBall2()[i].getName());
-                getListBall()[i].setOrder(getListBall2()[i].getOrder());
-            }
-
-            /*for (int i = 0; i < getBallConditionList().Count; i++)
-            {
-                if (i > getListBallCondition2().Count())
-                    return;
-                getBallConditionList()[i].setFrag(getListBallCondition2()[i].getFrag());
-                getBallConditionList()[i].setUnknown(getListBallCondition2()[i].getUnknown());
-            }*/
-        }
-
-        public void importDb2OrderBalls()
-        {
-            for (int i = 0; i < getListBall().Count; i++)
-            {
-                if (i > getListBall2().Count())
-                    return;
-                getListBall()[i].setName(getListBall2()[i].getName());
-            }
-        }
-
-        public void importDb2NamesBalls()
-        {
-            for (int i = 0; i < getListBall().Count; i++)
-            {
-                if (i > getListBall2().Count())
-                    return;
-                getListBall()[i].setName(getListBall2()[i].getName());
-            }
-        }
-
-        public void importDb2AllTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-                getListTeam()[i].setAnthemPlayersSinging(getListTeam2()[k].getAnthemPlayersSinging());
-                getListTeam()[i].setAnthemStandingAngle(getListTeam2()[k].getAnthemStandingAngle());
-                getListTeam()[i].setAnthemStandingStyle(getListTeam2()[k].getAnthemStandingStyle());
-                getListTeam()[i].setCountry(getListTeam2()[k].getCountry());
-                getListTeam()[i].setEnglish(getListTeam2()[k].getEnglish());
-                getListTeam()[i].setFakeTeam(getListTeam2()[k].getFakeTeam());
-                getListTeam()[i].setFeederTeamId(getListTeam2()[k].getFeederTeamId());
-                getListTeam()[i].setHasAnthem(getListTeam2()[k].getHasAnthem());
-                getListTeam()[i].setHasLicensedPlayers(getListTeam2()[k].getHasLicensedPlayers());
-                getListTeam()[i].setJapanese(getListTeam2()[k].getJapanese());
-                getListTeam()[i].setKonami(getListTeam2()[k].getKonami());
-                getListTeam()[i].setLicensedCoach(getListTeam2()[k].getLicensedCoach());
-                getListTeam()[i].setLicensedTeam(getListTeam2()[k].getLicensedTeam());
-                getListTeam()[i].setManagerId(getListTeam2()[k].getManagerId());
-                getListTeam()[i].setNational(getListTeam2()[k].getNational());
-                getListTeam()[i].setNotPlayableLeague(getListTeam2()[k].getNotPlayableLeague());
-                getListTeam()[i].setParentTeamId(getListTeam2()[k].getParentTeamId());
-                getListTeam()[i].setShortSquadra(getListTeam2()[k].getShortSquadra());
-                getListTeam()[i].setStadiumId(getListTeam2()[k].getStadiumId());
-                getListTeam()[i].setTeamSortNumber(getListTeam2()[k].getTeamSortNumber());
-                getListTeam()[i].setUnknown6(getListTeam2()[k].getUnknown6());
-
-                if (getListTeam2()[k].getNational())
+                Team temp = leggiSquadra(i);
+                temp.setEnglish(temp.getEnglish().ToLower());
+                if (temp.getNational() == 1)
                 {
-                    National nat2 = (National) getListTeam2()[k];
-                    National nat = (National)getListTeam()[k];
-
-                    nat.setDutch(nat2.getDutch());
-                    nat.setEnglishUS(nat2.getEnglishUS());
-                    nat.setFrench(nat2.getFrench());
-                    nat.setGerman(nat2.getGerman());
-                    nat.setGreek(nat2.getGreek());
-                    nat.setItalian(nat2.getItalian());
-                    nat.setPortuguese(nat2.getPortuguese());
-                    nat.setBrazilianPortuguese(nat2.getBrazilianPortuguese());
-                    nat.setRussian(nat2.getRussian());
-                    nat.setSpanish(nat2.getSpanish());
-                    nat.setLatinAmericaSpanish(nat2.getLatinAmericaSpanish());
-                    nat.setSwedish(nat2.getSwedish());
-                    nat.setTurkish(nat2.getTurkish());
+                    //japanese
+                    National temp2 = (National)temp;
+                    temp2.setJapanese(temp.getJapanese().ToLower());
+                    //spanish
+                    temp2.setSpanish(temp2.getSpanish().ToLower());
+                    //greek
+                    temp2.setGreek(temp2.getGreek().ToLower());
+                    //latin america
+                    temp2.setLatinAmericaSpanish(temp2.getLatinAmericaSpanish().ToLower());
+                    //french
+                    temp2.setFrench(temp2.getFrench().ToLower());
+                    //turkish
+                    temp2.setTurkish(temp2.getTurkish().ToLower());
+                    //portuguese
+                    temp2.setPortuguese(temp2.getPortuguese().ToLower());
+                    //german
+                    temp2.setGerman(temp2.getGerman().ToLower());
+                    //BrazilianPortuguese
+                    temp2.setBrazilianPortuguese(temp2.getBrazilianPortuguese().ToLower());
+                    //dutch
+                    temp2.setDutch(temp2.getDutch().ToLower());
+                    //swedish
+                    temp2.setSwedish(temp2.getSwedish().ToLower());
+                    //italian
+                    temp2.setItalian(temp2.getItalian().ToLower());
+                    //russian
+                    temp2.setRussian(temp2.getRussian().ToLower());
+                    //englih us
+                    temp2.setEnglishUS(temp2.getEnglishUS().ToLower());
                 }
-                k++;
+                Form1._Form1.teamsBox.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.teamBox1.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.teamBox2.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.derbyTeam1.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.derbyTeam2.Items[i] = temp.getEnglish().ToLower();
             }
         }
 
-        public void importDb2NamesTeams(int from, int to)
+        public void firstUpTeams()
         {
-            int k = 0;
-            for (int i = from; i < to; i++)
+            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count - 1; i++)
             {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setEnglish(getListTeam2()[k].getEnglish());
-                getListTeam()[i].setJapanese(getListTeam2()[k].getJapanese());
-                getListTeam()[i].setKonami(getListTeam2()[k].getKonami());
-                if (getListTeam2()[k].getNational())
+                Team temp = leggiSquadra(i);
+                //english name
+                string stringa = "";
+                if (temp.getNational() == 1)
                 {
-                    National nat2 = (National)getListTeam2()[k];
-                    National nat = (National)getListTeam()[i];
-
-                    nat.setDutch(nat2.getDutch());
-                    nat.setEnglishUS(nat2.getEnglishUS());
-                    nat.setFrench(nat2.getFrench());
-                    nat.setGerman(nat2.getGerman());
-                    nat.setGreek(nat2.getGreek());
-                    nat.setItalian(nat2.getItalian());
-                    nat.setPortuguese(nat2.getPortuguese());
-                    nat.setBrazilianPortuguese(nat2.getBrazilianPortuguese());
-                    nat.setRussian(nat2.getRussian());
-                    nat.setSpanish(nat2.getSpanish());
-                    nat.setLatinAmericaSpanish(nat2.getLatinAmericaSpanish());
-                    nat.setSwedish(nat2.getSwedish());
-                    nat.setTurkish(nat2.getTurkish());
+                    //japanese
+                    stringa = "";
+                    National temp2 = (National)temp;
+                    foreach (string x in temp2.getJapanese().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setJapanese(stringa.Trim());
+                    //spanish
+                    stringa = "";
+                    foreach (string x in temp2.getSpanish().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setSpanish(stringa.Trim());
+                    //greek
+                    stringa = "";
+                    foreach (string x in temp2.getGreek().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setGreek(stringa.Trim());
+                    //latin america
+                    stringa = "";
+                    foreach (string x in temp2.getLatinAmericaSpanish().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setLatinAmericaSpanish(stringa.Trim());
+                    //french
+                    stringa = "";
+                    foreach (string x in temp2.getFrench().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setFrench(stringa.Trim());
+                    //turkish
+                    stringa = "";
+                    foreach (string x in temp2.getTurkish().Split())
+                    {
+                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                    }
+                    temp2.setTurkish(stringa.Trim());
+                    //portuguese
+                stringa = "";
+                foreach (string x in temp2.getPortuguese().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
                 }
-                k++;
+                temp2.setPortuguese(stringa.Trim());
+                //german
+                stringa = "";
+                foreach (string x in temp2.getGerman().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setGerman(stringa.Trim());
+                //BrazilianPortuguese
+                stringa = "";
+                foreach (string x in temp2.getBrazilianPortuguese().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setBrazilianPortuguese(stringa.Trim());
+                //dutch
+                stringa = "";
+                foreach (string x in temp2.getDutch().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setDutch(stringa.Trim());
+                //swedish
+                stringa = "";
+                foreach (string x in temp2.getSwedish().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setSwedish(stringa.Trim());
+                //italian
+                stringa = "";
+                foreach (string x in temp2.getItalian().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setItalian(stringa.Trim());
+                //russian
+                stringa = "";
+                foreach (string x in temp2.getRussian().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setRussian(stringa.Trim());
+                //englih us
+                stringa = "";
+                foreach (string x in temp2.getEnglishUS().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp2.setEnglishUS(stringa.Trim());
+                }
+                foreach (string x in temp.getEnglish().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp.setEnglish(stringa.Trim());
+                Form1._Form1.teamsBox.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.teamBox1.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.teamBox2.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.derbyTeam1.Items[i] = temp.getEnglish().ToLower();
+                Form1._Form1.derbyTeam2.Items[i] = temp.getEnglish().ToLower();
+            }
+
+        }
+
+        public void upperPlayers()
+        {
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count - 1; i++)
+            {
+                Player temp = leggiGiocatore(i);
+                temp.setName(temp.getName().ToUpper());
+
+                UpdateTeamView(temp.getId(), temp.getName().ToUpper());
+                UpdateFormPlayer(i, temp.getName().ToUpper());
             }
         }
 
-        public void importDb2ShortNamesTeams(int from, int to)
+        public void lowerPlayers()
         {
-            int k = 0;
-            for (int i = from; i < to; i++)
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count - 1; i++)
             {
-                if (k > getListTeam2().Count())
-                    return;
+                Player temp = leggiGiocatore(i);
+                temp.setName(temp.getName().ToLower());
 
-                getListTeam()[i].setShortSquadra(getListTeam2()[k].getShortSquadra());
-
-                k++;
+                UpdateTeamView(temp.getId(), temp.getName().ToLower());
+                UpdateFormPlayer(i, temp.getName().ToLower());
             }
         }
 
-        public void importDb2HomeStadiumsTeams(int from, int to)
+        public void firstUpPlayers()
         {
-            int k = 0;
-            for (int i = from; i < to; i++)
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count - 1; i++)
             {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setStadiumId(getListTeam2()[k].getStadiumId());
-
-                k++;
-            }
-        }
-
-        public void importDb2OtherDetailsTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setAnthemPlayersSinging(getListTeam2()[k].getAnthemPlayersSinging());
-                getListTeam()[i].setAnthemStandingAngle(getListTeam2()[k].getAnthemStandingAngle());
-                getListTeam()[i].setAnthemStandingStyle(getListTeam2()[k].getAnthemStandingStyle());
-                getListTeam()[i].setHasAnthem(getListTeam2()[k].getHasAnthem());
-                getListTeam()[i].setHasLicensedPlayers(getListTeam2()[k].getHasLicensedPlayers());
-                getListTeam()[i].setUnknown6(getListTeam2()[k].getUnknown6());
-
-                k++;
-            }
-        }
-
-        public void importDb2CountryTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setCountry(getListTeam2()[k].getCountry());
-
-                k++;
-            }
-        }
-
-        public void importDb2FakeTeamTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setFakeTeam(getListTeam2()[k].getFakeTeam());
-
-                k++;
-            }
-        }
-
-        public void importDb2NotPlayableLeagueTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setNotPlayableLeague(getListTeam2()[k].getNotPlayableLeague());
-
-                k++;
-            }
-        }
-
-        public void importDb2LicenseTeamTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setLicensedTeam(getListTeam2()[k].getLicensedTeam());
-
-                k++;
-            }
-        }
-
-        public void importDb2LicenseCoachTeams(int from, int to)
-        {
-            int k = 0;
-            for (int i = from; i < to; i++)
-            {
-                if (k > getListTeam2().Count())
-                    return;
-
-                getListTeam()[i].setLicensedCoach(getListTeam2()[k].getLicensedCoach());
-
-                k++;
+                Player temp = leggiGiocatore(i);
+                string stringa = "";
+                foreach (string x in temp.getName().Split())
+                {
+                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                }
+                temp.setName(stringa.Trim());
+                UpdateTeamView(temp.getId(), stringa.Trim());
+                UpdateFormPlayer(i, stringa.Trim());
             }
         }
 
@@ -1516,13 +2478,14 @@ namespace DinoTem.ui
             player11.Text = list.Items[10].SubItems[5].Text;
         }
 
-        public void schemiPitch(int formationNumber, string nomeSchema, int typeSchema, Button player1, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11)
+        public void schemiPitch(ushort formationNumber, string nomeSchema, int typeSchema, Button player1, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11)
         {
             //typeSchema CUSTOM = 0, OFFENSIVE = 1, DEFENSIVE = 2;
             int k = 0;
-            foreach (TacticsFormation temp in getPositionTeam(formationNumber))
+            foreach (TacticsFormation temp in leggiFormazione(formationNumber))
             {
-                if (nomeSchema == "Default") {
+                if (nomeSchema == "Default")
+                {
                     if (typeSchema == 0)
                         schemaDefault(temp.getX(), temp.getY(), k, player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11);
                     else if (typeSchema == 1)
@@ -1821,95 +2784,104 @@ namespace DinoTem.ui
                 player11.Location = new System.Drawing.Point(115, 26);
         }
 
-        public void changeFormation(int formation, int i, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11,
+        public void changeFormation(ushort formation, int i, Button player2, Button player3, Button player4, Button player5, Button player6, Button player7, Button player8, Button player9, Button player10, Button player11,
             Button player13, Button player14, Button player15, Button player16, Button player17, Button player18, Button player19, Button player20, Button player21, Button player22,
-            Button player24, Button player25, Button player26, Button player27, Button player28, Button player29, Button player30, Button player31, Button player32, Button player33)
+            Button player24, Button player25, Button player26, Button player27, Button player28, Button player29, Button player30, Button player31, Button player32, Button player33, ListView teamView1)
         {
             //int i = 0 (CUSTOM), 1 (OFFENSIVE), 2 (DEFENSIVE)
             //CUSTOM
             int aa = -1;
-            foreach (TacticsFormation x in tacticsFormationList)
+            List<TacticsFormation> tacticsFormation = leggiFormazione(formation);
+            foreach (TacticsFormation x in tacticsFormation)
             {
-                if (x.getTeamTacticId() == formation)
-                {
-                    aa = aa + 1;
+                    aa += 1;
                     if (aa == 1 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player2.Location.X - 1) / 3;
-                        int Y2 = (413 - player2.Location.Y) / 9;
+                        byte X2 = (byte) ((player2.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player2.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 2 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player3.Location.X - 1) / 3;
-                        int Y2 = (413 - player3.Location.Y) / 9;
+                        byte X2 = (byte) ((player3.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player3.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 3 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player4.Location.X - 1) / 3;
-                        int Y2 = (413 - player4.Location.Y) / 9;
+                        byte X2 = (byte) ((player4.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player4.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 4 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player5.Location.X - 1) / 3;
-                        int Y2 = (413 - player5.Location.Y) / 9;
+                        byte X2 = (byte) ((player5.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player5.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 5 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player6.Location.X - 1) / 3;
-                        int Y2 = (413 - player6.Location.Y) / 9;
+                        byte X2 = (byte) ((player6.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player6.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 6 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player7.Location.X - 1) / 3;
-                        int Y2 = (413 - player7.Location.Y) / 9;
+                        byte X2 = (byte) ((player7.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player7.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 7 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player8.Location.X - 1) / 3;
-                        int Y2 = (413 - player8.Location.Y) / 9;
+                        byte X2 = (byte) ((player8.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player8.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 8 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player9.Location.X - 1) / 3;
-                        int Y2 = (413 - player9.Location.Y) / 9;
+                        byte X2 = (byte) ((player9.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player9.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 9 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player10.Location.X - 1) / 3;
-                        int Y2 = (413 - player10.Location.Y) / 9;
+                        byte X2 = (byte) ((player10.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player10.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == 10 && i == 0)
                     {
                         //Posizione
-                        int X2 = (player11.Location.X - 1) / 3;
-                        int Y2 = (413 - player11.Location.Y) / 9;
+                        byte X2 = (byte) ((player11.Location.X - 1) / 3);
+                        byte Y2 = (byte) ((413 - player11.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
@@ -1917,80 +2889,90 @@ namespace DinoTem.ui
                     if (aa == (1 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player13.Location.X - 1) / 3;
-                        int Y2 = (413 - player13.Location.Y) / 9;
+                        byte X2 = (byte)((player13.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player13.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (2 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player14.Location.X - 1) / 3;
-                        int Y2 = (413 - player14.Location.Y) / 9;
+                        byte X2 = (byte)((player14.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player14.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (3 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player15.Location.X - 1) / 3;
-                        int Y2 = (413 - player15.Location.Y) / 9;
+                        byte X2 = (byte)((player15.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player15.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (4 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player16.Location.X - 1) / 3;
-                        int Y2 = (413 - player16.Location.Y) / 9;
+                        byte X2 = (byte)((player16.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player16.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (5 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player17.Location.X - 1) / 3;
-                        int Y2 = (413 - player17.Location.Y) / 9;
+                        byte X2 = (byte)((player17.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player17.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (6 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player18.Location.X - 1) / 3;
-                        int Y2 = (413 - player18.Location.Y) / 9;
+                        byte X2 = (byte)((player18.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player18.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (7 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player19.Location.X - 1) / 3;
-                        int Y2 = (413 - player19.Location.Y) / 9;
+                        byte X2 = (byte)((player19.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player19.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (8 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player20.Location.X - 1) / 3;
-                        int Y2 = (413 - player20.Location.Y) / 9;
+                        byte X2 = (byte)((player20.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player20.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (9 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player21.Location.X - 1) / 3;
-                        int Y2 = (413 - player21.Location.Y) / 9;
+                        byte X2 = (byte)((player21.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player21.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (10 + 11) && i == 1)
                     {
                         //Posizione
-                        int X2 = (player22.Location.X - 1) / 3;
-                        int Y2 = (413 - player22.Location.Y) / 9;
+                        byte X2 = (byte)((player22.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player22.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
@@ -1998,97 +2980,108 @@ namespace DinoTem.ui
                     if (aa == (1 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player24.Location.X - 1) / 3;
-                        int Y2 = (413 - player24.Location.Y) / 9;
+                        byte X2 = (byte)((player24.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player24.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (2 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player25.Location.X - 1) / 3;
-                        int Y2 = (413 - player25.Location.Y) / 9;
+                        byte X2 = (byte)((player25.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player25.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (3 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player26.Location.X - 1) / 3;
-                        int Y2 = (413 - player26.Location.Y) / 9;
+                        byte X2 = (byte)((player26.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player26.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (4 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player27.Location.X - 1) / 3;
-                        int Y2 = (413 - player27.Location.Y) / 9;
+                        byte X2 = (byte)((player27.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player27.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (5 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player28.Location.X - 1) / 3;
-                        int Y2 = (413 - player28.Location.Y) / 9;
+                        byte X2 = (byte)((player28.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player28.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (6 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player29.Location.X - 1) / 3;
-                        int Y2 = (413 - player29.Location.Y) / 9;
+                        byte X2 = (byte)((player29.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player29.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (7 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player30.Location.X - 1) / 3;
-                        int Y2 = (413 - player30.Location.Y) / 9;
+                        byte X2 = (byte)((player30.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player30.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (8 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player31.Location.X - 1) / 3;
-                        int Y2 = (413 - player31.Location.Y) / 9;
+                        byte X2 = (byte)((player31.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player31.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (9 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player32.Location.X - 1) / 3;
-                        int Y2 = (413 - player32.Location.Y) / 9;
+                        byte X2 = (byte)((player32.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player32.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
                     if (aa == (10 + 22) && i == 2)
                     {
                         //Posizione
-                        int X2 = (player33.Location.X - 1) / 3;
-                        int Y2 = (413 - player33.Location.Y) / 9;
+                        byte X2 = (byte)((player33.Location.X - 1) / 3);
+                        byte Y2 = (byte)((413 - player33.Location.Y) / 9);
+                        x.setPosition(getPosition(aa, i, teamView1));
                         x.setX(X2);
                         x.setY(Y2);
                     }
-                }
             }
-            
+            applyTacticsFormationPersister(tacticsFormation);
         }
 
-        private int getPosition(int k, int subItem, ListView teamView1)
+        private byte getPosition(int k, int subItem, ListView teamView1)
         {
-            int pos = -1;
+            //int subItem = 1 (CUSTOM), 2 (OFFENSIVE), 3 (DEFENSIVE)
+            byte pos = 0;
             if (k >= 11 && k < 22)
-                k = k - 10;
+                k = k - 11;
 
             if (k >= 22)
-                k = k - 21;
+                k = k - 22;
             //Position
+            subItem += 1;
             if (teamView1.Items[k].SubItems[subItem].Text == "GK")
                 pos = 0;
             else if (teamView1.Items[k].SubItems[subItem].Text == "CB")
@@ -2119,358 +3112,704 @@ namespace DinoTem.ui
             return pos;
         }
 
-        public void applyTeam(int formation, int i, ListView teamView1)
-        {
-            //int i = 1 (CUSTOM), 2 (OFFENSIVE), 3 (DEFENSIVE)
-            //cambiare posizione ai giocatori
-            int aa = -1;
-            foreach (TacticsFormation x in tacticsFormationList)
-            {
-                if (x.getTeamTacticId() == formation)
-                {
-                    aa = aa + 1;
-                    if (aa == 0)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 1)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 2)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 3)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 4)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 5)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 6)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 7)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 8)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 9)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                    if (aa == 10)
-                        x.setPosition(getPosition(aa, i, teamView1));
-                }
-            }
-        }
-
-        public void changeShooters(Team temp, int capitainSelectedIndex, int penaltySelectedIndex,
-            int longSelectedIndex, int leftSelectedIndex, int shortSelectedIndex, int rightSelectedIndex)
-        {
-            //save Captain, etc...
-            foreach (PlayerAssignment x in playerAssignmentList)
-            {
-                if (x.getTeamId() == temp.getId())
-                {
-                    x.setCaptain(false);
-                    x.setLeftCkTk(false);
-                    x.setLongShotLk(false);
-                    x.setPenaltyKick(false);
-                    x.setRightCornerKick(false);
-                    x.setShortFoulFk(false);
-
-                    if (x.getOrder() == capitainSelectedIndex)
-                        x.setCaptain(true);
-                    if (x.getOrder() == penaltySelectedIndex)
-                        x.setPenaltyKick(true);
-                    if (x.getOrder() == longSelectedIndex)
-                        x.setLongShotLk(true);
-                    if (x.getOrder() == leftSelectedIndex)
-                        x.setLeftCkTk(true);
-                    if (x.getOrder() == shortSelectedIndex)
-                        x.setShortFoulFk(true);
-                    if (x.getOrder() == rightSelectedIndex)
-                        x.setRightCornerKick(true);
-                }
-            }
-        }
-
-        //Giocatore form
-        public int getSkinColour(Player temp)
-        {
-            int output1 = 0;
-            foreach (PlayerAppearance x in getPlayerAppearanceList())
-            {
-                if (temp.getId() == x.getId())
-                {
-                    if (getBitRecognized() == 0)
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = eye.Substring(5, 3);
-                        output1 = Convert.ToInt32(eye, 2);
-                    }
-                    else
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = eye.Substring(0, 3);
-                        output1 = Convert.ToInt32(eye, 2);
-                    }
-                    
-                }
-            }
-            return output1;
-        }
-
-        public Team getYouthClub(Player temp)
-        {
-            Team nullo = new Club(99999);
-            nullo.setEnglish("No Team");
-
-            Team team = getTeamById2((int)temp.getYouthPlayerId());
-            if (team == null)
-                return nullo;
-
-            return team;
-        }
-
-        public void changeSkinColour(Player temp, int value)
-        {
-            foreach (PlayerAppearance x in getPlayerAppearanceList())
-            {
-                if (temp.getId() == x.getId())
-                {
-                    if (getBitRecognized() == 0)
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = eye.Substring(0, 5) + MyBinary.ToBinaryX(value, 3);
-                        x.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
-                    }
-                    else
-                    {
-                        int skin = x.getEyeskinColor();
-                        string eye = skin.ToString("X2");
-                        eye = Convert.ToString(Convert.ToInt32(eye.ToString(), 16), 2).PadLeft(8, '0');
-                        eye = MyBinary.ToBinaryX(value, 3) + eye.Substring(3, 5);
-                        x.setEyeskinColor(Byte.Parse(MyBinary.BinaryToInt(eye).ToString()));
-                    }
-                }
-            }
-        }
-
-        public void changeYouthClub(Player temp, Team temp2)
-        {
-            if (temp2.getId() == 99999)
-                temp.setYouthPlayerId(0);
-            else
-                temp.setYouthPlayerId(temp2.getId());
-        }
-
         //transferPlayer Drag&Drop
-        public void transferPlayerAtoA(int intselectedindex, int dropIndex, int idTeam, ComboBox teamBox1, ComboBox teamBox2)
+        public void transferAtoA(ListView listview, int dropIndex, int intselectedindex)
         {
-            foreach (PlayerAssignment x in playerAssignmentList)
+            string player1 = listview.Items[intselectedindex].SubItems[2].Text;
+            string player2 = listview.Items[dropIndex].SubItems[2].Text;
+            string number1 = listview.Items[intselectedindex].SubItems[3].Text;
+            string number2 = listview.Items[dropIndex].SubItems[3].Text;
+            string id1 = listview.Items[intselectedindex].SubItems[11].Text;
+            string id2 = listview.Items[dropIndex].SubItems[11].Text;
+            string pos1 = listview.Items[intselectedindex].SubItems[1].Text;
+            string pos2 = listview.Items[dropIndex].SubItems[1].Text;
+            listview.Items[intselectedindex].SubItems[1].Text = pos2;
+            listview.Items[dropIndex].SubItems[1].Text = pos1;
+            listview.Items[intselectedindex].SubItems[2].Text = player2;
+            listview.Items[dropIndex].SubItems[2].Text = player1;
+            listview.Items[intselectedindex].SubItems[3].Text = number2;
+            listview.Items[dropIndex].SubItems[3].Text = number1;
+            listview.Items[intselectedindex].SubItems[11].Text = id2;
+            listview.Items[dropIndex].SubItems[11].Text = id1;
+        }
+        public void transferPlayerAtoA(ListView listview, uint teamId)
+        {
+            List<PlayerAssignment> pa = new List<PlayerAssignment>();
+            for (int i = 0; i < listview.Items.Count; i++)
             {
-                long playerID = 0;
-                long playerID2 = 0;
-                if (x.getTeamId() == idTeam)
-                {
-                    if (x.getOrder() == intselectedindex)
-                        playerID = x.getPlayerId();
-                    if (x.getOrder() == dropIndex)
-                        playerID2 = x.getPlayerId();
+                PlayerAssignment temp = new PlayerAssignment(uint.Parse(listview.Items[i].SubItems[11].Text), teamId);
+                temp.setCaptain(ushort.Parse(listview.Items[i].SubItems[5].Text));
+                temp.setEntryId(ushort.Parse(listview.Items[i].SubItems[4].Text));
+                temp.setLeftCkTk(ushort.Parse(listview.Items[i].SubItems[6].Text));
+                temp.setLongShotLk(ushort.Parse(listview.Items[i].SubItems[7].Text));
+                temp.setOrder((ushort)(ushort.Parse(listview.Items[i].SubItems[0].Text) - 1));
+                temp.setPenaltyKick(ushort.Parse(listview.Items[i].SubItems[8].Text));
+                temp.setRightCornerKick(ushort.Parse(listview.Items[i].SubItems[9].Text));
+                temp.setShirtNumber(byte.Parse(listview.Items[i].SubItems[3].Text));
+                temp.setShortFoulFk(ushort.Parse(listview.Items[i].SubItems[10].Text));
 
-                    if (x.getPlayerId() == playerID)
-                        x.setOrder(dropIndex);
-                    if (x.getPlayerId() == playerID2)
-                        x.setOrder(intselectedindex);
-                }
+                pa.Add(temp);
             }
-            //
-            UpdateForm(teamBox1, teamBox2);
+            applyPlayerAssignmentPersister(pa);
         }
 
-        private void setPlayerTrasfer(PlayerAssignment temp, int idTeamA, int order)
+        public void transferPlayerFormatione(ListView listview, uint teamId)
         {
-            temp.setTeamId(idTeamA);
-            temp.setShortFoulFk(false);
-            temp.setRightCornerKick(false);
-            temp.setPenaltyKick(false);
-            temp.setOrder(order);
-            temp.setLongShotLk(false);
-            temp.setLeftCkTk(false);
-            temp.setCaptain(false);
-        }
-
-        private void findEntryID(PlayerAssignment temp)
-        {
-            //genera anche numero causuale
-            // estremi [da, a)
-            int da = 1;
-            int a = 99;
-
-            // Possibili valori di numeroCasuale: {1, 2, 3, 4, 5, 6...}
-            Random random = new Random();
-            int numeroCasuale = random.Next(da, a);
-            temp.setShirtNumber(numeroCasuale);
-            //SEARCH VALUE
-            int n = -1;
-            while (n == -1)
+            List<PlayerAssignment> pa = new List<PlayerAssignment>();
+            for (int i = 0; i < listview.Items.Count; i++)
             {
-                // estremi [da, a)
-                int da1 = 1;
-                int a1 = 9999;
+                PlayerAssignment temp = new PlayerAssignment(uint.Parse(listview.Items[i].SubItems[13].Text), teamId);
+                temp.setCaptain(ushort.Parse(listview.Items[i].SubItems[7].Text));
+                temp.setEntryId(ushort.Parse(listview.Items[i].SubItems[6].Text));
+                temp.setLeftCkTk(ushort.Parse(listview.Items[i].SubItems[8].Text));
+                temp.setLongShotLk(ushort.Parse(listview.Items[i].SubItems[9].Text));
+                temp.setOrder((ushort) (ushort.Parse(listview.Items[i].SubItems[0].Text) - 1));
+                temp.setPenaltyKick(ushort.Parse(listview.Items[i].SubItems[10].Text));
+                temp.setRightCornerKick(ushort.Parse(listview.Items[i].SubItems[11].Text));
+                temp.setShirtNumber(byte.Parse(listview.Items[i].SubItems[5].Text));
+                temp.setShortFoulFk(ushort.Parse(listview.Items[i].SubItems[12].Text));
 
-                // Possibili valori di numeroCasuale: {1, 2, 3, 4, 5, 6...}
-                Random random1 = new Random();
-                int numeroCasuale1 = random1.Next(da1, a1);
-
-                foreach (PlayerAssignment x in playerAssignmentList)
-                {
-                    if (numeroCasuale1 != x.getEntryId())
-                    {
-                        n = numeroCasuale1;
-                        temp.setEntryId(n);
-                        return;
-                    }
-                }
+                pa.Add(temp);
             }
-            return;
+            applyPlayerAssignmentPersister(pa);
         }
 
-        public void orderPlayerInTeam2(List<PlayerAssignment> getPlayersTeam)
+        public void deletePlayerTeam(ListView l1, int selectIndex)
         {
-            //List<PlayerAssignment> temp = getPlayersTeam.OrderBy(o => o.getOrder()).ToList();
-            for (int i = 0; i < getPlayersTeam.Count; i++)
+            UInt32 Player_Ass_to_delete = ushort.Parse(l1.Items[selectIndex].SubItems[4].Text);
+            MemoryStream unzlib_player_Assignament_aux = new MemoryStream();
+            BinaryWriter Grabar_Player_Assignament_aux = new BinaryWriter(unzlib_player_Assignament_aux);
+            leggiPlayerAssign.BaseStream.Position = 0;
+            UInt32 index_a_borrar = leggiPlayerAssign.ReadUInt32();
+
+            // mirar si tienen algo de capitan o lanzador para ponerselo a otro y borrar la fila.
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[5].Text) == 1))
             {
-                getPlayersTeam[i].setOrder(i);
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[5].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[5].Text = "1";
             }
+
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[8].Text) == 1))
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[8].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[8].Text = "1";
+            }
+
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[7].Text) == 1))
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[7].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[7].Text = "1";
+            }
+
+            if (ushort.Parse(l1.Items[selectIndex].SubItems[6].Text) == 1)
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[6].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[6].Text = "1";
+            }
+
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[10].Text) == 1))
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[10].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[10].Text = "1";
+            }
+
+            if ((ushort.Parse(l1.Items[selectIndex].SubItems[9].Text) == 1))
+            {
+                if ((selectIndex == 0))
+                    l1.Items[(selectIndex + 1)].SubItems[9].Text = "1";
+                else
+                    l1.Items[(selectIndex - 1)].SubItems[9].Text = "1";
+            }
+
+            while ((index_a_borrar != Player_Ass_to_delete))
+            {
+                leggiPlayerAssign.BaseStream.Position += 12;
+                index_a_borrar = leggiPlayerAssign.ReadUInt32();
+            }
+
+            UInt32 Posicion_a_borrar = (uint) (leggiPlayerAssign.BaseStream.Position - 4);
+            leggiPlayerAssign.BaseStream.Position = 0;
+            while ((unzlibPlayerAssign.Position < Posicion_a_borrar))
+            {
+                Grabar_Player_Assignament_aux.Write(leggiPlayerAssign.ReadByte());
+            }
+
+            leggiPlayerAssign.BaseStream.Position += 16;
+            while ((leggiPlayerAssign.BaseStream.Position < unzlibPlayerAssign.Length))
+            {
+                Grabar_Player_Assignament_aux.Write(leggiPlayerAssign.ReadByte());
+            }
+
+            unzlibPlayerAssign.Close();
+            unzlibPlayerAssign = new MemoryStream();
+            unzlib_player_Assignament_aux.Position = 0;
+            unzlib_player_Assignament_aux.CopyTo(unzlibPlayerAssign);
+            unzlib_player_Assignament_aux.Close();
+            leggiPlayerAssign = new BinaryReader(unzlibPlayerAssign);
+            scriviPlayerAssign = new BinaryWriter(unzlibPlayerAssign);
+
+            l1.Items.RemoveAt(selectIndex);
+            for (int i = 0; i < l1.Items.Count; i++)
+            {
+                l1.Items[i].SubItems[0].Text = (i + 1).ToString();
+            }
+
+            //aggiorno squadra
+            //Form1._Form1.giocatoreSquadra.Text = getStringClubTeamOfPlayer(Player_Ass_to_delete, 0);
+            //Form1._Form1.giocatoreNazionale.Text = getStringClubTeamOfPlayer(Player_Ass_to_delete, 1);
         }
 
-        public void transferPlayerBtoA(int intselectedindexPlayer, Team teamA, Team teamB, int orderTeamA, ComboBox teamBox1, ComboBox teamBox2)
+        public void playerFromPlayerList(UInt32 playerId, UInt32 teamId, ListView l1, UInt32 teamSecondTeamId, ListView l2)
         {
-            bool ok = false;
-            foreach (PlayerAssignment x in playerAssignmentList)
+            Team team = leggiSquadra(findTeam(teamId));
+            Player player = leggiGiocatore(findPlayer(playerId));
+            MyPlayerAssignmentPersister ass = new MyPlayerAssignmentPersister();
+
+            //trovo se ha un club poichè è in una nazionale
+            List<UInt32> b = ass.loadTeamId(playerId, unzlibPlayerAssign, leggiPlayerAssign);
+            foreach (UInt32 i in b)
             {
-                if (teamB.getId() == x.getTeamId())
-                    if (x.getOrder() == intselectedindexPlayer) //trovo il giocatore della squadra di partenza
-                        ok = true;
-
-                if (ok)
+                int index = findTeam(i);
+                Team team2 = leggiSquadra(index);
+                if (team2.getId() == team.getId())
                 {
-                    if (teamB.getNational()) //squadra partenza é una nazionale
-                    {
-                        if (teamA.getNational()) //se la squadra di destinazione è una nazionale
-                        {
-                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
-                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
-                            findEntryID(temp);
-                            playerAssignmentList.Add(temp);
-                        }
-                        else // se è un club
-                        {
-                            foreach (PlayerAssignment playerA in playerAssignmentList)
-                            {
-                                if (x.getPlayerId() == playerA.getPlayerId())
-                                {
-                                    if (!getTeamById2(playerA.getTeamId()).getNational())
-                                    {
-                                        setPlayerTrasfer(playerA, teamA.getId(), orderTeamA);
-                                        //
-                                        UpdateForm(teamBox1, teamBox2);
-                                        return;
-                                    }
-                                }
-
-                            }
-                            // se il giocatore è svincolato
-                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
-                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
-                            findEntryID(temp);
-                            playerAssignmentList.Add(temp);
-                        }
-
-                    }
-                    else //squadra partenza é un club
-                    {
-                        if (teamA.getNational()) //se la squadra di destinazione è una nazionale
-                        {
-                            PlayerAssignment temp = new PlayerAssignment(x.getPlayerId(), teamA.getId());
-                            setPlayerTrasfer(temp, teamA.getId(), orderTeamA);
-                            findEntryID(temp);
-                            playerAssignmentList.Add(temp);
-                        }
-                        else  //o un club
-                            setPlayerTrasfer(x, teamA.getId(), orderTeamA);
-
-                    }
-                    //
-                    UpdateForm(teamBox1, teamBox2);
+                    MessageBox.Show("Player already on Team", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
-        }
 
-        public void playerFromPlayerList(long player, int teamId, ComboBox teamBox1, ComboBox teamBox2)
-        {
-            if (getTeamById2(teamId).getNational()) //se il team di destinazione è una nazionale
+            bool repetido = false;
+            List<int> usados = new List<int>();
+            int dorsal = 1;
+            for (int i = 0; (i <= (l1.Items.Count - 1)); i++)
             {
-                PlayerAssignment temp = new PlayerAssignment(player, teamId);
-                setPlayerTrasfer(temp, teamId, getPlayersTeam(teamId).Count);
-                findEntryID(temp);
-                playerAssignmentList.Add(temp);
+                usados.Add(int.Parse(l1.Items[i].SubItems[3].Text));
+                if (int.Parse(l1.Items[i].SubItems[3].Text) == dorsal)
+                    repetido = true;
+            }
+
+            if ((repetido == true))
+            {
+                dorsal = 1;
+                while (usados.Contains(dorsal))
+                {
+                    dorsal++;
+                }
+            }
+
+            UInt32 assignId = ass.findIdAssign(unzlibPlayerAssign, leggiPlayerAssign);
+
+            if (team.getNational() == 1) //se il team di destinazione è una nazionale
+            {
+                if (l1.Items.Count >= 23)
+                    MessageBox.Show("National is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
+                {
+                    if (team.getNational() == 1 && team.getCountry() != player.getNational())
+                        MessageBox.Show("Change Player's Nationality, to fit on his National Team first", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item = new ListViewItem((l1.Items.Count + 1).ToString());
+                        item.SubItems.Add(player.getStringPosition());
+                        item.SubItems.Add(player.getName());
+                        item.SubItems.Add(dorsal.ToString());
+                        item.SubItems.Add(assignId.ToString());
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add(player.getId().ToString());
+                        l1.Items.Add(item);
+
+                        //aggiorno squadra 2
+                        if (teamSecondTeamId == teamId)
+                            l2.Items.Add(item);
+
+                        ass.addPlayerAssign(ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign, assignId);
+                        transferPlayerAtoA(l1, teamId);
+                    }
+                }
             }
             else //se è un club
             {
-                if (getStringClubTeamOfPlayer(player,0) == "") //se non ha una squadra
+                if (l1.Items.Count >= 32)
+                    MessageBox.Show("Club is full", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else
                 {
-                    PlayerAssignment temp = new PlayerAssignment(player, teamId);
-                    setPlayerTrasfer(temp, teamId, getPlayersTeam(teamId).Count);
-                    findEntryID(temp);
-                    playerAssignmentList.Add(temp);
-                }
-                else  //se ha una squadra
-                {
-
-                    foreach (PlayerAssignment playerA in playerAssignmentList)
+                    int numberteam = 0;
+                    foreach (UInt32 i in b)
                     {
-                        if (player == playerA.getPlayerId())
-                        {
-                            if (!getTeamById2(playerA.getTeamId()).getNational())
-                            {
-                                setPlayerTrasfer(playerA, teamId, getPlayersTeam(teamId).Count);
-                                UpdateForm(teamBox1, teamBox2);
-                                return;
-                            }
+                        int index = findTeam(i);
+                        Team team2 = leggiSquadra(index);
+                        if (team2.getNational() == 0)
+                            numberteam = 1;
+                    }
 
+                    if (numberteam == 0) //se non ha una squadra
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item = new ListViewItem((l1.Items.Count + 1).ToString());
+                        item.SubItems.Add(player.getStringPosition());
+                        item.SubItems.Add(player.getName());
+                        item.SubItems.Add(dorsal.ToString());
+                        item.SubItems.Add(assignId.ToString());
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add(player.getId().ToString());
+                        l1.Items.Add(item);
+
+                        //aggiorno squadra 2
+                        if (teamSecondTeamId == teamId)
+                            l2.Items.Add(item);
+
+                        ass.addPlayerAssign(ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign, assignId);
+                        transferPlayerAtoA(l1, teamId);
+                    }
+                    else  //se ha una squadra
+                    {
+                        List<PlayerAssignment> team2 = leggiGiocatoriSquadra(b[0]);
+                        for (int i = 0; i < team2.Count - 1; i++)
+                        {
+                            if (team2[i].getPlayerId() == playerId)
+                            {
+                                ListViewItem item = new ListViewItem();
+                                item = new ListViewItem((l1.Items.Count + 1).ToString());
+                                item.SubItems.Add(player.getStringPosition());
+                                item.SubItems.Add(player.getName());
+                                item.SubItems.Add(dorsal.ToString());
+                                item.SubItems.Add(team2[i].getEntryId().ToString());
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add(player.getId().ToString());
+                                l1.Items.Add(item);
+
+                                //aggiorno squadra 2
+                                if (teamSecondTeamId == teamId)
+                                    l2.Items.Add(item);
+
+                                // copio los datos del 1 al 2 poniendo 0 en lo de capitan y lanzador.
+                                // mirar si tienen algo de capitan o lanzador para ponerselo a otro y borrar la fila.
+                                if (team2[i].getCaptain() == 1)
+                                {
+                                    if (i == 0)
+                                        team2[i + 1].setCaptain(1);
+                                    else
+                                        team2[i - 1].setCaptain(0);
+                                }
+
+                                if (team2[i].getPenaltyKick() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setPenaltyKick(1);
+                                    else
+                                        team2[i - 1].setPenaltyKick(0);
+                                }
+
+                                if (team2[i].getLongShotLk() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setLongShotLk(1);
+                                    else
+                                        team2[i - 1].setLongShotLk(0);
+                                }
+
+                                if (team2[i].getLeftCkTk() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setLeftCkTk(1);
+                                    else
+                                        team2[i - 1].setLeftCkTk(0);
+                                }
+
+                                if (team2[i].getShortFoulFk() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setShortFoulFk(1);
+                                    else
+                                        team2[i - 1].setShortFoulFk(0);
+                                }
+
+                                if (team2[i].getRightCornerKick() == 1)
+                                {
+                                    if ((i == 0))
+                                        team2[i + 1].setRightCornerKick(1);
+                                    else
+                                        team2[i - 1].setRightCornerKick(0);
+                                }
+                                team2[i].setTeamId(team.getId());
+                                team2[i].setOrder((ushort)(l1.Items.Count));
+                                team2[i].setShirtNumber((byte)dorsal);
+                                ass.applyPlayerA(unzlibPlayerAssign, leggiPlayerAssign, team2, ref scriviPlayerAssign);
+                            }
                         }
                     }
 
                 }
             }
-            UpdateForm(teamBox1, teamBox2);
-            return;
+
         }
 
-        public void deletePlayerTeam(int intselectedindex, int teamId, ComboBox teamBox1, ComboBox teamBox2)
+        public void transferPlayerBtoA(ListView toL, ListView fromL, ComboBox toC, ComboBox fromC, int selectIndex, int dropIndex)
         {
-            for (int i = 0; i < playerAssignmentList.Count; i++)
+            int dorsal = int.Parse(fromL.Items[selectIndex].SubItems[3].Text);
+            bool repetido = false;
+            List<int> usados = new List<int>();
+            Team teamB = leggiSquadra(fromC.SelectedIndex);
+            UInt32 Team_Origen = teamB.getId();
+            Team teamA = leggiSquadra(toC.SelectedIndex);
+            UInt32 Team_destino = teamA.getId();
+            for (int i = 0; i <= toL.Items.Count - 1; i++)
             {
-                PlayerAssignment x = (PlayerAssignment) playerAssignmentList[i];
-                if (x.getTeamId() == teamId)
-                {
-                    if (x.getOrder() == intselectedindex)
-                    {
-                        playerAssignmentList.Remove(x);
-                    }
-                }
-                
+                usados.Add(int.Parse(toL.Items[i].SubItems[3].Text));
+                if (int.Parse(toL.Items[i].SubItems[3].Text) == dorsal)
+                    repetido = true;
             }
-            //
-            UpdateForm(teamBox1, teamBox2);
+
+            if ((repetido == true))
+            {
+                dorsal = 1;
+                while (usados.Contains(dorsal))
+                {
+                    dorsal++;
+                }
+            }
+
+            MyPlayerAssignmentPersister ass = new MyPlayerAssignmentPersister();
+            UInt32 assignId = ass.findIdAssign(unzlibPlayerAssign, leggiPlayerAssign);
+
+            if (teamB.getNational() == 1) //squadra partenza é una nazionale
+            {
+                if (teamA.getNational() == 1) //se la squadra di destinazione è una nazionale
+                {
+                    if (toL.Items.Count < 23 && fromL.Items.Count > 16)
+                    {
+                        UInt32 Index_club_2_sel_player = uint.Parse(fromL.Items[selectIndex].SubItems[11].Text);
+                        List<UInt32> List_players = new List<UInt32>();
+                        for (int j = 0; (j <= (toL.Items.Count - 1)); j++)
+                        {
+                            List_players.Add(uint.Parse(toL.Items[j].SubItems[11].Text));
+                        }
+
+                        // comprobar que es un jugador de ese pais y que no est repetido
+                        if (List_players.Contains(Index_club_2_sel_player))
+                            MessageBox.Show("Player already on National Team", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                        {
+                            UInt32 id_player = uint.Parse(fromL.Items[selectIndex].SubItems[11].Text);
+                            Player Player_check = leggiGiocatoreById(id_player);
+                            if (Player_check.getNational() == leggiSquadra(toC.SelectedIndex).getCountry())
+                            {
+                                ListViewItem item = new ListViewItem();
+                                item = new ListViewItem((toL.Items.Count + 1).ToString());
+                                item.SubItems.Add(fromL.Items[selectIndex].SubItems[1].Text);
+                                item.SubItems.Add(fromL.Items[selectIndex].SubItems[2].Text);
+                                item.SubItems.Add(dorsal.ToString());
+                                item.SubItems.Add(assignId.ToString());
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add(fromL.Items[selectIndex].SubItems[11].Text);
+                                toL.Items.Add(item);
+
+                                ass.addPlayerAssign(ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign, assignId);
+                                transferPlayerAtoA(toL, teamA.getId());
+                            }
+                            else
+                                MessageBox.Show("The player of team 2, doesn't belong to " + teamA.getEnglish() + " nationality", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Team Full, Please remove player before", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else // se è un club
+                {
+                    if (toL.Items.Count < 32 && fromL.Items.Count > 16)
+                    {
+                        UInt32 Index_club_2_sel_player = uint.Parse(fromL.Items[selectIndex].SubItems[11].Text);
+                        List<UInt32> List_players = new List<UInt32>();
+                        for (int j = 0; (j <= (toL.Items.Count - 1)); j++)
+                        {
+                            List_players.Add(uint.Parse(toL.Items[j].SubItems[11].Text));
+                        }
+
+                        // comprobar que es un jugador de ese pais y que no est repetido
+                        if (List_players.Contains(Index_club_2_sel_player))
+                            MessageBox.Show("Player already on Club", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                        {
+                            //trovo se ha un club poichè è in una nazionale
+                            List<UInt32> b = ass.loadTeamId(Index_club_2_sel_player, unzlibPlayerAssign, leggiPlayerAssign);
+                            UInt32 idTeamFrom = 0;
+                            foreach (UInt32 i in b)
+                            {
+                                int index = findTeam(i);
+                                Team team = leggiSquadra(index);
+                                if (team.getNational() == 0)
+                                    idTeamFrom = team.getId();
+                            }
+
+                            //solo se ha una squadra
+                            if (idTeamFrom != 0)
+                            {
+                                List<PlayerAssignment> list = leggiGiocatoriSquadra(idTeamFrom);
+
+                                for (int i = 0; i < list.Count; i++ )
+                                {
+                                    if (list[i].getPlayerId() == Index_club_2_sel_player)
+                                        assignId = list[i].getEntryId();
+
+                                    // copio los datos del 1 al 2 poniendo 0 en lo de capitan y lanzador.
+                                    // mirar si tienen algo de capitan o lanzador para ponerselo a otro y borrar la fila.
+                                    if (list[i].getCaptain() == 1)
+                                    {
+                                        if ((i == 0))
+                                            list[i + 1].setCaptain(1);
+                                        else
+                                            list[i - 1].setCaptain(1);
+                                    }
+
+                                    if (list[i].getPenaltyKick() == 1)
+                                    {
+                                        if ((i == 0))
+                                            list[i + 1].setPenaltyKick(1);
+                                        else
+                                            list[i - 1].setPenaltyKick(1);
+                                    }
+
+                                    if (list[i].getLongShotLk() == 1)
+                                    {
+                                        if ((i == 0))
+                                            list[i + 1].setLongShotLk(1);
+                                        else
+                                            list[i - 1].setLongShotLk(1);
+                                    }
+
+                                    if (list[i].getLeftCkTk() == 1)
+                                    {
+                                        if ((i == 0))
+                                            list[i + 1].setLeftCkTk(1);
+                                        else
+                                            list[i - 1].setLeftCkTk(1);
+                                    }
+
+                                    if (list[i].getShortFoulFk() == 1)
+                                    {
+                                        if ((i == 0))
+                                            list[i + 1].setShortFoulFk(1);
+                                        else
+                                            list[i - 1].setShortFoulFk(1);
+                                    }
+
+                                    if (list[i].getRightCornerKick() == 1)
+                                    {
+                                        if ((i == 0))
+                                            list[i + 1].setRightCornerKick(1);
+                                        else
+                                            list[i - 1].setRightCornerKick(1);
+                                    }
+                                }
+                            }
+
+                            ListViewItem item = new ListViewItem();
+                            item = new ListViewItem((toL.Items.Count + 1).ToString());
+                            item.SubItems.Add(fromL.Items[selectIndex].SubItems[1].Text);
+                            item.SubItems.Add(fromL.Items[selectIndex].SubItems[2].Text);
+                            item.SubItems.Add(dorsal.ToString());
+                            item.SubItems.Add(assignId.ToString());
+                            item.SubItems.Add("0");
+                            item.SubItems.Add("0");
+                            item.SubItems.Add("0");
+                            item.SubItems.Add("0");
+                            item.SubItems.Add("0");
+                            item.SubItems.Add("0");
+                            item.SubItems.Add(fromL.Items[selectIndex].SubItems[11].Text);
+                            toL.Items.Add(item);
+
+                            ass.addPlayerAssign(ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign, assignId);
+                            transferPlayerAtoA(toL, teamA.getId());
+                        }
+                    }
+                    else
+                        MessageBox.Show("Team Full, Please remove player before", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else //squadra partenza é un club
+            {
+                if (teamA.getNational() == 1) //se la squadra di destinazione è una nazionale
+                {
+                    if (toL.Items.Count < 23 && fromL.Items.Count > 16)
+                    {
+                        UInt32 Index_club_2_sel_player = uint.Parse(fromL.Items[selectIndex].SubItems[11].Text);
+                        List<UInt32> List_players = new List<UInt32>();
+                        for (int j = 0; (j <= (toL.Items.Count - 1)); j++)
+                        {
+                            List_players.Add(uint.Parse(toL.Items[j].SubItems[11].Text));
+                        }
+
+                        // comprobar que es un jugador de ese pais y que no est repetido
+                        if (List_players.Contains(Index_club_2_sel_player))
+                            MessageBox.Show("Player already on National Team", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                        {
+                            UInt32 id_player = uint.Parse(fromL.Items[selectIndex].SubItems[11].Text);
+                            Player Player_check = leggiGiocatoreById(id_player);
+                            if (Player_check.getNational() == leggiSquadra(toC.SelectedIndex).getCountry())
+                            {
+                                ListViewItem item = new ListViewItem();
+                                item = new ListViewItem((toL.Items.Count + 1).ToString());
+                                item.SubItems.Add(fromL.Items[selectIndex].SubItems[1].Text);
+                                item.SubItems.Add(fromL.Items[selectIndex].SubItems[2].Text);
+                                item.SubItems.Add(dorsal.ToString());
+                                item.SubItems.Add(assignId.ToString());
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add("0");
+                                item.SubItems.Add(fromL.Items[selectIndex].SubItems[11].Text);
+                                toL.Items.Add(item);
+
+                                ass.addPlayerAssign(ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign, assignId);
+                                transferPlayerAtoA(toL, teamA.getId());
+                            }
+                            else
+                                MessageBox.Show("The player of team 2, doesn't belong to " + teamA.getEnglish() + " nationality", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    else
+                        MessageBox.Show("Team Full, Please remove player before", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else  //o un club
+                {
+                    UInt32 Index_club_2_sel_player = uint.Parse(fromL.Items[selectIndex].SubItems[11].Text);
+                    List<UInt32> List_players = new List<UInt32>();
+                    for (int j = 0; (j <= (toL.Items.Count - 1)); j++)
+                    {
+                        List_players.Add(uint.Parse(toL.Items[j].SubItems[11].Text));
+                    }
+
+                    // comprobar que es un jugador de ese pais y que no est repetido
+                    if (List_players.Contains(Index_club_2_sel_player))
+                    {
+                        MessageBox.Show("Player already on Club", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (toL.Items.Count < 32 && fromL.Items.Count > 16)
+                    {
+                        ListViewItem item = new ListViewItem();
+                        item = new ListViewItem((toL.Items.Count + 1).ToString());
+                        item.SubItems.Add(fromL.Items[selectIndex].SubItems[1].Text);
+                        item.SubItems.Add(fromL.Items[selectIndex].SubItems[2].Text);
+                        item.SubItems.Add(dorsal.ToString());
+                        item.SubItems.Add(fromL.Items[selectIndex].SubItems[4].Text);
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add("0");
+                        item.SubItems.Add(fromL.Items[selectIndex].SubItems[11].Text);
+                        toL.Items.Add(item);
+
+                        // copio los datos del 1 al 2 poniendo 0 en lo de capitan y lanzador.
+                        // mirar si tienen algo de capitan o lanzador para ponerselo a otro y borrar la fila.
+                        if ((ushort.Parse(fromL.Items[selectIndex].SubItems[5].Text) == 1))
+                        {
+                            if ((selectIndex == 0))
+                                fromL.Items[(selectIndex + 1)].SubItems[5].Text = "1";
+                            else
+                                fromL.Items[(selectIndex - 1)].SubItems[5].Text = "1";
+                        }
+
+                        if ((ushort.Parse(fromL.Items[selectIndex].SubItems[8].Text) == 1))
+                        {
+                            if ((selectIndex == 0))
+                                fromL.Items[(selectIndex + 1)].SubItems[8].Text = "1";
+                            else
+                                fromL.Items[(selectIndex - 1)].SubItems[8].Text = "1";
+                        }
+
+                        if ((ushort.Parse(fromL.Items[selectIndex].SubItems[7].Text) == 1))
+                        {
+                            if ((selectIndex == 0))
+                                fromL.Items[(selectIndex + 1)].SubItems[7].Text = "1";
+                            else
+                                fromL.Items[(selectIndex - 1)].SubItems[7].Text = "1";
+                        }
+
+                        if (ushort.Parse(fromL.Items[selectIndex].SubItems[6].Text) == 1)
+                        {
+                            if ((selectIndex == 0))
+                                fromL.Items[(selectIndex + 1)].SubItems[6].Text = "1";
+                            else
+                                fromL.Items[(selectIndex - 1)].SubItems[6].Text = "1";
+                        }
+
+                        if ((ushort.Parse(fromL.Items[selectIndex].SubItems[10].Text) == 1))
+                        {
+                            if ((selectIndex == 0))
+                                fromL.Items[(selectIndex + 1)].SubItems[10].Text = "1";
+                            else
+                                fromL.Items[(selectIndex - 1)].SubItems[10].Text = "1";
+                        }
+
+                        if ((ushort.Parse(fromL.Items[selectIndex].SubItems[9].Text) == 1))
+                        {
+                            if ((selectIndex == 0))
+                                fromL.Items[(selectIndex + 1)].SubItems[9].Text = "1";
+                            else
+                                fromL.Items[(selectIndex - 1)].SubItems[9].Text = "1";
+                        }
+
+                        int fila_actual = selectIndex;
+                        fromL.Items.RemoveAt(selectIndex);
+                        for (int i = fila_actual; i <= fromL.Items.Count - 1; i++)
+                        {
+                            fromL.Items[i].SubItems[0].Text = (int.Parse(fromL.Items[i].SubItems[0].Text) - 1).ToString();
+                        }
+
+                        transferPlayerAtoA(toL, teamA.getId());
+                    }
+                    else
+                        MessageBox.Show("Team Full, Please remove player before", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+
         }
 
         //remove fake team
         public void removeFakeTeam()
         {
-            foreach (Team temp in teamList)
+            for (int i = 0; i < Form1._Form1.teamBox1.Items.Count - 1; i++)
             {
+                Team temp = leggiSquadra(i);
                 /* PREMIER LEAGUE */
                 if (temp.getId() == 100)
                 {
@@ -3036,589 +4375,526 @@ namespace DinoTem.ui
                 {
                     temp.setEnglish("BOAVISTA FC");
                 }
+                applyTeamPersister(i, temp);
+                Form1._Form1.teamsBox.Items[i] = temp.getEnglish();
+                Form1._Form1.teamBox1.Items[i] = temp.getEnglish();
+                Form1._Form1.teamBox2.Items[i] = temp.getEnglish();
+                Form1._Form1.derbyTeam1.Items[i] = temp.getEnglish();
+                Form1._Form1.derbyTeam2.Items[i] = temp.getEnglish();
+                for (int i1 = 0; i1 < Form1._Form1.DataGridView_derby.RowCount; i1++)
+                {
+                    if (Form1._Form1.DataGridView_derby.Rows[i1].Cells[0].Value.ToString() == temp.getId().ToString())
+                        Form1._Form1.DataGridView_derby.Rows[i1].Cells[1].Value = temp.getEnglish();
+                    if (Form1._Form1.DataGridView_derby.Rows[i1].Cells[2].Value.ToString() == temp.getId().ToString())
+                        Form1._Form1.DataGridView_derby.Rows[i1].Cells[3].Value = temp.getEnglish();
+                }
             }
             //
         }
 
-        //remove fake team
+        //remove fake player
         public void removeFakePlayer()
         {
-            foreach (Player temp in playerList)
+            for (int i = 0; i < Form1._Form1.playersBox.Items.Count - 1; i++)
             {
+                Player temp = leggiGiocatore(i);
                 if (temp.getId() == 263150)
                 {
-                    temp.setPlayerName("O. KAHN");
+                    temp.setName("O. KAHN");
                     temp.setShirtName("KAHN");
                 }
                 if (temp.getId() == 263063)
                 {
-                    temp.setPlayerName("J. STAM");
+                    temp.setName("J. STAM");
                     temp.setShirtName("STAM");
                 }
                 if (temp.getId() == 263109)
                 {
-                    temp.setPlayerName("F. CANNAVARO");
+                    temp.setName("F. CANNAVARO");
                     temp.setShirtName("CANNAVARO");
                 }
                 if (temp.getId() == 263022)
                 {
-                    temp.setPlayerName("L. THURAM");
+                    temp.setName("L. THURAM");
                     temp.setShirtName("THURAM");
                 }
                 if (temp.getId() == 263107)
                 {
-                    temp.setPlayerName("P. MALDINI");
+                    temp.setName("P. MALDINI");
                     temp.setShirtName("MALDINI");
                 }
                 if (temp.getId() == 263024)
                 {
-                    temp.setPlayerName("P. VIERA");
+                    temp.setName("P. VIERA");
                     temp.setShirtName("VIERA");
                 }
                 if (temp.getId() == 263001)
                 {
-                    temp.setPlayerName("P. GUARDIOLA");
+                    temp.setName("P. GUARDIOLA");
                     temp.setShirtName("GUARDIOLA");
                 }
                 if (temp.getId() == 262959)
                 {
-                    temp.setPlayerName("D. BECKHAM");
+                    temp.setName("D. BECKHAM");
                     temp.setShirtName("BECKHAM");
                 }
                 if (temp.getId() == 262984)
                 {
-                    temp.setPlayerName("L. FIGO");
+                    temp.setName("L. FIGO");
                     temp.setShirtName("FIGO");
                 }
                 if (temp.getId() == 263027)
                 {
-                    temp.setPlayerName("Z. ZIDANE");
+                    temp.setName("Z. ZIDANE");
                     temp.setShirtName("ZIDANE");
                 }
                 if (temp.getId() == 264272)
                 {
-                    temp.setPlayerName("VAN NISTELROOY");
+                    temp.setName("VAN NISTELROOY");
                     temp.setShirtName("VAN NISTELROOY");
                 }
                 if (temp.getId() == 263172)
                 {
-                    temp.setPlayerName("P. SCHMEICHEL");
+                    temp.setName("P. SCHMEICHEL");
                     temp.setShirtName("SCHMEICHEL");
                 }
                 if (temp.getId() == 262997)
                 {
-                    temp.setPlayerName("F. HIERRO");
+                    temp.setName("F. HIERRO");
                     temp.setShirtName("HIERRO");
                 }
                 if (temp.getId() == 263019)
                 {
-                    temp.setPlayerName("M. DESAILLY");
+                    temp.setName("M. DESAILLY");
                     temp.setShirtName("DESAILLY");
                 }
                 if (temp.getId() == 264275)
                 {
-                    temp.setPlayerName("L. BLANC");
+                    temp.setName("L. BLANC");
                     temp.setShirtName("BLANC");
                 }
                 if (temp.getId() == 263021)
                 {
-                    temp.setPlayerName("B. LIZARAZU");
+                    temp.setName("B. LIZARAZU");
                     temp.setShirtName("LIZARAZU");
                 }
                 if (temp.getId() == 262869)
                 {
-                    temp.setPlayerName("ROY KEANE");
+                    temp.setName("ROY KEANE");
                     temp.setShirtName("ROY KEANE");
                 }
                 if (temp.getId() == 262960)
                 {
-                    temp.setPlayerName("P. SCHOLES");
+                    temp.setName("P. SCHOLES");
                     temp.setShirtName("SCHOLES");
                 }
                 if (temp.getId() == 262981)
                 {
-                    temp.setPlayerName("RUI COSTA");
+                    temp.setName("RUI COSTA");
                     temp.setShirtName("RUI COSTA");
                 }
                 if (temp.getId() == 264303)
                 {
-                    temp.setPlayerName("Z. BOBAN");
+                    temp.setName("Z. BOBAN");
                     temp.setShirtName("BOBAN");
                 }
                 if (temp.getId() == 263072)
                 {
-                    temp.setPlayerName("M. OVERMARS");
+                    temp.setName("M. OVERMARS");
                     temp.setShirtName("OVERMARS");
                 }
                 if (temp.getId() == 264488)
                 {
-                    temp.setPlayerName("R. BAGGIO");
+                    temp.setName("R. BAGGIO");
                     temp.setShirtName("BAGGIO");
                 }
                 if (temp.getId() == 263509)
                 {
-                    temp.setPlayerName("A. SHEVCHENKO");
+                    temp.setName("A. SHEVCHENKO");
                     temp.setShirtName("SHEVCHENKO");
                 }
                 if (temp.getId() == 263392)
                 {
-                    temp.setPlayerName("S. MIHAJLOVIC");
+                    temp.setName("S. MIHAJLOVIC");
                     temp.setShirtName("MIHAJLOVIC");
                 }
                 if (temp.getId() == 263032)
                 {
-                    temp.setPlayerName("C. MAKELELE");
+                    temp.setName("C. MAKELELE");
                     temp.setShirtName("MAKELELE");
                 }
                 if (temp.getId() == 263154)
                 {
-                    temp.setPlayerName("M. BALLACK");
+                    temp.setName("M. BALLACK");
                     temp.setShirtName("BALLACK");
                 }
                 if (temp.getId() == 263134)
                 {
-                    temp.setPlayerName("P. NEDVED");
+                    temp.setName("P. NEDVED");
                     temp.setShirtName("NEDVED");
                 }
                 if (temp.getId() == 263246)
                 {
-                    temp.setPlayerName("J. LITMANEN");
+                    temp.setName("J. LITMANEN");
                     temp.setShirtName("LITMANEN");
                 }
                 if (temp.getId() == 264036)
                 {
-                    temp.setPlayerName("D. BERGKAMP");
+                    temp.setName("D. BERGKAMP");
                     temp.setShirtName("BERGKAMP");
                 }
                 if (temp.getId() == 262961)
                 {
-                    temp.setPlayerName("M. OWEN");
+                    temp.setName("M. OWEN");
                     temp.setShirtName("OWEN");
                 }
                 if (temp.getId() == 263116)
                 {
-                    temp.setPlayerName("F. INZAGHI");
+                    temp.setName("F. INZAGHI");
                     temp.setShirtName("INZAGHI");
                 }
                 if (temp.getId() == 264101)
                 {
-                    temp.setPlayerName("A. SHEARER");
+                    temp.setName("A. SHEARER");
                     temp.setShirtName("SHEARER");
                 }
 
                 if (temp.getId() == 263831)
                 {
-                    temp.setPlayerName("J. CHILAVERT");
+                    temp.setName("J. CHILAVERT");
                     temp.setShirtName("CHILAVERT");
                 }
                 if (temp.getId() == 263776)
                 {
-                    temp.setPlayerName("ALDAIR");
+                    temp.setName("ALDAIR");
                     temp.setShirtName("ALDAIR");
                 }
                 if (temp.getId() == 263877)
                 {
-                    temp.setPlayerName("R. AYALA");
+                    temp.setName("R. AYALA");
                     temp.setShirtName("AYALA");
                 }
                 if (temp.getId() == 263769)
                 {
-                    temp.setPlayerName("CAFU'");
+                    temp.setName("CAFU'");
                     temp.setShirtName("CAFU'");
                 }
                 if (temp.getId() == 263768)
                 {
-                    temp.setPlayerName("ROBERTO CARLOS");
+                    temp.setName("ROBERTO CARLOS");
                     temp.setShirtName("ROBERTO CARLOS");
                 }
                 if (temp.getId() == 264478)
                 {
-                    temp.setPlayerName("DUNGA");
+                    temp.setName("DUNGA");
                     temp.setShirtName("DUNGA");
                 }
                 if (temp.getId() == 263879)
                 {
-                    temp.setPlayerName("D. SIMEONE");
+                    temp.setName("D. SIMEONE");
                     temp.setShirtName("SIMEONE");
                 }
                 if (temp.getId() == 264483)
                 {
-                    temp.setPlayerName("C. VALDERRAMA");
+                    temp.setName("C. VALDERRAMA");
                     temp.setShirtName("VALDERRAMA");
                 }
                 if (temp.getId() == 263774)
                 {
-                    temp.setPlayerName("ROMARIO");
+                    temp.setName("ROMARIO");
                     temp.setShirtName("ROMARIO");
                 }
                 if (temp.getId() == 263885)
                 {
-                    temp.setPlayerName("G. BATISTUTA");
+                    temp.setName("G. BATISTUTA");
                     temp.setShirtName("BATISTUTA");
                 }
                 if (temp.getId() == 264281)
                 {
-                    temp.setPlayerName("RONALDO");
+                    temp.setName("RONALDO");
                     temp.setShirtName("RONALDO");
                 }
                 if (temp.getId() == 264470)
                 {
-                    temp.setPlayerName("C. TAFFAREL");
+                    temp.setName("C. TAFFAREL");
                     temp.setShirtName("TAFFAREL");
                 }
                 if (temp.getId() == 263744)
                 {
-                    temp.setPlayerName("I. CORDOBA");
+                    temp.setName("I. CORDOBA");
                     temp.setShirtName("CORDOBA");
                 }
                 if (temp.getId() == 263835)
                 {
-                    temp.setPlayerName("F. ARCE");
+                    temp.setName("F. ARCE");
                     temp.setShirtName("ARCE");
                 }
                 if (temp.getId() == 325168)
                 {
-                    temp.setPlayerName("C. BABAYARO");
+                    temp.setName("C. BABAYARO");
                     temp.setShirtName("BABAYARO");
                 }
                 if (temp.getId() == 264299)
                 {
-                    temp.setPlayerName("F. REDONDO");
+                    temp.setName("F. REDONDO");
                     temp.setShirtName("REDONDO");
                 }
                 if (temp.getId() == 263619)
                 {
-                    temp.setPlayerName("J. OKOCHA");
+                    temp.setName("J. OKOCHA");
                     temp.setShirtName("OKOCHA");
                 }
                 if (temp.getId() == 263898)
                 {
-                    temp.setPlayerName("H. NAKATA");
+                    temp.setName("H. NAKATA");
                     temp.setShirtName("NAKATA");
                 }
                 if (temp.getId() == 325171)
                 {
-                    temp.setPlayerName("C. LOPEZ");
+                    temp.setName("C. LOPEZ");
                     temp.setShirtName("LOPEZ");
                 }
                 if (temp.getId() == 325174)
                 {
-                    temp.setPlayerName("DENILSON");
+                    temp.setName("DENILSON");
                     temp.setShirtName("DENILSON");
                 }
                 if (temp.getId() == 325170)
                 {
-                    temp.setPlayerName("A. ORTEGA");
+                    temp.setName("A. ORTEGA");
                     temp.setShirtName("ORTEGA");
                 }
                 if (temp.getId() == 263620)
                 {
-                    temp.setPlayerName("N. KANU");
+                    temp.setName("N. KANU");
                     temp.setShirtName("KANU");
                 }
                 if (temp.getId() == 263818)
                 {
-                    temp.setPlayerName("M. SALAS");
+                    temp.setName("M. SALAS");
                     temp.setShirtName("SALAS");
                 }
                 if (temp.getId() == 263699)
                 {
-                    temp.setPlayerName("J. CAMPOS");
+                    temp.setName("J. CAMPOS");
                     temp.setShirtName("CAMPOS");
                 }
                 if (temp.getId() == 262235)
                 {
-                    temp.setPlayerName("MYUNG-BO HONG");
+                    temp.setName("MYUNG-BO HONG");
                     temp.setShirtName("MYUNG-BO HONG");
                 }
                 if (temp.getId() == 263854)
                 {
-                    temp.setPlayerName("P. MONTERO");
+                    temp.setName("P. MONTERO");
                     temp.setShirtName("MONTERO");
                 }
                 if (temp.getId() == 263770)
                 {
-                    temp.setPlayerName("EMERSON");
+                    temp.setName("EMERSON");
                     temp.setShirtName("EMERSON");
                 }
                 if (temp.getId() == 263889)
                 {
-                    temp.setPlayerName("M. ALMEYDA");
+                    temp.setName("M. ALMEYDA");
                     temp.setShirtName("ALMEYDA");
                 }
                 if (temp.getId() == 325169)
                 {
-                    temp.setPlayerName("N. SOLANO");
+                    temp.setName("N. SOLANO");
                     temp.setShirtName("SOLANO");
                 }
                 if (temp.getId() == 263643)
                 {
-                    temp.setPlayerName("P. M'BOMA");
+                    temp.setName("P. M'BOMA");
                     temp.setShirtName("M'BOMA");
                 }
                 if (temp.getId() == 263819)
                 {
-                    temp.setPlayerName("I. ZAMORANO");
+                    temp.setName("I. ZAMORANO");
                     temp.setShirtName("ZAMORANO");
                 }
                 if (temp.getId() == 264184)
                 {
-                    temp.setPlayerName("G. WEAH");
+                    temp.setName("G. WEAH");
                     temp.setShirtName("WEAH");
                 }
+                applyPlayerPersister(i, temp);
+                UpdateTeamView(temp.getId(), temp.getName());
+                UpdateFormPlayer(i, temp.getName());
             }
-
-            UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
-            updatePlayerList(Form1._Form1.giocatoreView);
         }
 
-        //globalFunction
-        public void upperTeams(ListBox l1, ComboBox t1, ComboBox t2)
+        public void ExportPlayer(ushort id, string shirtName)
         {
-            foreach (Team temp in getListTeam())
+            int block = 192;
+
+            byte[] Byte_array_Export;
+            leggiGiocatori.BaseStream.Position = (Form1._Form1.playersBox.SelectedIndex * block);
+            Byte_array_Export = leggiGiocatori.ReadBytes(block);
+            string Nombre_archivo = (id + ("_"
+                        + (shirtName + ".exported")));
+
+            //Setup OpenFileDialog
+            FolderBrowserDialog ofd = new FolderBrowserDialog();
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                temp.setEnglish(temp.getEnglish().ToUpper());
-                if (temp.getNational())
+                FileStream Stream_a_exportar = new FileStream(ofd.SelectedPath + @"\" + Nombre_archivo, FileMode.OpenOrCreate);
+                Stream_a_exportar.Write(Byte_array_Export, 0, Byte_array_Export.Length);
+                Stream_a_exportar.Close();
+                MessageBox.Show(shirtName + " Succesfully Exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        public void ImportPlayer()
+        {
+            int block = 192;
+            UInt32 player_check = 0;
+
+            OpenFileDialog OpenPes = new OpenFileDialog();
+            OpenPes.Title = "Open Exported Player";
+            OpenPes.Filter = "*.exported (*.exported)|*.exported";
+            OpenPes.Multiselect = true;
+
+            if (OpenPes.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+                int number_of_files = OpenPes.FileNames.Count();
+                foreach (string archivo in OpenPes.FileNames) 
                 {
-                    //japanese
-                    National temp2 = (National)temp;
-                    temp2.setJapanese(temp.getJapanese().ToUpper());
-                    //spanish
-                    temp2.setSpanish(temp2.getSpanish().ToUpper());
-                    //greek
-                    temp2.setGreek(temp2.getGreek().ToUpper());
-                    //latin america
-                    temp2.setLatinAmericaSpanish(temp2.getLatinAmericaSpanish().ToUpper());
-                    //french
-                    temp2.setFrench(temp2.getFrench().ToUpper());
-                    //turkish
-                    temp2.setTurkish(temp2.getTurkish().ToUpper());
-                    //portuguese
-                    temp2.setPortuguese(temp2.getPortuguese().ToUpper());
-                    //german
-                    temp2.setGerman(temp2.getGerman().ToUpper());
-                    //BrazilianPortuguese
-                    temp2.setBrazilianPortuguese(temp2.getBrazilianPortuguese().ToUpper());
-                    //dutch
-                    temp2.setDutch(temp2.getDutch().ToUpper());
-                    //swedish
-                    temp2.setSwedish(temp2.getSwedish().ToUpper());
-                    //italian
-                    temp2.setItalian(temp2.getItalian().ToUpper());
-                    //russian
-                    temp2.setRussian(temp2.getRussian().ToUpper());
-                    //englih us
-                    temp2.setEnglishUS(temp2.getEnglishUS().ToUpper());
+                    string NombreSinPath = Path.GetFileNameWithoutExtension(archivo);
+                    string Id = "";
+                    foreach (char val in NombreSinPath.ToCharArray()) {
+                        if ((val == '_')) {
+                            break;
+                        }
+                        else {
+                            Id = (Id + val);
+                        }
+            
+                    }
+        
+                    UInt32 ID_A_IMPORTAR = Convert.ToUInt32(Id);
+                    FileStream stream_a_importar = new FileStream(archivo, FileMode.Open, FileAccess.Read);
+                    BinaryReader Leer_archivo = new BinaryReader(stream_a_importar);
+                    leggiGiocatori.BaseStream.Position = 0;
+                    for (int i = 0; (i  <= ((unzlibGiocatori.Length / block) - 1)); i++) 
+                    {
+                        leggiGiocatori.BaseStream.Position += 8;
+
+                        if (bitRecognized == 0)
+                            player_check = leggiGiocatori.ReadUInt32();
+                        else if (bitRecognized == 1 || bitRecognized == 2)
+                            player_check = UnzlibZlibConsole.swaps.swap32(leggiGiocatori.ReadUInt32());
+
+                        if ((player_check == ID_A_IMPORTAR)) {
+                            leggiGiocatori.BaseStream.Position -= 12;
+                            byte[] Byte_array = Leer_archivo.ReadBytes(block);
+                            scriviGiocatori.Write(Byte_array, 0, Byte_array.Length);
+                            Form1._Form1.playersBox.SelectedIndex = i;
+                            break;
+                        }
+                        leggiGiocatori.BaseStream.Position -= 12;
+                        leggiGiocatori.BaseStream.Position = (leggiGiocatori.BaseStream.Position + block);
+                    }
                 }
+                MessageBox.Show("Player(s) imported succesfully", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            UpdateTeamList(l1, t1, t2);
         }
 
-        public void lowerTeams(ListBox l1, ComboBox t1, ComboBox t2)
+        public void exportPlayerApp(ushort id, string shirtName)
         {
-            foreach (Team temp in getListTeam())
+            byte[] Byte_array_Export;
+            leggiPlayerApp.BaseStream.Position = 0;
+
+            UInt32 player_check = 0;
+            if (bitRecognized == 0)
+                player_check = leggiPlayerApp.ReadUInt32();
+            else if (bitRecognized == 1 || bitRecognized == 2)
+                player_check = UnzlibZlibConsole.swaps.swap32(leggiPlayerApp.ReadUInt32());
+
+            while (player_check != id)
             {
-                temp.setEnglish(temp.getEnglish().ToLower());
-                if (temp.getNational())
+                if (leggiPlayerApp.BaseStream.Position == unzlibPlayerApp.Length - 56)
                 {
-                    //japanese
-                    National temp2 = (National)temp;
-                    temp2.setJapanese(temp.getJapanese().ToLower());
-                    //spanish
-                    temp2.setSpanish(temp2.getSpanish().ToLower());
-                    //greek
-                    temp2.setGreek(temp2.getGreek().ToLower());
-                    //latin america
-                    temp2.setLatinAmericaSpanish(temp2.getLatinAmericaSpanish().ToLower());
-                    //french
-                    temp2.setFrench(temp2.getFrench().ToLower());
-                    //turkish
-                    temp2.setTurkish(temp2.getTurkish().ToLower());
-                    //portuguese
-                    temp2.setPortuguese(temp2.getPortuguese().ToLower());
-                    //german
-                    temp2.setGerman(temp2.getGerman().ToLower());
-                    //BrazilianPortuguese
-                    temp2.setBrazilianPortuguese(temp2.getBrazilianPortuguese().ToLower());
-                    //dutch
-                    temp2.setDutch(temp2.getDutch().ToLower());
-                    //swedish
-                    temp2.setSwedish(temp2.getSwedish().ToLower());
-                    //italian
-                    temp2.setItalian(temp2.getItalian().ToLower());
-                    //russian
-                    temp2.setRussian(temp2.getRussian().ToLower());
-                    //englih us
-                    temp2.setEnglishUS(temp2.getEnglishUS().ToLower());
+                    MessageBox.Show("No playerAppareance present in the file", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
+                else
+                    leggiPlayerApp.BaseStream.Position += 56;
+
+                if (bitRecognized == 0)
+                    player_check = leggiPlayerApp.ReadUInt32();
+                else if (bitRecognized == 1 || bitRecognized == 2)
+                    player_check = UnzlibZlibConsole.swaps.swap32(leggiPlayerApp.ReadUInt32());
             }
-            UpdateTeamList(l1, t1, t2);
+
+            leggiPlayerApp.BaseStream.Position -= 4;
+            Byte_array_Export = leggiPlayerApp.ReadBytes(60);
+            string Nombre_archivo = id + "_" + shirtName + "_appareance" + ".exported_app";
+
+            //Setup OpenFileDialog
+            FolderBrowserDialog ofd = new FolderBrowserDialog();
+            //Run open file dialog
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                FileStream Stream_a_exportar = new FileStream(ofd.SelectedPath + @"\" + Nombre_archivo, FileMode.OpenOrCreate);
+                Stream_a_exportar.Write(Byte_array_Export, 0, Byte_array_Export.Length);
+                Stream_a_exportar.Close();
+                MessageBox.Show(shirtName + " Succesfully Exported", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
-        public void firstUpTeams(ListBox l1, ComboBox t1, ComboBox t2)
+        public void importPlayerApp()
         {
-            foreach (Team temp in getListTeam())
+            UInt32 player_check = 0;
+
+            OpenFileDialog OpenPes = new OpenFileDialog();
+            OpenPes.Title = "Open A Exported Player Appareance";
+            OpenPes.Filter = "*.exported_app (*.exported_app)|*.exported_app";
+            OpenPes.Multiselect = true;
+
+            if ((OpenPes.ShowDialog() == System.Windows.Forms.DialogResult.OK))
             {
-                //english name
-                string stringa = "";
-                foreach (string x in temp.getEnglish().Split())
-                {
-                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
+                int number_of_files = OpenPes.FileNames.Count();
+                foreach (string archivo in OpenPes.FileNames) {
+                    string NombreSinPath = Path.GetFileNameWithoutExtension(archivo);
+                    string Id = "";
+                    foreach (char val in NombreSinPath.ToCharArray()) {
+                        if ((val == '_')) {
+                            break;
+                        }
+                        else {
+                            Id = (Id + val);
+                        }
+            
+                    }
+        
+                    UInt32 ID_A_IMPORTAR = Convert.ToUInt32(Id);
+                    FileStream stream_a_importar = new FileStream(archivo, FileMode.Open, FileAccess.Read);
+                    BinaryReader Leer_archivo = new BinaryReader(stream_a_importar);
+                    leggiPlayerApp.BaseStream.Position = 0;
+                    for (int i = 0; i  <= unzlibPlayerApp.Length / 60 - 1; i++) {
+
+                        if (bitRecognized == 0)
+                            player_check = leggiGiocatori.ReadUInt32();
+                        else if (bitRecognized == 1 || bitRecognized == 2)
+                            player_check = UnzlibZlibConsole.swaps.swap32(leggiPlayerApp.ReadUInt32());
+
+                        if ((player_check == ID_A_IMPORTAR)) {
+                            leggiPlayerApp.BaseStream.Position -= 4;
+                            byte[] Byte_array = Leer_archivo.ReadBytes(60);
+                            scriviPlayerApp.Write(Byte_array, 0, Byte_array.Length);
+                            Form1._Form1.playersBox.SelectedIndex = i;
+                            break;
+                        }
+
+                        leggiPlayerApp.BaseStream.Position += 56;
+                    }
+        
                 }
-                temp.setEnglish(stringa.Trim());
-                if (temp.getNational())
-                {
-                    //japanese
-                    stringa = "";
-                    National temp2 = (National)temp;
-                    foreach (string x in temp2.getJapanese().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setJapanese(stringa.Trim());
-                    //spanish
-                    stringa = "";
-                    foreach (string x in temp2.getSpanish().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setSpanish(stringa.Trim());
-                    //greek
-                    stringa = "";
-                    foreach (string x in temp2.getGreek().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setGreek(stringa.Trim());
-                    //latin america
-                    stringa = "";
-                    foreach (string x in temp2.getLatinAmericaSpanish().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setLatinAmericaSpanish(stringa.Trim());
-                    //french
-                    stringa = "";
-                    foreach (string x in temp2.getFrench().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setFrench(stringa.Trim());
-                    //turkish
-                    stringa = "";
-                    foreach (string x in temp2.getTurkish().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setTurkish(stringa.Trim());
-                    //portuguese
-                    stringa = "";
-                    foreach (string x in temp2.getPortuguese().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setPortuguese(stringa.Trim());
-                    //german
-                    stringa = "";
-                    foreach (string x in temp2.getGerman().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setGerman(stringa.Trim());
-                    //BrazilianPortuguese
-                    stringa = "";
-                    foreach (string x in temp2.getBrazilianPortuguese().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setBrazilianPortuguese(stringa.Trim());
-                    //dutch
-                    stringa = "";
-                    foreach (string x in temp2.getDutch().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setDutch(stringa.Trim());
-                    //swedish
-                    stringa = "";
-                    foreach (string x in temp2.getSwedish().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setSwedish(stringa.Trim());
-                    //italian
-                    stringa = "";
-                    foreach (string x in temp2.getItalian().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setItalian(stringa.Trim());
-                    //russian
-                    stringa = "";
-                    foreach (string x in temp2.getRussian().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setRussian(stringa.Trim());
-                    //englih us
-                    stringa = "";
-                    foreach (string x in temp2.getEnglishUS().Split())
-                    {
-                        stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                    }
-                    temp2.setEnglishUS(stringa.Trim());
-                }
+
+                MessageBox.Show("Player(s) imported succesfully", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
-            UpdateTeamList(l1, t1, t2);
-        }
-
-        public void upperPlayers(ListView l1, ComboBox t1, ComboBox t2)
-        {
-            foreach (Player temp in getListPlayer())
-            {
-                temp.setPlayerName(temp.getPlayerName().ToUpper());
-            }
-            updatePlayerList(l1);
-            UpdateForm(t1, t2);
-        }
-
-        public void lowerPlayers(ListView l1, ComboBox t1, ComboBox t2)
-        {
-            foreach (Player temp in getListPlayer())
-            {
-                temp.setPlayerName(temp.getPlayerName().ToLower());
-            }
-            updatePlayerList(l1);
-            UpdateForm(t1, t2);
-        }
-
-        public void firstUpPlayers(ListView l1, ComboBox t1, ComboBox t2)
-        {
-            foreach (Player temp in getListPlayer())
-            {
-                string stringa = "";
-                foreach (string x in temp.getPlayerName().Split())
-                {
-                    stringa += x.ToUpper().Substring(0, 1) + x.ToLower().Substring(1) + " ";
-                }
-                temp.setPlayerName(stringa.Trim());
-            }
-            updatePlayerList(l1);
-            UpdateForm(t1, t2);
-        }
-
-        //fm form
-        public Country getCountryFm(Fm temp2)
-        {
-            Country country = null;
-            foreach (Country x in getListCountry())
-            {
-                if (x.getNationFm().ToUpper() == temp2.getNation().ToUpper())
-                    country = x;
-            }
-
-            return country;
         }
 
     }

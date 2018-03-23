@@ -94,100 +94,6 @@ namespace DinoTem
                 fuildFormation.Text = "Fluid Formation - OFF";
         }
 
-        //Caricare Campi
-        private void Caricare_Campi()
-        {
-            //aggiungere schemi
-            schemes.Items.Add("Default");
-            schemes.Items.Add("4-5-1");
-            schemes.Items.Add("4-4-2");
-            schemes.Items.Add("4-3-3");
-            schemes.Items.Add("3-5-2");
-            schemes.Items.Add("3-4-3");
-            schemes.Items.Add("5-4-1");
-            schemes.Items.Add("5-3-2");
-
-            //aggiungere posizioni
-            position.Items.Add("GK");
-            position.Items.Add("CB");
-            position.Items.Add("RB");
-            position.Items.Add("LB");
-            position.Items.Add("DMF");
-            position.Items.Add("CMF");
-            position.Items.Add("LMF");
-            position.Items.Add("RMF");
-            position.Items.Add("AMF");
-            position.Items.Add("LWF");
-            position.Items.Add("RWF");
-            position.Items.Add("SS");
-            position.Items.Add("CF");
-        }
-
-        private ListViewItem Leggere_GiocatoreSquadre(PlayerAssignment pAssignment)
-        {
-            ListViewItem item = new ListViewItem();
-            Player temp2 = (Player)controller.getPlayerById(pAssignment.getPlayerId());
-
-            item = new ListViewItem((pAssignment.getOrder() + 1).ToString());
-            item.SubItems.Add(temp2.getStringPosition());
-            item.SubItems.Add(temp2.getStringPosition());
-            item.SubItems.Add(temp2.getStringPosition());
-            item.SubItems.Add(temp2.getPlayerName());
-            item.SubItems.Add(pAssignment.getShirtNumber().ToString());
-
-            if (pAssignment.getOrder() <= 10)
-            {
-                capitain.Items.Add(temp2.getPlayerName());
-                penaltyKT.Items.Add(temp2.getPlayerName());
-                longFT.Items.Add(temp2.getPlayerName());
-                leftCK.Items.Add(temp2.getPlayerName());
-                shortFT.Items.Add(temp2.getPlayerName());
-                rightCK.Items.Add(temp2.getPlayerName());
-            }
-
-            if (pAssignment.getRightCornerKick())
-                rightCK.Text = temp2.getPlayerName();
-
-            if (pAssignment.getPenaltyKick())
-                penaltyKT.Text = temp2.getPlayerName();
-
-            if (pAssignment.getLongShotLk())
-                longFT.Text = temp2.getPlayerName();
-
-            if (pAssignment.getLeftCkTk())
-                leftCK.Text = temp2.getPlayerName();
-
-            if (pAssignment.getShortFoulFk())
-                shortFT.Text = temp2.getPlayerName();
-
-            if (pAssignment.getCaptain())
-                capitain.Text = temp2.getPlayerName();
-
-            return item;
-        }
-
-        private void Leggere_Formazioni(List<TacticsFormation> position, ListView list)
-        {
-            int k = 0;
-            foreach (TacticsFormation temp in position)
-            {
-                if (k <= 10)
-                {
-                    list.Items[k].SubItems[1].Text = temp.getStringPosition();
-                }
-                if (k > 10 & k <= 21)
-                {
-                    list.Items[k - 11].SubItems[2].Text = temp.getStringPosition();
-                }
-                if (k > 21 & k <= 32)
-                {
-                    list.Items[k - 22].SubItems[3].Text = temp.getStringPosition();
-                }
-                k++;
-            }
-            schemes.SelectedIndex = 0;
-        }
-
         private void sfondoTeamView()
         {
             try
@@ -197,12 +103,12 @@ namespace DinoTem
                 int NumberOfRepetitions5 = Convert.ToInt32(10);
                 for (i5 = 0; i5 <= NumberOfRepetitions5; i5++)
                 {
-                    teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[4].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i5].SubItems[5].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView1.Items[i5].SubItems[0].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[4].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i5].SubItems[5].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView1.Items[0].UseItemStyleForSubItems = false;
                 }
             }
@@ -261,7 +167,7 @@ namespace DinoTem
                 int NumberOfRepetitions6a = Convert.ToInt32(10);
                 for (i6a = 0; i6a <= NumberOfRepetitions6a; i6a++)
                 {
-                    teamView1.Items[i6a].SubItems[1].BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
+                    teamView1.Items[i6a].SubItems[1].BackColor = System.Drawing.Color.FromArgb(12, 143, 80);
                     teamView1.Items[i6a].UseItemStyleForSubItems = false;
                 }
 
@@ -274,29 +180,229 @@ namespace DinoTem
             catch { }
         }
 
+        //Caricare Campi
+        private void Caricare_Campi()
+        {
+            //aggiungere schemi
+            schemes.Items.Add("Default");
+            schemes.Items.Add("4-5-1");
+            schemes.Items.Add("4-4-2");
+            schemes.Items.Add("4-3-3");
+            schemes.Items.Add("3-5-2");
+            schemes.Items.Add("3-4-3");
+            schemes.Items.Add("5-4-1");
+            schemes.Items.Add("5-3-2");
+
+            //aggiungere posizioni
+            position.Items.Add("GK");
+            position.Items.Add("CB");
+            position.Items.Add("RB");
+            position.Items.Add("LB");
+            position.Items.Add("DMF");
+            position.Items.Add("CMF");
+            position.Items.Add("LMF");
+            position.Items.Add("RMF");
+            position.Items.Add("AMF");
+            position.Items.Add("LWF");
+            position.Items.Add("RWF");
+            position.Items.Add("SS");
+            position.Items.Add("CF");
+
+            attackFewMedMany.Items.Add("0");
+            attackFewMedMany.Items.Add("1");
+            attackFewMedMany.Items.Add("2");
+
+            defenseFewMedMany.Items.Add("0");
+            defenseFewMedMany.Items.Add("1");
+            defenseFewMedMany.Items.Add("2");
+
+            defensiveLine.Items.Add("0");
+            defensiveLine.Items.Add("1");
+            defensiveLine.Items.Add("2");
+            defensiveLine.Items.Add("3");
+            defensiveLine.Items.Add("4");
+            defensiveLine.Items.Add("5");
+            defensiveLine.Items.Add("6");
+            defensiveLine.Items.Add("7");
+            defensiveLine.Items.Add("8");
+            defensiveLine.Items.Add("9");
+            defensiveLine.Items.Add("10");
+
+            supportRange.Items.Add("0");
+            supportRange.Items.Add("1");
+            supportRange.Items.Add("2");
+            supportRange.Items.Add("3");
+            supportRange.Items.Add("4");
+            supportRange.Items.Add("5");
+            supportRange.Items.Add("6");
+            supportRange.Items.Add("7");
+            supportRange.Items.Add("8");
+            supportRange.Items.Add("9");
+            supportRange.Items.Add("10");
+
+            compactness.Items.Add("0");
+            compactness.Items.Add("1");
+            compactness.Items.Add("2");
+            compactness.Items.Add("3");
+            compactness.Items.Add("4");
+            compactness.Items.Add("5");
+            compactness.Items.Add("6");
+            compactness.Items.Add("7");
+            compactness.Items.Add("8");
+            compactness.Items.Add("9");
+            compactness.Items.Add("10");
+        }
+
+        private ListViewItem Leggere_GiocatoreSquadre(PlayerAssignment pAssignment)
+        {
+            ListViewItem item = new ListViewItem();
+            Player temp2 = controller.leggiGiocatoreById(pAssignment.getPlayerId());
+
+            item = new ListViewItem((pAssignment.getOrder() + 1).ToString());
+            item.SubItems.Add(temp2.getStringPosition());
+            item.SubItems.Add(temp2.getStringPosition());
+            item.SubItems.Add(temp2.getStringPosition());
+            item.SubItems.Add(temp2.getName());
+            item.SubItems.Add(pAssignment.getShirtNumber().ToString());
+            item.SubItems.Add(pAssignment.getEntryId().ToString());
+            item.SubItems.Add(pAssignment.getCaptain().ToString());
+            item.SubItems.Add(pAssignment.getLeftCkTk().ToString());
+            item.SubItems.Add(pAssignment.getLongShotLk().ToString());
+            item.SubItems.Add(pAssignment.getPenaltyKick().ToString());
+            item.SubItems.Add(pAssignment.getRightCornerKick().ToString());
+            item.SubItems.Add(pAssignment.getShortFoulFk().ToString());
+            item.SubItems.Add(pAssignment.getPlayerId().ToString());
+
+            if (pAssignment.getOrder() <= 10)
+            {
+                capitain.Items.Add(temp2.getName());
+                penaltyKT.Items.Add(temp2.getName());
+                longFT.Items.Add(temp2.getName());
+                leftCK.Items.Add(temp2.getName());
+                shortFT.Items.Add(temp2.getName());
+                rightCK.Items.Add(temp2.getName());
+            }
+
+            if (pAssignment.getRightCornerKick() == 1)
+                rightCK.SelectedIndex = rightCK.Items.Count - 1;
+
+            if (pAssignment.getPenaltyKick() == 1)
+                penaltyKT.SelectedIndex = rightCK.Items.Count - 1;
+
+            if (pAssignment.getLongShotLk() == 1)
+                longFT.SelectedIndex = rightCK.Items.Count - 1;
+
+            if (pAssignment.getLeftCkTk() == 1)
+                leftCK.SelectedIndex = rightCK.Items.Count - 1;
+
+            if (pAssignment.getShortFoulFk() == 1)
+                shortFT.SelectedIndex = rightCK.Items.Count - 1;
+
+            if (pAssignment.getCaptain() == 1)
+                capitain.SelectedIndex = rightCK.Items.Count - 1;
+
+            return item;
+        }
+
+        private void LeggereFormazioni(List<TacticsFormation> position, ListView list)
+        {
+            int k = 0;
+            foreach (TacticsFormation temp in position)
+            {
+                if (k <= 10)
+                {
+                    list.Items[k].SubItems[1].Text = temp.getStringPosition();
+                }
+                if (k > 10 & k <= 21)
+                {
+                    list.Items[k - 11].SubItems[2].Text = temp.getStringPosition();
+                }
+                if (k > 21 & k <= 32)
+                {
+                    list.Items[k - 22].SubItems[3].Text = temp.getStringPosition();
+                }
+                k++;
+            }
+        }
+
+        private void loadTactics(Tactics t)
+        {
+            if (t.getBuildUp() == 1)
+                buildUp.Checked = true;
+            else
+                buildUp.Checked = false;
+
+            if (t.getDefensiveStyle() == 1)
+                defensiveStyle.Checked = true;
+            else
+                defensiveStyle.Checked = false;
+
+            if (t.getAttackingArea() == 1)
+                attackingArea.Checked = true;
+            else
+                attackingArea.Checked = false;
+
+            if (t.getContainmentArea() == 1)
+                containmentArea.Checked = true;
+            else
+                containmentArea.Checked = false;
+
+            if (t.getPressuring() == 1)
+                pressuring.Checked = true;
+            else
+                pressuring.Checked = false;
+
+            if (t.getAttackingStyle() == 1)
+                attackingStyle.Checked = true;
+            else
+                attackingStyle.Checked = false;
+
+            if (t.getFluidFormation() == 1)
+                fuildFormation.Checked = true;
+            else
+                fuildFormation.Checked = false;
+
+            if (t.getPositioning() == 1)
+                positioning.Checked = true;
+            else
+                positioning.Checked = false;
+
+            attackFewMedMany.SelectedIndex = t.getAttackingNumbers();
+            defenseFewMedMany.SelectedIndex = t.getDefendingNumbers();
+            defensiveLine.SelectedIndex = t.getDefensiveLine();
+            supportRange.SelectedIndex = t.getSupportRange();
+            compactness.SelectedIndex = t.getCompactness();
+        }
+
         private void Formazione_Load(object sender, EventArgs e)
         {
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 
+            this.Name += " " + team.getEnglish();
+
             Caricare_Campi();
 
-            //caricare giocatori nella squadra
-            List<PlayerAssignment> SortedList = controller.getPlayersTeam(this.team.getId());
-            SortedList.Sort((x, y) => x.getOrder().CompareTo(y.getOrder()));
-            foreach (PlayerAssignment temp2 in SortedList)
+            teamView1.Items.Clear();
+
+            List<PlayerAssignment> list = controller.leggiGiocatoriSquadra(team.getId());
+            foreach (PlayerAssignment temp2 in list)
             {
-                teamView1.Items.Add(Leggere_GiocatoreSquadre(temp2)); //Add this row to the ListView
+                teamView1.Items.Add(Leggere_GiocatoreSquadre(temp2));
             }
 
-            //caricare posizioni giocatori
-            List<TacticsFormation> position = controller.getPositionTeam(controller.getNumberFormation(this.team.getId())[0]);
-            foreach (int x in controller.getNumberFormation(this.team.getId())) {
-                numberFormation.Items.Add(x);
+            List<Tactics> tactics = controller.leggiTattica(team.getId());
+            foreach (Tactics x in tactics)
+            {
+                numberFormation.Items.Add(x.getTacticsId());
             }
+            loadTactics(tactics[0]);
+
+            List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
+            LeggereFormazioni(tacticsFormation, teamView1);
+
             //selezionare numero tattica
-            if (numberFormation.Items.Count > 0)
-                numberFormation.SelectedIndex = 0;
-            Leggere_Formazioni(position, teamView1);
+            schemes.SelectedIndex = 0;
+            numberFormation.SelectedIndex = 0;
 
             sfondoTeamView();
         }
@@ -487,7 +593,7 @@ namespace DinoTem
 
         private void Formazione_FormClosed(object sender, FormClosedEventArgs e)
         {
-            controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
+            //controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
         }
 
         //spostare giocatori con un click
@@ -830,86 +936,48 @@ namespace DinoTem
             mouseMove(player9, e);
         }
 
-        private void player1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                MouseDownLocation = e.Location;
-        }
-
-        private void player1_MouseMove(object sender, MouseEventArgs e)
-        {
-            mouseMove(player1, e);
-        }
-
-        private void player12_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                MouseDownLocation = e.Location;
-        }
-
-        private void player12_MouseMove(object sender, MouseEventArgs e)
-        {
-            mouseMove(player12, e);
-        }
-
-        private void player23_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-                MouseDownLocation = e.Location;
-        }
-
-        private void player23_MouseMove(object sender, MouseEventArgs e)
-        {
-            mouseMove(player23, e);
-        }
-
         //gameplan
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (tabControl1.SelectedTab == tabControl1.TabPages["Custom"])//your specific tabname
             {
                 player1.ForeColor = System.Drawing.Color.Yellow;
-                position.Text = teamView1.Items[0].SubItems[1].Text;
                 int i6 = 0;
                 int NumberOfRepetitions6 = Convert.ToInt32(10);
                 for (i6 = 0; i6 <= NumberOfRepetitions6; i6++)
                 {
-                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
-                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(12, 143, 80);
+                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView1.Items[i6].UseItemStyleForSubItems = false;
                 }
             }
             else if (tabControl1.SelectedTab == tabControl1.TabPages["Offensive"])//your specific tabname
             {
                 player12.ForeColor = System.Drawing.Color.Yellow;
-                position.Text = teamView1.Items[0].SubItems[2].Text;
                 int i6 = 0;
                 int NumberOfRepetitions6 = Convert.ToInt32(10);
                 for (i6 = 0; i6 <= NumberOfRepetitions6; i6++)
                 {
-                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
-                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(12, 143, 80);
+                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView1.Items[i6].UseItemStyleForSubItems = false;
                 }
             }
             else if (tabControl1.SelectedTab == tabControl1.TabPages["Defensive"])//your specific tabname
             {
                 player23.ForeColor = System.Drawing.Color.Yellow;
-                position.Text = teamView1.Items[0].SubItems[3].Text;
                 int i6 = 0;
                 int NumberOfRepetitions6 = Convert.ToInt32(10);
                 for (i6 = 0; i6 <= NumberOfRepetitions6; i6++)
                 {
-                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
-                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
-                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(183, 215, 254);
+                    teamView1.Items[i6].SubItems[3].BackColor = System.Drawing.Color.FromArgb(12, 143, 80);
+                    teamView1.Items[i6].SubItems[2].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
+                    teamView1.Items[i6].SubItems[1].BackColor = System.Drawing.Color.FromArgb(59, 177, 68);
                     teamView1.Items[i6].UseItemStyleForSubItems = false;
                 }
             }
-            //impostare tattica predefinita
-            leggiSchemi();
             //resettare altri tabpages
             player1.ForeColor = System.Drawing.Color.White;
             player2.ForeColor = System.Drawing.Color.White;
@@ -972,17 +1040,17 @@ namespace DinoTem
         {
             if (tabControl1.SelectedTab == tabControl1.TabPages["Custom"])
             {
-                controller.schemiPitch(int.Parse(numberFormation.Text), schemes.Text, 0, player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11);
+                controller.schemiPitch(ushort.Parse(numberFormation.Text), schemes.Text, 0, player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11);
                 controller.numeriMagliaPitch(teamView1, player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11);
             }
             else if (tabControl1.SelectedTab == tabControl1.TabPages["Offensive"])
             {
-                controller.schemiPitch(int.Parse(numberFormation.Text), schemes.Text, 1, player12, player13, player14, player15, player16, player17, player18, player19, player20, player21, player22);
+                controller.schemiPitch(ushort.Parse(numberFormation.Text), schemes.Text, 1, player12, player13, player14, player15, player16, player17, player18, player19, player20, player21, player22);
                 controller.numeriMagliaPitch(teamView1, player12, player13, player14, player15, player16, player17, player18, player19, player20, player21, player22);
             }
             else if (tabControl1.SelectedTab == tabControl1.TabPages["Defensive"])
             {
-                controller.schemiPitch(int.Parse(numberFormation.Text), schemes.Text, 2, player23, player24, player25, player26, player27, player28, player29, player30, player31, player32, player33);
+                controller.schemiPitch(ushort.Parse(numberFormation.Text), schemes.Text, 2, player23, player24, player25, player26, player27, player28, player29, player30, player31, player32, player33);
                 controller.numeriMagliaPitch(teamView1, player23, player24, player25, player26, player27, player28, player29, player30, player31, player32, player33);
             }
         }
@@ -990,7 +1058,8 @@ namespace DinoTem
         //Schemi
         private void schemi_SelectedIndexChanged(object sender, EventArgs e)
         {
-            leggiSchemi();
+            if (numberFormation.SelectedIndex != -1)
+                leggiSchemi();
         }
 
         private void teamView1_SelectedIndexChanged(object sender, EventArgs e)
@@ -1483,39 +1552,83 @@ namespace DinoTem
 
         private void numberFormation_SelectedIndexChanged(object sender, EventArgs e)
         {
-            leggiSchemi();
-        }
+            schemes.SelectedIndex = 0;
+            for (int i = 2; i >= 0; i--)
+            {
+                TabPage t = tabControl1.TabPages[i];
+                tabControl1.SelectedTab = t;
+                leggiSchemi();
+            }
+            loadTactics(controller.leggiTattica(team.getId())[numberFormation.SelectedIndex]);
 
-        //apply formation
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (tabControl1.SelectedTab == tabControl1.TabPages["Custom"])
-                controller.changeFormation(int.Parse(numberFormation.Text), 0, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
-            player13, player14, player15, player16, player17, player18, player19, player20, player21, player22,
-            player24, player25, player26, player27, player28, player29, player30, player31, player32, player33);
-            else if (tabControl1.SelectedTab == tabControl1.TabPages["Offensive"])
-                controller.changeFormation(int.Parse(numberFormation.Text), 1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
-            player13, player14, player15, player16, player17, player18, player19, player20, player21, player22,
-            player24, player25, player26, player27, player28, player29, player30, player31, player32, player33);
-            else if (tabControl1.SelectedTab == tabControl1.TabPages["Defensive"])
-                controller.changeFormation(int.Parse(numberFormation.Text), 2, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
-            player13, player14, player15, player16, player17, player18, player19, player20, player21, player22,
-            player24, player25, player26, player27, player28, player29, player30, player31, player32, player33);
+            List<TacticsFormation> tacticsFormation = controller.leggiFormazione(ushort.Parse(numberFormation.Text));
+            LeggereFormazioni(tacticsFormation, teamView1);
         }
 
         //Accept (Save)
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //apply formation
+            controller.changeFormation(ushort.Parse(numberFormation.Text), 0, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
+            player13, player14, player15, player16, player17, player18, player19, player20, player21, player22,
+            player24, player25, player26, player27, player28, player29, player30, player31, player32, player33, teamView1);
+
+            controller.changeFormation(ushort.Parse(numberFormation.Text), 1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
+            player13, player14, player15, player16, player17, player18, player19, player20, player21, player22,
+            player24, player25, player26, player27, player28, player29, player30, player31, player32, player33, teamView1);
+
+            controller.changeFormation(ushort.Parse(numberFormation.Text), 2, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11,
+            player13, player14, player15, player16, player17, player18, player19, player20, player21, player22,
+            player24, player25, player26, player27, player28, player29, player30, player31, player32, player33, teamView1);
+
+            Tactics tac = new Tactics(team.getId(), ushort.Parse(numberFormation.Text));
+            if (attackingArea.Checked == true)
+                tac.setAttackingArea(1);
+            else
+                tac.setAttackingArea(0);
+            tac.setAttackingNumbers(ushort.Parse(attackFewMedMany.Text));
+            if (attackingStyle.Checked == true)
+                tac.setAttackingStyle(1);
+            else
+                tac.setAttackingStyle(0);
+            if (buildUp.Checked == true)
+                tac.setBuildUp(1);
+            else
+                tac.setBuildUp(0);
+            tac.setCompactness(ushort.Parse(compactness.Text));
+            if (containmentArea.Checked == true)
+                tac.setContainmentArea(1);
+            else
+                tac.setContainmentArea(0);
+            tac.setDefendingNumbers(ushort.Parse(defenseFewMedMany.Text));
+            tac.setDefensiveLine(ushort.Parse(defensiveLine.Text));
+            if (defensiveStyle.Checked == true)
+                tac.setDefensiveStyle(1);
+            else
+                tac.setDefensiveStyle(0);
+            if (fuildFormation.Checked == true)
+                tac.setFluidFormation(1);
+            else
+                tac.setFluidFormation(0);
+            if (positioning.Checked == true)
+                tac.setPositioning(1);
+            else
+                tac.setPositioning(0);
+            if (pressuring.Checked == true)
+                tac.setPressuring(1);
+            else
+                tac.setPressuring(0);
+            tac.setSupportRange(ushort.Parse(supportRange.Text));
+
+            controller.applyTacticsPersister(tac);
+        }
+
+        //accept
         private void button4_Click(object sender, EventArgs e)
         {
-            if (tabControl1.SelectedTab == tabControl1.TabPages["Custom"])
-                controller.applyTeam(int.Parse(numberFormation.Text), 1, teamView1);
-            else if (tabControl1.SelectedTab == tabControl1.TabPages["Offensive"])
-                controller.applyTeam(int.Parse(numberFormation.Text), 2, teamView1);
-            else if (tabControl1.SelectedTab == tabControl1.TabPages["Defensive"])
-                controller.applyTeam(int.Parse(numberFormation.Text), 3, teamView1);
+            controller.transferPlayerFormatione(teamView1, team.getId());
+            controller.UpdateForm(team.getId(), teamView1);
 
-            controller.changeShooters(team, capitain.SelectedIndex, penaltyKT.SelectedIndex,
-            longFT.SelectedIndex, leftCK.SelectedIndex, shortFT.SelectedIndex, rightCK.SelectedIndex);
-            controller.UpdateForm(Form1._Form1.teamBox1, Form1._Form1.teamBox2);
             this.Close();
         }
 
@@ -1563,45 +1676,8 @@ namespace DinoTem
             e.Effect = DragDropEffects.Copy;
         }
 
-        public void updateKickers(int intselectedindex, int dropIndex)
+        public void updateKickers()
         {
-            int indexCapitain = capitain.SelectedIndex;
-            int indexPenaltyKT = penaltyKT.SelectedIndex;
-            int indexLongFT = longFT.SelectedIndex;
-            int indexLeftCK = leftCK.SelectedIndex;
-            int indexShortFT = shortFT.SelectedIndex;
-            int indexRightCK = rightCK.SelectedIndex;
-
-            if (intselectedindex == indexCapitain && dropIndex <= 10)
-                indexCapitain = dropIndex;
-            else if (intselectedindex == indexCapitain && dropIndex > 10)
-                indexCapitain = intselectedindex;
-
-            if (intselectedindex == indexPenaltyKT && dropIndex <= 10)
-                indexPenaltyKT = dropIndex;
-            else if (intselectedindex == indexPenaltyKT && dropIndex > 10)
-                indexPenaltyKT = intselectedindex;
-
-            if (intselectedindex == indexLongFT && dropIndex <= 10)
-                indexLongFT = dropIndex;
-            else if (intselectedindex == indexLongFT && dropIndex > 10)
-                indexLongFT = intselectedindex;
-
-            if (intselectedindex == indexLeftCK && dropIndex <= 10)
-                indexLeftCK = dropIndex;
-            else if (intselectedindex == indexLeftCK && dropIndex > 10)
-                indexLeftCK = intselectedindex;
-
-            if (intselectedindex == indexShortFT && dropIndex <= 10)
-                indexShortFT = dropIndex;
-            else if (intselectedindex == indexShortFT && dropIndex > 10)
-                indexShortFT = intselectedindex;
-
-            if (intselectedindex == indexRightCK && dropIndex <= 10)
-                indexRightCK = dropIndex;
-            else if (intselectedindex == indexRightCK && dropIndex > 10)
-                indexRightCK = intselectedindex;
-
             capitain.Items.Clear();
             penaltyKT.Items.Clear();
             longFT.Items.Clear();
@@ -1616,16 +1692,25 @@ namespace DinoTem
                 leftCK.Items.Add(teamView1.Items[i].SubItems[4].Text);
                 shortFT.Items.Add(teamView1.Items[i].SubItems[4].Text);
                 rightCK.Items.Add(teamView1.Items[i].SubItems[4].Text);
-            }
-            capitain.SelectedIndex = indexCapitain;
-            penaltyKT.SelectedIndex = indexPenaltyKT;
-            longFT.SelectedIndex = indexLongFT;
-            leftCK.SelectedIndex = indexLeftCK;
-            shortFT.SelectedIndex = indexShortFT;
-            rightCK.SelectedIndex = indexRightCK;
 
-            controller.changeShooters(team, capitain.SelectedIndex, penaltyKT.SelectedIndex,
-            longFT.SelectedIndex, leftCK.SelectedIndex, shortFT.SelectedIndex, rightCK.SelectedIndex);
+                if (teamView1.Items[i].SubItems[10].Text == "1")
+                    rightCK.Text = teamView1.Items[i].SubItems[4].Text;
+
+                if (teamView1.Items[i].SubItems[9].Text == "1")
+                    penaltyKT.Text = teamView1.Items[i].SubItems[4].Text;
+
+                if (teamView1.Items[i].SubItems[12].Text == "1")
+                    longFT.Text = teamView1.Items[i].SubItems[4].Text;
+
+                if (teamView1.Items[i].SubItems[8].Text == "1")
+                    leftCK.Text = teamView1.Items[i].SubItems[4].Text;
+
+                if (teamView1.Items[i].SubItems[11].Text == "1")
+                    shortFT.Text = teamView1.Items[i].SubItems[4].Text;
+
+                if (teamView1.Items[i].SubItems[7].Text == "1")
+                    capitain.Text = teamView1.Items[i].SubItems[4].Text;
+            }
         }
 
         private void teamView1_DragDrop(object sender, DragEventArgs e)
@@ -1646,13 +1731,16 @@ namespace DinoTem
                     string player2 = teamView1.Items[dropIndex].SubItems[4].Text;
                     string number1 = teamView1.Items[intselectedindex].SubItems[5].Text;
                     string number2 = teamView1.Items[dropIndex].SubItems[5].Text;
+                    string id1 = teamView1.Items[intselectedindex].SubItems[13].Text;
+                    string id2 = teamView1.Items[dropIndex].SubItems[13].Text;
                     teamView1.Items[intselectedindex].SubItems[4].Text = player2;
                     teamView1.Items[dropIndex].SubItems[4].Text = player1;
                     teamView1.Items[intselectedindex].SubItems[5].Text = number2;
                     teamView1.Items[dropIndex].SubItems[5].Text = number1;
+                    teamView1.Items[intselectedindex].SubItems[13].Text = id2;
+                    teamView1.Items[dropIndex].SubItems[13].Text = id1;
 
-                    controller.transferPlayerAtoA(intselectedindex, dropIndex, team.getId(), Form1._Form1.teamBox1, Form1._Form1.teamBox2);
-                    updateKickers(intselectedindex, dropIndex);
+                    updateKickers();
                 }
             }
         }

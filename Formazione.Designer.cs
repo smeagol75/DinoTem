@@ -118,7 +118,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.cancel = new System.Windows.Forms.Button();
             this.accept = new System.Windows.Forms.Button();
-            this.applyFormation = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.Custom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -410,8 +410,6 @@
             this.player1.Text = "99";
             this.player1.UseVisualStyleBackColor = false;
             this.player1.Click += new System.EventHandler(this.player1_Click);
-            this.player1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player1_MouseDown);
-            this.player1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player1_MouseMove);
             // 
             // pictureBox2
             // 
@@ -628,8 +626,6 @@
             this.player12.Text = "99";
             this.player12.UseVisualStyleBackColor = false;
             this.player12.Click += new System.EventHandler(this.player12_Click);
-            this.player12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player12_MouseDown);
-            this.player12.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player12_MouseMove);
             // 
             // pictureBox1
             // 
@@ -846,8 +842,6 @@
             this.player23.Text = "99";
             this.player23.UseVisualStyleBackColor = false;
             this.player23.Click += new System.EventHandler(this.player23_Click);
-            this.player23.MouseDown += new System.Windows.Forms.MouseEventHandler(this.player23_MouseDown);
-            this.player23.MouseMove += new System.Windows.Forms.MouseEventHandler(this.player23_MouseMove);
             // 
             // pictureBox3
             // 
@@ -1204,7 +1198,6 @@
             // compactness
             // 
             this.compactness.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.compactness.Enabled = false;
             this.compactness.FormattingEnabled = true;
             this.compactness.Location = new System.Drawing.Point(11, 202);
             this.compactness.Name = "compactness";
@@ -1215,7 +1208,6 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Enabled = false;
             this.label12.Location = new System.Drawing.Point(8, 185);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(71, 13);
@@ -1225,7 +1217,6 @@
             // supportRange
             // 
             this.supportRange.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.supportRange.Enabled = false;
             this.supportRange.FormattingEnabled = true;
             this.supportRange.Location = new System.Drawing.Point(11, 159);
             this.supportRange.Name = "supportRange";
@@ -1236,7 +1227,6 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Enabled = false;
             this.label11.Location = new System.Drawing.Point(8, 142);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(79, 13);
@@ -1246,7 +1236,6 @@
             // defensiveLine
             // 
             this.defensiveLine.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.defensiveLine.Enabled = false;
             this.defensiveLine.FormattingEnabled = true;
             this.defensiveLine.Location = new System.Drawing.Point(11, 118);
             this.defensiveLine.Name = "defensiveLine";
@@ -1257,7 +1246,6 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Enabled = false;
             this.label10.Location = new System.Drawing.Point(8, 101);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 13);
@@ -1267,7 +1255,6 @@
             // attackFewMedMany
             // 
             this.attackFewMedMany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.attackFewMedMany.Enabled = false;
             this.attackFewMedMany.FormattingEnabled = true;
             this.attackFewMedMany.Location = new System.Drawing.Point(10, 77);
             this.attackFewMedMany.Name = "attackFewMedMany";
@@ -1278,7 +1265,6 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Enabled = false;
             this.label9.Location = new System.Drawing.Point(7, 60);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(169, 13);
@@ -1288,7 +1274,6 @@
             // defenseFewMedMany
             // 
             this.defenseFewMedMany.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.defenseFewMedMany.Enabled = false;
             this.defenseFewMedMany.FormattingEnabled = true;
             this.defenseFewMedMany.Location = new System.Drawing.Point(9, 36);
             this.defenseFewMedMany.Name = "defenseFewMedMany";
@@ -1299,7 +1284,6 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Enabled = false;
             this.label8.Location = new System.Drawing.Point(6, 19);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(178, 13);
@@ -1308,8 +1292,12 @@
             // 
             // cancel
             // 
-            this.cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.cancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancel.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.cancel.FlatAppearance.BorderSize = 0;
+            this.cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1318,13 +1306,17 @@
             this.cancel.Size = new System.Drawing.Size(111, 29);
             this.cancel.TabIndex = 126;
             this.cancel.Text = "Cancel";
-            this.cancel.UseVisualStyleBackColor = true;
+            this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.button5_Click);
             // 
             // accept
             // 
-            this.accept.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.accept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.accept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.accept.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.accept.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.accept.FlatAppearance.BorderSize = 0;
+            this.accept.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.accept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.accept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accept.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.accept.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -1333,30 +1325,34 @@
             this.accept.Size = new System.Drawing.Size(111, 29);
             this.accept.TabIndex = 125;
             this.accept.Text = "Accept";
-            this.accept.UseVisualStyleBackColor = true;
+            this.accept.UseVisualStyleBackColor = false;
             this.accept.Click += new System.EventHandler(this.button4_Click);
             // 
-            // applyFormation
+            // button1
             // 
-            this.applyFormation.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.applyFormation.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
-            this.applyFormation.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.applyFormation.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.applyFormation.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.applyFormation.Location = new System.Drawing.Point(802, 544);
-            this.applyFormation.Name = "applyFormation";
-            this.applyFormation.Size = new System.Drawing.Size(111, 29);
-            this.applyFormation.TabIndex = 127;
-            this.applyFormation.Text = "Apply Formation";
-            this.applyFormation.UseVisualStyleBackColor = true;
-            this.applyFormation.Click += new System.EventHandler(this.button1_Click);
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.Location = new System.Drawing.Point(801, 544);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(111, 29);
+            this.button1.TabIndex = 127;
+            this.button1.Text = "Apply Formation";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Formazione
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 662);
-            this.Controls.Add(this.applyFormation);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.cancel);
             this.Controls.Add(this.accept);
             this.Controls.Add(this.groupBox3);
@@ -1370,6 +1366,7 @@
             this.Controls.Add(this.teamView1);
             this.Controls.Add(this.schemes);
             this.Controls.Add(this.label13);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Formazione";
@@ -1485,6 +1482,6 @@
         private System.Windows.Forms.Button player23;
         private System.Windows.Forms.Button cancel;
         private System.Windows.Forms.Button accept;
-        private System.Windows.Forms.Button applyFormation;
+        private System.Windows.Forms.Button button1;
     }
 }

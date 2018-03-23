@@ -15,7 +15,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             {
                 if (int.Parse(label.Text) < 75)
                 {
-                    label.BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
+                    label.BackColor = System.Drawing.Color.Transparent;
                 }
                 if (int.Parse(label.Text) >= 75 & int.Parse(label.Text) < 80)
                 {
@@ -36,7 +36,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             }
             catch
             {
-                label.BackColor = System.Drawing.Color.FromArgb(93, 156, 233);
+                label.BackColor = System.Drawing.Color.Transparent;
             }
         }
 
@@ -125,8 +125,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             }
         }
 
-        private static int lastItm = 0;
-        private static int player = 0;
+        /*private static int lastItm = 0;
         public static void giocatoreSearch(ListView giocatoreView, TextBox search)
         {
                 int col = 0;
@@ -174,12 +173,17 @@ namespace Team_Editor_Manager_New_Generation.ui
                 if (search.Name == "searchPlayer")
                     player = lastItm;
         }
+        */
 
         private static int lastItm2 = 0;
         private static int ball = 0;
         private static int team = 0;
         private static int stadium = 0;
         private static int fmPlayer = 0;
+        private static int player = 0;
+        private static int coach = 0;
+        private static int boot = 0;
+        private static int glove = 0;
         public static void listBoxSearch(ListBox listbox, TextBox search)
         {
             int col = 0;
@@ -194,6 +198,14 @@ namespace Team_Editor_Manager_New_Generation.ui
                 lastItm2 = team;
             else if (search.Name == "searchStadium")
                 lastItm2 = stadium;
+            else if (search.Name == "searchPlayer")
+                lastItm2 = player;
+            else if (search.Name == "searchCoach")
+                lastItm2 = coach;
+            else if (search.Name == "searchBoot")
+                lastItm2 = boot;
+            else if (search.Name == "searchGlove")
+                lastItm2 = glove;
 
             for (int colAll = col; colAll < colCount; colAll++)
             {
@@ -232,6 +244,14 @@ namespace Team_Editor_Manager_New_Generation.ui
                 team = lastItm2;
             else if (search.Name == "searchStadium")
                 stadium = lastItm2;
+            else if (search.Name == "searchPlayer")
+                player = lastItm2;
+            else if (search.Name == "searchCoach")
+                coach = lastItm2;
+            else if (search.Name == "searchBoot")
+                boot = lastItm2;
+            else if (search.Name == "searchGlove")
+                glove = lastItm2;
         }
 
         private static int lastItm3 = 0;
@@ -298,7 +318,6 @@ namespace Team_Editor_Manager_New_Generation.ui
         public static void resetField()
         {
             player = 0;
-
             ball = 0;
             team = 0;
             stadium = 0;

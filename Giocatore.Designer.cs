@@ -212,6 +212,7 @@
             this.accept = new System.Windows.Forms.Button();
             this.cancel = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.skinNull = new System.Windows.Forms.PictureBox();
             this.skin6 = new System.Windows.Forms.PictureBox();
             this.skin5 = new System.Windows.Forms.PictureBox();
             this.skin4 = new System.Windows.Forms.PictureBox();
@@ -228,6 +229,8 @@
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.starIndicator = new System.Windows.Forms.NumericUpDown();
             this.label43 = new System.Windows.Forms.Label();
+            this.addBootRelink = new System.Windows.Forms.Button();
+            this.addGloveRelink = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -237,6 +240,7 @@
             this.groupBox19.SuspendLayout();
             this.groupBox23.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skinNull)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin4)).BeginInit();
@@ -299,8 +303,8 @@
             // 
             // wonGoldenBall
             // 
-            this.wonGoldenBall.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.wonGoldenBall.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.wonGoldenBall.AutoSize = true;
             this.wonGoldenBall.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.wonGoldenBall.Location = new System.Drawing.Point(10, 419);
@@ -313,7 +317,7 @@
             // japaneseName
             // 
             this.japaneseName.Location = new System.Drawing.Point(94, 88);
-            this.japaneseName.MaxLength = 22;
+            this.japaneseName.MaxLength = 44;
             this.japaneseName.Name = "japaneseName";
             this.japaneseName.Size = new System.Drawing.Size(137, 20);
             this.japaneseName.TabIndex = 129;
@@ -329,8 +333,8 @@
             // 
             // hiddenPlayer
             // 
-            this.hiddenPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.hiddenPlayer.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.hiddenPlayer.AutoSize = true;
             this.hiddenPlayer.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.hiddenPlayer.Location = new System.Drawing.Point(10, 396);
@@ -344,8 +348,8 @@
             // 
             this.characterS1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.characterS1.FlatAppearance.BorderSize = 0;
-            this.characterS1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.characterS1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.characterS1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.characterS1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.characterS1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.characterS1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.characterS1.Image = ((System.Drawing.Image)(resources.GetObject("characterS1.Image")));
@@ -361,8 +365,8 @@
             this.fakeButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.fakeButton.Enabled = false;
             this.fakeButton.FlatAppearance.BorderSize = 0;
-            this.fakeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.fakeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.fakeButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.fakeButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.fakeButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.fakeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.fakeButton.Image = ((System.Drawing.Image)(resources.GetObject("fakeButton.Image")));
@@ -613,7 +617,7 @@
             // shirtName
             // 
             this.shirtName.Location = new System.Drawing.Point(94, 110);
-            this.shirtName.MaxLength = 15;
+            this.shirtName.MaxLength = 44;
             this.shirtName.Name = "shirtName";
             this.shirtName.Size = new System.Drawing.Size(137, 20);
             this.shirtName.TabIndex = 11;
@@ -630,7 +634,7 @@
             // playerName
             // 
             this.playerName.Location = new System.Drawing.Point(94, 65);
-            this.playerName.MaxLength = 22;
+            this.playerName.MaxLength = 44;
             this.playerName.Name = "playerName";
             this.playerName.Size = new System.Drawing.Size(113, 20);
             this.playerName.TabIndex = 9;
@@ -649,6 +653,7 @@
             this.playerId.Location = new System.Drawing.Point(94, 19);
             this.playerId.MaxLength = 8;
             this.playerId.Name = "playerId";
+            this.playerId.ReadOnly = true;
             this.playerId.Size = new System.Drawing.Size(65, 20);
             this.playerId.TabIndex = 7;
             this.playerId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
@@ -724,6 +729,7 @@
             this.physical.Name = "physical";
             this.physical.Size = new System.Drawing.Size(35, 20);
             this.physical.TabIndex = 105;
+            this.physical.TextChanged += new System.EventHandler(this.physical_TextChanged);
             this.physical.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label44
@@ -769,6 +775,7 @@
             this.reflexes.Name = "reflexes";
             this.reflexes.Size = new System.Drawing.Size(35, 20);
             this.reflexes.TabIndex = 100;
+            this.reflexes.TextChanged += new System.EventHandler(this.reflexes_TextChanged);
             this.reflexes.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // clearing
@@ -778,6 +785,7 @@
             this.clearing.Name = "clearing";
             this.clearing.Size = new System.Drawing.Size(35, 20);
             this.clearing.TabIndex = 99;
+            this.clearing.TextChanged += new System.EventHandler(this.clearing_TextChanged);
             this.clearing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // cathing
@@ -787,6 +795,7 @@
             this.cathing.Name = "cathing";
             this.cathing.Size = new System.Drawing.Size(35, 20);
             this.cathing.TabIndex = 98;
+            this.cathing.TextChanged += new System.EventHandler(this.cathing_TextChanged);
             this.cathing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // coverage
@@ -796,6 +805,7 @@
             this.coverage.Name = "coverage";
             this.coverage.Size = new System.Drawing.Size(35, 20);
             this.coverage.TabIndex = 97;
+            this.coverage.TextChanged += new System.EventHandler(this.coverage_TextChanged);
             this.coverage.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label26
@@ -814,6 +824,7 @@
             this.goalkeeping.Name = "goalkeeping";
             this.goalkeeping.Size = new System.Drawing.Size(35, 20);
             this.goalkeeping.TabIndex = 95;
+            this.goalkeeping.TextChanged += new System.EventHandler(this.goalkeeping_TextChanged);
             this.goalkeeping.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // stamina
@@ -823,6 +834,7 @@
             this.stamina.Name = "stamina";
             this.stamina.Size = new System.Drawing.Size(35, 20);
             this.stamina.TabIndex = 94;
+            this.stamina.TextChanged += new System.EventHandler(this.stamina_TextChanged);
             this.stamina.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // jump
@@ -832,6 +844,7 @@
             this.jump.Name = "jump";
             this.jump.Size = new System.Drawing.Size(35, 20);
             this.jump.TabIndex = 93;
+            this.jump.TextChanged += new System.EventHandler(this.jump_TextChanged);
             this.jump.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // BodyControl
@@ -841,6 +854,7 @@
             this.BodyControl.Name = "BodyControl";
             this.BodyControl.Size = new System.Drawing.Size(35, 20);
             this.BodyControl.TabIndex = 92;
+            this.BodyControl.TextChanged += new System.EventHandler(this.BodyControll_TextChanged);
             this.BodyControl.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // explosivePower
@@ -850,6 +864,7 @@
             this.explosivePower.Name = "explosivePower";
             this.explosivePower.Size = new System.Drawing.Size(35, 20);
             this.explosivePower.TabIndex = 91;
+            this.explosivePower.TextChanged += new System.EventHandler(this.explosivePower_TextChanged);
             this.explosivePower.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // speed
@@ -859,6 +874,7 @@
             this.speed.Name = "speed";
             this.speed.Size = new System.Drawing.Size(35, 20);
             this.speed.TabIndex = 90;
+            this.speed.TextChanged += new System.EventHandler(this.speed_TextChanged);
             this.speed.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // kickingPower
@@ -868,6 +884,7 @@
             this.kickingPower.Name = "kickingPower";
             this.kickingPower.Size = new System.Drawing.Size(35, 20);
             this.kickingPower.TabIndex = 89;
+            this.kickingPower.TextChanged += new System.EventHandler(this.kickingPower_TextChanged);
             this.kickingPower.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // ballWinning
@@ -877,6 +894,7 @@
             this.ballWinning.Name = "ballWinning";
             this.ballWinning.Size = new System.Drawing.Size(35, 20);
             this.ballWinning.TabIndex = 88;
+            this.ballWinning.TextChanged += new System.EventHandler(this.ballWinning_TextChanged);
             this.ballWinning.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // defense
@@ -886,6 +904,7 @@
             this.defense.Name = "defense";
             this.defense.Size = new System.Drawing.Size(35, 20);
             this.defense.TabIndex = 87;
+            this.defense.TextChanged += new System.EventHandler(this.defense_TextChanged);
             this.defense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // header
@@ -895,6 +914,7 @@
             this.header.Name = "header";
             this.header.Size = new System.Drawing.Size(35, 20);
             this.header.TabIndex = 86;
+            this.header.TextChanged += new System.EventHandler(this.header_TextChanged);
             this.header.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // swerve
@@ -904,6 +924,7 @@
             this.swerve.Name = "swerve";
             this.swerve.Size = new System.Drawing.Size(35, 20);
             this.swerve.TabIndex = 85;
+            this.swerve.TextChanged += new System.EventHandler(this.swerve_TextChanged);
             this.swerve.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // placeKick
@@ -913,6 +934,7 @@
             this.placeKick.Name = "placeKick";
             this.placeKick.Size = new System.Drawing.Size(35, 20);
             this.placeKick.TabIndex = 84;
+            this.placeKick.TextChanged += new System.EventHandler(this.placeKick_TextChanged);
             this.placeKick.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // finishing
@@ -922,6 +944,7 @@
             this.finishing.Name = "finishing";
             this.finishing.Size = new System.Drawing.Size(35, 20);
             this.finishing.TabIndex = 83;
+            this.finishing.TextChanged += new System.EventHandler(this.finishing_TextChanged);
             this.finishing.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // loftedPass
@@ -931,6 +954,7 @@
             this.loftedPass.Name = "loftedPass";
             this.loftedPass.Size = new System.Drawing.Size(35, 20);
             this.loftedPass.TabIndex = 82;
+            this.loftedPass.TextChanged += new System.EventHandler(this.loftedPass_TextChanged);
             this.loftedPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // lowPass
@@ -940,6 +964,7 @@
             this.lowPass.Name = "lowPass";
             this.lowPass.Size = new System.Drawing.Size(35, 20);
             this.lowPass.TabIndex = 81;
+            this.lowPass.TextChanged += new System.EventHandler(this.lowPass_TextChanged);
             this.lowPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // dribbling
@@ -949,6 +974,7 @@
             this.dribbling.Name = "dribbling";
             this.dribbling.Size = new System.Drawing.Size(35, 20);
             this.dribbling.TabIndex = 80;
+            this.dribbling.TextChanged += new System.EventHandler(this.dribbling_TextChanged);
             this.dribbling.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // ballControll
@@ -958,6 +984,7 @@
             this.ballControll.Name = "ballControll";
             this.ballControll.Size = new System.Drawing.Size(35, 20);
             this.ballControll.TabIndex = 79;
+            this.ballControll.TextChanged += new System.EventHandler(this.ballControll_TextChanged);
             this.ballControll.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // attack
@@ -967,6 +994,7 @@
             this.attack.Name = "attack";
             this.attack.Size = new System.Drawing.Size(35, 20);
             this.attack.TabIndex = 78;
+            this.attack.TextChanged += new System.EventHandler(this.attack_TextChanged);
             this.attack.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
             // 
             // label25
@@ -1170,8 +1198,8 @@
             // 
             // label95
             // 
-            this.label95.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label95.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label95.AutoSize = true;
             this.label95.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label95.Location = new System.Drawing.Point(23, 158);
@@ -1182,8 +1210,8 @@
             // 
             // CF
             // 
-            this.CF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.CF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.CF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CF.FormattingEnabled = true;
@@ -1194,8 +1222,8 @@
             // 
             // label92
             // 
-            this.label92.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label92.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label92.AutoSize = true;
             this.label92.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label92.Location = new System.Drawing.Point(153, 132);
@@ -1206,8 +1234,8 @@
             // 
             // SS
             // 
-            this.SS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.SS.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.SS.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.SS.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SS.FormattingEnabled = true;
@@ -1218,8 +1246,8 @@
             // 
             // label93
             // 
-            this.label93.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label93.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label93.AutoSize = true;
             this.label93.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label93.Location = new System.Drawing.Point(87, 131);
@@ -1230,8 +1258,8 @@
             // 
             // RWF
             // 
-            this.RWF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.RWF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.RWF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RWF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RWF.FormattingEnabled = true;
@@ -1242,8 +1270,8 @@
             // 
             // label94
             // 
-            this.label94.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label94.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label94.AutoSize = true;
             this.label94.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label94.Location = new System.Drawing.Point(22, 131);
@@ -1254,8 +1282,8 @@
             // 
             // LWF
             // 
-            this.LWF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.LWF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.LWF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LWF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LWF.FormattingEnabled = true;
@@ -1266,8 +1294,8 @@
             // 
             // label89
             // 
-            this.label89.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label89.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label89.AutoSize = true;
             this.label89.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label89.Location = new System.Drawing.Point(153, 105);
@@ -1278,8 +1306,8 @@
             // 
             // RMF
             // 
-            this.RMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.RMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.RMF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RMF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RMF.FormattingEnabled = true;
@@ -1290,8 +1318,8 @@
             // 
             // label90
             // 
-            this.label90.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label90.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label90.AutoSize = true;
             this.label90.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label90.Location = new System.Drawing.Point(86, 104);
@@ -1302,8 +1330,8 @@
             // 
             // AMF
             // 
-            this.AMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.AMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.AMF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.AMF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AMF.FormattingEnabled = true;
@@ -1314,8 +1342,8 @@
             // 
             // label91
             // 
-            this.label91.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label91.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label91.AutoSize = true;
             this.label91.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label91.Location = new System.Drawing.Point(22, 104);
@@ -1326,8 +1354,8 @@
             // 
             // LMF
             // 
-            this.LMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.LMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.LMF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LMF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LMF.FormattingEnabled = true;
@@ -1338,8 +1366,8 @@
             // 
             // label86
             // 
-            this.label86.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label86.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label86.AutoSize = true;
             this.label86.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label86.Location = new System.Drawing.Point(152, 76);
@@ -1350,8 +1378,8 @@
             // 
             // CMF
             // 
-            this.CMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.CMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.CMF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CMF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CMF.FormattingEnabled = true;
@@ -1362,8 +1390,8 @@
             // 
             // label87
             // 
-            this.label87.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label87.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label87.AutoSize = true;
             this.label87.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label87.Location = new System.Drawing.Point(86, 75);
@@ -1374,8 +1402,8 @@
             // 
             // DMF
             // 
-            this.DMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.DMF.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.DMF.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.DMF.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DMF.FormattingEnabled = true;
@@ -1386,8 +1414,8 @@
             // 
             // label88
             // 
-            this.label88.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label88.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label88.AutoSize = true;
             this.label88.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label88.Location = new System.Drawing.Point(25, 75);
@@ -1398,8 +1426,8 @@
             // 
             // RB
             // 
-            this.RB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.RB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.RB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.RB.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RB.FormattingEnabled = true;
@@ -1410,8 +1438,8 @@
             // 
             // label85
             // 
-            this.label85.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label85.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label85.AutoSize = true;
             this.label85.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label85.Location = new System.Drawing.Point(154, 46);
@@ -1422,8 +1450,8 @@
             // 
             // LB
             // 
-            this.LB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.LB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.LB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.LB.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LB.FormattingEnabled = true;
@@ -1434,8 +1462,8 @@
             // 
             // label84
             // 
-            this.label84.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label84.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label84.AutoSize = true;
             this.label84.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label84.Location = new System.Drawing.Point(90, 46);
@@ -1446,8 +1474,8 @@
             // 
             // CB
             // 
-            this.CB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.CB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.CB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CB.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CB.FormattingEnabled = true;
@@ -1458,8 +1486,8 @@
             // 
             // label83
             // 
-            this.label83.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label83.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label83.AutoSize = true;
             this.label83.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label83.Location = new System.Drawing.Point(26, 46);
@@ -1470,8 +1498,8 @@
             // 
             // GK
             // 
-            this.GK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.GK.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.GK.BackColor = System.Drawing.SystemColors.Window;
             this.GK.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.GK.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -1502,8 +1530,8 @@
             // 
             // groupBox21
             // 
-            this.groupBox21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox21.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox21.Controls.Add(this.superSub);
             this.groupBox21.Controls.Add(this.captaincy);
             this.groupBox21.Controls.Add(this.hellTrick);
@@ -1542,8 +1570,8 @@
             // 
             // superSub
             // 
-            this.superSub.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.superSub.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.superSub.AutoSize = true;
             this.superSub.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.superSub.Location = new System.Drawing.Point(18, 462);
@@ -1555,8 +1583,8 @@
             // 
             // captaincy
             // 
-            this.captaincy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.captaincy.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.captaincy.AutoSize = true;
             this.captaincy.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.captaincy.Location = new System.Drawing.Point(18, 482);
@@ -1568,8 +1596,8 @@
             // 
             // hellTrick
             // 
-            this.hellTrick.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.hellTrick.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.hellTrick.AutoSize = true;
             this.hellTrick.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.hellTrick.Location = new System.Drawing.Point(18, 427);
@@ -1581,8 +1609,8 @@
             // 
             // trackBack
             // 
-            this.trackBack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.trackBack.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.trackBack.AutoSize = true;
             this.trackBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.trackBack.Location = new System.Drawing.Point(18, 445);
@@ -1594,8 +1622,8 @@
             // 
             // flipFlap
             // 
-            this.flipFlap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.flipFlap.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.flipFlap.AutoSize = true;
             this.flipFlap.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.flipFlap.Location = new System.Drawing.Point(18, 338);
@@ -1607,8 +1635,8 @@
             // 
             // rabona
             // 
-            this.rabona.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.rabona.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.rabona.AutoSize = true;
             this.rabona.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.rabona.Location = new System.Drawing.Point(18, 356);
@@ -1620,8 +1648,8 @@
             // 
             // longRangeDrive
             // 
-            this.longRangeDrive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.longRangeDrive.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.longRangeDrive.AutoSize = true;
             this.longRangeDrive.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.longRangeDrive.Location = new System.Drawing.Point(18, 321);
@@ -1633,8 +1661,8 @@
             // 
             // heading
             // 
-            this.heading.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.heading.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.heading.AutoSize = true;
             this.heading.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.heading.Location = new System.Drawing.Point(18, 410);
@@ -1646,8 +1674,8 @@
             // 
             // lowPuntTrajectory
             // 
-            this.lowPuntTrajectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lowPuntTrajectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.lowPuntTrajectory.AutoSize = true;
             this.lowPuntTrajectory.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.lowPuntTrajectory.Location = new System.Drawing.Point(18, 304);
@@ -1659,8 +1687,8 @@
             // 
             // pinpointCrossing
             // 
-            this.pinpointCrossing.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.pinpointCrossing.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.pinpointCrossing.AutoSize = true;
             this.pinpointCrossing.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.pinpointCrossing.Location = new System.Drawing.Point(18, 287);
@@ -1672,8 +1700,8 @@
             // 
             // sombrero
             // 
-            this.sombrero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.sombrero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.sombrero.AutoSize = true;
             this.sombrero.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.sombrero.Location = new System.Drawing.Point(18, 393);
@@ -1685,8 +1713,8 @@
             // 
             // acrobaticFinishing
             // 
-            this.acrobaticFinishing.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.acrobaticFinishing.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.acrobaticFinishing.AutoSize = true;
             this.acrobaticFinishing.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.acrobaticFinishing.Location = new System.Drawing.Point(18, 270);
@@ -1698,8 +1726,8 @@
             // 
             // weightedPass
             // 
-            this.weightedPass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.weightedPass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.weightedPass.AutoSize = true;
             this.weightedPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.weightedPass.Location = new System.Drawing.Point(18, 253);
@@ -1711,8 +1739,8 @@
             // 
             // malicia
             // 
-            this.malicia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.malicia.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.malicia.AutoSize = true;
             this.malicia.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.malicia.Location = new System.Drawing.Point(18, 374);
@@ -1724,8 +1752,8 @@
             // 
             // oneTouchPass
             // 
-            this.oneTouchPass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.oneTouchPass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.oneTouchPass.AutoSize = true;
             this.oneTouchPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.oneTouchPass.Location = new System.Drawing.Point(18, 236);
@@ -1737,8 +1765,8 @@
             // 
             // lowLoftedPass
             // 
-            this.lowLoftedPass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lowLoftedPass.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.lowLoftedPass.AutoSize = true;
             this.lowLoftedPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.lowLoftedPass.Location = new System.Drawing.Point(18, 219);
@@ -1750,8 +1778,8 @@
             // 
             // scissorsFeint
             // 
-            this.scissorsFeint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.scissorsFeint.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.scissorsFeint.AutoSize = true;
             this.scissorsFeint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.scissorsFeint.Location = new System.Drawing.Point(18, 202);
@@ -1763,8 +1791,8 @@
             // 
             // cutBehindTurn
             // 
-            this.cutBehindTurn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.cutBehindTurn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.cutBehindTurn.AutoSize = true;
             this.cutBehindTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.cutBehindTurn.Location = new System.Drawing.Point(18, 185);
@@ -1776,8 +1804,8 @@
             // 
             // gkLongThrow
             // 
-            this.gkLongThrow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.gkLongThrow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.gkLongThrow.AutoSize = true;
             this.gkLongThrow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.gkLongThrow.Location = new System.Drawing.Point(18, 168);
@@ -1789,8 +1817,8 @@
             // 
             // scothMove
             // 
-            this.scothMove.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.scothMove.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.scothMove.AutoSize = true;
             this.scothMove.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.scothMove.Location = new System.Drawing.Point(18, 151);
@@ -1802,8 +1830,8 @@
             // 
             // marseilleTurn
             // 
-            this.marseilleTurn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.marseilleTurn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.marseilleTurn.AutoSize = true;
             this.marseilleTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.marseilleTurn.Location = new System.Drawing.Point(18, 134);
@@ -1815,8 +1843,8 @@
             // 
             // outsideCurler
             // 
-            this.outsideCurler.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.outsideCurler.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.outsideCurler.AutoSize = true;
             this.outsideCurler.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.outsideCurler.Location = new System.Drawing.Point(18, 117);
@@ -1828,8 +1856,8 @@
             // 
             // manMarking
             // 
-            this.manMarking.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.manMarking.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.manMarking.AutoSize = true;
             this.manMarking.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.manMarking.Location = new System.Drawing.Point(18, 100);
@@ -1841,8 +1869,8 @@
             // 
             // longThrow
             // 
-            this.longThrow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.longThrow.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.longThrow.AutoSize = true;
             this.longThrow.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.longThrow.Location = new System.Drawing.Point(18, 83);
@@ -1854,8 +1882,8 @@
             // 
             // firstTimeShot
             // 
-            this.firstTimeShot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.firstTimeShot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.firstTimeShot.AutoSize = true;
             this.firstTimeShot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.firstTimeShot.Location = new System.Drawing.Point(18, 66);
@@ -1867,8 +1895,8 @@
             // 
             // knucleShot
             // 
-            this.knucleShot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.knucleShot.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.knucleShot.AutoSize = true;
             this.knucleShot.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.knucleShot.Location = new System.Drawing.Point(18, 49);
@@ -1880,8 +1908,8 @@
             // 
             // acrobaticClear
             // 
-            this.acrobaticClear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.acrobaticClear.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.acrobaticClear.AutoSize = true;
             this.acrobaticClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.acrobaticClear.Location = new System.Drawing.Point(18, 32);
@@ -1893,8 +1921,8 @@
             // 
             // fightingSpirit
             // 
-            this.fightingSpirit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.fightingSpirit.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.fightingSpirit.AutoSize = true;
             this.fightingSpirit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.fightingSpirit.Location = new System.Drawing.Point(18, 15);
@@ -1906,6 +1934,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.addBootRelink);
             this.groupBox4.Controls.Add(this.bootsRelink);
             this.groupBox4.Location = new System.Drawing.Point(479, 519);
             this.groupBox4.Name = "groupBox4";
@@ -1917,7 +1946,6 @@
             // bootsRelink
             // 
             this.bootsRelink.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.bootsRelink.Enabled = false;
             this.bootsRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.bootsRelink.FormattingEnabled = true;
             this.bootsRelink.Location = new System.Drawing.Point(18, 21);
@@ -1927,8 +1955,8 @@
             // 
             // groupBox22
             // 
-            this.groupBox22.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox22.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox22.Controls.Add(this.earlyCross);
             this.groupBox22.Controls.Add(this.speedingBullet);
             this.groupBox22.Controls.Add(this.incisiveRun);
@@ -2062,8 +2090,8 @@
             // 
             // label82
             // 
-            this.label82.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label82.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label82.AutoSize = true;
             this.label82.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.label82.Location = new System.Drawing.Point(14, 169);
@@ -2084,8 +2112,8 @@
             // 
             // label81
             // 
-            this.label81.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label81.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label81.AutoSize = true;
             this.label81.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.label81.Location = new System.Drawing.Point(14, 144);
@@ -2106,8 +2134,8 @@
             // 
             // label80
             // 
-            this.label80.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label80.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label80.AutoSize = true;
             this.label80.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.label80.Location = new System.Drawing.Point(13, 118);
@@ -2128,8 +2156,8 @@
             // 
             // label79
             // 
-            this.label79.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label79.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label79.AutoSize = true;
             this.label79.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.label79.Location = new System.Drawing.Point(14, 93);
@@ -2150,8 +2178,8 @@
             // 
             // label78
             // 
-            this.label78.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label78.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label78.AutoSize = true;
             this.label78.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.label78.Location = new System.Drawing.Point(13, 68);
@@ -2172,8 +2200,8 @@
             // 
             // label77
             // 
-            this.label77.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label77.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label77.AutoSize = true;
             this.label77.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.label77.Location = new System.Drawing.Point(14, 43);
@@ -2194,8 +2222,8 @@
             // 
             // label76
             // 
-            this.label76.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label76.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label76.AutoSize = true;
             this.label76.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.label76.Location = new System.Drawing.Point(14, 18);
@@ -2206,8 +2234,8 @@
             // 
             // label75
             // 
-            this.label75.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.label75.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
             this.label75.AutoSize = true;
             this.label75.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.label75.Location = new System.Drawing.Point(14, 194);
@@ -2234,8 +2262,11 @@
             // 
             // button7
             // 
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button7.FlatAppearance.BorderSize = 0;
+            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button7.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button7.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2244,13 +2275,16 @@
             this.button7.Size = new System.Drawing.Size(44, 29);
             this.button7.TabIndex = 113;
             this.button7.Text = "-";
-            this.button7.UseVisualStyleBackColor = true;
+            this.button7.UseVisualStyleBackColor = false;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // button8
             // 
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button8.FlatAppearance.BorderSize = 0;
+            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button8.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button8.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2259,13 +2293,16 @@
             this.button8.Size = new System.Drawing.Size(98, 26);
             this.button8.TabIndex = 114;
             this.button8.Text = "=";
-            this.button8.UseVisualStyleBackColor = true;
+            this.button8.UseVisualStyleBackColor = false;
             this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // button12
             // 
-            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button12.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button12.FlatAppearance.BorderSize = 0;
+            this.button12.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button12.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button12.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2274,7 +2311,7 @@
             this.button12.Size = new System.Drawing.Size(42, 29);
             this.button12.TabIndex = 115;
             this.button12.Text = "+%";
-            this.button12.UseVisualStyleBackColor = true;
+            this.button12.UseVisualStyleBackColor = false;
             this.button12.Click += new System.EventHandler(this.button12_Click);
             // 
             // adjust
@@ -2292,8 +2329,11 @@
             // 
             // button6
             // 
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2302,13 +2342,16 @@
             this.button6.Size = new System.Drawing.Size(42, 28);
             this.button6.TabIndex = 112;
             this.button6.Text = "+";
-            this.button6.UseVisualStyleBackColor = true;
+            this.button6.UseVisualStyleBackColor = false;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // button13
             // 
-            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightBlue;
-            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DodgerBlue;
+            this.button13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button13.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button13.FlatAppearance.BorderSize = 0;
+            this.button13.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.button13.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.button13.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2317,13 +2360,17 @@
             this.button13.Size = new System.Drawing.Size(44, 29);
             this.button13.TabIndex = 116;
             this.button13.Text = "-%";
-            this.button13.UseVisualStyleBackColor = true;
+            this.button13.UseVisualStyleBackColor = false;
             this.button13.Click += new System.EventHandler(this.button13_Click);
             // 
             // searchPsd
             // 
-            this.searchPsd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.searchPsd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.searchPsd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.searchPsd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.searchPsd.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.searchPsd.FlatAppearance.BorderSize = 0;
+            this.searchPsd.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.searchPsd.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.searchPsd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchPsd.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.searchPsd.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2332,13 +2379,17 @@
             this.searchPsd.Size = new System.Drawing.Size(111, 29);
             this.searchPsd.TabIndex = 119;
             this.searchPsd.Text = "Search on PSD";
-            this.searchPsd.UseVisualStyleBackColor = true;
+            this.searchPsd.UseVisualStyleBackColor = false;
             this.searchPsd.Click += new System.EventHandler(this.button1_Click);
             // 
             // psdPaste
             // 
-            this.psdPaste.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.psdPaste.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.psdPaste.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.psdPaste.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.psdPaste.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.psdPaste.FlatAppearance.BorderSize = 0;
+            this.psdPaste.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.psdPaste.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.psdPaste.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.psdPaste.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.psdPaste.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2347,13 +2398,17 @@
             this.psdPaste.Size = new System.Drawing.Size(111, 29);
             this.psdPaste.TabIndex = 120;
             this.psdPaste.Text = "Paste PSD Stats";
-            this.psdPaste.UseVisualStyleBackColor = true;
+            this.psdPaste.UseVisualStyleBackColor = false;
             this.psdPaste.Click += new System.EventHandler(this.psdPaste_Click);
             // 
             // accept
             // 
-            this.accept.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.accept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.accept.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.accept.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.accept.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.accept.FlatAppearance.BorderSize = 0;
+            this.accept.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.accept.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.accept.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.accept.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.accept.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2362,13 +2417,17 @@
             this.accept.Size = new System.Drawing.Size(111, 29);
             this.accept.TabIndex = 123;
             this.accept.Text = "Accept";
-            this.accept.UseVisualStyleBackColor = true;
+            this.accept.UseVisualStyleBackColor = false;
             this.accept.Click += new System.EventHandler(this.button4_Click);
             // 
             // cancel
             // 
-            this.cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(183)))), ((int)(((byte)(215)))), ((int)(((byte)(254)))));
-            this.cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(156)))), ((int)(((byte)(233)))));
+            this.cancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.cancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cancel.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.cancel.FlatAppearance.BorderSize = 0;
+            this.cancel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.cancel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
             this.cancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.cancel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -2377,13 +2436,14 @@
             this.cancel.Size = new System.Drawing.Size(111, 29);
             this.cancel.TabIndex = 124;
             this.cancel.Text = "Cancel";
-            this.cancel.UseVisualStyleBackColor = true;
+            this.cancel.UseVisualStyleBackColor = false;
             this.cancel.Click += new System.EventHandler(this.button5_Click);
             // 
             // groupBox5
             // 
-            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox5.Controls.Add(this.skinNull);
             this.groupBox5.Controls.Add(this.skin6);
             this.groupBox5.Controls.Add(this.skin5);
             this.groupBox5.Controls.Add(this.skin4);
@@ -2399,6 +2459,20 @@
             this.groupBox5.TabIndex = 125;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Skin Colour";
+            // 
+            // skinNull
+            // 
+            this.skinNull.BackColor = System.Drawing.Color.LightGray;
+            this.skinNull.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.skinNull.Image = ((System.Drawing.Image)(resources.GetObject("skinNull.Image")));
+            this.skinNull.InitialImage = null;
+            this.skinNull.Location = new System.Drawing.Point(62, 61);
+            this.skinNull.Name = "skinNull";
+            this.skinNull.Size = new System.Drawing.Size(40, 37);
+            this.skinNull.TabIndex = 135;
+            this.skinNull.TabStop = false;
+            this.skinNull.Visible = false;
+            this.skinNull.Click += new System.EventHandler(this.skinNull_Click);
             // 
             // skin6
             // 
@@ -2502,6 +2576,7 @@
             this.skin1.Size = new System.Drawing.Size(40, 37);
             this.skin1.TabIndex = 127;
             this.skin1.TabStop = false;
+            this.skin1.Visible = false;
             // 
             // pictureBox3
             // 
@@ -2514,6 +2589,7 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.addGloveRelink);
             this.groupBox6.Controls.Add(this.glovesRelink);
             this.groupBox6.Location = new System.Drawing.Point(479, 583);
             this.groupBox6.Name = "groupBox6";
@@ -2525,7 +2601,6 @@
             // glovesRelink
             // 
             this.glovesRelink.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.glovesRelink.Enabled = false;
             this.glovesRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.glovesRelink.FormattingEnabled = true;
             this.glovesRelink.Location = new System.Drawing.Point(18, 21);
@@ -2596,6 +2671,38 @@
             this.label43.TabIndex = 132;
             this.label43.Text = "Star Player Indicator:";
             // 
+            // addBootRelink
+            // 
+            this.addBootRelink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addBootRelink.FlatAppearance.BorderSize = 0;
+            this.addBootRelink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.addBootRelink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
+            this.addBootRelink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addBootRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.addBootRelink.Image = ((System.Drawing.Image)(resources.GetObject("addBootRelink.Image")));
+            this.addBootRelink.Location = new System.Drawing.Point(362, 22);
+            this.addBootRelink.Name = "addBootRelink";
+            this.addBootRelink.Size = new System.Drawing.Size(17, 17);
+            this.addBootRelink.TabIndex = 126;
+            this.addBootRelink.UseVisualStyleBackColor = true;
+            this.addBootRelink.Click += new System.EventHandler(this.addBootRelink_Click);
+            // 
+            // addGloveRelink
+            // 
+            this.addGloveRelink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addGloveRelink.FlatAppearance.BorderSize = 0;
+            this.addGloveRelink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.addGloveRelink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
+            this.addGloveRelink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addGloveRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.addGloveRelink.Image = ((System.Drawing.Image)(resources.GetObject("addGloveRelink.Image")));
+            this.addGloveRelink.Location = new System.Drawing.Point(362, 23);
+            this.addGloveRelink.Name = "addGloveRelink";
+            this.addGloveRelink.Size = new System.Drawing.Size(17, 17);
+            this.addGloveRelink.TabIndex = 127;
+            this.addGloveRelink.UseVisualStyleBackColor = true;
+            this.addGloveRelink.Click += new System.EventHandler(this.addGloveRelink_Click);
+            // 
             // Giocatore
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2618,6 +2725,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Giocatore";
@@ -2641,6 +2749,7 @@
             this.groupBox23.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.skinNull)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.skin4)).EndInit();
@@ -2858,5 +2967,8 @@
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.NumericUpDown starIndicator;
         private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.PictureBox skinNull;
+        private System.Windows.Forms.Button addBootRelink;
+        private System.Windows.Forms.Button addGloveRelink;
     }
 }

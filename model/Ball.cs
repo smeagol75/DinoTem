@@ -8,30 +8,24 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class Ball
     {
-        private int id;
-        private int order;
+        private UInt16 id;
+        private byte order;
         private string name;
 
-        public Ball(int id, int order, string name)
+        public Ball(UInt16 id)
         {
             if (id < 0)
                 throw new ArgumentException("Ball's id isn't valid: " + id);
-            if (order < 0)
-                throw new ArgumentException("Ball's order isn't valid - Id ball: " + getId());
-            if (name == null || name == "")
-                throw new ArgumentException("Ball's name isn't valid - Id ball: " + getId());
 
             this.id = id;
-            this.order = order;
-            this.name = name;
         }
 
-        public int getId()
+        public UInt16 getId()
         {
             return this.id;
         }
 
-        public int getOrder()
+        public byte getOrder()
         {
             return this.order;
         }
@@ -41,7 +35,7 @@ namespace DinoTem.model
             return this.name;
         }
 
-        public void setId(int id)
+        public void setId(UInt16 id)
         {
             if (id < 0)
                 throw new ArgumentException("Ball's id isn't valid: " + id);
@@ -49,7 +43,7 @@ namespace DinoTem.model
             this.id = id;
         }
 
-        public void setOrder(int order)
+        public void setOrder(byte order)
         {
             if (order < 0)
                 throw new ArgumentException("Ball's order isn't valid - Id ball: " + getId());
@@ -65,7 +59,7 @@ namespace DinoTem.model
             this.name = name;
         }
 
-        public override bool Equals(Object obj)
+        /*public override bool Equals(Object obj)
         {
             if (obj is Ball)
             {
@@ -73,7 +67,7 @@ namespace DinoTem.model
                 return getId() == c.getId();
             }
             return false;
-        }
+        }*/
 
         public override string ToString()
         {

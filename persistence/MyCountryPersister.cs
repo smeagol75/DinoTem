@@ -7,7 +7,6 @@ using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using System.Windows.Forms;
 using DinoTem.model;
 using DinoTem;
-using Team_Editor_Manager_New_Generation.persistence;
 
 namespace DinoTem.persistence
 {
@@ -15,6 +14,7 @@ namespace DinoTem.persistence
     public class MyCountryPersister
     {
         private static string PATH = "/Country.bin";
+        private static int block = 1348;
 
         private MemoryStream unzlib(string patch, int bitRecognized)
         {
@@ -35,142 +35,83 @@ namespace DinoTem.persistence
             return memory1;
         }
 
-        public List<Country> load(string patch, int bitRecognized)
+        public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
-            //leggo nazionalità
+            memory1 = unzlib(patch, bitRecognized);
+
             var result = readNationality();
             var result2 = readNation();
 
-            //leggo il file
-            List<Country> countryList = new List<Country>();
-
-            MemoryStream memory1 = unzlib(patch, bitRecognized);
-
             //Calcolo paesi
-            // Create new FileInfo object and get the Length.
-            int bytes_country = (int)memory1.Length;
-            int calcolo_paesi = bytes_country / 1348;
+            int bytesCountries = (int)memory1.Length;
+            int country = bytesCountries / block;
 
-            byte[] block;
-            byte continent;
+            if (country == 0)
+            {
+                MessageBox.Show("No countries found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
             string countryName;
+            UInt32 countryId;
             try
             {
                 // Use the memory stream in a binary reader.
-                BinaryReader reader = new BinaryReader(memory1);
+                reader = new BinaryReader(memory1);
+                int i1 = 0;
+                long START = -1348;
+                long START2 = -140;
 
-                int i2 = 0;
-                long START2 = -1348; //blocco
-                long START4 = -1344; //continent
-                long START3 = -140; //nome country
-
-                int NumberOfRepetitions2 = Convert.ToInt32(calcolo_paesi);
-                for (i2 = 1; i2 <= NumberOfRepetitions2; i2++)
+                int NumberOfRepetitions1 = Convert.ToInt32(country);
+                for (i1 = 1; i1 <= NumberOfRepetitions1; i1++)
                 {
-                    START2 += 1348;
+                    START += block;
+                    memory1.Seek(START, SeekOrigin.Begin);
+                    UInt32 Valor_imp_32 = reader.ReadUInt32();
+                    countryId = Valor_imp_32 << 13;
+                    countryId = countryId >> 23;
+
+                    START2 += block;
                     memory1.Seek(START2, SeekOrigin.Begin);
-                    block = reader.ReadBytes(4);
+                    countryName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0');
 
-                    START4 += 1348;
-                    memory1.Seek(START4, SeekOrigin.Begin);
-                    continent = reader.ReadByte();
-                            
-                    START3 += 1348;
-                    memory1.Seek(START3, SeekOrigin.Begin);
-                    countryName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(46)).TrimEnd('\0');
-
-                    string Blocco = MyBinary.Reverse32(block);
+                    Form1._Form1.stadiumCountry.Items.Add(countryName);
+                    Form1._Form1.teamCountry.Items.Add(countryName);
 
                     string mapValue;
-                    if (!result.TryGetValue(MyBinary.BinaryToInt(Blocco.Substring(13, 9)), out mapValue))
+                    if (!result.TryGetValue(countryId, out mapValue))
                         throw new ArgumentException("id not found in file Nationality.ini");
-
-                    Country f = new Country(MyBinary.BinaryToInt(Blocco.Substring(13, 9)), Continent(continent), mapValue, countryName);
+                    Form1._Form1.allenatoreNationality.Items.Add(mapValue);
+                    Form1._Form1.giocatoreNationality.Items.Add(mapValue);
 
                     string mapValue2;
-                    if (!result2.TryGetValue(MyBinary.BinaryToInt(Blocco.Substring(13, 9)), out mapValue2))
+                    if (!result2.TryGetValue(countryId, out mapValue2))
                         throw new ArgumentException("id not found in file Nation.ini");
-                    f.setNationFm(mapValue2);
-
-                    countryList.Add(f);
+                    Form1._Form1.nationalityBox.Items.Add(mapValue2);
                 }
-                Country f2 = new Country(0, "NOTHING", "No second National", "No second National");
-                f2.setNationFm("No second National");
-                countryList.Add(f2);
+                Form1._Form1.nationalityBox.Items.Add("All");
 
-                memory1.Close();
-                reader.Close();
+                writer = new BinaryWriter(memory1);
             }
             catch (IOException e)
             {
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SplashScreen._SplashScreen.Close();
             }
-
-            return countryList;
         }
 
-        private string Continent(int i)
+        private Dictionary<uint, string> readNationality()
         {
-            if (i == 2)
-            {
-                return "EUROPE";
-            }
-            else if (i == 3)
-            {
-                return "ASIA";
-            }
-            if (i == 4)
-            {
-                return "SOUTH AMERICA";
-            }
-            else if (i == 5)
-            {
-                return "AFRICA";
-            }
-            else if (i == 6)
-            {
-                return "NORTH AMERICA";
-            }
-            else if (i == 7)
-            {
-                return "OCEANIA";
-            }
-
-            return "NOTHING";
-        }
-
-        private Dictionary<int, string> readNationality()
-        {
-            var result = new Dictionary<int, string>();
+            var result = new Dictionary<uint, string>();
 
             foreach (string line in File.ReadLines(Application.StartupPath + @"\Data\Nationality.ini", Encoding.UTF8))
             {
                 string[] tokenizer = line.Split(';');
-                int id = parseInt(tokenizer[0].Trim());
+                uint id = parseUint(tokenizer[0].Trim());
 
-                if (id != -1)
+                if (id != 0)
                 {
                     string nationality = tokenizer[1].Trim();
-                    result.Add(id, nationality);
-                }
-            }
-		
-		    return result;
-        }
-
-        private Dictionary<int, string> readNation()
-        {
-            var result = new Dictionary<int, string>();
-
-            foreach (string line in File.ReadLines(Application.StartupPath + @"\Data\Nation.ini", Encoding.UTF8))
-            {
-                string[] tokenizer = line.Split(';');
-                int id = parseInt(tokenizer[0].Trim());
-
-                if (id != -1)
-                {
-                    string nationality = tokenizer[1].Replace(" ","").Trim();
                     result.Add(id, nationality);
                 }
             }
@@ -178,21 +119,91 @@ namespace DinoTem.persistence
             return result;
         }
 
-        private int parseInt(string s)
+        private Dictionary<uint, string> readNation()
+        {
+            var result = new Dictionary<uint, string>();
+
+            foreach (string line in File.ReadLines(Application.StartupPath + @"\Data\Nation.ini", Encoding.UTF8))
+            {
+                string[] tokenizer = line.Split(';');
+                uint id = parseUint(tokenizer[0].Trim());
+
+                if (id != 0)
+                {
+                    string nationality = tokenizer[1].Replace(" ", "").Trim();
+                    result.Add(id, nationality);
+                }
+            }
+
+            return result;
+        }
+
+        private uint parseUint(string s)
         {
             try
             {
-                return int.Parse(s);
+                return uint.Parse(s);
             }
-            catch {
-                return -1;
+            catch
+            {
+                return 0;
             }
         }
 
-        public void save(int bitRecognized)
+        public Country loadCountry(int index, BinaryReader reader)
         {
-            // TODO Auto-generated method stub
-        }
+            Country country = null;
 
+            UInt32 countryId;
+            string countryName;
+            string shortName;
+            UInt32 violet;
+            UInt32 blue;
+            UInt32 green;
+            byte unk;
+            byte zone;
+            try
+            {
+                reader.BaseStream.Position = index * block;
+                UInt32 Valor_imp_32 = reader.ReadUInt32();
+
+                violet = Valor_imp_32 << 1;
+                violet = violet >> 29;
+                blue = Valor_imp_32 << 4;
+                blue = blue >> 23;
+                countryId = Valor_imp_32 << 13;
+                countryId = countryId >> 23;
+                green = Valor_imp_32 << 22;
+                green = green >> 22;
+
+                reader.BaseStream.Position = index * block + 4;
+                unk = reader.ReadByte();
+
+                reader.BaseStream.Position = index * block + 5;
+                zone = reader.ReadByte();
+
+                reader.BaseStream.Position = index * block + 143;
+                countryName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(70)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index * block + 708;
+                shortName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(3));
+
+                country = new Country(countryId);
+                country.setBlue(blue);
+                country.setGreen(green);
+                country.setName(countryName);
+                country.setUnk(unk);
+                country.setViolet(violet);
+                country.setZone(zone);
+                country.setShortName(shortName);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
+            return country;
+        }
     }
 }

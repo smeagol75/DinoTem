@@ -8,10 +8,11 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class Club : Team
     {
-        private string internalShortName = null;
-	    private string latinScript = null;
-	
-	    public Club(int id) : base(id) {
+        private string internalShortName;
+	    private string latinScript;
+
+        public Club(UInt32 id) : base(id)
+        {
 	    }
 
 	    public string getInternalShortName() {

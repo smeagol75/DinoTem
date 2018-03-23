@@ -8,17 +8,17 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class Stadium
     {
-        private int id;
+        private UInt16 id;
         private string name;
 		private string japaneseName;
 		private string konamiName;
-		private int capacity;
-		private int country;
-		private int zone;
-		private int na;
-		private bool license;
+        private UInt32 capacity;
+        private UInt32 country;
+        private byte zone;
+        private UInt32 na;
+        private UInt32 license;
 
-        public Stadium(int id)
+        public Stadium(UInt16 id)
         {
             if (id < 0)
                 throw new ArgumentException("Stadium's id isn't valid: " + id);
@@ -26,7 +26,7 @@ namespace DinoTem.model
             this.id = id;
         }
 
-        public int getId()
+        public UInt16 getId()
         {
             return this.id;
         }
@@ -45,33 +45,33 @@ namespace DinoTem.model
         {
             return this.konamiName;
         }
-		
-		public int getCapacity()
+
+        public UInt32 getCapacity()
         {
             return this.capacity;
         }
-		
-		public int getCountry()
+
+        public UInt32 getCountry()
         {
             return this.country;
         }
-		
-		public int getZone()
+
+        public byte getZone()
         {
             return this.zone;
         }
-		
-		public int getNa()
+
+        public UInt32 getNa()
         {
             return this.na;
         }
-		
-		public bool getLicense()
+
+        public UInt32 getLicense()
         {
             return this.license;
         }
 
-        public void setId(int id)
+        public void setId(UInt16 id)
         {
             if (id < 0)
                 throw new ArgumentException("Stadium's id isn't valid: " + id);
@@ -102,40 +102,40 @@ namespace DinoTem.model
 
             this.konamiName = konamiName;
         }
-		
-		public void setCapacity(int capacity)
+
+        public void setCapacity(UInt32 capacity)
         {
             if (capacity < 0)
                 throw new ArgumentException("Stadium's capacity isn't valid - " + getName());
 
             this.capacity = capacity;
         }
-		
-		public void setCountry(int country)
+
+        public void setCountry(UInt32 country)
         {
             if (country < 0)
                 throw new ArgumentException("Stadium's country isn't valid - " + getName());
 
             this.country = country;
         }
-		
-		public void setZone(int zone)
+
+        public void setZone(byte zone)
         {
             if (zone < 2)
                 throw new ArgumentException("Stadium's zone isn't valid - " + getName());
 
             this.zone = zone;
         }
-		
-		public void setNa(int na)
+
+        public void setNa(UInt32 na)
         {
             if (na < 0 && na > 3)
                 throw new ArgumentException("Stadium's n/a isn't valid - " + getName());
 
             this.na = na;
         }
-		
-		public void setLicense(bool license)
+
+        public void setLicense(UInt32 license)
         {
             this.license = license;
         }
@@ -162,7 +162,15 @@ namespace DinoTem.model
             return t;
         }
 
-        public override bool Equals(Object obj)
+        public string getStringLicense()
+        {
+            if (getLicense().ToString().Equals("1"))
+                return "Licensed";
+            else
+               return "Unlicensed";
+        }
+
+        /*public override bool Equals(Object obj)
         {
             if (obj is Stadium)
             {
@@ -170,7 +178,7 @@ namespace DinoTem.model
                 return getId() == c.getId();
             }
             return false;
-        }
+        }*/
 
         public override string ToString()
         {

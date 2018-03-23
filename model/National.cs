@@ -8,23 +8,23 @@ namespace DinoTem.model
     //pes 18, pes 17
     public class National : Team
     {
-        public National(int id) : base(id)
+        public National(UInt32 id) : base(id)
         {
         }
 
-        private string greek = null;
-        private string spanish = null;
-        private string latinAmericaSpanish = null;
-        private string french = null;
-        private string turkish = null;
-        private string portuguese = null;
-        private string brazilianPortuguese = null;
-        private string german = null;
-        private string dutch = null;
-        private string swedish = null;
-        private string italian = null;
-        private string russian = null;
-        private string englishUS = null;
+        private string greek;
+        private string spanish;
+        private string latinAmericaSpanish;
+        private string french;
+        private string turkish;
+        private string portuguese;
+        private string brazilianPortuguese;
+        private string german;
+        private string dutch;
+        private string swedish;
+        private string italian;
+        private string russian;
+        private string englishUS;
 
         public string getSpanish()
         {

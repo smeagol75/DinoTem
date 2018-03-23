@@ -6,8 +6,6 @@ using System.IO;
 using System.Windows.Forms;
 using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using DinoTem.model;
-using DinoTem.ui;
-using Team_Editor_Manager_New_Generation.persistence;
 
 namespace DinoTem.persistence
 {
@@ -15,6 +13,7 @@ namespace DinoTem.persistence
     public class MyBallPersister
     {
         private static string PATH = "/Ball.bin";
+        private static int block = 140;
 
         private MemoryStream unzlib(string patch, int bitRecognized)
         {
@@ -35,52 +34,67 @@ namespace DinoTem.persistence
             return memory1;
         }
 
-        public List<Ball> load(string patch, int bitRecognized)
+        public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
-            List<Ball> ballList = new List<Ball>();
-
-            MemoryStream memory1 = unzlib(patch, bitRecognized);
+             memory1 = unzlib(patch, bitRecognized);
 
             //Calcolo palloni
             int bytes_ball = (int)memory1.Length;
-            int ball = bytes_ball / 140;
+            int ball = bytes_ball / block;
+
+            if (ball == 0)
+            {
+                MessageBox.Show("No balls found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
 
             string ballName;
-            UInt16 ballId;
-            byte order;
             try
             {
                 // Use the memory stream in a binary reader.
-                BinaryReader reader = new BinaryReader(memory1);
+                reader = new BinaryReader(memory1);
                 int i1 = 0;
                 long START2 = -136; //nome pallone
-
-                long START = -140; //id
-
-                long START3 = -138; //order
 
                 int NumberOfRepetitions1 = Convert.ToInt32(ball);
                 for (i1 = 1; i1 <= NumberOfRepetitions1; i1++)
                 {
-                    START2 += 140;
+                    START2 += block;
                     memory1.Seek(START2, SeekOrigin.Begin);
-                    ballName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(57)).TrimEnd('\0');
+                    ballName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(135)).TrimEnd('\0');
 
-                    START += 140;
-                    memory1.Seek(START, SeekOrigin.Begin);
-                    ballId = reader.ReadUInt16();
-
-                    START3 += 140;
-                    memory1.Seek(START3, SeekOrigin.Begin);
-                    order = reader.ReadByte();
-
-                    // Instantiate a new object, set it's number and
-                    // some other properties
-                    Ball pallone = new Ball(ballId, order, ballName);
-                    ballList.Add(pallone);
+                    Form1._Form1.ballsBox.Items.Add(ballName);
                 }
-                memory1.Close();
-                reader.Close();
+                writer = new BinaryWriter(memory1);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+        }
+
+        public Ball loadBall(int index, BinaryReader reader)
+        {
+            Ball pallone = null;
+
+            UInt16 ballId;
+            byte order;
+            string ballName;
+            try
+            {
+                reader.BaseStream.Position = index * block + 4;
+                ballName = System.Text.Encoding.UTF8.GetString(reader.ReadBytes(135)).TrimEnd('\0');
+
+                reader.BaseStream.Position = index * block;
+                ballId = reader.ReadUInt16();
+
+                reader.BaseStream.Position = index * block + 2;
+                order = reader.ReadByte();
+
+                pallone = new Ball(ballId);
+                pallone.setName(ballName);
+                pallone.setOrder(order);
             }
             catch (IOException e)
             {
@@ -88,89 +102,95 @@ namespace DinoTem.persistence
                 SplashScreen._SplashScreen.Close();
             }
 
-            return ballList;
+            return pallone;
         }
 
-        private void saveHex(int value, BinaryWriter b)
+        public UInt16 findIdBall(MemoryStream memory1, BinaryReader reader)
         {
-            string hex2klkoa6 = MyBinary.IntToHex(value);  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
+            UInt16 ball_index_mayor = 0;
 
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
+            int bytes_ball = (int)memory1.Length;
+            int ball = bytes_ball / block;
+
+            for (int i = 0; (i <= (ball - 1)); i++)
             {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
-
-        private void saveHexPadding(BinaryWriter b)
-        {
-            string hex2klkoa6 = "00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00";  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
-
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
-            {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
-
-        private void saveHexText(int value, BinaryWriter b)
-        {
-            string hex2klkoa6 = "00 ";
-            for (int i = value; i < 57; i++)
-            {
-                hex2klkoa6 += "00 ";
-            }
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Trim(' ').Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
-
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
-            {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
-
-        public void save(string patch, Controller controller, int bitRecognized)
-        {
-            using (BinaryWriter b = new BinaryWriter(File.Open(patch + PATH, FileMode.Create)))
-            {
-                // Use foreach and write all 12 integers.
-                foreach (Ball temp in controller.getListBall())
+                UInt16 temp_index = reader.ReadUInt16();
+                if ((temp_index >= ball_index_mayor))
                 {
-                    saveHex(temp.getId(), b);
-                    saveHex(temp.getOrder(), b);
-                    b.Write(Encoding.UTF8.GetBytes(temp.getName()));
-                    saveHexText(Encoding.UTF8.GetBytes(temp.getName()).Count(), b);
-                    saveHexPadding(b);
+                    ball_index_mayor = (ushort)(temp_index + 1);
                 }
+                reader.BaseStream.Position += block - 2;
             }
 
+            return ball_index_mayor;
+        }
+
+        public void applyBall(int selectedIndex, MemoryStream unzlib, Ball pallone, ref BinaryWriter writer)
+        {
+            int Index = (block * selectedIndex);
+            writer.BaseStream.Position = Index;
+            byte zero = 0;
+            if (Index == unzlib.Length)
+            {
+                for (int i = 0; i <= (block - 1); i++)
+                {
+                    writer.Write(zero);
+                }
+
+                writer.BaseStream.Position = Index;
+            }
+
+            UInt16 id = pallone.getId();
+            byte order = pallone.getOrder();
+            string ballName = pallone.getName();
+            writer.Write(id);
+            writer.Write(order);
+            writer.BaseStream.Position = (Index + 4);
+            for (int i = 0; i <= 134; i++)
+            {
+                writer.Write(zero);
+            }
+
+            writer.BaseStream.Position = (Index + 4);
+            writer.Write(ballName.ToCharArray());
+        }
+
+        public void addBall(ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
+        {
+            byte[] test = new byte[(int)memory1.Length + block];
+            for (int i = 0; i < test.Count() - 1; i++)
+            {
+                test[i] = 0;
+            }
+
+            byte[] temp = memory1.ToArray();
+            for (int i = 0; i < (int)memory1.Length - 1; i++)
+            {
+                test[i] = temp[i];
+            }
+
+            memory1 = new MemoryStream(test);
+            reader = new BinaryReader(memory1);
+            writer = new BinaryWriter(memory1);
+        }
+
+        public void save(string patch, ref MemoryStream memoryBall, int bitRecognized)
+        {
             if (bitRecognized == 0)
             {
                 //save zlib
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                byte[] ss13 = Zlib18.ZLIBFile(inputData13);
+                byte[] ss13 = Zlib18.ZLIBFile(memoryBall.ToArray());
                 File.WriteAllBytes(patch + PATH, ss13);
             }
             else if (bitRecognized == 1)
             {
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                MemoryStream memory1 = new MemoryStream(inputData13);
-                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memory1);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memory1, patch + PATH);
-                memory1.Close();
+                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memoryBall);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryBall, patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                MemoryStream memory1 = new MemoryStream(inputData13);
-                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memory1);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memory1, patch + PATH);
-                memory1.Close();
+                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memoryBall);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryBall, patch + PATH);
             }
         }
 

@@ -6,7 +6,6 @@ using System.IO;
 using Team_Editor_Manager_New_Generation.zlibUnzlib;
 using System.Windows.Forms;
 using DinoTem.model;
-using Team_Editor_Manager_New_Generation.persistence;
 using DinoTem.ui;
 
 namespace DinoTem.persistence
@@ -15,6 +14,7 @@ namespace DinoTem.persistence
     public class MyBallConditionPersister
     {
         private static string PATH = "/BallCondition.bin";
+        private static int block = 8;
 
         private MemoryStream unzlib(string patch, int bitRecognized)
         {
@@ -34,50 +34,72 @@ namespace DinoTem.persistence
             return memory1;
         }
 
-        public List<BallCondition> load(string patch, int bitRecognized)
+        public void load(string patch, int bitRecognized, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
-            List<BallCondition> ballConditionList = new List<BallCondition>();
+            memory1 = unzlib(patch, bitRecognized);
 
-            MemoryStream memory1 = unzlib(patch, bitRecognized);
+            int bytes_ball1 = (int)memory1.Length;
+            int ball1 = bytes_ball1 / block;
+
+            if (ball1 == 0)
+            {
+                MessageBox.Show("No balls conditions found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+
+            try
+            {
+                // Use the memory stream in a binary reader.
+                reader = new BinaryReader(memory1);
+                writer = new BinaryWriter(memory1);
+            }
+            catch (IOException e)
+            {
+                MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SplashScreen._SplashScreen.Close();
+            }
+        }
+
+        public List<BallCondition> loadBallCondition(UInt16 id, MemoryStream memory1, BinaryReader reader)
+        {
+            List<BallCondition> list = new List<BallCondition>();
 
             //calcolo BallCondition
-            // Create new FileInfo object and get the Length.
-            int bytes_ball1 = (int) memory1.Length; //Convert.ToInt32(ss1.Length);
-            int ball1 = bytes_ball1 / 8;
+            int bytes_ball1 = (int) memory1.Length;
+            int ball1 = bytes_ball1 / block;
 
             UInt16 IdCondition;
             byte byteCondition;
             UInt16 frag;
             try
             {
-                // Use the memory stream in a binary reader.
-                BinaryReader reader = new BinaryReader(memory1);
-                int i = 0;
-
                 long START1 = -8; //id
                 long START3 = -6; //byte
                 long START2 = -4; //byte
 
                 int NumberOfRepetitions = Convert.ToInt32(ball1);
-                for (i = 1; i <= NumberOfRepetitions; i++)
+                for (int i = 1; i <= NumberOfRepetitions; i++)
                 {
-                    START1 += 8;
+                    START1 += block;
+                    START3 += block;
+                    START2 += block;
+
                     memory1.Seek(START1, SeekOrigin.Begin);
                     IdCondition = reader.ReadUInt16();
+                    if (IdCondition == id)
+                    {
+                        memory1.Seek(START3, SeekOrigin.Begin);
+                        frag = reader.ReadUInt16();
 
-                    START3 += 8;
-                    memory1.Seek(START3, SeekOrigin.Begin);
-                    frag = reader.ReadUInt16();
+                        memory1.Seek(START2, SeekOrigin.Begin);
+                        byteCondition = reader.ReadByte();
 
-                    START2 += 8;
-                    memory1.Seek(START2, SeekOrigin.Begin);
-                    byteCondition = reader.ReadByte();
-
-                    BallCondition bc = new BallCondition(IdCondition, frag, byteCondition);
-                    ballConditionList.Add(bc);           
+                        BallCondition bc = new BallCondition(IdCondition);
+                        bc.setFrag(frag);
+                        bc.setUnknown(byteCondition);
+                        list.Add(bc);
+                    }
                 }
-                memory1.Close();
-                reader.Close();
             }
             catch (IOException e)
             {
@@ -85,57 +107,56 @@ namespace DinoTem.persistence
                 SplashScreen._SplashScreen.Close();
             }
 
-            return ballConditionList;
+            return list;
         }
 
-        private void saveHex(int value, BinaryWriter b)
+        public void applyBallCondition(MemoryStream unzlib, BinaryReader reader, List<BallCondition> ballCondition, ref BinaryWriter writer)
         {
-            string hex2klkoa6 = MyBinary.IntToHex(value);  // La tua stringa contenente i valori esadecimali
-            string[] hexValuesSplit2klkoa6 = hex2klkoa6.Split(' ');
-            byte[] Bytes2klkoa6 = new byte[hexValuesSplit2klkoa6.Length];   // La matrice di byte che verrà scritta nel file
+            //calcolo BallCondition
+            int bytes_ball1 = (int)unzlib.Length;
+            int ball1 = bytes_ball1 / block;
 
-            for (int Ivo = 0; Ivo <= hexValuesSplit2klkoa6.Length - 1; Ivo++)
-            {
-                Bytes2klkoa6[Ivo] = Convert.ToByte(hexValuesSplit2klkoa6[Ivo], 16);    // Converte ogni singolo esadecimale in un valore di tipo byte e lo mette nella matrice di byte
-            }
-            b.Write(Bytes2klkoa6);
-        }
+            long START3 = -6; //byte
 
-        public void save(string patch, Controller controller, int bitRecognized)
-        {
-            using (BinaryWriter b = new BinaryWriter(File.Open(patch + PATH, FileMode.Create)))
+            int k = 0;
+            int NumberOfRepetitions = Convert.ToInt32(ball1);
+            for (int i = 1; i <= NumberOfRepetitions; i++)
             {
-                foreach (BallCondition temp in controller.getBallConditionList())
+                START3 += block;
+
+                unzlib.Seek(START3, SeekOrigin.Begin);
+                if (ballCondition[k].getFrag() == reader.ReadUInt16())
                 {
-                    saveHex(temp.getId(), b);
-                    saveHex(temp.getFrag(), b);
-                    saveHex(temp.getUnknown(), b);
-                    saveHex(0, b);
-                }
-            }
+                    writer.BaseStream.Position = START3 - 2;
 
+                    writer.Write(ballCondition[k].getId());
+                    writer.Write(ballCondition[k].getFrag());
+                    writer.Write(ballCondition[k].getUnknown());
+
+                    if ((k+1) < ballCondition.Count)
+                        k++;
+                }
+
+            }
+        }
+
+        public void save(string patch, ref MemoryStream memoryPalloni, int bitRecognized)
+        {
             if (bitRecognized == 0)
             {
                 //save zlib
-                byte[] inputData14 = File.ReadAllBytes(patch + PATH);
-                byte[] ss14 = Zlib18.ZLIBFile(inputData14);
-                File.WriteAllBytes(patch + PATH, ss14);
+                byte[] ss13 = Zlib18.ZLIBFile(memoryPalloni.ToArray());
+                File.WriteAllBytes(patch + PATH, ss13);
             }
             else if (bitRecognized == 1)
             {
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                MemoryStream memory1 = new MemoryStream(inputData13);
-                UnzlibZlibConsole.UnzlibZlibConsole.BallCondition_Console(ref memory1);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memory1, patch + PATH);
-                memory1.Close();
+                UnzlibZlibConsole.UnzlibZlibConsole.BallCondition_Console(ref memoryPalloni);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryPalloni, patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                byte[] inputData13 = File.ReadAllBytes(patch + PATH);
-                MemoryStream memory1 = new MemoryStream(inputData13);
-                UnzlibZlibConsole.UnzlibZlibConsole.BallCondition_Console(ref memory1);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memory1, patch + PATH);
-                memory1.Close();
+                UnzlibZlibConsole.UnzlibZlibConsole.BallCondition_Console(ref memoryPalloni);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryPalloni, patch + PATH);
             }
         }
     }
