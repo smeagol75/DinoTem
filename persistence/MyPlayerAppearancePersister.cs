@@ -656,7 +656,9 @@ namespace DinoTem.persistence
         {
             //save zlib
             byte[] ss13 = Zlib18.ZLIBFile(memoryGicotori.ToArray());
-            File.WriteAllBytes(patch + PATH, ss13);
+            byte[] ss1 = Unzlib.unZLIBFilePC(ss13);
+            File.WriteAllBytes(patch + PATH, ss1);
+            
         }
 
     }
