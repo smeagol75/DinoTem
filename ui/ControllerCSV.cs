@@ -442,7 +442,7 @@ namespace Team_Editor_Manager_New_Generation.ui
                 if (sr.ReadLine() != "Id;UNK1;UNK2;UNK3;UNK4;UNK5;UNK6;UNK7;UNK8;UNK9;UNK10;UNK11;UNK12;UNK13;UNK14;UNK15;UNK16;UNK17;UNK18;UNK19;UNK20;UNK21;UNK22;UNK23;UNK24;UNK25;UNK26;UNK27;UNK28;UNK29;UNK30;UNK31;UNK32;UNK33;UNK34;UNK35;UNK36;Eyes_Skin_Color;38;UNK39;UNK40;UNK41;UNK42;UNK43;UNK44;UNK45;UNK46;UNK47;UNK48;UNK49;UNK50;UNK51;UNK52;UNK53;UNK54;UNK55;UNK56")
                     throw new Exception("unrecognized file");
 
-                int i = 0;
+                //int i = 0;
                 while ((line = sr.ReadLine()) != null)
                 {
                     string[] temp = line.Split(';');

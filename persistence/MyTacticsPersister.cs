@@ -150,6 +150,27 @@ namespace DinoTem.persistence
             return list;
         }
 
+        public UInt16 findIdTactics(MemoryStream memory1, BinaryReader reader)
+        {
+            UInt16 tactics_index_mayor = 0;
+
+            int bytes = (int)memory1.Length;
+            int bloques_assig = bytes / block;
+
+            reader.BaseStream.Position = 4;
+            for (int i = 0; (i <= (bloques_assig - 1)); i++)
+            {
+                UInt16 temp_index = reader.ReadUInt16();
+                if ((temp_index >= tactics_index_mayor))
+                {
+                    tactics_index_mayor = (ushort) (temp_index + 1);
+                }
+                reader.BaseStream.Position += block - 2;
+            }
+
+            return tactics_index_mayor;
+        }
+
         public void applyTactics(BinaryReader reader, MemoryStream unzlib, Tactics tattica, ref BinaryWriter writer)
         {
             //Calcolo tattiche
@@ -290,6 +311,38 @@ namespace DinoTem.persistence
                     writer.Write(Byte_GRAB);
                 }
             }
+        }
+
+        public void addTactics(UInt32 idTeam, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
+        {
+            UInt16 idtactics = findIdTactics(memory1, reader);
+
+            byte[] test = new byte[(int)memory1.Length + block];
+            for (int i = 0; i < test.Count() - 1; i++)
+            {
+                test[i] = 0;
+            }
+
+            byte[] temp = memory1.ToArray();
+            for (int i = 0; i < (int)memory1.Length - 1; i++)
+            {
+                test[i] = temp[i];
+            }
+
+            memory1 = new MemoryStream(test);
+            reader = new BinaryReader(memory1);
+            writer = new BinaryWriter(memory1);
+
+            byte[] tactics_block;
+            Random numAleatorio = new Random();
+            int valorAleatorio = numAleatorio.Next(0, 500);
+            reader.BaseStream.Position = ((valorAleatorio * block) + 6);
+            tactics_block = reader.ReadBytes(block - 6);
+
+            writer.BaseStream.Position = memory1.Length - block;
+            writer.Write(idTeam);
+            writer.Write(idtactics);
+            writer.Write(tactics_block);
         }
 
         public void save(string patch, ref MemoryStream memoryTattiche, int bitRecognized)

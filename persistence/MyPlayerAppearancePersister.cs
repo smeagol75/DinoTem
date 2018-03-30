@@ -111,7 +111,7 @@ namespace DinoTem.persistence
             byte unknown56;
             try
             {
-                long START1 = -60; //ID
+                long START1 = -block; //ID
                 long START2 = -56;
                 long START3 = -55;
                 long START4 = -54;
@@ -483,7 +483,7 @@ namespace DinoTem.persistence
             int bytes_player = (int)unzlib.Length;
             int calcolo_player = bytes_player / block;
 
-            long START2 = -60;
+            long START2 = -block;
             for (int i = 0; i <= (calcolo_player - 1); i++)
             {
                 START2 += block;
@@ -602,7 +602,7 @@ namespace DinoTem.persistence
                     reader = new BinaryReader(memory1);
                     writer = new BinaryWriter(memory1);
 
-                    writer.BaseStream.Position = memory1.Length - 60;
+                    writer.BaseStream.Position = memory1.Length - block;
                     if (bitRecognized == 0)
                         writer.Write(idPlayer);
                     else if (bitRecognized == 1 || bitRecognized == 2)

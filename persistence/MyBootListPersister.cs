@@ -64,7 +64,7 @@ namespace DinoTem.persistence
             UInt16 Boots_id = 0;
             if (bitRecognized == 0)
             {
-                for (int i = 0; i <= memory1.Length / 8 - 1; i++)
+                for (int i = 0; i <= memory1.Length / block - 1; i++)
                 {
                     if (id == reader.ReadUInt32())
                     {
@@ -81,7 +81,7 @@ namespace DinoTem.persistence
 
             if (bitRecognized == 1 || bitRecognized == 2)
             {
-                for (int i = 0; i <= memory1.Length / 8 - 1; i++)
+                for (int i = 0; i <= memory1.Length / block - 1; i++)
                 {
                     if (id == UnzlibZlibConsole.swaps.swap32(reader.ReadUInt32()))
                     {

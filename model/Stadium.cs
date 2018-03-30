@@ -89,8 +89,8 @@ namespace DinoTem.model
 		
 		public void setJapaneseName(string japaneseName)
         {
-            if (japaneseName == null || japaneseName == "")
-                throw new ArgumentException("Stadium's japanese name isn't valid - " + getName());
+           //if (japaneseName == null || japaneseName == "")
+                //throw new ArgumentException("Stadium's japanese name isn't valid - " + getName());
 
             this.japaneseName = japaneseName;
         }
@@ -121,7 +121,7 @@ namespace DinoTem.model
 
         public void setZone(byte zone)
         {
-            if (zone < 2)
+            if (zone < 0)
                 throw new ArgumentException("Stadium's zone isn't valid - " + getName());
 
             this.zone = zone;
@@ -146,6 +146,10 @@ namespace DinoTem.model
 
             switch (getZone())
             {
+                case 0: t = "Europe";
+                    break;
+                case 1: t = "Europe";
+                    break;
                 case 2: t = "Europe";
                     break;
                 case 3: t = "Asia";
