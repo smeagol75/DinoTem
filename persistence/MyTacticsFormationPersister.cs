@@ -75,7 +75,7 @@ namespace DinoTem.persistence
             byte X;
             byte byte_frag;
 
-            long START = -12;
+            long START = -block;
             long START2 = -8;
             long START3 = -6;
             long START4 = -5;
@@ -148,6 +148,42 @@ namespace DinoTem.persistence
 
                     k++;
                 }
+            }
+        }
+
+        public void addTacticsFormation(UInt16 idTactics, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
+        {
+            byte[] tacticsFormation_block;
+            reader.BaseStream.Position = 0;
+            tacticsFormation_block = reader.ReadBytes(block * 33);
+
+            for (int j = 0; j < 33; j++)
+            {
+                byte[] test = new byte[(int)memory1.Length + block];
+                for (int i = 0; i < test.Count() - 1; i++)
+                {
+                    test[i] = 0;
+                }
+
+                byte[] temp = memory1.ToArray();
+                for (int i = 0; i < (int)memory1.Length - 1; i++)
+                {
+                    test[i] = temp[i];
+                }
+
+                memory1 = new MemoryStream(test);
+                reader = new BinaryReader(memory1);
+                writer = new BinaryWriter(memory1);
+            }
+
+            writer.BaseStream.Position = memory1.Length - (block * 33);
+            writer.Write(tacticsFormation_block);
+
+            writer.BaseStream.Position = memory1.Length - (block * 33) + 4;
+            for (int j = 0; j < 33; j++)
+            {
+                writer.Write(idTactics);
+                writer.BaseStream.Position += block - 2;
             }
         }
 

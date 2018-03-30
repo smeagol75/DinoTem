@@ -1249,6 +1249,38 @@ namespace DinoTem.ui
             }
         }
 
+        public void addTactics(UInt32 idTeam)
+        {
+            MyTacticsPersister tact = new MyTacticsPersister();
+
+            try
+            {
+                tact.addTactics(idTeam, ref unzlibTattiche, ref leggiTattiche, ref scriviTattiche);
+
+                //MessageBox.Show("New tactics added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add tactics!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void addTacticsFormation(UInt16 idTactics)
+        {
+            MyTacticsFormationPersister tact = new MyTacticsFormationPersister();
+
+            try
+            {
+                tact.addTacticsFormation(idTactics, ref unzlibTacticsFormation, ref leggiTacticsFormation, ref scriviTacticsFormation);
+
+                //MessageBox.Show("New tactics formation added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                MessageBox.Show("Error add tactics formation!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void addBootListPersister(UInt32 idPlayer)
         {
             MyBootListPersister boot = new MyBootListPersister();
@@ -3139,7 +3171,7 @@ namespace DinoTem.ui
             {
                 PlayerAssignment temp = new PlayerAssignment(uint.Parse(listview.Items[i].SubItems[11].Text), teamId);
                 temp.setCaptain(ushort.Parse(listview.Items[i].SubItems[5].Text));
-                temp.setEntryId(ushort.Parse(listview.Items[i].SubItems[4].Text));
+                temp.setEntryId(uint.Parse(listview.Items[i].SubItems[4].Text));
                 temp.setLeftCkTk(ushort.Parse(listview.Items[i].SubItems[6].Text));
                 temp.setLongShotLk(ushort.Parse(listview.Items[i].SubItems[7].Text));
                 temp.setOrder((ushort)(ushort.Parse(listview.Items[i].SubItems[0].Text) - 1));
@@ -3258,15 +3290,15 @@ namespace DinoTem.ui
             leggiPlayerAssign = new BinaryReader(unzlibPlayerAssign);
             scriviPlayerAssign = new BinaryWriter(unzlibPlayerAssign);
 
+            //aggiorno squadra
+            Form1._Form1.giocatoreSquadra.Text = getStringClubTeamOfPlayer(uint.Parse(l1.Items[selectIndex].SubItems[11].Text), 0);
+            Form1._Form1.giocatoreNazionale.Text = getStringClubTeamOfPlayer(uint.Parse(l1.Items[selectIndex].SubItems[11].Text), 1);
+
             l1.Items.RemoveAt(selectIndex);
             for (int i = 0; i < l1.Items.Count; i++)
             {
                 l1.Items[i].SubItems[0].Text = (i + 1).ToString();
             }
-
-            //aggiorno squadra
-            //Form1._Form1.giocatoreSquadra.Text = getStringClubTeamOfPlayer(Player_Ass_to_delete, 0);
-            //Form1._Form1.giocatoreNazionale.Text = getStringClubTeamOfPlayer(Player_Ass_to_delete, 1);
         }
 
         public void playerFromPlayerList(UInt32 playerId, UInt32 teamId, ListView l1, UInt32 teamSecondTeamId, ListView l2)
@@ -4894,6 +4926,50 @@ namespace DinoTem.ui
                 }
 
                 MessageBox.Show("Player(s) imported succesfully", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        int lastItm2 = 0;
+        public void listBoxSearchById(ListBox listbox, TextBox search)
+        {
+            try
+            {
+                Convert.ToInt32(search.Text);
+            }
+            catch
+            {
+                MessageBox.Show("There is no number in the textBox", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            int col = 0;
+            int colCount = col + 1;
+            bool find = false;
+            
+            for (int colAll = col; colAll < colCount; colAll++)
+            {
+                for (int lst12 = lastItm2; lst12 < listbox.Items.Count; lst12++)
+                {
+                    Player player = leggiGiocatore(lst12);
+                    if (player.getId() == uint.Parse(search.Text))
+                    {
+                        listbox.SelectedIndex = lst12;
+                        listbox.Select();
+
+                        lastItm2 = lst12 + 1;
+                        find = true;
+                        break;
+                    }
+                }
+                if (find)
+                    break;
+                DialogResult dialogResult = MessageBox.Show("Id not found, do you want restart research?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    lastItm2 = 0;
+                    listbox.SelectedIndex = 0;
+                    listbox.Select();
+                }
             }
         }
 

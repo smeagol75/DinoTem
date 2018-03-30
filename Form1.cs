@@ -382,6 +382,8 @@ namespace DinoTem
                 addNewPlayer.Enabled = true;
                 addNewStadium.Enabled = true;
                 addNewTeam.Enabled = true;
+                support.Enabled = true;
+                videoTutorial.Enabled = true;
             }
         }
 
@@ -792,6 +794,12 @@ namespace DinoTem
         {
             if (teamsBox.SelectedIndex >= 0)
             {
+                //if (controller.findTeam(uint.Parse(teamID.Text)) != -1)
+                //{
+                    //MessageBox.Show("This id is already used", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    //return;
+                //}
+
                 Team team = null;
                 if (teamType.Text == "Club")
                     team = new Club(uint.Parse(teamID.Text));
@@ -887,6 +895,8 @@ namespace DinoTem
                     if (Form1._Form1.DataGridView_derby.Rows[i1].Cells[2].Value.ToString() == team.getId().ToString())
                         Form1._Form1.DataGridView_derby.Rows[i1].Cells[3].Value = team.getEnglish();
                 }
+                Form1._Form1.giocatoreSquadra.Text = controller.getStringClubTeamOfPlayer(uint.Parse(giocatoreID.Text), 0);
+                Form1._Form1.giocatoreNazionale.Text = controller.getStringClubTeamOfPlayer(uint.Parse(giocatoreID.Text), 1);
 
             }
         }
@@ -1098,9 +1108,13 @@ namespace DinoTem
         //ricerca giocatori (invio)
         private void searchPlayer_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter)
+            if ((e.KeyChar == (char)Keys.Enter) && searchById.Checked == false)
             {
                 UtilGUI.listBoxSearch(playersBox, searchPlayer);
+            }
+            else if ((e.KeyChar == (char)Keys.Enter) && searchById.Checked == true)
+            {
+                controller.listBoxSearchById(playersBox, searchPlayer);
             }
         }
 
@@ -1112,7 +1126,10 @@ namespace DinoTem
 
         private void searchP_Click(object sender, EventArgs e)
         {
-            UtilGUI.listBoxSearch(playersBox, searchPlayer);
+            if (searchById.Checked == false)
+                UtilGUI.listBoxSearch(playersBox, searchPlayer);
+            else if (searchById.Checked == true)
+                controller.listBoxSearchById(playersBox, searchPlayer);
         }
 
         //ricerca squadre (invio)
@@ -1524,8 +1541,16 @@ namespace DinoTem
                     if (tactics.Count > 0)
                     {
                         List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
-                        if (tacticsFormation.Count < 12)
-                            MessageBox.Show("Team hasn't 12 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (tacticsFormation.Count == 0)
+                        {
+                            if (MessageBox.Show("Formation not found, do you want add new formation?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).Equals(DialogResult.No)) { }
+                            else
+                            {
+                                controller.addTacticsFormation(tactics[0].getTacticsId());
+                                controller.addTacticsFormation(tactics[1].getTacticsId());
+                                MessageBox.Show("New formation added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                        }
                         else
                         {
                             Formazione F = new Formazione(controller, controller.leggiSquadra(teamsBox.SelectedIndex));
@@ -1533,7 +1558,18 @@ namespace DinoTem
                         }
                     }
                     else
-                        MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    {
+                        if (MessageBox.Show("Tactics not found, do you want add new tactics?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).Equals(DialogResult.No)) { }
+                        else
+                        {
+                            controller.addTactics(controller.leggiSquadra(teamsBox.SelectedIndex).getId());
+                            controller.addTactics(controller.leggiSquadra(teamsBox.SelectedIndex).getId());
+                            List<Tactics> tactics2 = controller.leggiTattica(controller.leggiSquadra(teamsBox.SelectedIndex).getId());
+                            controller.addTacticsFormation(tactics2[0].getTacticsId());
+                            controller.addTacticsFormation(tactics2[1].getTacticsId());
+                            MessageBox.Show("New tactics added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
                 }
             }
 
@@ -1546,8 +1582,16 @@ namespace DinoTem
             if (tactics.Count > 0)
             {
                 List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
-                if (tacticsFormation.Count < 11)
-                    MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (tacticsFormation.Count == 0) 
+                {
+                    if (MessageBox.Show("Formation not found, do you want add new formation?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).Equals(DialogResult.No)) { }
+                    else
+                    {
+                        controller.addTacticsFormation(tactics[0].getTacticsId());
+                        controller.addTacticsFormation(tactics[1].getTacticsId());
+                        MessageBox.Show("New formation added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
                 else
                 {
                     Formazione F = new Formazione(controller, controller.leggiSquadra(teamBox1.SelectedIndex));
@@ -1555,7 +1599,18 @@ namespace DinoTem
                 }
             }
             else
-                MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (MessageBox.Show("Tactics not found, do you want add new tactics?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).Equals(DialogResult.No)) { }
+                else
+                {
+                    controller.addTactics(controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+                    controller.addTactics(controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+                    List<Tactics> tactics2 = controller.leggiTattica(controller.leggiSquadra(teamBox1.SelectedIndex).getId());
+                    controller.addTacticsFormation(tactics2[0].getTacticsId());
+                    controller.addTacticsFormation(tactics2[1].getTacticsId());
+                    MessageBox.Show("New tactics added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void editPlayerToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -1577,8 +1632,16 @@ namespace DinoTem
             if (tactics.Count > 0)
             {
                 List<TacticsFormation> tacticsFormation = controller.leggiFormazione(tactics[0].getTacticsId());
-                if (tacticsFormation.Count < 11)
-                    MessageBox.Show("Team hasn't 11 players", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (tacticsFormation.Count == 0)
+                {
+                    if (MessageBox.Show("Formation not found, do you want add new formation?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).Equals(DialogResult.No)) { }
+                    else
+                    {
+                        controller.addTacticsFormation(tactics[0].getTacticsId());
+                        controller.addTacticsFormation(tactics[1].getTacticsId());
+                        MessageBox.Show("New formation added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
                 else
                 {
                     Formazione F = new Formazione(controller, controller.leggiSquadra(teamBox2.SelectedIndex));
@@ -1586,7 +1649,18 @@ namespace DinoTem
                 }
             }
             else
-                MessageBox.Show("Formation not found", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            {
+                if (MessageBox.Show("Tactics not found, do you want add new tactics?", Application.ProductName.ToString(), MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation).Equals(DialogResult.No)) { }
+                else
+                {
+                    controller.addTactics(controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+                    controller.addTactics(controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+                    List<Tactics> tactics2 = controller.leggiTattica(controller.leggiSquadra(teamBox2.SelectedIndex).getId());
+                    controller.addTacticsFormation(tactics2[0].getTacticsId());
+                    controller.addTacticsFormation(tactics2[1].getTacticsId());
+                    MessageBox.Show("New tactics added!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -2226,6 +2300,8 @@ namespace DinoTem
         //fm stats
         private void loadFootballManager_Click(object sender, EventArgs e)
         {
+            tabControl1.SelectedIndex = 12;
+
             if (controllerFm.getFmList().Count == 0)
                 controllerFm.readFmPersister();
 
@@ -3402,6 +3478,28 @@ namespace DinoTem
             {
                 controller.playerFromPlayerList(uint.Parse(giocatoreID.Text), controller.leggiSquadra(teamBox2.SelectedIndex).getId(), teamView2, controller.leggiSquadra(teamBox1.SelectedIndex).getId(), teamView1);
             }
+        }
+
+        //support tool
+        private void support_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://www.evo-web.co.uk/threads/pc-xbox-ps3-dinotem-editor-18-by-smeagol75-lagun-2-test-version.78635/");
+        }
+
+        //tutorial
+        private void howToUseFmStatsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://youtu.be/wCFUAEQH2dA");
+        }
+
+        private void howToImportPSDStatsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://youtu.be/jSL5nraDfp0");
+        }
+
+        private void howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://youtu.be/X6DlW8M4ARE");
         }
     }
 }

@@ -32,7 +32,7 @@ namespace DinoTem.model
 
         public Team(UInt32 idSquadra)
         {
-    	    if (idSquadra < 0)
+            if (idSquadra < 0)
                 throw new ArgumentException("Team's Id isn't valid: " + idSquadra);
     	
             this.id = idSquadra;

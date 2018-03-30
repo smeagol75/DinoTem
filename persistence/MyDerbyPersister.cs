@@ -58,7 +58,7 @@ namespace DinoTem.persistence
             {
                 // Use the memory stream in a binary reader.
                 reader = new BinaryReader(memory1);
-                long START2 = -12;
+                long START2 = -block;
 
                 int NumberOfRepetitions1 = Convert.ToInt32(derby);
                 for (int i1 = 1; i1 <= NumberOfRepetitions1; i1++)
@@ -95,7 +95,7 @@ namespace DinoTem.persistence
 
         public void applyDerby(int selectedIndex, MemoryStream unzlib, Derby derby, ref BinaryWriter writer)
         {
-            UInt32 Index = (uint) (selectedIndex * 12);
+            UInt32 Index = (uint) (selectedIndex * block);
             if ((Index > unzlib.Length))
             {
                 Index = (uint) (unzlib.Length);

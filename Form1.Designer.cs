@@ -773,6 +773,13 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.howToUseFmStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.howToImportPSDStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Transfers.SuspendLayout();
@@ -1464,6 +1471,10 @@
             // 
             // videoTutorial
             // 
+            this.videoTutorial.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.howToUseFmStatsToolStripMenuItem,
+            this.howToImportPSDStatsToolStripMenuItem,
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem});
             this.videoTutorial.Enabled = false;
             this.videoTutorial.Image = ((System.Drawing.Image)(resources.GetObject("videoTutorial.Image")));
             this.videoTutorial.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
@@ -1479,6 +1490,7 @@
             this.support.Name = "support";
             this.support.Size = new System.Drawing.Size(173, 30);
             this.support.Text = "Support Forum";
+            this.support.Click += new System.EventHandler(this.support_Click);
             // 
             // toolStripSeparator2
             // 
@@ -1548,7 +1560,6 @@
             // searchById
             // 
             this.searchById.AutoSize = true;
-            this.searchById.Enabled = false;
             this.searchById.Location = new System.Drawing.Point(5, 8);
             this.searchById.Name = "searchById";
             this.searchById.Size = new System.Drawing.Size(117, 17);
@@ -3499,11 +3510,12 @@
             // teamID
             // 
             this.teamID.Location = new System.Drawing.Point(13, 43);
-            this.teamID.MaxLength = 4;
+            this.teamID.MaxLength = 5;
             this.teamID.Name = "teamID";
             this.teamID.ReadOnly = true;
             this.teamID.Size = new System.Drawing.Size(63, 20);
             this.teamID.TabIndex = 9;
+            this.teamID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.giocatoreNumber_KeyPress);
             // 
             // label46
             // 
@@ -8552,62 +8564,63 @@
             this.importPlayerToolStripMenuItem,
             this.importPlayerFromDinoEditorToolStripMenuItem,
             this.importPlayerAppearanceToolStripMenuItem,
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1,
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem});
             this.PlayerMenuStrip1.Name = "contextMenuStrip1";
-            this.PlayerMenuStrip1.Size = new System.Drawing.Size(268, 164);
+            this.PlayerMenuStrip1.Size = new System.Drawing.Size(283, 186);
             // 
             // editPlayerToolStripMenuItem
             // 
             this.editPlayerToolStripMenuItem.Name = "editPlayerToolStripMenuItem";
-            this.editPlayerToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.editPlayerToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.editPlayerToolStripMenuItem.Text = "Edit Player";
             this.editPlayerToolStripMenuItem.Click += new System.EventHandler(this.editPlayerToolStripMenuItem_Click);
             // 
             // toolStripSeparator12
             // 
             this.toolStripSeparator12.Name = "toolStripSeparator12";
-            this.toolStripSeparator12.Size = new System.Drawing.Size(264, 6);
+            this.toolStripSeparator12.Size = new System.Drawing.Size(279, 6);
             // 
             // exportPlayerToolStripMenuItem
             // 
             this.exportPlayerToolStripMenuItem.Name = "exportPlayerToolStripMenuItem";
-            this.exportPlayerToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.exportPlayerToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.exportPlayerToolStripMenuItem.Text = "Export Player";
             this.exportPlayerToolStripMenuItem.Click += new System.EventHandler(this.exportPlayerToolStripMenuItem_Click);
             // 
             // exportPlayerAppareanceToolStripMenuItem
             // 
             this.exportPlayerAppareanceToolStripMenuItem.Name = "exportPlayerAppareanceToolStripMenuItem";
-            this.exportPlayerAppareanceToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.exportPlayerAppareanceToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.exportPlayerAppareanceToolStripMenuItem.Text = "Export PlayerAppearance";
             this.exportPlayerAppareanceToolStripMenuItem.Click += new System.EventHandler(this.exportPlayerAppareanceToolStripMenuItem_Click);
             // 
             // importPlayerToolStripMenuItem
             // 
             this.importPlayerToolStripMenuItem.Name = "importPlayerToolStripMenuItem";
-            this.importPlayerToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.importPlayerToolStripMenuItem.Text = "Import Player";
             this.importPlayerToolStripMenuItem.Click += new System.EventHandler(this.importPlayerToolStripMenuItem_Click);
             // 
             // importPlayerFromDinoEditorToolStripMenuItem
             // 
             this.importPlayerFromDinoEditorToolStripMenuItem.Name = "importPlayerFromDinoEditorToolStripMenuItem";
-            this.importPlayerFromDinoEditorToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.importPlayerFromDinoEditorToolStripMenuItem.Text = "Import Player From Dino";
+            this.importPlayerFromDinoEditorToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerFromDinoEditorToolStripMenuItem.Text = "Import Player From Dino 18";
             this.importPlayerFromDinoEditorToolStripMenuItem.Click += new System.EventHandler(this.importPlayerFromDinoEditorToolStripMenuItem_Click);
             // 
             // importPlayerAppearanceToolStripMenuItem
             // 
             this.importPlayerAppearanceToolStripMenuItem.Name = "importPlayerAppearanceToolStripMenuItem";
-            this.importPlayerAppearanceToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerAppearanceToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.importPlayerAppearanceToolStripMenuItem.Text = "Import PlayerAppearance";
             this.importPlayerAppearanceToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceToolStripMenuItem_Click);
             // 
             // importPlayerAppearanceFromDinoEditorToolStripMenuItem
             // 
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Name = "importPlayerAppearanceFromDinoEditorToolStripMenuItem";
-            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Text = "Import PlayerAppearance From Dino";
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Text = "Import PlayerAppearance From Dino18";
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
             // 
             // Team_BMenuStrip3
@@ -8621,41 +8634,43 @@
             this.toolStripMenuItem4,
             this.toolStripMenuItem5,
             this.importPlayerFromDinoToolStripMenuItem,
+            this.importPlayerAppearanceToolStripMenuItem2,
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem,
             this.importPlayerAppearanceFromDinoToolStripMenuItem,
             this.toolStripMenuItem6});
             this.Team_BMenuStrip3.Name = "contextMenuStrip2";
-            this.Team_BMenuStrip3.Size = new System.Drawing.Size(268, 208);
+            this.Team_BMenuStrip3.Size = new System.Drawing.Size(283, 252);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItem1.Text = "Edit Player";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(267, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItem2.Text = "Edit Team";
             this.toolStripMenuItem2.Click += new System.EventHandler(this.toolStripMenuItem2_Click);
             // 
             // toolStripSeparator15
             // 
             this.toolStripSeparator15.Name = "toolStripSeparator15";
-            this.toolStripSeparator15.Size = new System.Drawing.Size(264, 6);
+            this.toolStripSeparator15.Size = new System.Drawing.Size(279, 6);
             // 
             // toolStripMenuItem3
             // 
             this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(267, 22);
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItem3.Text = "Export Player";
             this.toolStripMenuItem3.Click += new System.EventHandler(this.exportPlayerToolStripMenuItem_Click);
             // 
             // importPlayerAppearanceFromDinoToolStripMenuItem1
             // 
             this.importPlayerAppearanceFromDinoToolStripMenuItem1.Name = "importPlayerAppearanceFromDinoToolStripMenuItem1";
-            this.importPlayerAppearanceFromDinoToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerAppearanceFromDinoToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
             this.importPlayerAppearanceFromDinoToolStripMenuItem1.Text = "Export PlayerAppearance";
             this.importPlayerAppearanceFromDinoToolStripMenuItem1.Click += new System.EventHandler(this.exportPlayerAppareanceToolStripMenuItem_Click);
             // 
@@ -8663,35 +8678,35 @@
             // 
             this.toolStripMenuItem4.Enabled = false;
             this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(267, 22);
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItem4.Text = "Export all players to team";
             // 
             // toolStripMenuItem5
             // 
             this.toolStripMenuItem5.Name = "toolStripMenuItem5";
-            this.toolStripMenuItem5.Size = new System.Drawing.Size(267, 22);
+            this.toolStripMenuItem5.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItem5.Text = "Import Player";
             this.toolStripMenuItem5.Click += new System.EventHandler(this.importPlayerToolStripMenuItem_Click);
             // 
             // importPlayerFromDinoToolStripMenuItem
             // 
             this.importPlayerFromDinoToolStripMenuItem.Name = "importPlayerFromDinoToolStripMenuItem";
-            this.importPlayerFromDinoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.importPlayerFromDinoToolStripMenuItem.Text = "Import Player From Dino";
+            this.importPlayerFromDinoToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerFromDinoToolStripMenuItem.Text = "Import Player From Dino 18";
             this.importPlayerFromDinoToolStripMenuItem.Click += new System.EventHandler(this.importPlayerFromDinoEditorToolStripMenuItem_Click);
             // 
             // importPlayerAppearanceFromDinoToolStripMenuItem
             // 
             this.importPlayerAppearanceFromDinoToolStripMenuItem.Name = "importPlayerAppearanceFromDinoToolStripMenuItem";
-            this.importPlayerAppearanceFromDinoToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
-            this.importPlayerAppearanceFromDinoToolStripMenuItem.Text = "Import PlayerAppearance From Dino";
+            this.importPlayerAppearanceFromDinoToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceFromDinoToolStripMenuItem.Text = "Import PlayerAppearance From Dino 18";
             this.importPlayerAppearanceFromDinoToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
             // 
             // toolStripMenuItem6
             // 
             this.toolStripMenuItem6.Enabled = false;
             this.toolStripMenuItem6.Name = "toolStripMenuItem6";
-            this.toolStripMenuItem6.Size = new System.Drawing.Size(267, 22);
+            this.toolStripMenuItem6.Size = new System.Drawing.Size(282, 22);
             this.toolStripMenuItem6.Text = "Import all players from team";
             // 
             // Team_AMenuStrip2
@@ -8706,41 +8721,42 @@
             this.importPlayerToolStripMenuItem1,
             this.importPlayerFromDinoEditorToolStripMenuItem1,
             this.importPlayerAppearanceToolStripMenuItem1,
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2,
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1,
             this.importAllPlayersInTeamToolStripMenuItem});
             this.Team_AMenuStrip2.Name = "contextMenuStrip2";
-            this.Team_AMenuStrip2.Size = new System.Drawing.Size(268, 230);
+            this.Team_AMenuStrip2.Size = new System.Drawing.Size(283, 252);
             // 
             // editPlayerToolStripMenuItem1
             // 
             this.editPlayerToolStripMenuItem1.Name = "editPlayerToolStripMenuItem1";
-            this.editPlayerToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.editPlayerToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
             this.editPlayerToolStripMenuItem1.Text = "Edit Player";
             this.editPlayerToolStripMenuItem1.Click += new System.EventHandler(this.editPlayerToolStripMenuItem1_Click);
             // 
             // editTeamToolStripMenuItem
             // 
             this.editTeamToolStripMenuItem.Name = "editTeamToolStripMenuItem";
-            this.editTeamToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.editTeamToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.editTeamToolStripMenuItem.Text = "Edit Team";
             this.editTeamToolStripMenuItem.Click += new System.EventHandler(this.editTeamToolStripMenuItem_Click);
             // 
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(264, 6);
+            this.toolStripSeparator13.Size = new System.Drawing.Size(279, 6);
             // 
             // exportPlayerToolStripMenuItem1
             // 
             this.exportPlayerToolStripMenuItem1.Name = "exportPlayerToolStripMenuItem1";
-            this.exportPlayerToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.exportPlayerToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
             this.exportPlayerToolStripMenuItem1.Text = "Export Player";
             this.exportPlayerToolStripMenuItem1.Click += new System.EventHandler(this.exportPlayerToolStripMenuItem_Click);
             // 
             // exportPlayerAppearanceToolStripMenuItem
             // 
             this.exportPlayerAppearanceToolStripMenuItem.Name = "exportPlayerAppearanceToolStripMenuItem";
-            this.exportPlayerAppearanceToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.exportPlayerAppearanceToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.exportPlayerAppearanceToolStripMenuItem.Text = "Export PlayerAppearance";
             this.exportPlayerAppearanceToolStripMenuItem.Click += new System.EventHandler(this.exportPlayerAppareanceToolStripMenuItem_Click);
             // 
@@ -8748,42 +8764,42 @@
             // 
             this.exportAllPlayerToolStripMenuItem.Enabled = false;
             this.exportAllPlayerToolStripMenuItem.Name = "exportAllPlayerToolStripMenuItem";
-            this.exportAllPlayerToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.exportAllPlayerToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.exportAllPlayerToolStripMenuItem.Text = "Export all players to team";
             // 
             // importPlayerToolStripMenuItem1
             // 
             this.importPlayerToolStripMenuItem1.Name = "importPlayerToolStripMenuItem1";
-            this.importPlayerToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
             this.importPlayerToolStripMenuItem1.Text = "Import Player";
             this.importPlayerToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerToolStripMenuItem_Click);
             // 
             // importPlayerFromDinoEditorToolStripMenuItem1
             // 
             this.importPlayerFromDinoEditorToolStripMenuItem1.Name = "importPlayerFromDinoEditorToolStripMenuItem1";
-            this.importPlayerFromDinoEditorToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
-            this.importPlayerFromDinoEditorToolStripMenuItem1.Text = "Import Player From Dino";
+            this.importPlayerFromDinoEditorToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerFromDinoEditorToolStripMenuItem1.Text = "Import Player From Dino 18";
             this.importPlayerFromDinoEditorToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerFromDinoEditorToolStripMenuItem_Click);
             // 
             // importPlayerAppearanceToolStripMenuItem1
             // 
             this.importPlayerAppearanceToolStripMenuItem1.Name = "importPlayerAppearanceToolStripMenuItem1";
-            this.importPlayerAppearanceToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
+            this.importPlayerAppearanceToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
             this.importPlayerAppearanceToolStripMenuItem1.Text = "Import PlayerAppearance";
             this.importPlayerAppearanceToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerAppearanceToolStripMenuItem_Click);
             // 
             // importPlayerAppearanceFromDinoEditorToolStripMenuItem1
             // 
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Name = "importPlayerAppearanceFromDinoEditorToolStripMenuItem1";
-            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Size = new System.Drawing.Size(267, 22);
-            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Text = "Import PlayerAppearance From Dino";
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Text = "Import PlayerAppearance From Dino 18";
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
             // 
             // importAllPlayersInTeamToolStripMenuItem
             // 
             this.importAllPlayersInTeamToolStripMenuItem.Enabled = false;
             this.importAllPlayersInTeamToolStripMenuItem.Name = "importAllPlayersInTeamToolStripMenuItem";
-            this.importAllPlayersInTeamToolStripMenuItem.Size = new System.Drawing.Size(267, 22);
+            this.importAllPlayersInTeamToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.importAllPlayersInTeamToolStripMenuItem.Text = "Import all players from team";
             // 
             // statusStrip1
@@ -8808,6 +8824,55 @@
             this.toolTip1.InitialDelay = 500;
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // importPlayerAppearanceFromDino17ToolStripMenuItem
+            // 
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Name = "importPlayerAppearanceFromDino17ToolStripMenuItem";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Text = "Import PlayerAppearance From Dino 17";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceFromDino17ToolStripMenuItem1
+            // 
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Name = "importPlayerAppearanceFromDino17ToolStripMenuItem1";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Text = "Import PlayerAppearance From Dino 17";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceFromDino17ToolStripMenuItem2
+            // 
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Name = "importPlayerAppearanceFromDino17ToolStripMenuItem2";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Text = "Import PlayerAppearance From Dino 17";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceToolStripMenuItem2
+            // 
+            this.importPlayerAppearanceToolStripMenuItem2.Name = "importPlayerAppearanceToolStripMenuItem2";
+            this.importPlayerAppearanceToolStripMenuItem2.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceToolStripMenuItem2.Text = "Import PlayerAppearance";
+            this.importPlayerAppearanceToolStripMenuItem2.Click += new System.EventHandler(this.importPlayerAppearanceToolStripMenuItem_Click);
+            // 
+            // howToUseFmStatsToolStripMenuItem
+            // 
+            this.howToUseFmStatsToolStripMenuItem.Name = "howToUseFmStatsToolStripMenuItem";
+            this.howToUseFmStatsToolStripMenuItem.Size = new System.Drawing.Size(350, 22);
+            this.howToUseFmStatsToolStripMenuItem.Text = "How to use Fm Stats";
+            this.howToUseFmStatsToolStripMenuItem.Click += new System.EventHandler(this.howToUseFmStatsToolStripMenuItem_Click);
+            // 
+            // howToImportPSDStatsToolStripMenuItem
+            // 
+            this.howToImportPSDStatsToolStripMenuItem.Name = "howToImportPSDStatsToolStripMenuItem";
+            this.howToImportPSDStatsToolStripMenuItem.Size = new System.Drawing.Size(350, 22);
+            this.howToImportPSDStatsToolStripMenuItem.Text = "How to import PSD Stats";
+            this.howToImportPSDStatsToolStripMenuItem.Click += new System.EventHandler(this.howToImportPSDStatsToolStripMenuItem_Click);
+            // 
+            // howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem
+            // 
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Name = "howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem";
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Size = new System.Drawing.Size(350, 22);
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Text = "How to edit Database after DLC and import In-Game";
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Click += new System.EventHandler(this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -9711,6 +9776,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewButtonColumn dataGridViewButtonColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceFromDino17ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceFromDino17ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem importPlayerAppearanceFromDino17ToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem howToUseFmStatsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem howToImportPSDStatsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem;
     }
 }
 

@@ -19,7 +19,7 @@ namespace DinoTem.persistence
             {
                 string[] tokenizer = line.Split(new string[] { "," + '"' }, StringSplitOptions.None);
                 //string[] tokenizer = line.Split("\t\r");
-                if (tokenizer.Count() != 85)
+                if (tokenizer.Count() != 87)
                     throw new Exception("number of tokenizer isn't correct");
                 if (!firstLine)
                     firstLine = true;

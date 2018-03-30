@@ -431,7 +431,7 @@ namespace DinoTem.persistence
                 player.setNational2(secondNational);
                 player.setNational(national);
                 player.setDefense(defProwess + 40);
-                player.setLowPass(clearing + 40);
+                player.setClearing(clearing + 40);
                 player.setLowPass(lowPass + 40);
                 player.setGoalCelebrate(goalCeleb);
                 player.setWeight(weight + 30);

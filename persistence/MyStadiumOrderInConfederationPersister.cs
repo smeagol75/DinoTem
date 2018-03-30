@@ -53,7 +53,7 @@ namespace DinoTem.persistence
             {
                 // Use the memory stream in a binary reader.
                 reader = new BinaryReader(memory1);
-                long START2 = -8;
+                long START2 = -block;
 
                 int NumberOfRepetitions1 = Convert.ToInt32(stadium);
                 for (int i1 = 1; i1 <= NumberOfRepetitions1; i1++)

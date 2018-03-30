@@ -180,7 +180,7 @@ namespace DinoTem.persistence
             int bloques_assig = bytesPlayer / block;
 
             int k = 0;
-            long START2 = -16;
+            long START2 = -block;
             for (int i = 0; i <= (bloques_assig - 1); i++)
             {
                 START2 += block;

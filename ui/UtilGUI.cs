@@ -211,9 +211,9 @@ namespace Team_Editor_Manager_New_Generation.ui
             {
                 for (int lst12 = lastItm2; lst12 < listbox.Items.Count; lst12++)
                 {
-
-                    if (listbox.Items[lst12].ToString().IndexOf(search.Text) > -1 |
-                        listbox.Items[lst12].ToString().ToUpper().IndexOf(search.Text.ToUpper()) > -1)
+                    string textListbox = UniDecode.Unidecoder.Unidecode(listbox.Items[lst12].ToString());
+                    if (textListbox.IndexOf(UniDecode.Unidecoder.Unidecode(search.Text)) > -1 |
+                        textListbox.ToUpper().IndexOf(UniDecode.Unidecoder.Unidecode(search.Text).ToUpper()) > -1)
                     {
                         listbox.SelectedIndex = lst12;
                         listbox.Select();
@@ -264,7 +264,7 @@ namespace Team_Editor_Manager_New_Generation.ui
             int colCount = col + 1;
             bool find = false;
 
-            string text = search.Text;
+            string text = UniDecode.Unidecoder.Unidecode(search.Text);
             if (search.Name == "fmSearchTeam")
                 lastItm3 = fmTeam;
             else if (search.Name == "searchTeamAB" && comboBox.Name == "teamBox1")
@@ -282,9 +282,9 @@ namespace Team_Editor_Manager_New_Generation.ui
             {
                 for (int lst12 = lastItm3; lst12 < comboBox.Items.Count; lst12++)
                 {
-
-                    if (comboBox.Items[lst12].ToString().IndexOf(text) > -1 |
-                        comboBox.Items[lst12].ToString().ToUpper().IndexOf(text.ToUpper()) > -1)
+                    string textComboBox = UniDecode.Unidecoder.Unidecode(comboBox.Items[lst12].ToString());
+                    if (textComboBox.IndexOf(text) > -1 |
+                        textComboBox.ToUpper().IndexOf(text.ToUpper()) > -1)
                     {
                         comboBox.SelectedIndex = lst12;
                         comboBox.Select();

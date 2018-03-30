@@ -401,7 +401,6 @@ namespace DinoTem
             campi();
 
             this.Text = "Player: " + temp.getName();
-
             playerName.Text = temp.getName();
             japaneseName.Text = temp.getJapanese();
             shirtName.Text = temp.getShirtName();
