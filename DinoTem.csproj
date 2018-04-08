@@ -37,6 +37,10 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CpkMaker, Version=0.0.0.0, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\CpkMaker.dll</HintPath>
+    </Reference>
     <Reference Include="DatabaseStadium, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\DatabaseStadium.dll</HintPath>
@@ -115,6 +119,12 @@
     <Compile Include="persistence\MyTeamPersister.cs" />
     <Compile Include="psd\ini.cs" />
     <Compile Include="psd\Psd.cs" />
+    <Compile Include="SelectDatabase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SelectDatabase.Designer.cs">
+      <DependentUpon>SelectDatabase.cs</DependentUpon>
+    </Compile>
     <Compile Include="skills\skills.cs" />
     <Compile Include="SplashScreen.cs">
       <SubType>Form</SubType>
@@ -151,9 +161,13 @@
       <DependentUpon>Update.cs</DependentUpon>
     </Compile>
     <Compile Include="update\Updated.cs" />
+    <Compile Include="zlibUnzlib\CPK.cs" />
     <Compile Include="zlibUnzlib\Unzlib.cs" />
     <Compile Include="zlibUnzlib\Zlib.cs" />
     <Compile Include="zlibUnzlib\Zlib18.cs" />
+    <EmbeddedResource Include="SelectDatabase.resx">
+      <DependentUpon>SelectDatabase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Update.resx">
       <DependentUpon>Update.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +192,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -14,7 +14,7 @@ namespace DinoTem.model
 
         public BallCondition(UInt16 id)
         {
-    	    if (id < 0)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Ball's id isn't valid: " + id);
     	
             this.id = id;
@@ -37,7 +37,7 @@ namespace DinoTem.model
 
         public void setId(UInt16 id)
         {
-    	    if (id < 0)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Ball's id isn't valid: " + id);
     	
             this.id = id;
@@ -45,8 +45,11 @@ namespace DinoTem.model
 
         public void setFrag(UInt16 frag)
         {
-    	    if (frag < 0)
-                throw new ArgumentException("Ball's frag isn't valid - Id ball: " + getId());
+            if (frag < 0)
+                this.frag = 0;
+            if (frag > 65535)
+                this.frag = 65535;
+            //throw new ArgumentException("Ball's frag isn't valid - Id ball: " + getId());
 
             this.frag = frag;
         }
@@ -54,19 +57,12 @@ namespace DinoTem.model
         public void setUnknown(byte unknown)
         {
     	    if (unknown < 0)
-                throw new ArgumentException("Ball's byte isn't valid - Id ball: " + getId());
+                this.unknown = 0;
+            if (unknown > 255)
+                this.unknown = 255;
+            //throw new ArgumentException("Ball's byte isn't valid - Id ball: " + getId());
     	
             this.unknown = unknown;
         }
-
-        /*public override bool Equals(Object obj)
-        {
-            if (obj is BallCondition)
-    	    {
-                BallCondition c = (BallCondition)obj;
-    		    return getId() == c.getId() && getUnknown() == c.getUnknown();
-    	    }
-            return false;
-        }*/
     }
 }

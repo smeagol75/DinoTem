@@ -29,7 +29,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.Tactics_toPc(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.Tactics_toPc(memory1);
             }
 
             return memory1;
@@ -150,7 +150,7 @@ namespace DinoTem.persistence
             return list;
         }
 
-        public UInt16 findIdTactics(MemoryStream memory1, BinaryReader reader)
+        public UInt16 findIndexTactics(MemoryStream memory1, BinaryReader reader)
         {
             UInt16 tactics_index_mayor = 0;
 
@@ -315,7 +315,7 @@ namespace DinoTem.persistence
 
         public void addTactics(UInt32 idTeam, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
         {
-            UInt16 idtactics = findIdTactics(memory1, reader);
+            UInt16 idtactics = findIndexTactics(memory1, reader);
 
             byte[] test = new byte[(int)memory1.Length + block];
             for (int i = 0; i < test.Count() - 1; i++)
@@ -345,7 +345,7 @@ namespace DinoTem.persistence
             writer.Write(tactics_block);
         }
 
-        public void save(string patch, ref MemoryStream memoryTattiche, int bitRecognized)
+        public void save(string patch, MemoryStream memoryTattiche, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -355,13 +355,11 @@ namespace DinoTem.persistence
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Tactics_toConsole(ref memoryTattiche);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryTattiche, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Tactics_toConsole(memoryTattiche), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Tactics_toConsole(ref memoryTattiche);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryTattiche, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Tactics_toConsole(memoryTattiche), patch + PATH);
             }
         }
 

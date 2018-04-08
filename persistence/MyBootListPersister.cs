@@ -78,8 +78,7 @@ namespace DinoTem.persistence
 
                 }
             }
-
-            if (bitRecognized == 1 || bitRecognized == 2)
+            else if (bitRecognized == 1 || bitRecognized == 2)
             {
                 for (int i = 0; i <= memory1.Length / block - 1; i++)
                 {
@@ -96,6 +95,42 @@ namespace DinoTem.persistence
             }
 
             return null;
+        }
+
+        public void replaceBootList(BinaryReader reader, int bitRecognized, MemoryStream unzlib, ref BinaryWriter writer, UInt32 oldPlayerId, UInt32 newPlayerId)
+        {
+            reader.BaseStream.Position = 0;
+            if (bitRecognized == 0)
+            {
+                for (int i = 0; (i <= ((unzlib.Length / block) - 1)); i++)
+                {
+                    UInt32 Player_to_find = reader.ReadUInt32();
+                    if (oldPlayerId == Player_to_find)
+                    {
+                        writer.BaseStream.Position -= 4;
+                        writer.Write(newPlayerId);
+                        break;
+                    }
+                    else
+                        writer.BaseStream.Position += 4;
+                }
+            }
+            else if (bitRecognized == 1 || bitRecognized == 2)
+            {
+                for (int i = 0; (i <= ((unzlib.Length / block) - 1)); i++)
+                {
+                    UInt32 Player_to_find = UnzlibZlibConsole.swaps.swap32(reader.ReadUInt32());
+                    if (oldPlayerId == Player_to_find)
+                    {
+                        writer.BaseStream.Position -= 4;
+                        writer.Write(UnzlibZlibConsole.swaps.swap32(newPlayerId));
+                        break;
+                    }
+                    else
+                        writer.BaseStream.Position += 4;
+                }
+            }
+            return;
         }
 
         public void applyBootList(BinaryReader reader, int bitRecognized, MemoryStream unzlib, BootList boot, ref BinaryWriter writer)
@@ -117,8 +152,7 @@ namespace DinoTem.persistence
 
                 }
             }
-
-            if (bitRecognized == 1 || bitRecognized == 2)
+            else if (bitRecognized == 1 || bitRecognized == 2)
             {
                 for (int i = 0; (i <= ((unzlib.Length / block) - 1)); i++)
                 {
@@ -133,6 +167,7 @@ namespace DinoTem.persistence
                         writer.BaseStream.Position += 4;
                 }
             }
+            return;
         }
 
         public void addBootList(UInt32 idPlayer, ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer)
@@ -211,7 +246,7 @@ namespace DinoTem.persistence
             }
         }
 
-        public void save(string patch, ref MemoryStream memoryBall, int bitRecognized)
+        public void save(string patch, MemoryStream memoryBall, int bitRecognized)
         {
             if (bitRecognized == 0)
             {

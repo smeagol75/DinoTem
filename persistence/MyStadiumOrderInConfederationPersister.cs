@@ -26,7 +26,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.StadiumOrderInConfederation_toPc(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.StadiumOrderInConfederation_toPc(memory1);
             }
 
             return memory1;

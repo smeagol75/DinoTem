@@ -174,6 +174,7 @@
             this.acrobaticClear = new System.Windows.Forms.CheckBox();
             this.fightingSpirit = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.addBootRelink = new System.Windows.Forms.Button();
             this.bootsRelink = new System.Windows.Forms.ComboBox();
             this.groupBox22 = new System.Windows.Forms.GroupBox();
             this.earlyCross = new System.Windows.Forms.CheckBox();
@@ -223,14 +224,13 @@
             this.skin1 = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.addGloveRelink = new System.Windows.Forms.Button();
             this.glovesRelink = new System.Windows.Forms.ComboBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.youthClub = new System.Windows.Forms.ComboBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.starIndicator = new System.Windows.Forms.NumericUpDown();
             this.label43 = new System.Windows.Forms.Label();
-            this.addBootRelink = new System.Windows.Forms.Button();
-            this.addGloveRelink = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -651,9 +651,8 @@
             // playerId
             // 
             this.playerId.Location = new System.Drawing.Point(94, 19);
-            this.playerId.MaxLength = 8;
+            this.playerId.MaxLength = 10;
             this.playerId.Name = "playerId";
-            this.playerId.ReadOnly = true;
             this.playerId.Size = new System.Drawing.Size(65, 20);
             this.playerId.TabIndex = 7;
             this.playerId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Numero_KeyPress);
@@ -1943,6 +1942,22 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Boots Relink";
             // 
+            // addBootRelink
+            // 
+            this.addBootRelink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addBootRelink.FlatAppearance.BorderSize = 0;
+            this.addBootRelink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.addBootRelink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
+            this.addBootRelink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addBootRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.addBootRelink.Image = ((System.Drawing.Image)(resources.GetObject("addBootRelink.Image")));
+            this.addBootRelink.Location = new System.Drawing.Point(362, 22);
+            this.addBootRelink.Name = "addBootRelink";
+            this.addBootRelink.Size = new System.Drawing.Size(17, 17);
+            this.addBootRelink.TabIndex = 126;
+            this.addBootRelink.UseVisualStyleBackColor = true;
+            this.addBootRelink.Click += new System.EventHandler(this.addBootRelink_Click);
+            // 
             // bootsRelink
             // 
             this.bootsRelink.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2598,6 +2613,22 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Gloves Relink";
             // 
+            // addGloveRelink
+            // 
+            this.addGloveRelink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addGloveRelink.FlatAppearance.BorderSize = 0;
+            this.addGloveRelink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
+            this.addGloveRelink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
+            this.addGloveRelink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addGloveRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.addGloveRelink.Image = ((System.Drawing.Image)(resources.GetObject("addGloveRelink.Image")));
+            this.addGloveRelink.Location = new System.Drawing.Point(362, 23);
+            this.addGloveRelink.Name = "addGloveRelink";
+            this.addGloveRelink.Size = new System.Drawing.Size(17, 17);
+            this.addGloveRelink.TabIndex = 127;
+            this.addGloveRelink.UseVisualStyleBackColor = true;
+            this.addGloveRelink.Click += new System.EventHandler(this.addGloveRelink_Click);
+            // 
             // glovesRelink
             // 
             this.glovesRelink.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -2670,38 +2701,6 @@
             this.label43.Size = new System.Drawing.Size(105, 13);
             this.label43.TabIndex = 132;
             this.label43.Text = "Star Player Indicator:";
-            // 
-            // addBootRelink
-            // 
-            this.addBootRelink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addBootRelink.FlatAppearance.BorderSize = 0;
-            this.addBootRelink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.addBootRelink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
-            this.addBootRelink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addBootRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.addBootRelink.Image = ((System.Drawing.Image)(resources.GetObject("addBootRelink.Image")));
-            this.addBootRelink.Location = new System.Drawing.Point(362, 22);
-            this.addBootRelink.Name = "addBootRelink";
-            this.addBootRelink.Size = new System.Drawing.Size(17, 17);
-            this.addBootRelink.TabIndex = 126;
-            this.addBootRelink.UseVisualStyleBackColor = true;
-            this.addBootRelink.Click += new System.EventHandler(this.addBootRelink_Click);
-            // 
-            // addGloveRelink
-            // 
-            this.addGloveRelink.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.addGloveRelink.FlatAppearance.BorderSize = 0;
-            this.addGloveRelink.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(132)))), ((int)(((byte)(177)))), ((int)(((byte)(68)))));
-            this.addGloveRelink.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(147)))), ((int)(((byte)(68)))));
-            this.addGloveRelink.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addGloveRelink.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.addGloveRelink.Image = ((System.Drawing.Image)(resources.GetObject("addGloveRelink.Image")));
-            this.addGloveRelink.Location = new System.Drawing.Point(362, 23);
-            this.addGloveRelink.Name = "addGloveRelink";
-            this.addGloveRelink.Size = new System.Drawing.Size(17, 17);
-            this.addGloveRelink.TabIndex = 127;
-            this.addGloveRelink.UseVisualStyleBackColor = true;
-            this.addGloveRelink.Click += new System.EventHandler(this.addGloveRelink_Click);
             // 
             // Giocatore
             // 

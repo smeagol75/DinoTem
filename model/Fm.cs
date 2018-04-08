@@ -93,6 +93,8 @@ namespace DinoTem.model
         private int versatility;
         private int vision;
         private int WorkRate;
+        private int height;
+        private int weight;
 
         public Fm(int id)
         {
@@ -781,6 +783,24 @@ namespace DinoTem.model
         public void setWorkRate(int workRate)
         {
             WorkRate = workRate;
+        }
+
+        public int getHeight()
+        {
+            return height;
+        }
+        public void setHeight(int height)
+        {
+            this.height = height;
+        }
+
+        public int getWeight()
+        {
+            return weight;
+        }
+        public void setWeight(int weight)
+        {
+            this.weight = weight;
         }
 
         public override string ToString()

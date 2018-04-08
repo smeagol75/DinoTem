@@ -16,7 +16,7 @@ namespace DinoTem.model
 
         public Coach(UInt32 id)
         {
-            if (id < 0)
+            if (id < 0 || id > 4294967295)
                 throw new ArgumentException("Coach's id isn't valid: " + id);
 
             this.id = id;
@@ -54,7 +54,7 @@ namespace DinoTem.model
 
         public void setId(UInt32 id)
         {
-            if (id < 0)
+            if (id < 0 || id > 4294967295)
                 throw new ArgumentException("Coach's id isn't valid: " + id);
 
             this.id = id;
@@ -62,8 +62,11 @@ namespace DinoTem.model
 
         public void setCountry(UInt16 country)
         {
-            if (country < 0)
-                throw new ArgumentException("Coach's nationality isn't valid - Id coach: " + getId());
+            if (country < 0 || country > 65535)
+                this.country = 0;
+            if (country > 65535)
+                this.country = 65535;
+            //throw new ArgumentException("Coach's nationality isn't valid - Id coach: " + getId());
 
             this.country = country;
         }
@@ -79,7 +82,10 @@ namespace DinoTem.model
         public void setByteLic(byte byteLic)
         {
             if (byteLic < 0)
-                throw new ArgumentException("Coach's byte license isn't valid - Id coach: " + getId());
+                this.byteLic = 0;
+            if (byteLic > 255)
+                this.byteLic = 255;
+            //throw new ArgumentException("Coach's byte license isn't valid - Id coach: " + getId());
 
             this.byteLic = byteLic;
         }
@@ -87,15 +93,16 @@ namespace DinoTem.model
         public void setName(string name)
         {
             if (name == null || name == "")
-                throw new ArgumentException("Coach's name isn't valid - Id coach: " + getId());
+                this.name = "Coach without name";
+            //throw new ArgumentException("Coach's name isn't valid - Id coach: " + getId());
 
             this.name = name;
         }
 
         public void setJapName(string japName)
         {
-            if (japName == null || japName == "")
-                throw new ArgumentException("Coach's name isn't valid - Id coach: " + getId());
+            //if (japName == null || japName == "")
+                //throw new ArgumentException("Coach's name isn't valid - Id coach: " + getId());
 
             this.japName = japName;
         }

@@ -94,7 +94,8 @@ namespace DinoTem.model
         public void setSpanish(string spanish)
         {
             if (spanish == null || spanish == "")
-                throw new ArgumentException("Spanish name isn't valid - " + base.getEnglish());
+                this.spanish = "National without name";
+            //throw new ArgumentException("Spanish name isn't valid - " + base.getEnglish());
 
             this.spanish = spanish;
             return;
@@ -103,7 +104,8 @@ namespace DinoTem.model
         public void setEnglishUS(string englishUS)
         {
             if (englishUS == null || englishUS == "")
-                throw new ArgumentException("English Us name isn't valid - " + base.getEnglish());
+                this.englishUS = "National without name";
+            //throw new ArgumentException("English Us name isn't valid - " + base.getEnglish());
 
             this.englishUS = englishUS;
             return;
@@ -112,7 +114,8 @@ namespace DinoTem.model
         public void setPortuguese(string portuguese)
         {
             if (portuguese == null || portuguese == "")
-                throw new ArgumentException("Portuguese name isn't valid - " + base.getEnglish());
+                this.portuguese = "National without name";
+            //throw new ArgumentException("Portuguese name isn't valid - " + base.getEnglish());
 
             this.portuguese = portuguese;
             return;
@@ -121,7 +124,8 @@ namespace DinoTem.model
         public void setTurkish(string turkish)
         {
             if (turkish == null || turkish == "")
-                throw new ArgumentException("Turkish name isn't valid - " + base.getEnglish());
+                this.turkish = "National without name";
+            //throw new ArgumentException("Turkish name isn't valid - " + base.getEnglish());
 
             this.turkish = turkish;
             return;
@@ -130,7 +134,8 @@ namespace DinoTem.model
         public void setFrench(string french)
         {
             if (french == null || french == "")
-                throw new ArgumentException("French name isn't valid - " + base.getEnglish());
+                this.french = "National without name";
+            //throw new ArgumentException("French name isn't valid - " + base.getEnglish());
 
             this.french = french;
             return;
@@ -139,7 +144,8 @@ namespace DinoTem.model
         public void setLatinAmericaSpanish(string latinAmericaSpanish)
         {
             if (latinAmericaSpanish == null || latinAmericaSpanish == "")
-                throw new ArgumentException("Latin america spanish name isn't valid - " + base.getEnglish());
+                this.latinAmericaSpanish = "National without name";
+            //throw new ArgumentException("Latin america spanish name isn't valid - " + base.getEnglish());
 
             this.latinAmericaSpanish = latinAmericaSpanish;
             return;
@@ -148,7 +154,8 @@ namespace DinoTem.model
         public void setGreek(string greek)
         {
             if (greek == null || greek == "")
-                throw new ArgumentException("Greek name isn't valid - " + base.getEnglish());
+                this.greek = "National without name";
+            //throw new ArgumentException("Greek name isn't valid - " + base.getEnglish());
 
             this.greek = greek;
             return;
@@ -157,7 +164,8 @@ namespace DinoTem.model
         public void setRussian(string russian)
         {
             if (russian == null || russian == "")
-                throw new ArgumentException("Russian name isn't valid - " + base.getEnglish());
+                this.russian = "National without name";
+            //throw new ArgumentException("Russian name isn't valid - " + base.getEnglish());
 
             this.russian = russian;
             return;
@@ -166,7 +174,8 @@ namespace DinoTem.model
         public void setItalian(string italian)
         {
             if (italian == null || italian == "")
-                throw new ArgumentException("Italian name isn't valid - " + base.getEnglish());
+                this.italian = "National without name";
+            //throw new ArgumentException("Italian name isn't valid - " + base.getEnglish());
 
             this.italian = italian;
             return;
@@ -175,7 +184,8 @@ namespace DinoTem.model
         public void setSwedish(string swedish)
         {
             if (swedish == null || swedish == "")
-                throw new ArgumentException("Swedish name isn't valid - " + base.getEnglish());
+                this.swedish = "National without name";
+            //throw new ArgumentException("Swedish name isn't valid - " + base.getEnglish());
 
             this.swedish = swedish;
             return;
@@ -184,7 +194,8 @@ namespace DinoTem.model
         public void setDutch(string dutch)
         {
             if (dutch == null || dutch == "")
-                throw new ArgumentException("Dutch name isn't valid - " + base.getEnglish());
+                this.dutch = "National without name";
+            //throw new ArgumentException("Dutch name isn't valid - " + base.getEnglish());
 
             this.dutch = dutch;
             return;
@@ -193,7 +204,8 @@ namespace DinoTem.model
         public void setGerman(string german)
         {
             if (german == null || german == "")
-                throw new ArgumentException("German name isn't valid - " + base.getEnglish());
+                this.german = "National without name";
+            //throw new ArgumentException("German name isn't valid - " + base.getEnglish());
 
             this.german = german;
             return;
@@ -202,7 +214,8 @@ namespace DinoTem.model
         public void setBrazilianPortuguese(string brazilianPortuguese)
         {
             if (brazilianPortuguese == null || brazilianPortuguese == "")
-                throw new ArgumentException("Portuguese name isn't valid - " + base.getEnglish());
+                this.brazilianPortuguese = "National without name";
+            //throw new ArgumentException("Portuguese name isn't valid - " + base.getEnglish());
 
             this.brazilianPortuguese = brazilianPortuguese;
             return;

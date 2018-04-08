@@ -29,7 +29,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.Team_toPc(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.Team_toPc(memory1);
             }
 
             return memory1;
@@ -80,16 +80,16 @@ namespace DinoTem.persistence
             }
 	    }
 
-        private UInt32 Coach_pos = 0;
-        private UInt32 feederTeamId = 4;
-        private UInt32 Id_32_pos = 8;
-        private UInt32 parentTeamId = 8;
-        private UInt32 Stadium_16_pos = 16;
-        private UInt32 Country_16_pos = 20;
         public Team loadTeam(int index, BinaryReader reader)
         {
             Team team = null;
 
+            UInt32 Coach_pos = 0;
+            UInt32 feederTeamId = 4;
+            UInt32 Id_32_pos = 8;
+            UInt32 parentTeamId = 8;
+            UInt32 Stadium_16_pos = 16;
+            UInt32 Country_16_pos = 20;
             UInt32 idTeam;
             UInt32 stadium;
             UInt32 country;
@@ -274,7 +274,23 @@ namespace DinoTem.persistence
             return team;
         }
 
-        public UInt32 findIdTeam(MemoryStream memory1, BinaryReader reader)
+        public int loadTeamById(MemoryStream memory1, BinaryReader reader, UInt32 teamId)
+        {
+            int bytes = (int)memory1.Length;
+            int team = bytes / block;
+
+            reader.BaseStream.Position = 8;
+            for (int i = 0; i <= (team - 1); i++)
+            {
+                if (teamId == reader.ReadUInt32())
+                    return i;
+                reader.BaseStream.Position += block - 4;
+            }
+
+            return -1;
+        }
+
+        public UInt32 findIndexTeam(MemoryStream memory1, BinaryReader reader)
         {
             UInt32 team_index_mayor = 0;
 
@@ -737,7 +753,7 @@ namespace DinoTem.persistence
             writer = new BinaryWriter(memory1);
         }
 
-        public void save(string patch, ref MemoryStream memorySquadre, int bitRecognized)
+        public void save(string patch, MemoryStream memorySquadre, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -747,14 +763,13 @@ namespace DinoTem.persistence
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Team_toConsole(ref memorySquadre);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memorySquadre, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Team_toConsole(memorySquadre), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Team_toConsole(ref memorySquadre);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memorySquadre, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Team_toConsole(memorySquadre), patch + PATH);
             }
+            return;
         }
     }
 }

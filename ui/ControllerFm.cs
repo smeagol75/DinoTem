@@ -39,7 +39,13 @@ namespace DinoTem.ui
             
             try
             {
-                fmList = fmReader.load("FM2017 Players.csv");
+                SelectDatabase form2 = new SelectDatabase();
+                form2.ShowDialog();
+
+                if (form2.listBox1.SelectedIndex == -1)
+                    return;
+
+                fmList = fmReader.load(form2.listBox1.SelectedItem.ToString());
             }
             catch (FileNotFoundException e)
             {
@@ -207,7 +213,7 @@ namespace DinoTem.ui
                     mediaMag = media;
                 }
             }
-                
+
             posPlayer(gk, cb, lb, rb, dmf, cmf, lmf, amf, rmf, lwf, rwf, ss, cf, position);
         }
 

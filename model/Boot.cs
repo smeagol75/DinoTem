@@ -16,7 +16,7 @@ namespace DinoTem.model
 
         public Boot(UInt16 id)
         {
-            if (id < 0)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Boot's id isn't valid: " + id);
 
             this.id = id;
@@ -49,7 +49,7 @@ namespace DinoTem.model
 
         public void setId(UInt16 id)
         {
-            if (id < 0)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Boot's id isn't valid: " + id);
 
             this.id = id;
@@ -58,7 +58,10 @@ namespace DinoTem.model
         public void setOrder(byte order)
         {
             if (order < 0)
-                throw new ArgumentException("Boot's order isn't valid - Id ball: " + getId());
+                this.order = 0;
+            if (order > 255)
+                this.order = 255;
+            //throw new ArgumentException("Boot's order isn't valid - Id ball: " + getId());
 
             this.order = order;
         }
@@ -66,7 +69,8 @@ namespace DinoTem.model
         public void setName(string name)
         {
             if (name == null || name == "")
-                throw new ArgumentException("Boot's name isn't valid - Id ball: " + getId());
+                this.name = "Boot without name";
+            //throw new ArgumentException("Boot's name isn't valid - Id ball: " + getId());
 
             this.name = name;
         }
@@ -74,7 +78,8 @@ namespace DinoTem.model
         public void setColor(string color)
         {
             if (color == null || color == "")
-                throw new ArgumentException("Boot's color isn't valid - Id ball: " + getId());
+                this.name = "Boot without color";
+            //throw new ArgumentException("Boot's color isn't valid - Id ball: " + getId());
 
             this.color = color;
         }
@@ -82,7 +87,8 @@ namespace DinoTem.model
         public void setMaterial(string material)
         {
             if (name == null || name == "")
-                throw new ArgumentException("Boot's material isn't valid - Id ball: " + getId());
+                this.name = "Boot without material";
+            //throw new ArgumentException("Boot's material isn't valid - Id ball: " + getId());
 
             this.material = material;
         }

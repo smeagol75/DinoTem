@@ -12,7 +12,7 @@ namespace DinoTem.model
 
         public BootList(UInt32 playerId)
         {
-            if (playerId < 0)
+            if (playerId < 0 || playerId > 4294967295)
                 throw new ArgumentException("Player's id isn't valid: " + playerId);
 
             this.playerId = playerId;
@@ -30,7 +30,7 @@ namespace DinoTem.model
 
         public void setId(UInt32 playerId)
         {
-            if (playerId < 0)
+            if (playerId < 0 || playerId > 4294967295)
                 throw new ArgumentException("Player's id isn't valid: " + playerId);
 
             this.playerId = playerId;
@@ -38,7 +38,7 @@ namespace DinoTem.model
 
         public void setBootId(UInt16 bootId)
         {
-            if (bootId < 0)
+            if (bootId < 0 || bootId > 65535)
                 throw new ArgumentException("Boot's id isn't valid - id player: " + playerId);
 
             this.bootId = bootId;

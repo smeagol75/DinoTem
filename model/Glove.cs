@@ -14,7 +14,7 @@ namespace DinoTem.model
 
         public Glove(UInt16 id)
         {
-            if (id < 0)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Glove's id isn't valid: " + id);
 
             this.id = id;
@@ -42,7 +42,7 @@ namespace DinoTem.model
 
         public void setId(UInt16 id)
         {
-            if (id < 0)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Glove's id isn't valid: " + id);
 
             this.id = id;
@@ -50,8 +50,11 @@ namespace DinoTem.model
 
         public void setOrder(byte order)
         {
-            if (order < 0)
-                throw new ArgumentException("Glove's order isn't valid - Id glove: " + getId());
+            if (order < 0 ||order > 255)
+                this.order = 0;
+            if (order > 255)
+                this.order = 255;
+            //throw new ArgumentException("Glove's order isn't valid - Id glove: " + getId());
 
             this.order = order;
         }
@@ -59,7 +62,8 @@ namespace DinoTem.model
         public void setName(string name)
         {
             if (name == null || name == "")
-                throw new ArgumentException("Glove's name isn't valid - Id glove: " + getId());
+                this.name = "Glove without name";
+            //throw new ArgumentException("Glove's name isn't valid - Id glove: " + getId());
 
             this.name = name;
         }
@@ -67,7 +71,8 @@ namespace DinoTem.model
         public void setColor(string color)
         {
             if (color == null || color == "")
-                throw new ArgumentException("Glove's color isn't valid - Id glove: " + getId());
+                this.name = "Color without name";
+            //throw new ArgumentException("Glove's color isn't valid - Id glove: " + getId());
 
             this.color = color;
         }

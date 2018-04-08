@@ -258,10 +258,8 @@ namespace DinoTem.ui
         {
             MyDerbyPersister derbyReader = new MyDerbyPersister();
 
-            Team nullo = new Club(99999);
-            nullo.setEnglish("No Team Found");
-            Form1._Form1.derbyTeam1.Items.Add(nullo);
-            Form1._Form1.derbyTeam2.Items.Add(nullo);
+            Form1._Form1.derbyTeam1.Items.Add("No Team Found");
+            Form1._Form1.derbyTeam2.Items.Add("No Team Found");
             try
             {
                 derbyReader.load(patch, bitRecognized, ref unzlibDerby, ref leggiDerby, ref scriviDerby);
@@ -442,7 +440,7 @@ namespace DinoTem.ui
 
             try
             {
-                ballSave.save(patch, ref unzlibPalloni, bitRecognized);
+                ballSave.save(patch, unzlibPalloni, bitRecognized);
             }
             catch
             {
@@ -456,7 +454,7 @@ namespace DinoTem.ui
 
             try
             {
-                gloveSave.save(patch, ref unzlibGuanti, bitRecognized);
+                gloveSave.save(patch, unzlibGuanti, bitRecognized);
             }
             catch
             {
@@ -470,7 +468,7 @@ namespace DinoTem.ui
 
             try
             {
-                bootSave.save(patch, ref unzlibScarpe, bitRecognized);
+                bootSave.save(patch, unzlibScarpe, bitRecognized);
             }
             catch
             {
@@ -484,7 +482,7 @@ namespace DinoTem.ui
 
             try
             {
-                stadiumSave.save(patch, ref unzlibStadi, bitRecognized);
+                stadiumSave.save(patch, unzlibStadi, bitRecognized);
             }
             catch
             {
@@ -498,7 +496,7 @@ namespace DinoTem.ui
 
             try
             {
-                coachSave.save(patch, ref unzlibAllenatori, bitRecognized);
+                coachSave.save(patch, unzlibAllenatori, bitRecognized);
             }
             catch
             {
@@ -512,7 +510,7 @@ namespace DinoTem.ui
 
             try
             {
-                playerSave.save(patch, ref unzlibGiocatori, bitRecognized);
+                playerSave.save(patch, unzlibGiocatori, bitRecognized);
             }
             catch
             {
@@ -526,7 +524,7 @@ namespace DinoTem.ui
 
             try
             {
-                teamSave.save(patch, ref unzlibSquadre, bitRecognized);
+                teamSave.save(patch, unzlibSquadre, bitRecognized);
             }
             catch
             {
@@ -540,7 +538,7 @@ namespace DinoTem.ui
 
             try
             {
-                paSave.save(patch, ref unzlibPlayerAssign, bitRecognized);
+                paSave.save(patch, unzlibPlayerAssign, bitRecognized);
             }
             catch
             {
@@ -554,7 +552,7 @@ namespace DinoTem.ui
 
             try
             {
-                taSave.save(patch, ref unzlibTattiche, bitRecognized);
+                taSave.save(patch, unzlibTattiche, bitRecognized);
             }
             catch
             {
@@ -568,7 +566,7 @@ namespace DinoTem.ui
 
             try
             {
-                tfSave.save(patch, ref unzlibTacticsFormation, bitRecognized);
+                tfSave.save(patch, unzlibTacticsFormation, bitRecognized);
             }
             catch
             {
@@ -582,7 +580,7 @@ namespace DinoTem.ui
 
             try
             {
-                baSave.save(patch, ref unzlibBallCondition, bitRecognized);
+                baSave.save(patch, unzlibBallCondition, bitRecognized);
             }
             catch
             {
@@ -596,7 +594,7 @@ namespace DinoTem.ui
 
             try
             {
-                dSave.save(patch, ref unzlibDerby, bitRecognized);
+                dSave.save(patch, unzlibDerby, bitRecognized);
             }
             catch
             {
@@ -610,7 +608,7 @@ namespace DinoTem.ui
 
             try
             {
-                cSave.save(patch, ref unzlibCompetition, bitRecognized);
+                cSave.save(patch, unzlibCompetition, bitRecognized);
             }
             catch
             {
@@ -624,7 +622,7 @@ namespace DinoTem.ui
 
             try
             {
-                cSave.save(patch, ref unzlibCompetitionKind, bitRecognized);
+                cSave.save(patch, unzlibCompetitionKind, bitRecognized);
             }
             catch
             {
@@ -638,7 +636,7 @@ namespace DinoTem.ui
 
             try
             {
-                cSave.save(patch, ref unzlibCompetitionRegulation, bitRecognized);
+                cSave.save(patch, unzlibCompetitionRegulation, bitRecognized);
             }
             catch
             {
@@ -652,7 +650,7 @@ namespace DinoTem.ui
 
             try
             {
-                dSave.save(patch, ref unzlibCompetitionEntry, bitRecognized);
+                dSave.save(patch, unzlibCompetitionEntry, bitRecognized);
             }
             catch
             {
@@ -666,7 +664,7 @@ namespace DinoTem.ui
 
             try
             {
-                playerAppearanceSave.save(patch, ref unzlibPlayerApp, bitRecognized);
+                playerAppearanceSave.save(patch, unzlibPlayerApp, bitRecognized);
             }
             catch
             {
@@ -680,7 +678,7 @@ namespace DinoTem.ui
 
             try
             {
-                dSave.save(patch, ref unzlibGloveList, bitRecognized);
+                dSave.save(patch, unzlibGloveList, bitRecognized);
             }
             catch
             {
@@ -694,7 +692,7 @@ namespace DinoTem.ui
 
             try
             {
-                dSave.save(patch, ref unzlibBootList, bitRecognized);
+                dSave.save(patch, unzlibBootList, bitRecognized);
             }
             catch
             {
@@ -989,7 +987,7 @@ namespace DinoTem.ui
             {
                 glove.addGlove(ref unzlibGuanti, ref leggiGuanti, ref scriviGuanti);
 
-                Glove temp = new Glove(glove.findIdGlove(unzlibGuanti, leggiGuanti));
+                Glove temp = new Glove(glove.findIndexGlove(unzlibGuanti, leggiGuanti));
                 temp.setName("Glove " + Form1._Form1.glovesBox.Items.Count);
                 temp.setOrder(20);
                 temp.setColor("Test");
@@ -1013,7 +1011,7 @@ namespace DinoTem.ui
             {
                 boot.addBoot(ref unzlibScarpe, ref leggiScarpe, ref scriviScarpe);
 
-                Boot temp = new Boot(boot.findIdBoot(unzlibScarpe, leggiScarpe));
+                Boot temp = new Boot(boot.findIndexBoot(unzlibScarpe, leggiScarpe));
                 temp.setName("Boot " + Form1._Form1.bootsBox.Items.Count);
                 temp.setOrder(20);
                 temp.setColor("Test");
@@ -1038,7 +1036,7 @@ namespace DinoTem.ui
             {
                 ball.addBall(ref unzlibPalloni, ref leggiPalloni, ref scriviPalloni);
 
-                UInt16 id = ball.findIdBall(unzlibPalloni, leggiPalloni);
+                UInt16 id = ball.findIndexBall(unzlibPalloni, leggiPalloni);
                 Ball temp = new Ball(id);
                 temp.setName("Ball " + Form1._Form1.ballsBox.Items.Count);
                 temp.setOrder(20);
@@ -1062,7 +1060,7 @@ namespace DinoTem.ui
             {
                 stadium.addStadium(ref unzlibStadi, ref leggiStadi, ref scriviStadi);
 
-                Stadium temp = new Stadium(stadium.findIdStadium(unzlibStadi, leggiStadi));
+                Stadium temp = new Stadium(stadium.findIndexStadium(unzlibStadi, leggiStadi));
                 temp.setName("Stadium " + Form1._Form1.stadiumsBox.Items.Count);
                 temp.setCapacity(1000);
                 temp.setCountry(215);
@@ -1135,7 +1133,7 @@ namespace DinoTem.ui
             {
                 coach.addCoach(ref unzlibAllenatori, ref leggiAllenatori, ref scriviAllenatori);
 
-                UInt32 id = coach.findIdCoach(unzlibAllenatori, leggiAllenatori);
+                UInt32 id = coach.findIndexCoach(unzlibAllenatori, leggiAllenatori);
                 Coach temp = new Coach(id);
                 temp.setName("Coach " + Form1._Form1.coachBox.Items.Count);
                 temp.setJapName("Coach " + Form1._Form1.coachBox.Items.Count);
@@ -1163,14 +1161,14 @@ namespace DinoTem.ui
             {
                 player.addPlayer(ref unzlibGiocatori, ref leggiGiocatori, ref scriviGiocatori);
 
-                UInt32 id = player.findIdPlayer(unzlibGiocatori, leggiGiocatori);
+                UInt32 id = player.findIndexPlayer(unzlibGiocatori, leggiGiocatori);
                 Player temp = leggiGiocatore(0);
                 temp.setId(id);
                 temp.setNational(215);
                 temp.setName("Player " + Form1._Form1.playersBox.Items.Count);
                 temp.setJapanese("Player " + Form1._Form1.playersBox.Items.Count);
                 temp.setShirtName("Player " + Form1._Form1.playersBox.Items.Count);
-
+                
                 applyPlayerPersister(Form1._Form1.playersBox.Items.Count, temp);
 
                 Form1._Form1.playersBox.Items.Add("Player " + Form1._Form1.playersBox.Items.Count);
@@ -1191,7 +1189,7 @@ namespace DinoTem.ui
             {
                 team.addTeam(ref unzlibSquadre, ref leggiSquadre, ref scriviSquadre);
 
-                UInt32 idTeam = team.findIdTeam(unzlibSquadre, leggiSquadre);
+                UInt32 idTeam = team.findIndexTeam(unzlibSquadre, leggiSquadre);
                 Team temp = leggiSquadra(0);
                 temp.setId(idTeam);
                 temp.setNational(0);
@@ -1200,21 +1198,21 @@ namespace DinoTem.ui
                 temp.setEnglish(name);
                 temp.setJapanese(name);
                 applyTeamPersister(Form1._Form1.teamsBox.Items.Count, temp);
-
+                
                 Form1._Form1.teamsBox.Items.Add(name);
                 Form1._Form1.derbyTeam1.Items.Add(name);
                 Form1._Form1.derbyTeam2.Items.Add(name);
                 Form1._Form1.teamBox1.Items.Add(name);
                 Form1._Form1.teamBox2.Items.Add(name);
                 Form1._Form1.competitionTeamList.Items.Add(name);
-
+                
                 Form1._Form1.teamBox1.SelectedIndex = Form1._Form1.teamBox1.Items.Count - 1;
                 for (int i = 0; i < 11; i++)
                 {
                     MyPlayerPersister player = new MyPlayerPersister();
                     player.addPlayer(ref unzlibGiocatori, ref leggiGiocatori, ref scriviGiocatori);
 
-                    UInt32 idPlayer = player.findIdPlayer(unzlibGiocatori, leggiGiocatori);
+                    UInt32 idPlayer = player.findIndexPlayer(unzlibGiocatori, leggiGiocatori);
                     Player tempP = leggiGiocatore(0);
                     tempP.setId(idPlayer);
                     tempP.setNational(215);
@@ -1336,6 +1334,62 @@ namespace DinoTem.ui
             catch
             {
                 MessageBox.Show("Error add player's appearance!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void replacePlayerAppearancePersister(UInt32 idOldPlayer, UInt32 idNewPlayer)
+        {
+            MyPlayerAppearancePersister player = new MyPlayerAppearancePersister();
+
+            try
+            {
+                player.replacePlayerAppearance(leggiPlayerApp, getBitRecognized(), unzlibPlayerApp, ref scriviPlayerApp, idOldPlayer, idNewPlayer);
+            }
+            catch
+            {
+                MessageBox.Show("Error replace player's appearance!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void replaceBootListPersister(UInt32 idOldPlayer, UInt32 idNewPlayer)
+        {
+            MyBootListPersister boot = new MyBootListPersister();
+
+            try
+            {
+                boot.replaceBootList(leggiBootList, getBitRecognized(), unzlibBootList, ref scriviBootList, idOldPlayer, idNewPlayer);
+            }
+            catch
+            {
+                MessageBox.Show("Error replace boot's list!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void replaceGloveListPersister(UInt32 idOldPlayer, UInt32 idNewPlayer)
+        {
+            MyGloveListPersister glove = new MyGloveListPersister();
+
+            try
+            {
+                glove.replaceGloveList(leggiGloveList, getBitRecognized(), unzlibGloveList, ref scriviGloveList, idOldPlayer, idNewPlayer);
+            }
+            catch
+            {
+                MessageBox.Show("Error replace glove's list!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void replacePlayerAssignmentPersister(UInt32 idOldPlayer, UInt32 idNewPlayer)
+        {
+            MyPlayerAssignmentPersister pA = new MyPlayerAssignmentPersister();
+
+            try
+            {
+                pA.replacePlayerA(leggiPlayerAssign, unzlibPlayerAssign, ref scriviPlayerAssign, idOldPlayer, idNewPlayer);
+            }
+            catch
+            {
+                MessageBox.Show("Error replace player assignment!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1594,6 +1648,9 @@ namespace DinoTem.ui
             Form1._Form1.teamCoach.Items.Clear();
             Form1._Form1.teamStadium.Items.Clear();
 
+            readCountryPersister(folder, bitRecognized);
+            readTeamPersister(folder, bitRecognized);
+            readPlayerPersister(folder, bitRecognized);
             readBootPersister(folder, bitRecognized);
             readBallPersister(folder, bitRecognized);
             readGlovePersister(folder, bitRecognized);
@@ -1613,9 +1670,6 @@ namespace DinoTem.ui
             readBootListPersister(folder, bitRecognized);
             readPlayerAppearancePersister(folder, bitRecognized);
             readPlayerAssignmentPersister(folder, bitRecognized);
-            readTeamPersister(folder, bitRecognized);
-            readCountryPersister(folder, bitRecognized);
-            readPlayerPersister(folder, bitRecognized);
 
             Form1._Form1.ballsBox.SelectedIndex = 0;
             Form1._Form1.glovesBox.SelectedIndex = 0;
@@ -1648,6 +1702,7 @@ namespace DinoTem.ui
 
         public Glove leggiGuanto(int index)
         {
+            //quando si seleziona "No Glove" nel form giocatore
             Glove temp = new Glove(0);
             if (index == Form1._Form1.glovesBox.Items.Count)
                 return temp;
@@ -1660,6 +1715,7 @@ namespace DinoTem.ui
 
         public Boot leggiScarpa(int index)
         {
+            //quando si seleziona "No Boot" nel form giocatore
             Boot temp = new Boot(0);
             if (index == Form1._Form1.bootsBox.Items.Count)
                 return temp;
@@ -1680,6 +1736,7 @@ namespace DinoTem.ui
 
         public Country leggiPaese(int index)
         {
+            //quando seleziono "No National" nel form giocatore
             Country temp = new Country(0);
             if (index == Form1._Form1.stadiumCountry.Items.Count)
                 return temp;
@@ -1706,15 +1763,17 @@ namespace DinoTem.ui
             return player;
         }
 
-        public Player leggiGiocatoreById(UInt32 id)
+        public Player leggiGiocatore(UInt32 playerId)
         {
-            Player player = leggiGiocatore(findPlayer(id));
+            MyPlayerPersister playerReader = new MyPlayerPersister();
+            int index = playerReader.loadPlayerById(unzlibGiocatori, leggiGiocatori, playerId);
 
-            return player;
+            return leggiGiocatore(index);
         }
 
         public Team leggiSquadra(int index)
         {
+            //quando seleziono "youth club" nel form giocatore
             Club temp = new Club(0);
             if (index == Form1._Form1.teamBox1.Items.Count)
                 return temp;
@@ -1848,13 +1907,9 @@ namespace DinoTem.ui
 
         public int findCountry(UInt32 idCountry)
         {
-            int index = -1;
-            for (int i = 0; i < Form1._Form1.stadiumCountry.Items.Count; i++)
-            {
-                Country c = leggiPaese(i);
-                if (c.getId() == idCountry)
-                    return i;
-            }
+            MyCountryPersister countryReader = new MyCountryPersister();
+
+            int index = countryReader.loadCountryById(unzlibPaesi, leggiPaesi, idCountry);
 
             //for "no country" 
             if (index == -1)
@@ -1875,15 +1930,11 @@ namespace DinoTem.ui
             return index;
         }
 
-        public int findStadium(UInt32 idStadium)
+        public int findStadium(UInt16 idStadium)
         {
-            int index = -1;
-            for (int i = 0; i < Form1._Form1.teamStadium.Items.Count; i++)
-            {
-                Stadium c = leggiStadium(i);
-                if (c.getId() == (UInt16)idStadium)
-                    return i;
-            }
+            MyStadiumPersister stadiumReader = new MyStadiumPersister();
+
+            int index = stadiumReader.loadStadiumById(unzlibStadi, leggiStadi, idStadium);
 
             //for "no stadium" 
             if (index == -1)
@@ -1894,25 +1945,18 @@ namespace DinoTem.ui
 
         public int findCoach(UInt32 idCoach)
         {
-            for (int i = 0; i < Form1._Form1.teamCoach.Items.Count; i++)
-            {
-                Coach c = leggiCoach(i);
-                if (c.getId() == idCoach)
-                    return i;
-            }
+            MyCoachPersister coachReader = new MyCoachPersister();
 
-            return 0;
+            int index = coachReader.loadCoachById(unzlibAllenatori, leggiAllenatori, idCoach);
+
+            return index;
         }
 
         public int findTeam(UInt32 idTeam)
         {
-            int index = -1;
-            for (int i = 0; i < Form1._Form1.teamsBox.Items.Count; i++)
-            {
-                Team c = leggiSquadra(i);
-                if (c.getId() == idTeam)
-                    return i;
-            }
+            MyTeamPersister teamReader = new MyTeamPersister();
+
+            int index = teamReader.loadTeamById(unzlibSquadre, leggiSquadre, idTeam);
 
             //for "no team" 
             if (index == -1)
@@ -1923,14 +1967,15 @@ namespace DinoTem.ui
 
         public int findPlayer(UInt32 idPlayer)
         {
-            for (int i = 0; i < Form1._Form1.playersBox.Items.Count; i++)
-            {
-                Player c = leggiGiocatore(i);
-                if (c.getId() == idPlayer)
-                    return i;
-            }
+            MyPlayerPersister playerReader = new MyPlayerPersister();
 
-            return 0;
+            int index = playerReader.loadPlayerById(unzlibGiocatori, leggiGiocatori, idPlayer);
+
+            //for "no player" 
+            if (index == -1)
+                index = Form1._Form1.playersBox.Items.Count;
+
+            return index;
         }
 
         public void findCompetition(int selectedIndex)
@@ -1961,7 +2006,7 @@ namespace DinoTem.ui
 
             GloveList c = leggiGuantiLista(idPlayer);
 
-            //for "no glove" 
+            //for "no glove"
             if (c == null)
                 return index = Form1._Form1.glovesBox.Items.Count;
 
@@ -3164,6 +3209,8 @@ namespace DinoTem.ui
             listview.Items[intselectedindex].SubItems[11].Text = id2;
             listview.Items[dropIndex].SubItems[11].Text = id1;
         }
+
+        //applicare modifiche della squadra in transfer&team tab
         public void transferPlayerAtoA(ListView listview, uint teamId)
         {
             List<PlayerAssignment> pa = new List<PlayerAssignment>();
@@ -3185,6 +3232,7 @@ namespace DinoTem.ui
             applyPlayerAssignmentPersister(pa);
         }
 
+        //form formazione
         public void transferPlayerFormatione(ListView listview, uint teamId)
         {
             List<PlayerAssignment> pa = new List<PlayerAssignment>();
@@ -3208,7 +3256,7 @@ namespace DinoTem.ui
 
         public void deletePlayerTeam(ListView l1, int selectIndex)
         {
-            UInt32 Player_Ass_to_delete = ushort.Parse(l1.Items[selectIndex].SubItems[4].Text);
+            UInt32 Player_Ass_to_delete = uint.Parse(l1.Items[selectIndex].SubItems[4].Text);
             MemoryStream unzlib_player_Assignament_aux = new MemoryStream();
             BinaryWriter Grabar_Player_Assignament_aux = new BinaryWriter(unzlib_player_Assignament_aux);
             leggiPlayerAssign.BaseStream.Position = 0;
@@ -3339,7 +3387,7 @@ namespace DinoTem.ui
                 }
             }
 
-            UInt32 assignId = ass.findIdAssign(unzlibPlayerAssign, leggiPlayerAssign);
+            UInt32 assignId = ass.findIndexAssign(unzlibPlayerAssign, leggiPlayerAssign);
 
             if (team.getNational() == 1) //se il team di destinazione è una nazionale
             {
@@ -3368,7 +3416,7 @@ namespace DinoTem.ui
 
                         //aggiorno squadra 2
                         if (teamSecondTeamId == teamId)
-                            l2.Items.Add(item);
+                            l2.Items.Add((ListViewItem)item.Clone());
 
                         ass.addPlayerAssign(ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign, assignId);
                         transferPlayerAtoA(l1, teamId);
@@ -3409,7 +3457,7 @@ namespace DinoTem.ui
 
                         //aggiorno squadra 2
                         if (teamSecondTeamId == teamId)
-                            l2.Items.Add(item);
+                            l2.Items.Add((ListViewItem)item.Clone());
 
                         ass.addPlayerAssign(ref unzlibPlayerAssign, ref leggiPlayerAssign, ref scriviPlayerAssign, assignId);
                         transferPlayerAtoA(l1, teamId);
@@ -3438,7 +3486,7 @@ namespace DinoTem.ui
 
                                 //aggiorno squadra 2
                                 if (teamSecondTeamId == teamId)
-                                    l2.Items.Add(item);
+                                    l2.Items.Add((ListViewItem)item.Clone());
 
                                 // copio los datos del 1 al 2 poniendo 0 en lo de capitan y lanzador.
                                 // mirar si tienen algo de capitan o lanzador para ponerselo a otro y borrar la fila.
@@ -3528,7 +3576,7 @@ namespace DinoTem.ui
             }
 
             MyPlayerAssignmentPersister ass = new MyPlayerAssignmentPersister();
-            UInt32 assignId = ass.findIdAssign(unzlibPlayerAssign, leggiPlayerAssign);
+            UInt32 assignId = ass.findIndexAssign(unzlibPlayerAssign, leggiPlayerAssign);
 
             if (teamB.getNational() == 1) //squadra partenza é una nazionale
             {
@@ -3549,7 +3597,7 @@ namespace DinoTem.ui
                         else
                         {
                             UInt32 id_player = uint.Parse(fromL.Items[selectIndex].SubItems[11].Text);
-                            Player Player_check = leggiGiocatoreById(id_player);
+                            Player Player_check = leggiGiocatore(id_player);
                             if (Player_check.getNational() == leggiSquadra(toC.SelectedIndex).getCountry())
                             {
                                 ListViewItem item = new ListViewItem();
@@ -3708,7 +3756,7 @@ namespace DinoTem.ui
                         else
                         {
                             UInt32 id_player = uint.Parse(fromL.Items[selectIndex].SubItems[11].Text);
-                            Player Player_check = leggiGiocatoreById(id_player);
+                            Player Player_check = leggiGiocatore(id_player);
                             if (Player_check.getNational() == leggiSquadra(toC.SelectedIndex).getCountry())
                             {
                                 ListViewItem item = new ListViewItem();
@@ -4848,7 +4896,7 @@ namespace DinoTem.ui
             {
                 if (leggiPlayerApp.BaseStream.Position == unzlibPlayerApp.Length - 56)
                 {
-                    MessageBox.Show("No playerAppareance present in the file", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("No playerAppearance present in the file", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else
@@ -4970,6 +5018,63 @@ namespace DinoTem.ui
                     listbox.SelectedIndex = 0;
                     listbox.Select();
                 }
+            }
+        }
+
+        public void generateCPK(string patch)
+        {
+            MessageBox.Show("Remember to save to apply the changes!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            try
+            {
+                string[] f = patch.Split('\\');
+
+                if (Directory.Exists(patch + @"\" + f[f.Count() - 1]) == true)
+                    Directory.Delete(patch + @"\" + f[f.Count() - 1], true);
+                //creazione cartelle innestate
+                DirectoryInfo di = Directory.CreateDirectory(patch + @"\" + f[f.Count() - 1] + @"\common\etc\pesdb");
+                DirectoryInfo di2 = Directory.CreateDirectory(patch + @"\" + f[f.Count() - 1] + @"\common\character0\model\character\appearance");
+                DirectoryInfo di3 = Directory.CreateDirectory(patch + @"\" + f[f.Count() - 1] + @"\common\character0\model\character\boots");
+                DirectoryInfo di4 = Directory.CreateDirectory(patch + @"\" + f[f.Count() - 1] + @"\common\character0\model\character\glove");
+                File.Copy(patch + @"\Ball.bin", di.FullName + @"\Ball.bin", true);
+                File.Copy(patch + @"\BallCondition.bin", di.FullName + @"\BallCondition.bin", true);
+                File.Copy(patch + @"\Boots.bin", di.FullName + @"\Boots.bin", true);
+                File.Copy(patch + @"\Boots3.bin", di.FullName + @"\Boots3.bin", true);
+                File.Copy(patch + @"\Coach.bin", di.FullName + @"\Coach.bin", true);
+                File.Copy(patch + @"\Competition.bin", di.FullName + @"\Competition.bin", true);
+                File.Copy(patch + @"\CompetitionEntry.bin", di.FullName + @"\CompetitionEntry.bin", true);
+                File.Copy(patch + @"\CompetitionKind.bin", di.FullName + @"\CompetitionKind.bin", true);
+                File.Copy(patch + @"\CompetitionRegulation.bin", di.FullName + @"\CompetitionRegulation.bin", true);
+                File.Copy(patch + @"\Country.bin", di.FullName + @"\Country.bin", true);
+                File.Copy(patch + @"\Derby.bin", di.FullName + @"\Derby.bin", true);
+                File.Copy(patch + @"\Glove.bin", di.FullName + @"\Glove.bin", true);
+                File.Copy(patch + @"\Player.bin", di.FullName + @"\Player.bin", true);
+                File.Copy(patch + @"\PlayerAssignment.bin", di.FullName + @"\PlayerAssignment.bin", true);
+                File.Copy(patch + @"\Stadium.bin", di.FullName + @"\Stadium.bin", true);
+                File.Copy(patch + @"\StadiumOrder.bin", di.FullName + @"\StadiumOrder.bin", true);
+                File.Copy(patch + @"\StadiumOrderInConfederation.bin", di.FullName + @"\StadiumOrderInConfederation.bin", true);
+                File.Copy(patch + @"\Tactics.bin", di.FullName + @"\Tactics.bin", true);
+                File.Copy(patch + @"\TacticsFormation.bin", di.FullName + @"\TacticsFormation.bin", true);
+                File.Copy(patch + @"\Team.bin", di.FullName + @"\Team.bin", true);
+                File.Copy(patch + @"\PlayerAppearance.bin", di2.FullName + @"\PlayerAppearance.bin", true);
+                File.Copy(patch + @"\BootsList.bin", di3.FullName + @"\BootsList.bin", true);
+                File.Copy(patch + @"\GloveList.bin", di4.FullName + @"\GloveList.bin", true);
+                File.SetAttributes(patch + @"\" + f[f.Count() - 1], FileAttributes.Hidden | FileAttributes.System);
+                MustafaUğuz.PES2017.Common.CPK cpk = new MustafaUğuz.PES2017.Common.CPK(patch);
+                List<MustafaUğuz.PES2017.Common.CRIArchiveFile> temp = cpk.GetFilesFromFolder(patch + @"\" + f[f.Count() - 1], "*.bin", SearchOption.AllDirectories);
+                cpk.Build(temp);
+                if (Directory.Exists(patch + @"\" + f[f.Count() - 1]) == true)
+                    Directory.Delete(patch + @"\" + f[f.Count() - 1], true);
+                MessageBox.Show("Cpk created correctly!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cpk Saved at:" + Environment.NewLine + patch + ".cpk", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+                string[] f = patch.Split('\\');
+                if (Directory.Exists(patch + @"\" + f[f.Count() - 1]) == true)
+                    Directory.Delete(patch + @"\" + f[f.Count() - 1], true);
+
+                MessageBox.Show("Check if files are present!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

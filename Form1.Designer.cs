@@ -102,6 +102,9 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tutorial = new System.Windows.Forms.ToolStripMenuItem();
             this.videoTutorial = new System.Windows.Forms.ToolStripMenuItem();
+            this.howToUseFmStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.howToImportPSDStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.support = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.checkForUpdate = new System.Windows.Forms.ToolStripMenuItem();
@@ -573,6 +576,10 @@
             this.label212 = new System.Windows.Forms.Label();
             this.applyFm = new System.Windows.Forms.Button();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.height = new System.Windows.Forms.TextBox();
+            this.label215 = new System.Windows.Forms.Label();
+            this.weight = new System.Windows.Forms.TextBox();
+            this.label214 = new System.Windows.Forms.Label();
             this.age = new System.Windows.Forms.TextBox();
             this.label196 = new System.Windows.Forms.Label();
             this.groupBox19 = new System.Windows.Forms.GroupBox();
@@ -744,6 +751,7 @@
             this.importPlayerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerFromDinoEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerAppearanceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Team_BMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -754,6 +762,8 @@
             this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerFromDinoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerAppearanceFromDinoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
             this.Team_AMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -766,6 +776,7 @@
             this.importPlayerToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerFromDinoEditorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerAppearanceToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.importAllPlayersInTeamToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -773,13 +784,7 @@
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.importPlayerAppearanceToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.howToUseFmStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.howToImportPSDStatsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.generateCpk = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.Transfers.SuspendLayout();
@@ -894,6 +899,7 @@
             this.reload,
             this.toolStripSeparator8,
             this.save,
+            this.generateCpk,
             this.toolStripSeparator10,
             this.changeDLC,
             this.changeEXE,
@@ -1481,6 +1487,27 @@
             this.videoTutorial.Name = "videoTutorial";
             this.videoTutorial.Size = new System.Drawing.Size(173, 30);
             this.videoTutorial.Text = "VideoTutorial";
+            // 
+            // howToUseFmStatsToolStripMenuItem
+            // 
+            this.howToUseFmStatsToolStripMenuItem.Name = "howToUseFmStatsToolStripMenuItem";
+            this.howToUseFmStatsToolStripMenuItem.Size = new System.Drawing.Size(350, 22);
+            this.howToUseFmStatsToolStripMenuItem.Text = "How to use Fm Stats";
+            this.howToUseFmStatsToolStripMenuItem.Click += new System.EventHandler(this.howToUseFmStatsToolStripMenuItem_Click);
+            // 
+            // howToImportPSDStatsToolStripMenuItem
+            // 
+            this.howToImportPSDStatsToolStripMenuItem.Name = "howToImportPSDStatsToolStripMenuItem";
+            this.howToImportPSDStatsToolStripMenuItem.Size = new System.Drawing.Size(350, 22);
+            this.howToImportPSDStatsToolStripMenuItem.Text = "How to import PSD Stats";
+            this.howToImportPSDStatsToolStripMenuItem.Click += new System.EventHandler(this.howToImportPSDStatsToolStripMenuItem_Click);
+            // 
+            // howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem
+            // 
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Name = "howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem";
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Size = new System.Drawing.Size(350, 22);
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Text = "How to edit Database after DLC and import In-Game";
+            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Click += new System.EventHandler(this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem_Click);
             // 
             // support
             // 
@@ -3874,6 +3901,11 @@
             // 
             this.UNK_4_BOX.Location = new System.Drawing.Point(214, 310);
             this.UNK_4_BOX.Margin = new System.Windows.Forms.Padding(2);
+            this.UNK_4_BOX.Maximum = new decimal(new int[] {
+            7,
+            0,
+            0,
+            0});
             this.UNK_4_BOX.Name = "UNK_4_BOX";
             this.UNK_4_BOX.Size = new System.Drawing.Size(32, 20);
             this.UNK_4_BOX.TabIndex = 16;
@@ -6794,19 +6826,59 @@
             // 
             // groupBox18
             // 
+            this.groupBox18.Controls.Add(this.height);
+            this.groupBox18.Controls.Add(this.label215);
+            this.groupBox18.Controls.Add(this.weight);
+            this.groupBox18.Controls.Add(this.label214);
             this.groupBox18.Controls.Add(this.age);
             this.groupBox18.Controls.Add(this.label196);
-            this.groupBox18.Location = new System.Drawing.Point(459, 587);
+            this.groupBox18.Location = new System.Drawing.Point(459, 508);
             this.groupBox18.Name = "groupBox18";
-            this.groupBox18.Size = new System.Drawing.Size(234, 41);
+            this.groupBox18.Size = new System.Drawing.Size(234, 73);
             this.groupBox18.TabIndex = 164;
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "Basic Info:";
             this.groupBox18.Visible = false;
             // 
+            // height
+            // 
+            this.height.Location = new System.Drawing.Point(187, 16);
+            this.height.MaxLength = 2;
+            this.height.Name = "height";
+            this.height.ReadOnly = true;
+            this.height.Size = new System.Drawing.Size(35, 20);
+            this.height.TabIndex = 82;
+            // 
+            // label215
+            // 
+            this.label215.AutoSize = true;
+            this.label215.Location = new System.Drawing.Point(125, 19);
+            this.label215.Name = "label215";
+            this.label215.Size = new System.Drawing.Size(41, 13);
+            this.label215.TabIndex = 81;
+            this.label215.Text = "Height:";
+            // 
+            // weight
+            // 
+            this.weight.Location = new System.Drawing.Point(81, 40);
+            this.weight.MaxLength = 2;
+            this.weight.Name = "weight";
+            this.weight.ReadOnly = true;
+            this.weight.Size = new System.Drawing.Size(35, 20);
+            this.weight.TabIndex = 80;
+            // 
+            // label214
+            // 
+            this.label214.AutoSize = true;
+            this.label214.Location = new System.Drawing.Point(15, 43);
+            this.label214.Name = "label214";
+            this.label214.Size = new System.Drawing.Size(44, 13);
+            this.label214.TabIndex = 79;
+            this.label214.Text = "Weight:";
+            // 
             // age
             // 
-            this.age.Location = new System.Drawing.Point(119, 14);
+            this.age.Location = new System.Drawing.Point(81, 13);
             this.age.MaxLength = 2;
             this.age.Name = "age";
             this.age.ReadOnly = true;
@@ -6828,9 +6900,9 @@
             this.groupBox19.Controls.Add(this.label197);
             this.groupBox19.Controls.Add(this.average);
             this.groupBox19.Controls.Add(this.label198);
-            this.groupBox19.Location = new System.Drawing.Point(459, 508);
+            this.groupBox19.Location = new System.Drawing.Point(459, 582);
             this.groupBox19.Name = "groupBox19";
-            this.groupBox19.Size = new System.Drawing.Size(234, 70);
+            this.groupBox19.Size = new System.Drawing.Size(234, 47);
             this.groupBox19.TabIndex = 163;
             this.groupBox19.TabStop = false;
             this.groupBox19.Text = "FM Stats";
@@ -6838,7 +6910,7 @@
             // 
             // averageGk
             // 
-            this.averageGk.Location = new System.Drawing.Point(119, 39);
+            this.averageGk.Location = new System.Drawing.Point(187, 21);
             this.averageGk.MaxLength = 2;
             this.averageGk.Name = "averageGk";
             this.averageGk.ReadOnly = true;
@@ -6848,7 +6920,7 @@
             // label197
             // 
             this.label197.AutoSize = true;
-            this.label197.Location = new System.Drawing.Point(15, 41);
+            this.label197.Location = new System.Drawing.Point(108, 24);
             this.label197.Name = "label197";
             this.label197.Size = new System.Drawing.Size(68, 13);
             this.label197.TabIndex = 79;
@@ -6856,7 +6928,7 @@
             // 
             // average
             // 
-            this.average.Location = new System.Drawing.Point(119, 13);
+            this.average.Location = new System.Drawing.Point(67, 20);
             this.average.MaxLength = 2;
             this.average.Name = "average";
             this.average.ReadOnly = true;
@@ -6866,7 +6938,7 @@
             // label198
             // 
             this.label198.AutoSize = true;
-            this.label198.Location = new System.Drawing.Point(15, 15);
+            this.label198.Location = new System.Drawing.Point(11, 22);
             this.label198.Name = "label198";
             this.label198.Size = new System.Drawing.Size(50, 13);
             this.label198.TabIndex = 60;
@@ -6892,7 +6964,7 @@
             this.groupBox17.Controls.Add(this.label195);
             this.groupBox17.Location = new System.Drawing.Point(705, 370);
             this.groupBox17.Name = "groupBox17";
-            this.groupBox17.Size = new System.Drawing.Size(190, 216);
+            this.groupBox17.Size = new System.Drawing.Size(190, 220);
             this.groupBox17.TabIndex = 162;
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "Physical";
@@ -7076,10 +7148,10 @@
             // ss
             // 
             this.ss.AutoSize = true;
-            this.ss.Location = new System.Drawing.Point(113, 96);
+            this.ss.Location = new System.Drawing.Point(112, 90);
             this.ss.Name = "ss";
             this.ss.Size = new System.Drawing.Size(39, 17);
-            this.ss.TabIndex = 125;
+            this.ss.TabIndex = 138;
             this.ss.TabStop = true;
             this.ss.Text = "SS";
             this.ss.UseVisualStyleBackColor = true;
@@ -7087,10 +7159,10 @@
             // rmf
             // 
             this.rmf.AutoSize = true;
-            this.rmf.Location = new System.Drawing.Point(113, 74);
+            this.rmf.Location = new System.Drawing.Point(112, 68);
             this.rmf.Name = "rmf";
             this.rmf.Size = new System.Drawing.Size(48, 17);
-            this.rmf.TabIndex = 124;
+            this.rmf.TabIndex = 137;
             this.rmf.TabStop = true;
             this.rmf.Text = "RMF";
             this.rmf.UseVisualStyleBackColor = true;
@@ -7098,10 +7170,10 @@
             // cmf
             // 
             this.cmf.AutoSize = true;
-            this.cmf.Location = new System.Drawing.Point(113, 51);
+            this.cmf.Location = new System.Drawing.Point(112, 45);
             this.cmf.Name = "cmf";
             this.cmf.Size = new System.Drawing.Size(47, 17);
-            this.cmf.TabIndex = 123;
+            this.cmf.TabIndex = 136;
             this.cmf.TabStop = true;
             this.cmf.Text = "CMF";
             this.cmf.UseVisualStyleBackColor = true;
@@ -7109,10 +7181,10 @@
             // lb
             // 
             this.lb.AutoSize = true;
-            this.lb.Location = new System.Drawing.Point(113, 28);
+            this.lb.Location = new System.Drawing.Point(112, 22);
             this.lb.Name = "lb";
             this.lb.Size = new System.Drawing.Size(38, 17);
-            this.lb.TabIndex = 122;
+            this.lb.TabIndex = 135;
             this.lb.TabStop = true;
             this.lb.Text = "LB";
             this.lb.UseVisualStyleBackColor = true;
@@ -7120,10 +7192,10 @@
             // rwf
             // 
             this.rwf.AutoSize = true;
-            this.rwf.Location = new System.Drawing.Point(62, 96);
+            this.rwf.Location = new System.Drawing.Point(61, 90);
             this.rwf.Name = "rwf";
             this.rwf.Size = new System.Drawing.Size(50, 17);
-            this.rwf.TabIndex = 121;
+            this.rwf.TabIndex = 134;
             this.rwf.TabStop = true;
             this.rwf.Text = "RWF";
             this.rwf.UseVisualStyleBackColor = true;
@@ -7131,10 +7203,10 @@
             // amf
             // 
             this.amf.AutoSize = true;
-            this.amf.Location = new System.Drawing.Point(62, 74);
+            this.amf.Location = new System.Drawing.Point(61, 68);
             this.amf.Name = "amf";
             this.amf.Size = new System.Drawing.Size(47, 17);
-            this.amf.TabIndex = 120;
+            this.amf.TabIndex = 133;
             this.amf.TabStop = true;
             this.amf.Text = "AMF";
             this.amf.UseVisualStyleBackColor = true;
@@ -7142,10 +7214,10 @@
             // dmf
             // 
             this.dmf.AutoSize = true;
-            this.dmf.Location = new System.Drawing.Point(62, 51);
+            this.dmf.Location = new System.Drawing.Point(61, 45);
             this.dmf.Name = "dmf";
             this.dmf.Size = new System.Drawing.Size(48, 17);
-            this.dmf.TabIndex = 119;
+            this.dmf.TabIndex = 132;
             this.dmf.TabStop = true;
             this.dmf.Text = "DMF";
             this.dmf.UseVisualStyleBackColor = true;
@@ -7153,10 +7225,10 @@
             // cb
             // 
             this.cb.AutoSize = true;
-            this.cb.Location = new System.Drawing.Point(62, 28);
+            this.cb.Location = new System.Drawing.Point(61, 22);
             this.cb.Name = "cb";
             this.cb.Size = new System.Drawing.Size(39, 17);
-            this.cb.TabIndex = 118;
+            this.cb.TabIndex = 131;
             this.cb.TabStop = true;
             this.cb.Text = "CB";
             this.cb.UseVisualStyleBackColor = true;
@@ -7164,10 +7236,10 @@
             // cf
             // 
             this.cf.AutoSize = true;
-            this.cf.Location = new System.Drawing.Point(164, 28);
+            this.cf.Location = new System.Drawing.Point(163, 22);
             this.cf.Name = "cf";
             this.cf.Size = new System.Drawing.Size(38, 17);
-            this.cf.TabIndex = 117;
+            this.cf.TabIndex = 130;
             this.cf.TabStop = true;
             this.cf.Text = "CF";
             this.cf.UseVisualStyleBackColor = true;
@@ -7175,10 +7247,10 @@
             // lwf
             // 
             this.lwf.AutoSize = true;
-            this.lwf.Location = new System.Drawing.Point(11, 96);
+            this.lwf.Location = new System.Drawing.Point(10, 90);
             this.lwf.Name = "lwf";
             this.lwf.Size = new System.Drawing.Size(48, 17);
-            this.lwf.TabIndex = 116;
+            this.lwf.TabIndex = 129;
             this.lwf.TabStop = true;
             this.lwf.Text = "LWF";
             this.lwf.UseVisualStyleBackColor = true;
@@ -7186,10 +7258,10 @@
             // lmf
             // 
             this.lmf.AutoSize = true;
-            this.lmf.Location = new System.Drawing.Point(11, 74);
+            this.lmf.Location = new System.Drawing.Point(10, 68);
             this.lmf.Name = "lmf";
             this.lmf.Size = new System.Drawing.Size(46, 17);
-            this.lmf.TabIndex = 115;
+            this.lmf.TabIndex = 128;
             this.lmf.TabStop = true;
             this.lmf.Text = "LMF";
             this.lmf.UseVisualStyleBackColor = true;
@@ -7197,10 +7269,10 @@
             // rb
             // 
             this.rb.AutoSize = true;
-            this.rb.Location = new System.Drawing.Point(11, 51);
+            this.rb.Location = new System.Drawing.Point(10, 45);
             this.rb.Name = "rb";
             this.rb.Size = new System.Drawing.Size(40, 17);
-            this.rb.TabIndex = 114;
+            this.rb.TabIndex = 127;
             this.rb.TabStop = true;
             this.rb.Text = "RB";
             this.rb.UseVisualStyleBackColor = true;
@@ -7208,10 +7280,10 @@
             // gk
             // 
             this.gk.AutoSize = true;
-            this.gk.Location = new System.Drawing.Point(11, 28);
+            this.gk.Location = new System.Drawing.Point(10, 22);
             this.gk.Name = "gk";
             this.gk.Size = new System.Drawing.Size(40, 17);
-            this.gk.TabIndex = 113;
+            this.gk.TabIndex = 126;
             this.gk.TabStop = true;
             this.gk.Text = "GK";
             this.gk.UseVisualStyleBackColor = true;
@@ -8161,7 +8233,7 @@
             this.fmSearchTeam.TabIndex = 155;
             this.fmSearchTeam.Text = "search team...";
             this.fmSearchTeam.Visible = false;
-            this.fmSearchTeam.TextChanged += new System.EventHandler(this.fmSearchTeam_TextChanged);
+            this.fmSearchTeam.Click += new System.EventHandler(this.fmSearchTeam_Click);
             this.fmSearchTeam.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.fmSearchTeam_KeyPress);
             // 
             // searchPlayerFm
@@ -8616,6 +8688,13 @@
             this.importPlayerAppearanceToolStripMenuItem.Text = "Import PlayerAppearance";
             this.importPlayerAppearanceToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceToolStripMenuItem_Click);
             // 
+            // importPlayerAppearanceFromDino17ToolStripMenuItem1
+            // 
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Name = "importPlayerAppearanceFromDino17ToolStripMenuItem1";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Text = "Import PlayerAppearance From Dino 17";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
+            // 
             // importPlayerAppearanceFromDinoEditorToolStripMenuItem
             // 
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem.Name = "importPlayerAppearanceFromDinoEditorToolStripMenuItem";
@@ -8694,6 +8773,20 @@
             this.importPlayerFromDinoToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
             this.importPlayerFromDinoToolStripMenuItem.Text = "Import Player From Dino 18";
             this.importPlayerFromDinoToolStripMenuItem.Click += new System.EventHandler(this.importPlayerFromDinoEditorToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceToolStripMenuItem2
+            // 
+            this.importPlayerAppearanceToolStripMenuItem2.Name = "importPlayerAppearanceToolStripMenuItem2";
+            this.importPlayerAppearanceToolStripMenuItem2.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceToolStripMenuItem2.Text = "Import PlayerAppearance";
+            this.importPlayerAppearanceToolStripMenuItem2.Click += new System.EventHandler(this.importPlayerAppearanceToolStripMenuItem_Click);
+            // 
+            // importPlayerAppearanceFromDino17ToolStripMenuItem
+            // 
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Name = "importPlayerAppearanceFromDino17ToolStripMenuItem";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Text = "Import PlayerAppearance From Dino 17";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
             // 
             // importPlayerAppearanceFromDinoToolStripMenuItem
             // 
@@ -8788,6 +8881,13 @@
             this.importPlayerAppearanceToolStripMenuItem1.Text = "Import PlayerAppearance";
             this.importPlayerAppearanceToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerAppearanceToolStripMenuItem_Click);
             // 
+            // importPlayerAppearanceFromDino17ToolStripMenuItem2
+            // 
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Name = "importPlayerAppearanceFromDino17ToolStripMenuItem2";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Size = new System.Drawing.Size(282, 22);
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Text = "Import PlayerAppearance From Dino 17";
+            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
+            // 
             // importPlayerAppearanceFromDinoEditorToolStripMenuItem1
             // 
             this.importPlayerAppearanceFromDinoEditorToolStripMenuItem1.Name = "importPlayerAppearanceFromDinoEditorToolStripMenuItem1";
@@ -8825,54 +8925,13 @@
             this.toolTip1.ReshowDelay = 100;
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             // 
-            // importPlayerAppearanceFromDino17ToolStripMenuItem
+            // generateCpk
             // 
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Name = "importPlayerAppearanceFromDino17ToolStripMenuItem";
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Size = new System.Drawing.Size(282, 22);
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Text = "Import PlayerAppearance From Dino 17";
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
-            // 
-            // importPlayerAppearanceFromDino17ToolStripMenuItem1
-            // 
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Name = "importPlayerAppearanceFromDino17ToolStripMenuItem1";
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Size = new System.Drawing.Size(282, 22);
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Text = "Import PlayerAppearance From Dino 17";
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem1.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
-            // 
-            // importPlayerAppearanceFromDino17ToolStripMenuItem2
-            // 
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Name = "importPlayerAppearanceFromDino17ToolStripMenuItem2";
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Size = new System.Drawing.Size(282, 22);
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Text = "Import PlayerAppearance From Dino 17";
-            this.importPlayerAppearanceFromDino17ToolStripMenuItem2.Click += new System.EventHandler(this.importPlayerAppearanceFromDinoEditorToolStripMenuItem_Click);
-            // 
-            // importPlayerAppearanceToolStripMenuItem2
-            // 
-            this.importPlayerAppearanceToolStripMenuItem2.Name = "importPlayerAppearanceToolStripMenuItem2";
-            this.importPlayerAppearanceToolStripMenuItem2.Size = new System.Drawing.Size(282, 22);
-            this.importPlayerAppearanceToolStripMenuItem2.Text = "Import PlayerAppearance";
-            this.importPlayerAppearanceToolStripMenuItem2.Click += new System.EventHandler(this.importPlayerAppearanceToolStripMenuItem_Click);
-            // 
-            // howToUseFmStatsToolStripMenuItem
-            // 
-            this.howToUseFmStatsToolStripMenuItem.Name = "howToUseFmStatsToolStripMenuItem";
-            this.howToUseFmStatsToolStripMenuItem.Size = new System.Drawing.Size(350, 22);
-            this.howToUseFmStatsToolStripMenuItem.Text = "How to use Fm Stats";
-            this.howToUseFmStatsToolStripMenuItem.Click += new System.EventHandler(this.howToUseFmStatsToolStripMenuItem_Click);
-            // 
-            // howToImportPSDStatsToolStripMenuItem
-            // 
-            this.howToImportPSDStatsToolStripMenuItem.Name = "howToImportPSDStatsToolStripMenuItem";
-            this.howToImportPSDStatsToolStripMenuItem.Size = new System.Drawing.Size(350, 22);
-            this.howToImportPSDStatsToolStripMenuItem.Text = "How to import PSD Stats";
-            this.howToImportPSDStatsToolStripMenuItem.Click += new System.EventHandler(this.howToImportPSDStatsToolStripMenuItem_Click);
-            // 
-            // howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem
-            // 
-            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Name = "howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem";
-            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Size = new System.Drawing.Size(350, 22);
-            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Text = "How to edit Database after DLC and import In-Game";
-            this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem.Click += new System.EventHandler(this.howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem_Click);
+            this.generateCpk.Enabled = false;
+            this.generateCpk.Name = "generateCpk";
+            this.generateCpk.Size = new System.Drawing.Size(189, 30);
+            this.generateCpk.Text = "Generate new CPK";
+            this.generateCpk.Click += new System.EventHandler(this.generateCpk_Click);
             // 
             // Form1
             // 
@@ -9592,19 +9651,6 @@
         private System.Windows.Forms.Label label194;
         private System.Windows.Forms.Label label195;
         private System.Windows.Forms.GroupBox groupBox13;
-        private System.Windows.Forms.RadioButton ss;
-        private System.Windows.Forms.RadioButton rmf;
-        private System.Windows.Forms.RadioButton cmf;
-        private System.Windows.Forms.RadioButton lb;
-        private System.Windows.Forms.RadioButton rwf;
-        private System.Windows.Forms.RadioButton amf;
-        private System.Windows.Forms.RadioButton dmf;
-        private System.Windows.Forms.RadioButton cb;
-        private System.Windows.Forms.RadioButton cf;
-        private System.Windows.Forms.RadioButton lwf;
-        private System.Windows.Forms.RadioButton lmf;
-        private System.Windows.Forms.RadioButton rb;
-        private System.Windows.Forms.RadioButton gk;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.TextBox strat;
         private System.Windows.Forms.Label label173;
@@ -9783,6 +9829,24 @@
         private System.Windows.Forms.ToolStripMenuItem howToUseFmStatsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem howToImportPSDStatsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem;
+        private System.Windows.Forms.TextBox height;
+        private System.Windows.Forms.Label label215;
+        private System.Windows.Forms.TextBox weight;
+        private System.Windows.Forms.Label label214;
+        private System.Windows.Forms.RadioButton ss;
+        private System.Windows.Forms.RadioButton rmf;
+        private System.Windows.Forms.RadioButton cmf;
+        private System.Windows.Forms.RadioButton lb;
+        private System.Windows.Forms.RadioButton rwf;
+        private System.Windows.Forms.RadioButton amf;
+        private System.Windows.Forms.RadioButton dmf;
+        private System.Windows.Forms.RadioButton cb;
+        private System.Windows.Forms.RadioButton cf;
+        private System.Windows.Forms.RadioButton lwf;
+        private System.Windows.Forms.RadioButton lmf;
+        private System.Windows.Forms.RadioButton rb;
+        private System.Windows.Forms.RadioButton gk;
+        private System.Windows.Forms.ToolStripMenuItem generateCpk;
     }
 }
 

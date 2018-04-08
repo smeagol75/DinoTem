@@ -28,7 +28,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.Glove(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.Glove_toPc(memory1);
             }
 
             return memory1;
@@ -110,7 +110,7 @@ namespace DinoTem.persistence
             return guanto;
         }
 
-        public UInt16 findIdGlove(MemoryStream memory1, BinaryReader reader)
+        public UInt16 findIndexGlove(MemoryStream memory1, BinaryReader reader)
         {
             UInt16 glove_index_mayor = 0;
 
@@ -182,7 +182,7 @@ namespace DinoTem.persistence
             writer = new BinaryWriter(memory1);
         }
 
-        public void save(string patch, ref MemoryStream memoryGlove, int bitRecognized)
+        public void save(string patch, MemoryStream memoryGlove, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -192,14 +192,14 @@ namespace DinoTem.persistence
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Glove(ref memoryGlove);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryGlove, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Glove_toConsole(memoryGlove), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Glove(ref memoryGlove);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryGlove, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Glove_toConsole(memoryGlove), patch + PATH);
             }
+            return;
         }
+
     }
 }

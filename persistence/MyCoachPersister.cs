@@ -28,7 +28,7 @@ namespace DinoTem.ui
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.Coach_toPc(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.Coach_toPc(memory1);
             }
 
             return memory1;
@@ -126,7 +126,23 @@ namespace DinoTem.ui
             return coach;
         }
 
-        public UInt32 findIdCoach(MemoryStream memory1, BinaryReader reader)
+        public int loadCoachById(MemoryStream memory1, BinaryReader reader, UInt32 coachId)
+        {
+            int bytes = (int)memory1.Length;
+            int coach = bytes / block;
+
+            reader.BaseStream.Position = 0;
+            for (int i = 0; i <= (coach - 1); i++)
+            {
+                if (coachId == reader.ReadUInt32())
+                    return i;
+                reader.BaseStream.Position += block - 4;
+            }
+
+            return -1;
+        }
+
+        public UInt32 findIndexCoach(MemoryStream memory1, BinaryReader reader)
         {
             UInt32 coach_index_mayor = 0;
 
@@ -208,7 +224,7 @@ namespace DinoTem.ui
             writer = new BinaryWriter(memory1);
         }
 
-        public void save(string patch, ref MemoryStream memoryAllenatori, int bitRecognized)
+        public void save(string patch, MemoryStream memoryAllenatori, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -218,13 +234,11 @@ namespace DinoTem.ui
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Coach_toConsole(ref memoryAllenatori);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryAllenatori, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Coach_toConsole(memoryAllenatori), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Coach_toConsole(ref memoryAllenatori);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryAllenatori, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Coach_toConsole(memoryAllenatori), patch + PATH);
             }
         }
     }

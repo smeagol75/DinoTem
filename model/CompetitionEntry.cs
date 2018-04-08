@@ -10,8 +10,6 @@ namespace DinoTem.model
         //private UInt32 TeamId;
         //private UInt16 ValorUNK16;
         //private UInt16 C_Entry_Index;
-        //private byte Order;
-
-        
+        //private byte Order;     
     }
 }

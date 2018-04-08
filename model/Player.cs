@@ -15,9 +15,9 @@ namespace DinoTem.model
         private string japanese;
         private UInt32 weight = 30;
         private UInt32 height = 100;
-        private UInt32 national = 0;
+        private UInt32 national = 215;
         private UInt32 national2 = 0;
-        private UInt32 earlyCross;
+        private UInt32 earlyCross = 0;
         private UInt32 defense = 40;
         private UInt32 clearing = 40;
         private UInt32 lowPass = 40;
@@ -47,14 +47,14 @@ namespace DinoTem.model
         private UInt32 physical = 40;
         private UInt32 bodyControl = 40;
         private UInt32 attack = 40;
-        private UInt32 wcUsage = 0;
+        private UInt32 wcUsage = 1;
         private UInt32 dmf = 0;
         private UInt32 starPlayerIndicator = 0;
         private UInt32 runningArm = 0;
         private UInt32 driblingArm = 0;
         private UInt32 cornerKick = 0;
-        private UInt32 form = 0;
-        private UInt32 position = 0;
+        private UInt32 form = 1;
+        private UInt32 position = 2;
         private UInt32 freeKick = 0;
         private UInt32 playingStyle = 0;
         private UInt32 pinCrossing;
@@ -70,54 +70,54 @@ namespace DinoTem.model
         private UInt32 cb = 0;
         private UInt32 driblingH = 0;
         private UInt32 amf = 0;
-        private UInt32 weakFootAcc = 0;
+        private UInt32 weakFootAcc = 1;
         private UInt32 rmf = 0;
-        private UInt32 injuryRes = 0;
+        private UInt32 injuryRes = 1;
         private UInt32 cmf = 0;
-        private UInt32 speedingBullet;
-        private UInt32 schotMove;
-        private UInt32 gkLong;
-        private UInt32 longThrow;
-        private UInt32 scissorFeint;
-        private UInt32 trackBack;
-        private UInt32 superSub;
-        private UInt32 rabona;
-        private UInt32 acrobatingFinishing;
-        private UInt32 strongerFoot;
-        private UInt32 knucleShot;
-        private UInt32 firstTimeShot;
-        private UInt32 comIncisiveRun;
-        private UInt32 strongerHand;
-        private UInt32 hiddenPlayer;
-        private UInt32 comLongRanger;
-        private UInt32 oneTouchPass;
-        private UInt32 hellTick;
-        private UInt32 unk4;
-        private UInt32 manMarking;
-        private UInt32 legendGoldenBall;
-        private UInt32 marseilleTurn;
-        private UInt32 heading;
-        private UInt32 outsideCurler;
-        private UInt32 captaincy;
-        private UInt32 malicia;
-        private UInt32 lowPuntTrajectory;
-        private UInt32 comTrickster;
-        private UInt32 lowLoftedPass;
-        private UInt32 fightingSpirit;
-        private UInt32 flipFlap;
-        private UInt32 weightnessPass;
-        private UInt32 unk6;
-        private UInt32 unk7;
-        private UInt32 unk8;
-        private UInt32 comMazingRun;
-        private UInt32 acrobatingClear;
-        private UInt32 comBallExpert;
-        private UInt32 cutBehind;
-        private UInt32 longRange;
+        private UInt32 speedingBullet = 0;
+        private UInt32 schotMove = 0;
+        private UInt32 gkLong = 0;
+        private UInt32 longThrow = 0;
+        private UInt32 scissorFeint = 0;
+        private UInt32 trackBack = 0;
+        private UInt32 superSub = 0;
+        private UInt32 rabona = 0;
+        private UInt32 acrobatingFinishing = 0;
+        private UInt32 strongerFoot = 0;
+        private UInt32 knucleShot = 0;
+        private UInt32 firstTimeShot = 0;
+        private UInt32 comIncisiveRun = 0;
+        private UInt32 strongerHand = 0;
+        private UInt32 hiddenPlayer = 0;
+        private UInt32 comLongRanger = 0;
+        private UInt32 oneTouchPass = 0;
+        private UInt32 hellTick = 0;
+        private UInt32 unk4 = 0;
+        private UInt32 manMarking = 0;
+        private UInt32 legendGoldenBall = 0;
+        private UInt32 marseilleTurn = 0;
+        private UInt32 heading = 0;
+        private UInt32 outsideCurler = 0;
+        private UInt32 captaincy = 0;
+        private UInt32 malicia = 0;
+        private UInt32 lowPuntTrajectory = 0;
+        private UInt32 comTrickster = 0;
+        private UInt32 lowLoftedPass = 0;
+        private UInt32 fightingSpirit = 0;
+        private UInt32 flipFlap = 0;
+        private UInt32 weightnessPass = 0;
+        private UInt32 unk6 = 0;
+        private UInt32 unk7 = 0;
+        private UInt32 unk8 = 0;
+        private UInt32 comMazingRun = 0;
+        private UInt32 acrobatingClear = 0;
+        private UInt32 comBallExpert = 0;
+        private UInt32 cutBehind = 0;
+        private UInt32 longRange = 0;
 
         public Player(UInt32 id)
         {
-    	    if (id < 0)
+    	    if (id < 0 || id > 4294967295)
                 throw new ArgumentException("Player's id isn't valid: " + id);
     	
             this.id = id;
@@ -655,14 +655,14 @@ namespace DinoTem.model
 
         public void setId(UInt32 id)
         {
-			if (id < 0)
+            if (id < 0 || id > 4294967295)
                 throw new ArgumentException("Player's id isn't valid: " + id);
             this.id = id;
         }
     
         public void setJapanese(string japanese) {
-    	    if (japanese == null || japanese == "")
-    		    throw new ArgumentException("Player's japanese name isn't valid - " + getName());
+    	    //if (japanese == null || japanese == "")
+    		    //throw new ArgumentException("Player's japanese name isn't valid - " + getName());
     	
 		    this.japanese = japanese;
 	    }
@@ -909,8 +909,11 @@ namespace DinoTem.model
 
         public void setFinishing(UInt32 finishing)
         {
-    	    if (finishing < 40 || finishing > 99)
-                throw new ArgumentException("Player's finishing isn't valid: " + finishing + " - " + getName());
+    	    if (finishing < 40)
+                this.finishing = 40;
+            if (finishing > 99)
+                this.finishing = 99;
+            //throw new ArgumentException("Player's finishing isn't valid: " + finishing + " - " + getName());
     	
             this.finishing = finishing;
             return;
@@ -918,8 +921,11 @@ namespace DinoTem.model
 
         public void setCmf(UInt32 cmf)
         {
-    	    if (cmf < 0 && cmf > 2)
-                throw new ArgumentException("Player's cmf isn't valid: " + cmf + " - " + getName());
+    	    if (cmf < 0)
+                this.cmf = 0;
+            if (cmf > 2)
+                this.cmf = 2;
+            //throw new ArgumentException("Player's cmf isn't valid: " + cmf + " - " + getName());
     	
             this.cmf = cmf;
             return;
@@ -927,26 +933,35 @@ namespace DinoTem.model
 
         public void setWeakFootAcc(UInt32 weakFootAcc)
         {
-    	    if (weakFootAcc < 0)
-                throw new ArgumentException("Player's weak foot acc isn't valid: " + weakFootAcc + " - " + getName());
-    	
+    	    if (weakFootAcc < 1)
+                this.weakFootAcc = 1;
+            if (weakFootAcc > 4)
+                this.weakFootAcc = 4;
+            //throw new ArgumentException("Player's weak foot acc isn't valid: " + weakFootAcc + " - " + getName());
+
             this.weakFootAcc = weakFootAcc;
             return;
         }
 
         public void setRmf(UInt32 rmf)
         {
-            if (rmf < 0 && rmf > 2)
-                throw new ArgumentException("Player's rmf isn't valid: " + rmf + " - " + getName());
-    	
+            if (rmf < 0)
+                this.rmf = 0;
+            if (rmf > 2)
+                this.rmf = 2;
+            //throw new ArgumentException("Player's rmf isn't valid: " + rmf + " - " + getName());
+
             this.rmf = rmf;
             return;
         }
 
         public void setInjuryRes(UInt32 injuryRes)
         {
-    	    if (injuryRes < 0)
-                throw new ArgumentException("Player's injury res isn't valid: " + injuryRes + " - " + getName());
+    	    if (injuryRes < 1)
+                this.injuryRes = 1;
+            if (injuryRes > 4)
+                this.injuryRes = 4;
+            //throw new ArgumentException("Player's injury res isn't valid: " + injuryRes + " - " + getName());
     	
             this.injuryRes = injuryRes;
             return;
@@ -954,8 +969,11 @@ namespace DinoTem.model
 
         public void setAmf(UInt32 amf)
         {
-            if (amf < 0 && amf > 2)
-                throw new ArgumentException("Player's amf isn't valid: " + amf + " - " + getName());
+            if (amf < 0)
+                this.amf = 0;
+            if (amf > 2)
+                this.amf = 2;
+            //throw new ArgumentException("Player's amf isn't valid: " + amf + " - " + getName());
     	
             this.amf = amf;
             return;
@@ -963,17 +981,23 @@ namespace DinoTem.model
 
         public void setDriblingH(UInt32 driblingH)
         {
-    	    if (driblingH < 0)
-                throw new ArgumentException("Player's dribling hunching isn't valid: " + driblingH + " - " + getName());
-    	
+    	    if (driblingH < 1)
+                this.driblingH = 1;
+            if (driblingH > 3)
+                this.driblingH = 3;
+            //throw new ArgumentException("Player's dribling hunching isn't valid: " + driblingH + " - " + getName());
+
             this.driblingH = driblingH;
             return;
         }
 
         public void setCb(UInt32 cb)
         {
-            if (cb < 0 && cb > 2)
-                throw new ArgumentException("Player's cb isn't valid: " + cb + " - " + getName());
+            if (cb < 0)
+                this.cb = 0;
+            if (cb > 2)
+                this.cb = 2;
+            //throw new ArgumentException("Player's cb isn't valid: " + cb + " - " + getName());
     	
             this.cb = cb;
             return;
@@ -981,8 +1005,11 @@ namespace DinoTem.model
 
         public void setCf(UInt32 cf)
         {
-            if (cf < 0 && cf > 2)
-                throw new ArgumentException("Player's cf isn't valid: " + cf + " - " + getName());
+            if (cf < 0)
+                this.cf = 0;
+            if (cf > 2)
+                this.cf = 2;
+            //throw new ArgumentException("Player's cf isn't valid: " + cf + " - " + getName());
     	
             this.cf = cf;
             return;
@@ -990,8 +1017,11 @@ namespace DinoTem.model
 
         public void setLwf(UInt32 lwf)
         {
-            if (lwf < 0 && lwf > 2)
-                throw new ArgumentException("Player's lwf isn't valid: " + lwf + " - " + getName());
+            if (lwf < 0)
+                this.lwf = 0;
+            if (lwf > 2)
+                this.lwf = 2;
+            //throw new ArgumentException("Player's lwf isn't valid: " + lwf + " - " + getName());
     	
             this.lwf = lwf;
             return;
@@ -999,8 +1029,11 @@ namespace DinoTem.model
 
         public void setRb(UInt32 rb)
         {
-            if (rb < 0 && rb > 2)
-                throw new ArgumentException("Player's rb isn't valid: " + rb + " - " + getName());
+            if (rb < 0)
+                this.rb = 0;
+            if (rb > 2)
+                this.rb = 2;
+            //throw new ArgumentException("Player's rb isn't valid: " + rb + " - " + getName());
     	
             this.rb = rb;
             return;
@@ -1008,8 +1041,11 @@ namespace DinoTem.model
 
         public void setRwf(UInt32 rwf)
         {
-            if (rwf < 0 && rwf > 2)
-                throw new ArgumentException("Player's rwf isn't valid: " + rwf + " - " + getName());
+            if (rwf < 0)
+                this.rwf = 0;
+            if (rwf > 2)
+                this.rwf = 2;
+            //throw new ArgumentException("Player's rwf isn't valid: " + rwf + " - " + getName());
     	
             this.rwf = rwf;
             return;
@@ -1017,8 +1053,11 @@ namespace DinoTem.model
 
         public void setLmf(UInt32 lmf)
         {
-            if (lmf < 0 && lmf > 2)
-                throw new ArgumentException("Player's lmf isn't valid: " + lmf + " - " + getName());
+            if (lmf < 0)
+                this.lmf = 0;
+            if (lmf > 2)
+                this.lmf = 2;
+            //throw new ArgumentException("Player's lmf isn't valid: " + lmf + " - " + getName());
     	
             this.lmf = lmf;
             return;
@@ -1027,7 +1066,8 @@ namespace DinoTem.model
         public void setUnk2(UInt32 unk2)
         {
     	    if (unk2 < 0)
-                throw new ArgumentException("Player's unk2 isn't valid: " + unk2 + " - " + getName());
+                this.unk2 = 0;
+            //throw new ArgumentException("Player's unk2 isn't valid: " + unk2 + " - " + getName());
     	
             this.unk2 = unk2;
             return;
@@ -1035,16 +1075,22 @@ namespace DinoTem.model
 
         public void setSs(UInt32 ss)
         {
-            if (ss < 0 && ss > 2)
-                throw new ArgumentException("Player's ss isn't valid: " + ss + " - " + getName());
+            if (ss < 0)
+                this.ss = 0;
+            if (ss > 2)
+                this.ss = 2;
+            //throw new ArgumentException("Player's ss isn't valid: " + ss + " - " + getName());
     	
             this.ss = ss;
         }
 
         public void setRunningH(UInt32 runningH)
         {
-    	    if (runningH < 0)
-                throw new ArgumentException("Player's running hunching isn't valid: " + runningH + " - " + getName());
+    	    if (runningH < 1)
+                this.runningH = 1;
+            if (runningH > 3)
+                this.runningH = 3;
+            //throw new ArgumentException("Player's running hunching isn't valid: " + runningH + " - " + getName());
     	
             this.runningH = runningH;
         }
@@ -1063,7 +1109,8 @@ namespace DinoTem.model
         public void setPlayingStyle(UInt32 playingStyle)
         {
     	    if (playingStyle < 0)
-                throw new ArgumentException("Player's playing style isn't valid: " + playingStyle + " - " + getName());
+                this.playingStyle = 0;
+            //throw new ArgumentException("Player's playing style isn't valid: " + playingStyle + " - " + getName());
     	
             this.playingStyle = playingStyle;
             return;
@@ -1071,8 +1118,11 @@ namespace DinoTem.model
 
         public void setFreeKick(UInt32 freeKick)
         {
-    	    if (freeKick < 0)
-                throw new ArgumentException("Player's free kick isn't valid: " + freeKick + " - " + getName());
+    	    if (freeKick < 1)
+                this.freeKick = 1;
+            if (freeKick > 16)
+                this.freeKick = 16;
+            //throw new ArgumentException("Player's free kick isn't valid: " + freeKick + " - " + getName());
     	
             this.freeKick = freeKick;
             return;
@@ -1080,8 +1130,11 @@ namespace DinoTem.model
 
         public void setPosition(UInt32 position)
         {
-            if (position < 0 || position > 12)
-                throw new ArgumentException("Player's position isn't valid: " + position + " - " + getName());
+            if (position < 0)
+                this.position = 0;
+            if (position > 12)
+                this.position = 12;
+            //throw new ArgumentException("Player's position isn't valid: " + position + " - " + getName());
     	
             this.position = position;
         }
@@ -1090,15 +1143,19 @@ namespace DinoTem.model
         public void setYouthPlayerId(UInt32 youthPlayerId)
         {
             if (youthPlayerId < 0)
-                throw new ArgumentException("Youth player Id isn't valid: " + youthPlayerId + " - " + getName());
+                this.youthPlayerId = 0;
+            //throw new ArgumentException("Youth player Id isn't valid: " + youthPlayerId + " - " + getName());
 
             this.youthPlayerId = youthPlayerId;
         }
 
         public void setForm(UInt32 form)
         {
-    	    if (form < 0)
-                throw new ArgumentException("Player's form isn't valid: " + form + " - " + getName());
+    	    if (form < 1)
+                this.form = 1;
+            if (form > 8)
+                this.form = 8;
+            //throw new ArgumentException("Player's form isn't valid: " + form + " - " + getName());
     	
             this.form = form;
             return;
@@ -1106,56 +1163,77 @@ namespace DinoTem.model
 
         public void setCornerKick(UInt32 cornerKick)
         {
-    	    if (cornerKick < 0)
-                throw new ArgumentException("Player's corner kick isn't valid: " + cornerKick + " - " + getName());
+    	    if (cornerKick < 1)
+                this.cornerKick = 1;
+            if (cornerKick > 6)
+                this.cornerKick = 6;
+            //throw new ArgumentException("Player's corner kick isn't valid: " + cornerKick + " - " + getName());
     	
             this.cornerKick = cornerKick;
         }
 
         public void setDriblingArm(UInt32 driblingArm)
         {
-    	    if (driblingArm < 0)
-                throw new ArgumentException("Player's dribling arm isn't valid: " + driblingArm + " - " + getName());
+    	    if (driblingArm < 1)
+                this.driblingArm = 1;
+            if (driblingArm > 8)
+                this.driblingArm = 8;
+            //throw new ArgumentException("Player's dribling arm isn't valid: " + driblingArm + " - " + getName());
     	
             this.driblingArm = driblingArm;
         }
 
         public void setRunningArm(UInt32 runningArm)
         {
-    	    if (runningArm < 0)
-                throw new ArgumentException("Player's running arm isn't valid: " + runningArm + " - " + getName());
+    	    if (runningArm < 1)
+                this.runningArm = 1;
+            if (runningArm > 8)
+                this.runningArm = 8;
+            //throw new ArgumentException("Player's running arm isn't valid: " + runningArm + " - " + getName());
     	
             this.runningArm = runningArm;
         }
 
         public void setStarPlayerIndicator(UInt32 starPlayerIndicator)
         {
-    	    if (starPlayerIndicator < 0)
-                throw new ArgumentException("Star player indicator isn't valid: " + starPlayerIndicator + " - " + getName());
+    	    if (starPlayerIndicator < 1)
+                this.starPlayerIndicator = 1;
+            if (starPlayerIndicator > 8)
+                this.starPlayerIndicator = 8;
+            //throw new ArgumentException("Star player indicator isn't valid: " + starPlayerIndicator + " - " + getName());
     	
             this.starPlayerIndicator = starPlayerIndicator;
         }
 
         public void setDmf(UInt32 dmf)
         {
-            if (dmf < 0 && dmf > 2)
-                throw new ArgumentException("Player's dmf isn't valid: " + dmf + " - " + getName());
+            if (dmf < 0)
+                this.dmf = 0;
+            if (dmf > 2)
+                this.dmf = 2;
+            //throw new ArgumentException("Player's dmf isn't valid: " + dmf + " - " + getName());
     	
             this.dmf = dmf;
         }
 
         public void setWcUsage(UInt32 wcUsage)
         {
-    	    if (wcUsage < 0)
-                throw new ArgumentException("Player's wc usage isn't valid: " + wcUsage + " - " + getName());
+    	    if (wcUsage < 1)
+                this.wcUsage = 1;
+            if (wcUsage > 4)
+                this.wcUsage = 4;
+            //throw new ArgumentException("Player's wc usage isn't valid: " + wcUsage + " - " + getName());
     	
             this.wcUsage = wcUsage;
         }
 
         public void setAttack(UInt32 attack)
         {
-    	    if (attack < 40 || attack > 99)
-                throw new ArgumentException("Player's attack isn't valid: " + attack + " - " + getName());
+    	    if (attack < 40)
+                this.attack = 40;
+            if (attack > 99)
+                this.attack = 99;
+            //throw new ArgumentException("Player's attack isn't valid: " + attack + " - " + getName());
     	
             this.attack = attack;
             return;
@@ -1163,8 +1241,11 @@ namespace DinoTem.model
 
         public void setBodyControl(UInt32 bodyControl)
         {
-            if (bodyControl < 40 || bodyControl > 99)
-                throw new ArgumentException("Player's body controll isn't valid: " + bodyControl + " - " + getName());
+            if (bodyControl < 40)
+                this.bodyControl = 40;
+            if (bodyControl > 99)
+                this.bodyControl = 99;
+            //throw new ArgumentException("Player's body controll isn't valid: " + bodyControl + " - " + getName());
     	
             this.bodyControl = bodyControl;
             return;
@@ -1172,8 +1253,11 @@ namespace DinoTem.model
 
         public void setPhysical(UInt32 physical)
         {
-    	    if (physical < 40 || physical > 99)
-                throw new ArgumentException("Player's physical isn't valid: " + physical + " - " + getName());
+    	    if (physical < 40)
+                this.physical = 40;
+            if (physical > 99)
+                this.physical = 99;
+            //throw new ArgumentException("Player's physical isn't valid: " + physical + " - " + getName());
     	
             this.physical = physical;
             return;
@@ -1181,8 +1265,11 @@ namespace DinoTem.model
 
         public void setLoftedPass(UInt32 loftedPass)
         {
-    	    if (loftedPass < 40 || loftedPass > 99)
-                throw new ArgumentException("Player's lofted pass isn't valid: " + loftedPass + " - " + getName());
+    	    if (loftedPass < 40)
+                this.loftedPass = 40;
+            if (loftedPass > 99)
+                this.loftedPass = 99;
+            //throw new ArgumentException("Player's lofted pass isn't valid: " + loftedPass + " - " + getName());
     	
             this.loftedPass = loftedPass;
             return;
@@ -1190,8 +1277,11 @@ namespace DinoTem.model
 
         public void setAge(UInt32 age)
         {
-    	    if (age < 15 || age > 48)
-                throw new ArgumentException("Player's age isn't valid: " + age + " - " + getName());
+    	    if (age < 15)
+                this.age = 15;
+            if (age > 48)
+                this.age = 48;
+            //throw new ArgumentException("Player's age isn't valid: " + age + " - " + getName());
     	
             this.age = age;
             return;
@@ -1200,7 +1290,8 @@ namespace DinoTem.model
         public void setPlayingAttitude(UInt32 playingAttitude)
         {
     	    if (playingAttitude < 0)
-                throw new ArgumentException("Player's playing attitude isn't valid: " + playingAttitude + " - " + getName());
+                this.playingAttitude = 0;
+            //throw new ArgumentException("Player's playing attitude isn't valid: " + playingAttitude + " - " + getName());
     	
             this.playingAttitude = playingAttitude;
             return;
@@ -1208,8 +1299,11 @@ namespace DinoTem.model
 
         public void setSwerve(UInt32 swerve)
         {
-    	    if (swerve < 40 || swerve > 99)
-                throw new ArgumentException("Player's swerve isn't valid: " + swerve + " - " + getName());
+    	    if (swerve < 40)
+                this.swerve = 40;
+            if (swerve > 99)
+                this.swerve = 99;
+            //throw new ArgumentException("Player's swerve isn't valid: " + swerve + " - " + getName());
     	
             this.swerve = swerve;
             return;
@@ -1217,8 +1311,11 @@ namespace DinoTem.model
 
         public void setStamina(UInt32 stamina)
         {
-    	    if (stamina < 40 || stamina > 99)
-                throw new ArgumentException("Player's stamina isn't valid: " + stamina + " - " + getName());
+    	    if (stamina < 40)
+                this.stamina = 40;
+            if (stamina > 99)
+                this.stamina = 99;
+            //throw new ArgumentException("Player's stamina isn't valid: " + stamina + " - " + getName());
     	
             this.stamina = stamina;
             return;
@@ -1226,8 +1323,11 @@ namespace DinoTem.model
 
         public void setExplosiveP(UInt32 explosiveP)
         {
-    	    if (explosiveP < 40 || explosiveP > 99)
-                throw new ArgumentException("Player's explosive power isn't valid: " + explosiveP + " - " + getName());
+    	    if (explosiveP < 40)
+                this.explosiveP = 40;
+            if (explosiveP > 99)
+                this.explosiveP = 99;
+            //throw new ArgumentException("Player's explosive power isn't valid: " + explosiveP + " - " + getName());
     	
             this.explosiveP = explosiveP;
             return;
@@ -1235,8 +1335,11 @@ namespace DinoTem.model
 
         public void setDribbling(UInt32 dribbling)
         {
-    	    if (dribbling < 40 || dribbling > 99)
-                throw new ArgumentException("Player's dribbling isn't valid: " + dribbling + " - " + getName());
+    	    if (dribbling < 40)
+                this.dribbling = 40;
+            if (dribbling > 99)
+                this.dribbling = 99;
+            //throw new ArgumentException("Player's dribbling isn't valid: " + dribbling + " - " + getName());
     	
             this.dribbling = dribbling;
             return;
@@ -1244,8 +1347,11 @@ namespace DinoTem.model
 
         public void setKickingPower(UInt32 kickingPower)
         {
-    	    if (kickingPower < 40 || kickingPower > 99)
-                throw new ArgumentException("Player's kicking power isn't valid: " + kickingPower + " - " + getName());
+    	    if (kickingPower < 40)
+                this.kickingPower = 40;
+            if (kickingPower > 99)
+                this.kickingPower = 99;
+            //throw new ArgumentException("Player's kicking power isn't valid: " + kickingPower + " - " + getName());
     	
             this.kickingPower = kickingPower;
             return;
@@ -1254,7 +1360,10 @@ namespace DinoTem.model
         public void setPenaltyKick(UInt32 penaltyKick)
         {
     	    if (penaltyKick < 0)
-                throw new ArgumentException("Player's penalty kick isn't valid: " + penaltyKick + " - " + getName());
+                this.penaltyKick = 0;
+            if (penaltyKick > 4)
+                this.penaltyKick = 4;
+            //throw new ArgumentException("Player's penalty kick isn't valid: " + penaltyKick + " - " + getName());
     	
             this.penaltyKick = penaltyKick;
             return;
@@ -1262,8 +1371,11 @@ namespace DinoTem.model
 
         public void setSpeed(UInt32 speed)
         {
-    	    if (speed < 40 || speed > 99)
-                throw new ArgumentException("Player's speed isn't valid: " + speed + " - " + getName());
+    	    if (speed < 40)
+                this.speed = 40;
+            if (speed > 99)
+                this.speed = 99;
+            //throw new ArgumentException("Player's speed isn't valid: " + speed + " - " + getName());
     	
             this.speed = speed;
             return;
@@ -1271,8 +1383,11 @@ namespace DinoTem.model
 
         public void setBallWinning(UInt32 ballWinning)
         {
-    	    if (ballWinning < 40 || ballWinning > 99)
-                throw new ArgumentException("Player's ball winning isn't valid: " + ballWinning + " - " + getName());
+    	    if (ballWinning < 40)
+                this.ballWinning = 40;
+            if (ballWinning > 99)
+                this.ballWinning = 99;
+            //throw new ArgumentException("Player's ball winning isn't valid: " + ballWinning + " - " + getName());
     	
             this.ballWinning = ballWinning;
             return;
@@ -1280,8 +1395,11 @@ namespace DinoTem.model
 
         public void setReflexes(UInt32 reflexes)
         {
-    	    if (reflexes < 40 || reflexes > 99)
-                throw new ArgumentException("Player's reflexes isn't valid: " + reflexes + " - " + getName());
+    	    if (reflexes < 40)
+                this.reflexes = 40;
+            if (reflexes > 99)
+                this.reflexes = 99;
+            //throw new ArgumentException("Player's reflexes isn't valid: " + reflexes + " - " + getName());
     	
             this.reflexes = reflexes;
             return;
@@ -1289,8 +1407,11 @@ namespace DinoTem.model
 
         public void setGoalkeeping(UInt32 goalkeeping)
         {
-    	    if (goalkeeping < 40 || goalkeeping > 99)
-                throw new ArgumentException("Player's goalkeeping isn't valid: " + goalkeeping + " - " + getName());
+    	    if (goalkeeping < 40)
+                this.goalkeeping = 40;
+            if (goalkeeping > 99)
+                this.goalkeeping = 99;
+            //throw new ArgumentException("Player's goalkeeping isn't valid: " + goalkeeping + " - " + getName());
     	
             this.goalkeeping = goalkeeping;
             return;
@@ -1298,8 +1419,11 @@ namespace DinoTem.model
 
         public void setGk(UInt32 gk)
         {
-            if (gk < 0 && gk > 2)
-                throw new ArgumentException("Player's gk isn't valid: " + gk + " - " + getName());
+            if (gk < 0)
+                this.gk = 0;
+            if (gk > 2)
+                this.gk = 2;
+            //throw new ArgumentException("Player's gk isn't valid: " + gk + " - " + getName());
     	
             this.gk = gk;
             return;
@@ -1307,8 +1431,11 @@ namespace DinoTem.model
 
         public void setBallControll(UInt32 ballControll)
         {
-    	    if (ballControll < 40 || ballControll > 99)
-                throw new ArgumentException("Player's ball controll isn't valid: " + ballControll + " - " + getName());
+    	    if (ballControll < 40)
+                this.ballControll = 40;
+            if (ballControll > 99)
+                this.ballControll = 99;
+            //throw new ArgumentException("Player's ball controll isn't valid: " + ballControll + " - " + getName());
     	
             this.ballControll = ballControll;
             return;
@@ -1316,8 +1443,11 @@ namespace DinoTem.model
 
         public void setHeader(UInt32 header)
         {
-    	    if (header < 40 || header > 99)
-                throw new ArgumentException("Player's header isn't valid: " + header + " - " + getName());
+    	    if (header < 40)
+                this.header = 40;
+            if (header > 99)
+                this.header = 99;
+            //throw new ArgumentException("Player's header isn't valid: " + header + " - " + getName());
     	
             this.header = header;
             return;
@@ -1325,8 +1455,11 @@ namespace DinoTem.model
 
         public void setJump(UInt32 jump)
         {
-    	    if (jump < 40 || jump > 99)
-                throw new ArgumentException("Player's jump isn't valid: " + jump + " - " + getName());
+    	    if (jump < 40)
+                this.jump = 40;
+            if (jump > 99)
+                this.jump = 99;
+            //throw new ArgumentException("Player's jump isn't valid: " + jump + " - " + getName());
     	
             this.jump = jump;
             return;
@@ -1334,8 +1467,11 @@ namespace DinoTem.model
 
         public void setCathing(UInt32 cathing)
         {
-    	    if (cathing < 40 || cathing > 99)
-                throw new ArgumentException("Player's cathing isn't valid: " + cathing + " - " + getName());
+    	    if (cathing < 40)
+                this.cathing = 40;
+            if (cathing > 99)
+                this.cathing = 99;
+            //throw new ArgumentException("Player's cathing isn't valid: " + cathing + " - " + getName());
     	
             this.cathing = cathing;
             return;
@@ -1343,8 +1479,11 @@ namespace DinoTem.model
 
         public void setCoverage(UInt32 coverage)
         {
-    	    if (coverage < 40 || coverage > 99)
-                throw new ArgumentException("Player's coverage isn't valid: " + coverage + " - " + getName());
+    	    if (coverage < 40)
+                this.coverage = 40;
+            if (coverage > 99)
+                this.coverage = 99;
+            //throw new ArgumentException("Player's coverage isn't valid: " + coverage + " - " + getName());
     	
             this.coverage = coverage;
             return;
@@ -1352,8 +1491,11 @@ namespace DinoTem.model
 
         public void setLb(UInt32 lb)
         {
-            if (lb < 0 && lb > 2)
-                throw new ArgumentException("Player's lb isn't valid: " + lb + " - " + getName());
+            if (lb < 0)
+                this.lb = 0;
+            if (lb > 2)
+                this.lb = 2;
+            //throw new ArgumentException("Player's lb isn't valid: " + lb + " - " + getName());
     	
             this.lb = lb;
             return;
@@ -1362,7 +1504,8 @@ namespace DinoTem.model
         public void setGoalCelebrate(UInt32 goalCelebrate)
         {
     	    if (goalCelebrate < 0)
-                throw new ArgumentException("Player's goal celebrate isn't valid: " + goalCelebrate + " - " + getName());
+                this.goalCelebrate = 0;
+            //throw new ArgumentException("Player's goal celebrate isn't valid: " + goalCelebrate + " - " + getName());
     	
             this.goalCelebrate = goalCelebrate;
             return;
@@ -1370,8 +1513,11 @@ namespace DinoTem.model
 
         public void setLowPass(UInt32 lowPass)
         {
-    	    if (lowPass < 40 || lowPass > 99)
-                throw new ArgumentException("Player's low pass isn't valid: " + lowPass + " - " + getName());
+    	    if (lowPass < 40)
+                this.lowPass = 40;
+            if (lowPass > 99)
+                this.lowPass = 99;
+            //throw new ArgumentException("Player's low pass isn't valid: " + lowPass + " - " + getName());
     	
             this.lowPass = lowPass;
             return;
@@ -1379,8 +1525,11 @@ namespace DinoTem.model
 
         public void setPlaceKick(UInt32 placeKick)
         {
-    	    if (placeKick < 40 || placeKick > 99)
-                throw new ArgumentException("Player's place kick isn't valid: " + placeKick + " - " + getName());
+    	    if (placeKick < 40)
+                this.placeKick = 40;
+            if (placeKick > 99)
+                this.placeKick = 99;
+            //throw new ArgumentException("Player's place kick isn't valid: " + placeKick + " - " + getName());
     	
             this.placeKick = placeKick;
             return;
@@ -1388,8 +1537,11 @@ namespace DinoTem.model
 
         public void setClearing(UInt32 clearing)
         {
-    	    if (clearing < 40 || clearing > 99)
-                throw new ArgumentException("Player's clearing isn't valid: " + clearing + " - " + getName());
+    	    if (clearing < 40)
+                this.clearing = 40;
+            if (clearing > 99)
+                this.clearing = 99;
+            //throw new ArgumentException("Player's clearing isn't valid: " + clearing + " - " + getName());
     	
             this.clearing = clearing;
             return;
@@ -1397,8 +1549,11 @@ namespace DinoTem.model
 
         public void setDefense(UInt32 defense)
         {
-    	    if (defense < 40 || defense > 99)
-                throw new ArgumentException("Player's defense isn't valid: " + defense + " - " + getName());
+    	    if (defense < 40)
+                this.defense = 40;
+            if (defense > 99)
+                this.defense = 99;
+            //throw new ArgumentException("Player's defense isn't valid: " + defense + " - " + getName());
     	
             this.defense = defense;
             return;
@@ -1413,7 +1568,8 @@ namespace DinoTem.model
         public void setNational(UInt32 national)
         {
     	    if (national < 0)
-                throw new ArgumentException("Player's nationality isn't valid: " + national + " - " + getName());
+                this.national = 215;
+            //throw new ArgumentException("Player's nationality isn't valid: " + national + " - " + getName());
     	
             this.national = national;
             return;
@@ -1422,7 +1578,8 @@ namespace DinoTem.model
         public void setNational2(UInt32 national2)
         {
     	    if (national2 < 0)
-                throw new ArgumentException("Player's second nationality isn't valid: " + national2 + " - " + getName());
+                this.national2 = 0;
+            //throw new ArgumentException("Player's second nationality isn't valid: " + national2 + " - " + getName());
     	
             this.national2 = national2;
             return;
@@ -1430,8 +1587,11 @@ namespace DinoTem.model
 
         public void setHeight(UInt32 height)
         {
-    	    if (height < 100 || height > 227)
-                throw new ArgumentException("Player's height isn't valid: " + height + " - " + getName());
+    	    if (height < 100)
+                this.height = 100;
+            if (height > 227)
+                this.height = 227;
+            //throw new ArgumentException("Player's height isn't valid: " + height + " - " + getName());
 
             this.height = height;
             return;
@@ -1439,8 +1599,11 @@ namespace DinoTem.model
 
         public void setWeight(UInt32 weight)
         {
-    	    if (weight < 30 || weight > 157)
-                throw new ArgumentException("Player's weight isn't valid: " + weight + " - " + getName());
+    	    if (weight < 30)
+                this.weight = 30;
+            if (weight > 157)
+                this.weight = 157;
+            //throw new ArgumentException("Player's weight isn't valid: " + weight + " - " + getName());
     	
             this.weight = weight;
             return;
@@ -1449,7 +1612,8 @@ namespace DinoTem.model
         public void setName(string name)
         {
             if (name == null || name == "")
-                throw new ArgumentException("Player's name isn't valid - Id player: " + getId() + ")");
+                this.name = "Player without name";
+            //throw new ArgumentException("Player's name isn't valid - Id player: " + getId() + ")");
 
             this.name = name;
             return;
@@ -1458,7 +1622,8 @@ namespace DinoTem.model
         public void setShirtName(string shirtName)
         {
     	    if (shirtName == null || shirtName == "")
-                throw new ArgumentException("Player's shirt name isn't valid - " + getName());
+                this.shirtName = "Player without name";
+            //throw new ArgumentException("Player's shirt name isn't valid - " + getName());
     	
             this.shirtName = shirtName;
             return;
@@ -1776,19 +1941,11 @@ namespace DinoTem.model
             return t;
         }
 
-        /*public override UInt32 Equals(Object obj)
-        {
-            if (obj is Player)
-    	    {
-                Player c = (Player) obj;
-                return getId() == c.getId();
-    	    }
-    	    return false;
-        }*/
-
         public override string ToString()
         {
     	    return getName();
         }
+
+        //vincoli mancanti: goal celebrate, national, national2, playingAttitude, playingStyle, unk2
     }
 }

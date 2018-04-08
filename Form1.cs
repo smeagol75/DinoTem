@@ -215,7 +215,7 @@ namespace DinoTem
                 }
                 catch { }
 
-                /*try
+                try
                 {
                     //tutti in numeri in nero
                     string numeri = "";
@@ -265,7 +265,7 @@ namespace DinoTem
                     }
                     //
                 }
-                catch { }*/
+                catch { }
             }
 
             if (i == 2)
@@ -286,7 +286,7 @@ namespace DinoTem
                 }
                 catch { }
 
-                /*try
+                try
                 {
                     //tutti in numeri in nero
                     string numeri1 = "";
@@ -336,7 +336,7 @@ namespace DinoTem
                     }
                     //
                 }
-                catch { }*/
+                catch { }
             }
 
         }
@@ -362,6 +362,7 @@ namespace DinoTem
             DialogResult result = fbd.ShowDialog();
             if (result == DialogResult.OK)
             {
+                controller.closeMemory();
                 controller.openDatabase(fbd.SelectedPath, Form1._Form1);
 
                 //abilitare i controlli
@@ -384,6 +385,7 @@ namespace DinoTem
                 addNewTeam.Enabled = true;
                 support.Enabled = true;
                 videoTutorial.Enabled = true;
+                generateCpk.Enabled = true;
             }
         }
 
@@ -724,7 +726,7 @@ namespace DinoTem
             teamCoachLicense.Text = team.getStringLicensedCoach();
             teamCoach.SelectedIndex = controller.findCoach(team.getManagerId());
             teamNotPlayableLeague.Text = team.getStringNotPlayableLeague();
-            teamStadium.SelectedIndex = controller.findStadium(team.getStadiumId());
+            teamStadium.SelectedIndex = controller.findStadium((ushort)team.getStadiumId());
             teamHasLicensedPlayers.Text = team.getStringHasLicensedPlayers();
             teamAnthem.Text = team.getStringHasAnthem();
             teamKonami.Text = team.getKonami();
@@ -1261,7 +1263,7 @@ namespace DinoTem
         private ListViewItem Leggere_GiocatoreSquadre(PlayerAssignment pAssignment)
         {
             ListViewItem item = new ListViewItem();
-            Player temp2 = controller.leggiGiocatoreById(pAssignment.getPlayerId());
+            Player temp2 = controller.leggiGiocatore(pAssignment.getPlayerId());
 
             item = new ListViewItem((pAssignment.getOrder() + 1).ToString());
             item.SubItems.Add(temp2.getStringPosition());
@@ -1323,7 +1325,7 @@ namespace DinoTem
             if (intselectedindex >= 0)
             {
                 UInt32 id = uint.Parse(teamView1.Items[intselectedindex].SubItems[11].Text);
-                Player temp2 = controller.leggiGiocatoreById(id);
+                Player temp2 = controller.leggiGiocatore(id);
                 leggereGiocatore(temp2);
                 giocatoreNumber.Text = teamView1.Items[intselectedindex].SubItems[3].Text;
                 //
@@ -1364,7 +1366,7 @@ namespace DinoTem
             if (intselectedindex >= 0)
             {
                 UInt32 id = uint.Parse(teamView2.Items[intselectedindex].SubItems[11].Text);
-                Player temp2 = controller.leggiGiocatoreById(id);
+                Player temp2 = controller.leggiGiocatore(id);
                 leggereGiocatore(temp2);
                 giocatoreNumber.Text = teamView2.Items[intselectedindex].SubItems[3].Text;
                 //
@@ -1463,7 +1465,7 @@ namespace DinoTem
                     int intselectedindex = teamView1.SelectedIndices[0];
                     if (intselectedindex >= 0)
                     {
-                        Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                        Giocatore P = new Giocatore(controller.leggiGiocatore(uint.Parse(giocatoreID.Text)), controller);
                         P.ShowDialog();
                     }
                 }
@@ -1492,7 +1494,7 @@ namespace DinoTem
                     int intselectedindex = teamView2.SelectedIndices[0];
                     if (intselectedindex >= 0)
                     {
-                        Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                        Giocatore P = new Giocatore(controller.leggiGiocatore(uint.Parse(giocatoreID.Text)), controller);
                         P.ShowDialog();
                     }
                 }
@@ -1521,7 +1523,7 @@ namespace DinoTem
                 {
                     if (playersBox.SelectedIndex < 0)
                         return;
-                    Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                    Giocatore P = new Giocatore(controller.leggiGiocatore(uint.Parse(giocatoreID.Text)), controller);
                     P.ShowDialog();
                 }
             }
@@ -1620,7 +1622,7 @@ namespace DinoTem
             int intselectedindex = teamView1.SelectedIndices[0];
             if (intselectedindex >= 0)
             {
-                Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                Giocatore P = new Giocatore(controller.leggiGiocatore(uint.Parse(giocatoreID.Text)), controller);
                 P.ShowDialog();
             }
         }
@@ -1670,7 +1672,7 @@ namespace DinoTem
             int intselectedindex = teamView2.SelectedIndices[0];
             if (intselectedindex >= 0)
             {
-                Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+                Giocatore P = new Giocatore(controller.leggiGiocatore(uint.Parse(giocatoreID.Text)), controller);
                 P.ShowDialog();
             }
         }
@@ -1680,7 +1682,7 @@ namespace DinoTem
         {
             if (playersBox.SelectedIndex < 0)
                 return;
-            Giocatore P = new Giocatore(controller.leggiGiocatoreById(uint.Parse(giocatoreID.Text)), controller);
+            Giocatore P = new Giocatore(controller.leggiGiocatore(uint.Parse(giocatoreID.Text)), controller);
             P.ShowDialog();
         }
 
@@ -2305,6 +2307,9 @@ namespace DinoTem
             if (controllerFm.getFmList().Count == 0)
                 controllerFm.readFmPersister();
 
+            if (controllerFm.getFmList().Count == 0)
+                return;
+
             //abilito i comandi
             label122.Visible = true;
             nationalityBox.Visible = true;
@@ -2326,13 +2331,15 @@ namespace DinoTem
             applyFm.Visible = true;
             technical.Visible = true;
             label119.Visible = false;
+            label120.Visible = true;
+            count.Visible = true;
 
             playerList.DataSource = controllerFm.getFmList();
             clubBox.DataSource = controllerFm.getClub();
-            count.Text = playerList.Items.Count.ToString();
             clubBox.SelectedIndex = clubBox.Items.Count - 1;
             nationalityBox.SelectedIndex = nationalityBox.Items.Count - 1;
             playerList.SelectedIndex = 0;
+            count.Text = playerList.Items.Count.ToString();
         }
 
         //filtri
@@ -2379,6 +2386,8 @@ namespace DinoTem
             var eta = today.Year - int.Parse(temp.getDateOfBirth().Substring(6));
             if (DateTime.Parse(temp.getDateOfBirth()) > today.AddYears(-eta)) eta--;
             age.Text = eta.ToString();
+            weight.Text = temp.getWeight().ToString();
+            height.Text = temp.getHeight().ToString();
             //technical
             corners.Text = temp.getCorners().ToString();
             freeKickTaking.Text = temp.getFreeKicks().ToString();
@@ -2723,7 +2732,7 @@ namespace DinoTem
         }
 
         //cercare una squadra Invio
-        private void fmSearchTeam_TextChanged(object sender, EventArgs e)
+        private void fmSearchTeam_Click(object sender, EventArgs e)
         {
             fmSearchTeam.SelectAll();
             fmSearchTeam.Focus();
@@ -2766,7 +2775,7 @@ namespace DinoTem
 
             //position
             controllerFm.calculatePosition(temp2);
-            controllerFm.registredPosition(gk, cb, lb, rb, dmf, cmf, lmf, amf, rmf, lwf, rwf, ss, cf);
+            //controllerFm.registredPosition(gk, cb, lb, rb, dmf, cmf, lmf, amf, rmf, lwf, rwf, ss, cf);
             //basic info
             temp.setAge(uint.Parse(age.Text));
             temp.setStrongerFoot(controllerFm.calculateStrongFoot(temp2));
@@ -2774,6 +2783,9 @@ namespace DinoTem
             temp.setForm(controllerFm.calculateForm(int.Parse(staminaFm.Text), int.Parse(naturalFitness.Text), int.Parse(balance.Text), controllerFm.getPlayer().getPosition()));
             temp.setWcUsage(controllerFm.calculateWcUsage(int.Parse(technique.Text), controllerFm.getPlayer().getPosition()));
             temp.setWeakFootAcc(controllerFm.calculateWcAcc(int.Parse(technique.Text), int.Parse(offtheball.Text), controllerFm.getPlayer().getPosition()));
+            //if (uint.Parse(weight.Text) > 0)
+                //temp.setWeight(uint.Parse(weight.Text));
+            //temp.setHeight(uint.Parse(height.Text));
             //ability
             temp.setStamina(controllerFm.calculateStamina(int.Parse(staminaFm.Text), int.Parse(average.Text), int.Parse(averageGk.Text), int.Parse(naturalFitness.Text), int.Parse(strenght.Text), int.Parse(workrate.Text), controllerFm.getPlayer().getPosition()));
             temp.setCoverage(controllerFm.calculateCoverage(int.Parse(commandOfArea.Text), int.Parse(communication.Text), int.Parse(positioning.Text), int.Parse(leadership.Text), int.Parse(gkrat.Text), int.Parse(average.Text), int.Parse(averageGk.Text), controllerFm.getPlayer().getPosition()));
@@ -3500,6 +3512,12 @@ namespace DinoTem
         private void howToEditDatabaseAfterDLCAndImportIngameToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Process.Start("https://youtu.be/X6DlW8M4ARE");
+        }
+
+        //generate CPK
+        private void generateCpk_Click(object sender, EventArgs e)
+        {
+            controller.generateCPK(fbd.SelectedPath);
         }
     }
 }

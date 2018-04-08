@@ -57,7 +57,10 @@ namespace DinoTem.model
         public void setTeam1DerbyId(UInt32 team1DerbyId)
         {
             if (team1DerbyId < 0)
-                throw new ArgumentException("team1 derby id isn't valid: " + team1DerbyId);
+                this.team1DerbyId = 0;
+            if (team1DerbyId > 65535)
+                this.team1DerbyId = 65535;
+            //throw new ArgumentException("team1 derby id isn't valid: " + team1DerbyId);
 
             this.team1DerbyId = team1DerbyId;
         }
@@ -65,7 +68,10 @@ namespace DinoTem.model
         public void setTeam2DerbyId(UInt32 team2DerbyId)
         {
             if (team2DerbyId < 0)
-                throw new ArgumentException("team2 derby id isn't valid: " + team2DerbyId);
+                this.team2DerbyId = 0;
+            if (team2DerbyId > 65535)
+                this.team2DerbyId = 65535;
+            //throw new ArgumentException("team2 derby id isn't valid: " + team2DerbyId);
 
             this.team2DerbyId = team2DerbyId;
         }
@@ -73,7 +79,8 @@ namespace DinoTem.model
         public void setFragVal1(UInt16 fragVal1)
         {
             if (fragVal1 < 0)
-                throw new ArgumentException("frag val1 isn't valid: " + fragVal1);
+                this.fragVal1 = 0;
+            //throw new ArgumentException("frag val1 isn't valid: " + fragVal1);
 
             this.fragVal1 = fragVal1;
         }
@@ -81,7 +88,8 @@ namespace DinoTem.model
         public void setFragVal2(UInt16 fragVal2)
         {
             if (fragVal2 < 0)
-                throw new ArgumentException("frag val2 isn't valid: " + fragVal2);
+                this.fragVal2 = 0;
+            //throw new ArgumentException("frag val2 isn't valid: " + fragVal2);
 
             this.fragVal2 = fragVal2;
         }
@@ -89,7 +97,8 @@ namespace DinoTem.model
         public void setFragVal3(UInt16 fragVal3)
         {
             if (fragVal3 < 0)
-                throw new ArgumentException("frag val3 isn't valid: " + fragVal3);
+                this.fragVal3 = 0;
+            //throw new ArgumentException("frag val3 isn't valid: " + fragVal3);
 
             this.fragVal3 = fragVal3;
         }
@@ -97,7 +106,8 @@ namespace DinoTem.model
         public void setFragVal4(UInt16 fragVal4)
         {
             if (fragVal4 < 0)
-                throw new ArgumentException("frag val4 isn't valid: " + fragVal4);
+                this.fragVal4 = 0;
+            //throw new ArgumentException("frag val4 isn't valid: " + fragVal4);
 
             this.fragVal4 = fragVal4;
         }
@@ -105,7 +115,8 @@ namespace DinoTem.model
         public void setFragVal(UInt16 fragVal)
         {
             if (fragVal < 0)
-                throw new ArgumentException("frag val isn't valid: " + fragVal);
+                this.fragVal = 0;
+            //throw new ArgumentException("frag val isn't valid: " + fragVal);
 
             this.fragVal = fragVal;
         }
