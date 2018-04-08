@@ -21,8 +21,8 @@ namespace DinoTem.model
 
 	    public void setInternalShortName(string internalShortName) {
             //internalShortName == null ||
-		    if (internalShortName == "")
-                throw new ArgumentException("Internal name not valid - " + base.getEnglish());
+		    //if (internalShortName == "")
+                //throw new ArgumentException("Internal name not valid - " + base.getEnglish());
 		
 		    this.internalShortName = internalShortName;
 	    }
@@ -33,8 +33,8 @@ namespace DinoTem.model
 
 	    public void setLatinScript(string latinScript) {
             //internalShortName == null || 
-		    if (internalShortName == "")
-                throw new ArgumentException("Latin script not valid - " + base.getEnglish());
+		    //if (internalShortName == "")
+                //throw new ArgumentException("Latin script not valid - " + base.getEnglish());
 		
 		    this.latinScript = latinScript;
 	    }

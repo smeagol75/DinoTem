@@ -16,7 +16,7 @@ namespace DinoTem.model
 
         public TacticsFormation(UInt16 TeamTacticId)
         {
-            if (TeamTacticId < 0)
+            if (TeamTacticId < 0 || TeamTacticId > 65535)
                 throw new ArgumentException("Tactic's id isn't valid: " + TeamTacticId);
 
             this.TeamTacticId = TeamTacticId;
@@ -50,14 +50,17 @@ namespace DinoTem.model
         public void setPosition(byte position)
         {
     	    if (position < 0)
-                throw new ArgumentException("Position of player in the team isn't valid - id tactic: " + getTeamTacticId());
+                this.position = 0;
+            if (position > 12)
+                this.position = 12;
+            //throw new ArgumentException("Position of player in the team isn't valid - id tactic: " + getTeamTacticId());
     	
             this.position = position;
         }
 
         public void setTeamTacticId(UInt16 TeamTacticId)
         {
-    	    if (TeamTacticId < 0)
+            if (TeamTacticId < 0 || TeamTacticId > 65535)
                 throw new ArgumentException("Tactic's id isn't valid: " + TeamTacticId);
     	
             this.TeamTacticId = TeamTacticId;
@@ -66,7 +69,8 @@ namespace DinoTem.model
         public void setX(byte X)
         {
     	    if (X < 0)
-                throw new ArgumentException("Y position  isn't valid - id tactic: " + getTeamTacticId());
+                this.X = 0;
+            //throw new ArgumentException("Y position  isn't valid - id tactic: " + getTeamTacticId());
 
             this.X = X;
         }
@@ -74,7 +78,8 @@ namespace DinoTem.model
         public void setY(byte Y)
         {
     	    if (Y < 0)
-                throw new ArgumentException("X position isn't valid - id tactic: " + getTeamTacticId());
+                this.Y = 0;
+            //throw new ArgumentException("X position isn't valid - id tactic: " + getTeamTacticId());
     	
             this.Y = Y;
         }
@@ -82,7 +87,8 @@ namespace DinoTem.model
         public void setbyteFrag(byte byteFrag)
         {
     	    if (byteFrag < 0)
-                throw new ArgumentException("Tactic's byteFrag isn't valid - id tactic: " + getTeamTacticId());
+                this.byteFrag = 0;
+            //throw new ArgumentException("Tactic's byteFrag isn't valid - id tactic: " + getTeamTacticId());
     	
             this.byteFrag = byteFrag;
         }
@@ -122,15 +128,5 @@ namespace DinoTem.model
             }
             return t;
         }
-
-        /*public override bool Equals(Object obj)
-        {
-            if (obj is TacticsFormation)
-    	    {
-                TacticsFormation c = (TacticsFormation) obj;
-    		    return getTeamTacticId() == c.getTeamTacticId();
-    	    }
-            return false;
-        }*/
     }
 }

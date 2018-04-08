@@ -29,7 +29,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.PlayerAssignment_toPc(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.PlayerAssignment_toPc(memory1);
             }
 
             return memory1;
@@ -73,7 +73,7 @@ namespace DinoTem.persistence
             {
                 reader.BaseStream.Position += 8;
                 UInt32 Team = reader.ReadUInt32();
-                if ((Team == id))
+                if (Team == id)
                 {
                     reader.BaseStream.Position -= 12;
                     UInt32 Index_PLASSIG = reader.ReadUInt32();
@@ -147,13 +147,12 @@ namespace DinoTem.persistence
                 }
                 else
                     reader.BaseStream.Position += 8;
-
             }
 
             return list;
         }
 
-        public UInt32 findIdAssign(MemoryStream memory1, BinaryReader reader)
+        public UInt32 findIndexAssign(MemoryStream memory1, BinaryReader reader)
         {
             UInt32 PlayerAssignment_index_mayor = 0;
 
@@ -174,64 +173,82 @@ namespace DinoTem.persistence
             return PlayerAssignment_index_mayor;
         }
 
+        public void replacePlayerA(BinaryReader reader, MemoryStream unzlib, ref BinaryWriter writer, UInt32 oldPlayerId, UInt32 newPlayerId)
+        {
+            int bytesPlayer = (int)unzlib.Length;
+            int bloques_assig = bytesPlayer / block;
+
+            long START2 = -block + 4;
+            for (int i = 0; i <= (bloques_assig - 1); i++)
+            {
+                START2 += block;
+                unzlib.Seek(START2, SeekOrigin.Begin);
+                if (oldPlayerId == reader.ReadUInt32())
+                {
+                    writer.BaseStream.Position = START2;
+                    writer.Write(newPlayerId);
+                }
+            }
+        }
+
         public void applyPlayerA(MemoryStream unzlibPlayerAssign, BinaryReader reader, List<PlayerAssignment> pa, ref BinaryWriter writer)
         {
             int bytesPlayer = (int)unzlibPlayerAssign.Length;
             int bloques_assig = bytesPlayer / block;
 
-            int k = 0;
-            long START2 = -block;
-            for (int i = 0; i <= (bloques_assig - 1); i++)
+            foreach (PlayerAssignment playerA in pa)
             {
-                START2 += block;
-                unzlibPlayerAssign.Seek(START2, SeekOrigin.Begin);
-
-                if (k < pa.Count)
-                    if (pa[k].getEntryId() == reader.ReadUInt32())
+                long START2 = -block;
+                for (int i = 0; i <= (bloques_assig - 1); i++)
+                {
+                    START2 += block;
+                    unzlibPlayerAssign.Seek(START2, SeekOrigin.Begin);
+                    if (playerA.getEntryId() == reader.ReadUInt32())
                     {
                         writer.BaseStream.Position = START2 + 4;
 
-                        UInt32 New_ID = pa[k].getPlayerId();
-                        UInt32 New_team = pa[k].getTeamId();
-                        byte New_Number = pa[k].getShirtNumber();
+                        UInt32 New_ID = playerA.getPlayerId();
+                        UInt32 New_team = playerA.getTeamId();
+                        byte New_Number = playerA.getShirtNumber();
                         writer.Write(New_ID);
                         writer.Write(New_team);
                         writer.Write(New_Number);
                         UInt16 Nuevo_Valor_16 = 0;
                         UInt16 Aux_16 = 0;
-                        UInt16 CHECK_CAP = (ushort) pa[k].getCaptain();
-                        UInt16 CHECK_PENAL = (ushort) pa[k].getPenaltyKick();
-                        UInt16 CHECK_Long = (ushort) pa[k].getLongShotLk();
-                        UInt16 CHECK_LCK = (ushort) pa[k].getLeftCkTk();
-                        UInt16 CHECK_SHORT = (ushort) pa[k].getShortFoulFk();
-                        UInt16 CHECK_RCK = (ushort) pa[k].getRightCornerKick();
-                        UInt16 New_Order = pa[k].getOrder();
+                        UInt16 CHECK_CAP = (ushort)playerA.getCaptain();
+                        UInt16 CHECK_PENAL = (ushort)playerA.getPenaltyKick();
+                        UInt16 CHECK_Long = (ushort)playerA.getLongShotLk();
+                        UInt16 CHECK_LCK = (ushort)playerA.getLeftCkTk();
+                        UInt16 CHECK_SHORT = (ushort)playerA.getShortFoulFk();
+                        UInt16 CHECK_RCK = (ushort)playerA.getRightCornerKick();
+                        UInt16 New_Order = playerA.getOrder();
                         Aux_16 = CHECK_CAP;
-                        Aux_16 = (ushort) (Aux_16 << 11);
-                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = (ushort)(Aux_16 << 11);
+                        Nuevo_Valor_16 = (ushort)(Aux_16 | Nuevo_Valor_16);
                         Aux_16 = CHECK_PENAL;
-                        Aux_16 = (ushort) (Aux_16 << 10);
-                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = (ushort)(Aux_16 << 10);
+                        Nuevo_Valor_16 = (ushort)(Aux_16 | Nuevo_Valor_16);
                         Aux_16 = CHECK_Long;
-                        Aux_16 = (ushort) (Aux_16 << 9);
-                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = (ushort)(Aux_16 << 9);
+                        Nuevo_Valor_16 = (ushort)(Aux_16 | Nuevo_Valor_16);
                         Aux_16 = CHECK_LCK;
-                        Aux_16 = (ushort) (Aux_16 << 8);
-                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = (ushort)(Aux_16 << 8);
+                        Nuevo_Valor_16 = (ushort)(Aux_16 | Nuevo_Valor_16);
                         Aux_16 = CHECK_SHORT;
-                        Aux_16 = (ushort) (Aux_16 << 7);
-                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = (ushort)(Aux_16 << 7);
+                        Nuevo_Valor_16 = (ushort)(Aux_16 | Nuevo_Valor_16);
                         Aux_16 = CHECK_RCK;
-                        Aux_16 = (ushort) (Aux_16 << 6);
-                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Aux_16 = (ushort)(Aux_16 << 6);
+                        Nuevo_Valor_16 = (ushort)(Aux_16 | Nuevo_Valor_16);
                         Aux_16 = New_Order;
-                        Nuevo_Valor_16 = (ushort) (Aux_16 | Nuevo_Valor_16);
+                        Nuevo_Valor_16 = (ushort)(Aux_16 | Nuevo_Valor_16);
 
                         writer.Write(Nuevo_Valor_16);
-
-                        k++;
+                        break;
                     }
+                }
             }
+            return;
         }
 
         public void addPlayerAssign(ref MemoryStream memory1, ref BinaryReader reader, ref BinaryWriter writer, UInt32 assignId)
@@ -256,7 +273,7 @@ namespace DinoTem.persistence
             writer.Write(assignId);
         }
 
-        public void save(string patch, ref MemoryStream memoryGicotori, int bitRecognized)
+        public void save(string patch, MemoryStream memoryGicotori, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -266,13 +283,11 @@ namespace DinoTem.persistence
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.PlayerAssignment_toConsole(ref memoryGicotori);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryGicotori, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.PlayerAssignment_toConsole(memoryGicotori), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.PlayerAssignment_toConsole(ref memoryGicotori);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryGicotori, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.PlayerAssignment_toConsole(memoryGicotori), patch + PATH);
             }
         }
     }

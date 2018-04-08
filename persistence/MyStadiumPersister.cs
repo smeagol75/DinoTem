@@ -29,7 +29,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.Stadium_toPc(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.Stadium_toPc(memory1);
             }
 
             return memory1;
@@ -136,7 +136,23 @@ namespace DinoTem.persistence
             return stadium;
         }
 
-        public UInt16 findIdStadium(MemoryStream memory1, BinaryReader reader)
+        public int loadStadiumById(MemoryStream memory1, BinaryReader reader, UInt16 stadiumId)
+        {
+            int bytes = (int)memory1.Length;
+            int stadium = bytes / block;
+
+            reader.BaseStream.Position = 4;
+            for (int i = 0; i <= (stadium - 1); i++)
+            {
+                if (stadiumId == reader.ReadUInt16())
+                    return i;
+                reader.BaseStream.Position += block - 2;
+            }
+
+            return -1;
+        }
+
+        public UInt16 findIndexStadium(MemoryStream memory1, BinaryReader reader)
         {
             UInt16 stadium_index_mayor = 0;
 
@@ -237,7 +253,7 @@ namespace DinoTem.persistence
             writer = new BinaryWriter(memory1);
         }
 
-        public void save(string patch, ref MemoryStream memoryStadium, int bitRecognized)
+        public void save(string patch, MemoryStream memoryStadium, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -247,14 +263,13 @@ namespace DinoTem.persistence
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Stadium_toConsole(ref memoryStadium);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryStadium, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Stadium_toConsole(memoryStadium), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Stadium_toPc(ref memoryStadium);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryStadium, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Stadium_toConsole(memoryStadium), patch + PATH);
             }
+            return;
         }
 
     }

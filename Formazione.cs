@@ -256,7 +256,7 @@ namespace DinoTem
         private ListViewItem Leggere_GiocatoreSquadre(PlayerAssignment pAssignment)
         {
             ListViewItem item = new ListViewItem();
-            Player temp2 = controller.leggiGiocatoreById(pAssignment.getPlayerId());
+            Player temp2 = controller.leggiGiocatore(pAssignment.getPlayerId());
 
             item = new ListViewItem((pAssignment.getOrder() + 1).ToString());
             item.SubItems.Add(temp2.getStringPosition());

@@ -108,7 +108,10 @@ namespace DinoTem.model
         public void setZone(byte zone)
         {
             if (zone < 0)
-                throw new ArgumentException("Country's name isn't valid - Id country: " + getId());
+                this.zone = 0;
+            if (zone > 7)
+                this.zone = 7;
+            //throw new ArgumentException("Country's name isn't valid - Id country: " + getId());
 
             this.zone = zone;
         }
@@ -116,7 +119,8 @@ namespace DinoTem.model
         public void setName(string name)
         {
     	    if (name == null || name == "")
-                throw new ArgumentException("Country's name isn't valid - Id country: " + getId());
+                this.shortName = "Country without name";
+            //throw new ArgumentException("Country's name isn't valid - Id country: " + getId());
     	
             this.name = name;
         }
@@ -124,20 +128,11 @@ namespace DinoTem.model
         public void setShortName(string shortName)
         {
             if (shortName == null || shortName == "")
-                throw new ArgumentException("Country's short name isn't valid - Id country: " + getId());
+                this.shortName = "UNK";
+            //throw new ArgumentException("Country's short name isn't valid - Id country: " + getId());
 
             this.shortName = shortName;
         }
-
-        /*public override bool Equals(Object obj)
-        {
-            if (obj is Country)
-    	    {
-                Country c = (Country)obj;
-    		    return getId() == c.getId();
-    	    }
-    	    return false;
-        }*/
 
         private string stringContinent(int i)
         {

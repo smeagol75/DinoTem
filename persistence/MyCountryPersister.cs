@@ -29,7 +29,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.Country_toPc(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.Country_toPc(memory1);
             }
 
             return memory1;
@@ -98,6 +98,26 @@ namespace DinoTem.persistence
                 MessageBox.Show(e.Message, Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 SplashScreen._SplashScreen.Close();
             }
+        }
+
+        public int loadCountryById(MemoryStream memory1, BinaryReader reader, UInt32 countryId)
+        {
+            int bytes = (int)memory1.Length;
+            int country = bytes / block;
+
+            reader.BaseStream.Position = 0;
+            for (int i = 0; i <= (country - 1); i++)
+            {
+                UInt32 Valor_imp_32 = reader.ReadUInt32();
+                UInt32 id = Valor_imp_32 << 13;
+                id = id >> 23;
+
+                if (countryId == id)
+                    return i;
+                reader.BaseStream.Position += block - 4;
+            }
+
+            return -1;
         }
 
         private Dictionary<uint, string> readNationality()

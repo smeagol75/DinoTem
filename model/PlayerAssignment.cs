@@ -22,9 +22,9 @@ namespace DinoTem.model
 
         public PlayerAssignment(UInt32 playerId, UInt32 teamId)
         {
-    	    if (playerId < 0)
+            if (playerId < 0 || playerId > 4294967295)
                 throw new ArgumentException("Player's player id isn't valid: " + playerId);
-    	    if (teamId < 0)
+            if (teamId < 0 || teamId > 65535)
                 throw new ArgumentException("Player's team id isn't valid: " + teamId);
     	
             this.playerId = playerId;
@@ -89,14 +89,15 @@ namespace DinoTem.model
         public void setEntryId(UInt32 entryId)
         {
     	    if (entryId < 0)
-                throw new ArgumentException("Entry id isn't valid: " + entryId);
+                this.entryId = 0;
+            //throw new ArgumentException("Entry id isn't valid: " + entryId);
     	
             this.entryId = entryId;
         }
 
         public void setPlayerId(UInt32 playerId)
         {
-    	    if (playerId < 0)
+            if (playerId < 0 || playerId > 4294967295)
                 throw new ArgumentException("Player's id isn't valid: " + playerId);
     	
             this.playerId = playerId;
@@ -104,7 +105,7 @@ namespace DinoTem.model
 
         public void setTeamId(UInt32 teamId)
         {
-    	    if (teamId < 0)
+            if (teamId < 0 || teamId > 65535)
                 throw new ArgumentException("Team's id isn't valid: " + teamId);
     	
             this.teamId = teamId;
@@ -142,8 +143,11 @@ namespace DinoTem.model
 
         public void setShirtNumber(byte shirtNumber)
         {
-    	    if (shirtNumber < 0)
-                throw new ArgumentException("Player's shirt number isn't valid: " + shirtNumber);
+            if (shirtNumber < 0)
+                this.shirtNumber = 0;
+            if (shirtNumber > 99)
+                this.shirtNumber = 99;
+            //throw new ArgumentException("Player's shirt number isn't valid: " + shirtNumber);
     	
             this.shirtNumber = shirtNumber;
         }
@@ -151,19 +155,10 @@ namespace DinoTem.model
         public void setOrder(UInt16 order)
         {
     	    if (order < 0)
-                throw new ArgumentException("Player's order in team isn't valid: " + order);
+                this.order = 0;
+            //throw new ArgumentException("Player's order in team isn't valid: " + order);
     	
             this.order = order;
         }
-
-        /*public override bool Equals(Object obj)
-        {
-            if (obj is PlayerAssignment)
-    	    {
-                PlayerAssignment c = (PlayerAssignment) obj;
-    		    return getPlayerId() == c.getPlayerId() && getTeamId() == c.getTeamId();
-    	    }
-    	    return false;
-        }*/
     }
 }

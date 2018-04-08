@@ -14,7 +14,7 @@ namespace DinoTem.model
 
         public Ball(UInt16 id)
         {
-            if (id < 0)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Ball's id isn't valid: " + id);
 
             this.id = id;
@@ -37,7 +37,7 @@ namespace DinoTem.model
 
         public void setId(UInt16 id)
         {
-            if (id < 0)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Ball's id isn't valid: " + id);
 
             this.id = id;
@@ -46,7 +46,10 @@ namespace DinoTem.model
         public void setOrder(byte order)
         {
             if (order < 0)
-                throw new ArgumentException("Ball's order isn't valid - Id ball: " + getId());
+                this.order = 0;
+            if (order > 255)
+                this.order = 255;
+            //throw new ArgumentException("Ball's order isn't valid - Id ball: " + getId());
 
             this.order = order;
         }
@@ -54,7 +57,8 @@ namespace DinoTem.model
         public void setName(string name)
         {
             if (name == null || name == "")
-                throw new ArgumentException("Ball's name isn't valid - Id ball: " + getId());
+                this.name = "Ball without name";
+            //throw new ArgumentException("Ball's name isn't valid - Id ball: " + getId());
 
             this.name = name;
         }

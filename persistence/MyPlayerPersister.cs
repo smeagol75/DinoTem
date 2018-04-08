@@ -29,7 +29,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.Player_toPc(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.Player_toPc(memory1);
             }
 
             return memory1;
@@ -539,7 +539,23 @@ namespace DinoTem.persistence
             return player;
         }
 
-        public UInt32 findIdPlayer(MemoryStream memory1, BinaryReader reader)
+        public int loadPlayerById(MemoryStream memory1, BinaryReader reader, UInt32 playerId)
+        {
+            int bytesPlayer = (int)memory1.Length;
+            int player = bytesPlayer / block;
+
+            reader.BaseStream.Position = 8;
+            for (int i = 0; i <= (player - 1); i++)
+            {
+                if (playerId == reader.ReadUInt32())
+                    return i;
+                reader.BaseStream.Position += block - 4;
+            }
+
+            return -1;
+        }
+
+        public UInt32 findIndexPlayer(MemoryStream memory1, BinaryReader reader)
         {
             UInt32 player_index_mayor = 0;
 
@@ -547,7 +563,7 @@ namespace DinoTem.persistence
             int player = bytesPlayer / block;
 
             reader.BaseStream.Position = 8;
-            for (int i = 0; (i <= (player - 1)); i++)
+            for (int i = 0; i <= (player - 1); i++)
             {
                 UInt32 temp_index = reader.ReadUInt32();
                 if ((temp_index >= player_index_mayor))
@@ -1410,7 +1426,7 @@ namespace DinoTem.persistence
             writer = new BinaryWriter(memory1);
         }
 
-        public void save(string patch, ref MemoryStream memoryGicotori, int bitRecognized)
+        public void save(string patch, MemoryStream memoryGicotori, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -1420,14 +1436,13 @@ namespace DinoTem.persistence
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Player_toConsole(ref memoryGicotori);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryGicotori, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Player_toConsole(memoryGicotori), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Player_toConsole(ref memoryGicotori);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryGicotori, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Player_toConsole(memoryGicotori), patch + PATH);
             }
+            return;
         }
 
     }

@@ -32,7 +32,7 @@ namespace DinoTem.model
 
         public Team(UInt32 idSquadra)
         {
-            if (idSquadra < 0)
+            if (idSquadra < 0 || idSquadra > 65535)
                 throw new ArgumentException("Team's Id isn't valid: " + idSquadra);
     	
             this.id = idSquadra;
@@ -150,7 +150,7 @@ namespace DinoTem.model
 
         public void setId(UInt32 id)
         {
-            if (id < 0 && id > 65535)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Team's id isn't valid: " + id);
     	
 		    this.id = id;
@@ -158,9 +158,8 @@ namespace DinoTem.model
 
 	    public void setKonami(string konami)
         {
-    	    //konami.isEmpty()
-    	    if (konami == null)
-                throw new ArgumentException("Team's Konami name isn't valid - " + getEnglish());
+    	    //if (konami == null)
+                //throw new ArgumentException("Team's Konami name isn't valid - " + getEnglish());
     	
             this.konami = konami;
             return;
@@ -168,8 +167,8 @@ namespace DinoTem.model
 
         public void setJapanese(string japanese)
         {
-    	    if (japanese == null || japanese == "")
-                throw new ArgumentException("Team's japanese name isn't valid - " + getEnglish());
+    	    //if (japanese == null || japanese == "")
+                //throw new ArgumentException("Team's japanese name isn't valid - " + getEnglish());
     	
             this.japanese = japanese;
             return;
@@ -177,8 +176,11 @@ namespace DinoTem.model
 
         public void setNotPlayableLeague(UInt32 notPlayableLeague)
         {
-            if (notPlayableLeague < 0 && notPlayableLeague > 7)
-                throw new ArgumentException("Team's playable league isn't valid - " + getEnglish());
+            if (notPlayableLeague < 0)
+                this.notPlayableLeague = 0;
+            if (notPlayableLeague > 7)
+                this.notPlayableLeague = 7;
+            //throw new ArgumentException("Team's playable league isn't valid - " + getEnglish());
     	
             this.notPlayableLeague = notPlayableLeague;
             return;
@@ -260,7 +262,8 @@ namespace DinoTem.model
         public void setShortSquadra(string ShortSquadra)
         {
     	    if (ShortSquadra == null || ShortSquadra == "")
-                throw new ArgumentException("Team's short name isn't valid - " + getEnglish());
+                this.ShortSquadra = "UNK";
+            //throw new ArgumentException("Team's short name isn't valid - " + getEnglish());
     	
             this.ShortSquadra = ShortSquadra;
             return;
@@ -286,7 +289,7 @@ namespace DinoTem.model
 
         public void setParentTeamId(UInt32 parentTeamId)
         {
-            if (parentTeamId < 0)
+            if (parentTeamId < 0 || id > 65535)
                 throw new ArgumentException("Team's parent team id isn't valid - " + getEnglish());
 
             this.parentTeamId = parentTeamId;
@@ -296,7 +299,8 @@ namespace DinoTem.model
         public void setStadiumId(UInt32 stadiumId)
         {
             if (stadiumId < 0)
-                throw new ArgumentException("Team's stadium id isn't valid - " + getEnglish());
+                this.stadiumId = 0;
+            //throw new ArgumentException("Team's stadium id isn't valid - " + getEnglish());
 
             this.stadiumId = stadiumId;
             return;
@@ -305,7 +309,8 @@ namespace DinoTem.model
         public void setCountry(UInt32 country)
         {
     	    if (country < 0)
-                throw new ArgumentException("Team's country id isn't valid - " + getEnglish());
+                this.country = 0;
+            //throw new ArgumentException("Team's country id isn't valid - " + getEnglish());
     	
 		    this.country = country;
 	    }
@@ -313,7 +318,8 @@ namespace DinoTem.model
 	    public void setEnglish(string english)
         {
     	    if (english == null || english == "")
-                throw new ArgumentException("Team's english name isn't valid - " + getEnglish());
+                this.english = "Team without name";
+            //throw new ArgumentException("Team's english name isn't valid - " + getEnglish());
     	
             this.english = english;
             return;
@@ -422,16 +428,6 @@ namespace DinoTem.model
             }
             return t;
         }
-
-        /*public override bool Equals(Object obj)
-        {
-            if (obj is Team)
-    	    {
-                Team c = (Team) obj;
-    		    return getId() == c.getId();
-    	    }
-    	    return false;
-        }*/
 
         public override string ToString()
         {

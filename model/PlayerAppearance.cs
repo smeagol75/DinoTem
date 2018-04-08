@@ -68,7 +68,7 @@ namespace DinoTem.model
 
         public PlayerAppearance(UInt32 id)
         {
-    	    if (id < 0)
+            if (id < 0 || id > 4294967295)
                 throw new ArgumentException("Player's appearance id isn't valid: " + id);
     	
     	    this.id = id;
@@ -81,7 +81,7 @@ namespace DinoTem.model
 
         public void setId(UInt32 id)
         {
-    	    if (id < 0)
+            if (id < 0 || id > 4294967295)
                 throw new ArgumentException("Player id isn't valid: " + +id);
     	
             this.id = id;
@@ -539,15 +539,5 @@ namespace DinoTem.model
         {
             this.unknown56 = unknown56;
         }
-
-        /*public override bool Equals(Object obj)
-        {
-            if (obj is PlayerAppearance)
-    	    {
-                PlayerAppearance c = (PlayerAppearance) obj;
-    		    return getId() == c.getId();
-    	    }
-    	    return false;
-        }*/
     }
 }

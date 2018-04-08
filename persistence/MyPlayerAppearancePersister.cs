@@ -476,6 +476,36 @@ namespace DinoTem.persistence
             return temp;
         }
 
+        public void replacePlayerAppearance(BinaryReader reader, int bitRecognized, MemoryStream unzlib, ref BinaryWriter writer, UInt32 oldPlayerId, UInt32 newPlayerId)
+        {
+            //calcolo giocatori
+            // Create new FileInfo object and get the Length.
+            int bytes_player = (int)unzlib.Length;
+            int calcolo_player = bytes_player / block;
+
+            long START2 = -block;
+            for (int i = 0; i <= (calcolo_player - 1); i++)
+            {
+                START2 += block;
+                unzlib.Seek(START2, SeekOrigin.Begin);
+
+                UInt32 Check_order = 0;
+                if (bitRecognized == 0)
+                    Check_order = reader.ReadUInt32();
+                else if (bitRecognized == 1 || bitRecognized == 2)
+                    Check_order = UnzlibZlibConsole.swaps.swap32(reader.ReadUInt32());
+                if (oldPlayerId == Check_order)
+                {
+                    writer.BaseStream.Position = START2;
+                    if (bitRecognized == 0)
+                        writer.Write(newPlayerId);
+                    else if (bitRecognized == 1 || bitRecognized == 2)
+                        writer.Write(UnzlibZlibConsole.swaps.swap32(newPlayerId));
+                    return;
+                }
+            }
+        }
+
         public void applyPlayerAppearance(BinaryReader reader, int bitRecognized, MemoryStream unzlib, PlayerAppearance playerApp, ref BinaryWriter writer)
         {
             //calcolo giocatori
@@ -557,6 +587,7 @@ namespace DinoTem.persistence
                     writer.Write(playerApp.getUnknown54());
                     writer.Write(playerApp.getUnknown55());
                     writer.Write(playerApp.getUnknown56());
+                    return;
                 }
             }
 
@@ -652,13 +683,9 @@ namespace DinoTem.persistence
             }
         }
 
-        public void save(string patch, ref MemoryStream memoryGicotori, int bitRecognized)
+        public void save(string patch, MemoryStream memoryGicotori, int bitRecognized)
         {
-            //save zlib
-            byte[] ss13 = Zlib18.ZLIBFile(memoryGicotori.ToArray());
-            byte[] ss1 = Unzlib.unZLIBFilePC(ss13);
-            File.WriteAllBytes(patch + PATH, ss1);
-            
+            File.WriteAllBytes(patch + PATH, memoryGicotori.ToArray());
         }
 
     }

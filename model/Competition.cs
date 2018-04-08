@@ -96,7 +96,7 @@ namespace DinoTem.model
 
         public void setTeamId(UInt32 id)
         {
-            if (id < 0)
+            if (id < 0 || id > 65535)
                 throw new ArgumentException("Competition's id isn't valid: " + id);
 
             this.id = id;
@@ -105,7 +105,10 @@ namespace DinoTem.model
         public void setZone(UInt32 zone)
         {
             if (zone < 0)
-                throw new ArgumentException("zone isn't valid - id competition: " + id);
+                this.zone = 0;
+            if (zone > 7)
+                this.zone = 7;
+            //throw new ArgumentException("zone isn't valid - id competition: " + id);
 
             this.zone = zone;
         }

@@ -28,7 +28,7 @@ namespace DinoTem.ui
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.Boots(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.Boots_toPc(memory1);
             }
 
             return memory1;
@@ -115,7 +115,7 @@ namespace DinoTem.ui
             return boot;
         }
 
-        public UInt16 findIdBoot(MemoryStream memory1, BinaryReader reader)
+        public UInt16 findIndexBoot(MemoryStream memory1, BinaryReader reader)
         {
             UInt16 boot_index_mayor = 0;
 
@@ -190,7 +190,7 @@ namespace DinoTem.ui
             writer = new BinaryWriter(memory1);
         }
 
-        public void save(string patch, ref MemoryStream memoryBoot, int bitRecognized)
+        public void save(string patch, MemoryStream memoryBoot, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -200,13 +200,11 @@ namespace DinoTem.ui
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Boots(ref memoryBoot);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryBoot, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Boots_toConsole(memoryBoot), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.Boots(ref memoryBoot);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryBoot, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.Boots_toConsole(memoryBoot), patch + PATH);
             }
         }
     }

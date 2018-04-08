@@ -26,9 +26,9 @@ namespace DinoTem.model
 
         public Tactics(UInt32 teamId, UInt16 tacticsId)
         {
-            if (teamId < 0)
+            if (teamId < 0 || teamId > 65535)
                 throw new ArgumentException("Tactic's team id isn't valid: " + teamId);
-            if (tacticsId < 0)
+            if (tacticsId < 0 || tacticsId > 65535)
                 throw new ArgumentException("Tactic id isn't valid: " + tacticsId);
 
             this.teamId = teamId;
@@ -112,7 +112,7 @@ namespace DinoTem.model
 
         public void setTeamId(UInt32 teamId)
         {
-            if (teamId < 0)
+            if (teamId < 0 || teamId > 65535)
                 throw new ArgumentException("Tactic's team id isn't valid: " + teamId);
 
             this.teamId = teamId;
@@ -120,7 +120,7 @@ namespace DinoTem.model
 
         public void setTacticsId(UInt16 tacticsId)
         {
-            if (tacticsId < 0)
+            if (tacticsId < 0 || tacticsId > 65535)
                 throw new ArgumentException("Tactic id isn't valid: " + teamId);
 
             this.tacticsId = tacticsId;
@@ -129,7 +129,8 @@ namespace DinoTem.model
         public void setCompactness(UInt16 compactness)
         {
             if (compactness < 0)
-                throw new ArgumentException("Compactness isn't valid - team id: " + teamId);
+                this.compactness = 0;
+            //throw new ArgumentException("Compactness isn't valid - team id: " + teamId);
 
             this.compactness = compactness;
         }
@@ -137,7 +138,8 @@ namespace DinoTem.model
         public void setSupportRange(UInt16 supportRange)
         {
             if (supportRange < 0)
-                throw new ArgumentException("Support range isn't valid - team id: " + teamId);
+                this.supportRange = 0;
+            //throw new ArgumentException("Support range isn't valid - team id: " + teamId);
 
             this.supportRange = supportRange;
         }
@@ -145,7 +147,8 @@ namespace DinoTem.model
         public void setDefensiveLine(UInt16 defensiveLine)
         {
             if (defensiveLine < 0)
-                throw new ArgumentException("Support range isn't valid - team id: " + teamId);
+                this.defensiveLine = 0;
+            //throw new ArgumentException("Support range isn't valid - team id: " + teamId);
 
             this.defensiveLine = defensiveLine;
         }
@@ -153,7 +156,8 @@ namespace DinoTem.model
         public void setAttackingNumbers(UInt16 attackingNumbers)
         {
             if (attackingNumbers < 0)
-                throw new ArgumentException("Attacking numbers isn't valid - team id: " + teamId);
+                this.attackingNumbers = 0;
+            //throw new ArgumentException("Attacking numbers isn't valid - team id: " + teamId);
 
             this.attackingNumbers = attackingNumbers;
         }
@@ -161,7 +165,8 @@ namespace DinoTem.model
         public void setDefendingNumbers(UInt16 defendingNumbers)
         {
             if (defendingNumbers < 0)
-                throw new ArgumentException("Defending numbers isn't valid - team id: " + teamId);
+                this.defendingNumbers = 0;
+            //throw new ArgumentException("Defending numbers isn't valid - team id: " + teamId);
 
             this.defendingNumbers = defendingNumbers;
         }
@@ -169,7 +174,8 @@ namespace DinoTem.model
         public void setPositioning(byte positioning)
         {
             if (positioning < 0)
-                throw new ArgumentException("Positioning isn't valid - team id: " + teamId);
+                this.positioning = 0;
+            //throw new ArgumentException("Positioning isn't valid - team id: " + teamId);
 
             this.positioning = positioning;
         }
@@ -177,7 +183,8 @@ namespace DinoTem.model
         public void setFluidFormation(byte fluidFormation)
         {
             if (fluidFormation < 0)
-                throw new ArgumentException("Strategy type isn't valid - team id: " + teamId);
+                this.fluidFormation = 0;
+            //throw new ArgumentException("Strategy type isn't valid - team id: " + teamId);
 
             this.fluidFormation = fluidFormation;
         }
@@ -185,7 +192,8 @@ namespace DinoTem.model
         public void setAttackingStyle(byte attackingStyle)
         {
             if (attackingStyle < 0)
-                throw new ArgumentException("Attacking styles isn't valid - team id: " + teamId);
+                this.attackingStyle = 0;
+            //throw new ArgumentException("Attacking styles isn't valid - team id: " + teamId);
 
             this.attackingStyle = attackingStyle;
         }
@@ -193,7 +201,8 @@ namespace DinoTem.model
         public void setPressuring(byte pressuring)
         {
             if (pressuring < 0)
-                throw new ArgumentException("Pressuring isn't valid - team id: " + teamId);
+                this.pressuring = 0;
+            //throw new ArgumentException("Pressuring isn't valid - team id: " + teamId);
 
             this.pressuring = pressuring;
         }
@@ -201,7 +210,8 @@ namespace DinoTem.model
         public void setContainmentArea(byte containmentArea)
         {
             if (containmentArea < 0)
-                throw new ArgumentException("Containment area isn't valid - team id: " + teamId);
+                this.containmentArea = 0;
+            //throw new ArgumentException("Containment area isn't valid - team id: " + teamId);
 
             this.containmentArea = containmentArea;
         }
@@ -209,7 +219,8 @@ namespace DinoTem.model
         public void setAttackingArea(byte attackingArea)
         {
             if (attackingArea < 0)
-                throw new ArgumentException("Attacking area isn't valid - team id: " + teamId);
+                this.attackingArea = 0;
+            //throw new ArgumentException("Attacking area isn't valid - team id: " + teamId);
 
             this.attackingArea = attackingArea;
         }
@@ -217,7 +228,8 @@ namespace DinoTem.model
         public void setDefensiveStyle(byte defensiveStyle)
         {
             if (defensiveStyle < 0)
-                throw new ArgumentException("Defensive styles isn't valid - team id: " + teamId);
+                this.defensiveStyle = 0;
+            //throw new ArgumentException("Defensive styles isn't valid - team id: " + teamId);
 
             this.defensiveStyle = defensiveStyle;
         }
@@ -225,19 +237,10 @@ namespace DinoTem.model
         public void setBuildUp(byte buildUp)
         {
             if (buildUp < 0)
-                throw new ArgumentException("Build up isn't valid - team id: " + teamId);
+                this.buildUp = 0;
+            //throw new ArgumentException("Build up isn't valid - team id: " + teamId);
 
             this.buildUp = buildUp;
         }
-
-        /*public override bool Equals(Object obj)
-        {
-            if (obj is Tactics)
-		    {
-                Tactics c = (Tactics) obj;
-			    return getTacticsID() == c.getTacticsID() && getTeamID() == c.getTeamID();
-		    }
-		    return false;
-	    }*/
     }
 }

@@ -28,7 +28,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.ball_toPc(memory1);
             }
 
             return memory1;
@@ -105,7 +105,7 @@ namespace DinoTem.persistence
             return pallone;
         }
 
-        public UInt16 findIdBall(MemoryStream memory1, BinaryReader reader)
+        public UInt16 findIndexBall(MemoryStream memory1, BinaryReader reader)
         {
             UInt16 ball_index_mayor = 0;
 
@@ -174,7 +174,7 @@ namespace DinoTem.persistence
             writer = new BinaryWriter(memory1);
         }
 
-        public void save(string patch, ref MemoryStream memoryBall, int bitRecognized)
+        public void save(string patch, MemoryStream memoryBall, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -184,13 +184,11 @@ namespace DinoTem.persistence
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memoryBall);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryBall, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.ball_toConsole(memoryBall), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.ball(ref memoryBall);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryBall, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.ball_toConsole(memoryBall), patch + PATH);
             }
         }
 

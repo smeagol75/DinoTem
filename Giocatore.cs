@@ -343,6 +343,11 @@ namespace DinoTem
             goalCeleb.Items.Add("120");
             goalCeleb.Items.Add("121");
             goalCeleb.Items.Add("122");
+            goalCeleb.Items.Add("123");
+            goalCeleb.Items.Add("124");
+            goalCeleb.Items.Add("125");
+            goalCeleb.Items.Add("126");
+            goalCeleb.Items.Add("127");
 
             nationality.Items.Clear();
             sndNationality.Items.Clear();
@@ -351,9 +356,7 @@ namespace DinoTem
                 nationality.Items.Add(x);
                 sndNationality.Items.Add(x);
             }
-            Country nul = new Country(99999);
-            nul.setName("No National");
-            sndNationality.Items.Add(nul);
+            sndNationality.Items.Add("No National");
 
             //Youth Club ID
             youthClub.Items.Clear();
@@ -361,9 +364,7 @@ namespace DinoTem
             {
                 youthClub.Items.Add(x);
             }
-            Team nullo = new Club(99999);
-            nullo.setEnglish("No Team");
-            youthClub.Items.Add(nullo);
+            youthClub.Items.Add("No Team");
 
             //Glove List
             glovesRelink.Items.Clear();
@@ -371,9 +372,7 @@ namespace DinoTem
             {
                 glovesRelink.Items.Add(x);
             }
-            Glove nullo2 = new Glove(9999);
-            nullo2.setName("No Glove");
-            glovesRelink.Items.Add(nullo2);
+            glovesRelink.Items.Add("No Glove");
 
             //Boot List
             bootsRelink.Items.Clear();
@@ -381,9 +380,7 @@ namespace DinoTem
             {
                 bootsRelink.Items.Add(x);
             }
-            Boot nullo3 = new Boot(9999);
-            nullo3.setName("No Boot");
-            bootsRelink.Items.Add(nullo3);
+            bootsRelink.Items.Add("No Boot");
         }
 
         //non far inserire lettere
@@ -1279,6 +1276,27 @@ namespace DinoTem
         private void button4_Click(object sender, EventArgs e)
         {
             int index = controller.findPlayer(temp.getId());
+
+            if (uint.Parse(playerId.Text) > 4294967294)
+            {
+                MessageBox.Show("Number exceeds the allowed range!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            //nuovo id inserito
+            if (uint.Parse(playerId.Text) != temp.getId())
+            {
+                if (controller.findPlayer(uint.Parse(playerId.Text)) != Form1._Form1.playersBox.Items.Count)
+                {
+                    MessageBox.Show("Player's already present in the database!", Application.ProductName.ToString(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                controller.replaceBootListPersister(temp.getId(), uint.Parse(playerId.Text));
+                controller.replaceGloveListPersister(temp.getId(), uint.Parse(playerId.Text));
+                controller.replacePlayerAppearancePersister(temp.getId(), uint.Parse(playerId.Text));
+                controller.replacePlayerAssignmentPersister(temp.getId(), uint.Parse(playerId.Text));
+                temp.setId(uint.Parse(playerId.Text));
+            }
 
             temp.setName(playerName.Text);
             temp.setJapanese(japaneseName.Text);

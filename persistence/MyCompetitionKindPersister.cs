@@ -27,7 +27,7 @@ namespace DinoTem.persistence
             {
                 FileStream writeStream = new FileStream(patch + PATH, FileMode.Open);
                 memory1 = UnzlibZlibConsole.UnzlibZlibConsole.unzlibconsole_to_MemStream(writeStream);
-                UnzlibZlibConsole.UnzlibZlibConsole.CompetitionKind_to_pc(ref memory1);
+                UnzlibZlibConsole.UnzlibZlibConsole.CompetitionKind_to_pc(memory1);
             }
 
             return memory1;
@@ -118,7 +118,7 @@ namespace DinoTem.persistence
             writer.Write(Byte_imp);
         }
 
-        public void save(string patch, ref MemoryStream memoryCompetitionKind, int bitRecognized)
+        public void save(string patch, MemoryStream memoryCompetitionKind, int bitRecognized)
         {
             if (bitRecognized == 0)
             {
@@ -128,13 +128,11 @@ namespace DinoTem.persistence
             }
             else if (bitRecognized == 1)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.CompetitionKind_to_console(ref memoryCompetitionKind);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(memoryCompetitionKind, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_xbox_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.CompetitionKind_to_console(memoryCompetitionKind), patch + PATH);
             }
             else if (bitRecognized == 2)
             {
-                UnzlibZlibConsole.UnzlibZlibConsole.CompetitionKind_to_console(ref memoryCompetitionKind);
-                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(memoryCompetitionKind, patch + PATH);
+                UnzlibZlibConsole.UnzlibZlibConsole.zlib_memstream_to_console_ps3_overwriting(UnzlibZlibConsole.UnzlibZlibConsole.CompetitionKind_to_console(memoryCompetitionKind), patch + PATH);
             }
         }
     }
